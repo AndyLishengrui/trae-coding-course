@@ -1,0 +1,1 @@
+for /L %%i in (1,1,10) do (NQ060.exe <%%i.in >%%i.out)

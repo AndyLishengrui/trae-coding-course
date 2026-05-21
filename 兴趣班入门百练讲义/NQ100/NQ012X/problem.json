@@ -1,0 +1,94 @@
+{
+    "display_id": "ACW749",
+    "title": "\u6570\u7ec4\u7684\u4e0a\u65b9\u533a\u57df",
+    "description": {
+        "format": "html",
+        "value": "<p>\u8f93\u5165\u4e00\u4e2a\u4e8c\u7ef4\u6570\u7ec4 M[12][12]\uff0c\u6839\u636e\u8f93\u5165\u7684\u8981\u6c42\uff0c\u6c42\u51fa\u4e8c\u7ef4\u6570\u7ec4\u7684\u4e0a\u65b9\u533a\u57df\u5143\u7d20\u7684\u5e73\u5747\u503c\u6216\u5143\u7d20\u7684\u548c\u3002</p><p>\u6570\u7ec4\u7684\u4e24\u6761\u5bf9\u89d2\u7ebf\u5c06\u6570\u7ec4\u5206\u4e3a\u4e86\u4e0a\u4e0b\u5de6\u53f3\u56db\u4e2a\u90e8\u5206\uff0c\u9ec4\u8272\u90e8\u5206\u4e3a\u5bf9\u89d2\u7ebf\uff0c\u7eff\u8272\u90e8\u5206\u4e3a\u4e0a\u65b9\u533a\u57df\u3002</p><p><img alt=\"image.png\" src=\"/public/upload/10dc0a81de.png\" width=\"302\" height=\"227\" /><br /></p>"
+    },
+    "tags": [
+        "\u6570\u7ec4",
+        "\u6570\u5b66"
+    ],
+    "input_description": {
+        "format": "html",
+        "value": "<p>\u7b2c\u4e00\u884c\u8f93\u5165\u4e00\u4e2a\u5927\u5199\u5b57\u6bcd\uff0c\u82e5\u4e3a<code>S</code>\uff0c\u5219\u8868\u793a\u9700\u8981\u6c42\u51fa\u4e0a\u65b9\u533a\u57df\u7684\u5143\u7d20\u7684\u548c\uff0c\u82e5\u4e3a<code>M</code>\uff0c\u5219\u8868\u793a\u9700\u8981\u6c42\u51fa\u4e0a\u65b9\u533a\u57df\u7684\u5143\u7d20\u7684\u5e73\u5747\u503c\u3002\u63a5\u4e0b\u6765 12 \u884c\uff0c\u6bcf\u884c\u5305\u542b 12 \u4e2a\u7528\u7a7a\u683c\u9694\u5f00\u7684\u6d6e\u70b9\u6570\uff0c\u8868\u793a\u8fd9\u4e2a\u4e8c\u7ef4\u6570\u7ec4\uff0c\u5176\u4e2d\u7b2c<code>i + 1</code>\u884c\u7684\u7b2c<code>j + 1</code>\u4e2a\u6570\u8868\u793a\u6570\u7ec4\u5143\u7d20 M[i][j]\u3002</p>"
+    },
+    "output_description": {
+        "format": "html",
+        "value": "<p>\u8f93\u51fa\u4e00\u4e2a\u6570\uff0c\u8868\u793a\u6240\u6c42\u7684\u5e73\u5747\u6570\u6216\u548c\u7684\u503c\uff0c\u4fdd\u7559\u4e00\u4f4d\u5c0f\u6570\u3002\u8f93\u51fa\u7ed3\u679c\u4e0e\u6807\u51c6\u7b54\u6848\u6838\u5bf9\u8bef\u5dee\u4e0d\u8d85\u8fc7 0.1 \u5373\u89c6\u4e3a\u6b63\u786e\u3002</p>"
+    },
+    "test_case_score": [
+        {
+            "score": 10,
+            "input_name": "1.in",
+            "output_name": "1.out"
+        },
+        {
+            "score": 10,
+            "input_name": "2.in",
+            "output_name": "2.out"
+        },
+        {
+            "score": 10,
+            "input_name": "3.in",
+            "output_name": "3.out"
+        },
+        {
+            "score": 10,
+            "input_name": "4.in",
+            "output_name": "4.out"
+        },
+        {
+            "score": 10,
+            "input_name": "5.in",
+            "output_name": "5.out"
+        },
+        {
+            "score": 10,
+            "input_name": "6.in",
+            "output_name": "6.out"
+        },
+        {
+            "score": 10,
+            "input_name": "7.in",
+            "output_name": "7.out"
+        },
+        {
+            "score": 10,
+            "input_name": "8.in",
+            "output_name": "8.out"
+        },
+        {
+            "score": 10,
+            "input_name": "9.in",
+            "output_name": "9.out"
+        },
+        {
+            "score": 10,
+            "input_name": "10.in",
+            "output_name": "10.out"
+        }
+    ],
+    "hint": {
+        "format": "html",
+        "value": "<p>\u6ce8\u610f\u8f93\u51fa\u683c\u5f0f\u3002</p>"
+    },
+    "time_limit": 1000,
+    "memory_limit": 256,
+    "samples": [
+        {
+            "input": "S\n-4.8 -8.0 -2.9 6.7 -7.0 2.6 6.5 1.7 1.9 5.6 -1.6 -6.3\n-4.3 1.5 8.7 -0.3 5.4 -9.3 4.8 7.0 3.6 -8.3 -1.0 1.3\n5.0 -4.9 2.7 -2.0 -1.7 -5.4 8.0 -7.3 2.3 -1.9 -4.0 2.9\n2.8 -5.8 -0.0 2.2 4.8 7.7 -3.0 -7.5 -3.5 9.7 -4.3 -8.6\n-1.8 -1.0 9.0 9.3 -3.7 -1.1 0.8 -0.2 -0.0 9.9 4.5 -0.7\n3.8 -3.9 2.1 -9.7 5.5 9.4 -4.6 3.3 -9.6 5.1 -4.5 1.5\n2.8 -5.9 -1.7 -7.4 5.0 -6.4 -5.1 -8.1 -5.2 -1.8 -2.8 -1.7\n8.8 2.8 -4.1 7.1 8.4 -5.6 3.9 -9.7 -7.1 1.3 2.3 -3.3\n1.7 5.1 0.1 9.2 4.5 9.7 7.2 8.6 8.7 1.1 6.7 0.3\n-3.6 -7.1 -8.9 7.1 -5.9 1.6 -7.4 6.7 3.9 4.3 -2.4 -3.7\n8.9 -6.2 5.0 -8.6 -1.3 -8.8 2.6 8.9 5.5 9.0 -2.2 -4.4\n5.7 3.7 1.8 -2.1 -7.3 -7.9 4.7 6.0 3.3 -2.8 1.4 -6.9",
+            "output": "21.7"
+        }
+    ],
+    "template": {},
+    "spj": null,
+    "rule_type": "OI",
+    "source": "xmu",
+    "answers": [
+        {
+            "language": "Java",
+            "code": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        String op = sc.next();\n        double[][] q = new double[12][12];\n        for (int i = 0; i < 12; i ++ )\n            for (int j = 0; j < 12; j ++ )\n                q[i][j] = sc.nextDouble();\n\n        double sum = 0, cnt = 0;\n        for (int i = 0; i < 5; i ++ )\n            for (int j = i + 1; j < 11 - i; j ++ ) {\n                sum += q[i][j];\n                cnt += 1;\n            }\n\n        if (\"M\".equals(op)) sum /= cnt;\n\n        System.out.printf(\"%.1f\\n\", sum);\n    }\n}"
+        }
+    ]
+}

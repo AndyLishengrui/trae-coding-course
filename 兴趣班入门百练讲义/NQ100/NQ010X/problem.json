@@ -1,0 +1,94 @@
+{
+    "display_id": "ACW745",
+    "title": "\u6570\u7ec4\u7684\u53f3\u4e0a\u534a\u90e8\u5206",
+    "description": {
+        "format": "html",
+        "value": "<p>\u8f93\u5165\u4e00\u4e2a\u4e8c\u7ef4\u6570\u7ec4 M[12][12]\uff0c\u6839\u636e\u8f93\u5165\u7684\u8981\u6c42\uff0c\u6c42\u51fa\u4e8c\u7ef4\u6570\u7ec4\u7684\u53f3\u4e0a\u534a\u90e8\u5206\u5143\u7d20\u7684\u5e73\u5747\u503c\u6216\u5143\u7d20\u7684\u548c\u3002</p><p>\u53f3\u4e0a\u534a\u90e8\u5206\u662f\u6307\u4e3b\u5bf9\u89d2\u7ebf\uff08\u5982\u4e0b\u56fe\u4e2d\u9ec4\u8272\u90e8\u5206\uff09\u4e0a\u65b9\u7684\u90e8\u5206\uff08\u7eff\u8272\u90e8\u5206\uff09\u3002</p><p><img alt=\"image.png\" src=\"/public/upload/82781cbf73.png\" width=\"286\" height=\"226\" /></p>"
+    },
+    "tags": [
+        "\u6570\u7ec4",
+        "\u6570\u5b66"
+    ],
+    "input_description": {
+        "format": "html",
+        "value": "<p>\u7b2c\u4e00\u884c\u8f93\u5165\u4e00\u4e2a\u5927\u5199\u5b57\u6bcd\uff0c\u82e5\u4e3a<code>S</code>\uff0c\u5219\u8868\u793a\u9700\u8981\u6c42\u51fa\u53f3\u4e0a\u534a\u90e8\u5206\u7684\u5143\u7d20\u7684\u548c\uff0c\u82e5\u4e3a<code>M</code>\uff0c\u5219\u8868\u793a\u9700\u8981\u6c42\u51fa\u53f3\u4e0a\u534a\u90e8\u5206\u7684\u5143\u7d20\u7684\u5e73\u5747\u503c\u3002\u63a5\u4e0b\u6765 12 \u884c\uff0c\u6bcf\u884c\u5305\u542b 12 \u4e2a\u7528\u7a7a\u683c\u9694\u5f00\u7684\u6d6e\u70b9\u6570\uff0c\u8868\u793a\u8fd9\u4e2a\u4e8c\u7ef4\u6570\u7ec4\uff0c\u5176\u4e2d\u7b2c<code>i + 1</code>\u884c\u7684\u7b2c<code>j + 1</code>\u4e2a\u6570\u8868\u793a\u6570\u7ec4\u5143\u7d20 M[i][j]\u3002</p>"
+    },
+    "output_description": {
+        "format": "html",
+        "value": "<p>\u8f93\u51fa\u4e00\u4e2a\u6570\uff0c\u8868\u793a\u6240\u6c42\u7684\u5e73\u5747\u6570\u6216\u5143\u7d20\u7684\u548c\u7684\u503c\uff0c\u4fdd\u7559\u4e00\u4f4d\u5c0f\u6570\u3002</p>"
+    },
+    "test_case_score": [
+        {
+            "score": 10,
+            "input_name": "1.in",
+            "output_name": "1.out"
+        },
+        {
+            "score": 10,
+            "input_name": "2.in",
+            "output_name": "2.out"
+        },
+        {
+            "score": 10,
+            "input_name": "3.in",
+            "output_name": "3.out"
+        },
+        {
+            "score": 10,
+            "input_name": "4.in",
+            "output_name": "4.out"
+        },
+        {
+            "score": 10,
+            "input_name": "5.in",
+            "output_name": "5.out"
+        },
+        {
+            "score": 10,
+            "input_name": "6.in",
+            "output_name": "6.out"
+        },
+        {
+            "score": 10,
+            "input_name": "7.in",
+            "output_name": "7.out"
+        },
+        {
+            "score": 10,
+            "input_name": "8.in",
+            "output_name": "8.out"
+        },
+        {
+            "score": 10,
+            "input_name": "9.in",
+            "output_name": "9.out"
+        },
+        {
+            "score": 10,
+            "input_name": "10.in",
+            "output_name": "10.out"
+        }
+    ],
+    "hint": {
+        "format": "html",
+        "value": "<p>\u6ce8\u610f\u8f93\u51fa\u683c\u5f0f\u3002</p>"
+    },
+    "time_limit": 1000,
+    "memory_limit": 256,
+    "samples": [
+        {
+            "input": "M\n-6.5 8.2 0.7 9.0 8.4 -8.3 0.9 -0.7 -7.9 7.1 -1.6 4.6\n-9.4 -9.0 1.5 -9.0 -5.1 -0.5 -2.8 -9.1 8.0 -6.9 -5.5 -6.6\n-6.8 0.3 3.8 6.1 -9.9 -9.3 8.5 8.6 5.0 6.9 -3.6 -3.0\n5.4 -5.2 5.0 -5.3 -7.9 -9.7 7.7 -8.2 0.0 -4.7 -8.2 -9.2\n-0.8 -6.0 -5.4 -5.1 -7.9 -0.5 -5.3 -5.7 -4.6 9.6 -8.2 -9.2\n7.8 -5.8 -5.8 -5.8 7.2 0.5 -7.9 1.2 -6.8 -9.1 0.3 -1.4\n4.3 -7.2 3.5 -6.4 -9.1 -6.0 3.5 -5.1 -5.6 -6.9 -9.1 -2.1\n-3.4 -3.8 -9.4 -7.1 -8.4 -9.9 -5.7 -8.3 -5.3 -7.4 -8.5 -4.8\n-0.2 0.3 -4.2 8.4 0.7 -6.4 -3.7 3.5 -0.9 3.7 0.9 -2.7\n7.1 0.1 -8.4 -0.1 -7.9 -4.4 -7.6 -2.7 5.5 -0.9 -7.0 -2.0\n9.6 -9.8 3.3 -9.9 -6.8 6.7 3.1 1.2 -9.5 -4.3 -1.7 -9.7\n1.8 5.5 -0.7 -0.9 3.2 2.5 0.5 7.3 8.3 0.3 0.9",
+            "output": "-1.2"
+        }
+    ],
+    "template": {},
+    "spj": null,
+    "rule_type": "OI",
+    "source": "xmu",
+    "answers": [
+        {
+            "language": "Java",
+            "code": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        String op = sc.next();\n\n        double[][] q = new double[12][12];\n        for (int i = 0; i < 12; i ++ )\n            for (int j = 0; j < 12; j ++ )\n                q[i][j] = sc.nextDouble();\n\n        double sum = 0, cnt = 0;\n        for (int i = 0; i < 12; i ++ )\n            for (int j = i + 1; j < 12; j ++ ) {\n                sum += q[i][j];\n                cnt += 1;\n            }\n\n        if (\"M\".equals(op)) sum /= cnt;\n\n        System.out.printf(\"%.1f\\n\", sum);\n    }\n}"
+        }
+    ]
+}

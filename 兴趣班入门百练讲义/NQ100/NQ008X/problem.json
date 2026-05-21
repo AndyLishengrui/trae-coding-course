@@ -1,0 +1,93 @@
+{
+    "display_id": "ACW739",
+    "title": "\u6570\u7ec4\u9009\u62e9",
+    "description": {
+        "format": "html",
+        "value": "<p>\u8f93\u5165\u4e00\u4e2a\u957f\u5ea6\u4e3a 100 \u7684\u6570\u7ec4 A\uff0c\u8bf7\u4f60\u6309\u987a\u5e8f\u8f93\u51fa\u5176\u4e2d\u4e0d\u5927\u4e8e 10 \u7684\u6240\u6709\u5143\u7d20\u3002</p>"
+    },
+    "tags": [
+        "\u6570\u7ec4"
+    ],
+    "input_description": {
+        "format": "html",
+        "value": "<p>\u8f93\u5165 100 \u4e2a\u6570\uff0c\u6bcf\u4e2a\u6570\u5360\u4e00\u884c\uff0c\u53ef\u80fd\u4e3a\u6574\u6570\u6216\u6d6e\u70b9\u6570\u3002\u6570\u636e\u8303\u56f4\uff1a<code>-100 \u2264 A[i] \u2264 100</code></p>"
+    },
+    "output_description": {
+        "format": "html",
+        "value": "<p>\u6309\u987a\u5e8f\u8f93\u51fa\u6570\u7ec4\u4e2d\u6240\u6709\u4e0d\u5927\u4e8e 10 \u7684\u5143\u7d20\uff0c\u6bcf\u4e2a\u5143\u7d20\u5360\u4e00\u884c\uff0c\u683c\u5f0f\u4e3a <code>A[i] = x</code>\uff0c\u5176\u4e2d i \u4e3a\u539f\u6570\u7ec4\u4e2d\u5bf9\u5e94\u5143\u7d20\u7684\u4e0b\u6807\uff0cx \u4fdd\u7559\u4e00\u4f4d\u5c0f\u6570\u3002</p>"
+    },
+    "test_case_score": [
+        {
+            "score": 10,
+            "input_name": "1.in",
+            "output_name": "1.out"
+        },
+        {
+            "score": 10,
+            "input_name": "2.in",
+            "output_name": "2.out"
+        },
+        {
+            "score": 10,
+            "input_name": "3.in",
+            "output_name": "3.out"
+        },
+        {
+            "score": 10,
+            "input_name": "4.in",
+            "output_name": "4.out"
+        },
+        {
+            "score": 10,
+            "input_name": "5.in",
+            "output_name": "5.out"
+        },
+        {
+            "score": 10,
+            "input_name": "6.in",
+            "output_name": "6.out"
+        },
+        {
+            "score": 10,
+            "input_name": "7.in",
+            "output_name": "7.out"
+        },
+        {
+            "score": 10,
+            "input_name": "8.in",
+            "output_name": "8.out"
+        },
+        {
+            "score": 10,
+            "input_name": "9.in",
+            "output_name": "9.out"
+        },
+        {
+            "score": 10,
+            "input_name": "10.in",
+            "output_name": "10.out"
+        }
+    ],
+    "hint": {
+        "format": "html",
+        "value": "<p>\u6ce8\u610f\u4fdd\u7559\u4e00\u4f4d\u5c0f\u6570\u7684\u8f93\u51fa\u683c\u5f0f\uff0c\u4e14\u4ec5\u8f93\u51fa\u4e0d\u5927\u4e8e10\u7684\u5143\u7d20\u3002</p><p>\u6765\u6e90\uff1a\u8bed\u6cd5\u9898</p>"
+    },
+    "time_limit": 1000,
+    "memory_limit": 256,
+    "samples": [
+        {
+            "input": "0\n-5\n63\n-8.5\n... (\u5171100\u4e2a\u6570)\n",
+            "output": "A[0] = 0.0\nA[1] = -5.0\nA[3] = -8.5\n... (\u4ec5\u8f93\u51fa\u4e0d\u5927\u4e8e10\u7684\u5143\u7d20)\n"
+        }
+    ],
+    "template": {},
+    "spj": null,
+    "rule_type": "OI",
+    "source": "xmu",
+    "answers": [
+        {
+            "language": "C++",
+            "code": "#include <iostream>\n#include <vector>\n#include <iomanip>\n\nusing namespace std;\n\nint main() {\n    // \u4f7f\u7528vector\u5b58\u50a8100\u4e2a\u6d6e\u70b9\u6570\n    vector<double> A;\n    A.reserve(100);  // \u9884\u5206\u914d\u7a7a\u95f4(C++11\u652f\u6301)\n    \n    // \u8f93\u5165100\u4e2a\u6570\n    for(int i = 0; i < 100; i++) {\n        double num;\n        cin >> num;\n        A.emplace_back(num);  // C++11\u7684emplace_back\n    }\n    \n    // \u8f93\u51fa\u7b26\u5408\u6761\u4ef6\u7684\u5143\u7d20\n    cout << fixed << setprecision(1);  // \u8bbe\u7f6e\u4fdd\u7559\u4e00\u4f4d\u5c0f\u6570\n    for(size_t i = 0; i < A.size(); i++) {  // \u4f7f\u7528size_t (C++11\u63a8\u8350)\n        if(A[i] <= 10.0) {  // \u68c0\u67e5\u662f\u5426\u4e0d\u5927\u4e8e10\n            cout << \"A[\" << i << \"] = \" << A[i] << endl;\n        }\n    }\n    \n    return 0;\n}"
+        }
+    ]
+}

@@ -1,0 +1,1964 @@
+{
+  "problems": {
+    "D12": {
+      "id": "D12",
+      "title": "字符串长度",
+      "section": "grammar",
+      "topics": [
+        "字符串",
+        "长度"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        4
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D12/D12_improved.cpp",
+      "python": "source/grammar/D12/D12_improved.py",
+      "markdown": "source/grammar/D12/README.md"
+    },
+    "D15": {
+      "id": "D15",
+      "title": "替换字符",
+      "section": "grammar",
+      "topics": [
+        "字符串",
+        "字符替换"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        8
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D15/D15_improved.cpp",
+      "python": "source/grammar/D15/D15_improved.py",
+      "markdown": "source/grammar/D15/README.md"
+    },
+    "D14": {
+      "id": "D14",
+      "title": "字符串加空格",
+      "section": "grammar",
+      "topics": [
+        "字符串",
+        "加空格"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        8
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D14/D14_improved.cpp",
+      "python": "source/grammar/D14/D14_improved.py",
+      "markdown": "source/grammar/D14/README.md"
+    },
+    "D13": {
+      "id": "D13",
+      "title": "字符串中的数字个数",
+      "section": "grammar",
+      "topics": [
+        "字符串",
+        "数字统计"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        4
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D13/D13_improved.cpp",
+      "python": "source/grammar/D13/D13_improved.py",
+      "markdown": "source/grammar/D13/README.md"
+    },
+    "A05": {
+      "id": "A05",
+      "title": "游戏时间",
+      "section": "grammar",
+      "topics": [
+        "条件判断",
+        "时间计算"
+      ],
+      "difficulty": 1,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        2
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/A05/A05_improved.cpp",
+      "python": "source/grammar/A05/A05_improved.py",
+      "markdown": "source/grammar/A05/README.md"
+    },
+    "C08": {
+      "id": "C08",
+      "title": "字符串乘方",
+      "section": "grammar",
+      "topics": [
+        "字符串",
+        "乘方",
+        "连接"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        9
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/C08/C08_improved.cpp",
+      "python": "source/grammar/C08/C08_improved.py",
+      "markdown": "source/grammar/C08/README.md"
+    },
+    "A02": {
+      "id": "A02",
+      "title": "平均数2",
+      "section": "grammar",
+      "topics": [
+        "输入输出",
+        "浮点数",
+        "加权平均"
+      ],
+      "difficulty": 1,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        1,
+        4
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/A02/A02_improved.cpp",
+      "python": "source/grammar/A02/A02_improved.py",
+      "markdown": "source/grammar/A02/README.md"
+    },
+    "C06": {
+      "id": "C06",
+      "title": "倒排单词",
+      "section": "grammar",
+      "topics": [
+        "字符串",
+        "倒排",
+        "单词"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        9
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/C06/C06_improved.cpp",
+      "python": "source/grammar/C06/C06_improved.py",
+      "markdown": "source/grammar/C06/README.md"
+    },
+    "C01": {
+      "id": "C01",
+      "title": "循环相克令",
+      "section": "grammar",
+      "topics": [
+        "字符串",
+        "模拟",
+        "游戏"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        8
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/C01/C01_improved.cpp",
+      "python": "source/grammar/C01/C01_improved.py",
+      "markdown": "source/grammar/C01/README.md"
+    },
+    "C07": {
+      "id": "C07",
+      "title": "字符串移位包含问题",
+      "section": "grammar",
+      "topics": [
+        "字符串",
+        "循环移位",
+        "子串"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        9
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/C07/C07_improved.cpp",
+      "python": "source/grammar/C07/C07_improved.py",
+      "markdown": "source/grammar/C07/README.md"
+    },
+    "A03": {
+      "id": "A03",
+      "title": "区间",
+      "section": "grammar",
+      "topics": [
+        "条件判断",
+        "区间判断"
+      ],
+      "difficulty": 1,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        1,
+        2
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/A03/A03_improved.cpp",
+      "python": "source/grammar/A03/A03_improved.py",
+      "markdown": "source/grammar/A03/README.md"
+    },
+    "A04": {
+      "id": "A04",
+      "title": "区间 2",
+      "section": "grammar",
+      "topics": [
+        "循环",
+        "区间统计"
+      ],
+      "difficulty": 1,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        1
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/A04/A04_improved.cpp",
+      "python": "source/grammar/A04/A04_improved.py",
+      "markdown": "source/grammar/A04/README.md"
+    },
+    "C09": {
+      "id": "C09",
+      "title": "字符串最大跨距",
+      "section": "grammar",
+      "topics": [
+        "字符串",
+        "最大跨距",
+        "子串查找"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        10
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/C09/C09_improved.cpp",
+      "python": "source/grammar/C09/C09_improved.py",
+      "markdown": "source/grammar/C09/README.md"
+    },
+    "B05": {
+      "id": "B05",
+      "title": "数组的左方区域",
+      "section": "grammar",
+      "topics": [
+        "二维数组",
+        "对角线",
+        "区域求和"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        6
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/B05/B05_improved.cpp",
+      "python": "source/grammar/B05/B05_improved.py",
+      "markdown": "source/grammar/B05/README.md"
+    },
+    "B02": {
+      "id": "B02",
+      "title": "数组的右上半部分",
+      "section": "grammar",
+      "topics": [
+        "二维数组",
+        "对角线",
+        "区域求和"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        6
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/B02/B02_improved.cpp",
+      "python": "source/grammar/B02/B02_improved.py",
+      "markdown": "source/grammar/B02/README.md"
+    },
+    "D09": {
+      "id": "D09",
+      "title": "数组的右下半部分",
+      "section": "grammar",
+      "topics": [
+        "二维数组",
+        "次对角线",
+        "下半部分"
+      ],
+      "difficulty": 1,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        6
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D09/D09_improved.cpp",
+      "python": "source/grammar/D09/D09_improved.py",
+      "markdown": "source/grammar/D09/README.md"
+    },
+    "D07": {
+      "id": "D07",
+      "title": "数组中的列",
+      "section": "grammar",
+      "topics": [
+        "二维数组",
+        "列遍历",
+        "求和/平均"
+      ],
+      "difficulty": 1,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        5
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D07/D07_improved.cpp",
+      "python": "source/grammar/D07/D07_improved.py",
+      "markdown": "source/grammar/D07/README.md"
+    },
+    "B03": {
+      "id": "B03",
+      "title": "数组的左上半部分",
+      "section": "grammar",
+      "topics": [
+        "二维数组",
+        "次对角线",
+        "区域求和"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        6
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/B03/B03_improved.cpp",
+      "python": "source/grammar/B03/B03_improved.py",
+      "markdown": "source/grammar/B03/README.md"
+    },
+    "B04": {
+      "id": "B04",
+      "title": "数组的上方区域",
+      "section": "grammar",
+      "topics": [
+        "二维数组",
+        "对角线",
+        "区域求和"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        6
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/B04/B04_improved.cpp",
+      "python": "source/grammar/B04/B04_improved.py",
+      "markdown": "source/grammar/B04/README.md"
+    },
+    "D06": {
+      "id": "D06",
+      "title": "最小数和它的位置",
+      "section": "grammar",
+      "topics": [
+        "数组",
+        "最小值",
+        "位置"
+      ],
+      "difficulty": 1,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        4,
+        5
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D06/D06_improved.cpp",
+      "python": "source/grammar/D06/D06_improved.py",
+      "markdown": "source/grammar/D06/README.md"
+    },
+    "D01": {
+      "id": "D01",
+      "title": "数组替换",
+      "section": "grammar",
+      "topics": [
+        "数组",
+        "替换"
+      ],
+      "difficulty": 1,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        1,
+        5
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D01/D01_improved.cpp",
+      "python": "source/grammar/D01/D01_improved.py",
+      "markdown": "source/grammar/D01/README.md"
+    },
+    "D08": {
+      "id": "D08",
+      "title": "数组的左下半部分",
+      "section": "grammar",
+      "topics": [
+        "二维数组",
+        "主对角线",
+        "下半部分"
+      ],
+      "difficulty": 1,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        6
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D08/D08_improved.cpp",
+      "python": "source/grammar/D08/D08_improved.py",
+      "markdown": "source/grammar/D08/README.md"
+    },
+    "D16": {
+      "id": "D16",
+      "title": "字符串插入",
+      "section": "grammar",
+      "topics": [
+        "字符串",
+        "插入",
+        "ASCII码"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        8
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D16/D16_improved.cpp",
+      "python": "source/grammar/D16/D16_improved.py",
+      "markdown": "source/grammar/D16/README.md"
+    },
+    "D11": {
+      "id": "D11",
+      "title": "数组的右方区域",
+      "section": "grammar",
+      "topics": [
+        "二维数组",
+        "对角线",
+        "右方区域"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        6
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D11/D11_improved.cpp",
+      "python": "source/grammar/D11/D11_improved.py",
+      "markdown": "source/grammar/D11/README.md"
+    },
+    "D18": {
+      "id": "D18",
+      "title": "忽略大小写比较字符串大小",
+      "section": "grammar",
+      "topics": [
+        "字符串",
+        "忽略大小写",
+        "比较"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        9
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D18/D18_improved.cpp",
+      "python": "source/grammar/D18/D18_improved.py",
+      "markdown": "source/grammar/D18/README.md"
+    },
+    "D20": {
+      "id": "D20",
+      "title": "单词替换",
+      "section": "grammar",
+      "topics": [
+        "字符串",
+        "单词替换"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        10
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D20/D20_improved.cpp",
+      "python": "source/grammar/D20/D20_improved.py",
+      "markdown": "source/grammar/D20/README.md"
+    },
+    "D19": {
+      "id": "D19",
+      "title": "信息加密",
+      "section": "grammar",
+      "topics": [
+        "字符串",
+        "加密",
+        "循环移位"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        10
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D19/D19_improved.cpp",
+      "python": "source/grammar/D19/D19_improved.py",
+      "markdown": "source/grammar/D19/README.md"
+    },
+    "D10": {
+      "id": "D10",
+      "title": "数组的下方区域",
+      "section": "grammar",
+      "topics": [
+        "二维数组",
+        "对角线",
+        "下方区域"
+      ],
+      "difficulty": 1,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        6
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D10/D10_improved.cpp",
+      "python": "source/grammar/D10/D10_improved.py",
+      "markdown": "source/grammar/D10/README.md"
+    },
+    "D17": {
+      "id": "D17",
+      "title": "只出现一次的字符",
+      "section": "grammar",
+      "topics": [
+        "字符串",
+        "出现次数",
+        "哈希"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        9
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D17/D17_improved.cpp",
+      "python": "source/grammar/D17/D17_improved.py",
+      "markdown": "source/grammar/D17/README.md"
+    },
+    "A01": {
+      "id": "A01",
+      "title": "平均数1",
+      "section": "grammar",
+      "topics": [
+        "输入输出",
+        "浮点数",
+        "加权平均"
+      ],
+      "difficulty": 1,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        1,
+        4
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/A01/A01_improved.cpp",
+      "python": "source/grammar/A01/A01_improved.py",
+      "markdown": "source/grammar/A01/README.md"
+    },
+    "A06": {
+      "id": "A06",
+      "title": "游戏时间2",
+      "section": "grammar",
+      "topics": [
+        "条件判断",
+        "时间计算"
+      ],
+      "difficulty": 1,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        2
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/A06/A06_improved.cpp",
+      "python": "source/grammar/A06/A06_improved.py",
+      "markdown": "source/grammar/A06/README.md"
+    },
+    "C02": {
+      "id": "C02",
+      "title": "字符串匹配",
+      "section": "grammar",
+      "topics": [
+        "字符串",
+        "匹配"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        8
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/C02/C02_improved.cpp",
+      "python": "source/grammar/C02/C02_improved.py",
+      "markdown": "source/grammar/C02/README.md"
+    },
+    "C05": {
+      "id": "C05",
+      "title": "最长单词",
+      "section": "grammar",
+      "topics": [
+        "字符串",
+        "单词",
+        "最长"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        9
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/C05/C05_improved.cpp",
+      "python": "source/grammar/C05/C05_improved.py",
+      "markdown": "source/grammar/C05/README.md"
+    },
+    "A08": {
+      "id": "A08",
+      "title": "简单排序",
+      "section": "grammar",
+      "topics": [
+        "排序",
+        "比较"
+      ],
+      "difficulty": 1,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        3
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/A08/A08_improved.cpp",
+      "python": "source/grammar/A08/A08_improved.py",
+      "markdown": "source/grammar/A08/README.md"
+    },
+    "C04": {
+      "id": "C04",
+      "title": "字符串中最长的连续出现的字符",
+      "section": "grammar",
+      "topics": [
+        "字符串",
+        "连续字符",
+        "遍历"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        8
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/C04/C04_improved.cpp",
+      "python": "source/grammar/C04/C04_improved.py",
+      "markdown": "source/grammar/C04/README.md"
+    },
+    "A09": {
+      "id": "A09",
+      "title": "乘法表",
+      "section": "grammar",
+      "topics": [
+        "循环",
+        "乘法表",
+        "格式化输出"
+      ],
+      "difficulty": 1,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        3
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/A09/A09_improved.cpp",
+      "python": "source/grammar/A09/A09_improved.py",
+      "markdown": "source/grammar/A09/README.md"
+    },
+    "C03": {
+      "id": "C03",
+      "title": "去掉多余的空格",
+      "section": "grammar",
+      "topics": [
+        "字符串",
+        "空格处理"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        8
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/C03/C03_improved.cpp",
+      "python": "source/grammar/C03/C03_improved.py",
+      "markdown": "source/grammar/C03/README.md"
+    },
+    "A07": {
+      "id": "A07",
+      "title": "选择练习1",
+      "section": "grammar",
+      "topics": [
+        "条件判断",
+        "逻辑运算"
+      ],
+      "difficulty": 1,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        2
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/A07/A07_improved.cpp",
+      "python": "source/grammar/A07/A07_improved.py",
+      "markdown": "source/grammar/A07/README.md"
+    },
+    "C10": {
+      "id": "C10",
+      "title": "最长公共字符串后缀",
+      "section": "grammar",
+      "topics": [
+        "字符串",
+        "公共后缀"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        10
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/C10/C10_improved.cpp",
+      "python": "source/grammar/C10/C10_improved.py",
+      "markdown": "source/grammar/C10/README.md"
+    },
+    "D04": {
+      "id": "D04",
+      "title": "数组变换",
+      "section": "grammar",
+      "topics": [
+        "数组",
+        "翻转"
+      ],
+      "difficulty": 1,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        3,
+        5
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D04/D04_improved.cpp",
+      "python": "source/grammar/D04/D04_improved.py",
+      "markdown": "source/grammar/D04/README.md"
+    },
+    "D03": {
+      "id": "D03",
+      "title": "数组选择",
+      "section": "grammar",
+      "topics": [
+        "数组",
+        "选择",
+        "过滤"
+      ],
+      "difficulty": 1,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        3,
+        5
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D03/D03_improved.cpp",
+      "python": "source/grammar/D03/D03_improved.py",
+      "markdown": "source/grammar/D03/README.md"
+    },
+    "B01": {
+      "id": "B01",
+      "title": "数组中的行",
+      "section": "grammar",
+      "topics": [
+        "二维数组",
+        "行遍历",
+        "求和/平均"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        5
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/B01/B01_improved.cpp",
+      "python": "source/grammar/B01/B01_improved.py",
+      "markdown": "source/grammar/B01/README.md"
+    },
+    "B06": {
+      "id": "B06",
+      "title": "平方矩阵 I",
+      "section": "grammar",
+      "topics": [
+        "二维数组",
+        "回字形",
+        "矩阵构造"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        7
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/B06/B06_improved.cpp",
+      "python": "source/grammar/B06/B06_improved.py",
+      "markdown": "source/grammar/B06/README.md"
+    },
+    "B08": {
+      "id": "B08",
+      "title": "平方矩阵 III",
+      "section": "grammar",
+      "topics": [
+        "二维数组",
+        "幂次",
+        "矩阵构造"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        7
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/B08/B08_improved.cpp",
+      "python": "source/grammar/B08/B08_improved.py",
+      "markdown": "source/grammar/B08/README.md"
+    },
+    "D02": {
+      "id": "D02",
+      "title": "数组填充",
+      "section": "grammar",
+      "topics": [
+        "数组",
+        "填充",
+        "递推"
+      ],
+      "difficulty": 1,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        1,
+        5
+      ],
+      "role": "练习",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D02/D02_improved.cpp",
+      "python": "source/grammar/D02/D02_improved.py",
+      "markdown": "source/grammar/D02/README.md"
+    },
+    "D05": {
+      "id": "D05",
+      "title": "斐波那契数列",
+      "section": "grammar",
+      "topics": [
+        "循环",
+        "斐波那契",
+        "递推"
+      ],
+      "difficulty": 1,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        4,
+        10
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/D05/D05_improved.cpp",
+      "python": "source/grammar/D05/D05_improved.py",
+      "markdown": "source/grammar/D05/README.md"
+    },
+    "B07": {
+      "id": "B07",
+      "title": "平方矩阵 II",
+      "section": "grammar",
+      "topics": [
+        "二维数组",
+        "矩阵构造"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "模拟"
+      ],
+      "weeks": [
+        7
+      ],
+      "role": "例题",
+      "source": "Contest 271",
+      "cpp": "source/grammar/B07/B07_improved.cpp",
+      "python": "source/grammar/B07/B07_improved.py",
+      "markdown": "source/grammar/B07/README.md"
+    },
+    "NQ069": {
+      "id": "NQ069",
+      "title": "寻找和为目标值的数对",
+      "section": "algorithm",
+      "topics": [
+        "二分查找",
+        "双指针"
+      ],
+      "difficulty": 2,
+      "algorithms": [],
+      "weeks": [
+        11
+      ],
+      "role": "练习",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ069/NQ069_improved.cpp",
+      "python": "source/algorithm/NQ069/NQ069_improved.py",
+      "markdown": "source/algorithm/NQ069/README.md"
+    },
+    "NQ094": {
+      "id": "NQ094",
+      "title": "全面反击 思路",
+      "section": "algorithm",
+      "topics": [
+        "图论",
+        "拓扑排序",
+        "DP",
+        "可达性"
+      ],
+      "difficulty": 4,
+      "algorithms": [
+        "DP",
+        "可达性"
+      ],
+      "weeks": [
+        16
+      ],
+      "role": "例题",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ094/NQ094_improved.cpp",
+      "python": "source/algorithm/NQ094/NQ094_improved.py",
+      "markdown": "source/algorithm/NQ094/README.md"
+    },
+    "NQ060": {
+      "id": "NQ060",
+      "title": "本题要求在数组中找到所有满足四数之和等于目标值的四元组。采用排序加双指针的方法，具体步骤如下：首先对数组进行排序，这样可以利用双指针技术并方便去重。然后使用三层循环遍历前三个数i、j、k，其中i < j < k。对于每个i、j、k组合，使用双指针l从数组末尾开始向左移动，找到最小的l使得四数之和大于等于目标值。如果此时四数之和等于目标值，则记录该四元组。为了避免重复四元组，需要在循环中跳过重复的i、j、k值。该算法的时间复杂度为O(n³)，其中n是数组长度，因为排序的时间复杂度为O(n log n)，而三层循环的时间复杂度为O(n³)。空间复杂度为O(1)（不考虑存储结果的空间）。该方法通过排序和双指针技术，将暴力解法的O(n⁴)时间复杂度优化到O(n³)，提高了算法效率。",
+      "section": "algorithm",
+      "topics": [
+        "双指针",
+        "四数之和",
+        "排序"
+      ],
+      "difficulty": 3,
+      "algorithms": [
+        "排序"
+      ],
+      "weeks": [
+        11
+      ],
+      "role": "例题",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ060/NQ060_improved.cpp",
+      "python": "source/algorithm/NQ060/NQ060_improved.py",
+      "markdown": "source/algorithm/NQ060/README.md"
+    },
+    "NQ058": {
+      "id": "NQ058",
+      "title": "两数之和（双指针法）",
+      "section": "algorithm",
+      "topics": [
+        "双指针",
+        "两数之和"
+      ],
+      "difficulty": 2,
+      "algorithms": [],
+      "weeks": [
+        11
+      ],
+      "role": "例题",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ058/NQ058_improved.cpp",
+      "python": "source/algorithm/NQ058/NQ058_improved.py",
+      "markdown": "source/algorithm/NQ058/README.md"
+    },
+    "NQ067": {
+      "id": "NQ067",
+      "title": "3行n列墙的完全平铺",
+      "section": "algorithm",
+      "topics": [
+        "动态规划",
+        "铺砖问题"
+      ],
+      "difficulty": 3,
+      "algorithms": [],
+      "weeks": [
+        15
+      ],
+      "role": "例题",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ067/NQ067_improved.cpp",
+      "python": "source/algorithm/NQ067/NQ067_improved.py",
+      "markdown": "source/algorithm/NQ067/README.md"
+    },
+    "NQ093": {
+      "id": "NQ093",
+      "title": "拓扑排序问题思路",
+      "section": "algorithm",
+      "topics": [
+        "图论",
+        "拓扑排序"
+      ],
+      "difficulty": 3,
+      "algorithms": [],
+      "weeks": [
+        16
+      ],
+      "role": "例题",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ093/NQ093_improved.cpp",
+      "python": "source/algorithm/NQ093/NQ093_improved.py",
+      "markdown": "source/algorithm/NQ093/README.md"
+    },
+    "NQ059": {
+      "id": "NQ059",
+      "title": "三数之和",
+      "section": "algorithm",
+      "topics": [
+        "双指针",
+        "三数之和"
+      ],
+      "difficulty": 2,
+      "algorithms": [],
+      "weeks": [
+        11
+      ],
+      "role": "例题",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ059/NQ059_improved.cpp",
+      "python": "source/algorithm/NQ059/NQ059_improved.py",
+      "markdown": "source/algorithm/NQ059/README.md"
+    },
+    "NQ092": {
+      "id": "NQ092",
+      "title": "思路分析",
+      "section": "algorithm",
+      "topics": [
+        "BFS",
+        "最短路径",
+        "骑士移动"
+      ],
+      "difficulty": 3,
+      "algorithms": [
+        "骑士移动"
+      ],
+      "weeks": [
+        14
+      ],
+      "role": "练习",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ092/NQ092_improved.cpp",
+      "python": "source/algorithm/NQ092/NQ092_improved.py",
+      "markdown": "source/algorithm/NQ092/README.md"
+    },
+    "NQ066": {
+      "id": "NQ066",
+      "title": "谦虚数问题",
+      "section": "algorithm",
+      "topics": [
+        "优先队列",
+        "数学"
+      ],
+      "difficulty": 3,
+      "algorithms": [],
+      "weeks": [
+        12
+      ],
+      "role": "练习",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ066/NQ066_improved.cpp",
+      "python": "source/algorithm/NQ066/NQ066_improved.py",
+      "markdown": "source/algorithm/NQ066/README.md"
+    },
+    "NQ100": {
+      "id": "NQ100",
+      "title": "滚石柱",
+      "section": "algorithm",
+      "topics": [
+        "BFS",
+        "状态空间搜索"
+      ],
+      "difficulty": 5,
+      "algorithms": [],
+      "weeks": [
+        16
+      ],
+      "role": "练习",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ100/NQ100_improved.cpp",
+      "python": "source/algorithm/NQ100/NQ100_improved.py",
+      "markdown": "source/algorithm/NQ100/README.md"
+    },
+    "NQ086": {
+      "id": "NQ086",
+      "title": "背包问题",
+      "section": "algorithm",
+      "topics": [
+        "动态规划",
+        "背包问题"
+      ],
+      "difficulty": 4,
+      "algorithms": [],
+      "weeks": [
+        15
+      ],
+      "role": "练习",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ086/NQ086_improved.cpp",
+      "python": "source/algorithm/NQ086/NQ086_improved.py",
+      "markdown": "source/algorithm/NQ086/README.md"
+    },
+    "NQ072": {
+      "id": "NQ072",
+      "title": "输出N皇后的所有摆法思路",
+      "section": "algorithm",
+      "topics": [
+        "DFS",
+        "回溯",
+        "N皇后"
+      ],
+      "difficulty": 3,
+      "algorithms": [
+        "N皇后"
+      ],
+      "weeks": [
+        13
+      ],
+      "role": "例题",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ072/NQ072_improved.cpp",
+      "python": "source/algorithm/NQ072/NQ072_improved.py",
+      "markdown": "source/algorithm/NQ072/README.md"
+    },
+    "NQ075": {
+      "id": "NQ075",
+      "title": "进制转换",
+      "section": "algorithm",
+      "topics": [
+        "数学",
+        "进制转换"
+      ],
+      "difficulty": 2,
+      "algorithms": [],
+      "weeks": [
+        12
+      ],
+      "role": "练习",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ075/NQ075_improved.cpp",
+      "python": "source/algorithm/NQ075/NQ075_improved.py",
+      "markdown": "source/algorithm/NQ075/README.md"
+    },
+    "NQ088": {
+      "id": "NQ088",
+      "title": "思路分析",
+      "section": "algorithm",
+      "topics": [
+        "动态规划",
+        "记忆化搜索"
+      ],
+      "difficulty": 4,
+      "algorithms": [],
+      "weeks": [
+        15
+      ],
+      "role": "练习",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ088/NQ088_improved.cpp",
+      "python": "source/algorithm/NQ088/NQ088_improved.py",
+      "markdown": "source/algorithm/NQ088/README.md"
+    },
+    "NQ080": {
+      "id": "NQ080",
+      "title": "质数环",
+      "section": "algorithm",
+      "topics": [
+        "DFS",
+        "回溯",
+        "质数环"
+      ],
+      "difficulty": 3,
+      "algorithms": [
+        "质数环"
+      ],
+      "weeks": [
+        13
+      ],
+      "role": "练习",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ080/NQ080_improved.cpp",
+      "python": "source/algorithm/NQ080/NQ080_improved.py",
+      "markdown": "source/algorithm/NQ080/README.md"
+    },
+    "NQ074": {
+      "id": "NQ074",
+      "title": "求八皇后的第n种解思路",
+      "section": "algorithm",
+      "topics": [
+        "回溯",
+        "八皇后",
+        "预处理"
+      ],
+      "difficulty": 3,
+      "algorithms": [
+        "预处理"
+      ],
+      "weeks": [
+        13
+      ],
+      "role": "例题",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ074/NQ074_improved.cpp",
+      "python": "source/algorithm/NQ074/NQ074_improved.py",
+      "markdown": "source/algorithm/NQ074/README.md"
+    },
+    "NQ073": {
+      "id": "NQ073",
+      "title": "递归求波兰表达式思路",
+      "section": "algorithm",
+      "topics": [
+        "递归",
+        "波兰表达式"
+      ],
+      "difficulty": 2,
+      "algorithms": [],
+      "weeks": [
+        12
+      ],
+      "role": "练习",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ073/NQ073_improved.cpp",
+      "python": "source/algorithm/NQ073/NQ073_improved.py",
+      "markdown": "source/algorithm/NQ073/README.md"
+    },
+    "NQ099": {
+      "id": "NQ099",
+      "title": "最省赛程",
+      "section": "algorithm",
+      "topics": [
+        "图论",
+        "Dijkstra",
+        "最短路"
+      ],
+      "difficulty": 5,
+      "algorithms": [
+        "最短路"
+      ],
+      "weeks": [
+        16
+      ],
+      "role": "例题",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ099/NQ099_improved.cpp",
+      "python": "source/algorithm/NQ099/NQ099_improved.py",
+      "markdown": "source/algorithm/NQ099/README.md"
+    },
+    "NQ064": {
+      "id": "NQ064",
+      "title": "公主猫问题思路",
+      "section": "algorithm",
+      "topics": [
+        "记忆化递归",
+        "递推"
+      ],
+      "difficulty": 2,
+      "algorithms": [],
+      "weeks": [
+        12
+      ],
+      "role": "例题",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ064/NQ064_improved.cpp",
+      "python": "source/algorithm/NQ064/NQ064_improved.py",
+      "markdown": "source/algorithm/NQ064/README.md"
+    },
+    "NQ090": {
+      "id": "NQ090",
+      "title": "思路分析",
+      "section": "algorithm",
+      "topics": [
+        "DFS",
+        "记忆化搜索",
+        "矩形切割"
+      ],
+      "difficulty": 4,
+      "algorithms": [
+        "矩形切割"
+      ],
+      "weeks": [
+        14
+      ],
+      "role": "例题",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ090/NQ090_improved.cpp",
+      "python": "source/algorithm/NQ090/NQ090_improved.py",
+      "markdown": "source/algorithm/NQ090/README.md"
+    },
+    "NQ063": {
+      "id": "NQ063",
+      "title": "上台阶问题思路",
+      "section": "algorithm",
+      "topics": [
+        "动态规划",
+        "斐波那契",
+        "递推"
+      ],
+      "difficulty": 2,
+      "algorithms": [
+        "递推"
+      ],
+      "weeks": [
+        12
+      ],
+      "role": "例题",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ063/NQ063_improved.cpp",
+      "python": "source/algorithm/NQ063/NQ063_improved.py",
+      "markdown": "source/algorithm/NQ063/README.md"
+    },
+    "NQ091": {
+      "id": "NQ091",
+      "title": "思路分析",
+      "section": "algorithm",
+      "topics": [
+        "DFS",
+        "回溯",
+        "骑士遍历"
+      ],
+      "difficulty": 3,
+      "algorithms": [
+        "骑士遍历"
+      ],
+      "weeks": [
+        14
+      ],
+      "role": "例题",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ091/NQ091_improved.cpp",
+      "python": "source/algorithm/NQ091/NQ091_improved.py",
+      "markdown": "source/algorithm/NQ091/README.md"
+    },
+    "NQ065": {
+      "id": "NQ065",
+      "title": "计算n!",
+      "section": "algorithm",
+      "topics": [
+        "递归",
+        "阶乘"
+      ],
+      "difficulty": 2,
+      "algorithms": [],
+      "weeks": [
+        12
+      ],
+      "role": "例题",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ065/NQ065_improved.cpp",
+      "python": "source/algorithm/NQ065/NQ065_improved.py",
+      "markdown": "source/algorithm/NQ065/README.md"
+    },
+    "NQ076": {
+      "id": "NQ076",
+      "title": "快速幂",
+      "section": "algorithm",
+      "topics": [
+        "快速幂",
+        "数学"
+      ],
+      "difficulty": 2,
+      "algorithms": [],
+      "weeks": [
+        12
+      ],
+      "role": "练习",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ076/NQ076_improved.cpp",
+      "python": "source/algorithm/NQ076/NQ076_improved.py",
+      "markdown": "source/algorithm/NQ076/README.md"
+    },
+    "NQ085": {
+      "id": "NQ085",
+      "title": "数字三角形",
+      "section": "algorithm",
+      "topics": [
+        "动态规划",
+        "数字三角形"
+      ],
+      "difficulty": 3,
+      "algorithms": [],
+      "weeks": [
+        15
+      ],
+      "role": "练习",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ085/NQ085_improved.cpp",
+      "python": "source/algorithm/NQ085/NQ085_improved.py",
+      "markdown": "source/algorithm/NQ085/README.md"
+    },
+    "NQ071": {
+      "id": "NQ071",
+      "title": "农夫与牛问题",
+      "section": "algorithm",
+      "topics": [
+        "二分查找",
+        "贪心",
+        "最大化最小值"
+      ],
+      "difficulty": 3,
+      "algorithms": [
+        "最大化最小值"
+      ],
+      "weeks": [
+        11
+      ],
+      "role": "练习",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ071/NQ071_improved.cpp",
+      "python": "source/algorithm/NQ071/NQ071_improved.py",
+      "markdown": "source/algorithm/NQ071/README.md"
+    },
+    "NQ078": {
+      "id": "NQ078",
+      "title": "表达式求值",
+      "section": "algorithm",
+      "topics": [
+        "递归下降",
+        "表达式求值"
+      ],
+      "difficulty": 3,
+      "algorithms": [],
+      "weeks": [
+        13
+      ],
+      "role": "练习",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ078/NQ078_improved.cpp",
+      "python": "source/algorithm/NQ078/NQ078_improved.py",
+      "markdown": "source/algorithm/NQ078/README.md"
+    },
+    "NQ079": {
+      "id": "NQ079",
+      "title": "算24点",
+      "section": "algorithm",
+      "topics": [
+        "回溯",
+        "24点"
+      ],
+      "difficulty": 3,
+      "algorithms": [],
+      "weeks": [
+        13
+      ],
+      "role": "练习",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ079/NQ079_improved.cpp",
+      "python": "source/algorithm/NQ079/NQ079_improved.py",
+      "markdown": "source/algorithm/NQ079/README.md"
+    },
+    "NQ070": {
+      "id": "NQ070",
+      "title": "寻找最接近的元素",
+      "section": "algorithm",
+      "topics": [
+        "二分查找",
+        "最接近元素"
+      ],
+      "difficulty": 2,
+      "algorithms": [],
+      "weeks": [
+        11
+      ],
+      "role": "练习",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ070/NQ070_improved.cpp",
+      "python": "source/algorithm/NQ070/NQ070_improved.py",
+      "markdown": "source/algorithm/NQ070/README.md"
+    },
+    "NQ084": {
+      "id": "NQ084",
+      "title": "同构字符串",
+      "section": "algorithm",
+      "topics": [
+        "哈希",
+        "同构字符串"
+      ],
+      "difficulty": 2,
+      "algorithms": [],
+      "weeks": [
+        15
+      ],
+      "role": "例题",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ084/NQ084_improved.cpp",
+      "python": "source/algorithm/NQ084/NQ084_improved.py",
+      "markdown": "source/algorithm/NQ084/README.md"
+    },
+    "NQ083": {
+      "id": "NQ083",
+      "title": "最长公共子序列",
+      "section": "algorithm",
+      "topics": [
+        "动态规划",
+        "LCS",
+        "最长公共子序列"
+      ],
+      "difficulty": 3,
+      "algorithms": [
+        "最长公共子序列"
+      ],
+      "weeks": [
+        15
+      ],
+      "role": "例题",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ083/NQ083_improved.cpp",
+      "python": "source/algorithm/NQ083/NQ083_improved.py",
+      "markdown": "source/algorithm/NQ083/README.md"
+    },
+    "NQ077": {
+      "id": "NQ077",
+      "title": "求第K大的数",
+      "section": "algorithm",
+      "topics": [
+        "暴力枚举",
+        "排序",
+        "去重"
+      ],
+      "difficulty": 3,
+      "algorithms": [
+        "去重"
+      ],
+      "weeks": [
+        13
+      ],
+      "role": "例题",
+      "source": "NQ100",
+      "cpp": "source/algorithm/NQ077/NQ077_improved.cpp",
+      "python": "source/algorithm/NQ077/NQ077_improved.py",
+      "markdown": "source/algorithm/NQ077/README.md"
+    }
+  },
+  "weeks": {
+    "1": {
+      "problems": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "D01",
+        "D02"
+      ],
+      "count": 6
+    },
+    "2": {
+      "problems": [
+        "A05",
+        "A06",
+        "A07",
+        "A03"
+      ],
+      "count": 4
+    },
+    "3": {
+      "problems": [
+        "A08",
+        "A09",
+        "D03",
+        "D04"
+      ],
+      "count": 4
+    },
+    "4": {
+      "problems": [
+        "A01",
+        "A02",
+        "D05",
+        "D06",
+        "D12",
+        "D13"
+      ],
+      "count": 6
+    },
+    "5": {
+      "problems": [
+        "B01",
+        "D07",
+        "D06",
+        "D01",
+        "D02",
+        "D03",
+        "D04"
+      ],
+      "count": 7
+    },
+    "6": {
+      "problems": [
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "D08",
+        "D09",
+        "D10",
+        "D11"
+      ],
+      "count": 8
+    },
+    "7": {
+      "problems": [
+        "B06",
+        "B07",
+        "B08"
+      ],
+      "count": 3
+    },
+    "8": {
+      "problems": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "D14",
+        "D15",
+        "D16"
+      ],
+      "count": 7
+    },
+    "9": {
+      "problems": [
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "D17",
+        "D18"
+      ],
+      "count": 6
+    },
+    "10": {
+      "problems": [
+        "C09",
+        "C10",
+        "D19",
+        "D20",
+        "D05"
+      ],
+      "count": 5
+    },
+    "11": {
+      "problems": [
+        "NQ058",
+        "NQ059",
+        "NQ060",
+        "NQ069",
+        "NQ070",
+        "NQ071"
+      ],
+      "count": 6
+    },
+    "12": {
+      "problems": [
+        "NQ063",
+        "NQ064",
+        "NQ065",
+        "NQ066",
+        "NQ073",
+        "NQ075",
+        "NQ076"
+      ],
+      "count": 7
+    },
+    "13": {
+      "problems": [
+        "NQ072",
+        "NQ074",
+        "NQ077",
+        "NQ078",
+        "NQ079",
+        "NQ080"
+      ],
+      "count": 6
+    },
+    "14": {
+      "problems": [
+        "NQ089",
+        "NQ090",
+        "NQ091",
+        "NQ092"
+      ],
+      "count": 4
+    },
+    "15": {
+      "problems": [
+        "NQ067",
+        "NQ083",
+        "NQ084",
+        "NQ085",
+        "NQ086",
+        "NQ088"
+      ],
+      "count": 6
+    },
+    "16": {
+      "problems": [
+        "NQ093",
+        "NQ094",
+        "NQ099",
+        "NQ100"
+      ],
+      "count": 4
+    }
+  },
+  "topics": [
+    "24点",
+    "ASCII码",
+    "BFS",
+    "DFS",
+    "DP",
+    "Dijkstra",
+    "LCS",
+    "N皇后",
+    "三数之和",
+    "下半部分",
+    "下方区域",
+    "两数之和",
+    "主对角线",
+    "乘方",
+    "乘法表",
+    "二分查找",
+    "二维数组",
+    "优先队列",
+    "位置",
+    "倒排",
+    "八皇后",
+    "公共后缀",
+    "出现次数",
+    "列遍历",
+    "加密",
+    "加权平均",
+    "加空格",
+    "动态规划",
+    "匹配",
+    "区域求和",
+    "区间判断",
+    "区间统计",
+    "单词",
+    "单词替换",
+    "去重",
+    "双指针",
+    "可达性",
+    "右方区域",
+    "同构字符串",
+    "哈希",
+    "四数之和",
+    "回字形",
+    "回溯",
+    "图论",
+    "填充",
+    "子串",
+    "子串查找",
+    "字符串",
+    "字符替换",
+    "对角线",
+    "幂次",
+    "循环",
+    "循环移位",
+    "快速幂",
+    "忽略大小写",
+    "拓扑排序",
+    "排序",
+    "插入",
+    "数字三角形",
+    "数字统计",
+    "数学",
+    "数组",
+    "斐波那契",
+    "时间计算",
+    "暴力枚举",
+    "替换",
+    "最大化最小值",
+    "最大跨距",
+    "最小值",
+    "最接近元素",
+    "最短路",
+    "最短路径",
+    "最长",
+    "最长公共子序列",
+    "条件判断",
+    "格式化输出",
+    "模拟",
+    "次对角线",
+    "比较",
+    "求和/平均",
+    "波兰表达式",
+    "浮点数",
+    "游戏",
+    "状态空间搜索",
+    "矩形切割",
+    "矩阵构造",
+    "空格处理",
+    "翻转",
+    "背包问题",
+    "行遍历",
+    "表达式求值",
+    "记忆化搜索",
+    "记忆化递归",
+    "质数环",
+    "贪心",
+    "输入输出",
+    "过滤",
+    "进制转换",
+    "连接",
+    "连续字符",
+    "选择",
+    "递归",
+    "递归下降",
+    "递推",
+    "逻辑运算",
+    "遍历",
+    "铺砖问题",
+    "长度",
+    "阶乘",
+    "预处理",
+    "骑士移动",
+    "骑士遍历"
+  ]
+}

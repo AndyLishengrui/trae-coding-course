@@ -1,0 +1,27 @@
+# Downloaded raw HTML pages
+acwing_templates/*.html
+
+# Playwright temp
+.playwright-mcp/
+
+# Python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+.trae/
+
+# Large binaries
+*.docx
+
+# Embedded repos
+skills/
+
+# Temp outputs
+output/
+NQ080_unpacked/
