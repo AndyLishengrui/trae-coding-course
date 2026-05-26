@@ -2,7 +2,6 @@
 body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222}
 .chapter-title{text-align:center;font-size:20pt;font-weight:bold;margin:1.5em 0 .1em 0;letter-spacing:3pt}
 .chapter-subtitle{text-align:center;font-size:10pt;color:#777;margin-bottom:1.5em;padding-bottom:.8em;border-bottom:1px solid #bbb}
-.preface{font-size:10pt;margin-bottom:2em;color:#444}.preface p{margin:.4em 0;text-indent:2em}
 .problem-title{font-size:12pt;font-weight:bold;margin:1.5em 0 .4em 0;padding-bottom:.15em;border-bottom:1pt solid #444}
 .problem-title .nq{color:#2563eb;margin-right:.6em;font-size:11pt}.problem-title .acw{font-size:7.5pt;color:#aaa;font-weight:normal;margin-left:1em}
 .problem-desc{margin:.6em 0 1em 0;text-indent:2em;line-height:1.85}
@@ -25,19 +24,21 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL容器"}</style></head><body>
 <div class="chapter-title">指针与抽象</div><div class="chapter-subtitle">结构体、指针与STL容器 · 10题 · C++ &amp; Python 双语对照</div>
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ091</span>AcWing 16<span class="acw">AcWing 16</span></div>
-<div class="problem-desc">AcWing 16</div>
+<div class="problem-title"><span class="nq">NQ091</span>替换空格<span class="acw">AcWing 16</span></div>
+<div class="problem-desc">请实现一个函数，把字符串中的每个空格替换成%20。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入一个字符串。
+数据范围：0 ≤ 输入字符串的长度 ≤ 1000</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出替换后的字符串。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 16</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>We are happy.
+</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>We%20are%20happy.
+</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">class</span> <span style="color: #2B91AF">Solution</span> {
 <span style="color: #00F">public</span>:
@@ -51,6 +52,7 @@ body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL�
 };
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 16</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -59,14 +61,8 @@ body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL�
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
 <tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 17</td></tr>
 </table>
-<div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
-</div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #008000">/**</span>
 <span style="color: #008000"> * Definition for singly-linked list.</span>
@@ -93,22 +89,37 @@ body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL�
 };
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 17</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ093</span>AcWing 20<span class="acw">AcWing 20</span></div>
-<div class="problem-desc">AcWing 20</div>
+<div class="problem-title"><span class="nq">NQ093</span>用两个栈实现队列<span class="acw">AcWing 20</span></div>
+<div class="problem-desc">请用栈实现一个队列，支持如下四种操作：
+push(x) - 将元素 x 插到队尾；
+pop() - 将队首的元素弹出，并返回该元素；
+peek() - 返回队首元素；
+empty() - 返回队列是否为空。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入数据保证合法，例如，在队列为空时，不会进行 pop 或者 peek 等操作。
+数据范围：每组数据操作命令数量[0, 100]。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出每个操作的结果。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 20</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>MyQueue queue = new MyQueue();
+queue.push(1);
+queue.push(2);
+queue.peek();
+queue.pop();
+queue.empty();
+</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>1
+1
+false
+</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>注意：
+你只能使用栈的标准操作：push to top，peek/pop from top,size和is empty；如果你选择的编程语言没有栈的标准库，你可以使用list或者deque等模拟栈的操作；输入数据保证合法，例如，在队列为空时，不会进行pop或者peek等操作；</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">class</span> <span style="color: #2B91AF">MyQueue</span> {
 <span style="color: #00F">public</span>:
@@ -162,22 +173,26 @@ body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL�
 <span style="color: #008000"> */</span>
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 20</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ094</span>AcWing 21<span class="acw">AcWing 21</span></div>
-<div class="problem-desc">AcWing 21</div>
+<div class="problem-title"><span class="nq">NQ094</span>斐波那契数列<span class="acw">AcWing 21</span></div>
+<div class="problem-desc">输入一个整数n，要求斐波那契数列的第n项。
+假定从0开始，第0项为0。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入一个整数n。
+数据范围：0 ≤ n ≤ 39</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">返回斐波那契数列的第n项。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 21</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>5
+</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>5
+</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">class</span> <span style="color: #2B91AF">Solution</span> {
 <span style="color: #00F">public</span>:
@@ -188,22 +203,24 @@ body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL�
 };
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 21</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ095</span>AcWing 35<span class="acw">AcWing 35</span></div>
-<div class="problem-desc">AcWing 35</div>
+<div class="problem-title"><span class="nq">NQ095</span>反转链表<span class="acw">AcWing 35</span></div>
+<div class="problem-desc">定义一个函数，输入一个链表的头结点，反转该链表并输出反转后链表的头结点。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入一个链表的头结点。
+数据范围：链表长度[0, 30]。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出反转后的链表的头结点。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 35</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>1->2->3->4->5->NULL
+</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>5->4->3->2->1->NULL
+</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #008000">/**</span>
 <span style="color: #008000"> * Definition for singly-linked list.</span>
@@ -232,22 +249,26 @@ body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL�
 };
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 35</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ096</span>AcWing 36<span class="acw">AcWing 36</span></div>
-<div class="problem-desc">AcWing 36</div>
+<div class="problem-title"><span class="nq">NQ096</span>合并两个排序的链表<span class="acw">AcWing 36</span></div>
+<div class="problem-desc">输入两个递增排序的链表，合并这两个链表并使新链表中的结点仍然是按照递增排序的。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入两个链表。
+数据范围：链表长度[0, 500]</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出合并后的链表。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 36</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>1->3->5
+2->4->5
+</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>1->2->3->4->5->5
+</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #008000">/**</span>
 <span style="color: #008000"> * Definition for singly-linked list.</span>
@@ -281,6 +302,7 @@ body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL�
 };
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 36</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -289,14 +311,8 @@ body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL�
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
 <tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 862</td></tr>
 </table>
-<div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
-</div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
@@ -328,6 +344,7 @@ body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL�
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 862</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -336,14 +353,8 @@ body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL�
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
 <tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 810</td></tr>
 </table>
-<div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
-</div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -365,22 +376,30 @@ body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL�
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 810</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ099</span>AcWing 814<span class="acw">AcWing 814</span></div>
-<div class="problem-desc">AcWing 814</div>
+<div class="problem-title"><span class="nq">NQ099</span>复制数组<span class="acw">AcWing 814</span></div>
+<div class="problem-desc">要编写函数 void copy(int a[], int b[], int size) 将 a 数组中的前 size 个数复制到 b 数组中并输出 b 数组。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行 n, m, size 分别表示 a 数组长度、b 数组长度和要复制的个数；
+第二行 n 个整数为数组 a；
+第三行 m 个整数为数组 b。
+数据范围：1 ≤ n ≤ m ≤ 100，1 ≤ size ≤ n</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">一行 m 个整数表示复制后的数组 b。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 814</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>3 5 2
+1 2 3
+4 5 6 7 8
+</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>1 2 6 7 8
+</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。
+来源：语法题</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -411,22 +430,28 @@ body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL�
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 814</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ100</span>AcWing 816<span class="acw">AcWing 816</span></div>
-<div class="problem-desc">AcWing 816</div>
+<div class="problem-title"><span class="nq">NQ100</span>数组翻转<span class="acw">AcWing 816</span></div>
+<div class="problem-desc">编写函数 void reverse(int a[], int size) 实现将数组 a 中的前 size 个数翻转并输出翻转后的数组 a。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行 n 和 size 分别表示数组长度和要翻转的个数；
+第二行 n 个整数为数组 a。
+数据范围：1 ≤ size ≤ n ≤ 1000，1 ≤ a[i] ≤ 1000</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">一行 n 个整数表示翻转后的数组 a。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 816</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>5 3
+1 2 3 4 5
+</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>3 2 1 4 5
+</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。
+来源：语法题</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -453,5 +478,6 @@ body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL�
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 816</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider"><div class="chapter-end">— 第8章完 · 共10题 —</div></body></html>

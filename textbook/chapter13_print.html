@@ -2,7 +2,6 @@
 body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222}
 .chapter-title{text-align:center;font-size:20pt;font-weight:bold;margin:1.5em 0 .1em 0;letter-spacing:3pt}
 .chapter-subtitle{text-align:center;font-size:10pt;color:#777;margin-bottom:1.5em;padding-bottom:.8em;border-bottom:1px solid #bbb}
-.preface{font-size:10pt;margin-bottom:2em;color:#444}.preface p{margin:.4em 0;text-indent:2em}
 .problem-title{font-size:12pt;font-weight:bold;margin:1.5em 0 .4em 0;padding-bottom:.15em;border-bottom:1pt solid #444}
 .problem-title .nq{color:#2563eb;margin-right:.6em;font-size:11pt}.problem-title .acw{font-size:7.5pt;color:#aaa;font-weight:normal;margin-left:1em}
 .problem-desc{margin:.6em 0 1em 0;text-indent:2em;line-height:1.85}
@@ -25,19 +24,27 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 body{string-set:chapter "第13章 搜索的疆域——搜索与回溯"}</style></head><body>
 <div class="chapter-title">搜索的疆域</div><div class="chapter-subtitle">搜索与回溯 · 8题 · C++ &amp; Python 双语对照</div>
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ130</span>AcWing 842<span class="acw">AcWing 842</span></div>
-<div class="problem-desc">AcWing 842</div>
+<div class="problem-title"><span class="nq">NQ130</span>DFS试炼之排列数字<span class="acw">AcWing 842</span></div>
+<div class="problem-desc">给定一个整数n，将数字1~n排成一排，将会有很多种排列方法。
+现在，请你按照字典序将所有的排列方法输出。
+数据范围：1<=n<=7</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含一个整数n。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">按字典序输出所有排列方案，每个方案占一行。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 842</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>3</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>1 2 3
+1 3 2
+2 1 3
+2 3 1
+3 1 2
+3 2 1</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>Andy讲解(2021)
+
+原题链接</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
@@ -72,22 +79,35 @@ body{string-set:chapter "第13章 搜索的疆域——搜索与回溯"}</style>
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 842</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ131</span>AcWing 843<span class="acw">AcWing 843</span></div>
-<div class="problem-desc">AcWing 843</div>
+<div class="problem-title"><span class="nq">NQ131</span>DFS试炼之n皇后问题<span class="acw">AcWing 843</span></div>
+<div class="problem-desc">n-皇后问题是指将 n 个皇后放在 n∗n 的国际象棋棋盘上，使得皇后不能相互攻击到，即任意两个皇后都不能处于同一行、同一列或同一斜线上。
+
+数据范围:1<=n<=12</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含整数n。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">每个解决方案占n行，每行输出一个长度为n的字符串，用来表示完整的棋盘状态。
+其中”.”表示某一个位置的方格状态为空，”Q”表示某一个位置的方格上摆着皇后。
+每个方案输出完成后，输出一个空行。
+输出方案的顺序请根据样例，按照次序从小到大，从左到右输出。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 843</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>4</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>.Q..
+...Q
+Q...
+..Q.
+..Q.
+Q...
+...Q
+.Q..</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
+Y总讲解</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
@@ -127,22 +147,34 @@ body{string-set:chapter "第13章 搜索的疆域——搜索与回溯"}</style>
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 843</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ132</span>AcWing 844<span class="acw">AcWing 844</span></div>
-<div class="problem-desc">AcWing 844</div>
+<div class="problem-title"><span class="nq">NQ132</span>BFS试炼之走迷宫<span class="acw">AcWing 844</span></div>
+<div class="problem-desc">给定一个n*m的二维整数数组，用来表示一个迷宫，数组中只包含0或1，其中0表示可以走的路，1表示不可通过的墙壁。
+最初，有一个人位于左上角(1, 1)处，已知该人每次可以向上、下、左、右任意一个方向移动一个位置。
+请问，该人从左上角移动至右下角(n, m)处，至少需要移动多少次。
+数据保证(1, 1)处和(n, m)处的数字为0，且一定至少存在一条通路。
+数据范围：1<=n<=10</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含两个整数n和m。
+接下来n行，每行包含m个整数（0或1），表示完整的二维数组迷宫。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个整数，表示从左上角移动至右下角的最少移动次数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 844</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>5 5
+0 1 0 0 0
+0 1 0 1 0
+0 0 0 0 0
+0 1 1 1 0
+0 0 0 1 0</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>8</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
+Y总讲解
+参考代码</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
@@ -206,22 +238,45 @@ body{string-set:chapter "第13章 搜索的疆域——搜索与回溯"}</style>
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 844</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ133</span>AcWing 845<span class="acw">AcWing 845</span></div>
-<div class="problem-desc">AcWing 845</div>
+<div class="problem-title"><span class="nq">NQ133</span>BFS试炼之八数码<span class="acw">AcWing 845</span></div>
+<div class="problem-desc">在一个3×3的网格中，1~8这8个数字和一个“x”恰好不重不漏地分布在这3×3的网格中。
+例如：
+1 2 3
+x 4 6
+7 5 8
+在游戏过程中，可以把“x”与其上、下、左、右四个方向之一的数字交换（如果存在）。
+我们的目的是通过交换，使得网格变为如下排列（称为正确排列）：
+1 2 3
+4 5 6
+7 8 x
+例如，示例中图形就可以通过让“x”先后与右、下、右三个方向的数字交换成功得到正确排列。
+交换过程如下：
+1 2 3   1 2 3   1 2 3   1 2 3
+x 4 6   4 x 6   4 5 6   4 5 6
+7 5 8   7 5 8   7 x 8   7 8 x
+现在，给你一个初始网格，请你求出得到正确排列至少需要进行多少次交换。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入占一行，将3×3的初始网格描绘出来。
+例如，如果初始网格如下所示：
+1 2 3
+x 4 6
+7 5 8
+则输入为：1 2 3 x 4 6 7 5 8</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出占一行，包含一个整数，表示最少交换次数。
+如果不存在解决方案，则输出”-1”。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 845</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>2  3  4  1  5  x  7  6  8 </pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>19</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
+Y总讲解
+参考代码</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -291,22 +346,36 @@ body{string-set:chapter "第13章 搜索的疆域——搜索与回溯"}</style>
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 845</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ134</span>AcWing 846<span class="acw">AcWing 846</span></div>
-<div class="problem-desc">AcWing 846</div>
+<div class="problem-title"><span class="nq">NQ134</span>树的重心<span class="acw">AcWing 846</span></div>
+<div class="problem-desc">给定一颗树，树中包含n个结点（编号1~n）和n-1条无向边。
+请你找到树的重心，并输出将重心删除后，剩余各个连通块中点数的最大值。
+重心定义：重心是指树中的一个结点，如果将这个点删除后，剩余各个连通块中点数的最大值最小，那么这个节点被称为树的重心。
+数据范围：1≤n≤10^5</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含整数n，表示树的结点数。
+接下来n-1行，每行包含两个整数a和b，表示点a和点b之间存在一条边。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个整数m，表示重心的所有的子树中最大的子树的结点数目。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 846</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>9
+1 2
+1 7
+1 4
+2 8
+2 5
+4 3
+3 9
+4 6</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>4</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
+Y总讲解
+Y总代码</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -364,22 +433,33 @@ body{string-set:chapter "第13章 搜索的疆域——搜索与回溯"}</style>
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 846</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ135</span>AcWing 847<span class="acw">AcWing 847</span></div>
-<div class="problem-desc">AcWing 847</div>
+<div class="problem-title"><span class="nq">NQ135</span>图中点的层次<span class="acw">AcWing 847</span></div>
+<div class="problem-desc">给定一个n个点m条边的有向图，图中可能存在重边和自环。
+所有边的长度都是1，点的编号为1~n。
+请你求出1号点到n号点的最短距离，如果从1号点无法走到n号点，输出-1。
+数据范围：1≤n,m≤10^5</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含两个整数n和m。
+接下来m行，每行包含两个整数a和b，表示存在一条从a走到b的长度为1的边。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个整数，表示1号点到n号点的最短距离。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 847</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>4 5
+1 2
+2 3
+3 4
+1 3
+1 4</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>1</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
+Y总讲解
+Y总代码</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -441,22 +521,31 @@ body{string-set:chapter "第13章 搜索的疆域——搜索与回溯"}</style>
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 847</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ136</span>AcWing 777<span class="acw">AcWing 777</span></div>
-<div class="problem-desc">AcWing 777</div>
+<div class="problem-title"><span class="nq">NQ136</span>字符串乘方<span class="acw">AcWing 777</span></div>
+<div class="problem-desc">给定两个字符串a和b，定义a × b为它们的连接。例如，如果a = "abc"而b = "def"，则a × b = "abcdef"。如果将连接考虑成乘法，一个非负整数的乘方将用一种通常的方式定义：a^0 = ""（空字符串），a^(n+1) = a × (a^n)。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入包含不超过 10 组测试样例，每组测试样例占一行。
+每组样例包含一个由小写字母构成的字符串s，s的长度不超过 100，且不包含空格。
+最后的测试样例后面将是一个点号作为一行。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">对于每一个s，需要输出最大的n，使得存在一个字符串a，让s = a^n。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 777</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>abcd
+aaaa
+ababab
+.
+</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>1
+4
+3
+</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -490,22 +579,28 @@ body{string-set:chapter "第13章 搜索的疆域——搜索与回溯"}</style>
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 777</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ137</span>AcWing 778<span class="acw">AcWing 778</span></div>
-<div class="problem-desc">AcWing 778</div>
+<div class="problem-title"><span class="nq">NQ137</span>字符串最大跨距<span class="acw">AcWing 778</span></div>
+<div class="problem-desc">有三个字符串S、S1、S2。其中，S长度不超过 300，S1和S2的长度不超过 10。
+现在，我们想要检测S1和S2是否同时在S中出现，且S1位于S2的左边，并在S中不交叉（即，S1的右边界点在S2的左边界点的左侧）。
+计算满足上述条件的最大跨距（即，最大间隔距离：最右边的S2的起始点与最左边的S1的终止点之间的字符数目）。
+如果没有满足条件的S1、S2存在，则输出-1。
+例如，S = abcd123dABdefghjsdef76ki，S1 = ab，S2 = ef。其中，S1在S中出现了若干次，S2也在S中出现了若干次，最大跨距为18。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入共一行，包含三个字符串S、S1、S2，字符串之间用逗号隔开。数据保证三个字符串中不含空格和逗号。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个整数，表示最大跨距。如果没有满足条件的S1和S2存在，则输出-1。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 778</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>abcd123dABdefghjsdef76ki,ab,ef
+</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>18
+</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -559,5 +654,6 @@ body{string-set:chapter "第13章 搜索的疆域——搜索与回溯"}</style>
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 778</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider"><div class="chapter-end">— 第13章完 · 共8题 —</div></body></html>

@@ -2,7 +2,6 @@
 body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222}
 .chapter-title{text-align:center;font-size:20pt;font-weight:bold;margin:1.5em 0 .1em 0;letter-spacing:3pt}
 .chapter-subtitle{text-align:center;font-size:10pt;color:#777;margin-bottom:1.5em;padding-bottom:.8em;border-bottom:1px solid #bbb}
-.preface{font-size:10pt;margin-bottom:2em;color:#444}.preface p{margin:.4em 0;text-indent:2em}
 .problem-title{font-size:12pt;font-weight:bold;margin:1.5em 0 .4em 0;padding-bottom:.15em;border-bottom:1pt solid #444}
 .problem-title .nq{color:#2563eb;margin-right:.6em;font-size:11pt}.problem-title .acw{font-size:7.5pt;color:#aaa;font-weight:normal;margin-left:1em}
 .problem-desc{margin:.6em 0 1em 0;text-indent:2em;line-height:1.85}
@@ -25,19 +24,24 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 body{string-set:chapter "第11章 数字的奥秘——高精度、位运算与离散化"}</style></head><body>
 <div class="chapter-title">数字的奥秘</div><div class="chapter-subtitle">高精度、位运算与离散化 · 7题 · C++ &amp; Python 双语对照</div>
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ115</span>AcWing 791<span class="acw">AcWing 791</span></div>
-<div class="problem-desc">AcWing 791</div>
+<div class="problem-title"><span class="nq">NQ115</span>高精度加法<span class="acw">AcWing 791</span></div>
+<div class="problem-desc">给定两个正整数，计算它们的和。
+
+数据范围：1≤整数长度≤100000</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共两行，每行包含一个整数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共一行，包含所求的和。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 791</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>12
+23</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>35</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
+参考题解
+Y总讲解
+Y总代码</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -77,22 +81,28 @@ vector&lt;<span style="color: #2B91AF">int</span>&gt; add(vector&lt;<span style=
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 791</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ116</span>AcWing 792<span class="acw">AcWing 792</span></div>
-<div class="problem-desc">AcWing 792</div>
+<div class="problem-title"><span class="nq">NQ116</span>高精度减法<span class="acw">AcWing 792</span></div>
+<div class="problem-desc">给定两个正整数，计算它们的差，计算结果可能为负数。
+
+1≤整数长度≤100000</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共两行，每行包含一个整数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共一行，包含所求的差。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 792</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>32
+11</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>21</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
+Y总讲解
+参考题解
+Y总代码</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -162,22 +172,25 @@ vector&lt;<span style="color: #2B91AF">int</span>&gt; sub(vector&lt;<span style=
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 792</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ117</span>AcWing 801<span class="acw">AcWing 801</span></div>
-<div class="problem-desc">AcWing 801</div>
+<div class="problem-title"><span class="nq">NQ117</span>二进制中1的个数<span class="acw">AcWing 801</span></div>
+<div class="problem-desc">给定一个长度为n的数列，请你求出数列中每个数的二进制表示中1的个数。
+
+数据范围：1≤n≤100000,0≤数列中元素的值≤10^9</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含整数n。
+第二行包含n个整数，表示整个数列。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共一行，包含n个整数，其中的第 i 个数表示数列中的第 i 个数的二进制表示中1的个数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 801</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>5
+1 2 3 4 5</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>1 1 2 1 2</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
@@ -202,22 +215,28 @@ vector&lt;<span style="color: #2B91AF">int</span>&gt; sub(vector&lt;<span style=
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 801</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ118</span>AcWing 793<span class="acw">AcWing 793</span></div>
-<div class="problem-desc">AcWing 793</div>
+<div class="problem-title"><span class="nq">NQ118</span>高精度乘法<span class="acw">AcWing 793</span></div>
+<div class="problem-desc">给定两个正整数A和B，请你计算A * B的值。
+
+1≤A的长度≤100000,0≤B≤10000</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共两行，第一行包含整数A，第二行包含整数B。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共一行，包含A * B的值。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 793</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>2
+3</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>6</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
+Y总讲解
+参考题解
+Y总代码</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -257,22 +276,32 @@ vector&lt;<span style="color: #2B91AF">int</span>&gt; mul(vector&lt;<span style=
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 793</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ119</span>AcWing 794<span class="acw">AcWing 794</span></div>
-<div class="problem-desc">AcWing 794</div>
+<div class="problem-title"><span class="nq">NQ119</span>高精度除法<span class="acw">AcWing 794</span></div>
+<div class="problem-desc">给定两个非负整数A，B，请你计算 A / B的商和余数。
+
+数据范围：
+1≤A的长度≤100000,
+1≤B≤10000
+B 一定不为0</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共两行，第一行包含整数A，第二行包含整数B。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共两行，第一行输出所求的商，第二行输出所求余数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 794</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>7
+2</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>3
+1</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
+Y总讲解
+参考题解
+Y总代码</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -318,22 +347,34 @@ vector&lt;<span style="color: #2B91AF">int</span>&gt; div(vector&lt;<span style=
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 794</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ120</span>AcWing 802<span class="acw">AcWing 802</span></div>
-<div class="problem-desc">AcWing 802</div>
+<div class="problem-title"><span class="nq">NQ120</span>区间和<span class="acw">AcWing 802</span></div>
+<div class="problem-desc">假定有一个无限长的数轴，数轴上每个坐标上的数都是0。
+现在，我们首先进行 n 次操作，每次操作将某一位置x上的数加c。
+接下来，进行 m 次询问，每个询问包含两个整数l和r，你需要求出在区间[l, r]之间的所有数的和。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含两个整数n和m。
+接下来 n 行，每行包含两个整数x和c。
+再接下里 m 行，每行包含两个整数l和r。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共m行，每行输出一个询问中所求的区间内数字和。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 802</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>3 3
+1 2
+3 6
+7 5
+1 3
+4 6
+7 8</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>8
+0
+5</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>原题</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
@@ -413,22 +454,35 @@ vector&lt;PII&gt; add, query; <span style="color: #008000">//输入操作的坐�
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 802</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ121</span>AcWing 803<span class="acw">AcWing 803</span></div>
-<div class="problem-desc">AcWing 803</div>
+<div class="problem-title"><span class="nq">NQ121</span>区间合并<span class="acw">AcWing 803</span></div>
+<div class="problem-desc">给定 n 个区间 [ li , ri ]，要求合并所有有交集的区间。
+注意如果在端点处相交，也算有交集。
+输出合并完成后的区间个数。
+例如：[1,3]和[2,6]可以合并为一个区间[1,6]。
+数据范围：
+1≤n≤100000,
+−10^9 ≤ li ≤ ri ≤ 10^9</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含整数n。
+接下来n行，每行包含两个整数 l 和 r。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共一行，包含一个整数，表示合并区间完成后的区间个数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 803</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>5
+1 2
+2 4
+5 6
+7 8
+7 9</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>3</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>Y总讲解
+参考题解</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
@@ -484,5 +538,6 @@ vector&lt;PII&gt; segments; <span style="color: #008000">//区间坐标</span>
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 803</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider"><div class="chapter-end">— 第11章完 · 共7题 —</div></body></html>

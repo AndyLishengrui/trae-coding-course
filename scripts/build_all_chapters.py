@@ -3,7 +3,7 @@
 import json,re,os,sys,time,tempfile,zipfile,shutil,subprocess
 from pathlib import Path
 
-BOOK_ROOT = Path(__file__).parent.parent
+BOOK_ROOT = Path(__file__).parent.parent.resolve()
 sys.path.insert(0, str(Path(__file__).parent))
 
 from xmuoj_cli.constants import V2_PLAN, CHAPTER_TITLES

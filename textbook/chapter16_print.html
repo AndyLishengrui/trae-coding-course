@@ -2,7 +2,6 @@
 body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222}
 .chapter-title{text-align:center;font-size:20pt;font-weight:bold;margin:1.5em 0 .1em 0;letter-spacing:3pt}
 .chapter-subtitle{text-align:center;font-size:10pt;color:#777;margin-bottom:1.5em;padding-bottom:.8em;border-bottom:1px solid #bbb}
-.preface{font-size:10pt;margin-bottom:2em;color:#444}.preface p{margin:.4em 0;text-indent:2em}
 .problem-title{font-size:12pt;font-weight:bold;margin:1.5em 0 .4em 0;padding-bottom:.15em;border-bottom:1pt solid #444}
 .problem-title .nq{color:#2563eb;margin-right:.6em;font-size:11pt}.problem-title .acw{font-size:7.5pt;color:#aaa;font-weight:normal;margin-left:1em}
 .problem-desc{margin:.6em 0 1em 0;text-indent:2em;line-height:1.85}
@@ -25,19 +24,30 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 body{string-set:chapter "第16章 智慧的策略——贪心、并查集与数学"}</style></head><body>
 <div class="chapter-title">智慧的策略</div><div class="chapter-subtitle">贪心、并查集与数学 · 8题 · C++ &amp; Python 双语对照</div>
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ154</span>AcWing 905<span class="acw">AcWing 905</span></div>
-<div class="problem-desc">AcWing 905</div>
+<div class="problem-title"><span class="nq">NQ154</span>区间选点<span class="acw">AcWing 905</span></div>
+<div class="problem-desc">给定N个闭区间[ai,bi]，请你在数轴上选择尽量少的点，使得每个区间内至少包含一个选出的点。
+输出选择的点的最小数量。
+位于区间端点上的点也算作区间内。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含整数N，表示区间数。
+接下来N行，每行包含两个整数ai,bi，表示一个区间的两个端点。
+数据范围
+1≤N≤10^5,
+−10^9≤ai≤bi≤10^9</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个整数，表示所需的点的最小数量。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 905</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>3
+-1 1
+2 4
+3 5</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>2</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
+Y总代码
+参考题解
+Y总讲解</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -83,22 +93,41 @@ body{string-set:chapter "第16章 智慧的策略——贪心、并查集与数�
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 905</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ155</span>AcWing 148<span class="acw">AcWing 148</span></div>
-<div class="problem-desc">AcWing 148</div>
+<div class="problem-title"><span class="nq">NQ155</span>合并果子<span class="acw">AcWing 148</span></div>
+<div class="problem-desc">在一个高科技果园中，林克利用先进的无人机将所有果子采集完毕，并通过智能分类系统按照果子的种类将它们分成了不同的堆。
+林克决定通过纳米融合技术将所有果子合成一堆。
+每次融合，林克可以选择两堆果子进行合并，消耗的能量等于两堆果子的重量之和，能量单位由果园的中央AI计算并记录。
+显然，经过n-1次融合后，所有果子将整合为一堆。
+林克在融合果子时总共消耗的能量等于每次融合所耗能量之和。
+由于林克还需要驾驶悬浮运输机将这些果子运回基地，他希望在融合过程中尽可能节省能量，以便优化运输效率。
+假设每个果子的重量为1个标准单位，并且已知果子的种类数和每种果子的数量，你的任务是设计出一种融合次序方案，使林克消耗的能量最少，并输出这个最小的能量值。
+例如，有3种果子，数量依次为1、2、9。
+林克可以先将1和2堆融合，新堆数量为3，消耗能量为3。
+接着，将新堆与原先的第3堆融合，得到数量为12的新堆，消耗能量为12。
+因此，林克总共消耗的能量为3+12=15。
+可以证明，15是可能的最小能量值。
+数据范围：
+1 ≤ n ≤ 10000,
+1 ≤ ai ≤ 20000
+请根据此问题，计算出林克最小的能量消耗值，并说明你的方案。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入包括两行，第一行是一个整数n，表示果子的种类数。
+第二行包含n个整数，用空格分隔，第i个整数ai是第i种果子的数目。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出包括一行，这一行只包含一个整数，也就是最小的体力耗费值。
+输入数据保证这个值小于2^31。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 148</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>3 
+1 2 9 </pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>15</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
+acwing讲解</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;queue&gt;</span>
@@ -132,22 +161,35 @@ body{string-set:chapter "第16章 智慧的策略——贪心、并查集与数�
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 148</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ156</span>AcWing 836<span class="acw">AcWing 836</span></div>
-<div class="problem-desc">AcWing 836</div>
+<div class="problem-title"><span class="nq">NQ156</span>并查集试炼之合并集合<span class="acw">AcWing 836</span></div>
+<div class="problem-desc">一共有n个数，编号是1~n，最开始每个数各自在一个集合中。
+现在要进行m个操作，操作共有两种：
+“M a b”，将编号为a和b的两个数所在的集合合并，如果两个数已经在同一个集合中，则忽略这个操作；“Q a b”，询问编号为a和b的两个数是否在同一个集合中；数据范围：1≤n,m≤10^5</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行输入整数n和m。
+接下来m行，每行包含一个操作指令，指令为“M a b”或“Q a b”中的一种。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">对于每个询问指令”Q a b”，都要输出一个结果，如果a和b在同一集合内，则输出“Yes”，否则输出“No”。
+每个结果占一行。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 836</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>4 5
+M 1 2
+M 3 4
+Q 1 2
+Q 1 3
+Q 3 4</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>Yes
+No
+Yes</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
+Y总代码
+Y总讲解</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
@@ -189,22 +231,36 @@ body{string-set:chapter "第16章 智慧的策略——贪心、并查集与数�
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 836</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ157</span>AcWing 837<span class="acw">AcWing 837</span></div>
-<div class="problem-desc">AcWing 837</div>
+<div class="problem-title"><span class="nq">NQ157</span>并查集试炼之连通块中点的数量<span class="acw">AcWing 837</span></div>
+<div class="problem-desc">给定一个包含n个点（编号为1~n）的无向图，初始时图中没有边。
+现在要进行m个操作，操作共有三种：
+“C a b”，在点a和点b之间连一条边，a和b可能相等；“Q1 a b”，询问点a和点b是否在同一个连通块中，a和b可能相等；“Q2 a”，询问点a所在连通块中点的数量；数据范围:1≤n,m≤10^5</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行输入整数n和m。
+接下来m行，每行包含一个操作指令，指令为“C a b”，“Q1 a b”或“Q2 a”中的一种。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">对于每个询问指令”Q1 a b”，如果a和b在同一个连通块中，则输出“Yes”，否则输出“No”。
+对于每个询问指令“Q2 a”，输出一个整数表示点a所在连通块中点的数量
+每个结果占一行。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 837</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>5 5
+C 1 2
+Q1 1 2
+Q2 1
+C 2 5
+Q2 5</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>Yes
+2
+3</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>原题
+Y总代码
+Y总讲解</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -258,22 +314,47 @@ body{string-set:chapter "第16章 智慧的策略——贪心、并查集与数�
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 837</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ158</span>AcWing 240<span class="acw">AcWing 240</span></div>
-<div class="problem-desc">AcWing 240</div>
+<div class="problem-title"><span class="nq">NQ158</span>并查集试炼之食物链<span class="acw">AcWing 240</span></div>
+<div class="problem-desc">动物王国中有三类动物A,B,C，这三类动物的食物链构成了有趣的环形。
+A吃B， B吃C，C吃A。
+现有N个动物，以1－N编号。
+每个动物都是A,B,C中的一种，但是我们并不知道它到底是哪一种。
+有人用两种说法对这N个动物所构成的食物链关系进行描述：
+第一种说法是”1 X Y”，表示X和Y是同类。
+第二种说法是”2 X Y”，表示X吃Y。
+此人对N个动物，用上述两种说法，一句接一句地说出K句话，这K句话有的是真的，有的是假的。
+当一句话满足下列三条之一时，这句话就是假话，否则就是真话。
+1） 当前的话与前面的某些真的话冲突，就是假话；
+2） 当前的话中X或Y比N大，就是假话；
+3） 当前的话表示X吃X，就是假话。
+你的任务是根据给定的N和K句话，输出假话的总数。
+数据范围
+1≤N≤50000,
+0≤K≤100000</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行是两个整数N和K，以一个空格分隔。
+以下K行每行是三个正整数 D，X，Y，两数之间用一个空格隔开，其中D表示说法的种类。
+若D=1，则表示X和Y是同类。
+若D=2，则表示X吃Y。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">只有一个整数，表示假话的数目。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 240</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>100 7
+1 101 1 
+2 1 2
+2 2 3 
+2 3 3 
+1 1 3 
+2 3 1 
+1 5 5</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>3</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>原题链接</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -339,22 +420,37 @@ body{string-set:chapter "第16章 智慧的策略——贪心、并查集与数�
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 240</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ159</span>AcWing 875<span class="acw">AcWing 875</span></div>
-<div class="problem-desc">AcWing 875</div>
+<div class="problem-title"><span class="nq">NQ159</span>快速幂<span class="acw">AcWing 875</span></div>
+<div class="problem-desc">给定n组ai, bi, pi，对于每组数据，求出a^b i mod p i的值。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含整数n。
+接下来n行，每行包含三个整数ai, bi, pi。
+数据范围
+1≤n≤100000
+1≤ai, bi, pi≤2×10^9</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">对于每组数据，输出一个结果，表示a^b i mod p i的值。
+每个结果占一行。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 875</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>5
+1326 8312 7553
+1550 7708 3792
+500 6795 6235
+6880 7895 7532
+1904 9984 7790</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>2613
+3520
+1785
+7244
+5346</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
+Y总讲解</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
@@ -388,22 +484,24 @@ body{string-set:chapter "第16章 智慧的策略——贪心、并查集与数�
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 875</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ160</span>AcWing 868<span class="acw">AcWing 868</span></div>
-<div class="problem-desc">AcWing 868</div>
+<div class="problem-title"><span class="nq">NQ160</span>筛质数<span class="acw">AcWing 868</span></div>
+<div class="problem-desc">给定一个正整数n，请你求出 1∼n中质数的个数。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含整数n。
+数据范围
+1≤n≤10^6</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共一行，包含一个整数，表示 1∼n中质数的个数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 868</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>8</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>4</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>原题链接</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #008000">// Andy 2021.06.04</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
@@ -439,22 +537,30 @@ body{string-set:chapter "第16章 智慧的策略——贪心、并查集与数�
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 868</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ161</span>AcWing 104<span class="acw">AcWing 104</span></div>
-<div class="problem-desc">AcWing 104</div>
+<div class="problem-title"><span class="nq">NQ161</span>货仓选址<span class="acw">AcWing 104</span></div>
+<div class="problem-desc">在一条数轴上有N家商店，它们的坐标分别为A1~AN。
+现在需要在数轴上建立一家货仓，每天清晨，从货仓到每家商店都要运送一车商品。
+为了提高效率，求把货仓建在何处，可以使得货仓到每家商店的距离之和最小。
+数据范围
+1≤N≤100000</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行输入整数N。
+第二行N个整数A1~AN。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个整数，表示距离之和的最小值。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 104</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>4
+6 2 9 1</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>12</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
+
+acwing讲解</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -480,5 +586,6 @@ body{string-set:chapter "第16章 智慧的策略——贪心、并查集与数�
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 104</span>
+<span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider"><div class="chapter-end">— 第16章完 · 共8题 —</div></body></html>
