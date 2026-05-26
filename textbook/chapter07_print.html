@@ -11,10 +11,10 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .spec-table .spec-label .tag{display:inline-block;padding:.15em .5em;border-radius:2px;color:#fff;font-size:7.5pt;letter-spacing:.5pt}
 .spec-table .spec-label .tag.in{background:#2563eb}.spec-table .spec-label .tag.out{background:#059669}.spec-table .spec-label .tag.lim{background:#d97706}
 .spec-table .spec-value{color:#333;font-size:9pt}
-.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.7em 1em;margin:1em 0 1.2em 0}
-.sample-grid{display:flex;gap:2em}.sample-col{flex:1}
-.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:.2em;font-weight:bold}
-.sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
+.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.5em 1em;margin:.8em 0 1em 0}
+.sample-grid{display:flex;gap:1.5em}.sample-col{min-width:0}.sample-col:first-child{flex:1}.sample-col:last-child{flex:1}
+.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:0;font-weight:bold}
+.sample-col pre{background:none;border:none;padding:.2em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:8.5pt;line-height:1.3;white-space:pre-wrap;color:#333}
 .insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
 .insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
 .code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
@@ -59,8 +59,7 @@ body{string-set:chapter "第7章 模块化的力量——函数、递归与库�
    <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 804</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">import</span> math;print(math.factorial(int(input())))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -97,8 +96,7 @@ body{string-set:chapter "第7章 模块化的力量——函数、递归与库�
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 805</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>x,y=map(int,input().split());print(max(x,y))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -140,8 +138,7 @@ body{string-set:chapter "第7章 模块化的力量——函数、递归与库�
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 808</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">import</span> math;a,b=map(int,input().split());print(math.gcd(a,b))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -189,8 +186,7 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
 
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 811</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>a,b=map(int,input().split());a,b=b,a;print(a,b)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -241,8 +237,8 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 812</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>n=int(input());arr=list(map(int,input().split()))
+<span style="color: #00F">for</span> x <span style="color: #00F">in</span> arr:print(x)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -301,8 +297,8 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 813</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>r,c=map(int,input().split())
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(r):print(<span style="color: #A31515">&#39; &#39;</span>.join(input().split()))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -339,8 +335,8 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 819</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">def</span> f(n):<span style="color: #00F">return</span> 1 <span style="color: #00F">if</span> n&lt;=1 <span style="color: #00F">else</span> n*f(n-1)
+print(f(int(input())))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -381,8 +377,8 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 820</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">def</span> f(n):<span style="color: #00F">return</span> n <span style="color: #00F">if</span> n&lt;=1 <span style="color: #00F">else</span> f(n-1)+f(n-2)
+print(f(int(input())))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -429,8 +425,10 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 821</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">from</span> functools <span style="color: #00F">import</span> lru_cache
+@lru_cache(<span style="color: #00F">None</span>)
+<span style="color: #00F">def</span> f(n):<span style="color: #00F">return</span> n <span style="color: #00F">if</span> n&lt;=2 <span style="color: #00F">else</span> f(n-1)+f(n-2)
+n=int(input());print(f(n))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -477,8 +475,7 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 822</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">import</span> math;n,m=map(int,input().split());print(math.comb(n+m,n))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -544,8 +541,9 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 823</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">from</span> itertools <span style="color: #00F">import</span> permutations
+n=int(input())
+<span style="color: #00F">for</span> p <span style="color: #00F">in</span> permutations(range(1,n+1)):print(*p)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -594,8 +592,7 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 818</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>n=int(input());arr=list(map(int,input().split()));arr.sort();print(*arr)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -609,7 +606,18 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #008000">// AcWing NQ016</span>
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing NQ016</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># NQ016 十六进制加法</span>
+<span style="color: #00F">import</span> sys
+<span style="color: #00F">for</span> line <span style="color: #00F">in</span> sys.stdin:
+    line=line.strip()
+    <span style="color: #00F">if</span> <span style="color: #00F">not</span> line:<span style="color: #00F">continue</span>
+    parts=line.split()
+    <span style="color: #00F">if</span> len(parts)!=2:<span style="color: #00F">continue</span>
+    a=int(parts[0],16);b=int(parts[1],16)  <span style="color: #008000"># 十六进制转整数</span>
+    res=a+b
+    <span style="color: #00F">if</span> res&lt;0:
+        print(<span style="color: #A31515">&#39;-&#39;</span>+hex(-res)[2:].upper())  <span style="color: #008000"># 负数处理</span>
+    <span style="color: #00F">else</span>:
+        print(hex(res)[2:].upper())  <span style="color: #008000"># 大写十六进制输出</span>
 </pre></div>
 </div></div><hr class="section-divider"><div class="chapter-end">— 第7章完 · 共13题 —</div></body></html>

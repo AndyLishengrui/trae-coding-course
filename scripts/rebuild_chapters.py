@@ -10,6 +10,7 @@ with open(Path(__file__).parent / 'chapter5_16_data.json', 'r', encoding='utf-8'
     REAL_DATA = json.load(f)
 
 CODE_CACHE = {}
+PY_CACHE = {}
 for d in ['acwing_codes', 'algorithm_basic_codes']:
     for root, dirs, files in os.walk(str(BOOK_ROOT/d)):
         for f in files:
@@ -18,6 +19,31 @@ for d in ['acwing_codes', 'algorithm_basic_codes']:
                 if m:
                     with open(os.path.join(root, f)) as fh:
                         CODE_CACHE[int(m.group(1))] = fh.read().strip()
+
+# Also read Python from chapter banks and NQ100 source
+for ch in range(1, 17):
+    bank_dir = BOOK_ROOT / f'chapter{ch}_bank'
+    if bank_dir.exists():
+        for d in bank_dir.iterdir():
+            if d.is_dir():
+                py_file = d / 'Andy.py'
+                if py_file.exists():
+                    py_content = py_file.read_text().strip()
+                    if len(py_content) > 20 and not py_content.startswith('# AcWing') and not py_content.startswith('# Python'):
+                        # Extract PID from dirname like "ACW745.xxx"
+                        m = re.search(r'ACW(\d+)', d.name)
+                        if m:
+                            PY_CACHE[int(m.group(1))] = py_content
+# NQ100 source Python
+nq_src = BOOK_ROOT / 'source' / 'algorithm'
+if nq_src.exists():
+    for d in nq_src.iterdir():
+        if d.is_dir():
+            py_files = list(d.glob('*improved.py'))
+            if py_files:
+                py_content = py_files[0].read_text().strip()
+                if len(py_content) > 50:
+                    PY_CACHE[d.name] = py_content  # key is NQxxx
 
 from xmuoj_cli.constants import V2_PLAN, CHAPTER_TITLES
 from pygments import highlight
@@ -46,10 +72,10 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .spec-table .spec-label .tag{display:inline-block;padding:.15em .5em;border-radius:2px;color:#fff;font-size:7.5pt;letter-spacing:.5pt}
 .spec-table .spec-label .tag.in{background:#2563eb}.spec-table .spec-label .tag.out{background:#059669}.spec-table .spec-label .tag.lim{background:#d97706}
 .spec-table .spec-value{color:#333;font-size:9pt}
-.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.7em 1em;margin:1em 0 1.2em 0}
-.sample-grid{display:flex;gap:2em}.sample-col{flex:1}
-.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:.2em;font-weight:bold}
-.sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
+.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.5em 1em;margin:.8em 0 1em 0}
+.sample-grid{display:flex;gap:1.5em}.sample-col{min-width:0}.sample-col:first-child{flex:1}.sample-col:last-child{flex:1}
+.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:0;font-weight:bold}
+.sample-col pre{background:none;border:none;padding:.2em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:8.5pt;line-height:1.3;white-space:pre-wrap;color:#333}
 .insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
 .insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
 .code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
@@ -77,7 +103,7 @@ for ch in range(5, 17):
         sample_in = samples[0].get('input', '') if samples else ''
         sample_out = samples[0].get('output', '') if samples else ''
         cpp = CODE_CACHE.get(pid, f'// AcWing {pid}')
-        py = f'# AcWing {pid}\n# Python solution'
+        py = PY_CACHE.get(pid) or PY_CACHE.get(f'NQ{pid:03d}') or '# Python solution pending'
 
         pb = ['<div class="problem-block">']
         pb.append(f'<div class="problem-title"><span class="nq">{nq}</span>{acw_title}<span class="acw">AcWing {pid}</span></div>')

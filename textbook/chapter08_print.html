@@ -11,10 +11,10 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .spec-table .spec-label .tag{display:inline-block;padding:.15em .5em;border-radius:2px;color:#fff;font-size:7.5pt;letter-spacing:.5pt}
 .spec-table .spec-label .tag.in{background:#2563eb}.spec-table .spec-label .tag.out{background:#059669}.spec-table .spec-label .tag.lim{background:#d97706}
 .spec-table .spec-value{color:#333;font-size:9pt}
-.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.7em 1em;margin:1em 0 1.2em 0}
-.sample-grid{display:flex;gap:2em}.sample-col{flex:1}
-.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:.2em;font-weight:bold}
-.sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
+.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.5em 1em;margin:.8em 0 1em 0}
+.sample-grid{display:flex;gap:1.5em}.sample-col{min-width:0}.sample-col:first-child{flex:1}.sample-col:last-child{flex:1}
+.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:0;font-weight:bold}
+.sample-col pre{background:none;border:none;padding:.2em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:8.5pt;line-height:1.3;white-space:pre-wrap;color:#333}
 .insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
 .insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
 .code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
@@ -51,8 +51,19 @@ body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL�
     }
 };
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 16</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># NQ016 十六进制加法</span>
+<span style="color: #00F">import</span> sys
+<span style="color: #00F">for</span> line <span style="color: #00F">in</span> sys.stdin:
+    line=line.strip()
+    <span style="color: #00F">if</span> <span style="color: #00F">not</span> line:<span style="color: #00F">continue</span>
+    parts=line.split()
+    <span style="color: #00F">if</span> len(parts)!=2:<span style="color: #00F">continue</span>
+    a=int(parts[0],16);b=int(parts[1],16)  <span style="color: #008000"># 十六进制转整数</span>
+    res=a+b
+    <span style="color: #00F">if</span> res&lt;0:
+        print(<span style="color: #A31515">&#39;-&#39;</span>+hex(-res)[2:].upper())  <span style="color: #008000"># 负数处理</span>
+    <span style="color: #00F">else</span>:
+        print(hex(res)[2:].upper())  <span style="color: #008000"># 大写十六进制输出</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -95,8 +106,24 @@ body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL�
     }
 };
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 17</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># NQ017 计算绩点</span>
+q=int(input())
+tc=0.0;tg=0.0
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(q):
+    s,c=map(float,input().split())
+    <span style="color: #008000"># 根据成绩计算绩点</span>
+    <span style="color: #00F">if</span> s&gt;=90:g=4.0
+    <span style="color: #00F">elif</span> s&gt;=85:g=3.7
+    <span style="color: #00F">elif</span> s&gt;=81:g=3.3
+    <span style="color: #00F">elif</span> s&gt;=78:g=3.0
+    <span style="color: #00F">elif</span> s&gt;=75:g=2.7
+    <span style="color: #00F">elif</span> s&gt;=72:g=2.3
+    <span style="color: #00F">elif</span> s&gt;=68:g=2.0
+    <span style="color: #00F">elif</span> s&gt;=64:g=1.7
+    <span style="color: #00F">elif</span> s&gt;=60:g=1.0
+    <span style="color: #00F">else</span>:g=0.0
+    tc+=c;tg+=g*c  <span style="color: #008000"># 累加学分和加权绩点</span>
+print(<span style="color: #A31515">&#39;{0:.4f}&#39;</span>.format(tg/tc))  <span style="color: #008000"># 输出加权平均绩点</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -179,8 +206,40 @@ false
 <span style="color: #008000"> * bool param_4 = obj.empty();</span>
 <span style="color: #008000"> */</span>
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 20</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">import</span> sys
+
+<span style="color: #00F">def</span> main():
+    <span style="color: #00F">try</span>:
+        input = sys.stdin.read
+        data = input().split()
+        <span style="color: #00F">if</span> <span style="color: #00F">not</span> data: <span style="color: #00F">return</span>
+        
+        iterator = iter(data)
+        t_str = next(iterator, <span style="color: #00F">None</span>)
+        <span style="color: #00F">if</span> <span style="color: #00F">not</span> t_str: <span style="color: #00F">return</span>
+        t = int(t_str)
+        
+        <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(t):
+            h = int(next(iterator))
+            m = int(next(iterator))
+            s = int(next(iterator))
+            
+            <span style="color: #008000"># 分针角度：每分钟6度</span>
+            m_ang = (m + s / 60.0) * 6.0
+            
+            <span style="color: #008000"># 时针角度：每小时30度</span>
+            h_ang = (h % 12 + (m + s / 60.0) / 60.0) * 30.0
+            
+            diff = abs(h_ang - m_ang)
+            <span style="color: #00F">if</span> diff &gt; 180:
+                diff = 360 - diff
+                
+            print(int(diff))
+    <span style="color: #00F">except</span> StopIteration:
+        <span style="color: #00F">pass</span>
+
+<span style="color: #00F">if</span> __name__ == <span style="color: #A31515">&quot;__main__&quot;</span>:
+    main()
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -209,8 +268,25 @@ false
     }
 };
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 21</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># NQ021 废强重建</span>
+<span style="color: #00F">import</span> sys
+first=<span style="color: #00F">True</span>
+<span style="color: #00F">while</span> <span style="color: #00F">True</span>:
+    line=sys.stdin.readline()
+    <span style="color: #00F">if</span> <span style="color: #00F">not</span> line:<span style="color: #00F">break</span>
+    n=int(line.strip())
+    <span style="color: #00F">if</span> n==0:<span style="color: #00F">break</span>
+    h=[]
+    <span style="color: #00F">while</span> len(h)&lt;n:
+        hl=sys.stdin.readline()
+        <span style="color: #00F">if</span> <span style="color: #00F">not</span> hl:<span style="color: #00F">break</span>
+        h.extend(map(int,hl.strip().split()))
+    total=sum(h)
+    avg=total//n  <span style="color: #008000"># 计算平均值（向下取整）</span>
+    need=sum(avg-ht <span style="color: #00F">for</span> ht <span style="color: #00F">in</span> h <span style="color: #00F">if</span> ht&lt;avg)  <span style="color: #008000"># 统计需要的砖块数</span>
+    <span style="color: #00F">if</span> <span style="color: #00F">not</span> first:print()
+    print(need)
+    first=<span style="color: #00F">False</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -255,8 +331,24 @@ false
     }
 };
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 35</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># NQ035 二进制字符串奇偶位互换</span>
+<span style="color: #008000"># 将二进制字符串的相邻两位（奇偶位）互换位置</span>
+<span style="color: #00F">def</span> main():
+    test_case_count = int(input())  <span style="color: #008000"># 读取测试用例数量</span>
+    
+    <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(test_case_count):  <span style="color: #008000"># 遍历每个测试用例</span>
+        binary_str = input().strip()  <span style="color: #008000"># 读取二进制字符串</span>
+        chars = list(binary_str)  <span style="color: #008000"># 转换为字符列表以便修改</span>
+        
+        <span style="color: #008000"># 每两位互换位置（奇偶位互换）</span>
+        <span style="color: #008000"># 遍历步长为2，每次处理i和i+1位置的字符</span>
+        <span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(0, len(chars) - 1, 2):
+            chars[i], chars[i + 1] = chars[i + 1], chars[i]
+        
+        print(<span style="color: #A31515">&#39;&#39;</span>.join(chars))  <span style="color: #008000"># 转换回字符串并输出</span>
+
+<span style="color: #00F">if</span> __name__ == <span style="color: #A31515">&quot;__main__&quot;</span>:
+    main()
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -308,8 +400,26 @@ false
     }
 };
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 36</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># NQ036 合并字符串初阶</span>
+<span style="color: #00F">def</span> main():
+    <span style="color: #00F">import</span> sys
+    input_lines = [line.rstrip(<span style="color: #A31515">&#39;\n&#39;</span>) <span style="color: #00F">for</span> line <span style="color: #00F">in</span> sys.stdin]
+    ptr = 0
+    t = int(input_lines[ptr])  <span style="color: #008000"># 读入测试用例数量</span>
+    ptr += 1
+    
+    <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(t):
+        a = input_lines[ptr]  <span style="color: #008000"># 读入第一行</span>
+        ptr += 1
+        b = input_lines[ptr]  <span style="color: #008000"># 读入第二行</span>
+        ptr += 1
+        
+        p = len(a) // 2  <span style="color: #008000"># 取中点</span>
+        <span style="color: #008000"># 合并字符串：a的前p个字符 + b + a的后部分</span>
+        print(a[:p] + b + a[p:])
+
+<span style="color: #00F">if</span> __name__ == <span style="color: #A31515">&quot;__main__&quot;</span>:
+    main()
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -360,8 +470,7 @@ false
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 862</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -397,8 +506,7 @@ false
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 810</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -451,8 +559,7 @@ false
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 814</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -499,7 +606,6 @@ false
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 816</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
 </pre></div>
 </div></div><hr class="section-divider"><div class="chapter-end">— 第8章完 · 共10题 —</div></body></html>

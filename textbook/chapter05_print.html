@@ -11,10 +11,10 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .spec-table .spec-label .tag{display:inline-block;padding:.15em .5em;border-radius:2px;color:#fff;font-size:7.5pt;letter-spacing:.5pt}
 .spec-table .spec-label .tag.in{background:#2563eb}.spec-table .spec-label .tag.out{background:#059669}.spec-table .spec-label .tag.lim{background:#d97706}
 .spec-table .spec-value{color:#333;font-size:9pt}
-.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.7em 1em;margin:1em 0 1.2em 0}
-.sample-grid{display:flex;gap:2em}.sample-col{flex:1}
-.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:.2em;font-weight:bold}
-.sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
+.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.5em 1em;margin:.8em 0 1em 0}
+.sample-grid{display:flex;gap:1.5em}.sample-col{min-width:0}.sample-col:first-child{flex:1}.sample-col:last-child{flex:1}
+.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:0;font-weight:bold}
+.sample-col pre{background:none;border:none;padding:.2em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:8.5pt;line-height:1.3;white-space:pre-wrap;color:#333}
 .insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
 .insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
 .code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
@@ -78,8 +78,12 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
   <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 745</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>l=input();t=input().strip();s=0
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(12):
+ <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(12):
+  x=float(input())
+  <span style="color: #00F">if</span> j&gt;i:s+=x
+print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if</span> t==<span style="color: #A31515">&quot;S&quot;</span> <span style="color: #00F">else</span> s/66<span style="color: #A31515">:.1f}&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -136,8 +140,12 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
   <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 747</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>t=input().strip();s=0
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(12):
+ <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(12):
+  x=float(input())
+  <span style="color: #00F">if</span> j&lt;11-i:s+=x
+print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if</span> t==<span style="color: #A31515">&quot;S&quot;</span> <span style="color: #00F">else</span> s/66<span style="color: #A31515">:.1f}&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -196,8 +204,12 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
     <span style="color: #00F">return</span> 0;        
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 749</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>t=input().strip();s=c=0
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(12):
+ <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(12):
+  x=float(input())
+  <span style="color: #00F">if</span> i&lt;j <span style="color: #00F">and</span> i+j&lt;11:s+=x;c+=1
+print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if</span> t==<span style="color: #A31515">&quot;S&quot;</span> <span style="color: #00F">else</span> s/c<span style="color: #A31515">:.1f}&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -264,8 +276,12 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 751</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>t=input().strip();s=c=0
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(12):
+ <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(12):
+  x=float(input())
+  <span style="color: #00F">if</span> j&lt;i <span style="color: #00F">and</span> i+j&lt;11:s+=x;c+=1
+print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if</span> t==<span style="color: #A31515">&quot;S&quot;</span> <span style="color: #00F">else</span> s/c<span style="color: #A31515">:.1f}&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -327,8 +343,16 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 753</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">while</span> <span style="color: #00F">True</span>:
+ n=int(input())
+ <span style="color: #00F">if</span> n==0:<span style="color: #00F">break</span>
+ <span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(n):
+  row=[]
+  <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(n):
+   v=min(i,j,n-1-i,n-1-j)+1
+   row.append(<span style="color: #A31515">f&#39;{</span>v<span style="color: #A31515">:3d}&#39;</span>)
+  print(<span style="color: #A31515">&#39;&#39;</span>.join(row))
+ print()
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -392,8 +416,12 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
   <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 748</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>t=input().strip();s=0
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(12):
+ <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(12):
+  x=float(input())
+  <span style="color: #00F">if</span> i+j&gt;10:s+=x
+print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if</span> t==<span style="color: #A31515">&quot;S&quot;</span> <span style="color: #00F">else</span> s/66<span style="color: #A31515">:.1f}&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -456,8 +484,12 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
   <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 746</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>t=input().strip();s=0
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(12):
+ <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(12):
+  x=float(input())
+  <span style="color: #00F">if</span> j&lt;i:s+=x
+print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if</span> t==<span style="color: #A31515">&quot;S&quot;</span> <span style="color: #00F">else</span> s/66<span style="color: #A31515">:.1f}&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -518,8 +550,12 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 750</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>t=input().strip();s=c=0
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(12):
+ <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(12):
+  x=float(input())
+  <span style="color: #00F">if</span> i&gt;j <span style="color: #00F">and</span> i+j&gt;10:s+=x;c+=1
+print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if</span> t==<span style="color: #A31515">&quot;S&quot;</span> <span style="color: #00F">else</span> s/c<span style="color: #A31515">:.1f}&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -586,8 +622,12 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 752</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>t=input().strip();s=c=0
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(12):
+ <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(12):
+  x=float(input())
+  <span style="color: #00F">if</span> j&gt;i <span style="color: #00F">and</span> i+j&gt;10:s+=x;c+=1
+print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if</span> t==<span style="color: #A31515">&quot;S&quot;</span> <span style="color: #00F">else</span> s/c<span style="color: #A31515">:.1f}&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -663,8 +703,12 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 754</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">while</span> <span style="color: #00F">True</span>:
+ n=int(input())
+ <span style="color: #00F">if</span> n==0:<span style="color: #00F">break</span>
+ <span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(n):
+  print(<span style="color: #A31515">&#39;&#39;</span>.join(<span style="color: #A31515">f&#39;{</span>abs(i-j)+1<span style="color: #A31515">:3d}&#39;</span><span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(n)))
+ print()
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -734,8 +778,13 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 755</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">while</span> <span style="color: #00F">True</span>:
+ n=int(input())
+ <span style="color: #00F">if</span> n==0:<span style="color: #00F">break</span>
+ w=len(str(2**(2*n-2)))+1
+ <span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(n):
+  print(<span style="color: #A31515">&#39;&#39;</span>.join(<span style="color: #A31515">f&#39;{</span>2**(i+j)<span style="color: #A31515">:{</span>w<span style="color: #A31515">}d}&#39;</span><span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(n)))
+ print()
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -790,7 +839,12 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 756</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>n,m=map(int,input().split());a=[[0]*m <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n)]
+dx=[0,1,0,-1];dy=[1,0,-1,0];d=0;x=y=0
+<span style="color: #00F">for</span> v <span style="color: #00F">in</span> range(1,n*m+1):
+ a[x][y]=v;nx=x+dx[d];ny=y+dy[d]
+ <span style="color: #00F">if</span> nx&lt;0 <span style="color: #00F">or</span> nx&gt;=n <span style="color: #00F">or</span> ny&lt;0 <span style="color: #00F">or</span> ny&gt;=m <span style="color: #00F">or</span> a[nx][ny]:d=(d+1)%4;nx=x+dx[d];ny=y+dy[d]
+ x,y=nx,ny
+<span style="color: #00F">for</span> r <span style="color: #00F">in</span> a:print(<span style="color: #A31515">&#39; &#39;</span>.join(map(str,r)))
 </pre></div>
 </div></div><hr class="section-divider"><div class="chapter-end">— 第5章完 · 共12题 —</div></body></html>

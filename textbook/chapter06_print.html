@@ -11,10 +11,10 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .spec-table .spec-label .tag{display:inline-block;padding:.15em .5em;border-radius:2px;color:#fff;font-size:7.5pt;letter-spacing:.5pt}
 .spec-table .spec-label .tag.in{background:#2563eb}.spec-table .spec-label .tag.out{background:#059669}.spec-table .spec-label .tag.lim{background:#d97706}
 .spec-table .spec-value{color:#333;font-size:9pt}
-.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.7em 1em;margin:1em 0 1.2em 0}
-.sample-grid{display:flex;gap:2em}.sample-col{flex:1}
-.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:.2em;font-weight:bold}
-.sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
+.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.5em 1em;margin:.8em 0 1em 0}
+.sample-grid{display:flex;gap:1.5em}.sample-col{min-width:0}.sample-col:first-child{flex:1}.sample-col:last-child{flex:1}
+.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:0;font-weight:bold}
+.sample-col pre{background:none;border:none;padding:.2em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:8.5pt;line-height:1.3;white-space:pre-wrap;color:#333}
 .insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
 .insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
 .code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
@@ -56,8 +56,7 @@ body{string-set:chapter "第6章 字符的世界——字符串处理"}</style><
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 760</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -95,8 +94,7 @@ body{string-set:chapter "第6章 字符的世界——字符串处理"}</style><
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 761</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>s=input();print(sum(1 <span style="color: #00F">for</span> c <span style="color: #00F">in</span> s <span style="color: #00F">if</span> c.isdigit()))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -160,8 +158,10 @@ Player2
   <span style="color: #00F">return</span> 0;  
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 763</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>a,b=input().split();w={(<span style="color: #A31515">&#39;Hunter&#39;</span>,<span style="color: #A31515">&#39;Gun&#39;</span>),(<span style="color: #A31515">&#39;Bear&#39;</span>,<span style="color: #A31515">&#39;Hunter&#39;</span>),(<span style="color: #A31515">&#39;Gun&#39;</span>,<span style="color: #A31515">&#39;Bear&#39;</span>)}
+<span style="color: #00F">if</span> a==b:print(<span style="color: #A31515">&#39;Tie&#39;</span>)
+<span style="color: #00F">elif</span>(a,b)<span style="color: #00F">in</span> w:print(<span style="color: #A31515">&#39;Player1&#39;</span>)
+<span style="color: #00F">else</span>:print(<span style="color: #A31515">&#39;Player2&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -201,8 +201,7 @@ Player2
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 765</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>print(<span style="color: #A31515">&#39; &#39;</span>.join(input()))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -247,8 +246,7 @@ l
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 769</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>s=input();c=input();print(s.replace(c,<span style="color: #A31515">&#39;#&#39;</span>))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -289,8 +287,7 @@ l
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 773</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>s=input();t=input();i=len(s)//2;print(s[:i]+t+s[i:])
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -336,8 +333,11 @@ l
     <span style="color: #00F">return</span> 0;    
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 772</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">from</span> collections <span style="color: #00F">import</span> Counter
+s=input();cnt=Counter(s)
+<span style="color: #00F">for</span> c <span style="color: #00F">in</span> s:
+ <span style="color: #00F">if</span> cnt[c]==1:print(c);<span style="color: #00F">break</span>
+<span style="color: #00F">else</span>:print(<span style="color: #A31515">&#39;no&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -381,8 +381,7 @@ abed
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 762</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>s=input();t=input();print(<span style="color: #A31515">&#39;yes&#39;</span> <span style="color: #00F">if</span> t <span style="color: #00F">in</span> s <span style="color: #00F">else</span> <span style="color: #A31515">&#39;no&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -426,8 +425,12 @@ abed
     cout&lt;&lt;s&lt;&lt;endl;<span style="color: #008000">//输出结果</span>
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 767</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>r=<span style="color: #A31515">&#39;&#39;</span>
+<span style="color: #00F">for</span> c <span style="color: #00F">in</span> input():
+ <span style="color: #00F">if</span><span style="color: #A31515">&#39;a&#39;</span>&lt;=c&lt;=<span style="color: #A31515">&#39;z&#39;</span>:r+=chr((ord(c)-97+1)%26+97)
+ <span style="color: #00F">elif</span><span style="color: #A31515">&#39;A&#39;</span>&lt;=c&lt;=<span style="color: #A31515">&#39;Z&#39;</span>:r+=chr((ord(c)-65+1)%26+65)
+ <span style="color: #00F">else</span>:r+=c
+print(r)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -466,8 +469,8 @@ abed
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 764</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">for</span> c <span style="color: #00F">in</span> input():print(chr(ord(c)+1),end=<span style="color: #A31515">&#39;&#39;</span>)
+print()
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -513,8 +516,8 @@ I
     <span style="color: #00F">return</span> 0;    
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 770</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>s=input();a=input();b=input()
+print(<span style="color: #A31515">&#39; &#39;</span>.join(b <span style="color: #00F">if</span> w==a <span style="color: #00F">else</span> w <span style="color: #00F">for</span> w <span style="color: #00F">in</span> s.split()))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -552,8 +555,8 @@ I
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 774</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>words=input().split()
+print(max(words,key=len))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -567,7 +570,40 @@ I
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #008000">// AcWing NQ053</span>
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing NQ053</span>
-<span style="color: #008000"># Python solution</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">def</span> longest_palindrome(s):
+    <span style="color: #A31515">&quot;&quot;&quot;最长回文子串&quot;&quot;&quot;</span>
+    <span style="color: #00F">if</span> <span style="color: #00F">not</span> s:
+        <span style="color: #00F">return</span> <span style="color: #A31515">&quot;&quot;</span>
+    
+    n = len(s)
+    start, max_len = 0, 0
+    
+    <span style="color: #00F">def</span> expand_around_center(left, right):
+        <span style="color: #A31515">&quot;&quot;&quot;从中心向两边扩展，返回回文子串的起始索引和长度&quot;&quot;&quot;</span>
+        <span style="color: #00F">while</span> left &gt;= 0 <span style="color: #00F">and</span> right &lt; n <span style="color: #00F">and</span> s[left] == s[right]:
+            left -= 1
+            right += 1
+        <span style="color: #00F">return</span> left + 1, right - left - 1
+    
+    <span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(n):
+        <span style="color: #008000"># 奇数长度回文子串</span>
+        l1, len1 = expand_around_center(i, i)
+        <span style="color: #008000"># 偶数长度回文子串</span>
+        l2, len2 = expand_around_center(i, i + 1)
+        
+        <span style="color: #008000"># 更新最长回文子串信息</span>
+        <span style="color: #00F">if</span> len1 &gt; max_len:
+            start, max_len = l1, len1
+        <span style="color: #00F">if</span> len2 &gt; max_len:
+            start, max_len = l2, len2
+    
+    <span style="color: #00F">return</span> s[start:start + max_len]
+
+<span style="color: #00F">def</span> main():
+    s = input().strip()
+    print(longest_palindrome(s))
+
+<span style="color: #00F">if</span> __name__ == <span style="color: #A31515">&quot;__main__&quot;</span>:
+    main()
 </pre></div>
 </div></div><hr class="section-divider"><div class="chapter-end">— 第6章完 · 共13题 —</div></body></html>
