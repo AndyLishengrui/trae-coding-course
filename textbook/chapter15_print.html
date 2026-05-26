@@ -1,0 +1,428 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第15章 最优子结构</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999;font-family:"PingFang SC",sans-serif}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
+body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222}
+.chapter-title{text-align:center;font-size:20pt;font-weight:bold;margin:1.5em 0 .1em 0;letter-spacing:3pt}
+.chapter-subtitle{text-align:center;font-size:10pt;color:#777;margin-bottom:1.5em;padding-bottom:.8em;border-bottom:1px solid #bbb}
+.preface{font-size:10pt;margin-bottom:2em;color:#444}.preface p{margin:.4em 0;text-indent:2em}
+.problem-title{font-size:12pt;font-weight:bold;margin:1.5em 0 .4em 0;padding-bottom:.15em;border-bottom:1pt solid #444}
+.problem-title .nq{color:#2563eb;margin-right:.6em;font-size:11pt}.problem-title .acw{font-size:7.5pt;color:#aaa;font-weight:normal;margin-left:1em}
+.problem-desc{margin:.6em 0 1em 0;text-indent:2em;line-height:1.85}
+.spec-table{width:100%;border-collapse:collapse;margin:.3em 0 .5em 0;font-size:9pt}
+.spec-table td{padding:.3em .8em;vertical-align:top;border:none}
+.spec-table .spec-label{width:4em;font-size:8pt;font-weight:bold;text-align:right;padding-right:1em;white-space:nowrap}
+.spec-table .spec-label .tag{display:inline-block;padding:.15em .5em;border-radius:2px;color:#fff;font-size:7.5pt;letter-spacing:.5pt}
+.spec-table .spec-label .tag.in{background:#2563eb}.spec-table .spec-label .tag.out{background:#059669}.spec-table .spec-label .tag.lim{background:#d97706}
+.spec-table .spec-value{color:#333;font-size:9pt}
+.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.7em 1em;margin:1em 0 1.2em 0}
+.sample-grid{display:flex;gap:2em}.sample-col{flex:1}
+.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:.2em;font-weight:bold}
+.sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
+.insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
+.insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
+.code-dual{display:flex;gap:1.5em;margin:1.2em 0;page-break-inside:avoid}.code-col{flex:1;min-width:0}
+.code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
+.code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
+.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
+body{string-set:chapter "第15章 最优子结构——动态规划"}</style></head><body>
+<div class="chapter-title">最优子结构</div><div class="chapter-subtitle">动态规划 · 8题 · C++ &amp; Python 双语对照</div>
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ146</span>AcWing 2<span class="acw">AcWing 2</span></div>
+<div class="problem-desc">AcWing 2</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N= 1007;
+<span style="color: #008000">// 2维的解法</span>
+<span style="color: #2B91AF">int</span> n,m;
+<span style="color: #2B91AF">int</span> f[N][N];
+<span style="color: #2B91AF">int</span> v[N],w[N];
+
+<span style="color: #2B91AF">int</span> main()
+{
+  cin&gt;&gt;n&gt;&gt;m;<span style="color: #008000">//读入N,V</span>
+  <span style="color: #008000">//读入v,w</span>
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i++) cin&gt;&gt;v[i]&gt;&gt;w[i];
+  <span style="color: #008000">//朴素的二维dp</span>
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i++)
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt;=m; j++)
+    {
+      f[i][j]=f[i-1][j];
+      <span style="color: #00F">if</span> ( j &gt;= v[i]) <span style="color: #008000">//剩余体积大于第i项的体积</span>
+      f[i][j] = max(f[i][j],f[i-1][j-v[i]]+w[i]);
+    }
+  <span style="color: #008000">//根据定义，从前n个物品中，选取总体积不超过m的选法集合f[n][m]就是答案</span>
+  cout&lt;&lt;f[n][m]&lt;&lt;endl;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 2</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ147</span>AcWing 3<span class="acw">AcWing 3</span></div>
+<div class="problem-desc">AcWing 3</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 1007;
+
+<span style="color: #2B91AF">int</span> n,m;
+<span style="color: #2B91AF">int</span> f[N][N];
+<span style="color: #2B91AF">int</span> v[N],w[N];
+
+<span style="color: #2B91AF">int</span> main()
+{
+    cin &gt;&gt;n &gt;&gt;m;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i++) cin&gt;&gt;v[i]&gt;&gt;w[i];
+
+    <span style="color: #008000">//完全背包</span>
+    <span style="color: #008000">// 1.f[i][j] = f[i-1][j];(不选物品i)</span>
+    <span style="color: #008000">// 2.f[i][j]= max(f[i-1][j], f[i][j-v]+w)(选若干个物品i)</span>
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i++)
+      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j=0; j &lt;= m; j ++)
+      {
+        f[i][j]=f[i-1][j];
+        <span style="color: #00F">if</span> (j &gt;= v[i])
+          f[i][j] = max(f[i-1][j], f[i][j-v[i]]+w[i]);
+      }
+
+
+    cout&lt;&lt;f[n][m]&lt;&lt;endl;
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 3</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ148</span>AcWing 898<span class="acw">AcWing 898</span></div>
+<div class="problem-desc">AcWing 898</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 507;
+
+<span style="color: #2B91AF">int</span> n;
+<span style="color: #2B91AF">int</span> w[N][N], f[N][N];<span style="color: #008000">//三角矩阵依旧用2纬存储</span>
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #008000">//读入n，w</span>
+    cin&gt;&gt;n;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;=n; i++)
+      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;= i; j++)
+        cin &gt;&gt; w[i][j];
+
+   <span style="color: #008000">//初始化最底层的f[n][j]</span>
+   <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i++) f[n][i] = w[n][i];
+
+   <span style="color: #008000">//用dp从底层往上计算每个f[i][j]的值</span>
+   <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = n-1; i; i--)
+     <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt; n; j++)
+        f[i][j] = max(f[i+1][j]+w[i][j], f[i+1][j+1] + w[i][j]);
+
+  cout&lt;&lt;f[1][1]&lt;&lt;endl;
+  <span style="color: #00F">return</span> 0;
+
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 898</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ149</span>AcWing 895<span class="acw">AcWing 895</span></div>
+<div class="problem-desc">AcWing 895</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #008000">// f[i]定义为以s[i]结尾的最长的子序列</span>
+<span style="color: #008000">// 集合：所有以第i个数结尾的上升子序列集合</span>
+<span style="color: #008000">// 属性: Max 上升子序列长度的最大值</span>
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 10007;
+<span style="color: #2B91AF">int</span> n;
+<span style="color: #2B91AF">int</span> a[N], f[N];
+<span style="color: #008000">//状态计算</span>
+<span style="color: #2B91AF">int</span> main()
+{
+    cin &gt;&gt; n;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i++)
+        cin &gt;&gt; a[i]; <span style="color: #008000">//从1开始初始化</span>
+
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i++)
+    {
+
+        f[i] = 1;                   <span style="color: #008000">// a[i]只有一个元素，所以f[i]=1;</span>
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt; i; j++) <span style="color: #008000">//求i之前的f[j]</span>
+            <span style="color: #00F">if</span> (a[j] &lt; a[i])
+                f[i] = max(f[i], f[j] + 1);
+    }
+
+    <span style="color: #2B91AF">int</span> res = 1;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i++)
+        res = max(res, f[i]);
+    cout &lt;&lt; res &lt;&lt; endl;
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 895</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ150</span>AcWing 897<span class="acw">AcWing 897</span></div>
+<div class="problem-desc">AcWing 897</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;=n; i++)
+ <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;=m; j++)
+ {
+   f[i][j] = max(f[i-1][j],f[i][j-1]);
+   <span style="color: #00F">if</span> (a[i]==b[j]) f[i][j] = max(f[i][j], f[i-1][j-1]+ 1);
+ }
+
+ cout&lt;&lt;f[n][m]&lt;&lt;endl;
+ <span style="color: #00F">return</span> 0;
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 897</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ151</span>AcWing 282<span class="acw">AcWing 282</span></div>
+<div class="problem-desc">AcWing 282</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 307;
+
+<span style="color: #2B91AF">int</span> n;
+<span style="color: #2B91AF">int</span> s[N]; <span style="color: #008000">//前缀和</span>
+<span style="color: #2B91AF">int</span> f[N][N]; <span style="color: #008000">//所有将[i,j]合并成一堆的方案数</span>
+
+<span style="color: #2B91AF">int</span> main()
+{
+    cin&gt;&gt;n;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;=n; i ++) cin&gt;&gt;s[i], s[i] += s[i-1];<span style="color: #008000">//计算前缀和</span>
+
+    <span style="color: #008000">//区间DP，先枚举长度，后枚举端点</span>
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> len = 2; len &lt;= n; len ++)
+     <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i+len-1 &lt;= n; i++)<span style="color: #008000">//区间左端点</span>
+     {
+       <span style="color: #008000">//区间右端点</span>
+       <span style="color: #2B91AF">int</span> j = i + len -1;
+       f[i][j] = 1e9;<span style="color: #008000">//初始化为无穷大</span>
+       <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> k = i ; k &lt; j; k++)<span style="color: #008000">//区间dp，枚举分隔点</span>
+         f[i][j] = min(f[i][j], f[i][k]+f[k+1][j]+s[j]-s[i-1]);
+     }
+
+     cout&lt;&lt;f[1][n]&lt;&lt;endl;
+     <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 282</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ152</span>AcWing 902<span class="acw">AcWing 902</span></div>
+<div class="problem-desc">AcWing 902</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 1007;
+
+<span style="color: #2B91AF">int</span> n,m;
+<span style="color: #2B91AF">char</span> a[N],b[N];
+<span style="color: #2B91AF">int</span> f[N][N];<span style="color: #008000">//所有將a[i]變爲b[i]的操作步驟</span>
+
+<span style="color: #2B91AF">int</span> main()
+{
+    cin&gt;&gt;n&gt;&gt;a+1;<span style="color: #008000">//下標從1開始</span>
+    cin&gt;&gt;m&gt;&gt;b+1;
+
+    <span style="color: #008000">//初始化</span>
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; N; i ++ ) f[i][0] = i;<span style="color: #008000">//把a[i]變爲空串</span>
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; N; i ++ ) f[0][i] = i;<span style="color: #008000">//把空串變爲b[i]</span>
+
+    <span style="color: #008000">// DP</span>
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;=n; i++)
+      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;= m; j++)
+      {
+        f[i][j] = min(f[i-1][j] +1, f[i][j-1]+1);
+        <span style="color: #00F">if</span> (a[i]==b[j]) f[i][j] = min(f[i][j], f[i-1][j-1]);
+        <span style="color: #00F">else</span> f[i][j] = min(f[i][j], f[i-1][j-1]+ 1);
+      }
+
+    cout&lt;&lt;f[n][m]&lt;&lt;endl;
+
+    <span style="color: #00F">return</span> 0;
+
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 902</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ153</span>AcWing 901<span class="acw">AcWing 901</span></div>
+<div class="problem-desc">AcWing 901</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 307;
+
+<span style="color: #2B91AF">int</span> g[N][N];<span style="color: #008000">//地图高度</span>
+<span style="color: #2B91AF">int</span> f[N][N];<span style="color: #008000">//从[i,j]开始滑的最长的轨迹</span>
+
+<span style="color: #2B91AF">int</span> n,m;<span style="color: #008000">//宽高</span>
+
+<span style="color: #2B91AF">int</span> dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
+
+<span style="color: #2B91AF">int</span> dp(<span style="color: #2B91AF">int</span> x, <span style="color: #2B91AF">int</span> y)
+{
+  <span style="color: #008000">//记忆化搜索</span>
+  <span style="color: #00F">if</span> (f[x][y] != -1) <span style="color: #00F">return</span> f[x][y];
+  <span style="color: #008000">//否则，从x,y开始滑</span>
+  f[x][y] = 1;<span style="color: #008000">//当前位置至少是1格</span>
+  <span style="color: #008000">//分上下左右四个方向滑雪</span>
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 4; i++)
+  {
+    <span style="color: #2B91AF">int</span> a = x + dx[i], b = y + dy[i];
+    <span style="color: #00F">if</span> (a&lt;1 || a &gt;n || b &lt;1 || b &gt; m) <span style="color: #00F">continue</span>;<span style="color: #008000">//越界</span>
+    <span style="color: #00F">if</span> (g[a][b] &gt;= g[x][y]) <span style="color: #00F">continue</span>;<span style="color: #008000">//不能走</span>
+    <span style="color: #008000">//四个方向深搜，更新f[a][b],取最大值</span>
+    f[x][y] = max(f[x][y], dp(a,b) + 1);
+  }
+
+  <span style="color: #00F">return</span> f[x][y];<span style="color: #008000">//返回f[x][y]</span>
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+    cin&gt;&gt;n&gt;&gt;m;
+    <span style="color: #008000">//读入高度图</span>
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i ++ )
+     <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;= m; j ++ )
+       cin&gt;&gt;g[i][j];
+
+    memset(f,-1,<span style="color: #00F">sizeof</span> f);<span style="color: #008000">//初始化为-1，表示该点未被访问</span>
+
+    <span style="color: #008000">//把每个点作为起点深搜</span>
+    <span style="color: #2B91AF">int</span> res = 0;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i ++ )
+     <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;= m; j ++ )
+       res = max(res,dp(i,j));
+
+    cout &lt;&lt;res &lt;&lt;endl;
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 901</span>
+</pre></div>
+</div></div><hr class="section-divider"><div class="chapter-end">— 第15章完 · 共8题 —</div></body></html>

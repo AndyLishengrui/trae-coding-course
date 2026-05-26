@@ -1,0 +1,671 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第14章 图的世界</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999;font-family:"PingFang SC",sans-serif}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
+body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222}
+.chapter-title{text-align:center;font-size:20pt;font-weight:bold;margin:1.5em 0 .1em 0;letter-spacing:3pt}
+.chapter-subtitle{text-align:center;font-size:10pt;color:#777;margin-bottom:1.5em;padding-bottom:.8em;border-bottom:1px solid #bbb}
+.preface{font-size:10pt;margin-bottom:2em;color:#444}.preface p{margin:.4em 0;text-indent:2em}
+.problem-title{font-size:12pt;font-weight:bold;margin:1.5em 0 .4em 0;padding-bottom:.15em;border-bottom:1pt solid #444}
+.problem-title .nq{color:#2563eb;margin-right:.6em;font-size:11pt}.problem-title .acw{font-size:7.5pt;color:#aaa;font-weight:normal;margin-left:1em}
+.problem-desc{margin:.6em 0 1em 0;text-indent:2em;line-height:1.85}
+.spec-table{width:100%;border-collapse:collapse;margin:.3em 0 .5em 0;font-size:9pt}
+.spec-table td{padding:.3em .8em;vertical-align:top;border:none}
+.spec-table .spec-label{width:4em;font-size:8pt;font-weight:bold;text-align:right;padding-right:1em;white-space:nowrap}
+.spec-table .spec-label .tag{display:inline-block;padding:.15em .5em;border-radius:2px;color:#fff;font-size:7.5pt;letter-spacing:.5pt}
+.spec-table .spec-label .tag.in{background:#2563eb}.spec-table .spec-label .tag.out{background:#059669}.spec-table .spec-label .tag.lim{background:#d97706}
+.spec-table .spec-value{color:#333;font-size:9pt}
+.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.7em 1em;margin:1em 0 1.2em 0}
+.sample-grid{display:flex;gap:2em}.sample-col{flex:1}
+.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:.2em;font-weight:bold}
+.sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
+.insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
+.insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
+.code-dual{display:flex;gap:1.5em;margin:1.2em 0;page-break-inside:avoid}.code-col{flex:1;min-width:0}
+.code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
+.code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
+.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
+body{string-set:chapter "第14章 图的世界——图论入门"}</style></head><body>
+<div class="chapter-title">图的世界</div><div class="chapter-subtitle">图论入门 · 8题 · C++ &amp; Python 双语对照</div>
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ138</span>AcWing 848<span class="acw">AcWing 848</span></div>
+<div class="problem-desc">AcWing 848</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;queue&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #00F">#define For(a, begin, end) for (int a = (begin); a &lt; (end); a++)</span>
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 1000007;
+
+<span style="color: #2B91AF">int</span> n, m;
+<span style="color: #2B91AF">int</span> head[N], edge[N], nextVertex[N], idx; <span style="color: #008000">//邻接表</span>
+<span style="color: #2B91AF">int</span> q[N], d[N]; <span style="color: #008000">//队列，入度</span>
+
+<span style="color: #2B91AF">void</span> add(<span style="color: #2B91AF">int</span> a, <span style="color: #2B91AF">int</span> b)
+{    
+    edge[idx] = b;
+    nextVertex[idx] = head[a];
+    head[a] = idx++;
+}
+
+<span style="color: #2B91AF">bool</span> topsort()
+{
+    <span style="color: #2B91AF">int</span> qHeadIdx = 0, qTailIdx = -1; <span style="color: #008000">//队头，队尾</span>
+    <span style="color: #008000">//从前往后遍历入度为0的点，插入队列</span>
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i++)
+        <span style="color: #00F">if</span> (!d[i])
+            q[++qTailIdx] = i; <span style="color: #008000">//数组模拟队列，入队是尾指针+1</span>
+    <span style="color: #00F">while</span> (qHeadIdx &lt;= qTailIdx) <span style="color: #008000">//如果头指针小于尾指针</span>
+    {
+        <span style="color: #2B91AF">int</span> t = q[qHeadIdx++]; <span style="color: #008000">//取队列头元素，，出队只是把头指针往后移动一位</span>
+        <span style="color: #008000">//遍历t的临边，空指针初始化为-1</span>
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = head[t]; i != -1; i = nextVertex[i])
+        {
+            <span style="color: #2B91AF">int</span> j = edge[i]; <span style="color: #008000">//取到出边</span>
+            d[j]--;   <span style="color: #008000">//入度减一</span>
+            <span style="color: #00F">if</span> (d[j] == 0)
+                q[++qTailIdx] = j; <span style="color: #008000">//如若入度为0，压入队列</span>
+        }
+    }
+    <span style="color: #008000">//判断是否所有顶点都入队</span>
+    <span style="color: #008000">//也就是头指针qTailIdx是否等于n-1,即所有点都进入队列了</span>
+    <span style="color: #00F">return</span> qTailIdx==n-1;
+}
+<span style="color: #2B91AF">int</span> main()
+{
+
+    cin &gt;&gt; n &gt;&gt; m;            <span style="color: #008000">//读入n,m</span>
+    memset(head, -1, <span style="color: #00F">sizeof</span>(head)); <span style="color: #008000">//初始化Head数组指向-1顶点</span>
+
+    For(i, 0, m)
+    {
+        <span style="color: #2B91AF">int</span> a, b;
+        cin &gt;&gt; a &gt;&gt; b;
+        add(a, b); <span style="color: #008000">//插入边</span>
+        d[b]++;    <span style="color: #008000">//更新入度</span>
+    }
+
+    <span style="color: #00F">if</span> (topsort())
+    {<span style="color: #008000">//数组队列里面的元素就是拓扑序</span>
+      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i =0; i&lt;n; i++) printf(<span style="color: #A31515">&quot;%d &quot;</span>,q[i]);
+    }
+    <span style="color: #00F">else</span>
+        puts(<span style="color: #A31515">&quot;-1&quot;</span>);
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 848</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ139</span>AcWing 849<span class="acw">AcWing 849</span></div>
+<div class="problem-desc">AcWing 849</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 510;<span style="color: #008000">//500*500</span>
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> INF = 0x3f3f3f3f;
+
+<span style="color: #2B91AF">int</span> g[N][N]; 
+<span style="color: #2B91AF">int</span> dist[N];
+<span style="color: #2B91AF">bool</span> st[N];
+
+<span style="color: #2B91AF">int</span> n,m;
+
+<span style="color: #2B91AF">int</span> Dijkstra()
+{
+  memset(dist,0x3f, <span style="color: #00F">sizeof</span> dist);<span style="color: #008000">//初始化距离  0x3f代表无限大</span>
+
+  dist[1] = 0; <span style="color: #008000">//第一个点到自身的距离为0</span>
+
+  <span style="color: #008000">//有n个点，迭代n次</span>
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i&lt;n; i++)
+  {
+    <span style="color: #2B91AF">int</span> t = -1;<span style="color: #008000">//当前访问点的编号初始为-1</span>
+
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;= n; j++) <span style="color: #008000">//从点1到点n开始计算dist</span>
+      <span style="color: #00F">if</span> (!st[j] &amp;&amp; (t == -1 || dist[t] &gt; dist[j]))
+        t = j;<span style="color: #008000">// 更新点t，直到找到dist最小的点</span>
+
+    st[t]= true;<span style="color: #008000">//标记此点确定</span>
+
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;=n; j++)<span style="color: #008000">//每个点都要遍历所有点一遍</span>
+       dist[j] = min( dist[j], dist[t]+ g[t][j]);<span style="color: #008000">//遍历所有的点，求从点t到点j的最小值</span>
+   }
+
+
+   <span style="color: #00F">if</span> (dist[n] == INF) <span style="color: #00F">return</span> -1;
+   <span style="color: #00F">return</span> dist[n];<span style="color: #008000">//返回第n个点的最短距离</span>
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+  cin&gt;&gt;n&gt;&gt;m;
+
+  memset(g, 0x3f, <span style="color: #00F">sizeof</span> g);
+
+  <span style="color: #00F">while</span> (m--)
+  {
+    <span style="color: #2B91AF">int</span> x,y,z;
+    cin&gt;&gt;x&gt;&gt;y&gt;&gt;z;
+    g[x][y] = min( g[x][y],z);<span style="color: #008000">//取重边和自环的最小值，保留一条边</span>
+  }
+  cout&lt;&lt;Dijkstra()&lt;&lt;endl;
+
+  <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 849</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ140</span>AcWing 850<span class="acw">AcWing 850</span></div>
+<div class="problem-desc">AcWing 850</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;queue&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #00F">typedef</span> pair&lt;<span style="color: #2B91AF">int</span>, <span style="color: #2B91AF">int</span>&gt; PII;
+
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 1e6 + 10;
+
+<span style="color: #2B91AF">int</span> n, m;                          <span style="color: #008000">//行，列</span>
+<span style="color: #2B91AF">int</span> h[N], w[N], e[N], ne[N], idx;  <span style="color: #008000">//数组模拟链表</span>
+<span style="color: #2B91AF">int</span> dist[N];                       <span style="color: #008000">//距离矩阵</span>
+<span style="color: #2B91AF">bool</span> st[N];                        <span style="color: #008000">//状态矩阵</span>
+
+<span style="color: #008000">//建边函数（数组模拟链表)</span>
+<span style="color: #2B91AF">void</span> add(<span style="color: #2B91AF">int</span> a, <span style="color: #2B91AF">int</span> b, <span style="color: #2B91AF">int</span> c) {
+  e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx++;
+}
+
+<span style="color: #008000">//改进版，使用小根堆</span>
+<span style="color: #2B91AF">int</span> dijkstra() {
+  <span style="color: #008000">//初始化距离矩阵</span>
+  memset(dist, 0x3f, <span style="color: #00F">sizeof</span> dist);
+  dist[1] = 0;
+  <span style="color: #008000">//调用优先队列，以及greater算子，创建小根堆</span>
+  priority_queue&lt;PII, vector&lt;PII&gt;, greater&lt;PII&gt;&gt; heap;
+
+  <span style="color: #008000">//按照距离排序，因此第一个元素是距离，第二个元素是顶点编号</span>
+  heap.push({0, 1});
+
+  <span style="color: #008000">// BFS计算最短距离</span>
+  <span style="color: #00F">while</span> (heap.size()) {
+    <span style="color: #008000">//取堆头元素</span>
+    <span style="color: #00F">auto</span> t = heap.top();
+    heap.pop();
+
+    <span style="color: #008000">// 取顶点编号、顶点距离</span>
+    <span style="color: #2B91AF">int</span> ver = t.second, distance = t.first;
+
+    <span style="color: #008000">// 顶点遍历过就跳过，不展开改顶点</span>
+    <span style="color: #00F">if</span> (st[ver]) <span style="color: #00F">continue</span>;
+    st[ver] = true;
+
+    <span style="color: #008000">//遍历所有相邻顶点</span>
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = h[ver]; i != -1; i = ne[i]) {
+      <span style="color: #2B91AF">int</span> j = e[i];
+      <span style="color: #008000">//判断dist[ver]+w[i]是否比原来顶点j的距离大</span>
+      <span style="color: #00F">if</span> (dist[j] &gt; dist[ver] + w[i]) {
+        dist[j] = dist[ver] + w[i];  <span style="color: #008000">//更新顶点j的距离值</span>
+        heap.push({dist[j], j});     <span style="color: #008000">//把更小的距离值入堆</span>
+      }
+    }
+  }
+  <span style="color: #008000">//如果第n点距离值没被更新，表明不可达</span>
+  <span style="color: #00F">if</span> (dist[n] == 0x3f3f3f3f) <span style="color: #00F">return</span> -1;
+  <span style="color: #008000">//返回点n的距离值</span>
+  <span style="color: #00F">return</span> dist[n];
+}
+
+<span style="color: #2B91AF">int</span> main() {
+  <span style="color: #008000">//读入行n，列m</span>
+  scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>, &amp;n, &amp;m);
+  <span style="color: #008000">//把邻接链表的头指针化为-1，表明当前为空，不指向任何链表</span>
+  memset(h, -1, <span style="color: #00F">sizeof</span> h);
+  <span style="color: #008000">//处理m条边</span>
+  <span style="color: #00F">while</span> (m--) {
+    <span style="color: #2B91AF">int</span> a, b, c;
+    scanf(<span style="color: #A31515">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);
+    add(a, b, c);<span style="color: #008000">//调用add建图</span>
+  }
+  <span style="color: #008000">//调用改进版的dijkstra()</span>
+  cout &lt;&lt; dijkstra() &lt;&lt; endl;
+
+  <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 850</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ141</span>AcWing 851<span class="acw">AcWing 851</span></div>
+<div class="problem-desc">AcWing 851</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;queue&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 100007;
+
+<span style="color: #2B91AF">int</span> n,m;
+<span style="color: #2B91AF">int</span> h[N], e[N], w[N], ne[N], idx;
+<span style="color: #2B91AF">int</span> q[N], dist[N];
+<span style="color: #2B91AF">bool</span> st[N];
+
+<span style="color: #2B91AF">void</span> add(<span style="color: #2B91AF">int</span> a, <span style="color: #2B91AF">int</span> b, <span style="color: #2B91AF">int</span> c)  <span style="color: #008000">// 添加一条边a-&gt;b，边权为c</span>
+{
+    e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx ++ ;
+}
+
+<span style="color: #2B91AF">int</span> spfa()  <span style="color: #008000">// 求1号点到n号点的最短路距离，如果从1号点无法走到n号点则返回-1</span>
+{
+    <span style="color: #2B91AF">int</span> hh = 0, tt = 0;
+    memset(dist, 0x3f, <span style="color: #00F">sizeof</span> dist);
+    dist[1] = 0;
+    q[tt ++ ] = 1;
+    st[1] = true;
+
+    <span style="color: #00F">while</span> (hh != tt)
+    {
+        <span style="color: #2B91AF">int</span> t = q[hh ++ ];
+        <span style="color: #00F">if</span> (hh == N) hh = 0;
+        st[t] = false;
+
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = h[t]; i != -1; i = ne[i])
+        {
+            <span style="color: #2B91AF">int</span> j = e[i];
+            <span style="color: #00F">if</span> (dist[j] &gt; dist[t] + w[i])
+            {
+                dist[j] = dist[t] + w[i];
+                <span style="color: #00F">if</span> (!st[j])     <span style="color: #008000">// 如果队列中已存在j，则不需要将j重复插入</span>
+                {
+                    q[tt ++ ] = j;
+                    <span style="color: #00F">if</span> (tt == N) tt = 0;
+                    st[j] = true;
+                }
+            }
+        }
+    }
+
+    <span style="color: #00F">if</span> (dist[n] == 0x3f3f3f3f) <span style="color: #00F">return</span> -1;
+    <span style="color: #00F">return</span> dist[n];
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+    scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>, &amp;n, &amp;m);
+    memset(h, -1, <span style="color: #00F">sizeof</span> h);
+    <span style="color: #00F">while</span> (m -- )
+    {
+      <span style="color: #2B91AF">int</span> a, b, c;
+      scanf(<span style="color: #A31515">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);
+      add(a, b, c);
+    }
+
+    <span style="color: #2B91AF">int</span> t = spfa();
+
+    <span style="color: #00F">if</span> (t == -1) puts(<span style="color: #A31515">&quot;impossible&quot;</span>);
+    <span style="color: #00F">else</span> printf(<span style="color: #A31515">&quot;%d\n&quot;</span>,t);
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 851</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ142</span>AcWing 854<span class="acw">AcWing 854</span></div>
+<div class="problem-desc">AcWing 854</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 207,INF = 0x3f3f3f3f;
+
+<span style="color: #2B91AF">int</span> n,m,k;<span style="color: #008000">//k组询问</span>
+<span style="color: #2B91AF">int</span> d[N][N];
+
+<span style="color: #2B91AF">void</span> floyd()
+{
+  <span style="color: #008000">//用动态规划分析得出这个递推公式，使用三重循环</span>
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> k = 1; k &lt;=n; k++)
+   <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;=n; i++)
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;= n; j ++ )
+      d[i][j] = min(d[i][j], d[i][k]+d[k][j]);
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+    scanf(<span style="color: #A31515">&quot;%d%d%d&quot;</span>, &amp;n, &amp;m, &amp;k);
+
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i ++ )
+     <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;= n; j ++ )
+       <span style="color: #00F">if</span> (i==j) d[i][j] = 0;
+       <span style="color: #00F">else</span> d[i][j] = INF;
+
+    <span style="color: #008000">//处理每条边，去掉重边和自环</span>
+    <span style="color: #00F">while</span> (m -- )
+    {
+      <span style="color: #2B91AF">int</span> a,b,c;
+      scanf(<span style="color: #A31515">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);
+      d[a][b] = min(d[a][b],c);
+    }
+
+    floyd();
+
+    <span style="color: #008000">//k组查询</span>
+    <span style="color: #00F">while</span>(k--)
+    {
+      <span style="color: #2B91AF">int</span> a,b;
+      scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>, &amp;a, &amp;b);
+      <span style="color: #2B91AF">int</span> t = d[a][b];
+      <span style="color: #00F">if</span> (t &gt; INF /2) puts(<span style="color: #A31515">&quot;impossible&quot;</span>);
+      <span style="color: #00F">else</span> printf(<span style="color: #A31515">&quot;%d\n&quot;</span>,t);
+    }
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 854</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ143</span>AcWing 858<span class="acw">AcWing 858</span></div>
+<div class="problem-desc">AcWing 858</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 507,INF = 0x3f3f3f3f;
+
+<span style="color: #2B91AF">int</span> n,m;
+<span style="color: #2B91AF">int</span> g[N][N];
+<span style="color: #2B91AF">int</span> dist[N];
+<span style="color: #2B91AF">bool</span> st[N];
+
+<span style="color: #2B91AF">int</span> prim()
+{
+  memset(dist,0x3f,<span style="color: #00F">sizeof</span> dist);
+
+  <span style="color: #2B91AF">int</span> res = 0;
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i++)
+  {
+    <span style="color: #008000">//第一个点</span>
+   <span style="color: #2B91AF">int</span> t = -1;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;= n; j ++ )
+        <span style="color: #00F">if</span>(!st[j] &amp;&amp; (t == -1 || dist[t] &gt; dist[j]))
+        t = j;
+
+    <span style="color: #00F">if</span> (i &amp;&amp; dist[t] == INF) <span style="color: #00F">return</span> INF;<span style="color: #008000">//没有最小生成树，不连通</span>
+
+    <span style="color: #00F">if</span> (i) res += dist[t];
+    st[t] = true;
+
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;= n; j ++ ) dist[j] = min(dist[j], g[t][j]);
+  }
+   <span style="color: #00F">return</span> res;
+
+}
+<span style="color: #2B91AF">int</span> main()
+{
+    scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>, &amp;n, &amp;m);
+
+    memset(g, 0x3f, <span style="color: #00F">sizeof</span> g);
+
+    <span style="color: #00F">while</span> (m -- )
+    {
+      <span style="color: #2B91AF">int</span> a,b,c;
+      scanf(<span style="color: #A31515">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);
+      g[a][b] = g[b][a] = min(g[a][b],c);<span style="color: #008000">//无向图，去重</span>
+    }
+
+    <span style="color: #2B91AF">int</span> t = prim();
+    <span style="color: #00F">if</span> (t== INF) puts(<span style="color: #A31515">&quot;impossible&quot;</span>);
+    <span style="color: #00F">else</span> printf(<span style="color: #A31515">&quot;%d\n&quot;</span>,t);
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 858</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ144</span>AcWing 859<span class="acw">AcWing 859</span></div>
+<div class="problem-desc">AcWing 859</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 100007, M = 2000007, INF = 0x3f3f3f3f;
+
+<span style="color: #2B91AF">int</span> n,m;
+<span style="color: #2B91AF">int</span> p[N];<span style="color: #008000">//并查集</span>
+
+<span style="color: #00F">struct</span> <span style="color: #2B91AF">Edge</span>
+{
+  <span style="color: #2B91AF">int</span> a, b, w;
+  <span style="color: #2B91AF">bool</span> <span style="color: #00F">operator</span>&lt; (<span style="color: #00F">const</span> Edge &amp;a) <span style="color: #00F">const</span>
+  {
+    <span style="color: #00F">return</span> w &lt; a.w;
+  }
+} edges[M];<span style="color: #008000">//重载&lt;,安装权重w比大小</span>
+
+<span style="color: #2B91AF">int</span> find(<span style="color: #2B91AF">int</span> x)  <span style="color: #008000">// 并查集</span>
+{
+    <span style="color: #00F">if</span> (p[x] != x) p[x] = find(p[x]);
+    <span style="color: #00F">return</span> p[x];
+}
+
+<span style="color: #2B91AF">int</span> kruskal()
+{
+  <span style="color: #008000">//1.排序</span>
+  sort(edges, edges+m);
+  <span style="color: #008000">//并查集初始化</span>
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i&lt;=n; i++) p[i] = i;
+
+  <span style="color: #2B91AF">int</span> res = 0, cnt = 0;
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i&lt;m; i++)
+  {
+    <span style="color: #2B91AF">int</span> a = edges[i].a, b = edges[i].b, w=edges[i].w;
+    a = find(a), b = find(b);
+    <span style="color: #00F">if</span> (a != b)
+    {
+      p[a] = b;
+      res += w;
+      cnt ++;
+    }
+  }
+  <span style="color: #00F">if</span> (cnt &lt; n-1) <span style="color: #00F">return</span> INF;
+  <span style="color: #00F">return</span> res;
+}
+<span style="color: #2B91AF">int</span> main()
+{
+     scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>, &amp;n, &amp;m);
+
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; m; i ++ )
+    {
+        <span style="color: #2B91AF">int</span> a, b, w;
+        scanf(<span style="color: #A31515">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;w);
+        edges[i] = {a, b, w};
+    }
+
+    <span style="color: #2B91AF">int</span> t = kruskal();
+
+    <span style="color: #00F">if</span> (t == INF) puts(<span style="color: #A31515">&quot;impossible&quot;</span>);
+    <span style="color: #00F">else</span> printf(<span style="color: #A31515">&quot;%d\n&quot;</span>, t);
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 859</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ145</span>AcWing 860<span class="acw">AcWing 860</span></div>
+<div class="problem-desc">AcWing 860</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #008000">//无向图</span>
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N=100007,M=200007;<span style="color: #008000">//两倍的边</span>
+<span style="color: #2B91AF">int</span> n,m;
+<span style="color: #2B91AF">int</span> h[N],e[M],ne[M],idx;
+<span style="color: #2B91AF">int</span> color[N];<span style="color: #008000">//0表示未访问，1表示颜色1，2表示颜色2.</span>
+
+<span style="color: #2B91AF">void</span> add(<span style="color: #2B91AF">int</span> a, <span style="color: #2B91AF">int</span> b){
+  e[idx]=b, ne[idx]=h[a], h[a]=idx++; <span style="color: #008000">//数组模拟链表add操作</span>
+}
+
+<span style="color: #2B91AF">bool</span> dfs(<span style="color: #2B91AF">int</span> u, <span style="color: #2B91AF">int</span> c){
+  color[u]=c;
+
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i=h[u]; i!=-1; i=ne[i])
+  {
+    <span style="color: #2B91AF">int</span> j=e[i]; <span style="color: #008000">//取i对应的另外一个顶点编号</span>
+    <span style="color: #00F">if</span> (!color[j]) {
+       <span style="color: #00F">if</span> (!dfs(j,3-c)) <span style="color: #00F">return</span> false;<span style="color: #008000">//颜色是1或者2切换，所以用3-color可以交换两种颜色</span>
+    }
+    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (color[j]==c) <span style="color: #00F">return</span> false;<span style="color: #008000">//端点颜色相同</span>
+  }
+  <span style="color: #00F">return</span> true;  
+}
+<span style="color: #2B91AF">int</span> main(){
+
+  scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>,&amp;n,&amp;m);
+  memset(h,-1,<span style="color: #00F">sizeof</span> h);<span style="color: #008000">//初始化头结点</span>
+  <span style="color: #008000">//建图</span>
+  <span style="color: #00F">while</span> (m--)
+  {
+     <span style="color: #2B91AF">int</span> a,b;
+     scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>,&amp;a,&amp;b);
+     add(a,b); add(b,a);
+  }
+  <span style="color: #2B91AF">bool</span> flag = true;<span style="color: #008000">//表示染色有矛盾</span>
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i=1; i&lt;=n; i++)
+    <span style="color: #00F">if</span> (!color[i]) {
+      <span style="color: #00F">if</span> (!dfs(i,1))
+      {
+        flag = false;
+        <span style="color: #00F">break</span>;
+      }
+    } 
+  <span style="color: #00F">if</span> (flag) puts(<span style="color: #A31515">&quot;Yes&quot;</span>); <span style="color: #00F">else</span> puts (<span style="color: #A31515">&quot;No&quot;</span>);
+
+  <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 860</span>
+</pre></div>
+</div></div><hr class="section-divider"><div class="chapter-end">— 第14章完 · 共8题 —</div></body></html>
