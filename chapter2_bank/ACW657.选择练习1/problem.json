@@ -1,0 +1,89 @@
+{
+  "display_id": "ACW657",
+  "title": "选择练习1",
+  "description": {
+    "format": "html",
+    "value": "<p>给定四个整数A、B、C、D，请判断是否同时满足：B>C、D>A、C+D>A+B、C和D都是正数、A是偶数。所有条件都满足才输出\"Valores aceitos\"。</p>"
+  },
+  "tags": [
+    "基础语法"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一行，四个整数A、B、C、D。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>满足所有条件输出\"Valores aceitos\"，否则\"Valores nao aceitos\"。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/657/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5 6 7 8",
+      "output": "Valores nao aceitos"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "source": "AcWing 657 | NQ022 | 第2章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

@@ -1,0 +1,90 @@
+{
+    "display_id": "ACW609",
+    "title": "工资",
+    "description": {
+        "format": "html",
+        "value": "<p>输入员工编号（整数）、月工作时数（整数）和时薪（浮点数），计算工资总额。</p>"
+    },
+    "tags": [
+        "基础语法",
+        "格式化输出"
+    ],
+    "input_description": {
+        "format": "html",
+        "value": "<p>三行：编号、时数、时薪。</p>"
+    },
+    "output_description": {
+        "format": "html",
+        "value": "<p>第一行\"NUMBER = X\"，第二行\"SALARY = U$ XX.XX\"。</p>"
+    },
+    "test_case_score": [
+        {
+            "score": 10,
+            "input_name": "1.in",
+            "output_name": "1.out"
+        },
+        {
+            "score": 10,
+            "input_name": "2.in",
+            "output_name": "2.out"
+        },
+        {
+            "score": 10,
+            "input_name": "3.in",
+            "output_name": "3.out"
+        },
+        {
+            "score": 10,
+            "input_name": "4.in",
+            "output_name": "4.out"
+        },
+        {
+            "score": 10,
+            "input_name": "5.in",
+            "output_name": "5.out"
+        },
+        {
+            "score": 10,
+            "input_name": "6.in",
+            "output_name": "6.out"
+        },
+        {
+            "score": 10,
+            "input_name": "7.in",
+            "output_name": "7.out"
+        },
+        {
+            "score": 10,
+            "input_name": "8.in",
+            "output_name": "8.out"
+        },
+        {
+            "score": 10,
+            "input_name": "9.in",
+            "output_name": "9.out"
+        },
+        {
+            "score": 10,
+            "input_name": "10.in",
+            "output_name": "10.out"
+        }
+    ],
+    "hint": {
+        "format": "html",
+        "value": "<a href=\"https://www.acwing.com/problem/content/609/\" target=\"_blank\">原题链接</a>"
+    },
+    "time_limit": 1000,
+    "memory_limit": 256,
+    "samples": [
+        {
+            "input": "25\n100\n5.50",
+            "output": "NUMBER = 25\nSALARY = U$ 550.00"
+        }
+    ],
+    "template": {},
+    "spj": null,
+    "rule_type": "OI",
+    "source": "AcWing 609 | NQ005 | 第1章 程序设计的第一个脚印",
+    "answers": [],
+    "allow_public_test_case_download": false
+}

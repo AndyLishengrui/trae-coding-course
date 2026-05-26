@@ -1,0 +1,91 @@
+{
+    "display_id": "ACW606",
+    "title": "平均数1",
+    "description": {
+        "format": "html",
+        "value": "<p>读取两个学生的成绩A和B，A的权重3.5，B的权重7.5，计算加权平均分。</p>"
+    },
+    "tags": [
+        "基础语法",
+        "浮点数",
+        "加权平均"
+    ],
+    "input_description": {
+        "format": "html",
+        "value": "<p>两行，每行一个浮点数，分别表示A和B。</p>"
+    },
+    "output_description": {
+        "format": "html",
+        "value": "<p>输出\"MEDIA = \"后跟加权平均分，保留5位小数。</p>"
+    },
+    "test_case_score": [
+        {
+            "score": 10,
+            "input_name": "1.in",
+            "output_name": "1.out"
+        },
+        {
+            "score": 10,
+            "input_name": "2.in",
+            "output_name": "2.out"
+        },
+        {
+            "score": 10,
+            "input_name": "3.in",
+            "output_name": "3.out"
+        },
+        {
+            "score": 10,
+            "input_name": "4.in",
+            "output_name": "4.out"
+        },
+        {
+            "score": 10,
+            "input_name": "5.in",
+            "output_name": "5.out"
+        },
+        {
+            "score": 10,
+            "input_name": "6.in",
+            "output_name": "6.out"
+        },
+        {
+            "score": 10,
+            "input_name": "7.in",
+            "output_name": "7.out"
+        },
+        {
+            "score": 10,
+            "input_name": "8.in",
+            "output_name": "8.out"
+        },
+        {
+            "score": 10,
+            "input_name": "9.in",
+            "output_name": "9.out"
+        },
+        {
+            "score": 10,
+            "input_name": "10.in",
+            "output_name": "10.out"
+        }
+    ],
+    "hint": {
+        "format": "html",
+        "value": "<a href=\"https://www.acwing.com/problem/content/606/\" target=\"_blank\">原题链接</a>"
+    },
+    "time_limit": 1000,
+    "memory_limit": 256,
+    "samples": [
+        {
+            "input": "5.0\n7.1",
+            "output": "MEDIA = 6.43182"
+        }
+    ],
+    "template": {},
+    "spj": null,
+    "rule_type": "OI",
+    "source": "AcWing 606 | NQ004 | 第1章 程序设计的第一个脚印",
+    "answers": [],
+    "allow_public_test_case_download": false
+}

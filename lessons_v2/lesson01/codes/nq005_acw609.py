@@ -1,0 +1,6 @@
+# NQ: AcWing 609
+n = int(input())
+h = int(input())
+m = float(input())
+print(f"NUMBER = {n}")
+print(f"SALARY = U$ {h * m:.2f}")

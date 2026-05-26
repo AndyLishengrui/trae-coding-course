@@ -1,0 +1,89 @@
+{
+  "display_id": "ACW668",
+  "title": "游戏时间2",
+  "description": {
+    "format": "html",
+    "value": "<p>和NQ019类似，但这次游戏时间精确到分钟。输入开始和结束的小时和分钟，计算游戏的持续时间（时和分）。</p>"
+  },
+  "tags": [
+    "基础语法"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一行，四个整数：开始的小时A、分钟B，结束的小时C、分钟D。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>\"O JOGO DUROU X HORA(S) E Y MINUTO(S)\"。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/668/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "7 8 9 10",
+      "output": "O JOGO DUROU 2 HORA(S) E 2 MINUTO(S)"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "source": "AcWing 668 | NQ026 | 第2章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

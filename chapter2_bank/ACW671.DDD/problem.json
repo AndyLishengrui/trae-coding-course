@@ -1,0 +1,89 @@
+{
+  "display_id": "ACW671",
+  "title": "DDD",
+  "description": {
+    "format": "html",
+    "value": "<p>小鲁想打电话给其他城市的同学。给定一个DDD区号，输出对应的城市名。DDD与城市的对应关系：61-Brasilia, 71-Salvador, 11-Sao Paulo, 21-Rio de Janeiro, 32-Juiz de Fora, 19-Campinas, 27-Vitoria, 31-Belo Horizonte。</p>"
+  },
+  "tags": [
+    "基础语法"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一个整数DDD。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出城市名，或\"DDD nao cadastrado\"。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/671/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "11",
+      "output": "Sao Paulo"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "source": "AcWing 671 | NQ023 | 第2章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

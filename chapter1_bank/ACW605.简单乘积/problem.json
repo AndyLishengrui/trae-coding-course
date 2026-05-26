@@ -1,0 +1,90 @@
+{
+    "display_id": "ACW605",
+    "title": "简单乘积",
+    "description": {
+        "format": "html",
+        "value": "<p>读取两个整数，输出\"PROD = \"后跟它们的乘积。</p>"
+    },
+    "tags": [
+        "基础语法",
+        "乘法"
+    ],
+    "input_description": {
+        "format": "html",
+        "value": "<p>两行，每行一个整数。</p>"
+    },
+    "output_description": {
+        "format": "html",
+        "value": "<p>输出\"PROD = X\"。</p>"
+    },
+    "test_case_score": [
+        {
+            "score": 10,
+            "input_name": "1.in",
+            "output_name": "1.out"
+        },
+        {
+            "score": 10,
+            "input_name": "2.in",
+            "output_name": "2.out"
+        },
+        {
+            "score": 10,
+            "input_name": "3.in",
+            "output_name": "3.out"
+        },
+        {
+            "score": 10,
+            "input_name": "4.in",
+            "output_name": "4.out"
+        },
+        {
+            "score": 10,
+            "input_name": "5.in",
+            "output_name": "5.out"
+        },
+        {
+            "score": 10,
+            "input_name": "6.in",
+            "output_name": "6.out"
+        },
+        {
+            "score": 10,
+            "input_name": "7.in",
+            "output_name": "7.out"
+        },
+        {
+            "score": 10,
+            "input_name": "8.in",
+            "output_name": "8.out"
+        },
+        {
+            "score": 10,
+            "input_name": "9.in",
+            "output_name": "9.out"
+        },
+        {
+            "score": 10,
+            "input_name": "10.in",
+            "output_name": "10.out"
+        }
+    ],
+    "hint": {
+        "format": "html",
+        "value": "<a href=\"https://www.acwing.com/problem/content/605/\" target=\"_blank\">原题链接</a>"
+    },
+    "time_limit": 1000,
+    "memory_limit": 256,
+    "samples": [
+        {
+            "input": "3\n9",
+            "output": "PROD = 27"
+        }
+    ],
+    "template": {},
+    "spj": null,
+    "rule_type": "OI",
+    "source": "AcWing 605 | NQ010 | 第1章 程序设计的第一个脚印",
+    "answers": [],
+    "allow_public_test_case_download": false
+}

@@ -1,0 +1,498 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
+<title>第1章 程序设计的第一个脚印</title><style>
+@page {
+    size: A4;
+    margin: 2.2cm 2cm 2.2cm 2cm;
+    @top-center { content: string(chapter); font-size: 7.5pt; color: #999; font-family: "PingFang SC", sans-serif; }
+    @bottom-center { content: counter(page); font-size: 7.5pt; color: #999; }
+}
+
+body {
+    font-family: "PingFang SC", "Hiragino Sans GB", "Noto Serif CJK SC", "STSong", serif;
+    font-size: 9.5pt;
+    line-height: 1.7;
+    color: #222;
+    string-set: chapter "第1章 程序设计的第一个脚印 —— 变量、输入输出与顺序结构";
+}
+
+.chapter-title { text-align: center; font-size: 20pt; font-weight: bold; margin: 1.5em 0 0.1em 0; letter-spacing: 3pt; }
+.chapter-subtitle { text-align: center; font-size: 10pt; color: #777; margin-bottom: 1.5em; padding-bottom: 0.8em; border-bottom: 1px solid #bbb; }
+
+.preface { font-size: 10pt; margin-bottom: 2em; color: #444; }
+.preface p { margin: 0.4em 0; text-indent: 2em; }
+
+.problem-title { font-size: 12pt; font-weight: bold; margin: 1.5em 0 0.4em 0; padding-bottom: 0.15em; border-bottom: 1pt solid #444; }
+.problem-title .nq { color: #2563eb; margin-right: 0.6em; font-size: 11pt; }
+.problem-title .acw { font-size: 7.5pt; color: #aaa; font-weight: normal; margin-left: 1em; }
+
+.problem-desc { margin: 0.6em 0 1em 0; text-indent: 2em; line-height: 1.85; }
+
+.spec-table { width: 100%; border-collapse: collapse; margin: 0.3em 0 0.5em 0; font-size: 9pt; }
+.spec-table td { padding: 0.3em 0.8em; vertical-align: top; border: none; }
+.spec-table .spec-label { width: 4em; font-size: 8pt; font-weight: bold; text-align: right; padding-right: 1em; white-space: nowrap; }
+.spec-table .spec-label .tag { display: inline-block; padding: 0.15em 0.5em; border-radius: 2px; color: #fff; font-size: 7.5pt; letter-spacing: 0.5pt; }
+.spec-table .spec-label .tag.in  { background: #2563eb; }
+.spec-table .spec-label .tag.out { background: #059669; }
+.spec-table .spec-label .tag.lim { background: #d97706; }
+.spec-table .spec-value { color: #333; font-size: 9pt; }
+
+.sample-box { background: #f7f8fa; border: 0.5pt solid #dde; border-radius: 4px; padding: 0.7em 1em; margin: 1em 0 1.2em 0; }
+.sample-grid { display: flex; gap: 2em; }
+.sample-col { flex: 1; }
+.sample-col .col-label { font-size: 7.5pt; color: #888; margin-bottom: 0.2em; font-weight: bold; }
+.sample-col pre { background: none; border: none; padding: 0.3em 0; margin: 0; font-family: "SF Mono","Menlo","Consolas",monospace; font-size: 9pt; line-height: 1.4; white-space: pre-wrap; color: #333; }
+
+.insight-block { margin: 0.8em 0; padding: 0.5em 0.8em; border-left: 3px solid #2563eb; background: #f8faff; }
+.insight-block .insight-label { font-size: 8pt; font-weight: bold; color: #2563eb; margin-right: 0.5em; }
+
+/* 双栏代码 — 语法高亮 */
+.code-dual { display: flex; gap: 1.5em; margin: 1.2em 0; page-break-inside: avoid; }
+.code-col { flex: 1; min-width: 0; }
+.code-col .lang-badge { display: inline-block; font-size: 7.5pt; font-weight: bold; color: #fff; background: #2563eb; padding: 0.2em 0.7em; border-radius: 3px; margin-bottom: 0.4em; }
+.code-col pre { background: #f8f8f0; border: 0.5pt solid #e0e0e0; border-radius: 4px; padding: 0.7em 0.9em; font-family: "SF Mono","Menlo","Consolas","Courier New",monospace; font-size: 7.5pt; line-height: 1.45; overflow-x: auto; margin: 0; white-space: pre-wrap; word-break: break-all; }
+
+.section-divider { border: none; border-top: 0.3pt solid #e0e0e0; margin: 1em 0 0 0; }
+.chapter-end { text-align: center; margin-top: 3em; font-size: 8pt; color: #999; }
+</style></head><body>
+<div class="chapter-title">程序设计的第一个脚印</div>
+<div class="chapter-subtitle">变量、输入输出与顺序结构 · 14题 · C++ &amp; Python 双语对照</div>
+<div class="preface">
+<p>本章是编程之旅的第一站。14道题目从最简单的A+B开始，逐步引入浮点数运算、格式化输出、数学库、整除取模、时间换算和几何公式。每道题都同时提供C++和Python两种实现，读者可以对照阅读，体会两种语言的设计哲学差异。</p>
+<p>如果你正在使用TRAE这类AI编程工具学习，建议先自己思考解题思路，然后对照书中的代码理解每一行的含义。记住：<strong>读懂代码比写出代码更重要</strong>。</p>
+</div>
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ001</span>A + B<span class="acw">AcWing 1</span></div>
+<div class="problem-desc">小鲁第一次打开TRAE，AI助手提示他："想学编程，从最简单的计算开始。"输入两个整数A和B，计算它们的和。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，两个整数A和B，用空格隔开。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">一个整数，即A+B的结果。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0 ≤ A, B ≤ 10⁸</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>3 4</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>7</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>这是编程中最简单的题目，但它包含了所有程序的基本骨架：读入数据→计算→输出结果。C++需要引入iostream、声明main函数、用cin/cout；Python更简洁。两种语言体现了静态类型与动态类型的设计哲学差异。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的map(int, input().split())是处理空格分隔整数输入的标准写法。C++的cin >> a >> b自动跳过空白字符。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">int</span> a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+    cout &lt;&lt; a + b &lt;&lt; endl;
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>a, b = map(int, input().split())
+print(a + b)
+</pre></div>
+</div>
+</div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ002</span>差<span class="acw">AcWing 608</span></div>
+<div class="problem-desc">老师给出四个整数A、B、C、D，请计算A×B−C×D的结果。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，四个整数A、B、C、D，用空格隔开。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出"DIFERENCA = "后跟计算结果。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁴ ≤ A,B,C,D ≤ 10⁴</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>5 6 7 8</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>DIFERENCA = -26</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>直接按公式计算，注意运算顺序：先乘后减。C++用int可满足范围，Python的int无范围限制。输出需要带前缀"DIFERENCA = "。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的f-string：f"DIFERENCA = {a*b - c*d}"，比%和.format()更清晰直观。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">int</span> a, b, c, d;
+    scanf(<span style="color: #A31515">&quot;%d%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c, &amp;d);
+    printf(<span style="color: #A31515">&quot;DIFERENCA = %d\n&quot;</span>, a * b - c * d);
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>a, b, c, d = map(int, input().split())
+print(<span style="color: #A31515">f&quot;DIFERENCA = {</span>a * b - c * d<span style="color: #A31515">}&quot;</span>)
+</pre></div>
+</div>
+</div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ003</span>圆的面积<span class="acw">AcWing 604</span></div>
+<div class="problem-desc">小鲁在几何课上学到了圆的面积公式S=πr²。给定半径r，计算圆的面积。π取3.14159。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个浮点数r，表示圆的半径。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出"A="后跟面积，保留4位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0 < r ≤ 10000</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>2.00</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>A=12.5664</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>面积 = π × r²。使用浮点类型：C++的double、Python的float。C++用printf控制小数位；Python用f-string。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>C++格式化输出：printf("%.4lf", x)简洁；cout<<fixed<<setprecision(4)<<x类型安全。Python的f"{x:.4f}"最直观。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">double</span> r;
+    scanf(<span style="color: #A31515">&quot;%lf&quot;</span>, &amp;r);
+    printf(<span style="color: #A31515">&quot;A=%.4lf\n&quot;</span>, 3.14159 * r * r);
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>r = float(input())
+print(<span style="color: #A31515">f&quot;A={</span>3.14159 * r * r<span style="color: #A31515">:.4f}&quot;</span>)
+</pre></div>
+</div>
+</div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ004</span>平均数1<span class="acw">AcWing 606</span></div>
+<div class="problem-desc">学期结束，老师需要计算小鲁的加权平均成绩。A科目的权重是3.5，B科目的权重是7.5。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">两行，每行一个浮点数（成绩A和B）。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">"MEDIA = "后跟加权平均分，保留5位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0 ≤ A, B ≤ 10.0</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>5.0
+7.1</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>MEDIA = 6.43182</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>加权平均公式：(A×3.5 + B×7.5) / 11。分母是权重之和(3.5+7.5=11)，不是题目数2。这是常见陷阱。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>C++所有浮点字面量默认double。Python的/总是返回浮点数，无需担心整数除法问题。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">double</span> a, b;
+    scanf(<span style="color: #A31515">&quot;%lf%lf&quot;</span>, &amp;a, &amp;b);
+    printf(<span style="color: #A31515">&quot;MEDIA = %.5lf\n&quot;</span>, (a * 3.5 + b * 7.5) / 11);
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>a = float(input())
+b = float(input())
+print(<span style="color: #A31515">f&quot;MEDIA = {</span>(a * 3.5 + b * 7.5) / 11<span style="color: #A31515">:.5f}&quot;</span>)
+</pre></div>
+</div>
+</div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ005</span>工资<span class="acw">AcWing 609</span></div>
+<div class="problem-desc">小鲁暑假打工，公司需要计算他的工资。已知员工编号、月工作小时数和时薪，请计算月工资总额。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">三行：编号（整数）、时数（整数）、时薪（浮点数）。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">"NUMBER = X"换行"SALARY = U$ XX.XX"。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ 编号 ≤ 100, 1 ≤ 时数 ≤ 200, 1 ≤ 时薪 ≤ 50</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>25
+100
+5.50</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>NUMBER = 25
+SALARY = U$ 550.00</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>工资 = 时数 × 时薪。输入包含整数和浮点数混合类型，C++用scanf精确控制格式。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>C++中scanf可精确控制混合输入。Python逐行读取更清晰安全。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">int</span> n, h;
+    <span style="color: #2B91AF">double</span> m;
+    scanf(<span style="color: #A31515">&quot;%d%d%lf&quot;</span>, &amp;n, &amp;h, &amp;m);
+    printf(<span style="color: #A31515">&quot;NUMBER = %d\nSALARY = U$ %.2lf\n&quot;</span>, n, h * m);
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>n = int(input())
+h = int(input())
+m = float(input())
+print(<span style="color: #A31515">f&quot;NUMBER = {</span>n<span style="color: #A31515">}&quot;</span>)
+print(<span style="color: #A31515">f&quot;SALARY = U$ {</span>h * m<span style="color: #A31515">:.2f}&quot;</span>)
+</pre></div>
+</div>
+</div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ006</span>油耗<span class="acw">AcWing 615</span></div>
+<div class="problem-desc">小鲁买了一辆二手车，想测试油耗。记录行驶总距离（公里）和消耗汽油量（升），计算每升汽油可行驶公里数。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">两行：距离（浮点数, km）、汽油量（浮点数, L）。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">每升公里数，保留3位小数，后跟" km/l"。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ 距离 ≤ 10⁶, 0 < 汽油量 ≤ 10⁵</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>500
+35.0</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>14.286 km/l</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>燃油效率 = 距离 / 汽油量。使用浮点数除法，输出保留3位小数。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>C++整数除法截断，距离如果是int需转double。Python中/自动返回浮点数。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">double</span> x, y;
+    scanf(<span style="color: #A31515">&quot;%lf%lf&quot;</span>, &amp;x, &amp;y);
+    printf(<span style="color: #A31515">&quot;%.3lf km/l\n&quot;</span>, x / y);
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>x = float(input())
+y = float(input())
+print(<span style="color: #A31515">f&quot;{</span>x / y<span style="color: #A31515">:.3f} km/l&quot;</span>)
+</pre></div>
+</div>
+</div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ007</span>两点间的距离<span class="acw">AcWing 616</span></div>
+<div class="problem-desc">小鲁在坐标系上标了两个点P1(x1,y1)和P2(x2,y2)，他想知道这两点的欧几里得距离。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，四个浮点数x1, y1, x2, y2。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">两点间距离，保留4位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁹ ≤ 坐标 ≤ 10⁹</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>1.0 7.0 5.0 9.0</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>4.4721</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>距离 = √((x1−x2)² + (y1−y2)²)。第一次用到数学库。注意使用double确保精度。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>C++需#include <cmath>。Python的math.sqrt()简洁明了。f"{dist:.4f}"格式化。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">double</span> x1,y1,x2,y2;
+    scanf(<span style="color: #A31515">&quot;%lf%lf%lf%lf&quot;</span>,&amp;x1,&amp;y1,&amp;x2,&amp;y2);
+    <span style="color: #2B91AF">double</span> d=sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+    printf(<span style="color: #A31515">&quot;%.4lf\n&quot;</span>,d);
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">import</span> math
+x1,y1,x2,y2=map(float,input().split())
+d=math.sqrt((x1-x2)**2+(y1-y2)**2)
+print(<span style="color: #A31515">f&quot;{</span>d<span style="color: #A31515">:.4f}&quot;</span>)
+</pre></div>
+</div>
+</div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ008</span>钞票<span class="acw">AcWing 653</span></div>
+<div class="problem-desc">小鲁在银行取钱，ATM机需要给出最少数量的钞票。给定金额N，计算需要多少张各面额钞票。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个整数N。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">第一行输出N，然后7行按面额从大到小输出张数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0 < N < 10⁶</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>576</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>576
+5 nota(s) de R$ 100,00
+1 nota(s) de R$ 50,00
+1 nota(s) de R$ 20,00
+0 nota(s) de R$ 10,00
+1 nota(s) de R$ 5,00
+0 nota(s) de R$ 2,00
+1 nota(s) de R$ 1,00</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>贪心算法雏形：count = N / face_value; N %= face_value。Python用列表+循环消除重复代码——本课最重要的工程思维。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python用列表+循环消除重复：for v in [100,50,20,10,5,2,1]。对比C++的7段重复代码。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">int</span> n, v[]={100,50,20,10,5,2,1};
+    scanf(<span style="color: #A31515">&quot;%d&quot;</span>,&amp;n); printf(<span style="color: #A31515">&quot;%d\n&quot;</span>,n);
+    <span style="color: #00F">for</span>(<span style="color: #2B91AF">int</span> i=0;i&lt;7;i++){
+        printf(<span style="color: #A31515">&quot;%d nota(s) de R$ %d,00\n&quot;</span>,n/v[i],v[i]);
+        n%=v[i];
+    }
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>n=int(input())
+print(n)
+<span style="color: #00F">for</span> v <span style="color: #00F">in</span>[100,50,20,10,5,2,1]:
+    print(<span style="color: #A31515">f&quot;{</span>n//v<span style="color: #A31515">} nota(s) de R$ {</span>v<span style="color: #A31515">},00&quot;</span>)
+    n%=v
+</pre></div>
+</div>
+</div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ009</span>时间转换<span class="acw">AcWing 654</span></div>
+<div class="problem-desc">小鲁的计时器只显示秒数，他想转换为"时:分:秒"格式。给定总秒数N，转换成HH:MM:SS。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个整数N。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">HH:MM:SS格式。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0 ≤ N ≤ 10⁶</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>556</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>0:9:16</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>时=N/3600, 分=N%3600/60, 秒=N%60。Python的divmod()一次性获得商和余数。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的divmod(a,b)返回(商,余数)元组，优雅解包接收。C++需分开计算/和%。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">int</span> n;
+    scanf(<span style="color: #A31515">&quot;%d&quot;</span>,&amp;n);
+    printf(<span style="color: #A31515">&quot;%d:%d:%d&quot;</span>,n/3600,n%3600/60,n%60);
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>n=int(input())
+h,r=divmod(n,3600)
+m,s=divmod(r,60)
+print(<span style="color: #A31515">f&quot;{</span>h<span style="color: #A31515">}:{</span>m<span style="color: #A31515">}:{</span>s<span style="color: #A31515">}&quot;</span>)
+</pre></div>
+</div>
+</div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ010</span>简单乘积<span class="acw">AcWing 605</span></div>
+<div class="problem-desc">小鲁发现乘法比加法快得多。给定两个整数，计算它们的乘积。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">两行，每行一个整数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">"PROD = "后跟乘积。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁴ ≤ A, B ≤ 10⁴</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>3
+9</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>PROD = 27</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>与NQ001结构相同，将+改成*并添加"PROD = "前缀。让学生独立完成一次完整的修改→编译→AC流程。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>修改已有代码比从零开始更高效。用TRAE打开NQ001的代码，让AI改成乘法版本。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #2B91AF">int</span> main(){
+    <span style="color: #2B91AF">int</span> a,b;cin&gt;&gt;a&gt;&gt;b;
+    cout&lt;&lt;<span style="color: #A31515">&quot;PROD = &quot;</span>&lt;&lt;a*b&lt;&lt;endl;
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>a=int(input())
+b=int(input())
+print(<span style="color: #A31515">f&quot;PROD = {</span>a*b<span style="color: #A31515">}&quot;</span>)
+</pre></div>
+</div>
+</div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ011</span>简单计算<span class="acw">AcWing 611</span></div>
+<div class="problem-desc">根据产品编号、数量和单价，计算总价。第一行两个整数，第二行一个浮点数。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行：code和quantity（整数）。第二行：price（浮点数）。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">"VALOR A PAGAR: R$ XX.XX"。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ code ≤ 100, 1 ≤ quantity ≤ 100</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>12 1
+5.30</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>VALOR A PAGAR: R$ 5.30</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>总价 = 数量 × 单价。int × float自动提升类型。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>C++中int×double自动转double。Python中int×float自动转float。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2B91AF">int</span> main(){
+    <span style="color: #2B91AF">int</span> c,q;<span style="color: #2B91AF">double</span> p;
+    scanf(<span style="color: #A31515">&quot;%d%d%lf&quot;</span>,&amp;c,&amp;q,&amp;p);
+    printf(<span style="color: #A31515">&quot;VALOR A PAGAR: R$ %.2lf\n&quot;</span>,q*p);
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>c,q=map(int,input().split())
+p=float(input())
+print(<span style="color: #A31515">f&quot;VALOR A PAGAR: R$ {</span>q*p<span style="color: #A31515">:.2f}&quot;</span>)
+</pre></div>
+</div>
+</div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ012</span>球的体积<span class="acw">AcWing 612</span></div>
+<div class="problem-desc">小鲁在物理课上学了球体体积公式V=(4/3)πr³。给定半径r，计算体积。π=3.14159。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个整数r。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">"VOLUME = "后跟体积，保留3位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ r ≤ 1000</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>3</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>VOLUME = 113.097</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>V=(4.0/3.0)×π×r³。C++整数除法陷阱：4/3=1，必须写4.0/3.0。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>C++中整数除法4/3=1的陷阱是初学者最容易犯的错误。Python自动浮点。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2B91AF">int</span> main(){
+    <span style="color: #2B91AF">int</span> r;scanf(<span style="color: #A31515">&quot;%d&quot;</span>,&amp;r);
+    printf(<span style="color: #A31515">&quot;VOLUME = %.3lf\n&quot;</span>,4.0/3.0*3.14159*r*r*r);
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>r=int(input())
+v=4.0/3.0*3.14159*r**3
+print(<span style="color: #A31515">f&quot;VOLUME = {</span>v<span style="color: #A31515">:.3f}&quot;</span>)
+</pre></div>
+</div>
+</div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ013</span>面积<span class="acw">AcWing 613</span></div>
+<div class="problem-desc">计算三个几何图形的面积：(1)直角三角形A*C/2；(2)圆π*C²；(3)梯形(A+B)*C/2。π=3.14159。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，三个浮点数A、B、C。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">三行：TRIANGULO/CIRCULO/TRAPEZIO，各保留3位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0 < A, B, C ≤ 100</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>3.0 4.0 5.2</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>TRIANGULO: 7.800
+CIRCULO: 84.949
+TRAPEZIO: 18.200</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>三道公式一题，注意A、B、C在不同公式中担任不同角色。使用常量PI。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>一道题含三个独立计算，是测试代码组织能力的好题。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2B91AF">int</span> main(){
+    <span style="color: #2B91AF">double</span> a,b,c;
+    scanf(<span style="color: #A31515">&quot;%lf%lf%lf&quot;</span>,&amp;a,&amp;b,&amp;c);
+    printf(<span style="color: #A31515">&quot;TRIANGULO: %.3lf\n&quot;</span>,a*c/2);
+    printf(<span style="color: #A31515">&quot;CIRCULO: %.3lf\n&quot;</span>,3.14159*c*c);
+    printf(<span style="color: #A31515">&quot;TRAPEZIO: %.3lf\n&quot;</span>,(a+b)*c/2);
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>a,b,c=map(float,input().split())
+print(<span style="color: #A31515">f&quot;TRIANGULO: {</span>a*c/2<span style="color: #A31515">:.3f}&quot;</span>)
+print(<span style="color: #A31515">f&quot;CIRCULO: {</span>3.14159*c*c<span style="color: #A31515">:.3f}&quot;</span>)
+print(<span style="color: #A31515">f&quot;TRAPEZIO: {</span>(a+b)*c/2<span style="color: #A31515">:.3f}&quot;</span>)
+</pre></div>
+</div>
+</div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ014</span>最大值<span class="acw">AcWing 614</span></div>
+<div class="problem-desc">输入三个整数a、b、c，输出其中的最大者。这是学习比较和选择逻辑的收尾题。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，三个整数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">一个整数，即最大值。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁹ ≤ a, b, c ≤ 10⁹</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>7 14 106</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>106</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>Python的max(a,b,c)直接接收多参数。C++需max({a,b,c})或max(a,max(b,c))。体现了Python"电池已包含"的设计哲学。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python内置max/min/sum/abs等函数。C++的<algorithm>提供类似功能但语法不如Python自然。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #2B91AF">int</span> main(){
+    <span style="color: #2B91AF">int</span> a,b,c;cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;
+    cout&lt;&lt;max({a,b,c})&lt;&lt;endl;
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>a,b,c=map(int,input().split())
+print(max(a,b,c))
+</pre></div>
+</div>
+</div><hr class="section-divider">
+<div class="chapter-end">— 第1章完 · 共14题 —</div>
+</body></html>

@@ -1,0 +1,89 @@
+{
+  "display_id": "ACW660",
+  "title": "零食",
+  "description": {
+    "format": "html",
+    "value": "<p>小鲁去小卖部买零食。每种零食有编号（1到5）和单价。给定零食编号和数量，请计算总价。</p>"
+  },
+  "tags": [
+    "基础语法"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一行，两个整数：零食编号X（1-5）和数量Y。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出\"Total: R$ \"后跟总价（保留2位小数）。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/660/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "3 2",
+      "output": "Total: R$ 10.00"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "source": "AcWing 660 | NQ016 | 第2章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

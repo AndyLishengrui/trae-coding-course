@@ -1,0 +1,90 @@
+{
+    "display_id": "ACW608",
+    "title": "差",
+    "description": {
+        "format": "html",
+        "value": "<p>读取四个整数A、B、C、D，计算A×B−C×D的结果。</p>"
+    },
+    "tags": [
+        "基础语法",
+        "四则运算"
+    ],
+    "input_description": {
+        "format": "html",
+        "value": "<p>一行，四个整数A、B、C、D，用空格隔开。</p>"
+    },
+    "output_description": {
+        "format": "html",
+        "value": "<p>输出\"DIFERENCA = \"后跟计算结果。</p>"
+    },
+    "test_case_score": [
+        {
+            "score": 10,
+            "input_name": "1.in",
+            "output_name": "1.out"
+        },
+        {
+            "score": 10,
+            "input_name": "2.in",
+            "output_name": "2.out"
+        },
+        {
+            "score": 10,
+            "input_name": "3.in",
+            "output_name": "3.out"
+        },
+        {
+            "score": 10,
+            "input_name": "4.in",
+            "output_name": "4.out"
+        },
+        {
+            "score": 10,
+            "input_name": "5.in",
+            "output_name": "5.out"
+        },
+        {
+            "score": 10,
+            "input_name": "6.in",
+            "output_name": "6.out"
+        },
+        {
+            "score": 10,
+            "input_name": "7.in",
+            "output_name": "7.out"
+        },
+        {
+            "score": 10,
+            "input_name": "8.in",
+            "output_name": "8.out"
+        },
+        {
+            "score": 10,
+            "input_name": "9.in",
+            "output_name": "9.out"
+        },
+        {
+            "score": 10,
+            "input_name": "10.in",
+            "output_name": "10.out"
+        }
+    ],
+    "hint": {
+        "format": "html",
+        "value": "<a href=\"https://www.acwing.com/problem/content/608/\" target=\"_blank\">原题链接</a>"
+    },
+    "time_limit": 1000,
+    "memory_limit": 256,
+    "samples": [
+        {
+            "input": "5 6 7 8",
+            "output": "DIFERENCA = -26"
+        }
+    ],
+    "template": {},
+    "spj": null,
+    "rule_type": "OI",
+    "source": "AcWing 608 | NQ002 | 第1章 程序设计的第一个脚印",
+    "answers": [],
+    "allow_public_test_case_download": false
+}
