@@ -1,0 +1,688 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第5章 矩阵的舞蹈</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999;font-family:"PingFang SC",sans-serif}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
+body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222}
+.chapter-title{text-align:center;font-size:20pt;font-weight:bold;margin:1.5em 0 .1em 0;letter-spacing:3pt}
+.chapter-subtitle{text-align:center;font-size:10pt;color:#777;margin-bottom:1.5em;padding-bottom:.8em;border-bottom:1px solid #bbb}
+.preface{font-size:10pt;margin-bottom:2em;color:#444}.preface p{margin:.4em 0;text-indent:2em}
+.problem-title{font-size:12pt;font-weight:bold;margin:1.5em 0 .4em 0;padding-bottom:.15em;border-bottom:1pt solid #444}
+.problem-title .nq{color:#2563eb;margin-right:.6em;font-size:11pt}.problem-title .acw{font-size:7.5pt;color:#aaa;font-weight:normal;margin-left:1em}
+.problem-desc{margin:.6em 0 1em 0;text-indent:2em;line-height:1.85}
+.spec-table{width:100%;border-collapse:collapse;margin:.3em 0 .5em 0;font-size:9pt}
+.spec-table td{padding:.3em .8em;vertical-align:top;border:none}
+.spec-table .spec-label{width:4em;font-size:8pt;font-weight:bold;text-align:right;padding-right:1em;white-space:nowrap}
+.spec-table .spec-label .tag{display:inline-block;padding:.15em .5em;border-radius:2px;color:#fff;font-size:7.5pt;letter-spacing:.5pt}
+.spec-table .spec-label .tag.in{background:#2563eb}.spec-table .spec-label .tag.out{background:#059669}.spec-table .spec-label .tag.lim{background:#d97706}
+.spec-table .spec-value{color:#333;font-size:9pt}
+.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.7em 1em;margin:1em 0 1.2em 0}
+.sample-grid{display:flex;gap:2em}.sample-col{flex:1}
+.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:.2em;font-weight:bold}
+.sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
+.insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
+.insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
+.code-dual{display:flex;gap:1.5em;margin:1.2em 0;page-break-inside:avoid}.code-col{flex:1;min-width:0}
+.code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
+.code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
+.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
+body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模式"}</style></head><body>
+<div class="chapter-title">矩阵的舞蹈</div><div class="chapter-subtitle">多维数组与矩阵模式 · 12题 · C++ &amp; Python 双语对照</div>
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ055</span>数组的右上半部分<span class="acw">AcWing 745</span></div>
+<div class="problem-desc">给定一个12×12的二维数组。计算右上半部分（j>i）所有元素的平均值或求和。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行操作类型(S/M)。第二行0-11的行号。然后144个浮点数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">结果保留1位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁶到10⁶</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>S
+(144 numbers...)</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>(sum, 1 decimal)</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>右上三角：j>i。双层循环i:0-11,j:0-11，满足j>i时累加。注意不包括对角线上元素。S求总和，M求平均除以66。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>右上三角=66个元素。S/M判断用if/else。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+
+<span style="color: #2B91AF">int</span> main()
+{
+  <span style="color: #2B91AF">char</span> t;
+  scanf(<span style="color: #A31515">&quot;%c&quot;</span>, &amp;t);
+  <span style="color: #2B91AF">double</span> a[12][12];
+
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 12; i ++ )
+      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt; 12; j ++ )
+          scanf(<span style="color: #A31515">&quot;%lf&quot;</span>, &amp;a[i][j]);
+
+  <span style="color: #2B91AF">int</span> c = 0;
+  <span style="color: #2B91AF">double</span> s = 0;
+
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 12; i ++ )
+      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = i + 1; j &lt; 12; j ++ )
+      {
+        c ++ ;
+        s += a[i][j];
+      }
+
+  <span style="color: #00F">if</span> (t == <span style="color: #A31515">&#39;S&#39;</span>) printf(<span style="color: #A31515">&quot;%.1lf\n&quot;</span>, s);
+  <span style="color: #00F">else</span> printf(<span style="color: #A31515">&quot;%.1lf\n&quot;</span>, s / c);
+
+  <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>l=input();t=input().strip();s=0
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(12):
+ <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(12):
+  x=float(input())
+  <span style="color: #00F">if</span> j&gt;i:s+=x
+print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if</span> t==<span style="color: #A31515">&quot;S&quot;</span> <span style="color: #00F">else</span> s/66<span style="color: #A31515">:.1f}&#39;</span>)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ056</span>数组的左上半部分<span class="acw">AcWing 747</span></div>
+<div class="problem-desc">计算12×12矩阵左上半部分(j<11-i)元素的平均值或和。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行操作类型(S/M)。然后144个浮点数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">结果保留1位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁶到10⁶</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>S
+(144...)</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>(sum,1 decimal)</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>左上三角：j<11-i（反对角线以上）。注意不包括反对角线。66个元素。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>反对角线条件：i+j<11。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+
+<span style="color: #2B91AF">int</span> main()
+{
+  <span style="color: #2B91AF">double</span> a[12][12];
+  <span style="color: #2B91AF">char</span> t;
+
+  scanf(<span style="color: #A31515">&quot;%c&quot;</span>, &amp;t);
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 12; i ++ )
+      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt; 12; j ++ )
+       scanf(<span style="color: #A31515">&quot;%lf&quot;</span>, &amp;a[i][j]);
+
+  <span style="color: #2B91AF">int</span> c = 0;
+  <span style="color: #2B91AF">double</span> s = 0;
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 12; i ++ )
+      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt;= 10 - i; j ++ )
+      {
+        c ++ ;
+        s += a[i][j];
+      }
+
+  <span style="color: #00F">if</span> (t == <span style="color: #A31515">&#39;S&#39;</span>) printf(<span style="color: #A31515">&quot;%.1lf\n&quot;</span>, s);
+  <span style="color: #00F">else</span> printf(<span style="color: #A31515">&quot;%.1lf\n&quot;</span>, s / c);
+
+  <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>t=input().strip();s=0
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(12):
+ <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(12):
+  x=float(input())
+  <span style="color: #00F">if</span> j&lt;11-i:s+=x
+print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if</span> t==<span style="color: #A31515">&quot;S&quot;</span> <span style="color: #00F">else</span> s/66<span style="color: #A31515">:.1f}&#39;</span>)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ057</span>数组的上方区域<span class="acw">AcWing 749</span></div>
+<div class="problem-desc">计算12×12矩阵上方区域(去掉左右两个三角)的元素和或平均值。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">操作类型(S/M)+144浮点数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">保留1位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁶到10⁶</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>S
+(144...)</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>(sum,1 decimal)</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>上方区域：i<j且i+j<11。即去掉左三角(i>=j)和右三角(i+j>=11)。30个元素。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>两个条件交集：i<j and i+j<11。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #2B91AF">char</span> t;
+    cin &gt;&gt; t;
+    <span style="color: #2B91AF">double</span> m[12][12];
+
+
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 12; i ++ )
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt; 12; j ++ )
+            cin &gt;&gt; m[i][j];
+
+    <span style="color: #2B91AF">double</span> s = 0, c = 0;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 5; i ++ )
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = i + 1; j &lt;= 10 - i; j ++ )
+        {
+          c += 1;
+          s += m[i][j];
+        }
+    <span style="color: #00F">if</span> (t == <span style="color: #A31515">&#39;M&#39;</span>) printf(<span style="color: #A31515">&quot;%.1lf\n&quot;</span>, s / c);
+    <span style="color: #00F">else</span> printf(<span style="color: #A31515">&quot;%.1lf\n&quot;</span>, s);
+
+    <span style="color: #00F">return</span> 0;        
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>t=input().strip();s=c=0
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(12):
+ <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(12):
+  x=float(input())
+  <span style="color: #00F">if</span> i&lt;j <span style="color: #00F">and</span> i+j&lt;11:s+=x;c+=1
+print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if</span> t==<span style="color: #A31515">&quot;S&quot;</span> <span style="color: #00F">else</span> s/c<span style="color: #A31515">:.1f}&#39;</span>)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ058</span>数组的左方区域<span class="acw">AcWing 751</span></div>
+<div class="problem-desc">计算12×12矩阵左方区域(去掉上下三角)的元素和或平均值。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">操作类型(S/M)+144浮点数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">保留1位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁶到10⁶</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>S
+(144...)</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>(sum,1 decimal)</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>左方区域：j<i且i+j<11。去掉上方三角(i<=j)和下方三角(i+j>=11)。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>左右对称于NQ057。条件交换i和j。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #2B91AF">char</span> t;
+    cin &gt;&gt; t;
+
+    <span style="color: #2B91AF">double</span> m[12][12];
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 12; i ++ )
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt; 12; j ++ )
+            cin &gt;&gt; m[i][j];
+
+    <span style="color: #2B91AF">double</span> s = 0, c = 0;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= 5; i ++ )
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt;= i - 1; j ++ )
+        {
+          s += m[i][j];
+          c += 1;
+        }
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 6; i &lt;= 10; i ++ )
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt;= 10 - i; j ++ )
+        {
+          s += m[i][j];
+          c += 1;
+        }
+    <span style="color: #00F">if</span> (t == <span style="color: #A31515">&#39;M&#39;</span>) printf(<span style="color: #A31515">&quot;%.1lf\n&quot;</span>, s / c);
+    <span style="color: #00F">else</span> printf(<span style="color: #A31515">&quot;%.1lf\n&quot;</span>, s);
+
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>t=input().strip();s=c=0
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(12):
+ <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(12):
+  x=float(input())
+  <span style="color: #00F">if</span> j&lt;i <span style="color: #00F">and</span> i+j&lt;11:s+=x;c+=1
+print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if</span> t==<span style="color: #A31515">&quot;S&quot;</span> <span style="color: #00F">else</span> s/c<span style="color: #A31515">:.1f}&#39;</span>)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ059</span>平方矩阵I<span class="acw">AcWing 753</span></div>
+<div class="problem-desc">输入整数N，输出N×N的回字形矩阵。每个位置的值=min(i+1,j+1,N-i,N-j)。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">多个整数N(0结束)。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">N×N矩阵，每个数占3字符宽。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1≤N≤100</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>1
+2
+3
+0</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>  1
+
+  1  1
+  1  1
+
+  1  1  1
+  1  2  1
+  1  1  1</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>数学公式法：val=min(i,j,n-1-i,n-1-j)+1(0-indexed)。每行空格分隔，每个数占3位。注意N=0结束。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>用数学公式替代模拟填充是理解抽象思维的好题。Python: f'{x:3d}'右对齐。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #2B91AF">int</span> n;
+    <span style="color: #00F">while</span> (cin &gt;&gt; n, n)
+    {
+      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i ++ )
+      {
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;= n; j ++ )
+        {
+         <span style="color: #2B91AF">int</span> up = i, down = n - i + 1, left = j, right = n - j + 1;
+         cout &lt;&lt; min(min(up, down), min(left, right)) &lt;&lt; <span style="color: #A31515">&#39; &#39;</span>;
+        }
+        cout &lt;&lt; endl;
+      }
+
+      cout &lt;&lt; endl;
+    }
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">while</span> <span style="color: #00F">True</span>:
+ n=int(input())
+ <span style="color: #00F">if</span> n==0:<span style="color: #00F">break</span>
+ <span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(n):
+  row=[]
+  <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(n):
+   v=min(i,j,n-1-i,n-1-j)+1
+   row.append(<span style="color: #A31515">f&#39;{</span>v<span style="color: #A31515">:3d}&#39;</span>)
+  print(<span style="color: #A31515">&#39;&#39;</span>.join(row))
+ print()
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ060</span>数组的右下半部分<span class="acw">AcWing 748</span></div>
+<div class="problem-desc">计算12×12矩阵右下半部分(j>10-i)的元素和或平均值。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">操作类型(S/M)+144浮点数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">保留1位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁶到10⁶</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>S
+(144...)</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>(sum,1 decimal)</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>右下三角：j>10-i（即i+j>10）。66个元素。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>i+j>10或j>=11-i。注意对角线归属。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">int</span> main()
+{
+  <span style="color: #2B91AF">char</span> t;
+  cin &gt;&gt; t;
+  <span style="color: #2B91AF">double</span> m[12][12];
+
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 12; i ++ )
+      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt; 12; j ++ )
+          cin &gt;&gt; m[i][j];
+
+  <span style="color: #2B91AF">double</span> s = 0, c = 0;
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= 11; i ++ )
+      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 12 - i; j &lt;= 11; j ++ )
+      {
+        s += m[i][j];
+        c += 1;
+      }
+
+  <span style="color: #00F">if</span> (t == <span style="color: #A31515">&#39;S&#39;</span>) printf(<span style="color: #A31515">&quot;%.1lf\n&quot;</span>, s);
+  <span style="color: #00F">else</span> printf(<span style="color: #A31515">&quot;%.1lf\n&quot;</span>, s / c);
+
+  <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>t=input().strip();s=0
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(12):
+ <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(12):
+  x=float(input())
+  <span style="color: #00F">if</span> i+j&gt;10:s+=x
+print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if</span> t==<span style="color: #A31515">&quot;S&quot;</span> <span style="color: #00F">else</span> s/66<span style="color: #A31515">:.1f}&#39;</span>)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ061</span>数组的左下半部分<span class="acw">AcWing 746</span></div>
+<div class="problem-desc">计算12×12矩阵左下半部分(j<i)的元素和或平均值。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">操作类型(S/M)+144浮点数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">保留1位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁶到10⁶</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>S
+(144...)</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>(sum,1 decimal)</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>左下三角：j<i。66个元素。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>与右上三角对称。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">int</span> main()
+{
+  <span style="color: #2B91AF">char</span> t;
+  cin &gt;&gt; t;
+
+  <span style="color: #2B91AF">double</span> m[12][12];
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 12; i ++ )
+      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt; 12; j ++ )
+          cin &gt;&gt; m[i][j];
+
+  <span style="color: #2B91AF">double</span> s = 0, c = 0;
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 12; i ++ )
+      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt;= i - 1; j ++ )
+      {
+        s += m[i][j];
+        c += 1;
+      }
+
+  <span style="color: #00F">if</span> (t == <span style="color: #A31515">&#39;S&#39;</span>) printf(<span style="color: #A31515">&quot;%.1lf\n&quot;</span>, s);
+  <span style="color: #00F">else</span> printf(<span style="color: #A31515">&quot;%.1lf\n&quot;</span>, s / c);
+
+  <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>t=input().strip();s=0
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(12):
+ <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(12):
+  x=float(input())
+  <span style="color: #00F">if</span> j&lt;i:s+=x
+print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if</span> t==<span style="color: #A31515">&quot;S&quot;</span> <span style="color: #00F">else</span> s/66<span style="color: #A31515">:.1f}&#39;</span>)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ062</span>数组的下方区域<span class="acw">AcWing 750</span></div>
+<div class="problem-desc">计算12×12矩阵下方区域的元素和或平均值。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">操作类型(S/M)+144浮点数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">保留1位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁶到10⁶</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>S
+(144...)</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>(sum,1 decimal)</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>下方区域：i>j且i+j>10。去掉上方三角和左右区域。30个元素。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>与上方区域对称：i>j and i+j>10。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #2B91AF">char</span> t;
+    cin &gt;&gt; t;
+
+    <span style="color: #2B91AF">double</span> m[12][12];
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 12; i ++ )
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt; 12; j ++ )
+            cin &gt;&gt; m[i][j];
+
+    <span style="color: #2B91AF">double</span> s = 0, c = 0;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 7; i &lt;= 11; i ++ )
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 12 - i; j &lt;= i - 1; j ++ )
+        {
+          c += 1;
+          s += m[i][j];
+        }
+    <span style="color: #00F">if</span> (t == <span style="color: #A31515">&#39;M&#39;</span>) printf(<span style="color: #A31515">&quot;%.1lf\n&quot;</span>, s / c);
+    <span style="color: #00F">else</span> printf(<span style="color: #A31515">&quot;%.1lf\n&quot;</span>, s);
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>t=input().strip();s=c=0
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(12):
+ <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(12):
+  x=float(input())
+  <span style="color: #00F">if</span> i&gt;j <span style="color: #00F">and</span> i+j&gt;10:s+=x;c+=1
+print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if</span> t==<span style="color: #A31515">&quot;S&quot;</span> <span style="color: #00F">else</span> s/c<span style="color: #A31515">:.1f}&#39;</span>)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ063</span>数组的右方区域<span class="acw">AcWing 752</span></div>
+<div class="problem-desc">计算12×12矩阵右方区域的元素和或平均值。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">操作类型(S/M)+144浮点数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">保留1位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁶到10⁶</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>S
+(144...)</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>(sum,1 decimal)</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>右方区域：j>i且i+j>10。30个元素。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>与左方区域对称：j>i and i+j>10。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #2B91AF">char</span> t;
+    cin &gt;&gt; t;
+    <span style="color: #2B91AF">double</span> m[12][12];
+
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 12; i ++ )
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt; 12; j ++ )
+            cin &gt;&gt; m[i][j];
+
+    <span style="color: #2B91AF">double</span> s = 0, c = 0;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= 5; i ++ )
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 12 - i; j &lt;= 11; j ++ )
+        {
+          s += m[i][j];
+          c += 1;
+        }
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 6; i &lt;= 10; i ++ )
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = i + 1; j &lt;= 11; j ++ )
+        {
+          s += m[i][j];
+          c += 1;
+        }
+    <span style="color: #00F">if</span> (t == <span style="color: #A31515">&#39;M&#39;</span>) printf(<span style="color: #A31515">&quot;%.1lf\n&quot;</span>, s / c);
+    <span style="color: #00F">else</span> printf(<span style="color: #A31515">&quot;%.1lf\n&quot;</span>, s);
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>t=input().strip();s=c=0
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(12):
+ <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(12):
+  x=float(input())
+  <span style="color: #00F">if</span> j&gt;i <span style="color: #00F">and</span> i+j&gt;10:s+=x;c+=1
+print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if</span> t==<span style="color: #A31515">&quot;S&quot;</span> <span style="color: #00F">else</span> s/c<span style="color: #A31515">:.1f}&#39;</span>)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ064</span>平方矩阵II<span class="acw">AcWing 754</span></div>
+<div class="problem-desc">输入N，输出N×N矩阵。每个位置的值=|i-j|+1。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">多个整数N(0结束)。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">N×N矩阵，每个数占3字符宽。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1≤N≤100</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>3
+0</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>  1  2  3
+  2  1  2
+  3  2  1</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>对角线距离公式：abs(i-j)+1。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>|i-j|+1巧妙的数学化简。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">int</span> q[100][100];
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #2B91AF">int</span> n;
+    <span style="color: #00F">while</span> (cin &gt;&gt; n, n)
+    {
+     <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i ++ )
+     {
+       q[i][i] = 1;
+       <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = i + 1, k = 2; j &lt; n; j ++ , k ++ ) q[i][j] = k;
+       <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = i + 1, k = 2; j &lt; n; j ++ , k ++ ) q[j][i] = k;
+     }
+
+     <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i ++ )
+     {
+       <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt; n; j ++ ) cout &lt;&lt; q[i][j] &lt;&lt; <span style="color: #A31515">&#39; &#39;</span>;
+       cout &lt;&lt; endl;
+     }
+     cout &lt;&lt; endl;
+    }
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">while</span> <span style="color: #00F">True</span>:
+ n=int(input())
+ <span style="color: #00F">if</span> n==0:<span style="color: #00F">break</span>
+ <span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(n):
+  print(<span style="color: #A31515">&#39;&#39;</span>.join(<span style="color: #A31515">f&#39;{</span>abs(i-j)+1<span style="color: #A31515">:3d}&#39;</span><span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(n)))
+ print()
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ065</span>平方矩阵III<span class="acw">AcWing 755</span></div>
+<div class="problem-desc">输入N，输出N×N矩阵。每个位置的值=2^(i+j)。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">多个整数N(0结束)。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">N×N矩阵，每个数右对齐到最大数的宽度+1。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1≤N≤15</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>3
+0</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>  1  2  4
+  2  4  8
+  4  8 16</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>2^(i+j)模式。注意16×16=256，N≤15确保结果在int范围。用1<<(i+j)位运算。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>C++用1<<(i+j)位运算。Python的2**(i+j)或1<<(i+j)。右对齐宽度=最长数字宽度+1。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #2B91AF">int</span> n;
+    <span style="color: #00F">while</span> (cin &gt;&gt; n, n)
+    {
+      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i ++ )
+      {
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt; n; j ++ )
+        {
+          <span style="color: #2B91AF">int</span> v = 1;
+          <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> k = 0; k &lt; i + j; k ++ ) v *= 2;
+          cout &lt;&lt; v &lt;&lt; <span style="color: #A31515">&#39; &#39;</span>;
+        }
+        cout &lt;&lt; endl;
+      }
+
+      cout &lt;&lt; endl;
+    }
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">while</span> <span style="color: #00F">True</span>:
+ n=int(input())
+ <span style="color: #00F">if</span> n==0:<span style="color: #00F">break</span>
+ w=len(str(2**(2*n-2)))+1
+ <span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(n):
+  print(<span style="color: #A31515">&#39;&#39;</span>.join(<span style="color: #A31515">f&#39;{</span>2**(i+j)<span style="color: #A31515">:{</span>w<span style="color: #A31515">}d}&#39;</span><span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(n)))
+ print()
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ066</span>蛇形矩阵<span class="acw">AcWing 756</span></div>
+<div class="problem-desc">输入n和m，输出n×m蛇形矩阵。从(1,1)开始，每次向右走到边界，向下走一步，再向左，向上……循环直到所有格填完。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行两个整数n和m。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">n行m列的蛇形矩阵。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1≤n,m≤100</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>3 3</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>1 2 3
+8 9 4
+7 6 5</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>方向数组+边界检测。d=[(0,1),(1,0),(0,-1),(-1,0)]依次控制→↓←↑。撞墙或已填则转向。while循环填充所有格子。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>方向数组是处理螺旋/蛇形遍历的标准模式。每次移动前检查是否越界或已填。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">int</span> res[100][100];
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #2B91AF">int</span> n, m;
+    cin &gt;&gt; n &gt;&gt; m;
+
+    <span style="color: #2B91AF">int</span> dx[] = {0, 1, 0, -1}, dy[] = {1, 0, -1, 0};
+
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> x = 0, y = 0, d = 0, k = 1; k &lt;= n * m; k ++ )
+    {
+      res[x][y] = k;
+      <span style="color: #2B91AF">int</span> a = x + dx[d], b = y + dy[d];
+      <span style="color: #00F">if</span> (a &lt; 0 || a &gt;= n || b &lt; 0 || b &gt;= m || res[a][b])
+      {
+        d = (d + 1) % 4;
+        a = x + dx[d], b = y + dy[d];
+      }
+      x = a; y = b;
+    }
+
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i ++ )
+    {
+      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt; m; j ++ ) cout &lt;&lt; res[i][j] &lt;&lt; <span style="color: #A31515">&#39; &#39;</span>;
+      cout &lt;&lt; endl;
+    }
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>n,m=map(int,input().split());a=[[0]*m <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n)]
+dx=[0,1,0,-1];dy=[1,0,-1,0];d=0;x=y=0
+<span style="color: #00F">for</span> v <span style="color: #00F">in</span> range(1,n*m+1):
+ a[x][y]=v;nx=x+dx[d];ny=y+dy[d]
+ <span style="color: #00F">if</span> nx&lt;0 <span style="color: #00F">or</span> nx&gt;=n <span style="color: #00F">or</span> ny&lt;0 <span style="color: #00F">or</span> ny&gt;=m <span style="color: #00F">or</span> a[nx][ny]:d=(d+1)%4;nx=x+dx[d];ny=y+dy[d]
+ x,y=nx,ny
+<span style="color: #00F">for</span> r <span style="color: #00F">in</span> a:print(<span style="color: #A31515">&#39; &#39;</span>.join(map(str,r)))
+</pre></div>
+</div></div><hr class="section-divider"><div class="chapter-end">— 第5章完 · 共12题 —</div></body></html>
