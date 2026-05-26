@@ -1,1 +1,1 @@
-print(' '.join(input()))
+print(" ".join(input()))
