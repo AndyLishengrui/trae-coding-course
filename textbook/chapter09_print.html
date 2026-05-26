@@ -457,13 +457,22 @@ body{string-set:chapter "第9章 分治之美——排序与二分"}</style></he
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ107</span>AcWing 727<span class="acw">AcWing 727</span></div>
-<div class="problem-desc">AcWing 727</div>
+<div class="problem-title"><span class="nq">NQ107</span>菱形<span class="acw">AcWing 727</span></div>
+<div class="problem-desc">输入一个奇数n，输出一个由*构成的n阶实心菱形。菱形中心为第(n+1)/2行，每行星号数量以中心对称。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个奇数n。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个由*构成的n阶实心菱形。</td></tr>
 <tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 727</td></tr>
 </table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>5</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>  *
+ ***
+*****
+ ***
+  *</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>数据范围: 1≤n≤99</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>

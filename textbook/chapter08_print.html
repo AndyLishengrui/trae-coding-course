@@ -56,13 +56,20 @@ body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL�
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ092</span>AcWing 17<span class="acw">AcWing 17</span></div>
-<div class="problem-desc">AcWing 17</div>
+<div class="problem-title"><span class="nq">NQ092</span>从尾到头打印链表<span class="acw">AcWing 17</span></div>
+<div class="problem-desc">输入一个链表的头结点，按照从尾到头的顺序返回节点的值。返回的结果用数组存储。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">链表节点值序列，以-1结束。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">从尾到头的节点值，每行一个。</td></tr>
 <tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 17</td></tr>
 </table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>1 2 3 -1</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>3
+2
+1</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>数据范围: 链表长度≤1000</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #008000">/**</span>
 <span style="color: #008000"> * Definition for singly-linked list.</span>
@@ -306,13 +313,23 @@ false
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ097</span>AcWing 862<span class="acw">AcWing 862</span></div>
-<div class="problem-desc">AcWing 862</div>
+<div class="problem-title"><span class="nq">NQ097</span>三元组排序<span class="acw">AcWing 862</span></div>
+<div class="problem-desc">给定N个三元组(x,y,z)，每个三元组包含一个整数x、一个整数y和一个字符串z。按照x从小到大的顺序输出所有三元组。数据保证不同三元组的x值互不相同。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含整数N。接下来N行，每行包含一个整数x、一个整数y和一个由小写字母组成的字符串z。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共N行，按照x从小到大的顺序，每行输出一个三元组。</td></tr>
 <tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 862</td></tr>
 </table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>3
+1 2 abc
+3 4 def
+2 1 ghi</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>1 2 abc
+2 1 ghi
+3 4 def</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>数据范围: 1≤N≤10000, 1≤x,y≤10^5, 字符串总长度不超过10^5</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
@@ -348,13 +365,18 @@ false
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ098</span>AcWing 810<span class="acw">AcWing 810</span></div>
-<div class="problem-desc">AcWing 810</div>
+<div class="problem-title"><span class="nq">NQ098</span>绝对值<span class="acw">AcWing 810</span></div>
+<div class="problem-desc">输入一个整数x，请你编写一个函数 int abs(int x)，输出x的绝对值。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含一个整数x。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共一行，包含x的绝对值。</td></tr>
 <tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 810</td></tr>
 </table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>-5</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>5</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">提示</span><span>数据范围: −100≤x≤100</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
