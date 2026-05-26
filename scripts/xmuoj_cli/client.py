@@ -22,7 +22,6 @@ class XmuojClient:
                  base_url: Optional[str] = None):
         base = (base_url or BASE_URL).rstrip("/")
         self.base_url = base
-        self.baseUrl = base
         self.admin_api = f"{base}/api/admin"
         self.public_api = f"{base}/api"
         self.session = requests.Session()

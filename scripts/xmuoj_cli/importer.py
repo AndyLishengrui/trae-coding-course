@@ -78,7 +78,7 @@ class ProblemImporter:
         Returns:
             导入结果
         """
-        url = f"{self.client.baseUrl}/api/admin/import_problem/"
+        url = f"{self.client.base_url}/api/admin/import_problem/"
         with open(zip_path, "rb") as f:
             files = {"file": (os.path.basename(zip_path), f, "application/zip")}
             resp = self.client.session.post(

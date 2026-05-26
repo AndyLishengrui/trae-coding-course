@@ -1,0 +1,491 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第4章 数据的容器</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999;font-family:"PingFang SC",sans-serif}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
+body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222;string-set:chapter "第4章 数据的容器 —— 数组与线性存储"}
+.chapter-title{text-align:center;font-size:20pt;font-weight:bold;margin:1.5em 0 .1em 0;letter-spacing:3pt}
+.chapter-subtitle{text-align:center;font-size:10pt;color:#777;margin-bottom:1.5em;padding-bottom:.8em;border-bottom:1px solid #bbb}
+.preface{font-size:10pt;margin-bottom:2em;color:#444}.preface p{margin:.4em 0;text-indent:2em}
+.problem-title{font-size:12pt;font-weight:bold;margin:1.5em 0 .4em 0;padding-bottom:.15em;border-bottom:1pt solid #444}
+.problem-title .nq{color:#2563eb;margin-right:.6em;font-size:11pt}.problem-title .acw{font-size:7.5pt;color:#aaa;font-weight:normal;margin-left:1em}
+.problem-desc{margin:.6em 0 1em 0;text-indent:2em;line-height:1.85}
+.spec-table{width:100%;border-collapse:collapse;margin:.3em 0 .5em 0;font-size:9pt}
+.spec-table td{padding:.3em .8em;vertical-align:top;border:none}
+.spec-table .spec-label{width:4em;font-size:8pt;font-weight:bold;text-align:right;padding-right:1em;white-space:nowrap}
+.spec-table .spec-label .tag{display:inline-block;padding:.15em .5em;border-radius:2px;color:#fff;font-size:7.5pt;letter-spacing:.5pt}
+.spec-table .spec-label .tag.in{background:#2563eb}.spec-table .spec-label .tag.out{background:#059669}.spec-table .spec-label .tag.lim{background:#d97706}
+.spec-table .spec-value{color:#333;font-size:9pt}
+.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.7em 1em;margin:1em 0 1.2em 0}
+.sample-grid{display:flex;gap:2em}.sample-col{flex:1}
+.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:.2em;font-weight:bold}
+.sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
+.insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
+.insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
+.code-dual{display:flex;gap:1.5em;margin:1.2em 0;page-break-inside:avoid}.code-col{flex:1;min-width:0}
+.code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
+.code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
+.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body>
+<div class="chapter-title">数据的容器</div><div class="chapter-subtitle">数组与线性存储 · 12题 · C++ &amp; Python 双语对照</div>
+<div class="preface"><p>本章进入数据结构的核心——数组。12道题目覆盖一维数组的遍历、替换、填充、筛选、翻转、递推（斐波那契）、最值查找、二维数组的行列操作，以及质数判定的算法优化。你将掌握Python的列表推导、enumerate、切片翻转，以及C++的vector/array操作。</p></div>
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ043</span>数组替换<span class="acw">AcWing 737</span></div>
+<div class="problem-desc">小鲁学习了数组。给定一个长度为10的数组，将其中所有小于等于0的元素替换为1，然后输出整个数组。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">10行，每行一个整数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">10行，每行"X[i] = Y"，i从0到9，Y为替换后的值。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁹ ≤ 值 ≤ 10⁹</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>0
+-5
+63
+-8
+0
+...</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>X[0] = 1
+X[1] = 1
+X[2] = 63
+...</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>遍历数组，如果元素≤0则替换为1。用下标循环或for-each+索引。C++用for(int i=0;i<10;i++)，Python用enumerate()同时获取索引和值。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的enumerate(arr)返回(index, value)元组。C++中arr[i]访问元素。数组索引从0开始。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">int</span> x;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 10; i++) {
+        cin &gt;&gt; x;
+        <span style="color: #00F">if</span> (x &lt;= 0) x = 1;
+        cout &lt;&lt; <span style="color: #A31515">&quot;X[&quot;</span> &lt;&lt; i &lt;&lt; <span style="color: #A31515">&quot;] = &quot;</span> &lt;&lt; x &lt;&lt; endl;
+    }
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(10):
+    x = int(input())
+    <span style="color: #00F">if</span> x &lt;= 0: x = 1
+    print(<span style="color: #A31515">f&quot;X[{</span>i<span style="color: #A31515">}] = {</span>x<span style="color: #A31515">}&quot;</span>)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ044</span>数组填充<span class="acw">AcWing 738</span></div>
+<div class="problem-desc">给定一个整数V，构造一个长度为10的数组，第0个元素是V，此后每个元素是前一个的两倍。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个整数V。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">10行，每行"N[i] = X"。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁴ ≤ V ≤ 10⁴</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>1</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>N[0] = 1
+N[1] = 2
+N[2] = 4
+...</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>递推生成数组：arr[0]=V, arr[i]=arr[i-1]*2。Python用列表推导或循环。C++用vector或直接输出。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的列表推导：[v*(2**i) for i in range(10)]直接用位移运算。C++中1<<i等价于2^i。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">int</span> v;
+    cin &gt;&gt; v;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 10; i++, v *= 2)
+        cout &lt;&lt; <span style="color: #A31515">&quot;N[&quot;</span> &lt;&lt; i &lt;&lt; <span style="color: #A31515">&quot;] = &quot;</span> &lt;&lt; v &lt;&lt; endl;
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>v = int(input())
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(10):
+    print(<span style="color: #A31515">f&quot;N[{</span>i<span style="color: #A31515">}] = {</span>v<span style="color: #A31515">}&quot;</span>)
+    v *= 2
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ045</span>数组选择<span class="acw">AcWing 739</span></div>
+<div class="problem-desc">读取100个浮点数。对于每个小于等于10的数，按格式输出它在数组中的位置和值。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">100行（或一行多个），每行一个浮点数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">对每个≤10的数，输出"A[i] = X"（保留1位小数）。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁶ ≤ 值 ≤ 10⁶</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>0
+-5
+63
+...</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>A[0] = 0.0
+A[1] = -5.0
+...</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>遍历100次读入，条件判断≤10则输出。Python无需存储全部数据，边读边输出即可，节省内存。C++同样。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>流式处理：不需要把100个数都存下来，读一个判断一个输出一个。这种思维在处理大数据时很重要。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 100; i++) {
+        <span style="color: #2B91AF">double</span> x;
+        scanf(<span style="color: #A31515">&quot;%lf&quot;</span>, &amp;x);
+        <span style="color: #00F">if</span> (x &lt;= 10) printf(<span style="color: #A31515">&quot;A[%d] = %.1f\n&quot;</span>, i, x);
+    }
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(100):
+    x = float(input())
+    <span style="color: #00F">if</span> x &lt;= 10:
+        print(<span style="color: #A31515">f&quot;A[{</span>i<span style="color: #A31515">}] = {</span>x<span style="color: #A31515">:.1f}&quot;</span>)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ046</span>数组中的行<span class="acw">AcWing 743</span></div>
+<div class="problem-desc">给定一个12×12的二维数组。读取行号L和操作类型T（'S'求和或'M'求平均），计算第L行所有元素的和或平均值。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行L(0-11)。第二行T('S'或'M')。接下来144个浮点数（12×12矩阵）。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">结果保留1位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">矩阵元素−10⁶到10⁶</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>2
+S
+(144个浮点数...)</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>(第2行之和,1位小数)</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>双层循环遍历矩阵，遇到目标行L时累加。如果是'M'求平均则除以12。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>二维数组读入：外层for i in range(12)，内层for j in range(12)。Python用嵌套列表推导生成矩阵。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">int</span> l; <span style="color: #2B91AF">char</span> t;
+    scanf(<span style="color: #A31515">&quot;%d %c&quot;</span>, &amp;l, &amp;t);
+    <span style="color: #2B91AF">double</span> sum = 0, x;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 12; i++)
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt; 12; j++) {
+            scanf(<span style="color: #A31515">&quot;%lf&quot;</span>, &amp;x);
+            <span style="color: #00F">if</span> (i == l) sum += x;
+        }
+    printf(<span style="color: #A31515">&quot;%.1lf\n&quot;</span>, t == <span style="color: #A31515">&#39;S&#39;</span> ? sum : sum / 12);
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>l = int(input())
+t = input().strip()
+sum_val = 0
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(12):
+    <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(12):
+        x = float(input())
+        <span style="color: #00F">if</span> i == l: sum_val += x
+print(<span style="color: #A31515">f&quot;{</span>sum_val <span style="color: #00F">if</span> t == <span style="color: #A31515">&#39;S&#39;</span> <span style="color: #00F">else</span> sum_val / 12<span style="color: #A31515">:.1f}&quot;</span>)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ047</span>数组变换<span class="acw">AcWing 740</span></div>
+<div class="problem-desc">给定一个20个整数的数组。将数组前后对称位置互换（第0个和第19个交换，第1个和第18个交换...），输出变换后的数组。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">20个整数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">20行，每行"N[i] = X"。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁹ ≤ 值 ≤ 10⁹</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>0
+1
+2
+...
+19</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>N[0] = 19
+N[1] = 18
+...</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>对称交换：arr[i] ↔ arr[19-i]，只需循环10次（i从0到9）。Python用切片arr[::-1]一行翻转。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的arr[::-1]是最简洁的数组翻转方式。C++用reverse()或手写交换。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">int</span> arr[20];
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 20; i++) cin &gt;&gt; arr[i];
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 10; i++) swap(arr[i], arr[19 - i]);
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 20; i++)
+        cout &lt;&lt; <span style="color: #A31515">&quot;N[&quot;</span> &lt;&lt; i &lt;&lt; <span style="color: #A31515">&quot;] = &quot;</span> &lt;&lt; arr[i] &lt;&lt; endl;
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>arr = [int(input()) <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(20)]
+arr.reverse()
+<span style="color: #00F">for</span> i, v <span style="color: #00F">in</span> enumerate(arr):
+    print(<span style="color: #A31515">f&quot;N[{</span>i<span style="color: #A31515">}] = {</span>v<span style="color: #A31515">}&quot;</span>)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ048</span>斐波那契数列<span class="acw">AcWing 741</span></div>
+<div class="problem-desc">小鲁在学数列。斐波那契数列的前两项是0和1，之后每一项都是前两项之和。给定N，输出前N项。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个整数N（1≤N≤60）。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">一行，空格隔开的N个整数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ N ≤ 60（结果可能超过32位int范围！）</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>5</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>0 1 1 2 3</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>递推：a=0, b=1; for i in range(N): print(a); a,b = b, a+b。注意用long long（C++）避免溢出，Python自动大整数。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的a,b=b,a+b是递推的标准写法。C++注意用long long（64位），N=60时结果约1.5×10¹²超出32位int。这是DP思想的萌芽——用前面算出的结果推导后面。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">int</span> n;
+    cin &gt;&gt; n;
+    <span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> a = 0, b = 1;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i++) {
+        <span style="color: #00F">if</span> (i) cout &lt;&lt; <span style="color: #A31515">&quot; &quot;</span>;
+        cout &lt;&lt; a;
+        <span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> t = a + b; a = b; b = t;
+    }
+    cout &lt;&lt; endl;
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>n = int(input())
+a, b = 0, 1
+result = []
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n):
+    result.append(str(a))
+    a, b = b, a + b
+print(<span style="color: #A31515">&#39; &#39;</span>.join(result))
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ049</span>最小数和它的位置<span class="acw">AcWing 742</span></div>
+<div class="problem-desc">给定N和一个包含N个整数的数组，找出数组中的最小值及其位置（如果有多个最小值，输出第一个的位置）。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行N。第二行N个整数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">第一行"Menor valor: X"。第二行"Posicao: Y"（位置从0开始）。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ N ≤ 1000</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>10
+1 2 3 4 -5 6 7 8 9 10</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>Menor valor: -5
+Posicao: 4</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>遍历数组维护最小值和位置。Python用min(arr)和arr.index(min_val)一行搞定，但手写循环理解查找逻辑。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的enumerate()同时获得索引和值。min(arr)找最小值，arr.index(v)找位置。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">int</span> n, x, mn, pos = 0;
+    cin &gt;&gt; n;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i++) {
+        cin &gt;&gt; x;
+        <span style="color: #00F">if</span> (i == 0 || x &lt; mn) { mn = x; pos = i; }
+    }
+    cout &lt;&lt; <span style="color: #A31515">&quot;Menor valor: &quot;</span> &lt;&lt; mn &lt;&lt; endl;
+    cout &lt;&lt; <span style="color: #A31515">&quot;Posicao: &quot;</span> &lt;&lt; pos &lt;&lt; endl;
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>n = int(input())
+arr = list(map(int, input().split()))
+mn = min(arr)
+print(<span style="color: #A31515">f&quot;Menor valor: {</span>mn<span style="color: #A31515">}&quot;</span>)
+print(<span style="color: #A31515">f&quot;Posicao: {</span>arr.index(mn)<span style="color: #A31515">}&quot;</span>)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ050</span>数组中的列<span class="acw">AcWing 744</span></div>
+<div class="problem-desc">与NQ046类似，但这次操作的是列。给定列号C和操作类型T，计算12×12矩阵第C列的和或平均值。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行列号C。第二行操作类型T。接下来144个浮点数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">结果保留1位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">同NQ046</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>2
+S
+(144个浮点数...)</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>(第2列之和,1位小数)</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>与行操作对称：当内层循环到目标列j==C时累加。其他逻辑相同。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>行操作和列操作的双重循环结构完全相同，只在判断条件上差一个字母（i==L vs j==C）。注意对比理解。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">int</span> c; <span style="color: #2B91AF">char</span> t;
+    scanf(<span style="color: #A31515">&quot;%d %c&quot;</span>, &amp;c, &amp;t);
+    <span style="color: #2B91AF">double</span> sum = 0, x;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 12; i++)
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt; 12; j++) {
+            scanf(<span style="color: #A31515">&quot;%lf&quot;</span>, &amp;x);
+            <span style="color: #00F">if</span> (j == c) sum += x;
+        }
+    printf(<span style="color: #A31515">&quot;%.1lf\n&quot;</span>, t == <span style="color: #A31515">&#39;S&#39;</span> ? sum : sum / 12);
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>c = int(input())
+t = input().strip()
+sum_val = 0
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(12):
+    <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(12):
+        x = float(input())
+        <span style="color: #00F">if</span> j == c: sum_val += x
+print(<span style="color: #A31515">f&quot;{</span>sum_val <span style="color: #00F">if</span> t == <span style="color: #A31515">&#39;S&#39;</span> <span style="color: #00F">else</span> sum_val / 12<span style="color: #A31515">:.1f}&quot;</span>)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ051</span>简单斐波那契<span class="acw">AcWing 717</span></div>
+<div class="problem-desc">计算斐波那契数列的第N项。N从0开始：F(0)=0, F(1)=1, F(n)=F(n-1)+F(n-2)。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个整数N。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">第N项的值。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ N ≤ 60</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>4</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>3</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>与NQ048类似，但只输出第N项。递推直到第N项。注意N=0的情况。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的a,b=b,a+b在循环中递推。只输出最后一项，无需存储中间结果。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">int</span> n;
+    cin &gt;&gt; n;
+    <span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> a = 0, b = 1;
+    <span style="color: #00F">if</span> (n == 0) { cout &lt;&lt; 0 &lt;&lt; endl; <span style="color: #00F">return</span> 0; }
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt; n; i++) {
+        <span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> t = a + b; a = b; b = t;
+    }
+    cout &lt;&lt; b &lt;&lt; endl;
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>n = int(input())
+a, b = 0, 1
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n):
+    a, b = b, a + b
+print(a)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ052</span>数字序列和它的和<span class="acw">AcWing 722</span></div>
+<div class="problem-desc">对于每一对输入的正整数M和N（M<N），输出从M到N的所有整数及它们的和。以读入的M或N≤0为结束标志。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">多行，每行两个整数M和N。以M≤0或N≤0结束。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">对每对M,N，输出一行所有整数（空格隔开）和"Sum=X"。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">M,N ≤ 100</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>5 10
+2 3
+0 0</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>5 6 7 8 9 10 Sum=45
+2 3 Sum=5</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>while循环读取，遇到非正数break。对每对M,N确保M≤N（必要时交换），然后for循环输出并累加。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的range(m,n+1)生成连续整数。用join(map(str,...))拼接输出整洁。注意先交换保证M≤N。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">int</span> m, n;
+    <span style="color: #00F">while</span> (cin &gt;&gt; m &gt;&gt; n, m &gt; 0 &amp;&amp; n &gt; 0) {
+        <span style="color: #00F">if</span> (m &gt; n) swap(m, n);
+        <span style="color: #2B91AF">int</span> sum = 0;
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = m; i &lt;= n; i++) {
+            cout &lt;&lt; i &lt;&lt; <span style="color: #A31515">&quot; &quot;</span>;
+            sum += i;
+        }
+        cout &lt;&lt; <span style="color: #A31515">&quot;Sum=&quot;</span> &lt;&lt; sum &lt;&lt; endl;
+    }
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">while</span> <span style="color: #00F">True</span>:
+    m, n = map(int, input().split())
+    <span style="color: #00F">if</span> m &lt;= 0 <span style="color: #00F">or</span> n &lt;= 0: <span style="color: #00F">break</span>
+    <span style="color: #00F">if</span> m &gt; n: m, n = n, m
+    nums = range(m, n + 1)
+    print(<span style="color: #A31515">&#39; &#39;</span>.join(map(str, nums)), <span style="color: #A31515">f&quot;Sum={</span>sum(nums)<span style="color: #A31515">}&quot;</span>)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ053</span>完全数<span class="acw">AcWing 725</span></div>
+<div class="problem-desc">一个数的所有真因子（不含自身）之和等于自身，称为完全数。给定N，输出不超过N的所有完全数。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个整数N。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">每行一个完全数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ N ≤ 10⁸</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>30</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>6
+28</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>10⁸以内只有四个完全数：6, 28, 496, 8128。直接判断它们是否≤N即可。不需要枚举计算！这是数学知识在编程中的应用。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>利用数学事实简化计算。C++可以预计算或直接判断。Python同样。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">int</span> n;
+    cin &gt;&gt; n;
+    <span style="color: #2B91AF">int</span> perfect[] = {6, 28, 496, 8128};
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> x : perfect)
+        <span style="color: #00F">if</span> (x &lt;= n) cout &lt;&lt; x &lt;&lt; endl;
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>n = int(input())
+<span style="color: #00F">for</span> x <span style="color: #00F">in</span> [6, 28, 496, 8128]:
+    <span style="color: #00F">if</span> x &lt;= n:
+        print(x)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ054</span>质数<span class="acw">AcWing 726</span></div>
+<div class="problem-desc">给定N，输出2到N之间所有的质数（素数）。质数指大于1且只有1和自身两个因子的数。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个整数N。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">每行一个质数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">2 ≤ N ≤ 10⁶</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>10</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>2
+3
+5
+7</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>枚举2到N的每个数，判断是否为质数。优化：只需检查到√i。判断函数：for j in range(2, int(sqrt(i))+1): if i%j==0: break。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>√n优化将复杂度从O(n²)降到O(n√n)。使用math.isqrt()（Python 3.8+）精确整数平方根。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #2B91AF">int</span> main() {
+    <span style="color: #2B91AF">int</span> n;
+    cin &gt;&gt; n;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 2; i &lt;= n; i++) {
+        <span style="color: #2B91AF">bool</span> prime = true;
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 2; j * j &lt;= i; j++) {
+            <span style="color: #00F">if</span> (i % j == 0) { prime = false; <span style="color: #00F">break</span>; }
+        }
+        <span style="color: #00F">if</span> (prime) cout &lt;&lt; i &lt;&lt; endl;
+    }
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">import</span> math
+n = int(input())
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(2, n + 1):
+    prime = <span style="color: #00F">True</span>
+    <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(2, int(math.sqrt(i)) + 1):
+        <span style="color: #00F">if</span> i % j == 0:
+            prime = <span style="color: #00F">False</span>
+            <span style="color: #00F">break</span>
+    <span style="color: #00F">if</span> prime:
+        print(i)
+</pre></div>
+</div></div><hr class="section-divider"><div class="chapter-end">— 第4章完 · 共12题 —</div></body></html>
