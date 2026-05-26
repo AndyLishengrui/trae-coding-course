@@ -17,14 +17,14 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
 .insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
 .insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
-.code-dual{display:flex;gap:1.5em;margin:1.2em 0;page-break-inside:avoid}.code-col{flex:1;min-width:0}
+.code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
 .code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
 .code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
 body{string-set:chapter "第10章 预处理的艺术——前缀和、差分与双指针"}</style></head><body>
-<div class="chapter-title">预处理的艺术</div><div class="chapter-subtitle">前缀和、差分与双指针 · 7题 · C++ &amp; Python 双语对照</div>
+<div class="chapter-title">预处理的艺术</div><div class="chapter-subtitle">前缀和、差分与双指针 · 9题 · C++ &amp; Python 双语对照</div>
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ108</span>前缀和试炼之何为前缀和<span class="acw">AcWing 795</span></div>
+<div class="problem-title"><span class="nq">NQ113</span>前缀和试炼之何为前缀和<span class="acw">AcWing 795</span></div>
 <div class="problem-desc">输入一个长度为n的整数序列。
 接下来再输入m个询问，每个询问输入一对l, r。
 对于每个询问，输出原序列中从第l个数到第r个数的和。
@@ -87,7 +87,7 @@ Y总代码</span></div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ109</span>前缀和试炼之子矩阵的和<span class="acw">AcWing 796</span></div>
+<div class="problem-title"><span class="nq">NQ114</span>前缀和试炼之子矩阵的和<span class="acw">AcWing 796</span></div>
 <div class="problem-desc">输入一个n行m列的整数矩阵，再输入q个询问，每个询问包含四个整数x1, y1, x2, y2，表示一个子矩阵的左上角坐标和右下角坐标。
 对于每个询问输出子矩阵中所有数的和。
 数据范围：
@@ -152,7 +152,7 @@ Y总代码</span></div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ110</span>差分试炼之何为差分<span class="acw">AcWing 797</span></div>
+<div class="problem-title"><span class="nq">NQ115</span>差分试炼之何为差分<span class="acw">AcWing 797</span></div>
 <div class="problem-desc">输入一个长度为n的整数序列。
 接下来输入m个操作，每个操作包含三个整数l, r, c，表示将序列中[l, r]之间的每个数加上c。
 请你输出进行完所有操作后的序列。
@@ -222,7 +222,7 @@ Y总代码</span></div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ111</span>差分试炼之差分矩阵<span class="acw">AcWing 798</span></div>
+<div class="problem-title"><span class="nq">NQ116</span>差分试炼之差分矩阵<span class="acw">AcWing 798</span></div>
 <div class="problem-desc">输入一个n行m列的整数矩阵，再输入q个操作，每个操作包含五个整数x1, y1, x2, y2, c，其中(x1, y1)和(x2, y2)表示一个子矩阵的左上角坐标和右下角坐标。
 每个操作都要将选中的子矩阵中的每个元素的值加上c。
 请你将进行完所有操作后的矩阵输出。
@@ -303,7 +303,7 @@ Y总代码</span></div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ112</span>最长连续不重复子序列<span class="acw">AcWing 799</span></div>
+<div class="problem-title"><span class="nq">NQ117</span>最长连续不重复子序列<span class="acw">AcWing 799</span></div>
 <div class="problem-desc">给定一个长度为n的整数序列，请找出最长的不包含重复数字的连续区间，输出它的长度。
 
 数据范围：
@@ -349,7 +349,7 @@ Y总代码</span></div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ113</span>数组元素的目标和<span class="acw">AcWing 800</span></div>
+<div class="problem-title"><span class="nq">NQ118</span>数组元素的目标和<span class="acw">AcWing 800</span></div>
 <div class="problem-desc">给定两个升序排序的有序数组A和B，以及一个目标值x。数组下标从0开始。
 请你求出满足A[i] + B[j] = x的数对(i, j)。
 数据保证有唯一解。
@@ -403,7 +403,7 @@ Y总代码</span></div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ114</span>判断子序列<span class="acw">AcWing 2816</span></div>
+<div class="problem-title"><span class="nq">NQ119</span>判断子序列<span class="acw">AcWing 2816</span></div>
 <div class="problem-desc">给定一个长度为n的整数序列a1,a2,…,an以及一个长度为m的整数序列b1,b2,…,bm。
 请你判断a序列是否为b序列的子序列。
 子序列指序列的一部分项按原有次序排列而得的序列，例如序列{a1,a3,a5}是序列{a1,a2,a3,a4,a5}的一个子序列。</div>
@@ -455,4 +455,34 @@ Y总代码</span></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 2816</span>
 <span style="color: #008000"># Python solution</span>
 </pre></div>
-</div></div><hr class="section-divider"><div class="chapter-end">— 第10章完 · 共7题 —</div></body></html>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ120</span>AcWing NQ059<span class="acw">AcWing NQ059</span></div>
+<div class="problem-desc">AcWing NQ059</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing NQ059</td></tr>
+</table>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #008000">// AcWing NQ059</span>
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing NQ059</span>
+<span style="color: #008000"># Python solution</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ121</span>AcWing NQ070<span class="acw">AcWing NQ070</span></div>
+<div class="problem-desc">AcWing NQ070</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing NQ070</td></tr>
+</table>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #008000">// AcWing NQ070</span>
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing NQ070</span>
+<span style="color: #008000"># Python solution</span>
+</pre></div>
+</div></div><hr class="section-divider"><div class="chapter-end">— 第10章完 · 共9题 —</div></body></html>

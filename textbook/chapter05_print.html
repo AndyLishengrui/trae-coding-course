@@ -17,14 +17,14 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
 .insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
 .insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
-.code-dual{display:flex;gap:1.5em;margin:1.2em 0;page-break-inside:avoid}.code-col{flex:1;min-width:0}
+.code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
 .code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
 .code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
 body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模式"}</style></head><body>
 <div class="chapter-title">矩阵的舞蹈</div><div class="chapter-subtitle">多维数组与矩阵模式 · 12题 · C++ &amp; Python 双语对照</div>
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ055</span>数组的右上半部分<span class="acw">AcWing 745</span></div>
+<div class="problem-title"><span class="nq">NQ058</span>数组的右上半部分<span class="acw">AcWing 745</span></div>
 <div class="problem-desc">输入一个二维数组 M[12][12]，根据输入的要求，求出二维数组的右上半部分元素的平均值或元素的和。
 右上半部分是指主对角线（如下图中黄色部分）上方的部分（绿色部分）。</div>
 <table class="spec-table">
@@ -83,7 +83,7 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ056</span>数组的左上半部分<span class="acw">AcWing 747</span></div>
+<div class="problem-title"><span class="nq">NQ059</span>数组的左上半部分<span class="acw">AcWing 747</span></div>
 <div class="problem-desc">输入一个二维数组 M[12][12]，根据输入的要求，求出二维数组的左上半部分元素的平均值或元素的和。
 左上半部分是指次对角线（如下图所示，黄色部分为次对角线，绿色部分为左上半部分）上方的部分。</div>
 <table class="spec-table">
@@ -141,7 +141,7 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ057</span>数组的上方区域<span class="acw">AcWing 749</span></div>
+<div class="problem-title"><span class="nq">NQ060</span>数组的上方区域<span class="acw">AcWing 749</span></div>
 <div class="problem-desc">输入一个二维数组 M[12][12]，根据输入的要求，求出二维数组的上方区域元素的平均值或元素的和。
 数组的两条对角线将数组分为了上下左右四个部分，黄色部分为对角线，绿色部分为上方区域。</div>
 <table class="spec-table">
@@ -201,7 +201,7 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ058</span>数组的左方区域<span class="acw">AcWing 751</span></div>
+<div class="problem-title"><span class="nq">NQ061</span>数组的左方区域<span class="acw">AcWing 751</span></div>
 <div class="problem-desc">输入一个二维数组 M[12][12]，根据输入的要求，求出二维数组的左方区域元素的平均值或元素的和。
 数组的两条对角线将数组分为了上下左右四个部分，黄色部分为对角线，绿色部分为左方区域。</div>
 <table class="spec-table">
@@ -269,7 +269,7 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ059</span>平方矩阵 I<span class="acw">AcWing 753</span></div>
+<div class="problem-title"><span class="nq">NQ062</span>平方矩阵 I<span class="acw">AcWing 753</span></div>
 <div class="problem-desc">输入整数 N，输出一个 N 阶的回字形状二维数组。
 数组的最外层为 1，次外层为 2，以此类推。</div>
 <table class="spec-table">
@@ -332,7 +332,7 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ060</span>数组的右下半部分<span class="acw">AcWing 748</span></div>
+<div class="problem-title"><span class="nq">NQ063</span>数组的右下半部分<span class="acw">AcWing 748</span></div>
 <div class="problem-desc">输入一个二维数组 M[12][12]，根据要求，求出二维数组的右下半部分元素的平均值或元素的和。
 右下半部分是指次对角线下方的部分，黄色部分为对角线，绿色部分为右下半部分。</div>
 <table class="spec-table">
@@ -397,7 +397,7 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ061</span>数组的左下半部分<span class="acw">AcWing 746</span></div>
+<div class="problem-title"><span class="nq">NQ064</span>数组的左下半部分<span class="acw">AcWing 746</span></div>
 <div class="problem-desc">输入一个二维数组 M[12][12]，根据要求，求出二维数组的左下半部分元素的平均值或元素的和。
 左下半部分是指主对角线下方的部分，黄色部分为对角线，绿色部分为左下半部分。</div>
 <table class="spec-table">
@@ -461,7 +461,7 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ062</span>数组的下方区域<span class="acw">AcWing 750</span></div>
+<div class="problem-title"><span class="nq">NQ065</span>数组的下方区域<span class="acw">AcWing 750</span></div>
 <div class="problem-desc">输入一个二维数组 M[12][12]，根据要求，求出二维数组的下方区域元素的平均值或元素的和。
 数组的两条对角线将数组分为了上下左右四个部分，黄色部分为对角线，绿色部分为下方区域。</div>
 <table class="spec-table">
@@ -523,7 +523,7 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ063</span>数组的右方区域<span class="acw">AcWing 752</span></div>
+<div class="problem-title"><span class="nq">NQ066</span>数组的右方区域<span class="acw">AcWing 752</span></div>
 <div class="problem-desc">输入一个二维数组 M[12][12]，根据要求，求出二维数组的右方区域元素的平均值或元素的和。
 数组的两条对角线将数组分为了上下左右四个部分，黄色部分为对角线，绿色部分为右方区域。</div>
 <table class="spec-table">
@@ -591,7 +591,7 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ064</span>平方矩阵 II<span class="acw">AcWing 754</span></div>
+<div class="problem-title"><span class="nq">NQ067</span>平方矩阵 II<span class="acw">AcWing 754</span></div>
 <div class="problem-desc">输入整数 N，输出一个 N 阶的二维数组。
 数组的形式参照样例。</div>
 <table class="spec-table">
@@ -668,7 +668,7 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ065</span>平方矩阵 III<span class="acw">AcWing 755</span></div>
+<div class="problem-title"><span class="nq">NQ068</span>平方矩阵 III<span class="acw">AcWing 755</span></div>
 <div class="problem-desc">输入整数 N，输出一个 N 阶的二维数组 M，这个 N 阶二维数组满足 M[i][j] = 2^(i+j)。
 具体形式可参考样例。</div>
 <table class="spec-table">
@@ -739,7 +739,7 @@ body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模�
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ066</span>蛇形矩阵<span class="acw">AcWing 756</span></div>
+<div class="problem-title"><span class="nq">NQ069</span>蛇形矩阵<span class="acw">AcWing 756</span></div>
 <div class="problem-desc">输入两个整数 n 和 m，输出一个 n 行 m 列的矩阵，将数字 1 到 n×m 按照回字蛇形填充至矩阵中。
 具体蛇形形式可参考样例。</div>
 <table class="spec-table">

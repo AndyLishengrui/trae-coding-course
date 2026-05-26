@@ -17,14 +17,14 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
 .insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
 .insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
-.code-dual{display:flex;gap:1.5em;margin:1.2em 0;page-break-inside:avoid}.code-col{flex:1;min-width:0}
+.code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
 .code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
 .code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
 body{string-set:chapter "第16章 智慧的策略——贪心、并查集与数学"}</style></head><body>
-<div class="chapter-title">智慧的策略</div><div class="chapter-subtitle">贪心、并查集与数学 · 8题 · C++ &amp; Python 双语对照</div>
+<div class="chapter-title">智慧的策略</div><div class="chapter-subtitle">贪心、并查集与数学 · 9题 · C++ &amp; Python 双语对照</div>
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ154</span>区间选点<span class="acw">AcWing 905</span></div>
+<div class="problem-title"><span class="nq">NQ163</span>区间选点<span class="acw">AcWing 905</span></div>
 <div class="problem-desc">给定N个闭区间[ai,bi]，请你在数轴上选择尽量少的点，使得每个区间内至少包含一个选出的点。
 输出选择的点的最小数量。
 位于区间端点上的点也算作区间内。</div>
@@ -97,7 +97,7 @@ Y总讲解</span></div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ155</span>合并果子<span class="acw">AcWing 148</span></div>
+<div class="problem-title"><span class="nq">NQ164</span>合并果子<span class="acw">AcWing 148</span></div>
 <div class="problem-desc">在一个高科技果园中，林克利用先进的无人机将所有果子采集完毕，并通过智能分类系统按照果子的种类将它们分成了不同的堆。
 林克决定通过纳米融合技术将所有果子合成一堆。
 每次融合，林克可以选择两堆果子进行合并，消耗的能量等于两堆果子的重量之和，能量单位由果园的中央AI计算并记录。
@@ -165,7 +165,7 @@ acwing讲解</span></div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ156</span>并查集试炼之合并集合<span class="acw">AcWing 836</span></div>
+<div class="problem-title"><span class="nq">NQ165</span>并查集试炼之合并集合<span class="acw">AcWing 836</span></div>
 <div class="problem-desc">一共有n个数，编号是1~n，最开始每个数各自在一个集合中。
 现在要进行m个操作，操作共有两种：
 “M a b”，将编号为a和b的两个数所在的集合合并，如果两个数已经在同一个集合中，则忽略这个操作；“Q a b”，询问编号为a和b的两个数是否在同一个集合中；数据范围：1≤n,m≤10^5</div>
@@ -235,7 +235,7 @@ Y总讲解</span></div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ157</span>并查集试炼之连通块中点的数量<span class="acw">AcWing 837</span></div>
+<div class="problem-title"><span class="nq">NQ166</span>并查集试炼之连通块中点的数量<span class="acw">AcWing 837</span></div>
 <div class="problem-desc">给定一个包含n个点（编号为1~n）的无向图，初始时图中没有边。
 现在要进行m个操作，操作共有三种：
 “C a b”，在点a和点b之间连一条边，a和b可能相等；“Q1 a b”，询问点a和点b是否在同一个连通块中，a和b可能相等；“Q2 a”，询问点a所在连通块中点的数量；数据范围:1≤n,m≤10^5</div>
@@ -318,7 +318,7 @@ Y总讲解</span></div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ158</span>并查集试炼之食物链<span class="acw">AcWing 240</span></div>
+<div class="problem-title"><span class="nq">NQ167</span>并查集试炼之食物链<span class="acw">AcWing 240</span></div>
 <div class="problem-desc">动物王国中有三类动物A,B,C，这三类动物的食物链构成了有趣的环形。
 A吃B， B吃C，C吃A。
 现有N个动物，以1－N编号。
@@ -424,7 +424,7 @@ A吃B， B吃C，C吃A。
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ159</span>快速幂<span class="acw">AcWing 875</span></div>
+<div class="problem-title"><span class="nq">NQ168</span>快速幂<span class="acw">AcWing 875</span></div>
 <div class="problem-desc">给定n组ai, bi, pi，对于每组数据，求出a^b i mod p i的值。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含整数n。
@@ -488,7 +488,7 @@ Y总讲解</span></div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ160</span>筛质数<span class="acw">AcWing 868</span></div>
+<div class="problem-title"><span class="nq">NQ169</span>筛质数<span class="acw">AcWing 868</span></div>
 <div class="problem-desc">给定一个正整数n，请你求出 1∼n中质数的个数。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含整数n。
@@ -541,7 +541,7 @@ Y总讲解</span></div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ161</span>货仓选址<span class="acw">AcWing 104</span></div>
+<div class="problem-title"><span class="nq">NQ170</span>货仓选址<span class="acw">AcWing 104</span></div>
 <div class="problem-desc">在一条数轴上有N家商店，它们的坐标分别为A1~AN。
 现在需要在数轴上建立一家货仓，每天清晨，从货仓到每家商店都要运送一车商品。
 为了提高效率，求把货仓建在何处，可以使得货仓到每家商店的距离之和最小。
@@ -588,4 +588,19 @@ acwing讲解</span></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 104</span>
 <span style="color: #008000"># Python solution</span>
 </pre></div>
-</div></div><hr class="section-divider"><div class="chapter-end">— 第16章完 · 共8题 —</div></body></html>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ171</span>AcWing NQ099<span class="acw">AcWing NQ099</span></div>
+<div class="problem-desc">AcWing NQ099</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing NQ099</td></tr>
+</table>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #008000">// AcWing NQ099</span>
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing NQ099</span>
+<span style="color: #008000"># Python solution</span>
+</pre></div>
+</div></div><hr class="section-divider"><div class="chapter-end">— 第16章完 · 共9题 —</div></body></html>

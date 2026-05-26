@@ -233,8 +233,10 @@ body {
 .insight-block .insight-label { font-size: 8pt; font-weight: bold; color: #2563eb; margin-right: 0.5em; }
 
 /* 双栏代码 — 语法高亮 */
-.code-dual { display: flex; gap: 1.5em; margin: 1.2em 0; page-break-inside: avoid; }
-.code-col { flex: 1; min-width: 0; }
+.code-dual { display: flex; gap: 1.2em; margin: 1.2em 0; page-break-inside: avoid; }
+.code-col { min-width: 0; }
+.code-col:first-child { flex: 3; }
+.code-col:last-child { flex: 2; }
 .code-col .lang-badge { display: inline-block; font-size: 7.5pt; font-weight: bold; color: #fff; background: #2563eb; padding: 0.2em 0.7em; border-radius: 3px; margin-bottom: 0.4em; }
 .code-col pre { background: #f8f8f0; border: 0.5pt solid #e0e0e0; border-radius: 4px; padding: 0.7em 0.9em; font-family: "SF Mono","Menlo","Consolas","Courier New",monospace; font-size: 7.5pt; line-height: 1.45; overflow-x: auto; margin: 0; white-space: pre-wrap; word-break: break-all; }
 

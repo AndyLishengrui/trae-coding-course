@@ -17,14 +17,14 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
 .insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
 .insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
-.code-dual{display:flex;gap:1.5em;margin:1.2em 0;page-break-inside:avoid}.code-col{flex:1;min-width:0}
+.code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
 .code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
 .code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
 body{string-set:chapter "第11章 数字的奥秘——高精度、位运算与离散化"}</style></head><body>
 <div class="chapter-title">数字的奥秘</div><div class="chapter-subtitle">高精度、位运算与离散化 · 7题 · C++ &amp; Python 双语对照</div>
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ115</span>高精度加法<span class="acw">AcWing 791</span></div>
+<div class="problem-title"><span class="nq">NQ122</span>高精度加法<span class="acw">AcWing 791</span></div>
 <div class="problem-desc">给定两个正整数，计算它们的和。
 
 数据范围：1≤整数长度≤100000</div>
@@ -85,7 +85,7 @@ vector&lt;<span style="color: #2B91AF">int</span>&gt; add(vector&lt;<span style=
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ116</span>高精度减法<span class="acw">AcWing 792</span></div>
+<div class="problem-title"><span class="nq">NQ123</span>高精度减法<span class="acw">AcWing 792</span></div>
 <div class="problem-desc">给定两个正整数，计算它们的差，计算结果可能为负数。
 
 1≤整数长度≤100000</div>
@@ -176,7 +176,7 @@ vector&lt;<span style="color: #2B91AF">int</span>&gt; sub(vector&lt;<span style=
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ117</span>二进制中1的个数<span class="acw">AcWing 801</span></div>
+<div class="problem-title"><span class="nq">NQ124</span>二进制中1的个数<span class="acw">AcWing 801</span></div>
 <div class="problem-desc">给定一个长度为n的数列，请你求出数列中每个数的二进制表示中1的个数。
 
 数据范围：1≤n≤100000,0≤数列中元素的值≤10^9</div>
@@ -219,7 +219,7 @@ vector&lt;<span style="color: #2B91AF">int</span>&gt; sub(vector&lt;<span style=
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ118</span>高精度乘法<span class="acw">AcWing 793</span></div>
+<div class="problem-title"><span class="nq">NQ125</span>高精度乘法<span class="acw">AcWing 793</span></div>
 <div class="problem-desc">给定两个正整数A和B，请你计算A * B的值。
 
 1≤A的长度≤100000,0≤B≤10000</div>
@@ -280,7 +280,7 @@ vector&lt;<span style="color: #2B91AF">int</span>&gt; mul(vector&lt;<span style=
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ119</span>高精度除法<span class="acw">AcWing 794</span></div>
+<div class="problem-title"><span class="nq">NQ126</span>高精度除法<span class="acw">AcWing 794</span></div>
 <div class="problem-desc">给定两个非负整数A，B，请你计算 A / B的商和余数。
 
 数据范围：
@@ -351,7 +351,7 @@ vector&lt;<span style="color: #2B91AF">int</span>&gt; div(vector&lt;<span style=
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ120</span>区间和<span class="acw">AcWing 802</span></div>
+<div class="problem-title"><span class="nq">NQ127</span>区间和<span class="acw">AcWing 802</span></div>
 <div class="problem-desc">假定有一个无限长的数轴，数轴上每个坐标上的数都是0。
 现在，我们首先进行 n 次操作，每次操作将某一位置x上的数加c。
 接下来，进行 m 次询问，每个询问包含两个整数l和r，你需要求出在区间[l, r]之间的所有数的和。</div>
@@ -458,7 +458,7 @@ vector&lt;PII&gt; add, query; <span style="color: #008000">//输入操作的坐�
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ121</span>区间合并<span class="acw">AcWing 803</span></div>
+<div class="problem-title"><span class="nq">NQ128</span>区间合并<span class="acw">AcWing 803</span></div>
 <div class="problem-desc">给定 n 个区间 [ li , ri ]，要求合并所有有交集的区间。
 注意如果在端点处相交，也算有交集。
 输出合并完成后的区间个数。

@@ -17,14 +17,14 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
 .insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
 .insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
-.code-dual{display:flex;gap:1.5em;margin:1.2em 0;page-break-inside:avoid}.code-col{flex:1;min-width:0}
+.code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
 .code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
 .code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
 body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL容器"}</style></head><body>
 <div class="chapter-title">指针与抽象</div><div class="chapter-subtitle">结构体、指针与STL容器 · 10题 · C++ &amp; Python 双语对照</div>
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ091</span>替换空格<span class="acw">AcWing 16</span></div>
+<div class="problem-title"><span class="nq">NQ096</span>替换空格<span class="acw">AcWing 16</span></div>
 <div class="problem-desc">请实现一个函数，把字符串中的每个空格替换成%20。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入一个字符串。
@@ -56,7 +56,7 @@ body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL�
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ092</span>从尾到头打印链表<span class="acw">AcWing 17</span></div>
+<div class="problem-title"><span class="nq">NQ097</span>从尾到头打印链表<span class="acw">AcWing 17</span></div>
 <div class="problem-desc">输入一个链表的头结点，按照从尾到头的顺序返回节点的值。返回的结果用数组存储。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">链表节点值序列，以-1结束。</td></tr>
@@ -100,7 +100,7 @@ body{string-set:chapter "第8章 指针与抽象——结构体、指针与STL�
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ093</span>用两个栈实现队列<span class="acw">AcWing 20</span></div>
+<div class="problem-title"><span class="nq">NQ098</span>用两个栈实现队列<span class="acw">AcWing 20</span></div>
 <div class="problem-desc">请用栈实现一个队列，支持如下四种操作：
 push(x) - 将元素 x 插到队尾；
 pop() - 将队首的元素弹出，并返回该元素；
@@ -184,7 +184,7 @@ false
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ094</span>斐波那契数列<span class="acw">AcWing 21</span></div>
+<div class="problem-title"><span class="nq">NQ099</span>斐波那契数列<span class="acw">AcWing 21</span></div>
 <div class="problem-desc">输入一个整数n，要求斐波那契数列的第n项。
 假定从0开始，第0项为0。</div>
 <table class="spec-table">
@@ -214,7 +214,7 @@ false
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ095</span>反转链表<span class="acw">AcWing 35</span></div>
+<div class="problem-title"><span class="nq">NQ100</span>反转链表<span class="acw">AcWing 35</span></div>
 <div class="problem-desc">定义一个函数，输入一个链表的头结点，反转该链表并输出反转后链表的头结点。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入一个链表的头结点。
@@ -260,7 +260,7 @@ false
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ096</span>合并两个排序的链表<span class="acw">AcWing 36</span></div>
+<div class="problem-title"><span class="nq">NQ101</span>合并两个排序的链表<span class="acw">AcWing 36</span></div>
 <div class="problem-desc">输入两个递增排序的链表，合并这两个链表并使新链表中的结点仍然是按照递增排序的。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入两个链表。
@@ -313,7 +313,7 @@ false
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ097</span>三元组排序<span class="acw">AcWing 862</span></div>
+<div class="problem-title"><span class="nq">NQ102</span>三元组排序<span class="acw">AcWing 862</span></div>
 <div class="problem-desc">给定N个三元组(x,y,z)，每个三元组包含一个整数x、一个整数y和一个字符串z。按照x从小到大的顺序输出所有三元组。数据保证不同三元组的x值互不相同。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含整数N。接下来N行，每行包含一个整数x、一个整数y和一个由小写字母组成的字符串z。</td></tr>
@@ -365,7 +365,7 @@ false
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ098</span>绝对值<span class="acw">AcWing 810</span></div>
+<div class="problem-title"><span class="nq">NQ103</span>绝对值<span class="acw">AcWing 810</span></div>
 <div class="problem-desc">输入一个整数x，请你编写一个函数 int abs(int x)，输出x的绝对值。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含一个整数x。</td></tr>
@@ -402,7 +402,7 @@ false
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ099</span>复制数组<span class="acw">AcWing 814</span></div>
+<div class="problem-title"><span class="nq">NQ104</span>复制数组<span class="acw">AcWing 814</span></div>
 <div class="problem-desc">要编写函数 void copy(int a[], int b[], int size) 将 a 数组中的前 size 个数复制到 b 数组中并输出 b 数组。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行 n, m, size 分别表示 a 数组长度、b 数组长度和要复制的个数；
@@ -456,7 +456,7 @@ false
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ100</span>数组翻转<span class="acw">AcWing 816</span></div>
+<div class="problem-title"><span class="nq">NQ105</span>数组翻转<span class="acw">AcWing 816</span></div>
 <div class="problem-desc">编写函数 void reverse(int a[], int size) 实现将数组 a 中的前 size 个数翻转并输出翻转后的数组 a。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行 n 和 size 分别表示数组长度和要翻转的个数；

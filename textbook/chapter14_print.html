@@ -17,14 +17,14 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
 .insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
 .insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
-.code-dual{display:flex;gap:1.5em;margin:1.2em 0;page-break-inside:avoid}.code-col{flex:1;min-width:0}
+.code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
 .code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
 .code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
 body{string-set:chapter "第14章 图的世界——图论入门"}</style></head><body>
 <div class="chapter-title">图的世界</div><div class="chapter-subtitle">图论入门 · 8题 · C++ &amp; Python 双语对照</div>
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ138</span>拓扑排序试炼之有向图的拓扑序列<span class="acw">AcWing 848</span></div>
+<div class="problem-title"><span class="nq">NQ147</span>拓扑排序试炼之有向图的拓扑序列<span class="acw">AcWing 848</span></div>
 <div class="problem-desc">给定一个n个点m条边的有向图，点的编号是1到n，图中可能存在重边和自环。
 请输出任意一个该有向图的拓扑序列，如果拓扑序列不存在，则输出-1。
 若一个由图中所有点构成的序列A满足：对于图中的每条边(x, y)，x在A中都出现在y之前，则称A是该图的一个拓扑序列。
@@ -115,7 +115,7 @@ body{string-set:chapter "第14章 图的世界——图论入门"}</style></head
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ139</span>Dijkstra求最短路(1)<span class="acw">AcWing 849</span></div>
+<div class="problem-title"><span class="nq">NQ148</span>Dijkstra求最短路(1)<span class="acw">AcWing 849</span></div>
 <div class="problem-desc">给定一个n个点m条边的有向图，图中可能存在重边和自环，所有边权均为正值。
 请你求出1号点到n号点的最短距离，如果无法从1号点走到n号点，则输出-1。</div>
 <table class="spec-table">
@@ -197,7 +197,7 @@ body{string-set:chapter "第14章 图的世界——图论入门"}</style></head
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ140</span>Dijkstra求最短路(2)<span class="acw">AcWing 850</span></div>
+<div class="problem-title"><span class="nq">NQ149</span>Dijkstra求最短路(2)<span class="acw">AcWing 850</span></div>
 <div class="problem-desc">给定一个n个点m条边的有向图，图中可能存在重边和自环，所有边权均为非负值。
 请你求出1号点到n号点的最短距离，如果无法从1号点走到n号点，则输出-1。</div>
 <table class="spec-table">
@@ -301,7 +301,7 @@ Y总代码</span></div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ141</span>spfa求最短路<span class="acw">AcWing 851</span></div>
+<div class="problem-title"><span class="nq">NQ150</span>spfa求最短路<span class="acw">AcWing 851</span></div>
 <div class="problem-desc">给定一个 n 个点 m 条边的有向图，图中可能存在重边和自环，边权可能为负数。
 请你求出 1 号点到 n 号点的最短距离，如果无法从 1 号点走到 n 号点，则输出 impossible。
 数据保证不存在负权回路。</div>
@@ -403,7 +403,7 @@ Y总代码</span></div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ142</span>Floyd求最短路<span class="acw">AcWing 854</span></div>
+<div class="problem-title"><span class="nq">NQ151</span>Floyd求最短路<span class="acw">AcWing 854</span></div>
 <div class="problem-desc">给定一个 n 个点 m 条边的有向图，图中可能存在重边和自环，边权可能为负数。
 再给定 k 个询问，每个询问包含两个整数 x 和 y，表示查询从点 x 到点 y 的最短距离，如果路径不存在，则输出 impossible。
 数据保证图中不存在负权回路。
@@ -490,7 +490,7 @@ Y总代码</span></div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ143</span>Prim算法求最小生成树<span class="acw">AcWing 858</span></div>
+<div class="problem-title"><span class="nq">NQ152</span>Prim算法求最小生成树<span class="acw">AcWing 858</span></div>
 <div class="problem-desc">给定一个 n 个点 m 条边的无向图，图中可能存在重边和自环，边权可能为负数。
 求最小生成树的树边权重之和，如果最小生成树不存在则输出 impossible。
 给定一张边带权的无向图 G = (V, E)，其中 V 表示图中点的集合，E 表示图中边的集合，n = |V|，m = |E|。
@@ -579,7 +579,7 @@ Y总代码</span></div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ144</span>Kruskal算法求最小生成树<span class="acw">AcWing 859</span></div>
+<div class="problem-title"><span class="nq">NQ153</span>Kruskal算法求最小生成树<span class="acw">AcWing 859</span></div>
 <div class="problem-desc">给定一个n个点m条边的无向图，图中可能存在重边和自环，边权可能为负数。
 求最小生成树的树边权重之和，如果最小生成树不存在则输出impossible。
 给定一张边带权的无向图G=(V, E)，其中V表示图中点的集合，E表示图中边的集合，n = |V|，m = |E|。
@@ -679,7 +679,7 @@ Y总代码</span></div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ145</span>染色法判定二分图<span class="acw">AcWing 860</span></div>
+<div class="problem-title"><span class="nq">NQ154</span>染色法判定二分图<span class="acw">AcWing 860</span></div>
 <div class="problem-desc">给定一个n个点m条边的无向图，图中可能存在重边和自环。
 请你判断这个图是否是二分图。</div>
 <table class="spec-table">

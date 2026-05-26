@@ -17,14 +17,14 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
 .insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
 .insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
-.code-dual{display:flex;gap:1.5em;margin:1.2em 0;page-break-inside:avoid}.code-col{flex:1;min-width:0}
+.code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
 .code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
 .code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
 body{string-set:chapter "第7章 模块化的力量——函数、递归与库的威力"}</style></head><body>
-<div class="chapter-title">模块化的力量</div><div class="chapter-subtitle">函数、递归与库的威力 · 12题 · C++ &amp; Python 双语对照</div>
+<div class="chapter-title">模块化的力量</div><div class="chapter-subtitle">函数、递归与库的威力 · 13题 · C++ &amp; Python 双语对照</div>
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ079</span>n的阶乘<span class="acw">AcWing 804</span></div>
+<div class="problem-title"><span class="nq">NQ083</span>n的阶乘<span class="acw">AcWing 804</span></div>
 <div class="problem-desc">输入一个整数n，请你编写一个函数 int fact(int n)，计算并输出n的阶乘。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含一个整数n。</td></tr>
@@ -64,7 +64,7 @@ body{string-set:chapter "第7章 模块化的力量——函数、递归与库�
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ080</span>x和y的最大值<span class="acw">AcWing 805</span></div>
+<div class="problem-title"><span class="nq">NQ084</span>x和y的最大值<span class="acw">AcWing 805</span></div>
 <div class="problem-desc">输入两个整数x和y，请你编写一个函数 int max(int x, int y)，计算并输出x和y的最大值。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含两个整数x和y。</td></tr>
@@ -102,7 +102,7 @@ body{string-set:chapter "第7章 模块化的力量——函数、递归与库�
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ081</span>最大公约数<span class="acw">AcWing 808</span></div>
+<div class="problem-title"><span class="nq">NQ085</span>最大公约数<span class="acw">AcWing 808</span></div>
 <div class="problem-desc">输入两个整数 a 和 b，请编写一个函数 int gcd(int a, int b)，计算并输出 a 和 b 的最大公约数。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含两个整数 a 和 b。
@@ -145,7 +145,7 @@ body{string-set:chapter "第7章 模块化的力量——函数、递归与库�
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ082</span>交换数值<span class="acw">AcWing 811</span></div>
+<div class="problem-title"><span class="nq">NQ086</span>交换数值<span class="acw">AcWing 811</span></div>
 <div class="problem-desc">输入两个整数 x 和 y，请编写一个函数，交换两个整数的数值并输出交换后的 x 和 y。
 C++ 中的格式为：void swap(int &x, int &y) 。
 Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
@@ -194,7 +194,7 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ083</span>打印数字<span class="acw">AcWing 812</span></div>
+<div class="problem-title"><span class="nq">NQ087</span>打印数字<span class="acw">AcWing 812</span></div>
 <div class="problem-desc">输入一个长度为 n 的数组 a 和一个整数 size，请编写一个函数 void print(int a[], int size)，打印数组 a 中的前 size 个数。
 注意：对于 Python 语言，print 是内置函数，所以本题中使用 print1D() 这个函数名，来避免跟内置函数产生冲突。</div>
 <table class="spec-table">
@@ -246,7 +246,7 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ084</span>打印矩阵<span class="acw">AcWing 813</span></div>
+<div class="problem-title"><span class="nq">NQ088</span>打印矩阵<span class="acw">AcWing 813</span></div>
 <div class="problem-desc">给定一个 row x col 的二维数组 a，请编写一个函数 void print2D(int a[][N], int row, int col)，
 打印数组构成的 row 行，col 列的矩阵。
 注意，每打印完一整行需要输出一个回车。</div>
@@ -306,7 +306,7 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ085</span>递归求阶乘<span class="acw">AcWing 819</span></div>
+<div class="problem-title"><span class="nq">NQ089</span>递归求阶乘<span class="acw">AcWing 819</span></div>
 <div class="problem-desc">请使用递归的方式求n的阶乘。递归公式：fact(n)=n×fact(n−1)，fact(1)=1。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含一个整数n。</td></tr>
@@ -344,7 +344,7 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ086</span>递归求斐波那契数列<span class="acw">AcWing 820</span></div>
+<div class="problem-title"><span class="nq">NQ090</span>递归求斐波那契数列<span class="acw">AcWing 820</span></div>
 <div class="problem-desc">请使用递归的方式求斐波那契数列的第 n 项，下标从 1 开始。
 斐波那契数列：1, 1, 2, 3, 5 ...，这个数列从第 3 项开始，每一项都等于前两项之和。</div>
 <table class="spec-table">
@@ -386,7 +386,7 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ087</span>跳台阶<span class="acw">AcWing 821</span></div>
+<div class="problem-title"><span class="nq">NQ091</span>跳台阶<span class="acw">AcWing 821</span></div>
 <div class="problem-desc">一个楼梯有 n 级台阶，每次可走一级或两级，求从第 0 级走到第 n 级的方案数。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行一个整数 n。
@@ -434,7 +434,7 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ088</span>走方格<span class="acw">AcWing 822</span></div>
+<div class="problem-title"><span class="nq">NQ092</span>走方格<span class="acw">AcWing 822</span></div>
 <div class="problem-desc">给定 n x m 的方格阵，从左上角 (0, 0) 开始，每次只能往右或往下走一个单位距离，求走到右下角 (n, m) 的走法数量。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行两个整数 n 和 m。
@@ -482,7 +482,7 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ089</span>排列<span class="acw">AcWing 823</span></div>
+<div class="problem-title"><span class="nq">NQ093</span>排列<span class="acw">AcWing 823</span></div>
 <div class="problem-desc">给定整数 n，将数字 1 ~ n 按字典序输出所有排列方法。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行一个整数 n。
@@ -549,7 +549,7 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ090</span>数组排序<span class="acw">AcWing 818</span></div>
+<div class="problem-title"><span class="nq">NQ094</span>数组排序<span class="acw">AcWing 818</span></div>
 <div class="problem-desc">编写函数 void sort(int a[], int l, int r) 将 a[l] ~ a[r] 从小到大排序并输出排序后的数组 a。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行 n, l, r 分别表示数组长度、排序起始和结束位置；
@@ -597,4 +597,19 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 818</span>
 <span style="color: #008000"># Python solution</span>
 </pre></div>
-</div></div><hr class="section-divider"><div class="chapter-end">— 第7章完 · 共12题 —</div></body></html>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ095</span>AcWing NQ016<span class="acw">AcWing NQ016</span></div>
+<div class="problem-desc">AcWing NQ016</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing NQ016</td></tr>
+</table>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #008000">// AcWing NQ016</span>
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing NQ016</span>
+<span style="color: #008000"># Python solution</span>
+</pre></div>
+</div></div><hr class="section-divider"><div class="chapter-end">— 第7章完 · 共13题 —</div></body></html>

@@ -17,14 +17,14 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
 .insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
 .insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
-.code-dual{display:flex;gap:1.5em;margin:1.2em 0;page-break-inside:avoid}.code-col{flex:1;min-width:0}
+.code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
 .code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
 .code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
 body{string-set:chapter "第6章 字符的世界——字符串处理"}</style></head><body>
-<div class="chapter-title">字符的世界</div><div class="chapter-subtitle">字符串处理 · 12题 · C++ &amp; Python 双语对照</div>
+<div class="chapter-title">字符的世界</div><div class="chapter-subtitle">字符串处理 · 13题 · C++ &amp; Python 双语对照</div>
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ067</span>字符串长度<span class="acw">AcWing 760</span></div>
+<div class="problem-title"><span class="nq">NQ070</span>字符串长度<span class="acw">AcWing 760</span></div>
 <div class="problem-desc">给定一行长度不超过100的非空字符串，求出其实际长度（包括空格）。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入一行字符串，注意字符串中可能包含空格。</td></tr>
@@ -61,7 +61,7 @@ body{string-set:chapter "第6章 字符的世界——字符串处理"}</style><
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ068</span>字符串中的数字个数<span class="acw">AcWing 761</span></div>
+<div class="problem-title"><span class="nq">NQ071</span>字符串中的数字个数<span class="acw">AcWing 761</span></div>
 <div class="problem-desc">输入一行字符（长度不超过 100），请你统计一下其中的数字字符的个数。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入一行字符。字符中可能包含空格。</td></tr>
@@ -100,7 +100,7 @@ body{string-set:chapter "第6章 字符的世界——字符串处理"}</style><
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ069</span>循环相克令<span class="acw">AcWing 763</span></div>
+<div class="problem-title"><span class="nq">NQ072</span>循环相克令<span class="acw">AcWing 763</span></div>
 <div class="problem-desc">循环相克令是一个两人玩的小游戏。令词为“猎人、狗熊、枪”，两人同时说出令词，同时做出一个动作——
 猎人的动作是双手叉腰；狗熊的动作是双手搭在胸前；枪的动作是双手举起呈手枪状。
 双方以此动作判定输赢，猎人赢枪、枪赢狗熊、狗熊赢猎人，动作相同则视为平局。
@@ -165,7 +165,7 @@ Player2
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ070</span>字符串加空格<span class="acw">AcWing 765</span></div>
+<div class="problem-title"><span class="nq">NQ073</span>字符串加空格<span class="acw">AcWing 765</span></div>
 <div class="problem-desc">给定一个字符串，在字符串的每个字符之间都加一个空格。输出修改后的新字符串。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含一个字符串。注意字符串中可能包含空格。
@@ -206,7 +206,7 @@ Player2
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ071</span>替换字符<span class="acw">AcWing 769</span></div>
+<div class="problem-title"><span class="nq">NQ074</span>替换字符<span class="acw">AcWing 769</span></div>
 <div class="problem-desc">给定一个由大小写字母构成的字符串。把该字符串中特定的字符全部用字符 # 替换。请你输出替换后的字符串。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入共两行。
@@ -252,7 +252,7 @@ l
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ072</span>字符串插入<span class="acw">AcWing 773</span></div>
+<div class="problem-title"><span class="nq">NQ075</span>字符串插入<span class="acw">AcWing 773</span></div>
 <div class="problem-desc">有两个不包含空白字符的字符串 str 和 substr，str 的字符个数不超过 10，substr 的字符个数为 3。
 将 substr 插入到 str 中 ASCII 码最大的那个字符后面，若有多个最大则只考虑第一个。</div>
 <table class="spec-table">
@@ -294,7 +294,7 @@ l
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ073</span>只出现一次的字符<span class="acw">AcWing 772</span></div>
+<div class="problem-title"><span class="nq">NQ076</span>只出现一次的字符<span class="acw">AcWing 772</span></div>
 <div class="problem-desc">给你一个只包含小写字母的字符串。请你判断是否存在只在字符串中出现过一次的字符。如果存在，输出满足条件的字符中位置最靠前的那个。如果没有，输出 no。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含一个由小写字母构成的字符串。数据保证字符串的长度不超过 100000。</td></tr>
@@ -341,7 +341,7 @@ l
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ074</span>字符串匹配<span class="acw">AcWing 762</span></div>
+<div class="problem-title"><span class="nq">NQ077</span>字符串匹配<span class="acw">AcWing 762</span></div>
 <div class="problem-desc">给定两个长度相同的字符串 a 和字符串 b。如果在某个位置 i 上，满足字符串 a 上的字符 a[i] 和字符串 b 上的字符 b[i] 相同，那么这个位置上的字符就是匹配的。
 如果两个字符串的匹配位置的数量与字符串总长度的比值大于或等于 k，则称两个字符串是匹配的。现在请你判断给定的两个字符串是否匹配。</div>
 <table class="spec-table">
@@ -386,7 +386,7 @@ abed
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ075</span>信息加密<span class="acw">AcWing 767</span></div>
+<div class="problem-title"><span class="nq">NQ078</span>信息加密<span class="acw">AcWing 767</span></div>
 <div class="problem-desc">对给定的字符串进行加密处理，加密规则如下：
 1. 小写字母：a→b, b→c, …, z→a；
 2. 大写字母：A→B, B→C, …, Z→A；
@@ -431,7 +431,7 @@ abed
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ076</span>输出字符串<span class="acw">AcWing 764</span></div>
+<div class="problem-title"><span class="nq">NQ079</span>输出字符串<span class="acw">AcWing 764</span></div>
 <div class="problem-desc">给定字符串 a，请按照如下要求构造字符串 b：
 对于 a 的每个位置 i（从第 1 个字符到倒数第二个字符），令 b[i] 为字符，其 ASCII 值等于 a[i] 和 a[i+1] 的 ASCII 值之和；
 最后 b 的最后一个字符的 ASCII 值等于 a 的最后一个字符和第一个字符的 ASCII 值之和。
@@ -471,7 +471,7 @@ abed
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ077</span>单词替换<span class="acw">AcWing 770</span></div>
+<div class="problem-title"><span class="nq">NQ080</span>单词替换<span class="acw">AcWing 770</span></div>
 <div class="problem-desc">输入一个字符串，以回车结束（字符串长度不超过100）。该字符串由若干个单词组成，单词之间用一个空格隔开，所有单词区分大小写。现在需要将其中的某个单词替换成另一个单词，并输出替换之后的字符串。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共3行。
@@ -518,7 +518,7 @@ I
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ078</span>最长单词<span class="acw">AcWing 774</span></div>
+<div class="problem-title"><span class="nq">NQ081</span>最长单词<span class="acw">AcWing 774</span></div>
 <div class="problem-desc">一个以.结尾的简单英文句子，单词之间用单个空格分隔，没有缩写形式和其它特殊形式，求句子中的最长单词。</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入一行字符串，表示这个简单英文句子，长度不超过 500。</td></tr>
@@ -555,4 +555,19 @@ I
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 774</span>
 <span style="color: #008000"># Python solution</span>
 </pre></div>
-</div></div><hr class="section-divider"><div class="chapter-end">— 第6章完 · 共12题 —</div></body></html>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ082</span>AcWing NQ053<span class="acw">AcWing NQ053</span></div>
+<div class="problem-desc">AcWing NQ053</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing NQ053</td></tr>
+</table>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #008000">// AcWing NQ053</span>
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing NQ053</span>
+<span style="color: #008000"># Python solution</span>
+</pre></div>
+</div></div><hr class="section-divider"><div class="chapter-end">— 第6章完 · 共13题 —</div></body></html>
