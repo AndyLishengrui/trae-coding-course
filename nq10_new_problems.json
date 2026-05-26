@@ -1,0 +1,170 @@
+{
+  "problems": {
+    "3": [
+      {
+        "nq": "NQ012",
+        "title": "水仙花数",
+        "ch": 3,
+        "desc": "水仙花数是指一个三位数，其各位数字的立方和等于该数本身。例如153=1³+5³+3³。给定区间[m,n]，找出其中所有的水仙花数。",
+        "input_fmt": "两个整数m和n（100≤m≤n≤999）。",
+        "output_fmt": "区间[m,n]中所有的水仙花数，从小到大每行一个。如果没有则输出\"no\"。",
+        "sample_in": "100 400",
+        "sample_out": "153\n370\n371",
+        "constraint": "100≤m≤n≤999"
+      }
+    ],
+    "4": [
+      {
+        "nq": "NQ029",
+        "title": "回文数判断",
+        "ch": 4,
+        "desc": "回文数是指正读反读都相同的整数。给定一个整数x，判断它是否是回文数。",
+        "input_fmt": "一个整数x。",
+        "output_fmt": "是回文数输出\"Yes\"，否则输出\"No\"。",
+        "sample_in": "121",
+        "sample_out": "Yes",
+        "constraint": "−2³¹≤x≤2³¹−1"
+      },
+      {
+        "nq": "NQ027",
+        "title": "丑数判断",
+        "ch": 4,
+        "desc": "丑数是只包含质因数2、3、5的正整数。习惯上把1当作第一个丑数。给定一个正整数n，判断它是否为丑数。",
+        "input_fmt": "一个整数n。",
+        "output_fmt": "是丑数输出\"Yes\"，否则输出\"No\"。",
+        "sample_in": "6",
+        "sample_out": "Yes",
+        "constraint": "1≤n≤10⁹"
+      }
+    ],
+    "6": [
+      {
+        "nq": "NQ053",
+        "title": "最长回文子串",
+        "ch": 6,
+        "desc": "给定一个字符串s，找到s中最长的回文子串。如果有多个相同长度的，输出第一个。",
+        "input_fmt": "一行字符串s。",
+        "output_fmt": "最长的回文子串。",
+        "sample_in": "babad",
+        "sample_out": "bab",
+        "constraint": "1≤len(s)≤1000"
+      }
+    ],
+    "7": [
+      {
+        "nq": "NQ016",
+        "title": "十六进制加法",
+        "ch": 7,
+        "desc": "输入两个十六进制数（字符串形式），计算它们的和并输出十六进制结果。字母大写。",
+        "input_fmt": "两行，每行一个十六进制数（由0-9、A-F组成）。",
+        "output_fmt": "和的十六进制表示（大写字母）。",
+        "sample_in": "1A\n2F",
+        "sample_out": "49",
+        "constraint": "每个数不超过8位"
+      }
+    ],
+    "10": [
+      {
+        "nq": "NQ059",
+        "title": "三数之和",
+        "ch": 10,
+        "desc": "给定一个包含n个整数的数组nums和一个目标值target，找出所有满足nums[i]+nums[j]+nums[k]==target且i<j<k的三元组。结果不能包含重复三元组。",
+        "input_fmt": "第一行n和target。第二行n个整数。",
+        "output_fmt": "每行一个三元组（三个数空格隔开），按第一个数升序排列。",
+        "sample_in": "6 0\n-1 0 1 2 -1 -4",
+        "sample_out": "-1 -1 2\n-1 0 1",
+        "constraint": "3≤n≤3000"
+      },
+      {
+        "nq": "NQ070",
+        "title": "寻找最接近的元素",
+        "ch": 10,
+        "desc": "在一个非降序排列的数组中，对于每个查询值x，找出数组中最接近x的元素（差值绝对值最小）。如果多个元素距离相等，输出值最小的那个。",
+        "input_fmt": "第一行n。第二行n个升序整数。第三行m。接下来m行每行一个查询值x。",
+        "output_fmt": "对每个查询输出最接近的元素值。",
+        "sample_in": "4\n1 3 5 7\n2\n4\n6",
+        "sample_out": "3\n5",
+        "constraint": "1≤n≤10⁵,1≤m≤10⁴"
+      }
+    ],
+    "13": [
+      {
+        "nq": "NQ079",
+        "title": "算24点",
+        "ch": 13,
+        "desc": "给定4个1到10之间的正整数，判断是否可以通过加减乘除四则运算（可加括号）使结果等于24。",
+        "input_fmt": "一行四个整数（1到10之间）。",
+        "output_fmt": "能算出24输出\"Yes\"，否则\"No\"。",
+        "sample_in": "5 5 5 1",
+        "sample_out": "Yes",
+        "constraint": "每个数1≤x≤10"
+      },
+      {
+        "nq": "NQ080",
+        "title": "质数环",
+        "ch": 13,
+        "desc": "将1到n这n个数字排成一个环，使得环上任意相邻两个数字之和都是质数。规定第一个数字固定为1。按字典序输出所有方案。",
+        "input_fmt": "一个整数n。",
+        "output_fmt": "每行一个方案（空格隔开），按字典序排列。",
+        "sample_in": "6",
+        "sample_out": "1 4 3 2 5 6\n1 6 5 2 3 4",
+        "constraint": "2≤n≤20"
+      }
+    ],
+    "16": [
+      {
+        "nq": "NQ099",
+        "title": "最省赛程",
+        "ch": 16,
+        "desc": "N个城市之间有M条道路。初始在起点城市S，要在终点城市T参加比赛。汽车油箱容量为C。每个城市油价不同（pi/升），每条道路消耗di升汽油。出发时油箱为空。求从S到T的最小油费。",
+        "input_fmt": "第一行N M C S T。第二行N个整数p1...pN（油价）。接下来M行每行u v d（道路和油耗）。",
+        "output_fmt": "最小油费，若无法到达输出-1。",
+        "sample_in": "4 4 10 1 4\n2 3 4 5\n1 2 5\n2 4 5\n1 3 3\n3 4 7",
+        "sample_out": "30",
+        "constraint": "1≤N≤1000,1≤M≤10000"
+      }
+    ]
+  },
+  "codes": {
+    "NQ012": {
+      "cpp": "// NQ012 水仙花数\n#include <cstdio>\nint main() {\n    int m, n; // 定义范围的起始和结束值\n    // 循环读取输入，直到文件结束\n    while(scanf(\"%d %d\", &m, &n)!=EOF){\n        int cnt=0; // 用于计数水仙花数的个数\n        // 遍历从m到n的所有数\n        for(int i=m;i<=n;i++){\n            // 分解数字的百位、十位和个位\n            int a=i/100, b=i%100/10, c=i%10;\n            // 计算各位数字的立方和\n            int sum=a*a*a + b*b*b + c*c*c;\n            // 判断是否为水仙花数\n            if(sum==i){\n                // 如果不是第一个水仙花数，先输出空格\n                if(cnt>0)printf(\" \");\n                // 输出水仙花数\n                printf(\"%d\",i);\n                // 计数器加1\n                cnt++;\n            }\n        }\n        // 如果没有水仙花数，输出\"no\"\n        if(cnt==0)printf(\"no\");\n        // 输出换行\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "py": "# NQ012 水仙花数\nimport sys\ndef main():\n    # 逐行读取输入\n    for line in sys.stdin:\n        # 去除行首尾空白\n        line=line.strip()\n        # 跳过空行\n        if not line:continue\n        # 解析输入的m和n\n        m,n=map(int,line.split())\n        # 存储水仙花数的列表\n        res=[]\n        # 遍历从m到n的所有数\n        for i in range(m,n+1):\n            # 分解数字的百位、十位和个位\n            a=i//100;b=i%100//10;c=i%10\n            # 计算各位数字的立方和\n            sum_c=a*a*a + b*b*b + c*c*c\n            # 判断是否为水仙花数，如果是则添加到结果列表\n            if sum_c==i:res.append(str(i))\n        # 如果有水仙花数，用空格连接输出\n        if res:print(' '.join(res))\n        # 否则输出\"no\"\n        else:print('no')\nif __name__==\"__main__\":main()"
+    },
+    "NQ029": {
+      "cpp": "#include <iostream>\nusing namespace std;\n\nbool isPalindrome(int x) {\n    if (x < 0) return false;\n    long long res = 0, oldx = x;\n    while (x) {\n        res = res * 10 + x % 10;\n        x /= 10;\n    }\n    return res == oldx;\n}\n\nint main() {\n    int n;\n    while (cin >> n) {\n        cout << (isPalindrome(n) ? \"true\" : \"false\") << endl;\n    }\n    return 0;\n}",
+      "py": "def is_palindrome(x):\n    if x < 0:\n        return False\n    res, oldx = 0, x\n    while x:\n        res = res * 10 + x % 10\n        x //= 10\n    return res == oldx\n\ndef main():\n    import sys\n    for line in sys.stdin:\n        n = int(line.strip())\n        print(\"true\" if is_palindrome(n) else \"false\")\n\nif __name__ == \"__main__\":\n    main()"
+    },
+    "NQ027": {
+      "cpp": "#include <iostream>\nusing namespace std;\n\nbool isUgly(int num) {\n    if (num <= 0) return false;\n    while (num % 2 == 0) num /= 2;\n    while (num % 3 == 0) num /= 3;\n    while (num % 5 == 0) num /= 5;\n    return num == 1;\n}\n\nint main() {\n    int n;\n    while (cin >> n) {\n        cout << (isUgly(n) ? \"true\" : \"false\") << endl;\n    }\n    return 0;\n}",
+      "py": "def is_ugly(num):\n    if num <= 0:\n        return False\n    while num % 2 == 0:\n        num //= 2\n    while num % 3 == 0:\n        num //= 3\n    while num % 5 == 0:\n        num //= 5\n    return num == 1\n\ndef main():\n    import sys\n    for line in sys.stdin:\n        n = int(line.strip())\n        print(\"true\" if is_ugly(n) else \"false\")\n\nif __name__ == \"__main__\":\n    main()"
+    },
+    "NQ053": {
+      "cpp": "#include <iostream>\n#include <string>\nusing namespace std;\n\nstring longestPalindrome(string s) {\n    string res;\n    int n = s.size();\n    \n    for (int i = 0; i < n; i++) {\n        // 奇数长度回文子串扩展\n        int l = i, r = i;\n        while (l >= 0 && r < n && s[l] == s[r]) {\n            l--;\n            r++;\n        }\n        if (res.size() < r - l - 1) {\n            res = s.substr(l + 1, r - l - 1);\n        }\n        \n        // 偶数长度回文子串扩展\n        l = i, r = i + 1;\n        while (l >= 0 && r < n && s[l] == s[r]) {\n            l--;\n            r++;\n        }\n        if (res.size() < r - l - 1) {\n            res = s.substr(l + 1, r - l - 1);\n        }\n    }\n    return res;\n}\n\nint main() {\n    string s;\n    cin >> s;\n    cout << longestPalindrome(s) << endl;\n    return 0;\n}",
+      "py": "def longest_palindrome(s):\n    \"\"\"最长回文子串\"\"\"\n    if not s:\n        return \"\"\n    \n    n = len(s)\n    start, max_len = 0, 0\n    \n    def expand_around_center(left, right):\n        \"\"\"从中心向两边扩展，返回回文子串的起始索引和长度\"\"\"\n        while left >= 0 and right < n and s[left] == s[right]:\n            left -= 1\n            right += 1\n        return left + 1, right - left - 1\n    \n    for i in range(n):\n        # 奇数长度回文子串\n        l1, len1 = expand_around_center(i, i)\n        # 偶数长度回文子串\n        l2, len2 = expand_around_center(i, i + 1)\n        \n        # 更新最长回文子串信息\n        if len1 > max_len:\n            start, max_len = l1, len1\n        if len2 > max_len:\n            start, max_len = l2, len2\n    \n    return s[start:start + max_len]\n\ndef main():\n    s = input().strip()\n    print(longest_palindrome(s))\n\nif __name__ == \"__main__\":\n    main()"
+    },
+    "NQ016": {
+      "cpp": "// NQ016 十六进制加法\n#include <iostream>\n#include <iomanip>\nusing namespace std;\nint main() {\n    long long a,b;\n    cout<<uppercase<<setbase(16);  // 大写十六进制输出\n    while(cin>>hex>>a>>b){  // 十六进制读取\n        long long sum=a+b;\n        if(sum<0)cout<<\"-\"<<-sum<<'\\n';  // 处理负数\n        else cout<<sum<<'\\n';  // 输出结果\n    }\n    return 0;\n}",
+      "py": "# NQ016 十六进制加法\nimport sys\nfor line in sys.stdin:\n    line=line.strip()\n    if not line:continue\n    parts=line.split()\n    if len(parts)!=2:continue\n    a=int(parts[0],16);b=int(parts[1],16)  # 十六进制转整数\n    res=a+b\n    if res<0:\n        print('-'+hex(-res)[2:].upper())  # 负数处理\n    else:\n        print(hex(res)[2:].upper())  # 大写十六进制输出"
+    },
+    "NQ059": {
+      "cpp": "#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nusing Triplet = vector<int>;\nusing Result = vector<Triplet>;\n\nResult threeSum(vector<int>& nums, int target) {\n    Result res;\n    int n = nums.size();\n    sort(nums.begin(), nums.end());\n    \n    for (int i = 0; i < n; ++i) {\n        // 跳过重复元素\n        if (i > 0 && nums[i] == nums[i-1]) continue;\n        \n        // 双指针初始化\n        int j = i + 1, k = n - 1;\n        while (j < k) {\n            int sum = nums[i] + nums[j] + nums[k];\n            \n            if (sum == target) {\n                // 满足x<y<z\n                if (nums[i] < nums[j] && nums[j] < nums[k]) {\n                    res.push_back({nums[i], nums[j], nums[k]});\n                }\n                // 跳重复\n                while (j < k && nums[j] == nums[j+1]) ++j;\n                while (j < k && nums[k] == nums[k-1]) --k;\n                // 移动指针\n                ++j;\n                --k;\n            } else if (sum > target) {\n                --k; // 和过大，右指针左移\n            } else {\n                ++j; // 和过小，左指针右移\n            }\n        }\n    }\n    return res;\n}\n\nint main() {\n    int target, n;\n    cin >> target >> n;\n    vector<int> nums(n);\n    for (int i = 0; i < n; ++i) {\n        cin >> nums[i];\n    }\n    \n    Result result = threeSum(nums, target);\n    for (const auto& triplet : result) {\n        cout << triplet[0] << \" \" << triplet[1] << \" \" << triplet[2] << endl;\n    }\n    return 0;\n}",
+      "py": "def three_sum(nums, target):\n    res = []\n    n = len(nums)\n    nums.sort()\n    \n    for i in range(n):\n        # 跳过重复元素\n        if i > 0 and nums[i] == nums[i-1]:\n            continue\n        \n        # 双指针初始化\n        j, k = i + 1, n - 1\n        while j < k:\n            current_sum = nums[i] + nums[j] + nums[k]\n            \n            if current_sum == target:\n                # 满足x<y<z\n                if nums[i] < nums[j] and nums[j] < nums[k]:\n                    res.append([nums[i], nums[j], nums[k]])\n                # 跳重复\n                while j < k and nums[j] == nums[j+1]:\n                    j += 1\n                while j < k and nums[k] == nums[k-1]:\n                    k -= 1\n                # 移动指针\n                j += 1\n                k -= 1\n            elif current_sum > target:\n                k -= 1 # 和过大，右指针左移\n            else:\n                j += 1 # 和过小，左指针右移\n    \n    return res\n\ndef main():\n    import sys\n    input = sys.stdin.read().split()\n    idx = 0\n    target = int(input[idx])\n    idx += 1\n    n = int(input[idx])\n    idx += 1\n    nums = list(map(int, input[idx:idx+n]))\n    idx += n\n    \n    result = three_sum(nums, target)\n    for triplet in result:\n        print('{0} {1} {2}'.format(triplet[0], triplet[1], triplet[2]))\n\nif __name__ == \"__main__\":\n    main()"
+    },
+    "NQ070": {
+      "cpp": "#include <cstdio>\n#include <algorithm>\nusing namespace std;\n\nconst int MAXN = 100010;\nint g[MAXN];\n\nint main() {\n    int n, m;\n    scanf(\"%d\", &n);\n    \n    g[0] = -1000000000;\n    for (int i = 1; i <= n; ++i) {\n        scanf(\"%d\", &g[i]);\n    }\n    g[n+1] = 1000000000;\n    \n    scanf(\"%d\", &m);\n    while (m--) {\n        int t;\n        scanf(\"%d\", &t);\n        \n        int l = lower_bound(g + 1, g + n + 1, t) - g;\n        int r = upper_bound(g + 1, g + n + 1, t) - g;\n        if (l <= n) l--;\n        \n        if (l == n + 1) {\n            printf(\"%d\\n\", g[n]);\n        } else if (r == 1) {\n            printf(\"%d\\n\", g[1]);\n        } else {\n            if (t - g[l] > g[r] - t) {\n                printf(\"%d\\n\", g[r]);\n            } else {\n                printf(\"%d\\n\", g[l]);\n            }\n        }\n    }\n    return 0;\n}",
+      "py": "def lower_bound(arr, left, right, target):\n    \"\"\"查找第一个不小于target的元素的索引\"\"\"\n    while left < right:\n        mid = left + (right - left) // 2\n        if arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid\n    return left\n\ndef upper_bound(arr, left, right, target):\n    \"\"\"查找第一个大于target的元素的索引\"\"\"\n    while left < right:\n        mid = left + (right - left) // 2\n        if arr[mid] <= target:\n            left = mid + 1\n        else:\n            right = mid\n    return left\n\ndef main():\n    import sys\n    input = sys.stdin.read().split()\n    idx = 0\n    \n    n = int(input[idx])\n    idx += 1\n    \n    g = [-1000000000] * (n + 2)\n    for i in range(1, n+1):\n        g[i] = int(input[idx])\n        idx += 1\n    g[n+1] = 1000000000\n    \n    m = int(input[idx])\n    idx += 1\n    \n    for _ in range(m):\n        t = int(input[idx])\n        idx += 1\n        \n        l = lower_bound(g, 1, n+1, t)\n        r = upper_bound(g, 1, n+1, t)\n        if l <= n:\n            l -= 1\n        \n        if l == n + 1:\n            print(g[n])\n        elif r == 1:\n            print(g[1])\n        else:\n            if t - g[l] > g[r] - t:\n                print(g[r])\n            else:\n                print(g[l])\n\nif __name__ == \"__main__\":\n    main()"
+    },
+    "NQ079": {
+      "cpp": "#include <iostream>\n#include <cmath>\n#include <vector>\nusing namespace std;\n\nconst double EPS = 1e-6;\nconst int N = 4;\n\nbool isZero(double x) {\n    return fabs(x) <= EPS;\n}\n\nbool count24(vector<double> nums) {\n    int n = nums.size();\n    if (n == 1) {\n        return isZero(nums[0] - 24);\n    }\n    \n    for (int i = 0; i < n - 1; i++) {\n        for (int j = i + 1; j < n; j++) {\n            vector<double> next;\n            for (int k = 0; k < n; k++) {\n                if (k != i && k != j) {\n                    next.push_back(nums[k]);\n                }\n            }\n            \n            // 加法\n            next.push_back(nums[i] + nums[j]);\n            if (count24(next)) return true;\n            next.pop_back();\n            \n            // 乘法\n            next.push_back(nums[i] * nums[j]);\n            if (count24(next)) return true;\n            next.pop_back();\n            \n            // 减法\n            next.push_back(nums[i] - nums[j]);\n            if (count24(next)) return true;\n            next.pop_back();\n            \n            // 减法 (交换顺序)\n            next.push_back(nums[j] - nums[i]);\n            if (count24(next)) return true;\n            next.pop_back();\n            \n            // 除法\n            if (!isZero(nums[j])) {\n                next.push_back(nums[i] / nums[j]);\n                if (count24(next)) return true;\n                next.pop_back();\n            }\n            \n            // 除法 (交换顺序)\n            if (!isZero(nums[i])) {\n                next.push_back(nums[j] / nums[i]);\n                if (count24(next)) return true;\n                next.pop_back();\n            }\n        }\n    }\n    \n    return false;\n}\n\nint main() {\n    while (true) {\n        vector<double> nums(N);\n        bool isEnd = true;\n        for (int i = 0; i < N; i++) {\n            cin >> nums[i];\n            if (!isZero(nums[i])) isEnd = false;\n        }\n        if (isEnd) break;\n        \n        if (count24(nums)) {\n            cout << \"YES\" << endl;\n        } else {\n            cout << \"NO\" << endl;\n        }\n    }\n    return 0;\n}",
+      "py": "import sys\n\nEPS = 1e-6\nN = 4\n\ndef is_zero(x):\n    return abs(x) <= EPS\n\ndef count24(nums):\n    n = len(nums)\n    if n == 1:\n        return is_zero(nums[0] - 24)\n    \n    for i in range(n - 1):\n        for j in range(i + 1, n):\n            next_nums = []\n            for k in range(n):\n                if k != i and k != j:\n                    next_nums.append(nums[k])\n            \n            # 加法\n            next_nums.append(nums[i] + nums[j])\n            if count24(next_nums):\n                return True\n            next_nums.pop()\n            \n            # 乘法\n            next_nums.append(nums[i] * nums[j])\n            if count24(next_nums):\n                return True\n            next_nums.pop()\n            \n            # 减法\n            next_nums.append(nums[i] - nums[j])\n            if count24(next_nums):\n                return True\n            next_nums.pop()\n            \n            # 减法 (交换顺序)\n            next_nums.append(nums[j] - nums[i])\n            if count24(next_nums):\n                return True\n            next_nums.pop()\n            \n            # 除法\n            if not is_zero(nums[j]):\n                next_nums.append(nums[i] / nums[j])\n                if count24(next_nums):\n                    return True\n                next_nums.pop()\n            \n            # 除法 (交换顺序)\n            if not is_zero(nums[i]):\n                next_nums.append(nums[j] / nums[i])\n                if count24(next_nums):\n                    return True\n                next_nums.pop()\n    \n    return False\n\ndef main():\n    for line in sys.stdin:\n        line = line.strip()\n        if not line:\n            continue\n        nums = list(map(float, line.split()))\n        if len(nums) != N:\n            continue\n        \n        # 检查是否全为0\n        is_end = True\n        for num in nums:\n            if not is_zero(num):\n                is_end = False\n                break\n        if is_end:\n            break\n        \n        if count24(nums):\n            print(\"YES\")\n        else:\n            print(\"NO\")\n\nif __name__ == \"__main__\":\n    main()"
+    },
+    "NQ080": {
+      "cpp": "#include <iostream>\n#include <cstring>\nusing namespace std;\nbool p[100];\nbool used[100];\nint a[100];\nint n, now = 0;\nvoid dfs(int deep) {\n    if (deep == n + 1 && p[a[1] + a[n]]) {\n        for (int i = 1; i <= n; i++) {\n            cout << a[i];\n            if (i != n) cout << \" \";\n        }\n        cout << endl;\n        return;\n    }\n    for (int i = 2; i <= n; i++) {\n        if (!used[i] && p[i + a[deep - 1]]) {\n            used[i] = true;\n            a[deep] = i;\n            dfs(deep + 1);  // 递归搜索下一个位置\n            used[i] = false;  // 回溯\n        }\n    }\n}\nint main() {\n    // 预处理质数表\n    memset(p, false, sizeof(p));\n    p[2] = p[3] = p[5] = p[7] = p[11] = true;\n    p[13] = p[17] = p[19] = p[23] = p[29] = true;\n    p[31] = p[37] = true;\n    bool first_case = true;\n    while (cin >> n) {\n        a[1] = 1;  // 第一个元素固定为1\n        if (!first_case) {\n            cout << endl;\n        }\n        first_case = false;\n        cout << \"Case \" << ++now << \":\" << endl;\n        memset(used, false, sizeof(used));\n        dfs(2);  // 从第二个位置开始DFS\n    }\n    return 0;\n}",
+      "py": "# 质数标记数组，p[i]为True表示i是质数\np = [False] * 100\n# 初始化质数表\np[2] = p[3] = p[5] = p[7] = p[11] = True\np[13] = p[17] = p[19] = p[23] = p[29] = True\np[31] = p[37] = True\n\nnow = 0\n\ndef dfs(deep, n, a, used):\n    if deep == n and p[a[0] + a[-1]]:\n        print(' '.join(map(str, a)))\n        return\n    for i in range(2, n + 1):\n        if not used[i] and p[i + a[-1]]:\n            used[i] = True\n            a.append(i)\n            dfs(deep + 1, n, a, used)  # 递归搜索下一个位置\n            a.pop()  # 回溯\n            used[i] = False  # 回溯\n\ndef main():\n    global now\n    first_case = True\n    import sys\n    for line in sys.stdin:\n        line = line.strip()\n        if not line:\n            continue\n        n = int(line)\n        if not first_case:\n            print()\n        first_case = False\n        now += 1\n        print(\"Case {}:\".format(now))\n        used = [False] * (n + 1)\n        a = [1]  # 第一个元素固定为1\n        used[1] = True\n        dfs(1, n, a, used)  # 从第二个位置开始DFS\n\nif __name__ == \"__main__\":\n    main()"
+    },
+    "NQ099": {
+      "cpp": "#include <iostream>\n#include <vector>\n#include <queue>\n#include <climits>\nusing namespace std;\n\nconst int MAX_N = 1010;\nconst int MAX_CAPACITY = 107;\n\nstruct Edge {\n    int to, distance;\n    Edge(int t, int d) : to(t), distance(d) {};\n};\n\nvector<vector<Edge>> adj(MAX_N);\nint oil_price[MAX_N];\nint expenses[MAX_N][MAX_CAPACITY];\nbool visited[MAX_N][MAX_CAPACITY];\n\nstruct Node {\n    int city, fuel, money;\n    Node(int c, int f, int m) : city(c), fuel(f), money(m) {};\n    bool operator<(const Node& other) const {\n        return money > other.money; // 小根堆\n    }\n};\n\npriority_queue<Node> pq;\n\nint dijkstra(int cap, int start, int target, int n) {\n    // 初始化\n    for (int i = 0; i < n; ++i) {\n        for (int j = 0; j <= cap; ++j) {\n            expenses[i][j] = INT_MAX;\n            visited[i][j] = false;\n        }\n    }\n    \n    // 清空优先队列\n    while (!pq.empty()) pq.pop();\n    \n    // 起点状态\n    expenses[start][0] = 0;\n    pq.push(Node(start, 0, 0));\n    \n    while (!pq.empty()) {\n        Node current = pq.top();\n        pq.pop();\n        \n        int city = current.city;\n        int fuel = current.fuel;\n        int money = current.money;\n        \n        if (city == target) return money;\n        if (visited[city][fuel]) continue;\n        visited[city][fuel] = true;\n        \n        // 尝试加一升油\n        if (fuel < cap) {\n            int new_fuel = fuel + 1;\n            int new_money = money + oil_price[city];\n            if (new_money < expenses[city][new_fuel]) {\n                expenses[city][new_fuel] = new_money;\n                pq.push(Node(city, new_fuel, new_money));\n            }\n        }\n        \n        // 尝试前往相邻城市\n        for (Edge edge : adj[city]) {\n            int next = edge.to;\n            int req_fuel = edge.distance;\n            if (fuel >= req_fuel) {\n                int new_fuel = fuel - req_fuel;\n                if (money < expenses[next][new_fuel]) {\n                    expenses[next][new_fuel] = money;\n                    pq.push(Node(next, new_fuel, money));\n                }\n            }\n        }\n    }\n    \n    return -1; // 无法到达\n}\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    \n    int n, m;\n    cin >> n >> m;\n    \n    for (int i = 0; i < n; ++i) {\n        cin >> oil_price[i];\n    }\n    \n    for (int i = 0; i < m; ++i) {\n        int u, v, d;\n        cin >> u >> v >> d;\n        adj[u].emplace_back(v, d);\n        adj[v].emplace_back(u, d);\n    }\n    \n    int q;\n    cin >> q;\n    while (q--) {\n        int c, s, e;\n        cin >> c >> s >> e;\n        int res = dijkstra(c, s, e, n);\n        if (res == -1) {\n            cout << \"impossible\" << endl;\n        } else {\n            cout << res << endl;\n        }\n    }\n    \n    return 0;\n}",
+      "py": "# NQ099 最省赛程 - 改进版\n# Python 3.5 兼容\nimport heapq\n\nMAX_N = 1010\nMAX_CAPACITY = 107\n\ndef main():\n    import sys\n    input = sys.stdin.read().split()\n    idx = 0\n    \n    n = int(input[idx])\n    idx += 1\n    m = int(input[idx])\n    idx += 1\n    \n    oil_price = [0] * n\n    for i in range(n):\n        oil_price[i] = int(input[idx])\n        idx += 1\n    \n    # 构建邻接表\n    adj = [[] for _ in range(n)]\n    for _ in range(m):\n        u = int(input[idx])\n        idx += 1\n        v = int(input[idx])\n        idx += 1\n        d = int(input[idx])\n        idx += 1\n        adj[u].append((v, d))\n        adj[v].append((u, d))\n    \n    q = int(input[idx])\n    idx += 1\n    \n    for _ in range(q):\n        c = int(input[idx])\n        idx += 1\n        s = int(input[idx])\n        idx += 1\n        e = int(input[idx])\n        idx += 1\n        \n        # 初始化 expenses 数组\n        expenses = [[float('inf')] * (c + 1) for _ in range(n)]\n        visited = [[False] * (c + 1) for _ in range(n)]\n        \n        # 优先队列，元素为 (money, city, fuel)\n        heap = []\n        expenses[s][0] = 0\n        heapq.heappush(heap, (0, s, 0))\n        \n        found = False\n        result = -1\n        \n        while heap:\n            current_money, city, fuel = heapq.heappop(heap)\n            \n            if city == e:\n                result = current_money\n                found = True\n                break\n            \n            if visited[city][fuel]:\n                continue\n            visited[city][fuel] = True\n            \n            # 尝试加一升油\n            if fuel < c:\n                new_fuel = fuel + 1\n                new_money = current_money + oil_price[city]\n                if new_money < expenses[city][new_fuel]:\n                    expenses[city][new_fuel] = new_money\n                    heapq.heappush(heap, (new_money, city, new_fuel))\n            \n            # 尝试前往相邻城市\n            for (next_city, required_fuel) in adj[city]:\n                if fuel >= required_fuel:\n                    new_fuel = fuel - required_fuel\n                    if current_money < expenses[next_city][new_fuel]:\n                        expenses[next_city][new_fuel] = current_money\n                        heapq.heappush(heap, (current_money, next_city, new_fuel))\n        \n        if found:\n            print(result)\n        else:\n            print(\"impossible\")\n\nif __name__ == \"__main__\":\n    main()"
+    }
+  }
+}
