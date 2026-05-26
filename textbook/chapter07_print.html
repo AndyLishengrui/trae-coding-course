@@ -1,0 +1,556 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第7章 模块化的力量</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999;font-family:"PingFang SC",sans-serif}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
+body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222}
+.chapter-title{text-align:center;font-size:20pt;font-weight:bold;margin:1.5em 0 .1em 0;letter-spacing:3pt}
+.chapter-subtitle{text-align:center;font-size:10pt;color:#777;margin-bottom:1.5em;padding-bottom:.8em;border-bottom:1px solid #bbb}
+.preface{font-size:10pt;margin-bottom:2em;color:#444}.preface p{margin:.4em 0;text-indent:2em}
+.problem-title{font-size:12pt;font-weight:bold;margin:1.5em 0 .4em 0;padding-bottom:.15em;border-bottom:1pt solid #444}
+.problem-title .nq{color:#2563eb;margin-right:.6em;font-size:11pt}.problem-title .acw{font-size:7.5pt;color:#aaa;font-weight:normal;margin-left:1em}
+.problem-desc{margin:.6em 0 1em 0;text-indent:2em;line-height:1.85}
+.spec-table{width:100%;border-collapse:collapse;margin:.3em 0 .5em 0;font-size:9pt}
+.spec-table td{padding:.3em .8em;vertical-align:top;border:none}
+.spec-table .spec-label{width:4em;font-size:8pt;font-weight:bold;text-align:right;padding-right:1em;white-space:nowrap}
+.spec-table .spec-label .tag{display:inline-block;padding:.15em .5em;border-radius:2px;color:#fff;font-size:7.5pt;letter-spacing:.5pt}
+.spec-table .spec-label .tag.in{background:#2563eb}.spec-table .spec-label .tag.out{background:#059669}.spec-table .spec-label .tag.lim{background:#d97706}
+.spec-table .spec-value{color:#333;font-size:9pt}
+.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.7em 1em;margin:1em 0 1.2em 0}
+.sample-grid{display:flex;gap:2em}.sample-col{flex:1}
+.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:.2em;font-weight:bold}
+.sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
+.insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
+.insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
+.code-dual{display:flex;gap:1.5em;margin:1.2em 0;page-break-inside:avoid}.code-col{flex:1;min-width:0}
+.code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
+.code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
+.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
+body{string-set:chapter "第7章 模块化的力量——函数、递归与库的威力"}</style></head><body>
+<div class="chapter-title">模块化的力量</div><div class="chapter-subtitle">函数、递归与库的威力 · 12题 · C++ &amp; Python 双语对照</div>
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ079</span>n的阶乘<span class="acw">AcWing 804</span></div>
+<div class="problem-desc">输入n，计算n!。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">n</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">n!</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>5</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>120</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>循环累乘或递归。Python的math.factorial(n)或手写循环。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>结果增长极快。20!≈2.4×10¹⁸需要64位int。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">int</span> fact(<span style="color: #2B91AF">int</span> n)
+{
+  <span style="color: #2B91AF">int</span> res = 1;
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i ++ )
+      res *= i;
+  <span style="color: #00F">return</span> res;    
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+   <span style="color: #2B91AF">int</span> n;
+   cin &gt;&gt; n;
+
+   cout &lt;&lt; fact(n) &lt;&lt; endl;
+
+   <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">import</span> math;print(math.factorial(int(input())))
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ080</span>x和y的最大值<span class="acw">AcWing 805</span></div>
+<div class="problem-desc">写函数max(x,y)返回较大值。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">x y</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">max</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>3 5</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>5</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>函数封装max逻辑。Python内置max()。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python内置max不需要手写。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">int</span> max(<span style="color: #2B91AF">int</span> x, <span style="color: #2B91AF">int</span> y)
+{
+  <span style="color: #00F">if</span> (x &gt; y) <span style="color: #00F">return</span> x;
+  <span style="color: #00F">return</span> y;
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #2B91AF">int</span> x, y;
+    cin &gt;&gt; x &gt;&gt; y;
+
+    cout &lt;&lt; max(x, y) &lt;&lt; endl;
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>x,y=map(int,input().split());print(max(x,y))
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ081</span>最大公约数<span class="acw">AcWing 808</span></div>
+<div class="problem-desc">输入a,b求最大公约数。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">a b</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">gcd</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>12 16</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>4</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>math.gcd()一行。欧几里得算法。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python 3.5+: math.gcd()。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">int</span> gcd(<span style="color: #2B91AF">int</span> a, <span style="color: #2B91AF">int</span> b) 
+{
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1000; i; i -- )
+        <span style="color: #00F">if</span> (a % i == 0 &amp;&amp; b % i == 0)
+           <span style="color: #00F">return</span> i;
+    <span style="color: #00F">return</span> -1;       
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #2B91AF">int</span> a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+    cout &lt;&lt; gcd(a, b) &lt;&lt; endl;
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">import</span> math;a,b=map(int,input().split());print(math.gcd(a,b))
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ082</span>交换数值<span class="acw">AcWing 811</span></div>
+<div class="problem-desc">写函数swap交换两个整数。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">a b</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">b a</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>1 2</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>2 1</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>Python元组解包a,b=b,a。C++需引用参数。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python: a,b=b,a一行交换。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">void</span> swap(<span style="color: #2B91AF">int</span>&amp; x, <span style="color: #2B91AF">int</span>&amp; y)
+{
+    <span style="color: #00F">if</span> (x == y) <span style="color: #00F">return</span>;
+
+    <span style="color: #2B91AF">int</span> t = x;
+    x = y;
+    y = t;
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #2B91AF">int</span> x, y;
+    cin &gt;&gt; x &gt;&gt; y;
+    swap(x, y);
+
+    cout &lt;&lt; x &lt;&lt; <span style="color: #A31515">&#39; &#39;</span> &lt;&lt; y &lt;&lt; endl;
+
+    <span style="color: #00F">return</span> 0;
+
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>a,b=map(int,input().split());a,b=b,a;print(a,b)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ083</span>打印数字<span class="acw">AcWing 812</span></div>
+<div class="problem-desc">写函数print(int a[],int size)打印数组。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">N+数组</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">每行一个</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre></pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre></pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>打印数组元素，每个一行。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python遍历list直接print。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 1010;
+
+<span style="color: #2B91AF">void</span> print(<span style="color: #2B91AF">int</span> a[], <span style="color: #2B91AF">int</span> size)
+{
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; size; i ++ )
+        cout &lt;&lt; a[i] &lt;&lt; <span style="color: #A31515">&#39; &#39;</span>;
+    cout &lt;&lt; endl;    
+
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #2B91AF">int</span> n, size;
+    <span style="color: #2B91AF">int</span> a[N];
+
+    cin &gt;&gt; n &gt;&gt; size;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i ++ ) cin &gt;&gt; a[i];
+
+    print(a, size);
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>n=int(input());arr=list(map(int,input().split()))
+<span style="color: #00F">for</span> x <span style="color: #00F">in</span> arr:print(x)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ084</span>打印矩阵<span class="acw">AcWing 813</span></div>
+<div class="problem-desc">写函数print2D打印二维数组。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">row col+矩阵</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">矩阵</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre></pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre></pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>二维数组行优先遍历打印。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python嵌套list遍历。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">void</span> print2D(<span style="color: #2B91AF">int</span> a[][100], <span style="color: #2B91AF">int</span> row, <span style="color: #2B91AF">int</span> col)
+{
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; row; i ++ )
+    {
+      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt; col; j ++ )
+          cout &lt;&lt; a[i][j] &lt;&lt; <span style="color: #A31515">&#39; &#39;</span>;
+      cout &lt;&lt; endl;    
+    }
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #2B91AF">int</span> a[100][100];
+
+    <span style="color: #2B91AF">int</span> row, col;
+
+    cin &gt;&gt; row &gt;&gt; col;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; row; i ++ )
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt; col; j ++ )
+            cin &gt;&gt; a[i][j];
+
+    print2D(a, row, col);        
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>r,c=map(int,input().split())
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(r):print(<span style="color: #A31515">&#39; &#39;</span>.join(input().split()))
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ085</span>递归求阶乘<span class="acw">AcWing 819</span></div>
+<div class="problem-desc">用递归函数求n!。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">n</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">n!</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>5</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>120</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>递归基线：n<=1返回1。递归：n*fact(n-1)。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>递归要有基线条件防止无限递归。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">int</span> fact(<span style="color: #2B91AF">int</span> n)
+{
+    <span style="color: #00F">if</span> (n == 1) <span style="color: #00F">return</span> 1;
+    <span style="color: #00F">return</span> n * fact(n - 1);
+
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #2B91AF">int</span> n;
+    cin &gt;&gt; n;
+    cout &lt;&lt; fact(n) &lt;&lt; endl;
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">def</span> f(n):<span style="color: #00F">return</span> 1 <span style="color: #00F">if</span> n&lt;=1 <span style="color: #00F">else</span> n*f(n-1)
+print(f(int(input())))
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ086</span>递归求斐波那契<span class="acw">AcWing 820</span></div>
+<div class="problem-desc">用递归求第n项斐波那契数。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">n</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">fib(n)</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>5</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>5</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>递归：fib(n)=fib(n-1)+fib(n-2)。基线n<=1。注意指数复杂度。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>朴素递归O(2ⁿ)。后续第15课会讲记忆化优化。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">int</span> f(<span style="color: #2B91AF">int</span> n)
+{
+    <span style="color: #00F">if</span> (n &lt;= 2) <span style="color: #00F">return</span> 1;
+    <span style="color: #00F">return</span> f(n - 2) + f(n - 1);
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #2B91AF">int</span> n;
+    cin &gt;&gt; n;
+    cout &lt;&lt; f(n) &lt;&lt; endl;
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">def</span> f(n):<span style="color: #00F">return</span> n <span style="color: #00F">if</span> n&lt;=1 <span style="color: #00F">else</span> f(n-1)+f(n-2)
+print(f(int(input())))
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ087</span>跳台阶<span class="acw">AcWing 821</span></div>
+<div class="problem-desc">N级台阶，每次跳1或2级，求跳法数。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">N</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">方法数</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>5</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>8</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>DP/fib：dp[i]=dp[i-1]+dp[i-2]。或@lru_cache记忆化递归。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>functools.lru_cache自动记忆化。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">int</span> n;
+<span style="color: #2B91AF">int</span> ans;
+
+<span style="color: #2B91AF">void</span> f(<span style="color: #2B91AF">int</span> k)
+{
+  <span style="color: #00F">if</span> (k == n) ans ++ ;
+  <span style="color: #00F">else</span> <span style="color: #00F">if</span> (k &lt; n)
+  {
+    f(k + 1);
+    f(k + 2);
+  }
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+    cin &gt;&gt; n;
+    f(0);
+    cout &lt;&lt; ans &lt;&lt; endl;
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">from</span> functools <span style="color: #00F">import</span> lru_cache
+@lru_cache(<span style="color: #00F">None</span>)
+<span style="color: #00F">def</span> f(n):<span style="color: #00F">return</span> n <span style="color: #00F">if</span> n&lt;=2 <span style="color: #00F">else</span> f(n-1)+f(n-2)
+n=int(input());print(f(n))
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ088</span>走方格<span class="acw">AcWing 822</span></div>
+<div class="problem-desc">n×m网格，从(0,0)到(n,m)，只能向右或向下，求路径数。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">n m</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">路径数</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>2 3</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>10</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>组合数学：C(n+m,n)。或DP递推。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python: math.comb(n+m,n)。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">int</span> n, m;
+<span style="color: #2B91AF">int</span> ans;
+
+<span style="color: #2B91AF">void</span> dfs(<span style="color: #2B91AF">int</span> x, <span style="color: #2B91AF">int</span> y)
+{
+    <span style="color: #00F">if</span> (x == n &amp;&amp; y == m) ans ++ ;
+    <span style="color: #00F">else</span>
+    {
+      <span style="color: #00F">if</span> (y &lt; m) dfs(x, y + 1);
+      <span style="color: #00F">if</span> (x &lt; n) dfs(x + 1, y);
+    }
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+    cin &gt;&gt; n &gt;&gt; m;
+    dfs(0, 0);
+    cout &lt;&lt; ans &lt;&lt; endl;
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">import</span> math;n,m=map(int,input().split());print(math.comb(n+m,n))
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ089</span>排列<span class="acw">AcWing 823</span></div>
+<div class="problem-desc">输出1~n的所有排列。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">n</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">每行一个排列</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>3</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>1 2 3
+1 3 2
+...</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>itertools.permutations或DFS回溯。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python: itertools.permutations(range(1,n+1))。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 10;
+
+<span style="color: #2B91AF">int</span> n;
+
+<span style="color: #2B91AF">void</span> dfs(<span style="color: #2B91AF">int</span> u, <span style="color: #2B91AF">int</span> nums[], <span style="color: #2B91AF">bool</span> st[])
+{
+  <span style="color: #00F">if</span> (u &gt; n)
+  {
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i ++ ) cout &lt;&lt; nums[i] &lt;&lt; <span style="color: #A31515">&#39; &#39;</span>;
+    cout &lt;&lt; endl;
+  }
+  <span style="color: #00F">else</span>
+  {
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i ++ )
+        <span style="color: #00F">if</span> (!st[i])
+        {
+          st[i] = true;
+          nums[u] = i;
+          dfs(u + 1, nums, st);
+          st[i] = false;
+        }
+  }
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+    cin &gt;&gt; n;
+
+    <span style="color: #2B91AF">int</span> nums[N];
+    <span style="color: #2B91AF">bool</span> st[N] = {0};
+
+    dfs(1, nums, st);
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">from</span> itertools <span style="color: #00F">import</span> permutations
+n=int(input())
+<span style="color: #00F">for</span> p <span style="color: #00F">in</span> permutations(range(1,n+1)):print(*p)
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ090</span>数组排序<span class="acw">AcWing 818</span></div>
+<div class="problem-desc">对数组排序后输出。</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">N+数组</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">升序数组</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>5
+3 1 4 1 5</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>1 1 3 4 5</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>Python用sort()或sorted()。C++用sort()。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python: arr.sort()原地排序。</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">void</span> sort(<span style="color: #2B91AF">int</span> a[], <span style="color: #2B91AF">int</span> l, <span style="color: #2B91AF">int</span> r)
+{
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = l; i &lt;= r; i ++ )
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = i + 1; j &lt;= r; j ++ )
+            <span style="color: #00F">if</span> (a[j] &lt; a[i])
+                swap(a[i], a[j]);
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #2B91AF">int</span> a[1000];
+    <span style="color: #2B91AF">int</span> n, l, r;
+    cin &gt;&gt; n &gt;&gt; l &gt;&gt; r;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i ++ ) cin &gt;&gt; a[i];
+
+    sort(a, l, r);
+
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i ++ ) cout &lt;&lt; a[i] &lt;&lt; <span style="color: #A31515">&#39; &#39;</span>;
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre>n=int(input());arr=list(map(int,input().split()));arr.sort();print(*arr)
+</pre></div>
+</div></div><hr class="section-divider"><div class="chapter-end">— 第7章完 · 共12题 —</div></body></html>

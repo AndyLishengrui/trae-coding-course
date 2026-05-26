@@ -1,0 +1,488 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第11章 数字的奥秘</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999;font-family:"PingFang SC",sans-serif}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
+body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222}
+.chapter-title{text-align:center;font-size:20pt;font-weight:bold;margin:1.5em 0 .1em 0;letter-spacing:3pt}
+.chapter-subtitle{text-align:center;font-size:10pt;color:#777;margin-bottom:1.5em;padding-bottom:.8em;border-bottom:1px solid #bbb}
+.preface{font-size:10pt;margin-bottom:2em;color:#444}.preface p{margin:.4em 0;text-indent:2em}
+.problem-title{font-size:12pt;font-weight:bold;margin:1.5em 0 .4em 0;padding-bottom:.15em;border-bottom:1pt solid #444}
+.problem-title .nq{color:#2563eb;margin-right:.6em;font-size:11pt}.problem-title .acw{font-size:7.5pt;color:#aaa;font-weight:normal;margin-left:1em}
+.problem-desc{margin:.6em 0 1em 0;text-indent:2em;line-height:1.85}
+.spec-table{width:100%;border-collapse:collapse;margin:.3em 0 .5em 0;font-size:9pt}
+.spec-table td{padding:.3em .8em;vertical-align:top;border:none}
+.spec-table .spec-label{width:4em;font-size:8pt;font-weight:bold;text-align:right;padding-right:1em;white-space:nowrap}
+.spec-table .spec-label .tag{display:inline-block;padding:.15em .5em;border-radius:2px;color:#fff;font-size:7.5pt;letter-spacing:.5pt}
+.spec-table .spec-label .tag.in{background:#2563eb}.spec-table .spec-label .tag.out{background:#059669}.spec-table .spec-label .tag.lim{background:#d97706}
+.spec-table .spec-value{color:#333;font-size:9pt}
+.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.7em 1em;margin:1em 0 1.2em 0}
+.sample-grid{display:flex;gap:2em}.sample-col{flex:1}
+.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:.2em;font-weight:bold}
+.sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
+.insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
+.insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
+.code-dual{display:flex;gap:1.5em;margin:1.2em 0;page-break-inside:avoid}.code-col{flex:1;min-width:0}
+.code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
+.code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
+.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
+body{string-set:chapter "第11章 数字的奥秘——高精度、位运算与离散化"}</style></head><body>
+<div class="chapter-title">数字的奥秘</div><div class="chapter-subtitle">高精度、位运算与离散化 · 7题 · C++ &amp; Python 双语对照</div>
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ115</span>AcWing 791<span class="acw">AcWing 791</span></div>
+<div class="problem-desc">AcWing 791</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 1e6+7; 
+
+vector&lt;<span style="color: #2B91AF">int</span>&gt; add(vector&lt;<span style="color: #2B91AF">int</span>&gt; &amp;A, vector&lt;<span style="color: #2B91AF">int</span>&gt;&amp;B){
+    vector&lt;<span style="color: #2B91AF">int</span>&gt; C;
+    <span style="color: #2B91AF">int</span> t=0;
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i=0; i&lt;A.size()||i&lt;B.size(); i++) {
+        <span style="color: #00F">if</span> (i&lt;A.size()) t+=A[i];
+        <span style="color: #00F">if</span> (i&lt;B.size()) t+=B[i];
+        <span style="color: #008000">//对t取模，取进位</span>
+        C.push_back(t %10);<span style="color: #008000">//把t模10的余数入数组，商为进位</span>
+        t /= 10; <span style="color: #008000">//算出进位，供下一次循环使用</span>
+    }
+    <span style="color: #00F">if</span>(t) C.push_back(1);<span style="color: #008000">//最高位进位</span>
+    <span style="color: #00F">return</span> C;
+}
+
+<span style="color: #2B91AF">int</span> main(){
+    <span style="color: #008000">//输入为字符串</span>
+    string a,b;
+    vector&lt;<span style="color: #2B91AF">int</span>&gt; A,B;
+
+    cin &gt;&gt; a&gt;&gt;b; <span style="color: #008000">// a=&quot;786654&quot;</span>
+    <span style="color: #008000">//倒序存储A，B，a[0]乃是最低位</span>
+    <span style="color: #00F">for</span>(<span style="color: #2B91AF">int</span> i= a.size()-1; i&gt;=0; i--) A.push_back(a[i]-<span style="color: #A31515">&#39;0&#39;</span>);
+    <span style="color: #00F">for</span>(<span style="color: #2B91AF">int</span> i= b.size()-1; i&gt;=0; i--) B.push_back(b[i]-<span style="color: #A31515">&#39;0&#39;</span>);
+
+    <span style="color: #00F">auto</span> C = add(A,B);
+
+    <span style="color: #00F">for</span>(<span style="color: #2B91AF">int</span> i= C.size()-1; i&gt;=0; i--) cout&lt;&lt;C[i];<span style="color: #008000">//打印C</span>
+    <span style="color: #00F">return</span> 0;
+
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 791</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ116</span>AcWing 792<span class="acw">AcWing 792</span></div>
+<div class="problem-desc">AcWing 792</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 1e6 + 7;
+<span style="color: #2B91AF">bool</span> isGreater(vector&lt;<span style="color: #2B91AF">int</span>&gt; &amp;A, vector&lt;<span style="color: #2B91AF">int</span>&gt; &amp;B)
+{
+    <span style="color: #00F">if</span> (A.size() != B.size()) <span style="color: #008000">//比较大小</span>
+        <span style="color: #00F">return</span> A.size() &gt; B.size();
+    <span style="color: #008000">//否则大小相等，逐位比较大小</span>
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = A.size() - 1; i &gt;= 0; i--)
+        <span style="color: #00F">if</span> (A[i] != B[i])
+            <span style="color: #00F">return</span> A[i] &gt; B[i];
+    <span style="color: #00F">return</span> true; <span style="color: #008000">//每个数字都相同，长度相同，两数相等</span>
+}
+<span style="color: #008000">//C= A-B</span>
+vector&lt;<span style="color: #2B91AF">int</span>&gt; sub(vector&lt;<span style="color: #2B91AF">int</span>&gt; &amp;A, vector&lt;<span style="color: #2B91AF">int</span>&gt; &amp;B)
+{
+    vector&lt;<span style="color: #2B91AF">int</span>&gt; C;
+    <span style="color: #008000">//A是比较大的数</span>
+    <span style="color: #2B91AF">int</span> t = 0; <span style="color: #008000">//第一轮减法进位为0</span>
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; A.size(); i++)
+    {
+        t = A[i] - t;
+        <span style="color: #00F">if</span> (i &lt; B.size())
+            t -= B[i];              <span style="color: #008000">//A[i]-B[i] + t</span>
+        C.push_back((t + 10) % 10); <span style="color: #008000">//得到对应位</span>
+        <span style="color: #00F">if</span> (t &lt; 0)
+            t = 1;
+        <span style="color: #00F">else</span>
+            t = 0; <span style="color: #008000">//判断是否借一位</span>
+    }
+    <span style="color: #008000">//去掉开头的0</span>
+    <span style="color: #00F">while</span> (C.size() &gt; 1 &amp;&amp; C.back()==0) C.pop_back();
+
+    <span style="color: #00F">return</span> C;
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #008000">//输入为字符串</span>
+    string a, b;
+    vector&lt;<span style="color: #2B91AF">int</span>&gt; A, B;
+
+    cin &gt;&gt; a &gt;&gt; b; <span style="color: #008000">// a=&quot;786654&quot;</span>
+    <span style="color: #008000">//倒序存储A，B，a[0]乃是最低位</span>
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = a.size() - 1; i &gt;= 0; i--)
+        A.push_back(a[i] - <span style="color: #A31515">&#39;0&#39;</span>);
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = b.size() - 1; i &gt;= 0; i--)
+        B.push_back(b[i] - <span style="color: #A31515">&#39;0&#39;</span>);
+    <span style="color: #008000">//判断A与B的大小</span>
+    <span style="color: #00F">if</span> (isGreater(A, B))
+    {
+        <span style="color: #00F">auto</span> C = sub(A, B);
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = C.size() - 1; i &gt;= 0; i--)
+            cout &lt;&lt; C[i]; <span style="color: #008000">//打印C</span>
+    }
+    <span style="color: #00F">else</span>
+    {
+        <span style="color: #00F">auto</span> C = sub(B, A);
+        cout &lt;&lt; <span style="color: #A31515">&quot;-&quot;</span>;
+        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = C.size() - 1; i &gt;= 0; i--)
+            cout &lt;&lt; C[i]; <span style="color: #008000">//打印C</span>
+    }
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 792</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ117</span>AcWing 801<span class="acw">AcWing 801</span></div>
+<div class="problem-desc">AcWing 801</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #00F">inline</span> <span style="color: #2B91AF">int</span> lowbit(<span style="color: #2B91AF">int</span> &amp;x)
+{
+    <span style="color: #00F">return</span> x &amp; -x;<span style="color: #008000">//x的二进制的最后一个1所构成的整数</span>
+}
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #2B91AF">int</span> n, x;
+    cin &gt;&gt; n;
+    <span style="color: #00F">while</span> (n--)
+    {
+        <span style="color: #008000">//读入一个数，并且计算1的个数，并且输出</span>
+        cin &gt;&gt; x;
+        <span style="color: #2B91AF">int</span> res = 0;<span style="color: #008000">//计数变量</span>
+        <span style="color: #00F">while</span> (x)
+            x -= lowbit(x), res++; <span style="color: #008000">//使用,表达式，简化代码去括号</span>
+        cout &lt;&lt; res &lt;&lt; <span style="color: #A31515">&quot; &quot;</span>;        <span style="color: #008000">//输出运算结果</span>
+    }
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 801</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ118</span>AcWing 793<span class="acw">AcWing 793</span></div>
+<div class="problem-desc">AcWing 793</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 1e6 + 7;
+
+<span style="color: #008000">//C= A*b,t的用法很精彩！</span>
+vector&lt;<span style="color: #2B91AF">int</span>&gt; mul(vector&lt;<span style="color: #2B91AF">int</span>&gt; &amp;A, <span style="color: #2B91AF">int</span> b){
+    vector&lt;<span style="color: #2B91AF">int</span>&gt; C;
+    <span style="color: #2B91AF">int</span> t=0;
+    <span style="color: #00F">for</span>(<span style="color: #2B91AF">int</span> i=0; i&lt;A.size() || t; i++){
+        <span style="color: #008000">//如果t还有剩余或者A还有剩余，乘法结果C需要加新的位</span>
+        <span style="color: #00F">if</span>(i&lt;A.size()) t+=A[i]*b;<span style="color: #008000">//把b当作整体做乘法</span>
+        C.push_back(t % 10);<span style="color: #008000">//存储第i位</span>
+        t /=10; <span style="color: #008000">//更新t</span>
+    }
+    <span style="color: #00F">while</span>(C.size()&gt;1 &amp;&amp; C.back()==0) C.pop_back();<span style="color: #008000">//去掉C开头的0</span>
+    <span style="color: #00F">return</span> C;
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #008000">//输入为字符串</span>
+    string a;
+    <span style="color: #2B91AF">int</span> b;<span style="color: #008000">//输入的b比较小，作为一个整体处理</span>
+    vector&lt;<span style="color: #2B91AF">int</span>&gt; A,C;
+
+    cin &gt;&gt; a &gt;&gt; b; <span style="color: #008000">// a=&quot;786654&quot;</span>
+    <span style="color: #008000">//倒序存储A，B，a[0]乃是最低位</span>
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = a.size() - 1; i &gt;= 0; i--)
+        A.push_back(a[i] - <span style="color: #A31515">&#39;0&#39;</span>);
+    C=mul(A,b);
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = C.size() - 1; i &gt;= 0; i--)
+            cout &lt;&lt; C[i]; <span style="color: #008000">//打印C</span>
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 793</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ119</span>AcWing 794<span class="acw">AcWing 794</span></div>
+<div class="problem-desc">AcWing 794</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 1e6 + 7;
+
+<span style="color: #008000">//C= A/b 余数为r</span>
+vector&lt;<span style="color: #2B91AF">int</span>&gt; div(vector&lt;<span style="color: #2B91AF">int</span>&gt; &amp;A, <span style="color: #2B91AF">int</span> b, <span style="color: #2B91AF">int</span> &amp;r){
+    vector&lt;<span style="color: #2B91AF">int</span>&gt; C;
+    r=0;<span style="color: #008000">//余数</span>
+    <span style="color: #00F">for</span>(<span style="color: #2B91AF">int</span> i=A.size()-1; i&gt;=0; i--){
+        r = r* 10 + A[i];<span style="color: #008000">//从最高位开始，当前余数r需要上一次运算的r乘10</span>
+        C.push_back(r/b);
+        r %= b;
+    }
+    reverse(C.begin(), C.end());<span style="color: #008000">//定义的数是最低位在C[0],因此需要取逆</span>
+    <span style="color: #00F">while</span>(C.size()&gt;1 &amp;&amp; C.back()==0) C.pop_back();<span style="color: #008000">//去掉C开头的0字符</span>
+    <span style="color: #00F">return</span> C;
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #008000">//输入为字符串</span>
+    string a;
+    <span style="color: #2B91AF">int</span> b;<span style="color: #008000">//输入的b比较小，作为一个整体处理</span>
+    vector&lt;<span style="color: #2B91AF">int</span>&gt; A;
+
+    cin &gt;&gt; a &gt;&gt; b; <span style="color: #008000">// a=&quot;786654&quot;</span>
+    <span style="color: #008000">//倒序存储A，B，a[0]乃是最低位</span>
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = a.size() - 1; i &gt;= 0; i--)
+        A.push_back(a[i] - <span style="color: #A31515">&#39;0&#39;</span>);
+
+    <span style="color: #2B91AF">int</span> r;
+    <span style="color: #00F">auto</span> C=div(A,b,r);<span style="color: #008000">//使用auto自动辨别变量类型</span>
+
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = C.size() - 1; i &gt;= 0; i--)
+            cout &lt;&lt; C[i]; <span style="color: #008000">//打印C</span>
+            cout&lt;&lt;endl&lt;&lt;r&lt;&lt;endl;<span style="color: #008000">//打印余数</span>
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 794</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ120</span>AcWing 802<span class="acw">AcWing 802</span></div>
+<div class="problem-desc">AcWing 802</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #00F">typedef</span> pair&lt;<span style="color: #2B91AF">int</span>, <span style="color: #2B91AF">int</span>&gt; PII; <span style="color: #008000">//自定义类型PII，表示容器类型是&lt;int,int&gt;的pair</span>
+
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 300007; <span style="color: #008000">//需要记录n个坐标值，以及m个区间的坐标，所以是100000*(1+2)</span>
+<span style="color: #2B91AF">int</span> n, m;
+<span style="color: #2B91AF">int</span> a[N], s[N];
+
+vector&lt;<span style="color: #2B91AF">int</span>&gt; alls;       <span style="color: #008000">//存储所有的点坐标，包括询问点坐标</span>
+vector&lt;PII&gt; add, query; <span style="color: #008000">//输入操作的坐标，查询的区间坐标</span>
+<span style="color: #008000">//在alls之中，查找值是x的元素值的下标，并且映射到[1...n]</span>
+<span style="color: #2B91AF">int</span> find(<span style="color: #2B91AF">int</span> x)
+{
+    <span style="color: #2B91AF">int</span> left = 0, right = alls.size() - 1; <span style="color: #008000">//vector从0开始计数</span>
+    <span style="color: #00F">while</span> (left &lt; right)
+    {
+        <span style="color: #2B91AF">int</span> mid = left + right &gt;&gt; 1; <span style="color: #008000">//取中值</span>
+        <span style="color: #00F">if</span> (alls[mid] &gt;= x)
+            right = mid;
+        <span style="color: #00F">else</span>
+            left = mid + 1;
+    }
+    <span style="color: #00F">return</span> right + 1; <span style="color: #008000">//把坐标值映射到1，2，3...而不是从0开始</span>
+}
+
+<span style="color: #008000">//? 使用离散化的方式来预处理输入数据</span>
+<span style="color: #008000">//? 把输入的数字映射成{下标，数字}的pair，然后再用差分的方法计算区间和</span>
+<span style="color: #008000">//? 本题目可以参考797.差分的模板写成</span>
+<span style="color: #2B91AF">int</span> main()
+{
+    cin &gt;&gt; n &gt;&gt; m;
+    <span style="color: #008000">//!离散化：构造映射表</span>
+
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i++)
+    {
+        <span style="color: #008000">//todo 不直接把数存入a[i],乃是存入add容器内</span>
+        <span style="color: #2B91AF">int</span> x, c;
+        cin &gt;&gt; x &gt;&gt; c;
+        add.push_back({x, c}); <span style="color: #008000">//?将某一位置x上的数加c</span>
+        alls.push_back(x);     <span style="color: #008000">//把x位置加入alls</span>
+    }
+    <span style="color: #008000">// 读入query</span>
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; m; i++)
+    {
+        <span style="color: #2B91AF">int</span> l, r; <span style="color: #008000">//区间l和r</span>
+        cin &gt;&gt; l &gt;&gt; r;
+        query.push_back({l, r});
+        alls.push_back(l); <span style="color: #008000">//坐标与alls的下标做映射</span>
+        alls.push_back(r);
+    }
+    <span style="color: #008000">//alls是下标映射表，需要去重</span>
+    <span style="color: #008000">//使用STL算法库的sort和unique</span>
+    sort(alls.begin(), alls.end());
+    <span style="color: #008000">//unique返回不重复区间的下一个元素位置，用erase去掉尾部</span>
+    alls.erase(unique(alls.begin(), alls.end()), alls.end());
+
+    <span style="color: #008000">//针对离散化的数据，计算区间和</span>
+    <span style="color: #00F">for</span> (<span style="color: #00F">auto</span> it : add) <span style="color: #008000">//用c++11语法遍历add vector</span>
+    {                   <span style="color: #008000">//初始化a[i],用离散化后的坐标</span>
+        <span style="color: #2B91AF">int</span> index = find(it.first);
+        a[index] += it.second; <span style="color: #008000">//将index位置上的数加c</span>
+    }
+    <span style="color: #008000">//预处理前缀和</span>
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= alls.size(); i++)
+        s[i] = s[i - 1] + a[i];
+    <span style="color: #008000">//处理询问，并且输出</span>
+    <span style="color: #00F">for</span> (<span style="color: #00F">auto</span> item : query)
+    {
+        <span style="color: #2B91AF">int</span> l = find(item.first), r = find(item.second);
+        cout &lt;&lt; s[r] - s[l - 1] &lt;&lt; endl; <span style="color: #008000">//前缀和计算公式</span>
+    }
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 802</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ121</span>AcWing 803<span class="acw">AcWing 803</span></div>
+<div class="problem-desc">AcWing 803</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #00F">typedef</span> pair&lt;<span style="color: #2B91AF">int</span>, <span style="color: #2B91AF">int</span>&gt; PII; <span style="color: #008000">//自定义类型PII，表示容器类型是&lt;int,int&gt;的pair</span>
+
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 100007; <span style="color: #008000">//1&lt;=n&lt;=100000</span>
+<span style="color: #2B91AF">int</span> n;<span style="color: #008000">//n个区间</span>
+
+vector&lt;PII&gt; segments; <span style="color: #008000">//区间坐标</span>
+
+<span style="color: #2B91AF">void</span> merge(vector&lt;PII&gt; &amp;segs)
+{
+    vector&lt;PII&gt; res;
+    <span style="color: #008000">//pair排序先按左端点，后右端点</span>
+    sort(segs.begin(), segs.end());
+
+    <span style="color: #008000">//数字范围是-10^9&lt;num&lt;10^9,因此负无穷大初始化为-2e9</span>
+    <span style="color: #2B91AF">int</span> left = -2e9, right = -2e9;<span style="color: #008000">//当前操作的区间[left,right]</span>
+    <span style="color: #00F">for</span> (<span style="color: #00F">auto</span> seg : segs)<span style="color: #008000">//遍历segs</span>
+        <span style="color: #00F">if</span> (right &lt; seg.first)<span style="color: #008000">//区间没有交集，更新当前区间</span>
+        {
+            <span style="color: #008000">//存储合并完毕的区间[left,right]</span>
+            <span style="color: #00F">if</span> (left != -2e9) res.push_back({left, right});
+            <span style="color: #008000">//更新当前操作区间</span>
+            left = seg.first, right = seg.second;
+        }
+        <span style="color: #00F">else</span> right = max(right, seg.second);<span style="color: #008000">//更新右端点，扩展区间</span>
+
+    <span style="color: #00F">if</span> (left != -2e9) res.push_back({left, right});<span style="color: #008000">//把最后一个区间入栈</span>
+
+    segs = res;<span style="color: #008000">//更新segs</span>
+}
+
+<span style="color: #2B91AF">int</span> main()
+{
+    cin &gt;&gt; n;
+    <span style="color: #008000">// 读入n组区间</span>
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i++)
+    {
+        <span style="color: #2B91AF">int</span> l, r; <span style="color: #008000">//区间l和r</span>
+        cin &gt;&gt; l &gt;&gt; r;
+        segments.push_back({l, r});
+    }
+    <span style="color: #008000">//合并区间segment</span>
+    merge(segments);
+    <span style="color: #008000">//输出合并后的区间个数</span>
+    cout&lt;&lt;segments.size()&lt;&lt;endl;<span style="color: #008000">//输出合并后的区间元素个数</span>
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 803</span>
+</pre></div>
+</div></div><hr class="section-divider"><div class="chapter-end">— 第11章完 · 共7题 —</div></body></html>

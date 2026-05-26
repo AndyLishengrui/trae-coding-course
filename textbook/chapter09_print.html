@@ -1,0 +1,462 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第9章 分治之美</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999;font-family:"PingFang SC",sans-serif}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
+body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222}
+.chapter-title{text-align:center;font-size:20pt;font-weight:bold;margin:1.5em 0 .1em 0;letter-spacing:3pt}
+.chapter-subtitle{text-align:center;font-size:10pt;color:#777;margin-bottom:1.5em;padding-bottom:.8em;border-bottom:1px solid #bbb}
+.preface{font-size:10pt;margin-bottom:2em;color:#444}.preface p{margin:.4em 0;text-indent:2em}
+.problem-title{font-size:12pt;font-weight:bold;margin:1.5em 0 .4em 0;padding-bottom:.15em;border-bottom:1pt solid #444}
+.problem-title .nq{color:#2563eb;margin-right:.6em;font-size:11pt}.problem-title .acw{font-size:7.5pt;color:#aaa;font-weight:normal;margin-left:1em}
+.problem-desc{margin:.6em 0 1em 0;text-indent:2em;line-height:1.85}
+.spec-table{width:100%;border-collapse:collapse;margin:.3em 0 .5em 0;font-size:9pt}
+.spec-table td{padding:.3em .8em;vertical-align:top;border:none}
+.spec-table .spec-label{width:4em;font-size:8pt;font-weight:bold;text-align:right;padding-right:1em;white-space:nowrap}
+.spec-table .spec-label .tag{display:inline-block;padding:.15em .5em;border-radius:2px;color:#fff;font-size:7.5pt;letter-spacing:.5pt}
+.spec-table .spec-label .tag.in{background:#2563eb}.spec-table .spec-label .tag.out{background:#059669}.spec-table .spec-label .tag.lim{background:#d97706}
+.spec-table .spec-value{color:#333;font-size:9pt}
+.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.7em 1em;margin:1em 0 1.2em 0}
+.sample-grid{display:flex;gap:2em}.sample-col{flex:1}
+.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:.2em;font-weight:bold}
+.sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
+.insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
+.insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
+.code-dual{display:flex;gap:1.5em;margin:1.2em 0;page-break-inside:avoid}.code-col{flex:1;min-width:0}
+.code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
+.code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
+.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
+body{string-set:chapter "第9章 分治之美——排序与二分"}</style></head><body>
+<div class="chapter-title">分治之美</div><div class="chapter-subtitle">排序与二分 · 7题 · C++ &amp; Python 双语对照</div>
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ101</span>AcWing 785<span class="acw">AcWing 785</span></div>
+<div class="problem-desc">AcWing 785</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> *numbers;
+
+<span style="color: #2B91AF">void</span> quicksort(<span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> nums[], <span style="color: #2B91AF">int</span> left, <span style="color: #2B91AF">int</span> right)
+{
+    <span style="color: #00F">if</span> (left &gt;= right)
+        <span style="color: #00F">return</span>;
+    <span style="color: #008000">//选取分割数</span>
+    <span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> target = nums[left]; <span style="color: #008000">//选取第一个快排的分割数</span>
+    <span style="color: #2B91AF">int</span> i = left - 1, j = right + 1;
+    <span style="color: #00F">while</span> (i &lt; j)
+    {
+        <span style="color: #00F">do</span>
+            i++;
+        <span style="color: #00F">while</span> (nums[i] &lt; target); <span style="color: #008000">//i指针定位</span>
+        <span style="color: #00F">do</span>
+            j--;
+        <span style="color: #00F">while</span> (nums[j] &gt; target); <span style="color: #008000">//j指针定位</span>
+        <span style="color: #00F">if</span> (i &lt; j)
+            swap(nums[i], nums[j]); <span style="color: #008000">//交换</span>
+    }
+    <span style="color: #008000">//分治</span>
+    quicksort(nums, left, j);      <span style="color: #008000">//j左边的都是不比Target大的</span>
+    quicksort(nums, j + 1, right); <span style="color: #008000">// j右边的都比Target大</span>
+}
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #008000">//!cin\cout提速</span>
+    ios::sync_with_stdio(false); <span style="color: #008000">//来打消iostream的输入输出缓存</span>
+    cin.tie(0);                  <span style="color: #008000">//cin.tie(0)来解除cin与cout的绑定,0表示NULL</span>
+
+    <span style="color: #2B91AF">int</span> n;
+    <span style="color: #008000">//创建动态数组</span>
+    cin &gt;&gt; n;
+    numbers = <span style="color: #00F">new</span> <span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span>[n];
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i++)
+        cin &gt;&gt; numbers[i];
+    quicksort(numbers, 0, n - 1); <span style="color: #008000">//注意边界</span>
+
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i++)
+        cout &lt;&lt; numbers[i] &lt;&lt; <span style="color: #A31515">&quot; &quot;</span>;
+
+    <span style="color: #00F">delete</span> numbers;
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 785</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ102</span>AcWing 786<span class="acw">AcWing 786</span></div>
+<div class="problem-desc">AcWing 786</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> *numbers;
+
+<span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> quickFind(<span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> nums[], <span style="color: #2B91AF">int</span> left, <span style="color: #2B91AF">int</span> right, <span style="color: #2B91AF">int</span> k)
+{
+    <span style="color: #00F">if</span> (left == right)
+        <span style="color: #00F">return</span> nums[left]; <span style="color: #008000">//只有一个元素，左开右闭</span>
+    <span style="color: #008000">//选取分割数</span>
+    <span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> target = nums[left]; <span style="color: #008000">//选取第一个快排的分割数</span>
+    <span style="color: #2B91AF">int</span> i = left - 1, j = right + 1;
+    <span style="color: #00F">while</span> (i &lt; j)
+    {
+        <span style="color: #00F">do</span>
+            i++;
+        <span style="color: #00F">while</span> (nums[i] &lt; target); <span style="color: #008000">//i指针定位</span>
+        <span style="color: #00F">do</span>
+            j--;
+        <span style="color: #00F">while</span> (nums[j] &gt; target); <span style="color: #008000">//j指针定位</span>
+        <span style="color: #00F">if</span> (i &lt; j)
+            swap(nums[i], nums[j]); <span style="color: #008000">//交换</span>
+    }
+    <span style="color: #008000">//判断i与k的关系</span>
+    <span style="color: #2B91AF">int</span> sumofLeft = j - left + 1; <span style="color: #008000">//计算左边区间数字个数，用于与k比较</span>
+
+    <span style="color: #00F">if</span> (k &lt;= sumofLeft)              <span style="color: #008000">//分治</span>
+        quickFind(nums, left, j, k); <span style="color: #008000">//j左边的都是不比Target大的</span>
+    <span style="color: #00F">else</span>
+        quickFind(nums, j + 1, right, k - sumofLeft); <span style="color: #008000">// j右边的都比Target大</span>
+}
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #008000">//!cin\cout提速</span>
+    ios::sync_with_stdio(false); <span style="color: #008000">//来打消iostream的输入输出缓存</span>
+    cin.tie(0);                  <span style="color: #008000">//cin.tie(0)来解除cin与cout的绑定,0表示NULL</span>
+
+    <span style="color: #2B91AF">int</span> n, k;
+    <span style="color: #008000">//创建动态数组</span>
+    cin &gt;&gt; n &gt;&gt; k;
+    numbers = <span style="color: #00F">new</span> <span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span>[n];
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i++)
+        cin &gt;&gt; numbers[i];
+    <span style="color: #008000">//查找第k小数，输出之</span>
+    cout &lt;&lt; quickFind(numbers, 0, n - 1, k) &lt;&lt; endl; <span style="color: #008000">//注意边界</span>
+
+    <span style="color: #00F">delete</span> numbers;
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 786</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ103</span>AcWing 787<span class="acw">AcWing 787</span></div>
+<div class="problem-desc">AcWing 787</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 100007;
+<span style="color: #2B91AF">int</span> n;
+<span style="color: #2B91AF">int</span> numbers[N],tmp[N];
+
+<span style="color: #2B91AF">void</span> mergeSort(<span style="color: #2B91AF">int</span> nums[], <span style="color: #2B91AF">int</span> left, <span style="color: #2B91AF">int</span> right)
+{
+    <span style="color: #00F">if</span> (left&gt;=right) <span style="color: #00F">return</span>;
+
+    <span style="color: #2B91AF">int</span> mid = left+(right-left)/2;<span style="color: #008000">//防止溢出</span>
+
+    mergeSort(nums,left,mid), mergeSort(nums,mid+1,right);<span style="color: #008000">//先调用归并排序</span>
+    <span style="color: #008000">//合二为一</span>
+    <span style="color: #2B91AF">int</span> k=0, i=left, j=mid+1;<span style="color: #008000">//左右两部分数组的起点</span>
+
+    <span style="color: #00F">while</span>(i&lt;=mid &amp;&amp; j&lt;=right) <span style="color: #008000">//扫描还未抵达终点</span>
+      <span style="color: #00F">if</span> (nums[i]&lt;=nums[j])<span style="color: #008000">//把小的放到tmp数组里面</span>
+        tmp[k++] = nums[i++];
+        <span style="color: #00F">else</span> tmp[k++] = nums[j++];
+
+    <span style="color: #00F">while</span>(i&lt;=mid) tmp[k++]=nums[i++];<span style="color: #008000">//把左边剩余的部分插入tmp</span>
+    <span style="color: #00F">while</span>(j&lt;=right) tmp[k++]=nums[j++];<span style="color: #008000">//把右边剩余的部分插入tmp</span>
+
+    <span style="color: #008000">//把tmp的部分复制回数组</span>
+    <span style="color: #00F">for</span> (i=left,k=0; i&lt;=right; i++, k++) nums[i]=tmp[k];
+
+}
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #008000">//数据大，使用printf和scanf</span>
+    scanf(<span style="color: #A31515">&quot;%d&quot;</span>,&amp;n);
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i&lt;n ;i++) scanf(<span style="color: #A31515">&quot;%d&quot;</span>,&amp;numbers[i]);
+
+    mergeSort(numbers,0,n-1);
+
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i=0; i&lt;n ;i++) printf(<span style="color: #A31515">&quot;%d &quot;</span>,numbers[i]);
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 787</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ104</span>AcWing 788<span class="acw">AcWing 788</span></div>
+<div class="problem-desc">AcWing 788</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #00F">typedef</span> <span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> LL;
+
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 100007;
+<span style="color: #2B91AF">int</span> n;
+<span style="color: #2B91AF">int</span> numbers[N],tmp[N];
+<span style="color: #008000">//最大的数可能会是 n^2/2 </span>
+ LL mergeSort(<span style="color: #2B91AF">int</span> nums[], <span style="color: #2B91AF">int</span> left, <span style="color: #2B91AF">int</span> right)
+{
+    <span style="color: #00F">if</span> (left&gt;=right) <span style="color: #00F">return</span> 0; <span style="color: #008000">//如果左指针越过右指针，则返回</span>
+
+    <span style="color: #2B91AF">int</span> mid = left+(right-left)/2;<span style="color: #008000">//防止溢出</span>
+
+    LL result = mergeSort(nums,left,mid)+mergeSort(nums,mid+1,right);<span style="color: #008000">//先调用归并排序</span>
+    <span style="color: #008000">//合二为一</span>
+    <span style="color: #2B91AF">int</span> k=0, i=left, j=mid+1;<span style="color: #008000">//左右两部分数组的起点</span>
+
+    <span style="color: #00F">while</span>(i&lt;=mid &amp;&amp; j&lt;=right) <span style="color: #008000">//扫描还未抵达终点</span>
+      <span style="color: #00F">if</span> (nums[i]&lt;=nums[j])<span style="color: #008000">//把小的放到tmp数组里面</span>
+        tmp[k++] = nums[i++];
+        <span style="color: #00F">else</span> {
+            <span style="color: #008000">//计算逆序对的个数mid-i+1</span>
+            result += mid -i +1;
+            tmp[k++] = nums[j++];
+        }
+
+    <span style="color: #00F">while</span>(i&lt;=mid) tmp[k++]=nums[i++];<span style="color: #008000">//把左边剩余的部分插入tmp</span>
+    <span style="color: #00F">while</span>(j&lt;=right) tmp[k++]=nums[j++];<span style="color: #008000">//把右边剩余的部分插入tmp</span>
+
+    <span style="color: #008000">//把tmp的部分复制回数组</span>
+    <span style="color: #00F">for</span> (i=left,k=0; i&lt;=right; i++, k++) nums[i]=tmp[k];
+
+    <span style="color: #00F">return</span> result;
+
+}
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #008000">//数据大，使用printf和scanf</span>
+    scanf(<span style="color: #A31515">&quot;%d&quot;</span>,&amp;n);
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i&lt;n ;i++) scanf(<span style="color: #A31515">&quot;%d&quot;</span>,&amp;numbers[i]);
+
+   cout&lt;&lt;mergeSort(numbers,0,n-1)&lt;&lt;endl;
+
+
+    <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 788</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ105</span>AcWing 789<span class="acw">AcWing 789</span></div>
+<div class="problem-desc">AcWing 789</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 100007;
+
+<span style="color: #2B91AF">int</span> nums[N];
+
+<span style="color: #2B91AF">int</span> main()
+{
+
+    <span style="color: #008000">// 第一行包含整数n和q，表示数组长度和询问个数。</span>
+    <span style="color: #2B91AF">int</span> n, q;
+    scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>, &amp;n, &amp;q);
+    <span style="color: #008000">// 第二行包含n个整数（均在1~10000范围内），表示完整数组。</span>
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i++)
+        scanf(<span style="color: #A31515">&quot;%d&quot;</span>, &amp;nums[i]);
+    <span style="color: #008000">// 接下来q行，每行包含一个整数k，表示一个询问元素。</span>
+    <span style="color: #00F">while</span>(q--){
+      <span style="color: #008000">//读入要查找的数，并且二分查找其范围</span>
+      <span style="color: #2B91AF">int</span> k; 
+      scanf(<span style="color: #A31515">&quot;%d&quot;</span>,&amp;k);<span style="color: #008000">// 读入k</span>
+
+      <span style="color: #2B91AF">int</span> left = 0, right = n-1;<span style="color: #008000">//初始化left和right</span>
+      <span style="color: #00F">while</span> (left &lt; right) <span style="color: #008000">//模板2</span>
+      {
+          <span style="color: #2B91AF">int</span> mid = left + right&gt;&gt;1;
+          <span style="color: #00F">if</span> (nums[mid]&gt;=k) right = mid;<span style="color: #008000">//模板1,</span>
+          <span style="color: #00F">else</span> left = mid +1;
+      }
+      <span style="color: #008000">//left就是左端点值</span>
+      <span style="color: #008000">//判断是否找得到</span>
+      <span style="color: #00F">if</span> (nums[left]!=k) cout&lt;&lt;<span style="color: #A31515">&quot;-1 -1&quot;</span>&lt;&lt;endl;<span style="color: #008000">//找不到x</span>
+      <span style="color: #00F">else</span>
+      {
+          cout&lt;&lt;left&lt;&lt;<span style="color: #A31515">&quot; &quot;</span>;
+          <span style="color: #008000">//继续寻找右边界</span>
+          left=0, right=n-1;<span style="color: #008000">//重新初始化left,riight,进行第二次二分搜索</span>
+          <span style="color: #00F">while</span> (left &lt; right)
+          {
+              <span style="color: #2B91AF">int</span> mid = left+right+1&gt;&gt;1;
+              <span style="color: #00F">if</span> (nums[mid]&lt;=k) left=mid;
+              <span style="color: #00F">else</span> right = mid -1;              
+          }
+          cout&lt;&lt;left&lt;&lt;endl;
+      }
+    }
+
+    <span style="color: #00F">return</span> 0;
+}
+
+<span style="color: #008000">// int bsearch_1(int left, int right)</span>
+<span style="color: #008000">// {</span>
+<span style="color: #008000">//     while (left &lt; right)</span>
+<span style="color: #008000">//     {</span>
+<span style="color: #008000">//         int mid = left + right &gt;&gt; 1;</span>
+<span style="color: #008000">//         if (check(mid)) right = mid;</span>
+<span style="color: #008000">//         else left = mid + 1;</span>
+<span style="color: #008000">//     }</span>
+<span style="color: #008000">//     return left;</span>
+<span style="color: #008000">// }</span>
+
+<span style="color: #008000">// int bsearch_2(int left, int right)</span>
+<span style="color: #008000">// {</span>
+<span style="color: #008000">//     while (left &lt; right)</span>
+<span style="color: #008000">//     {</span>
+<span style="color: #008000">//         int mid = left + right + 1 &gt;&gt; 1;</span>
+<span style="color: #008000">//         if (check(mid)) left = mid;</span>
+<span style="color: #008000">//         else right = mid - 1;</span>
+<span style="color: #008000">//     }</span>
+<span style="color: #008000">//     return left;</span>
+<span style="color: #008000">// }</span>
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 789</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ106</span>AcWing 790<span class="acw">AcWing 790</span></div>
+<div class="problem-desc">AcWing 790</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #2B91AF">double</span> number;
+    scanf(<span style="color: #A31515">&quot;%lf&quot;</span>, &amp;number);
+    <span style="color: #2B91AF">double</span> left = -10000, right = 10000;
+    <span style="color: #00F">while</span> (right - left &gt;= 1e-8)
+    {
+        <span style="color: #2B91AF">double</span> mid = (right + left) / 2; <span style="color: #008000">//二分</span>
+        <span style="color: #00F">if</span> (mid * mid * mid &gt;= number)
+            right = mid;
+        <span style="color: #00F">else</span>
+            left = mid;
+    }
+    <span style="color: #008000">//输出left</span>
+    printf(<span style="color: #A31515">&quot;%lf&quot;</span>, left);
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 790</span>
+</pre></div>
+</div></div><hr class="section-divider">
+<div class="problem-block">
+<div class="problem-title"><span class="nq">NQ107</span>AcWing 727<span class="acw">AcWing 727</span></div>
+<div class="problem-desc">AcWing 727</div>
+<table class="spec-table">
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">见原题</td></tr>
+</table>
+<div class="sample-box"><div class="sample-grid">
+<div class="sample-col"><div class="col-label">输入</div><pre>见原题</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>见原题</pre></div>
+</div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>见AcWing原题描述</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>参考模板库 CONTEXT.md</span></div>
+<div class="code-dual">
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
+
+<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+
+<span style="color: #2B91AF">int</span> main()
+{
+  <span style="color: #2B91AF">int</span> n;
+  cin &gt;&gt; n;
+
+  <span style="color: #2B91AF">int</span> cx = n / 2, cy = n / 2;
+  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i ++ )
+  {
+    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt; n; j ++ )
+        <span style="color: #00F">if</span> (abs(i - cx) + abs(j - cy) &lt;= n / 2) cout &lt;&lt; <span style="color: #A31515">&#39;*&#39;</span>;
+        <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&#39; &#39;</span>;
+    cout &lt;&lt; endl;    
+  }
+
+  <span style="color: #00F">return</span> 0;
+}
+</pre></div>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># AcWing 727</span>
+</pre></div>
+</div></div><hr class="section-divider"><div class="chapter-end">— 第9章完 · 共7题 —</div></body></html>

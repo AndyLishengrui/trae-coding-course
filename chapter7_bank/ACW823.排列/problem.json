@@ -1,0 +1,89 @@
+{
+  "display_id": "ACW823",
+  "title": "排列",
+  "description": {
+    "format": "html",
+    "value": "<p>输出1~n的所有排列。</p>"
+  },
+  "tags": [
+    "基础语法"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>n</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>每行一个排列</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>AcWing 823</p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "3",
+      "output": "1 2 3\n1 3 2\n..."
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "source": "AcWing 823 | Ch7",
+  "allow_public_test_case_download": false,
+  "answers": []
+}
