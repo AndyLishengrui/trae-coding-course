@@ -1,64 +1,70 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
-<title>第2章 选择的艺术</title><style>
-@page { size: A4; margin: 2.2cm 2cm 2.2cm 2cm;
-    @top-center { content: string(chapter); font-size: 7.5pt; color: #999; font-family: "PingFang SC", sans-serif; }
-    @bottom-center { content: counter(page); font-size: 7.5pt; color: #999; } }
-body { font-family: "PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif; font-size:9.5pt; line-height:1.7; color:#222;
-    string-set: chapter "第2章 选择的艺术 —— 条件判断与分支结构"; }
-.chapter-title { text-align:center; font-size:20pt; font-weight:bold; margin:1.5em 0 0.1em 0; letter-spacing:3pt; }
-.chapter-subtitle { text-align:center; font-size:10pt; color:#777; margin-bottom:1.5em; padding-bottom:0.8em; border-bottom:1px solid #bbb; }
-.preface { font-size:10pt; margin-bottom:2em; color:#444; } .preface p { margin:0.4em 0; text-indent:2em; }
-.problem-title { font-size:12pt; font-weight:bold; margin:1.5em 0 0.4em 0; padding-bottom:0.15em; border-bottom:1pt solid #444; }
-.problem-title .nq { color:#2563eb; margin-right:0.6em; font-size:11pt; }
-.problem-title .acw { font-size:7.5pt; color:#aaa; font-weight:normal; margin-left:1em; }
-.problem-desc { margin:0.6em 0 1em 0; text-indent:2em; line-height:1.85; }
-.spec-table { width:100%; border-collapse:collapse; margin:0.3em 0 0.5em 0; font-size:9pt; }
-.spec-table td { padding:0.3em 0.8em; vertical-align:top; border:none; }
-.spec-table .spec-label { width:4em; font-size:8pt; font-weight:bold; text-align:right; padding-right:1em; white-space:nowrap; }
-.spec-table .spec-label .tag { display:inline-block; padding:0.15em 0.5em; border-radius:2px; color:#fff; font-size:7.5pt; letter-spacing:0.5pt; }
-.spec-table .spec-label .tag.in { background:#2563eb; } .spec-table .spec-label .tag.out { background:#059669; } .spec-table .spec-label .tag.lim { background:#d97706; }
-.spec-table .spec-value { color:#333; font-size:9pt; }
-.sample-box { background:#f7f8fa; border:0.5pt solid #dde; border-radius:4px; padding:0.7em 1em; margin:1em 0 1.2em 0; }
-.sample-grid { display:flex; gap:2em; } .sample-col { flex:1; }
-.sample-col .col-label { font-size:7.5pt; color:#888; margin-bottom:0.2em; font-weight:bold; }
-.sample-col pre { background:none; border:none; padding:0.3em 0; margin:0; font-family:"SF Mono","Menlo","Consolas",monospace; font-size:9pt; line-height:1.4; white-space:pre-wrap; color:#333; }
-.insight-block { margin:0.8em 0; padding:0.5em 0.8em; border-left:3px solid #2563eb; background:#f8faff; }
-.insight-block .insight-label { font-size:8pt; font-weight:bold; color:#2563eb; margin-right:0.5em; }
-.code-dual { display:flex; gap:1.5em; margin:1.2em 0; page-break-inside:avoid; } .code-col { flex:1; min-width:0; }
-.code-col .lang-badge { display:inline-block; font-size:7.5pt; font-weight:bold; color:#fff; background:#2563eb; padding:0.2em 0.7em; border-radius:3px; margin-bottom:0.4em; }
-.code-col pre { background:#f8f8f0; border:0.5pt solid #e0e0e0; border-radius:4px; padding:0.7em 0.9em; font-family:"SF Mono","Menlo","Consolas","Courier New",monospace; font-size:7.5pt; line-height:1.45; overflow-x:auto; margin:0; white-space:pre-wrap; word-break:break-all; }
-.section-divider { border:none; border-top:0.3pt solid #e0e0e0; margin:1em 0 0 0; } .chapter-end { text-align:center; margin-top:3em; font-size:8pt; color:#999; }
-</style></head><body>
-<div class="chapter-title">选择的艺术</div>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第2章 选择的艺术</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
+body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222;string-set:chapter"第2章 选择的艺术——条件判断与分支结构"}
+.chapter-title{text-align:center;font-size:20pt;font-weight:bold;margin:1.5em 0 .1em 0;letter-spacing:3pt}
+.chapter-subtitle{text-align:center;font-size:10pt;color:#777;margin-bottom:1.5em;padding-bottom:.8em;border-bottom:1px solid #bbb}
+.preface{font-size:10pt;margin-bottom:1.5em;color:#444}.preface p{margin:.3em 0;text-indent:2em}
+.preface h3{font-size:11pt;color:#2563eb;margin:1em 0 .3em 0}
+.knowledge-box{background:#f0f6ff;border:1pt solid #bdd;border-radius:4px;padding:.7em 1em;margin:.8em 0;font-size:9pt}
+.knowledge-box .k-title{font-weight:bold;color:#2563eb;margin-bottom:.3em;font-size:9.5pt}.knowledge-box p{margin:.2em 0}.knowledge-box ul{margin:.2em 0;padding-left:1.5em}
+.problem-title{font-size:12pt;font-weight:bold;margin:1.5em 0 .4em 0;padding-bottom:.15em;border-bottom:1pt solid #444}
+.problem-title .nq{color:#2563eb;margin-right:.6em;font-size:11pt}.problem-title .acw{font-size:7.5pt;color:#aaa;font-weight:normal;margin-left:1em}
+.problem-desc{margin:.6em 0 1em 0;text-indent:2em;line-height:1.85}
+.spec-table{width:100%;border-collapse:collapse;margin:.3em 0 .5em 0;font-size:9pt}
+.spec-table td{padding:.3em .8em;vertical-align:top;border:none}
+.spec-table .spec-label{width:4em;font-size:8pt;font-weight:bold;text-align:right;padding-right:1em;white-space:nowrap}
+.spec-table .spec-label .tag{display:inline-block;padding:.15em .5em;border-radius:2px;color:#fff;font-size:7.5pt;letter-spacing:.5pt}
+.spec-table .spec-label .tag.in{background:#2563eb}.spec-table .spec-label .tag.out{background:#059669}.spec-table .spec-label .tag.lim{background:#d97706}
+.spec-table .spec-value{color:#333;font-size:9pt}
+.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.7em 1em;margin:1em 0 1.2em 0}
+.sample-grid{display:flex;gap:2em}.sample-col{flex:1}
+.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:.2em;font-weight:bold}
+.sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
+.insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
+.insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
+.code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
+.code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
+.code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
+.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
+.chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
+.chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">选择的艺术</div>
 <div class="chapter-subtitle">条件判断与分支结构 · 14题 · C++ &amp; Python 双语对照</div>
 <div class="preface">
-<p>本章聚焦于编程中最核心的控制结构之一——条件判断。14道题目从简单的取模判倍数开始，逐步深入区间判断、三角形判定、时间跨越、分段计税和嵌套分类。你将学会用数据驱动替代逻辑堆叠（dict映射 > 长if-else链），并掌握Python的链式比较、元组解包交换等特性。</p>
-<p>学完本章，面对任何需要"分情况讨论"的问题，你都能条理清晰地将判断条件转化为代码。</p>
+<p>第二周，小鲁已经能熟练地写A+B了。但小华说："真正的程序不会只是直线执行——你需要根据不同的情况做出不同的决定。如果成绩及格就通过，否则补考；如果是周一就升旗，否则早读……这就是<strong>条件判断</strong>。"</p>
+<p>本章14道题，小鲁将从简单的if-else开始，逐步掌握多分支、嵌套条件、决策树和dict映射表。最重要的是学会"<strong>用数据结构替代逻辑堆叠</strong>"——当你看到一大串if-elif-else的时候，第一反应应该问自己："能不能用一张表来替代？"</p>
 </div>
+<div class="knowledge-box"><div class="k-title">🔀 C++ vs Python 条件判断速查</div><ul>
+<li><strong>单分支：</strong>if(cond){...} → if cond:...</li><li><strong>多分支：</strong>if/else if/else → if/elif/else</li>
+<li><strong>链式比较：</strong>0<=x&&x<=25 → 0<=x<=25 (Python独有!)</li>
+<li><strong>映射表：</strong>8个if-else → dict.get(key,default) (Python独有!)</li>
+<li><strong>三元表达式：</strong>cond?a:b → a if cond else b</li></ul></div>
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ015</span>倍数<span class="acw">AcWing 665</span></div>
-<div class="problem-desc">小鲁在数学课上学了倍数和约数的概念。给定两个整数A和B，判断它们是否互为倍数关系（即A能被B整除，或B能被A整除）。</div>
+<div class="problem-desc">小鲁在数学课上学了倍数。"如果A能被B整除，或者B能被A整除，它们就是倍数关系。"小华说："编程里用%取模来判断——a%b==0说明a是b的倍数。用||(C++)或or(Python)把两个条件连起来。"</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，两个整数A和B。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">如果互为倍数，输出"Sao Multiplos"；否则输出"Nao sao Multiplos"。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁴ ≤ A, B ≤ 10⁴（A, B ≠ 0）</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">互为倍数输出"Sao Multiplos"，否则"Nao sao Multiplos"。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁴ ≤ A,B ≤ 10⁴（A,B≠0）</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>6 24</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>Sao Multiplos</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>用取模运算判断倍数关系：A % B == 0 或 B % A == 0。注意两个条件用"或"（|| / or）连接。这是最简单的条件判断结构。</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>Python的if语句不需要括号，直接写条件表达式。C++中%运算符要求操作数为整数。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>用取模判断倍数关系：A%B==0或B%A==0。两个条件用"或"连接。这是if-else最简单的形式——单一条件判断，两个分支。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Py的if语句不需要括号。C++的%运算符要求整数。a%b==0比!(a%b)更易读。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
 <span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #2B91AF">int</span> main() {
+
+<span style="color: #2B91AF">int</span> main()
+{
     <span style="color: #2B91AF">int</span> a, b;
     cin &gt;&gt; a &gt;&gt; b;
-    <span style="color: #00F">if</span> (a % b == 0 || b % a == 0)
-        cout &lt;&lt; <span style="color: #A31515">&quot;Sao Multiplos&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span>
-        cout &lt;&lt; <span style="color: #A31515">&quot;Nao sao Multiplos&quot;</span> &lt;&lt; endl;
+
+    <span style="color: #00F">if</span> (a % b == 0 || b % a == 0 ) cout &lt;&lt; <span style="color: #A31515">&quot;Sao Multiplos&quot;</span> &lt;&lt; endl;
+    <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;Nao sao Multiplos&quot;</span> &lt;&lt; endl;
+
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
@@ -71,30 +77,35 @@ body { font-family: "PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ016</span>零食<span class="acw">AcWing 660</span></div>
-<div class="problem-desc">小鲁去小卖部买零食。每种零食有编号（1到5）和单价。给定零食编号和数量，请计算总价。</div>
+<div class="problem-desc">小鲁去小卖部买零食：1号零食4元，2号4.5元，3号5元，4号2元，5号1.5元。"这么多选项，怎么写？"小华说："C++可以用if-else链或switch。Python可以用dict映射——一行搞定全部！"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，两个整数：零食编号X（1-5）和数量Y。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出"Total: R$ "后跟总价（保留2位小数）。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ X ≤ 5, 1 ≤ Y ≤ 100，单价：1=4.00, 2=4.50, 3=5.00, 4=2.00, 5=1.50</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，两个整数：零食编号X和数量Y。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">"Total: R$ "后跟总价（保留2位）。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1≤X≤5,1≤Y≤100。单价：1=4.00,2=4.50,3=5.00,4=2.00,5=1.50</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>3 2</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>Total: R$ 10.00</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>多分支选择：根据编号选择对应单价。C++可用if-else链或switch；Python用if-elif或dict映射表。本课重点：dict映射表比长if-else链更优雅。</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>Python dict映射表替代if-else：prices={1:4.0,2:4.5,3:5.0,4:2.0,5:1.5}。O(1)查找，代码量减少50%。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>多分支选择。C++用if-else链或switch，Python用if-elif或dict映射。本课重点：dict={1:4.0,2:4.5,3:5.0,4:2.0,5:1.5}，prices[x]*y一行出结果——O(1)查找，代码量减少50%。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Py的dict映射表：prices={1:4.0,2:4.5,3:5.0,4:2.0,5:1.5}。替代if-elif链。"用数据驱动替代逻辑堆叠"是进阶编程的核心理念。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-<span style="color: #2B91AF">int</span> main() {
+
+<span style="color: #2B91AF">int</span> main()
+{
     <span style="color: #2B91AF">int</span> x, y;
     scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>, &amp;x, &amp;y);
-    <span style="color: #2B91AF">double</span> p;
-    <span style="color: #00F">if</span> (x == 1) p = 4.0;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 2) p = 4.5;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 3) p = 5.0;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 4) p = 2.0;
-    <span style="color: #00F">else</span> p = 1.5;
-    printf(<span style="color: #A31515">&quot;Total: R$ %.2lf\n&quot;</span>, p * y);
+
+    <span style="color: #2B91AF">double</span> price;
+    <span style="color: #00F">if</span> (x == 1) price = 4;
+    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 2) price = 4.5;
+    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 3) price = 5;
+    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 4) price = 2;
+    <span style="color: #00F">else</span> price = 1.5;
+
+    printf(<span style="color: #A31515">&quot;Total: R$ %.2lf\n&quot;</span>, price * y);
+
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
@@ -105,30 +116,36 @@ print(<span style="color: #A31515">f&quot;Total: R$ {</span>prices[x] * y<span s
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ017</span>区间<span class="acw">AcWing 659</span></div>
-<div class="problem-desc">小鲁在做数据分析，需要判断一个浮点数属于哪个数值区间。给定一个浮点数x，判断它落在[0,25], (25,50], (50,75], (75,100]中的哪一个，或者都不在。</div>
+<div class="problem-desc">"一个数落在哪个区间里？"小鲁看着题目："0到25是闭区间，25到50是左开右闭……"小华提醒他："注意开闭区间的区别——[0,25]包含25，(25,50]不包含25但包含50。Python的链式比较0<=x<=25比C++的0<=x&&x<=25更直观。"</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个浮点数x。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出区间名称，或"Fora de intervalo"。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁹ ≤ x ≤ 10⁹</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">区间名或"Fora de intervalo"。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁹≤x≤10⁹</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>25.01</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>Intervalo (25,50]</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>区间判断的典型模板。注意开闭区间的区别：[0,25]包含25，(25,50]不包含25但包含50。Python支持链式比较：0 <= x <= 25。C++需0 <= x && x <= 25。</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>Python链式比较：0 <= x <= 25，比C++的0 <= x && x <= 25更直观。从最小区间开始判断，逐级向上。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>从最小区间开始判断，逐级向上。Python链式比较更直观，C++需分开写&&。注意开闭括号[包含](不包含)的数学含义——这是区间判断最容易出错的地方。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python链式比较：0<=x<=25。C++需要0<=x&&x<=25。Python的链式比较是语法糖——编译器自动转换成两个比较的and。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
 <span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #2B91AF">int</span> main() {
+
+<span style="color: #2B91AF">int</span> main()
+{
     <span style="color: #2B91AF">double</span> x;
     cin &gt;&gt; x;
+
     <span style="color: #00F">if</span> (x &gt;= 0 &amp;&amp; x &lt;= 25) cout &lt;&lt; <span style="color: #A31515">&quot;Intervalo [0,25]&quot;</span> &lt;&lt; endl;
     <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x &gt; 25 &amp;&amp; x &lt;= 50) cout &lt;&lt; <span style="color: #A31515">&quot;Intervalo (25,50]&quot;</span> &lt;&lt; endl;
     <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x &gt; 50 &amp;&amp; x &lt;= 75) cout &lt;&lt; <span style="color: #A31515">&quot;Intervalo (50,75]&quot;</span> &lt;&lt; endl;
     <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x &gt; 75 &amp;&amp; x &lt;= 100) cout &lt;&lt; <span style="color: #A31515">&quot;Intervalo (75,100]&quot;</span> &lt;&lt; endl;
     <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;Fora de intervalo&quot;</span> &lt;&lt; endl;
+
     <span style="color: #00F">return</span> 0;
+
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>x = float(input())
@@ -146,30 +163,34 @@ print(<span style="color: #A31515">f&quot;Total: R$ {</span>prices[x] * y<span s
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ018</span>三角形<span class="acw">AcWing 664</span></div>
-<div class="problem-desc">小鲁在几何课上学了三角形的判定。给定三个浮点数A、B、C，判断它们能否构成三角形。如果能，计算周长；如果不能，计算以A、B为底的梯形面积。</div>
+<div class="problem-desc">"给你三根木棍，长度分别是6.0、4.0和2.0——能拼成三角形吗？"小栋问。小鲁想了想："三角形的条件是任意两边之和大于第三边。2+4=6，等于第三边……不能！"小华说："必须同时满足A+B>C、A+C>B、B+C>A三个条件，用&&连接。"</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，三个浮点数A、B、C。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">能构成三角形："Perimetro = XX.X"（周长，1位小数）。不能："Area = XX.X"（梯形面积(A+B)*C/2）。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0 < A, B, C ≤ 100</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">能构成则"Perimetro = 周长"，否则"Area = 梯形面积"。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0<A,B,C≤100</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>6.0 4.0 2.0</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>Area = 10.0</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>三角形判定条件：任意两边之和大于第三边。即 A+B>C && A+C>B && B+C>A。需要同时满足三个条件。这是一个多条件与（&&/and）判断的经典例题。</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>三个条件必须同时满足，用&&/and连接。C++中注意浮点数比较的精度问题，但本题数据范围不会触发浮点精度bug。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>三角形判定：A+B>C且A+C>B且B+C>A。三个条件必须同时满足，用&&(C++)或and(Python)连接。不能构成时输出梯形面积(A+B)*C/2。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>三个条件同时满足：if a+b>c and a+c>b and b+c>a。Python可以写得非常干净。注意浮点数比较的精度问题——对于大数或极端接近的情况需谨慎。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
 <span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #2B91AF">int</span> main() {
+
+<span style="color: #2B91AF">int</span> main()
+{
     <span style="color: #2B91AF">double</span> a, b, c;
     cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
-    <span style="color: #00F">if</span> (a + b &gt; c &amp;&amp; a + c &gt; b &amp;&amp; b + c &gt; a)
-        printf(<span style="color: #A31515">&quot;Perimetro = %.1lf\n&quot;</span>, a + b + c);
+    <span style="color: #00F">if</span>(a + b &gt; c &amp;&amp; a + c &gt; b &amp;&amp; b + c &gt; a)
+      printf(<span style="color: #A31515">&quot;Perimetro = %.1lf\n&quot;</span>, a + b + c);
     <span style="color: #00F">else</span>
-        printf(<span style="color: #A31515">&quot;Area = %.1lf\n&quot;</span>, (a + b) * c / 2);
-    <span style="color: #00F">return</span> 0;
+      printf(<span style="color: #A31515">&quot;Area = %.1lf\n&quot;</span>,(a + b) * c / 2);
+
+      <span style="color: #00F">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>a, b, c = map(float, input().split())
@@ -181,28 +202,33 @@ print(<span style="color: #A31515">f&quot;Total: R$ {</span>prices[x] * y<span s
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ019</span>游戏时间<span class="acw">AcWing 667</span></div>
-<div class="problem-desc">小鲁和小伙伴玩游戏，从A时开始到B时结束。如果A<B，持续时间 = B-A；如果A≥B（跨天），持续时间 = B-A+24。计算游戏持续的小时数。</div>
+<div class="problem-desc">小鲁玩游戏从下午4点玩到凌晨2点。"这跨天了，怎么算？"小华说："A=16,B=2。如果A<B直接相减10小时；如果A≥B——说明跨天了——需要24-A+B=24-16+2=10小时。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，两个整数A和B（0 ≤ A, B ≤ 23）。</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">两个整数A和B（0≤A,B≤23）。</td></tr>
 <tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">"O JOGO DUROU X HORA(S)"。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0 ≤ A, B ≤ 23</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0≤A,B≤23</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>16 2</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>O JOGO DUROU 10 HORA(S)</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>时间循环判断的经典题。关键：如果A < B则直接相减；否则说明跨天了，需要B-A+24。也可以统一公式：duration = (B-A+24) % 24，但结果为0时需要输出24。</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>Python中可以用(B-A) % 24处理循环型问题，但注意结果为0的特殊情况（表示24小时）。C++中取模运算对负数结果依赖实现。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>先判断是否跨天：A<B则B-A，否则(24-A)+B。这是时间循环判断的经典题，也是if-else的天然应用。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>可以统一为(B-A+24)%24，但结果为0时需要特殊处理（表示24小时）。这种"循环型"问题在时间/角度/周期问题中反复出现。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-<span style="color: #2B91AF">int</span> main() {
-    <span style="color: #2B91AF">int</span> a, b;
-    scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>, &amp;a, &amp;b);
-    <span style="color: #2B91AF">int</span> res;
-    <span style="color: #00F">if</span> (a &lt; b) res = b - a;
-    <span style="color: #00F">else</span> res = b - a + 24;
-    printf(<span style="color: #A31515">&quot;O JOGO DUROU %d HORA(S)\n&quot;</span>, res);
-    <span style="color: #00F">return</span> 0;
+
+<span style="color: #2B91AF">int</span> main()
+{
+  <span style="color: #2B91AF">int</span> a, b;
+  scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>, &amp;a, &amp;b);
+
+  <span style="color: #2B91AF">int</span> res;
+  <span style="color: #00F">if</span> (a &lt; b) res = b - a;
+  <span style="color: #00F">else</span>  res = b - a + 24;
+
+  printf(<span style="color: #A31515">&quot;O JOGO DUROU %d HORA(S)\n&quot;</span>, res);
+
+  <span style="color: #00F">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>a, b = map(int, input().split())
@@ -215,11 +241,11 @@ print(<span style="color: #A31515">f&quot;O JOGO DUROU {</span>d<span style="col
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ020</span>加薪<span class="acw">AcWing 669</span></div>
-<div class="problem-desc">公司年终调薪，小鲁想知道自己的新工资。根据当前工资所在的区间，涨幅不同：0-400涨15%，400.01-800涨12%，800.01-1200涨10%，1200.01-2000涨7%，2000以上涨4%。</div>
+<div class="problem-desc">小鲁收到年终调薪通知——涨多少取决于当前工资：0-400涨15%，400.01-800涨12%，800.01-1200涨10%，1200.01-2000涨7%，2000以上涨4%。"这是分段函数！"小华说："从低到高判断最自然——s<=400?15:s<=800?12:s<=1200?10:..."</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个浮点数，表示当前工资。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">三行：新工资、涨薪金额、涨幅百分比（整数%）。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0 < 工资 ≤ 10⁶</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个浮点数表示当前工资。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">三行：新工资、涨薪金额、涨幅百分比。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0<工资≤10⁶</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>400.00</pre></div>
@@ -227,22 +253,30 @@ print(<span style="color: #A31515">f&quot;O JOGO DUROU {</span>d<span style="col
 Reajuste ganho: 60.00
 Em percentual: 15 %</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>多级区间判断。从上限往下判断可以减少条件（因为区间连续且互斥）。注意输出格式：保留2位小数+空格+%。</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>多级条件判断的顺序很重要。从大到小判断可以减少else分支。C++中printf的%%可以输出%字面量。Python用f-string直接写%。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>从低到高的if-elif链。区间互斥，顺序很重要——先判断小值再判断大值可以不加&&上限条件（因为前面的判断已经排除了）。注意输出格式：保留2位小数+空格+%。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>C++中%%输出%字面量（printf需要转义）。Python直接写%。区间判断顺序从低到高可以利用else的"否则"语义简化条件。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-<span style="color: #2B91AF">int</span> main() {
-    <span style="color: #2B91AF">double</span> s;
-    scanf(<span style="color: #A31515">&quot;%lf&quot;</span>, &amp;s);
-    <span style="color: #2B91AF">int</span> p;
-    <span style="color: #00F">if</span> (s &lt;= 400) p = 15;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (s &lt;= 800) p = 12;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (s &lt;= 1200) p = 10;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (s &lt;= 2000) p = 7;
-    <span style="color: #00F">else</span> p = 4;
-    <span style="color: #2B91AF">double</span> r = s * p / 100;
-    printf(<span style="color: #A31515">&quot;Novo salario: %.2lf\nReajuste ganho: %.2lf\nEm percentual: %d %%\n&quot;</span>, s + r, r, p);
+
+<span style="color: #2B91AF">int</span> main()
+{
+    <span style="color: #2B91AF">double</span> salary;
+    scanf(<span style="color: #A31515">&quot;%lf&quot;</span>, &amp;salary);
+
+    <span style="color: #2B91AF">double</span> x;
+
+    <span style="color: #00F">if</span> (salary &lt;= 400) x = 0.15;
+    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (salary &lt;= 800) x = 0.12;
+    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (salary &lt;= 1200) x = 0.1;
+    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (salary &lt;= 2000) x = 0.07;
+    <span style="color: #00F">else</span> x = 0.04;
+
+    printf(<span style="color: #A31515">&quot;Novo salario: %.2lf\n&quot;</span>, salary * (1 + x));
+    printf(<span style="color: #A31515">&quot;Reajuste ganho: %.2lf\n&quot;</span>, salary * x);
+    printf(<span style="color: #A31515">&quot;Em percentual: %.0lf %%&quot;</span>, x * 100);
+
     <span style="color: #00F">return</span> 0;
+
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>s = float(input())
@@ -259,10 +293,10 @@ print(<span style="color: #A31515">f&quot;Em percentual: {</span>p<span style="c
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ021</span>动物<span class="acw">AcWing 670</span></div>
-<div class="problem-desc">小鲁在生物课上学了动物分类。根据三个特征（脊椎/无脊椎、哺乳/鸟/爬虫/昆虫、食性），判断动物的种类名称。这是一个嵌套条件判断的经典题。</div>
+<div class="problem-desc">"猜动物游戏！"小鲁兴奋地说。"输入三个特征——脊椎/非脊椎、哺乳/鸟/昆虫/环节动物、食性——判断是什么动物。"小华说："这是嵌套if的完美案例——像一棵决策树，每个内部节点是判断，叶子节点是答案。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">三行：第一行"vertebrado"或"invertebrado"；第二、三行根据第一行不同。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">动物名称（如aguia, pomba, homem, vaca, pulga, lagarta, sanguessuga, minhoca）。</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">三行字符串（vertebrado/invertebrado等）。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">动物名称（aguia/pomba/homem/vaca/pulga/lagarta/sanguessuga/minhoca）。</td></tr>
 <tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">输入保证合法。</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
@@ -271,32 +305,34 @@ mamifero
 onivoro</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>homem</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>三层嵌套条件判断。先判断脊椎/无脊椎，再判断具体的纲，最后根据食性确定种类。可以看作决策树：每个内部节点是一个判断，叶子节点是答案。</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>Python嵌套if-elif结构。也可以用dict嵌套：tree={'vertebrado':{'ave':{...}}}。数据结构化思维是进阶编程的关键能力。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>三层嵌套if。先判断脊椎/非脊椎→再判断纲→再判断食性。本质是一棵深度为3的决策树。Python的嵌套if-elif结构清晰易读。也可用dict嵌套：tree={'vertebrado':{'ave':{...}}}。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的嵌套dict可以替代嵌套if——tree[a][b][c]一行定位答案。但写if逻辑更透明，两者都是合理的方案。"数据结构化思维"是编程进阶的关键能力。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #2B91AF">int</span> main() {
-    string a, b, c;
-    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
-    <span style="color: #00F">if</span> (a == <span style="color: #A31515">&quot;vertebrado&quot;</span>) {
-        <span style="color: #00F">if</span> (b == <span style="color: #A31515">&quot;ave&quot;</span>) {
-            <span style="color: #00F">if</span> (c == <span style="color: #A31515">&quot;carnivoro&quot;</span>) cout &lt;&lt; <span style="color: #A31515">&quot;aguia&quot;</span> &lt;&lt; endl;
-            <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;pomba&quot;</span> &lt;&lt; endl;
-        } <span style="color: #00F">else</span> {
-            <span style="color: #00F">if</span> (c == <span style="color: #A31515">&quot;onivoro&quot;</span>) cout &lt;&lt; <span style="color: #A31515">&quot;homem&quot;</span> &lt;&lt; endl;
-            <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;vaca&quot;</span> &lt;&lt; endl;
-        }
-    } <span style="color: #00F">else</span> {
-        <span style="color: #00F">if</span> (b == <span style="color: #A31515">&quot;inseto&quot;</span>) {
-            <span style="color: #00F">if</span> (c == <span style="color: #A31515">&quot;hematofago&quot;</span>) cout &lt;&lt; <span style="color: #A31515">&quot;pulga&quot;</span> &lt;&lt; endl;
-            <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;lagarta&quot;</span> &lt;&lt; endl;
-        } <span style="color: #00F">else</span> {
-            <span style="color: #00F">if</span> (c == <span style="color: #A31515">&quot;hematofago&quot;</span>) cout &lt;&lt; <span style="color: #A31515">&quot;sanguessuga&quot;</span> &lt;&lt; endl;
-            <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;minhoca&quot;</span> &lt;&lt; endl;
-        }
-    }
-    <span style="color: #00F">return</span> 0;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">if</span> (a == <span style="color: #A31515">&quot;vertebrado&quot;</span>)
+{
+  <span style="color: #00F">if</span> (b == <span style="color: #A31515">&quot;ave&quot;</span>)
+  {
+    <span style="color: #00F">if</span> (c == <span style="color: #A31515">&quot;carnivoro&quot;</span>) cout &lt;&lt; <span style="color: #A31515">&quot;aguia&quot;</span> &lt;&lt; endl;
+    <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;pomba&quot;</span> &lt;&lt; endl;
+  }
+  <span style="color: #00F">else</span>
+  {
+    <span style="color: #00F">if</span> (c == <span style="color: #A31515">&quot;onivoro&quot;</span>) cout &lt;&lt; <span style="color: #A31515">&quot;homem&quot;</span> &lt;&lt; endl;
+    <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;vaca&quot;</span> &lt;&lt; endl;
+  }
+}
+<span style="color: #00F">else</span> 
+{
+ <span style="color: #00F">if</span> (b == <span style="color: #A31515">&quot;inseto&quot;</span>) 
+  {
+    <span style="color: #00F">if</span> (c == <span style="color: #A31515">&quot;hematofago&quot;</span>) cout &lt;&lt; <span style="color: #A31515">&quot;pulga&quot;</span> &lt;&lt; endl;
+    <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;lagarta&quot;</span> &lt;&lt; endl;
+  }
+  <span style="color: #00F">else</span>
+  {
+    <span style="color: #00F">if</span> (c == <span style="color: #A31515">&quot;hematofago&quot;</span>) cout &lt;&lt; <span style="color: #A31515">&quot;sanguessuga&quot;</span> &lt;&lt; endl;
+    <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;minhoca&quot;</span> &lt;&lt; endl;
+  }
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>a, b, c = input(), input(), input()
@@ -314,30 +350,25 @@ onivoro</pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ022</span>选择练习1<span class="acw">AcWing 657</span></div>
-<div class="problem-desc">给定四个整数A、B、C、D，请判断是否同时满足：B>C、D>A、C+D>A+B、C和D都是正数、A是偶数。所有条件都满足才输出"Valores aceitos"。</div>
+<div class="problem-desc">小鲁一口气写下五个条件：B>C、D>A、C+D>A+B、C>0、D>0、A是偶数。"要同时满足才能输出accepted——用&&(and)把它们串起来。"小华说："这是复杂布尔表达式的练习——五个条件，一个都不能少。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，四个整数A、B、C、D。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">满足所有条件输出"Valores aceitos"，否则"Valores nao aceitos"。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁹ ≤ A,B,C,D ≤ 10⁹</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行四个整数A、B、C、D。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">全部满足输出"Valores aceitos"，否则"Valores nao aceitos"。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁹≤A,B,C,D≤10⁹</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>5 6 7 8</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>Valores nao aceitos</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>五个条件需要用&&（and）连接。同时满足才输出accepted。这道题训练了复杂布尔表达式的组合使用。</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>Python把多个条件写在一行可读性很好：if b>c and d>a and c+d>a+b and c>0 and d>0 and a%2==0。注意条件的排列顺序：先放最容易判断的可以短路求值。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>5个条件用&&(and)连接。同时满足才输出accepted。训练复杂布尔表达式的使用。条件的排列顺序影响短路求值——先放最容易判断的。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python把5个条件写一行：if b>c and d>a and c+d>a+b and c>0 and d>0 and a%2==0。可读性极好。先放C>0、D>0这种简单条件可以触发短路优化。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #2B91AF">int</span> main() {
-    <span style="color: #2B91AF">int</span> a, b, c, d;
-    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;
-    <span style="color: #00F">if</span> (b &gt; c &amp;&amp; d &gt; a &amp;&amp; c + d &gt; a + b &amp;&amp; c &gt; 0 &amp;&amp; d &gt; 0 &amp;&amp; a % 2 == 0)
-        cout &lt;&lt; <span style="color: #A31515">&quot;Valores aceitos&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span>
-        cout &lt;&lt; <span style="color: #A31515">&quot;Valores nao aceitos&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">return</span> 0;
-}
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">if</span>(b &gt; c &amp;&amp; d &gt; a &amp;&amp; c + d &gt; a + b &amp;&amp; c &gt; 0 &amp;&amp; d &gt; 0 &amp;&amp; a % 2 == 0) 
+   cout &lt;&lt; <span style="color: #A31515">&quot;Valores aceitos&quot;</span> &lt;&lt; endl;
+<span style="color: #00F">else</span>
+   cout &lt;&lt; <span style="color: #A31515">&quot;Valores nao aceitos&quot;</span> &lt;&lt; endl;
+
+<span style="color: #00F">return</span> 0;
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>a, b, c, d = map(int, input().split())
 <span style="color: #00F">if</span> b &gt; c <span style="color: #00F">and</span> d &gt; a <span style="color: #00F">and</span> c + d &gt; a + b <span style="color: #00F">and</span> c &gt; 0 <span style="color: #00F">and</span> d &gt; 0 <span style="color: #00F">and</span> a % 2 == 0:
@@ -348,22 +379,25 @@ onivoro</pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ023</span>DDD<span class="acw">AcWing 671</span></div>
-<div class="problem-desc">小鲁想打电话给其他城市的同学。给定一个DDD区号，输出对应的城市名。DDD与城市的对应关系：61-Brasilia, 71-Salvador, 11-Sao Paulo, 21-Rio de Janeiro, 32-Juiz de Fora, 19-Campinas, 27-Vitoria, 31-Belo Horizonte。</div>
+<div class="problem-desc">小鲁想给其他城市的同学打电话。"61是巴西利亚，71是萨尔瓦多，11是圣保罗……这么多城市怎么记？"小华说："C++可以写8个if-else。但Python用dict——{'61':'Brasilia','71':'Salvador',...}，一行get()全搞定。这就是'用数据驱动替代代码堆叠'的力量。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个整数DDD。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出城市名，或"DDD nao cadastrado"。</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个整数DDD区号。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">城市名或"DDD nao cadastrado"。</td></tr>
 <tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">DDD为正整数。</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>11</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>Sao Paulo</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>多分支映射的经典题。C++用8个if-else分支，Python用dict映射表一行搞定。本课最重要的工程思维：当看到重复的if-else模式时，用数据结构替代逻辑堆叠。</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>Python dict.get(ddd, 'DDD nao cadastrado')一行替代8个if-else。这是"用数据驱动代替逻辑驱动"的典范。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>Python的dict映射表一行替代8个if-else。ddd.get(ddd, 'DDD nao cadastrado')——查找存在就返回，不存在就返回默认值。这是本课最重要的工程思维：看到重复的if-else模式时，用数据结构替代。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>ddd={61:'Brasilia',71:'Salvador',11:'Sao Paulo',21:'Rio de Janeiro',32:'Juiz de Fora',19:'Campinas',27:'Vitoria',31:'Belo Horizonte'}。print(ddd.get(x,'DDD nao cadastrado'))。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
 <span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #2B91AF">int</span> main() {
+
+<span style="color: #2B91AF">int</span> main()
+{
     <span style="color: #2B91AF">int</span> x;
     cin &gt;&gt; x;
     <span style="color: #00F">if</span> (x == 61) cout &lt;&lt; <span style="color: #A31515">&quot;Brasilia&quot;</span> &lt;&lt; endl;
@@ -375,6 +409,7 @@ onivoro</pre></div>
     <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 27) cout &lt;&lt; <span style="color: #A31515">&quot;Vitoria&quot;</span> &lt;&lt; endl;
     <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 31) cout &lt;&lt; <span style="color: #A31515">&quot;Belo Horizonte&quot;</span> &lt;&lt; endl;
     <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;DDD nao cadastrado&quot;</span> &lt;&lt; endl;
+
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
@@ -385,32 +420,39 @@ print(ddd.get(x, <span style="color: #A31515">&quot;DDD nao cadastrado&quot;</sp
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ024</span>点的坐标<span class="acw">AcWing 662</span></div>
-<div class="problem-desc">小鲁在坐标系上画了一个点P(x,y)。请判断这个点在第几象限，或者在坐标轴上（Eixo X / Eixo Y），或者在原点（Origem）。</div>
+<div class="problem-desc">小鲁在坐标系上画了一个点："P(4.5,-2.2)——这是第几象限？""第四象限！"小华说，"但要注意特殊情况：原点(0,0)、X轴(y=0)、Y轴(x=0)。判断顺序很重要——先判断原点，再判断轴，最后判断象限。如果顺序搞错——比如先判断x>0就归为Q1——可能把原点误判。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，两个浮点数x和y。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出"Q1"、"Q2"、"Q3"、"Q4"、"Origem"、"Eixo X"或"Eixo Y"。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁹ ≤ x, y ≤ 10⁹</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">两个浮点数x和y。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">Q1/Q2/Q3/Q4/Origem/Eixo X/Eixo Y。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁹≤x,y≤10⁹</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>4.5 -2.2</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>Q4</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>象限判断的顺序很重要：先判断原点（x=0且y=0），再判断轴（x=0或y=0），最后判断象限（x和y的符号组合）。如果顺序颠倒会得到错误结果。</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>判断顺序：原点→轴→象限。浮点数比较用==在本题数据范围内安全。C++中注意小数点的精确表示。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>判断顺序：原点→轴→象限。这是分类讨论的标准流程——先特殊后一般。x>0且y>0→Q1，x<0且y>0→Q2，x<0且y<0→Q3，x>0且y<0→Q4。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>判断顺序从特殊到一般：原点→轴→象限。Python中x==0和y==0用浮点比较在本题数据范围内安全。对于更精确的场景可使用abs(x)<1e-9。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
 <span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #2B91AF">int</span> main() {
+
+<span style="color: #2B91AF">int</span> main()
+{
     <span style="color: #2B91AF">double</span> x, y;
     cin &gt;&gt; x &gt;&gt; y;
+
     <span style="color: #00F">if</span> (x &gt; 0 &amp;&amp; y &gt; 0) cout &lt;&lt; <span style="color: #A31515">&quot;Q1&quot;</span> &lt;&lt; endl;
     <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x &lt; 0 &amp;&amp; y &gt; 0) cout &lt;&lt; <span style="color: #A31515">&quot;Q2&quot;</span> &lt;&lt; endl;
     <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x &lt; 0 &amp;&amp; y &lt; 0) cout &lt;&lt; <span style="color: #A31515">&quot;Q3&quot;</span> &lt;&lt; endl;
     <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x &gt; 0 &amp;&amp; y &lt; 0) cout &lt;&lt; <span style="color: #A31515">&quot;Q4&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 0 &amp;&amp; y == 0) cout &lt;&lt; <span style="color: #A31515">&quot;Origem&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 0) cout &lt;&lt; <span style="color: #A31515">&quot;Eixo Y&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;Eixo X&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #00F">else</span>
+    {
+      <span style="color: #00F">if</span> (!x &amp;&amp; !y) cout &lt;&lt; <span style="color: #A31515">&quot;Origem&quot;</span> &lt;&lt; endl;
+      <span style="color: #00F">else</span> <span style="color: #00F">if</span> (!y) cout &lt;&lt; <span style="color: #A31515">&quot;Eixo X&quot;</span> &lt;&lt; endl;
+      <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;Eixo Y&quot;</span> &lt;&lt; endl;
+    }
+  <span style="color: #00F">return</span> 0;  
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>x, y = map(float, input().split())
@@ -425,38 +467,59 @@ print(ddd.get(x, <span style="color: #A31515">&quot;DDD nao cadastrado&quot;</sp
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ025</span>三角形类型<span class="acw">AcWing 666</span></div>
-<div class="problem-desc">给定三个浮点数，先判断能否构成三角形，如果能，再进一步判断是直角三角形、钝角三角形、锐角三角形、等边三角形还是等腰三角形。</div>
+<div class="problem-desc">"不仅要判定能不能构成三角形，还要分直/钝/锐/等边/等腰——这一道题等于前一道的10倍工作量！"小鲁被吓到了。小华笑道："别怕，先把三边降序排列（a≥b≥c），然后从一般到特殊逐个判断。排序降序是简化三角形分类的关键——排完序后一切都变简单了。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，三个浮点数A、B、C。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">按顺序输出满足的类型，可能多行。先输出"NAO FORMA TRIANGULO"（不能构成），否则依次检查直/钝/锐/等边/等腰。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0 < A, B, C ≤ 100</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">三个浮点数A、B、C。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">按顺序判断：不构成→直角→钝角→锐角→等边→等腰。可能输出多行。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0<A,B,C≤100</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>7.0 5.0 7.0</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>TRIANGULO ACUTANGULO
 TRIANGULO ISOSCELES</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>先把三个数降序排列（a≥b≥c），简化后续判断。不能构成：a≥b+c。直角：a²=b²+c²。钝角：a²>b²+c²。锐角：a²<b²+c²。等边：a=b=c。等腰：a=b或b=c。</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>排序降序是简化条件判断的核心技巧。Python的sorted()配合reverse=True。判断顺序从一般到特殊：先判不能构成，再判角度类型，最后判边长相等等。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>三步法：1.降序排列(swap直到a≥b≥c)；2.判三角形：a≥b+c?不能构成；3.角度类型：a²=b²+c²(直角)、a²>b²+c²(钝角)、a²<b²+c²(锐角)；4.边类型：a=b=c(等边)/a=b或b=c(等腰)。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python一行排序：a,b,c=sorted([a,b,c],reverse=True)。排序降序后所有判断条件都变得简单。注意用多个if而非if-elif——因为可能同时满足多个条件（如既是锐角又是等腰）。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+
 <span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #2B91AF">int</span> main() {
+
+<span style="color: #2B91AF">int</span> main()
+{
     <span style="color: #2B91AF">double</span> a, b, c;
     cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
-    <span style="color: #00F">if</span> (b &gt; a) swap(a, b);
-    <span style="color: #00F">if</span> (c &gt; a) swap(a, c);
-    <span style="color: #00F">if</span> (c &gt; b) swap(b, c);
-    <span style="color: #00F">if</span> (a &gt;= b + c) cout &lt;&lt; <span style="color: #A31515">&quot;NAO FORMA TRIANGULO&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> {
-        <span style="color: #00F">if</span> (a*a == b*b + c*c) cout &lt;&lt; <span style="color: #A31515">&quot;TRIANGULO RETANGULO&quot;</span> &lt;&lt; endl;
-        <span style="color: #00F">if</span> (a*a &gt; b*b + c*c) cout &lt;&lt; <span style="color: #A31515">&quot;TRIANGULO OBTUSANGULO&quot;</span> &lt;&lt; endl;
-        <span style="color: #00F">if</span> (a*a &lt; b*b + c*c) cout &lt;&lt; <span style="color: #A31515">&quot;TRIANGULO ACUTANGULO&quot;</span> &lt;&lt; endl;
-        <span style="color: #00F">if</span> (a == b &amp;&amp; b == c) cout &lt;&lt; <span style="color: #A31515">&quot;TRIANGULO EQUILATERO&quot;</span> &lt;&lt; endl;
-        <span style="color: #00F">else</span> <span style="color: #00F">if</span> (a == b || a == c || b == c) cout &lt;&lt; <span style="color: #A31515">&quot;TRIANGULO ISOSCELES&quot;</span> &lt;&lt; endl;
+
+    <span style="color: #00F">if</span> (b &gt; a)
+    {
+      <span style="color: #2B91AF">double</span> t = a;
+      a = b;
+      b = t;
     }
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #00F">if</span> (c &gt; a)
+    {
+      <span style="color: #2B91AF">double</span> t = a;
+      a = c;
+      c = t;
+    }
+    <span style="color: #00F">if</span> (c &gt; b)
+    {
+      <span style="color: #2B91AF">double</span> t = b;
+      b = c;
+      c = t;
+    }
+
+    <span style="color: #00F">if</span> (a &gt;= b + c) cout &lt;&lt; <span style="color: #A31515">&quot;NAO FORMA TRIANGULO&quot;</span> &lt;&lt; endl;
+    <span style="color: #00F">else</span>
+    {
+      <span style="color: #00F">if</span> (a * a == b * b + c * c) cout &lt;&lt; <span style="color: #A31515">&quot;TRIANGULO RETANGULO&quot;</span> &lt;&lt; endl;
+      <span style="color: #00F">if</span> (a * a &gt; b * b + c * c) cout &lt;&lt; <span style="color: #A31515">&quot;TRIANGULO OBTUSANGULO&quot;</span> &lt;&lt; endl;
+      <span style="color: #00F">if</span> (a * a &lt; b * b + c * c) cout &lt;&lt; <span style="color: #A31515">&quot;TRIANGULO ACUTANGULO&quot;</span> &lt;&lt; endl;
+      <span style="color: #00F">if</span> (a == b &amp;&amp; b == c) cout &lt;&lt; <span style="color: #A31515">&quot;TRIANGULO EQUILATERO&quot;</span> &lt;&lt; endl;
+      <span style="color: #00F">else</span> <span style="color: #00F">if</span> (a == b || a == c || b == c) cout &lt;&lt; <span style="color: #A31515">&quot;TRIANGULO ISOSCELES&quot;</span> &lt;&lt; endl;
+    }
+
+   <span style="color: #00F">return</span> 0; 
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>a, b, c = sorted(map(float, input().split()), reverse=<span style="color: #00F">True</span>)
@@ -472,28 +535,36 @@ TRIANGULO ISOSCELES</pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ026</span>游戏时间2<span class="acw">AcWing 668</span></div>
-<div class="problem-desc">和NQ019类似，但这次游戏时间精确到分钟。输入开始和结束的小时和分钟，计算游戏的持续时间（时和分）。</div>
+<div class="problem-desc">"上次只算了小时，这次要精确到分钟！"小鲁升级了游戏计时器。"起点7:08，终点9:10——持续多久？""统一换算成分钟：7*60+8=428，9*60+10=550，差122分钟=2小时2分钟。如果终点≤起点，加24*60处理跨天。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，四个整数：开始的小时A、分钟B，结束的小时C、分钟D。</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">四个整数：A(开始时)、B(开始分)、C(结束时)、D(结束分)。</td></tr>
 <tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">"O JOGO DUROU X HORA(S) E Y MINUTO(S)"。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0 ≤ A, C ≤ 23, 0 ≤ B, D ≤ 59</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0≤A,C≤23,0≤B,D≤59</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>7 8 9 10</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>O JOGO DUROU 2 HORA(S) E 2 MINUTO(S)</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>统一转换为分钟数便于计算：start = A*60+B, end = C*60+D。如果end≤start，end += 24*60（跨天）。duration = end - start，再转回时和分。</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>统一量纲（转为分钟）后比较和计算是处理时间问题的通用技巧。避免分别处理小时和分钟的复杂情况。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>统一转换为分钟：start=A*60+B,end=C*60+D。若end≤start则加24*60。diff=end-start，再转回时=diff/60,分=diff%60。"统一量纲"是时间问题的通用技巧。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>统一量纲(分钟)后比较和计算避免分别处理小时和分钟的复杂情况。Python的divmod(diff,60)可以直接分解时和分。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-<span style="color: #2B91AF">int</span> main() {
+
+<span style="color: #2B91AF">int</span> main()
+{
     <span style="color: #2B91AF">int</span> a, b, c, d;
     scanf(<span style="color: #A31515">&quot;%d%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c, &amp;d);
-    <span style="color: #2B91AF">int</span> start = a * 60 + b, end = c * 60 + d;
-    <span style="color: #00F">if</span> (end &lt;= start) end += 24 * 60;
-    <span style="color: #2B91AF">int</span> diff = end - start;
-    printf(<span style="color: #A31515">&quot;O JOGO DUROU %d HORA(S) E %d MINUTO(S)\n&quot;</span>, diff / 60, diff % 60);
+
+    <span style="color: #2B91AF">int</span> start = a * 60 + b;
+    <span style="color: #2B91AF">int</span> end = c * 60 + d;
+
+    <span style="color: #2B91AF">int</span> spent_time = end - start;
+    <span style="color: #00F">if</span> (spent_time &lt;= 0) spent_time += 1440;
+
+    printf(<span style="color: #A31515">&quot;O JOGO DUROU %d HORA(S) E %d MINUTO(S)&quot;</span>, spent_time / 60, spent_time % 60);
+
     <span style="color: #00F">return</span> 0;
+
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>a, b, c, d = map(int, input().split())
@@ -506,31 +577,46 @@ print(<span style="color: #A31515">f&quot;O JOGO DUROU {</span>d // 60<span styl
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ027</span>税<span class="acw">AcWing 672</span></div>
-<div class="problem-desc">小鲁工作了，需要计算个人所得税。税率分档：0-2000免税，2000.01-3000税率8%，3000.01-4500税率18%，4500以上税率28%。注意是分段计税。</div>
+<div class="problem-desc">小鲁第一次交税。"税率分段计算——0到2000免税，2000.01到3000收8%，3000.01到4500收18%，4500以上收28%。""注意是分段计税，不是全额×最高税率！"小华强调："每一段分别计算——超过2000的部分才需要交税。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个浮点数，表示月收入。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">如免税输出"Isento"，否则输出"R$ XX.XX"（保留2位小数）。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0 < 收入 ≤ 10⁶</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个浮点数表示月收入。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">免税输出"Isento"，否则"R$ XX.XX"。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0<收入≤10⁶</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>3002.00</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>R$ 80.36</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>分段计税是逐段计算的典型例子。先判断是否在免税范围，然后对超出2000的部分逐段按税率计算。关键是理解"分段"的含义：不是全额乘以最高税率，而是每段分别计算。</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>分段计算用min()限制每段的上限。Python写法比C++更简洁：tax = min(x, 1000)*0.08 + min(max(x-1000,0), 1500)*0.18 + ...</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>分段计税：先判断是否≤2000(免税)。超出2000部分逐段按税率计算。Python用min()限制每段上限：tax=min(x,1000)*0.08+min(max(x-1000,0),1500)*0.18+...</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的min/max组合：min(x,1000)*0.08处理第一段(0-1000按8%)。理解"分段"原理比写出代码更重要——这是个人所得税的核心逻辑。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-<span style="color: #2B91AF">int</span> main() {
+
+<span style="color: #2B91AF">int</span> main()
+{
     <span style="color: #2B91AF">double</span> x;
     scanf(<span style="color: #A31515">&quot;%lf&quot;</span>, &amp;x);
-    <span style="color: #00F">if</span> (x &lt;= 2000) { printf(<span style="color: #A31515">&quot;Isento\n&quot;</span>); <span style="color: #00F">return</span> 0; }
-    x -= 2000;
-    <span style="color: #2B91AF">double</span> t = 0;
-    <span style="color: #00F">if</span> (x &gt; 0) { <span style="color: #2B91AF">double</span> v = x &lt; 1000 ? x : 1000; t += v * 0.08; x -= v; }
-    <span style="color: #00F">if</span> (x &gt; 0) { <span style="color: #2B91AF">double</span> v = x &lt; 1500 ? x : 1500; t += v * 0.18; x -= v; }
-    <span style="color: #00F">if</span> (x &gt; 0) t += x * 0.28;
-    printf(<span style="color: #A31515">&quot;R$ %.2lf\n&quot;</span>, t);
+
+    <span style="color: #2B91AF">double</span> sum = 0;
+    <span style="color: #00F">if</span> (x &gt; 2000)
+    {
+      <span style="color: #2B91AF">double</span> y = 3000;
+      <span style="color: #00F">if</span> (x &lt; 3000) y = x;
+      sum += (y - 2000) * 0.08;
+    }
+    <span style="color: #00F">if</span> (x &gt; 3000)
+    {
+      <span style="color: #2B91AF">double</span> y = 4500;
+      <span style="color: #00F">if</span> (x &lt; 4500) y = x;
+      sum += (y - 3000) * 0.18;
+    }
+    <span style="color: #00F">if</span> (x &gt; 4500) sum += (x - 4500) * 0.28;
+
+    <span style="color: #00F">if</span> (sum == 0) printf(<span style="color: #A31515">&quot;Isento&quot;</span>);
+    <span style="color: #00F">else</span> printf(<span style="color: #A31515">&quot;R$ %.2lf\n&quot;</span>, sum);
+
     <span style="color: #00F">return</span> 0;
+
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>x = float(input())
@@ -554,28 +640,52 @@ print(<span style="color: #A31515">f&quot;O JOGO DUROU {</span>d // 60<span styl
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ028</span>简单排序<span class="acw">AcWing 663</span></div>
-<div class="problem-desc">小鲁想把三个数从小到大排列。给定三个整数，输出它们按升序排列的结果。</div>
+<div class="problem-desc">"把三个数从小到大排列——这是排序算法的萌芽。"小华说："三步比较交换：先比较a和b，必要时交换；再比较a和c；最后比较b和c。三步之后a≤b≤c——这就是冒泡排序思想的微型版。C++用swap()，Python用a,b=b,a——交换变量最优雅的方式。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，三个整数。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">升序排列的三个数，空格隔开。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁹ ≤ a,b,c ≤ 10⁹</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行三个整数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">升序排列的三个数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁹≤a,b,c≤10⁹</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>7 21 -14</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>-14 7 21</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">思路</span><span>三个数的排序：比较a和b，必要时交换；再比较a和c；最后比较b和c。经过这三步，a≤b≤c。这是冒泡排序思想的萌芽，也是交换操作（swap）的练习。</span></div>
-<div class="insight-block"><span class="insight-label">技巧</span><span>Python可以用sorted()一行搞定，但手写交换理解排序原理更重要。C++用swap()函数或临时变量。Python的a,b=b,a是最优雅的交换写法。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>三步交换排序：if a>b:swap(a,b); if a>c:swap(a,c); if b>c:swap(b,c)。这是排序算法的最小实现——理解交换操作的原理为后续学习排序算法打下基础。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的a,b=b,a是最优雅的交换写法——基于元组解包。C++用std::swap或临时变量。Python一行sorted()也行但手写交换理解原理更重要。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+
 <span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #2B91AF">int</span> main() {
+
+<span style="color: #2B91AF">int</span> main()
+{
     <span style="color: #2B91AF">int</span> a, b, c;
     cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
-    <span style="color: #00F">if</span> (a &gt; b) swap(a, b);
-    <span style="color: #00F">if</span> (a &gt; c) swap(a, c);
-    <span style="color: #00F">if</span> (b &gt; c) swap(b, c);
-    cout &lt;&lt; a &lt;&lt; <span style="color: #A31515">&quot; &quot;</span> &lt;&lt; b &lt;&lt; <span style="color: #A31515">&quot; &quot;</span> &lt;&lt; c &lt;&lt; endl;
+
+    <span style="color: #2B91AF">int</span> x = a, y = b, z = c;
+
+    <span style="color: #00F">if</span> (b &lt; a)
+    {
+      <span style="color: #2B91AF">int</span> t = a;
+      a = b;
+      b = t;
+    }
+    <span style="color: #00F">if</span> (c &lt; a)
+    {
+      <span style="color: #2B91AF">int</span> t = a;
+      a = c;
+      c = t;
+    }
+    <span style="color: #00F">if</span> (c &lt; b)
+    {
+      <span style="color: #2B91AF">int</span> t = b;
+      b = c;
+      c = t;
+    }
+
+    cout &lt;&lt; a &lt;&lt; endl &lt;&lt; b &lt;&lt; endl &lt;&lt; c &lt;&lt; endl &lt;&lt; endl;
+    cout &lt;&lt; x &lt;&lt; endl &lt;&lt; y &lt;&lt; endl &lt;&lt; z &lt;&lt; endl;
+
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
@@ -586,5 +696,12 @@ print(<span style="color: #A31515">f&quot;O JOGO DUROU {</span>d // 60<span styl
 print(a, b, c)
 </pre></div>
 </div></div><hr class="section-divider">
-<div class="chapter-end">— 第2章完 · 共14题 —</div>
-</body></html>
+<div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>
+<li><strong>if-else/if-elif-else：</strong>条件分支的基本语法，两语言核心差异在于Python的elif和缩进</li>
+<li><strong>Python链式比较：</strong>a<=x<=b等价于a<=x and x<=b，语法糖但可读性极好</li>
+<li><strong>dict映射表：</strong>替代长if-else链的利器。O(1)查找，代码减少50%+</li>
+<li><strong>决策树思维：</strong>嵌套条件判断本质是决策树——从根到叶的路径</li>
+<li><strong>排序简化：</strong>三角形类型题——先排序使a≥b≥c，后续所有判断条件简化</li>
+<li><strong>分段计算：</strong>税务题——min/max组合处理分段，理解"分段"而非"全额"</li>
+</ul></div>
+<div class="chapter-end">— 第2章完 · 共14题 · 自强不息 —</div></body></html>
