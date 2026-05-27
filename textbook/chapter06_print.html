@@ -94,7 +94,8 @@ body{string-set:chapter "第6章 字符的世界——字符串处理"}</style><
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>s=input();print(sum(1 <span style="color: #00F">for</span> c <span style="color: #00F">in</span> s <span style="color: #00F">if</span> c.isdigit()))
+<div class="code-col"><div class="lang-badge">Python</div><pre>s = input()
+print(sum(1 <span style="color: #00F">for</span> c <span style="color: #00F">in</span> s <span style="color: #00F">if</span> c.isdigit()))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -158,10 +159,14 @@ Player2
   <span style="color: #00F">return</span> 0;  
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>a,b=input().split();w={(<span style="color: #A31515">&#39;Hunter&#39;</span>,<span style="color: #A31515">&#39;Gun&#39;</span>),(<span style="color: #A31515">&#39;Bear&#39;</span>,<span style="color: #A31515">&#39;Hunter&#39;</span>),(<span style="color: #A31515">&#39;Gun&#39;</span>,<span style="color: #A31515">&#39;Bear&#39;</span>)}
-<span style="color: #00F">if</span> a==b:print(<span style="color: #A31515">&#39;Tie&#39;</span>)
-<span style="color: #00F">elif</span>(a,b)<span style="color: #00F">in</span> w:print(<span style="color: #A31515">&#39;Player1&#39;</span>)
-<span style="color: #00F">else</span>:print(<span style="color: #A31515">&#39;Player2&#39;</span>)
+<div class="code-col"><div class="lang-badge">Python</div><pre>a, b = input().split()
+w = {(<span style="color: #A31515">&quot;Hunter&quot;</span>,<span style="color: #A31515">&quot;Gun&quot;</span>),(<span style="color: #A31515">&quot;Bear&quot;</span>,<span style="color: #A31515">&quot;Hunter&quot;</span>),(<span style="color: #A31515">&quot;Gun&quot;</span>,<span style="color: #A31515">&quot;Bear&quot;</span>)}
+<span style="color: #00F">if</span> a == b:
+    print(<span style="color: #A31515">&quot;Tie&quot;</span>)
+<span style="color: #00F">elif</span> (a, b) <span style="color: #00F">in</span> w:
+    print(<span style="color: #A31515">&quot;Player1&quot;</span>)
+<span style="color: #00F">else</span>:
+    print(<span style="color: #A31515">&quot;Player2&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -201,7 +206,7 @@ Player2
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>print(<span style="color: #A31515">&#39; &#39;</span>.join(input()))
+<div class="code-col"><div class="lang-badge">Python</div><pre>print(<span style="color: #A31515">&quot; &quot;</span>.join(input()))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -246,7 +251,9 @@ l
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>s=input();c=input();print(s.replace(c,<span style="color: #A31515">&#39;#&#39;</span>))
+<div class="code-col"><div class="lang-badge">Python</div><pre>s = input()
+c = input()
+print(s.replace(c, <span style="color: #A31515">&quot;#&quot;</span>))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -287,7 +294,10 @@ l
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>s=input();t=input();i=len(s)//2;print(s[:i]+t+s[i:])
+<div class="code-col"><div class="lang-badge">Python</div><pre>s = input()
+t = input()
+i = len(s) // 2
+print(s[:i] + t + s[i:])
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -333,11 +343,15 @@ l
     <span style="color: #00F">return</span> 0;    
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">from</span> collections <span style="color: #00F">import</span> Counter
-s=input();cnt=Counter(s)
+<div class="code-col"><div class="lang-badge">Python</div><pre>s = input()
+<span style="color: #00F">from</span> collections <span style="color: #00F">import</span> Counter
+cnt = Counter(s)
 <span style="color: #00F">for</span> c <span style="color: #00F">in</span> s:
- <span style="color: #00F">if</span> cnt[c]==1:print(c);<span style="color: #00F">break</span>
-<span style="color: #00F">else</span>:print(<span style="color: #A31515">&#39;no&#39;</span>)
+    <span style="color: #00F">if</span> cnt[c] == 1:
+        print(c)
+        <span style="color: #00F">break</span>
+<span style="color: #00F">else</span>:
+    print(<span style="color: #A31515">&quot;no&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -381,7 +395,9 @@ abed
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>s=input();t=input();print(<span style="color: #A31515">&#39;yes&#39;</span> <span style="color: #00F">if</span> t <span style="color: #00F">in</span> s <span style="color: #00F">else</span> <span style="color: #A31515">&#39;no&#39;</span>)
+<div class="code-col"><div class="lang-badge">Python</div><pre>s = input()
+t = input()
+print(<span style="color: #A31515">&quot;yes&quot;</span> <span style="color: #00F">if</span> t <span style="color: #00F">in</span> s <span style="color: #00F">else</span> <span style="color: #A31515">&quot;no&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -425,12 +441,15 @@ abed
     cout&lt;&lt;s&lt;&lt;endl;<span style="color: #008000">//输出结果</span>
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>r=<span style="color: #A31515">&#39;&#39;</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre>r = []
 <span style="color: #00F">for</span> c <span style="color: #00F">in</span> input():
- <span style="color: #00F">if</span><span style="color: #A31515">&#39;a&#39;</span>&lt;=c&lt;=<span style="color: #A31515">&#39;z&#39;</span>:r+=chr((ord(c)-97+1)%26+97)
- <span style="color: #00F">elif</span><span style="color: #A31515">&#39;A&#39;</span>&lt;=c&lt;=<span style="color: #A31515">&#39;Z&#39;</span>:r+=chr((ord(c)-65+1)%26+65)
- <span style="color: #00F">else</span>:r+=c
-print(r)
+    <span style="color: #00F">if</span> <span style="color: #A31515">&quot;a&quot;</span> &lt;= c &lt;= <span style="color: #A31515">&quot;z&quot;</span>:
+        r.append(chr((ord(c) - 97 + 1) % 26 + 97))
+    <span style="color: #00F">elif</span> <span style="color: #A31515">&quot;A&quot;</span> &lt;= c &lt;= <span style="color: #A31515">&quot;Z&quot;</span>:
+        r.append(chr((ord(c) - 65 + 1) % 26 + 65))
+    <span style="color: #00F">else</span>:
+        r.append(c)
+print(<span style="color: #A31515">&quot;&quot;</span>.join(r))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -469,8 +488,8 @@ print(r)
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">for</span> c <span style="color: #00F">in</span> input():print(chr(ord(c)+1),end=<span style="color: #A31515">&#39;&#39;</span>)
-print()
+<div class="code-col"><div class="lang-badge">Python</div><pre>s = input()
+print(<span style="color: #A31515">&quot;&quot;</span>.join(chr(ord(c) + 1) <span style="color: #00F">for</span> c <span style="color: #00F">in</span> s))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
