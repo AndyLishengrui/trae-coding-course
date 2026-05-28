@@ -1,5 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第16章 智慧的策略</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999;font-family:"PingFang SC",sans-serif}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
-body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222}
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第16章 终极试炼</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
+body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222;string-set:chapter"第16章 终极试炼——数学、贪心与综合实战"}
+.preface{font-size:10pt;margin-bottom:1.5em;color:#444}.preface p{margin:.3em 0;text-indent:2em}
+.preface h3{font-size:11pt;color:#2563eb;margin:1em 0 .3em 0}
+.knowledge-box{background:#f0f6ff;border:1pt solid #bdd;border-radius:4px;padding:.7em 1em;margin:.8em 0;font-size:9pt}
+.knowledge-box .k-title{font-weight:bold;color:#2563eb;margin-bottom:.3em;font-size:9.5pt}.knowledge-box p{margin:.2em 0}.knowledge-box ul{margin:.2em 0;padding-left:1.5em}
 .chapter-title{text-align:center;font-size:20pt;font-weight:bold;margin:1.5em 0 .1em 0;letter-spacing:3pt}
 .chapter-subtitle{text-align:center;font-size:10pt;color:#777;margin-bottom:1.5em;padding-bottom:.8em;border-bottom:1px solid #bbb}
 .problem-title{font-size:12pt;font-weight:bold;margin:1.5em 0 .4em 0;padding-bottom:.15em;border-bottom:1pt solid #444}
@@ -11,31 +15,35 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .spec-table .spec-label .tag{display:inline-block;padding:.15em .5em;border-radius:2px;color:#fff;font-size:7.5pt;letter-spacing:.5pt}
 .spec-table .spec-label .tag.in{background:#2563eb}.spec-table .spec-label .tag.out{background:#059669}.spec-table .spec-label .tag.lim{background:#d97706}
 .spec-table .spec-value{color:#333;font-size:9pt}
-.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.5em 1em;margin:.8em 0 1em 0}
-.sample-grid{display:flex;gap:1.5em}.sample-col{min-width:0}.sample-col:first-child{flex:1}.sample-col:last-child{flex:1}
-.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:0;font-weight:bold}
-.sample-col pre{background:none;border:none;padding:.2em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:8.5pt;line-height:1.3;white-space:pre-wrap;color:#333}
+.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.7em 1em;margin:1em 0 1.2em 0}
+.sample-grid{display:flex;gap:2em}.sample-col{flex:1}
+.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:.2em;font-weight:bold}
+.sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
 .insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
 .insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
 .code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
 .code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
 .code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
-.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
-body{string-set:chapter "第16章 智慧的策略——贪心、并查集与数学"}</style></head><body>
-<div class="chapter-title">智慧的策略</div><div class="chapter-subtitle">贪心、并查集与数学 · 9题 · C++ &amp; Python 双语对照</div>
+.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
+.chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
+.chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">终极试炼</div>
+<div class="chapter-subtitle">数学、贪心与综合实战 · 8题 · C++ &amp; Python 双语对照</div>
+<div class="preface">
+<p>最后一章！小鲁回顾了这一路的风景——从第一个A+B，到循环、数组、字符串、函数、STL、排序、二分、前缀和、差分、双指针、高精度、位运算、离散化、数据结构、搜索、图论、动态规划……16章的征程即将画上句号。最后一章，我们用数学和贪心来收尾——有时候最优解不需要复杂算法，一个定理就够了。"编程的最高境界——不是写最多的代码，而是用最少的代码解决最难的问题。"</p>
+</div>
+<div class="knowledge-box"><div class="k-title">🏆 终极速查</div><ul>
+<li><strong>贪心：</strong>区间选点(排序右端点)、合并果子(Huffman+堆)——每次局部最优</li>
+<li><strong>并查集：</strong>路径压缩+按秩合并——近乎O(1)的集合操作</li>
+<li><strong>带权并查集：</strong>食物链——维护到根的距离，模运算分类关系</li>
+<li><strong>数论：</strong>快速幂O(log b)、筛质数(线性筛O(n))、中位数选址——数学直接给答案</li></ul></div>
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ163</span>区间选点<span class="acw">AcWing 905</span></div>
-<div class="problem-desc">给定N个闭区间[ai,bi]，请你在数轴上选择尽量少的点，使得每个区间内至少包含一个选出的点。
-输出选择的点的最小数量。
-位于区间端点上的点也算作区间内。</div>
+<div class="problem-title"><span class="nq">NQ159</span>区间选点<span class="acw">AcWing 905</span></div>
+<div class="problem-desc">"在数轴上有N个区间，选出最少的点，使每个区间至少包含一个点。"小华说，"贪心经典题——按右端点排序，每次选当前未覆盖区间中最小的右端点作为新点。因为右端点排序后，选右端点覆盖最多后续区间。贪心的核心：'每次做当前看起来最好的选择'——但关键是证明贪心策略的正确性。排序+遍历=O(n log n)。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含整数N，表示区间数。
-接下来N行，每行包含两个整数ai,bi，表示一个区间的两个端点。
-数据范围
-1≤N≤10^5,
-−10^9≤ai≤bi≤10^9</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个整数，表示所需的点的最小数量。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 905</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行N。然后N行每行l r表示区间。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">最少点数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ N ≤ 10⁵, −10⁹ ≤ l ≤ r ≤ 10⁹</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>3
@@ -44,10 +52,8 @@ body{string-set:chapter "第16章 智慧的策略——贪心、并查集与数�
 3 5</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>2</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
-Y总代码
-参考题解
-Y总讲解</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>贪心策略：按右端点升序排序。ans=0, last=-INF。遍历每个区间[l,r]：若l>last则需新点ans++, last=r。证明：按右端点排序后，每次选最小的右端点保证了对后续区间的最大覆盖能力。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>贪心的正确性证明通常用'交换论证'或'归纳法'。区间问题的通用解法：先排序再贪心——排序确定处理的顺序，贪心确定每一步的选择。Python: intervals.sort(key=lambda x: x[1])按右端点排序。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -92,41 +98,37 @@ Y总讲解</span></div>
      <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 区间选点</span>
+n = int(input())
+segs = []
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n):
+    l, r = map(int, input().split())
+    segs.append((l, r))
+segs.sort(key=<span style="color: #00F">lambda</span> x: x[1])
+ans = 0
+last = -2 * 10**9
+<span style="color: #00F">for</span> l, r <span style="color: #00F">in</span> segs:
+    <span style="color: #00F">if</span> l &gt; last:
+        ans += 1
+        last = r
+print(ans)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ164</span>合并果子<span class="acw">AcWing 148</span></div>
-<div class="problem-desc">在一个高科技果园中，林克利用先进的无人机将所有果子采集完毕，并通过智能分类系统按照果子的种类将它们分成了不同的堆。
-林克决定通过纳米融合技术将所有果子合成一堆。
-每次融合，林克可以选择两堆果子进行合并，消耗的能量等于两堆果子的重量之和，能量单位由果园的中央AI计算并记录。
-显然，经过n-1次融合后，所有果子将整合为一堆。
-林克在融合果子时总共消耗的能量等于每次融合所耗能量之和。
-由于林克还需要驾驶悬浮运输机将这些果子运回基地，他希望在融合过程中尽可能节省能量，以便优化运输效率。
-假设每个果子的重量为1个标准单位，并且已知果子的种类数和每种果子的数量，你的任务是设计出一种融合次序方案，使林克消耗的能量最少，并输出这个最小的能量值。
-例如，有3种果子，数量依次为1、2、9。
-林克可以先将1和2堆融合，新堆数量为3，消耗能量为3。
-接着，将新堆与原先的第3堆融合，得到数量为12的新堆，消耗能量为12。
-因此，林克总共消耗的能量为3+12=15。
-可以证明，15是可能的最小能量值。
-数据范围：
-1 ≤ n ≤ 10000,
-1 ≤ ai ≤ 20000
-请根据此问题，计算出林克最小的能量消耗值，并说明你的方案。</div>
+<div class="problem-title"><span class="nq">NQ160</span>合并果子<span class="acw">AcWing 148</span></div>
+<div class="problem-desc">"N堆果子，每次合并任意两堆，代价为两堆之和。求合并成一堆的最小总代价。"这就是Huffman编码！"每次选最小的两堆合并——用小根堆维护。贪心+Huffman=O(n log n)。"小华说，"Huffman树的每个内部节点对应一次合并，叶子是原始堆。最优性证明：最小的两堆一定在Huffman树的最深层——交换论证。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入包括两行，第一行是一个整数n，表示果子的种类数。
-第二行包含n个整数，用空格分隔，第i个整数ai是第i种果子的数目。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出包括一行，这一行只包含一个整数，也就是最小的体力耗费值。
-输入数据保证这个值小于2^31。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 148</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行n。第二行n个整数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">最小总代价。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n ≤ 10000</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>3 
-1 2 9 </pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>3
+1 2 9</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>15</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
-acwing讲解</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>小根堆(优先队列)：每次pop两个最小值，合并(=和)，将和push回堆，ans+=和。重复直到堆中只剩一个元素。时间O(n log n)。Python用heapq: heapify(arr); while len>1: a,b=heappop,heappop; heappush(a+b); ans+=a+b。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Huffman编码=最优二叉树构造。堆的选择：小根堆取最小值最快(O(log n))。这是优先队列最重要、最经典的应用——Dijkstra、Prim都用到了堆。Python的heapq模块简单高效——记住heappush+heappop组合。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;queue&gt;</span>
@@ -159,20 +161,27 @@ acwing讲解</span></div>
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 合并果子</span>
+<span style="color: #00F">import</span> heapq
+n = int(input())
+a = list(map(int, input().split()))
+heapq.heapify(a)
+ans = 0
+<span style="color: #00F">while</span> len(a) &gt; 1:
+    x = heapq.heappop(a)
+    y = heapq.heappop(a)
+    ans += x + y
+    heapq.heappush(a, x + y)
+print(ans)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ165</span>并查集试炼之合并集合<span class="acw">AcWing 836</span></div>
-<div class="problem-desc">一共有n个数，编号是1~n，最开始每个数各自在一个集合中。
-现在要进行m个操作，操作共有两种：
-“M a b”，将编号为a和b的两个数所在的集合合并，如果两个数已经在同一个集合中，则忽略这个操作；“Q a b”，询问编号为a和b的两个数是否在同一个集合中；数据范围：1≤n,m≤10^5</div>
+<div class="problem-title"><span class="nq">NQ161</span>合并集合<span class="acw">AcWing 836</span></div>
+<div class="problem-desc">"并查集(Disjoint Set Union)——处理集合的合并和查询。"小华画出带箭头的图，"每个集合用一个树表示，根节点是集合代表。find(x)：找x的根。union(x,y)：将x根连到y根。两种优化：路径压缩(find时把所有路径节点直接连根)和按秩合并(小树连到大树)。均摊复杂度近乎O(1)——这是数据结构设计中最精妙的成就之一。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行输入整数n和m。
-接下来m行，每行包含一个操作指令，指令为“M a b”或“Q a b”中的一种。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">对于每个询问指令”Q a b”，都要输出一个结果，如果a和b在同一集合内，则输出“Yes”，否则输出“No”。
-每个结果占一行。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 836</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行n,m。然后m行：M a b(合并)或Q a b(查询是否同集)。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">对Q操作输出Yes/No。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n,m ≤ 10⁵</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>4 5
@@ -185,9 +194,8 @@ Q 3 4</pre></div>
 No
 Yes</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
-Y总代码
-Y总讲解</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>并查集：p[x]存父节点(初始p[x]=x)。find(x): if p[x]!=x: p[x]=find(p[x]); return p[x]——路径压缩。union(x,y): p[find(x)]=find(y)。所有操作均摊O(α(n))≈O(1)。这是数据结构课程上最简洁又最高效的设计之一。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>并查集是竞赛中使用频率最高的数据结构。路径压缩(find中的p[x]=find(p[x]))是将树扁平化的关键。按秩合并：若两个集合秩相同则根秩+1。Python递归find可能超深度——用while迭代或sys.setrecursionlimit。并查集在Kruskal、连通性、动态图问题中是核心工具。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
@@ -228,36 +236,46 @@ Y总讲解</span></div>
   <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 合并集合</span>
+n, m = map(int, input().split())
+p = list(range(n + 1))
+
+<span style="color: #00F">def</span> find(x):
+    <span style="color: #00F">if</span> p[x] != x:
+        p[x] = find(p[x])
+    <span style="color: #00F">return</span> p[x]
+
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
+    parts = input().split()
+    op = parts[0]
+    a, b = int(parts[1]), int(parts[2])
+    <span style="color: #00F">if</span> op == <span style="color: #A31515">&#39;M&#39;</span>:
+        p[find(a)] = find(b)
+    <span style="color: #00F">else</span>:
+        print(<span style="color: #A31515">&#39;Yes&#39;</span> <span style="color: #00F">if</span> find(a) == find(b) <span style="color: #00F">else</span> <span style="color: #A31515">&#39;No&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ166</span>并查集试炼之连通块中点的数量<span class="acw">AcWing 837</span></div>
-<div class="problem-desc">给定一个包含n个点（编号为1~n）的无向图，初始时图中没有边。
-现在要进行m个操作，操作共有三种：
-“C a b”，在点a和点b之间连一条边，a和b可能相等；“Q1 a b”，询问点a和点b是否在同一个连通块中，a和b可能相等；“Q2 a”，询问点a所在连通块中点的数量；数据范围:1≤n,m≤10^5</div>
+<div class="problem-title"><span class="nq">NQ162</span>连通块数量<span class="acw">AcWing 837</span></div>
+<div class="problem-desc">"上一题的扩展——除了查询连通性，还要知道每个连通块的大小。"小华说，"在并查集中额外维护一个size数组——初始size[i]=1。合并时size[新根]+=size[被合并的根]。查询某个节点所在连通块大小只需size[find(x)]。如果在合并时重复合并同一集合，size不变——避免重复累加。这是并查集的自然扩展。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行输入整数n和m。
-接下来m行，每行包含一个操作指令，指令为“C a b”，“Q1 a b”或“Q2 a”中的一种。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">对于每个询问指令”Q1 a b”，如果a和b在同一个连通块中，则输出“Yes”，否则输出“No”。
-对于每个询问指令“Q2 a”，输出一个整数表示点a所在连通块中点的数量
-每个结果占一行。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 837</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行n,m。然后m行：C a b(合并,若已连通忽略) / Q1 a b(查询连通) / Q2 a(查询a所在连通块大小)。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">按要求输出。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n,m ≤ 10⁵</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>5 5
 C 1 2
 Q1 1 2
 Q2 1
-C 2 5
-Q2 5</pre></div>
+C 2 3
+Q2 1</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>Yes
 2
 3</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>原题
-Y总代码
-Y总讲解</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>维护size的并查集：初始化size[i]=1。union时：if a_root!=b_root: p[a_root]=b_root; size[b_root]+=size[a_root]。注意必须先判连通再合并——避免重复size。find不变。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>并查集可以维护更多信息：size、距离到根(带权并查集)、最小值/最大值等。关键是理解'合并时如何更新附加信息'。食物链(240)是带权并查集的经典应用——每个节点维护与父节点的关系。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -310,47 +328,54 @@ Y总讲解</span></div>
   <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 连通块数量</span>
+n, m = map(int, input().split())
+p = list(range(n + 1))
+sz = [1] * (n + 1)
+
+<span style="color: #00F">def</span> find(x):
+    <span style="color: #00F">if</span> p[x] != x:
+        p[x] = find(p[x])
+    <span style="color: #00F">return</span> p[x]
+
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
+    parts = input().split()
+    op = parts[0]
+    <span style="color: #00F">if</span> op == <span style="color: #A31515">&#39;C&#39;</span>:
+        a, b = int(parts[1]), int(parts[2])
+        ra, rb = find(a), find(b)
+        <span style="color: #00F">if</span> ra != rb:
+            p[ra] = rb
+            sz[rb] += sz[ra]
+    <span style="color: #00F">elif</span> op == <span style="color: #A31515">&#39;Q1&#39;</span>:
+        a, b = int(parts[1]), int(parts[2])
+        print(<span style="color: #A31515">&#39;Yes&#39;</span> <span style="color: #00F">if</span> find(a) == find(b) <span style="color: #00F">else</span> <span style="color: #A31515">&#39;No&#39;</span>)
+    <span style="color: #00F">else</span>:
+        a = int(parts[1])
+        print(sz[find(a)])
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ167</span>并查集试炼之食物链<span class="acw">AcWing 240</span></div>
-<div class="problem-desc">动物王国中有三类动物A,B,C，这三类动物的食物链构成了有趣的环形。
-A吃B， B吃C，C吃A。
-现有N个动物，以1－N编号。
-每个动物都是A,B,C中的一种，但是我们并不知道它到底是哪一种。
-有人用两种说法对这N个动物所构成的食物链关系进行描述：
-第一种说法是”1 X Y”，表示X和Y是同类。
-第二种说法是”2 X Y”，表示X吃Y。
-此人对N个动物，用上述两种说法，一句接一句地说出K句话，这K句话有的是真的，有的是假的。
-当一句话满足下列三条之一时，这句话就是假话，否则就是真话。
-1） 当前的话与前面的某些真的话冲突，就是假话；
-2） 当前的话中X或Y比N大，就是假话；
-3） 当前的话表示X吃X，就是假话。
-你的任务是根据给定的N和K句话，输出假话的总数。
-数据范围
-1≤N≤50000,
-0≤K≤100000</div>
+<div class="problem-title"><span class="nq">NQ163</span>食物链<span class="acw">AcWing 240</span></div>
+<div class="problem-desc">"动物王国三种关系：A吃B、B吃C、C吃A——循环克制。"这是带权并查集的巅峰应用！"每个节点维护到根的距离d[x]：d[x]%3=0与根同类，=1吃根，=2被根吃。合并集合时根据两个节点的关系计算出它们根之间的距离关系。路径压缩时同步更新d[x]。这是竞赛中最精彩的并查集应用！"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行是两个整数N和K，以一个空格分隔。
-以下K行每行是三个正整数 D，X，Y，两数之间用一个空格隔开，其中D表示说法的种类。
-若D=1，则表示X和Y是同类。
-若D=2，则表示X吃Y。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">只有一个整数，表示假话的数目。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 240</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行N,K。然后K行：D X Y（D=1同类,2表示X吃Y）。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">假话数量。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ N ≤ 50000, 0 ≤ K ≤ 100000</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>100 7
-1 101 1 
+1 101 1
 2 1 2
-2 2 3 
-2 3 3 
-1 1 3 
-2 3 1 
+2 2 3
+2 3 3
+1 1 3
+2 3 1
 1 5 5</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>3</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>原题链接</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>带权并查集：p[x]存父，d[x]存与父的关系(0同类/1吃父/2被父吃)。find时路径压缩：root=find(p[x]); d[x]+=d[p[x]]; p[x]=root。合并X和Y：根据D=1/2计算X根和Y根的距离关系。判断假话：X/Y超范围、已连通但与关系不符。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>食物链是并查集+模3运算的智力巅峰。d[x]%3是与根的关系：0同类、1吃根、2被根吃。路径压缩时d[x]+=d[p[x]]保证距离累加正确。理解这道题后，所有带权并查集问题都不在话下。这是OI/ACM金牌选手的基本功。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -415,37 +440,57 @@ A吃B， B吃C，C吃A。
 
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 食物链</span>
+n, k = map(int, input().split())
+p = list(range(n + 1))
+d = [0] * (n + 1)
+
+<span style="color: #00F">def</span> find(x):
+    <span style="color: #00F">if</span> p[x] != x:
+        root = find(p[x])
+        d[x] += d[p[x]]
+        p[x] = root
+    <span style="color: #00F">return</span> p[x]
+
+ans = 0
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(k):
+    t, x, y = map(int, input().split())
+    <span style="color: #00F">if</span> x &gt; n <span style="color: #00F">or</span> y &gt; n:
+        ans += 1
+        <span style="color: #00F">continue</span>
+    rx, ry = find(x), find(y)
+    <span style="color: #00F">if</span> t == 1:
+        <span style="color: #00F">if</span> rx == ry <span style="color: #00F">and</span> (d[x] - d[y]) % 3 != 0:
+            ans += 1
+        <span style="color: #00F">elif</span> rx != ry:
+            p[rx] = ry
+            d[rx] = d[y] - d[x]
+    <span style="color: #00F">else</span>:
+        <span style="color: #00F">if</span> rx == ry <span style="color: #00F">and</span> (d[x] - d[y] - 1) % 3 != 0:
+            ans += 1
+        <span style="color: #00F">elif</span> rx != ry:
+            p[rx] = ry
+            d[rx] = d[y] - d[x] + 1
+print(ans)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ168</span>快速幂<span class="acw">AcWing 875</span></div>
-<div class="problem-desc">给定n组ai, bi, pi，对于每组数据，求出a^b i mod p i的值。</div>
+<div class="problem-title"><span class="nq">NQ164</span>快速幂<span class="acw">AcWing 875</span></div>
+<div class="problem-desc">"计算a^b mod p ——b可能大到10⁹。"小华在黑板上写下算法，"朴素循环O(b)超时。快速幂：利用a^b=a^(b/2)×a^(b/2) ——分治+二进制分解。while(b): if(b&1) res=res*a%p; a=a*a%p; b>>=1。核心：将指数按二进制位拆开计算——时间O(log b)。这个模板出现在RSA加密、矩阵快速幂、模逆元等场景中。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含整数n。
-接下来n行，每行包含三个整数ai, bi, pi。
-数据范围
-1≤n≤100000
-1≤ai, bi, pi≤2×10^9</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">对于每组数据，输出一个结果，表示a^b i mod p i的值。
-每个结果占一行。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 875</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行n。然后n行每行a b p。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">每行a^b mod p。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n ≤ 10⁵, 1 ≤ a,b,p ≤ 2×10⁹</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>5
-1326 8312 7553
-1550 7708 3792
-500 6795 6235
-6880 7895 7532
-1904 9984 7790</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>2613
-3520
-1785
-7244
-5346</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>2
+2 3 5
+3 2 7</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>3
+2</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
-Y总讲解</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>快速幂while循环：a^b mod p。while b>0: if b&1: res=res*a%p; a=a*a%p; b>>=1。每步b减半→O(log b)。Python: pow(a,b,p)一行内置(支持三参数取模)——底层用快速幂实现。但手写理解原理是必须的。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python pow(a,b,p)三步参数：a^b mod p——内置最高效。快速幂是数论算法的基础——之后模逆元、快速幂+矩阵乘法(矩阵快速幂)、米勒-拉宾素性检测都依赖于此。位运算b&1判断奇偶比b%2更快。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
@@ -478,24 +523,27 @@ Y总讲解</span></div>
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 快速幂</span>
+n = int(input())
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n):
+    a, b, p = map(int, input().split())
+    print(pow(a, b, p))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ169</span>筛质数<span class="acw">AcWing 868</span></div>
-<div class="problem-desc">给定一个正整数n，请你求出 1∼n中质数的个数。</div>
+<div class="problem-title"><span class="nq">NQ165</span>筛质数<span class="acw">AcWing 868</span></div>
+<div class="problem-desc">"找出1到n中的所有质数。"小华说，"埃氏筛法(Eratosthenes)：从2开始，依次划掉2的倍数、3的倍数……未被划掉的就是质数。优化：每个数只被它最小的质因子划掉——这就是线性筛。线性筛保证每个合数只被标记一次，O(n)。理解线性筛是理解数论算法的关键——最小质因子是数论中最核心的概念之一。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含整数n。
-数据范围
-1≤n≤10^6</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共一行，包含一个整数，表示 1∼n中质数的个数。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 868</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个整数n。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">1到n中质数的个数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n ≤ 10⁶</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>8</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>4</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>原题链接</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>埃氏筛：bool数组标记合数，for i from 2: if !st[i]: primes.push(i); for j=i*i到n步长i: st[j]=true。O(n log log n)。线性筛：每个数只被最小质因子筛——for p in primes: if i*p>n break; st[i*p]=true; if i%p==0 break。O(n)。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>筛法不仅是求质数——还可以同时记录最小质因子、欧拉函数、约数个数等。线性筛复杂度O(n)所以可以处理n=10⁷。Python的筛法比C++慢几倍但n=10⁶仍可。关键优化：只用≤√n的质数来筛。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #008000">// Andy 2021.06.04</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
@@ -530,30 +578,37 @@ Y总讲解</span></div>
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 筛质数</span>
+n = int(input())
+st = [<span style="color: #00F">False</span>] * (n + 1)
+primes = []
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(2, n + 1):
+    <span style="color: #00F">if</span> <span style="color: #00F">not</span> st[i]:
+        primes.append(i)
+    <span style="color: #00F">for</span> p <span style="color: #00F">in</span> primes:
+        <span style="color: #00F">if</span> p * i &gt; n:
+            <span style="color: #00F">break</span>
+        st[p * i] = <span style="color: #00F">True</span>
+        <span style="color: #00F">if</span> i % p == 0:
+            <span style="color: #00F">break</span>
+print(len(primes))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ170</span>货仓选址<span class="acw">AcWing 104</span></div>
-<div class="problem-desc">在一条数轴上有N家商店，它们的坐标分别为A1~AN。
-现在需要在数轴上建立一家货仓，每天清晨，从货仓到每家商店都要运送一车商品。
-为了提高效率，求把货仓建在何处，可以使得货仓到每家商店的距离之和最小。
-数据范围
-1≤N≤100000</div>
+<div class="problem-title"><span class="nq">NQ166</span>货仓选址<span class="acw">AcWing 104</span></div>
+<div class="problem-desc">"最后一个问题——在数轴上选一个位置建仓库，使到N个商店的总距离最小。"小华笑道，"答案是中位数！将商店坐标排序，最优位置=中位数位置。证明：如果把仓库往任意方向移dx，离一半商店近了dx但离另一半远了dx——中位数处达到平衡。这展示了数学思维在算法优化中的力量——有时候最优解不需要代码搜索，数学定理直接给出答案。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行输入整数N。
-第二行N个整数A1~AN。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个整数，表示距离之和的最小值。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 104</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行N。第二行N个整数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">最小总距离。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ N ≤ 100000</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>4
 6 2 9 1</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>12</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
-
-acwing讲解</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>排序取中位数：sort(arr); median=arr[n//2]; ans=sum(abs(a-median))。O(n log n)。进阶：如果N是偶数，任何在中间两个数之间的位置都是最优的。中位数距离和是最小绝对偏差问题的标准答案——不需要搜索，理解定理就完成了。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>中位数vs平均数：最小化绝对偏差和用中位数，最小化平方偏差和用平均数。这是统计学的基础结论。Python一行：median=sorted(arr)[n//2]; print(sum(abs(x-median) for x in arr))。16章到此结束——从A+B到货仓选址，你已经完成了算法竞赛入门的所有基础训练。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -578,111 +633,19 @@ acwing讲解</span></div>
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 货仓选址</span>
+n = int(input())
+a = list(map(int, input().split()))
+a.sort()
+mid = a[n // 2]
+ans = sum(abs(x - mid) <span style="color: #00F">for</span> x <span style="color: #00F">in</span> a)
+print(ans)
 </pre></div>
 </div></div><hr class="section-divider">
-<div class="problem-block">
-<div class="problem-title"><span class="nq">NQ171</span>AcWing NQ099<span class="acw">AcWing NQ099</span></div>
-<div class="problem-desc">AcWing NQ099</div>
-<table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing NQ099</td></tr>
-</table>
-<div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #008000">// AcWing NQ099</span>
-</pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># NQ099 最省赛程 - 改进版</span>
-<span style="color: #008000"># Python 3.5 兼容</span>
-<span style="color: #00F">import</span> heapq
-
-MAX_N = 1010
-MAX_CAPACITY = 107
-
-<span style="color: #00F">def</span> main():
-    <span style="color: #00F">import</span> sys
-    input = sys.stdin.read().split()
-    idx = 0
-    
-    n = int(input[idx])
-    idx += 1
-    m = int(input[idx])
-    idx += 1
-    
-    oil_price = [0] * n
-    <span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(n):
-        oil_price[i] = int(input[idx])
-        idx += 1
-    
-    <span style="color: #008000"># 构建邻接表</span>
-    adj = [[] <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n)]
-    <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
-        u = int(input[idx])
-        idx += 1
-        v = int(input[idx])
-        idx += 1
-        d = int(input[idx])
-        idx += 1
-        adj[u].append((v, d))
-        adj[v].append((u, d))
-    
-    q = int(input[idx])
-    idx += 1
-    
-    <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(q):
-        c = int(input[idx])
-        idx += 1
-        s = int(input[idx])
-        idx += 1
-        e = int(input[idx])
-        idx += 1
-        
-        <span style="color: #008000"># 初始化 expenses 数组</span>
-        expenses = [[float(<span style="color: #A31515">&#39;inf&#39;</span>)] * (c + 1) <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n)]
-        visited = [[<span style="color: #00F">False</span>] * (c + 1) <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n)]
-        
-        <span style="color: #008000"># 优先队列，元素为 (money, city, fuel)</span>
-        heap = []
-        expenses[s][0] = 0
-        heapq.heappush(heap, (0, s, 0))
-        
-        found = <span style="color: #00F">False</span>
-        result = -1
-        
-        <span style="color: #00F">while</span> heap:
-            current_money, city, fuel = heapq.heappop(heap)
-            
-            <span style="color: #00F">if</span> city == e:
-                result = current_money
-                found = <span style="color: #00F">True</span>
-                <span style="color: #00F">break</span>
-            
-            <span style="color: #00F">if</span> visited[city][fuel]:
-                <span style="color: #00F">continue</span>
-            visited[city][fuel] = <span style="color: #00F">True</span>
-            
-            <span style="color: #008000"># 尝试加一升油</span>
-            <span style="color: #00F">if</span> fuel &lt; c:
-                new_fuel = fuel + 1
-                new_money = current_money + oil_price[city]
-                <span style="color: #00F">if</span> new_money &lt; expenses[city][new_fuel]:
-                    expenses[city][new_fuel] = new_money
-                    heapq.heappush(heap, (new_money, city, new_fuel))
-            
-            <span style="color: #008000"># 尝试前往相邻城市</span>
-            <span style="color: #00F">for</span> (next_city, required_fuel) <span style="color: #00F">in</span> adj[city]:
-                <span style="color: #00F">if</span> fuel &gt;= required_fuel:
-                    new_fuel = fuel - required_fuel
-                    <span style="color: #00F">if</span> current_money &lt; expenses[next_city][new_fuel]:
-                        expenses[next_city][new_fuel] = current_money
-                        heapq.heappush(heap, (current_money, next_city, new_fuel))
-        
-        <span style="color: #00F">if</span> found:
-            print(result)
-        <span style="color: #00F">else</span>:
-            print(<span style="color: #A31515">&quot;impossible&quot;</span>)
-
-<span style="color: #00F">if</span> __name__ == <span style="color: #A31515">&quot;__main__&quot;</span>:
-    main()
-</pre></div>
-</div></div><hr class="section-divider"><div class="chapter-end">— 第16章完 · 共9题 —</div></body></html>
+<div class="chapter-summary"><h3>📋 全书总结</h3><ul>
+<li><strong>16章·161题·C++/Python双语：</strong>从A+B到货仓选址——完整覆盖算法竞赛入门的全部知识点</li>
+<li><strong>四大阶段：</strong>语法基础(L1-5)→编程进阶(L6-8)→核心算法(L9-13)→算法进阶(L14-16)</li>
+<li><strong>两语言并行：</strong>C++让你理解底层，Python让你快速验证——两种视角互补</li>
+<li><strong>厦大校训：</strong>自强不息，止于至善。16章的征程结束，但算法之路刚刚开始。</li>
+</ul></div>
+<div class="chapter-end">— 全16章完 · 共161题 · 自强不息，止于至善 —</div></body></html>

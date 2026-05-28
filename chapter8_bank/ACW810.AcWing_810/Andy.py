@@ -1,1 +1,2 @@
-# AcWing 810
+x = int(input())
+print(x if x >= 0 else -x)

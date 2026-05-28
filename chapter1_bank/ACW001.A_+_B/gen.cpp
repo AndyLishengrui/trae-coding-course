@@ -17,9 +17,9 @@ int main(int argc, char* argv[]) {
         case 5: cout << rand()%10000-5000 << " " << rand()%10000-5000 << endl; break;
         case 6: cout << rand()%10000-5000 << " " << rand()%10000-5000 << endl; break;
         case 7: cout << rand()%10000-5000 << " " << rand()%10000-5000 << endl; break;
-        case 8: cout << rand()%1000000 << " " << rand()%1000000 << endl; break;
-        case 9: cout << rand()%1000000 << " " << rand()%1000000 << endl; break;
-        case 10: cout << 1000000000 << " " << 1000000000 << endl; break;
+        case 8: cout << rand()%10000 << " " << rand()%10000 << endl; break;
+        case 9: cout << rand()%10000 << " " << rand()%10000 << endl; break;
+        case 10: cout << 10000 << " " << 10000 << endl; break;
     }
     return 0;
 }

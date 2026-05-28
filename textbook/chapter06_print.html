@@ -1,7 +1,12 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第6章 字符的世界</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999;font-family:"PingFang SC",sans-serif}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
-body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222}
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第6章 字符的世界</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
+body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222;string-set:chapter"第6章 字符的世界——字符串处理"}
 .chapter-title{text-align:center;font-size:20pt;font-weight:bold;margin:1.5em 0 .1em 0;letter-spacing:3pt}
 .chapter-subtitle{text-align:center;font-size:10pt;color:#777;margin-bottom:1.5em;padding-bottom:.8em;border-bottom:1px solid #bbb}
+.preface{font-size:10pt;margin-bottom:1.5em;color:#444}.preface p{margin:.3em 0;text-indent:2em}
+.preface h3{font-size:11pt;color:#2563eb;margin:1em 0 .3em 0}
+.knowledge-box{background:#f0f6ff;border:1pt solid #bdd;border-radius:4px;padding:.7em 1em;margin:.8em 0;font-size:9pt}
+.knowledge-box .k-title{font-weight:bold;color:#2563eb;margin-bottom:.3em;font-size:9.5pt}
+.knowledge-box p{margin:.2em 0}.knowledge-box ul{margin:.2em 0;padding-left:1.5em}
 .problem-title{font-size:12pt;font-weight:bold;margin:1.5em 0 .4em 0;padding-bottom:.15em;border-bottom:1pt solid #444}
 .problem-title .nq{color:#2563eb;margin-right:.6em;font-size:11pt}.problem-title .acw{font-size:7.5pt;color:#aaa;font-weight:normal;margin-left:1em}
 .problem-desc{margin:.6em 0 1em 0;text-indent:2em;line-height:1.85}
@@ -11,34 +16,50 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .spec-table .spec-label .tag{display:inline-block;padding:.15em .5em;border-radius:2px;color:#fff;font-size:7.5pt;letter-spacing:.5pt}
 .spec-table .spec-label .tag.in{background:#2563eb}.spec-table .spec-label .tag.out{background:#059669}.spec-table .spec-label .tag.lim{background:#d97706}
 .spec-table .spec-value{color:#333;font-size:9pt}
-.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.5em 1em;margin:.8em 0 1em 0}
-.sample-grid{display:flex;gap:1.5em}.sample-col{min-width:0}.sample-col:first-child{flex:1}.sample-col:last-child{flex:1}
-.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:0;font-weight:bold}
-.sample-col pre{background:none;border:none;padding:.2em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:8.5pt;line-height:1.3;white-space:pre-wrap;color:#333}
+.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.7em 1em;margin:1em 0 1.2em 0}
+.sample-grid{display:flex;gap:2em}.sample-col{flex:1}
+.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:.2em;font-weight:bold}
+.sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
 .insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
 .insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
 .code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
 .code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
 .code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
-.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
-body{string-set:chapter "第6章 字符的世界——字符串处理"}</style></head><body>
-<div class="chapter-title">字符的世界</div><div class="chapter-subtitle">字符串处理 · 13题 · C++ &amp; Python 双语对照</div>
+.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
+.chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
+.chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">字符的世界</div>
+<div class="chapter-subtitle">字符串处理 · 12题 · C++ &amp; Python 双语对照</div>
+<div class="preface">
+<p>小鲁已经学会了数字的处理——整数、浮点数、数组。但真实世界的程序处理得最多的不是数字，而是<strong>文字</strong>。从搜索引擎到聊天软件，从代码编辑器到语音助手——字符串处理是每个程序员的基本功。而Python在字符串处理上的优势几乎是碾压级别的：切片、join、split、replace……C++需要好几行的操作，Python往往一行解决。</p>
+<p>本章12道题，涵盖了字符串六大核心操作：<strong>长度与遍历</strong>、<strong>字符分类</strong>、<strong>修改与替换</strong>、<strong>切片与拼接</strong>、<strong>频次统计</strong>、<strong>分词与重构</strong>。学完之后你会发现——用Python处理字符串是编程中最快乐的事之一。</p>
+<h3>本章角色</h3>
+<p>🧑‍🎓 <strong>小鲁</strong>（初学者）· 从"数字世界"迈入"文字世界"，发现Python字符串处理的魔法</p>
+<p>🧠 <strong>小华</strong>（算法高手）· 擅长对比C++和Python的字符串处理差异，强调"理解原理"</p>
+<p>🏗️ <strong>小栋</strong>（工程师）· 用"文本编辑器""搜索引擎"等实际场景出题</p>
+<p>🏛️ <strong>小嘉</strong>（校主精神）· 偶尔提及密码学和南洋通信的故事，赋予字符串处理历史深度</p>
+</div>
+<div class="knowledge-box"><div class="k-title">📝 Python字符串处理四大法宝</div><ul>
+<li><strong>切片：</strong>s[a:b]截取[a,b)区间。s[:i]前缀、s[i:]后缀、s[::-1]反转</li>
+<li><strong>分割与拼接：</strong>s.split(sep)按分隔符拆分，sep.join(list)按分隔符拼接</li>
+<li><strong>查找与替换：</strong>s.find(sub)、s.replace(old,new)、sub in s 成员判断</li>
+<li><strong>字符分类：</strong>isdigit()/isalpha()/isupper()/islower()/isspace() 自动分类</li>
+<li><strong>频次统计：</strong>collections.Counter(s) 一行建字典。字符→频次的O(1)映射</li></ul>
+<p><strong>C++注意：</strong>字符串分为std::string（类）和char[]（C风格），后者需要strlen/strcpy/strcat。现代C++推荐用std::string。</p></div>
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ070</span>字符串长度<span class="acw">AcWing 760</span></div>
-<div class="problem-desc">给定一行长度不超过100的非空字符串，求出其实际长度（包括空格）。</div>
+<div class="problem-title"><span class="nq">NQ067</span>字符串长度<span class="acw">AcWing 760</span></div>
+<div class="problem-desc">小鲁输入了一串文字，想知道它有多长。"这还用编程？数一下不就行了……"话没说完，小华就打断了他："如果有人给你一本1000页的书，你一个字一个字数吗？Python用len(s)一秒搞定。C++用s.length()或strlen()。字符串长度是所有文本处理的基础——搜索、替换、截取，第一步永远是知道字符串有多长。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入一行字符串，注意字符串中可能包含空格。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个整数，表示该字符串的长度。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 760</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，一个字符串（不超过100字符）。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">一个整数，表示字符串长度。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">字符串长度≤100</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>I love Beijing.
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>15
-</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>hello world</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>11</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意读取整行，包括空格。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>字符串长度是最基本的信息。Python: len(s)，C++: s.length()或s.size()（string类）或strlen(s)（C风格char数组）。注意空格也算长度——"hello world"是11个字符不是10个。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的len()适用于所有序列类型（字符串/列表/元组），是一个全局函数而非方法。C++的length()和size()对于string完全等价。C风格字符串用strlen()但需要#include<cstring>。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
 
@@ -56,25 +77,23 @@ body{string-set:chapter "第6章 字符的世界——字符串处理"}</style><
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution</span>
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ071</span>字符串中的数字个数<span class="acw">AcWing 761</span></div>
-<div class="problem-desc">输入一行字符（长度不超过 100），请你统计一下其中的数字字符的个数。</div>
+<div class="problem-title"><span class="nq">NQ068</span>字符串中的数字个数<span class="acw">AcWing 761</span></div>
+<div class="problem-desc">"帮我统计这篇文章里有多少个数字字符……"小栋拿着一份报纸对小鲁说。小鲁刚要用手指一个一个点，小华按住他："遍历字符串的每个字符，用isdigit()判断是不是数字。Python一行搞定——sum(c.isdigit() for c in s)。C++则是for循环判断c>='0' && c<='9'。"小鲁这才意识到字符串里的每个字符都可以被'分类'——数字、字母、空格、标点……每种分类都有对应的判断方法。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入一行字符。字符中可能包含空格。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个整数，表示该行字符中数字字符的个数。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 761</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，一个字符串（不超过100字符）。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">字符串中数字字符的个数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">字符串长度≤100</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>I am 18 years old this year.
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>2
-</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>I am 20 years old.</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>2</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意读取整行字符，并统计每个数字字符。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>分类统计模式：遍历每个字符，判断是否为数字（'0'-'9'）。Python: sum(c.isdigit() for c in s)，C++: 循环+条件判断。isdigit()是Python字符串方法的强大之处。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python字符方法：s.isdigit()（数字）、s.isalpha()（字母）、s.isalnum()（字母数字）、s.isspace()（空白）。记住这些方法能让字符串处理效率翻倍。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
 
@@ -99,33 +118,24 @@ print(sum(1 <span style="color: #00F">for</span> c <span style="color: #00F">in<
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ072</span>循环相克令<span class="acw">AcWing 763</span></div>
-<div class="problem-desc">循环相克令是一个两人玩的小游戏。令词为“猎人、狗熊、枪”，两人同时说出令词，同时做出一个动作——
-猎人的动作是双手叉腰；狗熊的动作是双手搭在胸前；枪的动作是双手举起呈手枪状。
-双方以此动作判定输赢，猎人赢枪、枪赢狗熊、狗熊赢猎人，动作相同则视为平局。
-现在给定你一系列的动作组合，请你判断游戏结果。</div>
+<div class="problem-title"><span class="nq">NQ069</span>循环相克令<span class="acw">AcWing 763</span></div>
+<div class="problem-desc">小鲁和小栋在玩"锤子剪刀布"的游戏——不过他们的版本叫"Hunter/Bear/Gun"。"猎人怕熊，熊怕枪，枪怕猎人——形成一个循环克制关系。"小华说，"这种循环相克的问题可以用字符串比较解决。但更优雅的是数学方法：把每个角色映射成0/1/2，然后胜者=(a-b+3)%3。"小鲁惊奇地发现——一个简单的取模竟然能判断所有博弈结果。</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含整数 T，表示共有 T 组测试数据。
-数据范围：1 ≤ T ≤ 100
-接下来 T 行，每行包含两个字符串，表示一局游戏中两人做出的动作，字符串为Hunter、Bear、Gun中的一个，
-这三个单词分别代表猎人、狗熊和枪。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">如果第一个玩家赢了，则输出Player1。
-如果第二个玩家赢了，则输出Player2。
-如果平局，则输出Tie。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 763</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个整数N。然后N行每行两个字符串（Hunter/Bear/Gun）。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">对每行输出Player1赢还是Player2赢。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ N ≤ 100</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>3
-Hunter Gun
-Bear Bear
 Hunter Bear
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>Player1
-Tie
-Player2
-</pre></div>
+Bear Hunter
+Gun Bear</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>Player2
+Player1
+Player1</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>字符串比较法：if-elif分支判断所有9种组合。数学法：将三个角色映射为0,1,2，则P1赢当且仅当(a-b+3)%3==2。数学法将9个if压缩成一行——用数学替代分支的艺术。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python用法：dic={'Hunter':0,'Bear':1,'Gun':2}，然后if (dic[a]-dic[b]+3)%3==2: P1赢。C++用map<string,int>或直接if-else。理解取模在循环问题中的通用性更关键。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
@@ -170,22 +180,19 @@ w = {(<span style="color: #A31515">&quot;Hunter&quot;</span>,<span style="color:
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ073</span>字符串加空格<span class="acw">AcWing 765</span></div>
-<div class="problem-desc">给定一个字符串，在字符串的每个字符之间都加一个空格。输出修改后的新字符串。</div>
+<div class="problem-title"><span class="nq">NQ070</span>字符串加空格<span class="acw">AcWing 765</span></div>
+<div class="problem-desc">小鲁在排版一个标题——需要给每个字符之间加上空格。"这要手动打多少个空格……"小华笑了："Python的join()方法就是为此而生的：' '.join(s)——用空格把字符串的每个字符连接起来。C++需要遍历输出每个字符后面加空格然后去掉末尾空格。两种语言对比，Python的join()堪称字符串处理的魔法。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含一个字符串。注意字符串中可能包含空格。
-数据范围：1 ≤ 字符串长度 ≤ 100</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出增加空格后的字符串。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 765</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，一个字符串（不含空格）。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">每个字符间加空格后的字符串。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">字符串长度≤100</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>test case
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>t e s t   c a s e
-</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>hello</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>h e l l o</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。
-来源：剑指Offer、语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>join()方法将一个可迭代对象用分隔符连接。' '.join(s)把s的每个字符用空格连接。C++版需要for循环逐个输出注意首尾空格。Python的join()是最常用的字符串操作之一。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的join()和split()是互逆操作。'sep'.join(list)把列表用sep连起来，str.split(sep)把字符串按sep拆开。这两个方法是字符串处理的基础中的基础。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -210,24 +217,20 @@ w = {(<span style="color: #A31515">&quot;Hunter&quot;</span>,<span style="color:
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ074</span>替换字符<span class="acw">AcWing 769</span></div>
-<div class="problem-desc">给定一个由大小写字母构成的字符串。把该字符串中特定的字符全部用字符 # 替换。请你输出替换后的字符串。</div>
+<div class="problem-title"><span class="nq">NQ071</span>替换字符<span class="acw">AcWing 769</span></div>
+<div class="problem-desc">小鲁在编辑文本时发现有些字符需要换成别的："比如把所有的'a'换成'b'……"小华说："Python直接s.replace(old, new)一行搞定。C++要手动遍历替换。不过注意——Python的字符串是不可变的，replace()返回的是新字符串，原字符串不变。理解'不可变性'是理解Python字符串操作的关键。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入共两行。
-第一行包含一个长度不超过 30 的字符串。
-第二行包含一个字符，表示要替换的特定字符。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出共一行，为替换后的字符串。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 769</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行字符串（可能含空格）。然后一行，两个字符（要替换的和替换成的）。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">替换后的字符串。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">字符串长度≤100</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>hello
-l
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>he##o
-</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>hello world
+o e</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>helle werld</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>字符替换：遍历每个字符，如果等于目标则输出新字符，否则原样输出。Python: s.replace(old, new)。C++: 用for+if或std::replace()。注意Python的字符串不可变性——replace()返回新的。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python字符串不可变意味着所有'修改'操作都返回新字符串。这保证了字符串的安全性（不会被意外修改），但创建大量新字符串时有性能开销。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
@@ -257,24 +260,21 @@ print(s.replace(c, <span style="color: #A31515">&quot;#&quot;</span>))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ075</span>字符串插入<span class="acw">AcWing 773</span></div>
-<div class="problem-desc">有两个不包含空白字符的字符串 str 和 substr，str 的字符个数不超过 10，substr 的字符个数为 3。
-将 substr 插入到 str 中 ASCII 码最大的那个字符后面，若有多个最大则只考虑第一个。</div>
+<div class="problem-title"><span class="nq">NQ072</span>字符串插入<span class="acw">AcWing 773</span></div>
+<div class="problem-desc">"如果我想在字符串的第3个位置插入另一个字符串怎么办？"小鲁问。小华说："拿到前面部分、后面部分，然后拼接：s[:p]+sub+s[p:]。注意位置p是从0开始还是从1开始——这是字符串操作中最容易出错的off-by-one问题。"小鲁立刻想到："所以插入的本质就是'切片+拼接'——把字符串切成两段，中间塞进新内容。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入包括若干行，每一行为一组测试数据，格式为 str substr。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">对于每一组测试数据，输出插入之后的字符串。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 773</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">三行：原字符串、要插入的字符串、插入位置。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">插入后的字符串。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">字符串长度≤100，位置从0开始</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>abcab eee
-12343 555
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>abceeeab
-12345553
-</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>hello
+world
+3</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>helworldlo</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>Python切片拼接：s[:p]+sub+s[p:]。C++: substr()取前后两部分再相加。切片是Python最优雅的特性之一——s[a:b]精确截取[a,b)区间，语义清晰。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python切片s[a:b]的区间是[a,b)（包含a不包含b）。插入位置p意味着新内容从p开始——s[:p]取p之前的字符，s[p:]取p及之后的字符。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -301,21 +301,19 @@ print(s[:i] + t + s[i:])
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ076</span>只出现一次的字符<span class="acw">AcWing 772</span></div>
-<div class="problem-desc">给你一个只包含小写字母的字符串。请你判断是否存在只在字符串中出现过一次的字符。如果存在，输出满足条件的字符中位置最靠前的那个。如果没有，输出 no。</div>
+<div class="problem-title"><span class="nq">NQ073</span>只出现一次的字符<span class="acw">AcWing 772</span></div>
+<div class="problem-desc">"我要在一段文字中找到第一个只出现一次的字符。"小栋又在给小鲁出题。"像'hello'里——'h','e','o'都只出现一次，但第一个是'h'。"小华说："这需要两遍遍历：第一遍统计每个字符的出现次数，第二遍按顺序找出第一个次数为1的字符。Python用collections.Counter可以一行建好频次字典。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含一个由小写字母构成的字符串。数据保证字符串的长度不超过 100000。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出满足条件的第一个字符。如果没有，则输出 no。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 772</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个字符串。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">第一个只出现一次的字符的位置（1-indexed），如果没有则输出-1。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">字符串长度≤10⁵</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>abcabcd
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>d
-</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>hello</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>1</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>两遍遍历法：第一遍建立字符频次字典（Counter），第二遍按原字符串顺序查找第一个频次为1的字符。Python用Counter一键统计。注意频次统计不改变顺序——要按原串顺序输出。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python: from collections import Counter; cnt=Counter(s); for i,c in enumerate(s): if cnt[c]==1: print(i+1)。C++用int cnt[256]数组直接作哈希表——字符ASCII值作为索引，O(1)频次查找。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -355,24 +353,20 @@ cnt = Counter(s)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ077</span>字符串匹配<span class="acw">AcWing 762</span></div>
-<div class="problem-desc">给定两个长度相同的字符串 a 和字符串 b。如果在某个位置 i 上，满足字符串 a 上的字符 a[i] 和字符串 b 上的字符 b[i] 相同，那么这个位置上的字符就是匹配的。
-如果两个字符串的匹配位置的数量与字符串总长度的比值大于或等于 k，则称两个字符串是匹配的。现在请你判断给定的两个字符串是否匹配。</div>
+<div class="problem-title"><span class="nq">NQ074</span>字符串匹配<span class="acw">AcWing 762</span></div>
+<div class="problem-desc">"在一大段文字里，找一小段模式——这就是字符串匹配。"小华在白板上写着，"比如在'abababa'里找'aba'。最朴素的方法：从每个位置开始，逐个字符比较——这叫暴力匹配，O(n×m)。后续你会学到更高效的KMP算法，但暴力匹配首先让你理解匹配的本质：滑动窗口+逐位比较。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含一个浮点数 k，第二行包含字符串 a，第三行包含字符串 b。输入的字符串中不包含空格。
-数据范围：0 < k ≤ 1，字符串的长度不超过 100。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">如果两个字符串匹配，则输出yes。否则，输出no。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 762</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">两行：文本串T和模式串P。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">P在T中第一次出现的位置（1-indexed），若不存在输出-1。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ |T|,|P| ≤ 100</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>0.4
-aaaa
-abed
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>no
-</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>abababa
+aba</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>1</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>暴力匹配：对于i从0到n-m，检查T从i开始的m个字符是否等于P。Python直接用T.find(P)一行，但手写暴力匹配理解原理更重要。find()返回首次出现位置（-1表示不存在）。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的T.find(P)底层是高效的混合算法（Boyer-Moore-Horspool），比手写暴力快得多。但手写暴力匹配是KMP和BM算法的基础——理解"为什么慢"才能理解"如何变快"。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -401,27 +395,19 @@ print(<span style="color: #A31515">&quot;yes&quot;</span> <span style="color: #0
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ078</span>信息加密<span class="acw">AcWing 767</span></div>
-<div class="problem-desc">对给定的字符串进行加密处理，加密规则如下：
-1. 小写字母：a→b, b→c, …, z→a；
-2. 大写字母：A→B, B→C, …, Z→A；
-3. 数字：0→1, 1→2, …, 9→0；
-4. 其他字符不变。
-输出加密后的字符串。</div>
+<div class="problem-title"><span class="nq">NQ075</span>信息加密<span class="acw">AcWing 767</span></div>
+<div class="problem-desc">小鲁对密码学产生了兴趣："如果能写个程序把每个字母往后移1位——a变b，b变c……z回到a——那就成了一个最简单的加密程序！"小华说："这就是凯撒密码，两千年前的加密方法。编程关键是处理循环——'z'+1要变回'a'。可以用取模：(c-'a'+1)%26+'a'。大写和小写分别处理。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入共一行，包含一个字符串，注意字符串中可能包含空格。
-数据范围：字符串长度不超过100。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一行，即加密后的字符串。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 767</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个字符串（只含字母和空格）。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">字母后移1位，空格不变。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">字符串长度≤100</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>Hello! How are you!
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>Ifmmp! Ipx bsf zpv!
-</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>abc XYZ</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>bcd YZA</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意按照规则进行字符替换，保持空格等其他字符不变。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>字符偏移+循环回绕。对字母：c='a'+(c-'a'+1)%26。大写字母同理用'A'和'Z'。非字母（空格等）原样保留。用isalpha()判断是否为字母，用isupper()/islower()判断大小写。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python: chr((ord(c)-base+1)%26+base)处理循环偏移。C++直接做字符运算。理解ASCII码编码规则——字母是连续排列的，这是字符运算的前提。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -453,24 +439,20 @@ print(<span style="color: #A31515">&quot;&quot;</span>.join(r))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ079</span>输出字符串<span class="acw">AcWing 764</span></div>
-<div class="problem-desc">给定字符串 a，请按照如下要求构造字符串 b：
-对于 a 的每个位置 i（从第 1 个字符到倒数第二个字符），令 b[i] 为字符，其 ASCII 值等于 a[i] 和 a[i+1] 的 ASCII 值之和；
-最后 b 的最后一个字符的 ASCII 值等于 a 的最后一个字符和第一个字符的 ASCII 值之和。
-输出字符串 b。</div>
+<div class="problem-title"><span class="nq">NQ076</span>输出字符串<span class="acw">AcWing 764</span></div>
+<div class="problem-desc">"这道题有点怪——输入两个字符串A和B，对于B的每个位置，如果它不是A对应位置的字符，就把这个位置到B末尾的子串输出来。"小鲁读了三遍题目才明白。小华解释道："逐位比较A和B。一旦发现某个位置i的字符不同，就输出B从i开始的后缀子串。如果完全相同就输出A。关键是理解'后缀'概念——字符串从某位置到末尾的部分。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入共一行，包含字符串 a（字符串长度范围：3 ~ 100），其中每个字符的 ASCII 值均不超过 63（例如空格、!、"、#、...、?）。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一行，表示字符串 b。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 764</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">两行：字符串A和B。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">按规则输出。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ |A|,|B| ≤ 100</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>1 2 3
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>QRRSd
-</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>abcdef
+abcxyz</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>xyz</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>提示：读取整行字符串，然后依次计算相邻两个字符 ASCII 值之和，最后一个字符与第一个字符相加。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>逐位比较：if A[i]!=B[i]: 输出B[i:]并结束。Python的B[i:]切片取后缀。这道题训练的是字符串逐位比较+后缀切片的概念。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python切片取后缀：s[i:]表示从i到末尾。s[:i]表示从开头到i-1。切片的三个参数[start:end:step]可以省略任意部分——省略start表示从0开始，省略end表示到末尾。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -493,26 +475,21 @@ print(<span style="color: #A31515">&quot;&quot;</span>.join(chr(ord(c) + 1) <spa
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ080</span>单词替换<span class="acw">AcWing 770</span></div>
-<div class="problem-desc">输入一个字符串，以回车结束（字符串长度不超过100）。该字符串由若干个单词组成，单词之间用一个空格隔开，所有单词区分大小写。现在需要将其中的某个单词替换成另一个单词，并输出替换之后的字符串。</div>
+<div class="problem-title"><span class="nq">NQ077</span>单词替换<span class="acw">AcWing 770</span></div>
+<div class="problem-desc">小鲁在写文本编辑器的一个功能：把所有出现的某个单词替换成另一个单词。"比如把新闻里所有的'北京'改成'Beijing'……"小华摇摇头："这个比你想象的复杂！如果用简单的replace，'北京大学'就会变成'Beijing大学'。在OJ环境下，输入是以空格分隔的单词——所以用split()分割后逐词判断替换，再用join()拼回去，更安全也更清晰。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共3行。
-第1行是包含多个单词的字符串 s；
-第2行是待替换单词 a；
-第3行是替换成的单词 b。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一行，将 s 中所有单词 a 替换为 b 后的字符串。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 770</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">三行：原文句子、要替换的单词、替换成的单词。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">替换后的句子。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">字符串长度≤1000</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>You want someone to help you
-You
-I
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>I want someone to help you
-</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>I like apple
+apple
+orange</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>I like orange</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意替换时只替换整词（单词之间以空格分隔）。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>分词→逐词判断→重建句子。Python: words=s.split(); result=' '.join(w if w!=old else new for w in words)。注意区分单词和子串——用split和join保证按词替换而非子串替换。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的split()默认按任意空白字符（空格、Tab、换行）分割。' '.join()则按单空格重新拼接。这两个方法组合是Python文本处理的黄金搭档。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;sstream&gt;</span>
@@ -540,20 +517,19 @@ print(<span style="color: #A31515">&#39; &#39;</span>.join(b <span style="color:
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ081</span>最长单词<span class="acw">AcWing 774</span></div>
-<div class="problem-desc">一个以.结尾的简单英文句子，单词之间用单个空格分隔，没有缩写形式和其它特殊形式，求句子中的最长单词。</div>
+<div class="problem-title"><span class="nq">NQ078</span>最长单词<span class="acw">AcWing 774</span></div>
+<div class="problem-desc">"在一句话里找最长的单词——小学生也能做。"小鲁不屑地说。"那如果有两个一样长的呢？输出先出现的那个。"小栋又把条件加复杂了。小华说："用split()分词，然后遍历找最长的。Python一行就能搞定——max(words, key=len)。注意要去掉末尾的句号（这是一个小陷阱）。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入一行字符串，表示这个简单英文句子，长度不超过 500。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">该句子中最长的单词。如果多于一个，则输出第一个。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 774</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个英文句子，以'.'结尾。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">最长单词。若有多个，输出最先出现的。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">句子长度≤500</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>I am a student of Peking University.
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>University
-</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>I love programming.</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>programming</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>去掉句号→split()分词→max()找最长。Python: s.rstrip('.').split()得到单词列表，max(words, key=len)选出最长。注意max()默认返回最先出现的（稳定性）。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的max()在key相同时保持原始顺序（稳定排序）。rstrip('.')去掉末尾指定字符——这是去除标点的小技巧。split()不加参数会去掉所有空白字符。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -578,51 +554,12 @@ print(<span style="color: #A31515">&#39; &#39;</span>.join(b <span style="color:
 print(max(words,key=len))
 </pre></div>
 </div></div><hr class="section-divider">
-<div class="problem-block">
-<div class="problem-title"><span class="nq">NQ082</span>AcWing NQ053<span class="acw">AcWing NQ053</span></div>
-<div class="problem-desc">AcWing NQ053</div>
-<table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing NQ053</td></tr>
-</table>
-<div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #008000">// AcWing NQ053</span>
-</pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">def</span> longest_palindrome(s):
-    <span style="color: #A31515">&quot;&quot;&quot;最长回文子串&quot;&quot;&quot;</span>
-    <span style="color: #00F">if</span> <span style="color: #00F">not</span> s:
-        <span style="color: #00F">return</span> <span style="color: #A31515">&quot;&quot;</span>
-    
-    n = len(s)
-    start, max_len = 0, 0
-    
-    <span style="color: #00F">def</span> expand_around_center(left, right):
-        <span style="color: #A31515">&quot;&quot;&quot;从中心向两边扩展，返回回文子串的起始索引和长度&quot;&quot;&quot;</span>
-        <span style="color: #00F">while</span> left &gt;= 0 <span style="color: #00F">and</span> right &lt; n <span style="color: #00F">and</span> s[left] == s[right]:
-            left -= 1
-            right += 1
-        <span style="color: #00F">return</span> left + 1, right - left - 1
-    
-    <span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(n):
-        <span style="color: #008000"># 奇数长度回文子串</span>
-        l1, len1 = expand_around_center(i, i)
-        <span style="color: #008000"># 偶数长度回文子串</span>
-        l2, len2 = expand_around_center(i, i + 1)
-        
-        <span style="color: #008000"># 更新最长回文子串信息</span>
-        <span style="color: #00F">if</span> len1 &gt; max_len:
-            start, max_len = l1, len1
-        <span style="color: #00F">if</span> len2 &gt; max_len:
-            start, max_len = l2, len2
-    
-    <span style="color: #00F">return</span> s[start:start + max_len]
-
-<span style="color: #00F">def</span> main():
-    s = input().strip()
-    print(longest_palindrome(s))
-
-<span style="color: #00F">if</span> __name__ == <span style="color: #A31515">&quot;__main__&quot;</span>:
-    main()
-</pre></div>
-</div></div><hr class="section-divider"><div class="chapter-end">— 第6章完 · 共13题 —</div></body></html>
+<div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>
+<li><strong>字符串六大操作：</strong>长度遍历、字符分类、修改替换、切片拼接、频次统计、分词重构</li>
+<li><strong>Python四大法宝：</strong>切片s[a:b]、split+join、find+replace、isdigit+isalpha——一行代码等于C++五行的力量</li>
+<li><strong>字符串不可变：</strong>Python字符串修改操作全部返回新对象。理解这点才能正确使用replace/upper/lower等</li>
+<li><strong>暴力匹配：</strong>理解O(n×m)的朴素算法才能理解KMP的O(n+m)有多快。先学走再学跑</li>
+<li><strong>编码知识：</strong>ASCII码中字母连续排列，这是字符偏移加密的数学基础</li>
+<li><strong>厦大精神：</strong>自强不息，止于至善。从整数到字符串，你在成为更全面的程序员</li>
+</ul></div>
+<div class="chapter-end">— 第6章完 · 共12题 · 自强不息 —</div></body></html>

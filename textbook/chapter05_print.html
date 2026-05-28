@@ -1,7 +1,12 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第5章 矩阵的舞蹈</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999;font-family:"PingFang SC",sans-serif}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
-body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222}
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第5章 矩阵的舞蹈</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
+body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222;string-set:chapter"第5章 矩阵的舞蹈——多维数组与矩阵模式"}
 .chapter-title{text-align:center;font-size:20pt;font-weight:bold;margin:1.5em 0 .1em 0;letter-spacing:3pt}
 .chapter-subtitle{text-align:center;font-size:10pt;color:#777;margin-bottom:1.5em;padding-bottom:.8em;border-bottom:1px solid #bbb}
+.preface{font-size:10pt;margin-bottom:1.5em;color:#444}.preface p{margin:.3em 0;text-indent:2em}
+.preface h3{font-size:11pt;color:#2563eb;margin:1em 0 .3em 0}
+.knowledge-box{background:#f0f6ff;border:1pt solid #bdd;border-radius:4px;padding:.7em 1em;margin:.8em 0;font-size:9pt}
+.knowledge-box .k-title{font-weight:bold;color:#2563eb;margin-bottom:.3em;font-size:9.5pt}
+.knowledge-box p{margin:.2em 0}.knowledge-box ul{margin:.2em 0;padding-left:1.5em}
 .problem-title{font-size:12pt;font-weight:bold;margin:1.5em 0 .4em 0;padding-bottom:.15em;border-bottom:1pt solid #444}
 .problem-title .nq{color:#2563eb;margin-right:.6em;font-size:11pt}.problem-title .acw{font-size:7.5pt;color:#aaa;font-weight:normal;margin-left:1em}
 .problem-desc{margin:.6em 0 1em 0;text-indent:2em;line-height:1.85}
@@ -11,44 +16,50 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .spec-table .spec-label .tag{display:inline-block;padding:.15em .5em;border-radius:2px;color:#fff;font-size:7.5pt;letter-spacing:.5pt}
 .spec-table .spec-label .tag.in{background:#2563eb}.spec-table .spec-label .tag.out{background:#059669}.spec-table .spec-label .tag.lim{background:#d97706}
 .spec-table .spec-value{color:#333;font-size:9pt}
-.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.5em 1em;margin:.8em 0 1em 0}
-.sample-grid{display:flex;gap:1.5em}.sample-col{min-width:0}.sample-col:first-child{flex:1}.sample-col:last-child{flex:1}
-.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:0;font-weight:bold}
-.sample-col pre{background:none;border:none;padding:.2em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:8.5pt;line-height:1.3;white-space:pre-wrap;color:#333}
+.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.7em 1em;margin:1em 0 1.2em 0}
+.sample-grid{display:flex;gap:2em}.sample-col{flex:1}
+.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:.2em;font-weight:bold}
+.sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
 .insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
 .insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
 .code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
 .code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
 .code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
-.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
-body{string-set:chapter "第5章 矩阵的舞蹈——多维数组与矩阵模式"}</style></head><body>
-<div class="chapter-title">矩阵的舞蹈</div><div class="chapter-subtitle">多维数组与矩阵模式 · 12题 · C++ &amp; Python 双语对照</div>
+.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
+.chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
+.chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">矩阵的舞蹈</div>
+<div class="chapter-subtitle">多维数组与矩阵模式 · 12题 · C++ &amp; Python 双语对照</div>
+<div class="preface">
+<p>第四周结束，小鲁已经能熟练地操作一维数组了。但小华告诉他："一维数组只是第一步——真实世界的数据很少是一条线。想想电子表格、数码照片、游戏棋盘……这些都是<strong>二维</strong>的。"小鲁若有所思："所以……我需要学会在行列之间跳舞？"</p>
+<p>本章12道题分三个板块：<strong>区域遍历</strong>（NQ055-063）——学会用行列关系精确切割矩阵区域；<strong>模式填充</strong>（NQ059,064,065）——用数学公式一行替代几十行循环，体验"数学建模"的力量；<strong>蛇形遍历</strong>（NQ066）——方向数组的经典实战，贪吃蛇游戏引擎的底层算法。</p>
+<h3>本章角色</h3>
+<p>🧑‍🎓 <strong>小鲁</strong>（初学者）· 正在经历从"逐题应付"到"寻找规律"的思维跃迁</p>
+<p>🧠 <strong>小华</strong>（算法高手）· ACM竞赛队队长，用"对称性"一句话解决四道相似的题</p>
+<p>🏗️ <strong>小栋</strong>（工程师）· 把枯燥的矩阵遍历与游戏引擎、图像处理等实际应用联系起来</p>
+<p>🏛️ <strong>小嘉</strong>（校主精神）· 带着"同心方"从南洋归来，用数学和编程的交汇点启发学生</p>
+</div>
+<div class="knowledge-box"><div class="k-title">🧭 矩阵三角区域速查表（12×12矩阵）</div>
+<ul><li>↗ <strong>右上三角</strong>：j > i（不含对角线，66个元素）</li><li>↖ <strong>左上三角</strong>：j < 11-i（不含反对角线，66个元素）</li>
+<li>↙ <strong>左下三角</strong>：j < i（不含对角线，66个元素）</li><li>↘ <strong>右下三角</strong>：i+j > 10（66个元素）</li>
+<li>⬆ <strong>上方区域</strong>：i < j 且 i+j < 11（30个元素）</li><li>⬇ <strong>下方区域</strong>：i > j 且 i+j > 10（30个元素）</li>
+<li>⬅ <strong>左方区域</strong>：j < i 且 i+j < 11（30个元素）</li><li>➡ <strong>右方区域</strong>：j > i 且 i+j > 10（30个元素）</li></ul>
+<p><strong>核心心法：</strong>四个三角区域通过两种对角线分割（主对角线、反对角线），四个"口"字区域是两个三角的交集。掌握对称性=一道题的功夫解决四道题。</p></div>
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ058</span>数组的右上半部分<span class="acw">AcWing 745</span></div>
-<div class="problem-desc">输入一个二维数组 M[12][12]，根据输入的要求，求出二维数组的右上半部分元素的平均值或元素的和。
-右上半部分是指主对角线（如下图中黄色部分）上方的部分（绿色部分）。</div>
+<div class="problem-title"><span class="nq">NQ055</span>数组的右上半部分<span class="acw">AcWing 745</span></div>
+<div class="problem-desc">小鲁拿着一支荧光笔，在一张12×12的格子纸上涂色：右上三角。"j>i——第0行从第1列到第11列，第1行从第2列到第11列……"小鲁一边涂一边念叨。小华走过来："你在画什么？""我在数右上三角有多少个元素！总共12×12减去对角线12，再除2——就是66个。"小华笑道："你已经发现了三角区域的核心：找到行和列的关系表达式，剩下的循环就水到渠成。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行输入一个大写字母，若为S，则表示需要求出右上半部分的元素的和，若为M，则表示需要求出右上半部分的元素的平均值。接下来 12 行，每行包含 12 个用空格隔开的浮点数，表示这个二维数组，其中第i + 1行的第j + 1个数表示数组元素 M[i][j]。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个数，表示所求的平均数或元素的和的值，保留一位小数。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 745</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行操作类型(S/M)。然后144个浮点数（逐行读入）。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">结果保留1位小数。S输出和，M输出平均值。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">矩阵元素−10⁶到10⁶</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>M
--6.5 8.2 0.7 9.0 8.4 -8.3 0.9 -0.7 -7.9 7.1 -1.6 4.6
--9.4 -9.0 1.5 -9.0 -5.1 -0.5 -2.8 -9.1 8.0 -6.9 -5.5 -6.6
--6.8 0.3 3.8 6.1 -9.9 -9.3 8.5 8.6 5.0 6.9 -3.6 -3.0
-5.4 -5.2 5.0 -5.3 -7.9 -9.7 7.7 -8.2 0.0 -4.7 -8.2 -9.2
--0.8 -6.0 -5.4 -5.1 -7.9 -0.5 -5.3 -5.7 -4.6 9.6 -8.2 -9.2
-7.8 -5.8 -5.8 -5.8 7.2 0.5 -7.9 1.2 -6.8 -9.1 0.3 -1.4
-4.3 -7.2 3.5 -6.4 -9.1 -6.0 3.5 -5.1 -5.6 -6.9 -9.1 -2.1
--3.4 -3.8 -9.4 -7.1 -8.4 -9.9 -5.7 -8.3 -5.3 -7.4 -8.5 -4.8
--0.2 0.3 -4.2 8.4 0.7 -6.4 -3.7 3.5 -0.9 3.7 0.9 -2.7
-7.1 0.1 -8.4 -0.1 -7.9 -4.4 -7.6 -2.7 5.5 -0.9 -7.0 -2.0
-9.6 -9.8 3.3 -9.9 -6.8 6.7 3.1 1.2 -9.5 -4.3 -1.7 -9.7
-1.8 5.5 -0.7 -0.9 3.2 2.5 0.5 7.3 8.3 0.3 0.9</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>-1.2</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>S
+(144个浮点数...)</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>(sum,1 decimal)</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>右上三角：j>i。双层循环遍历矩阵，当j>i时累加。不包括对角线。66个元素。S求总和，M求平均时除以66（注意不是144）。区域遍历是矩阵题的灵魂——关键在于找到正确的行列关系表达式。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>右上三角条件：j>i。共有元素数=(12×12−12)/2=66。C++用double型累加，注意不要用int。Python的float是双精度。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
 
@@ -87,31 +98,20 @@ print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if<
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ059</span>数组的左上半部分<span class="acw">AcWing 747</span></div>
-<div class="problem-desc">输入一个二维数组 M[12][12]，根据输入的要求，求出二维数组的左上半部分元素的平均值或元素的和。
-左上半部分是指次对角线（如下图所示，黄色部分为次对角线，绿色部分为左上半部分）上方的部分。</div>
+<div class="problem-title"><span class="nq">NQ056</span>数组的左上半部分<span class="acw">AcWing 747</span></div>
+<div class="problem-desc">小鲁转向左上三角："这次应该用j<11-i吧？反对角线以上……"小华在纸上画了一笔："看，反对角线满足i+j=11。左上三角就是j<11-i。但还有另外一种理解——它和右上三角本质上是同一个形状，只是参考线不一样。一个用主对角线(j>i)，一个用反对角线(j<11-i)。两题放一起对比，四种三角区域的条件就清晰了。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行输入一个大写字母，若为S，则表示需要求出左上半部分的元素的和，若为M，则表示需要求出左上半部分的元素的平均值。接下来 12 行，每行包含 12 个用空格隔开的浮点数，表示这个二维数组，其中第i + 1行的第j + 1个数表示数组元素 M[i][j]。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个数，表示所求的平均数或和的值，保留一位小数。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 747</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">操作类型(S/M)+144浮点数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">保留1位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">同NQ055</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>M
--0.4 -7.7 8.8 1.9 -9.1 -8.8 4.4 -8.0 0.5 -5.8 1.3 -8.0
--1.7 -4.6 -7.0 4.7 9.6 2.0 8.2 -6.4 2.2 2.3 7.3 -0.4
--8.1 4.0 -6.9 8.1 6.2 2.5 -8.2 -6.2 -1.5 9.4 -9.8 -3.5
--3.4 -2.4 -8.0 0.7 -2.9 5.4 -8.4 -5.4 -5.1 -6.0 -8.5 8.1
-6.2 -1.5 -6.9 3.1 -7.9 5.1 -8.8 0.9 -7.4 -3.9 -2.7 0.9
--6.8 -0.8 -9.9 9.1 -3.7 -8.4 4.4 9.8 -6.3 -6.4 -3.7 2.8
--3.8 -5.4 -4.6 2.0 4.0 9.2 -8.0 0.5 -3.9 6.5 -4.3 -9.9
--7.2 -6.2 -1.2 4.1 -7.4 -4.6 4.7 -0.4 -2.2 -9.1 0.4 -5.8
--8.0 -2.0 -5.3 -3.7 -2.2 -3.9 -8.6 -7.0 -4.1 -3.2 -5.9 -4.2
--1.2 -6.2 -8.2 7.0 -5.3 4.4 9.5 7.2 2.3 4.4 3.2 -2.0
--6.9 -6.2 5.1 8.5 7.1 -0.8 -0.7 2.7 -6.0 4.2 -8.2 -9.8
--3.5 -1.7 5.4 2.8 1.6 -1.0 -6.1 7.7 -6.5 -8.3 -8.5 9.4</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>-0.8</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>S
+(144...)</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>(sum,1 decimal)</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>左上三角：j<11-i（反对角线以上）。反对角线条件：i+j=11。元素数量也是66。将四个三角区域的遍历条件对比理解，是掌握矩阵区域操作的关键——j>i（右上）、j<i（左下）、i+j<11（左上）、i+j>11（右下）。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>反对角线条件：i+j==n-1（n=12时为11）。左上三角用<。四个区域条件对称且互补，理解这一规律后所有矩阵三角题迎刃而解。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
 
@@ -149,31 +149,20 @@ print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if<
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ060</span>数组的上方区域<span class="acw">AcWing 749</span></div>
-<div class="problem-desc">输入一个二维数组 M[12][12]，根据输入的要求，求出二维数组的上方区域元素的平均值或元素的和。
-数组的两条对角线将数组分为了上下左右四个部分，黄色部分为对角线，绿色部分为上方区域。</div>
+<div class="problem-title"><span class="nq">NQ057</span>数组的上方区域<span class="acw">AcWing 749</span></div>
+<div class="problem-desc">"等等——'上方区域'又是什么？"小鲁挠着头。小栋在屏幕上画了一个"八"字形："你看，把12×12矩阵的上半部分，去掉左边和右边的两个三角——剩下的就是上方区域。它其实是两个条件的交集：既在主对角线之上(i<j)，又在反对角线之上(i+j<11)。只有30个元素。""双重条件！"小鲁眼前一新，"这就是用两个数学表达式精确切割一个小区域。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行输入一个大写字母，若为S，则表示需要求出上方区域的元素的和，若为M，则表示需要求出上方区域的元素的平均值。接下来 12 行，每行包含 12 个用空格隔开的浮点数，表示这个二维数组，其中第i + 1行的第j + 1个数表示数组元素 M[i][j]。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个数，表示所求的平均数或和的值，保留一位小数。输出结果与标准答案核对误差不超过 0.1 即视为正确。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 749</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">操作类型(S/M)+144浮点数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">保留1位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">同NQ055</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>S
--4.8 -8.0 -2.9 6.7 -7.0 2.6 6.5 1.7 1.9 5.6 -1.6 -6.3
--4.3 1.5 8.7 -0.3 5.4 -9.3 4.8 7.0 3.6 -8.3 -1.0 1.3
-5.0 -4.9 2.7 -2.0 -1.7 -5.4 8.0 -7.3 2.3 -1.9 -4.0 2.9
-2.8 -5.8 -0.0 2.2 4.8 7.7 -3.0 -7.5 -3.5 9.7 -4.3 -8.6
--1.8 -1.0 9.0 9.3 -3.7 -1.1 0.8 -0.2 -0.0 9.9 4.5 -0.7
-3.8 -3.9 2.1 -9.7 5.5 9.4 -4.6 3.3 -9.6 5.1 -4.5 1.5
-2.8 -5.9 -1.7 -7.4 5.0 -6.4 -5.1 -8.1 -5.2 -1.8 -2.8 -1.7
-8.8 2.8 -4.1 7.1 8.4 -5.6 3.9 -9.7 -7.1 1.3 2.3 -3.3
-1.7 5.1 0.1 9.2 4.5 9.7 7.2 8.6 8.7 1.1 6.7 0.3
--3.6 -7.1 -8.9 7.1 -5.9 1.6 -7.4 6.7 3.9 4.3 -2.4 -3.7
-8.9 -6.2 5.0 -8.6 -1.3 -8.8 2.6 8.9 5.5 9.0 -2.2 -4.4
-5.7 3.7 1.8 -2.1 -7.3 -7.9 4.7 6.0 3.3 -2.8 1.4 -6.9</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>21.7</pre></div>
+(144...)</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>(sum,1 decimal)</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>上方区域是两个三角的交集：i<j（主对角线之上）且i+j<11（反对角线之上）。30个元素——矩阵的一半再减半。这种双重条件判断展示了用数学表达式精确描述区域的能力。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>交集条件：i<j and i+j<11。从"单一条件描述三角"到"两个条件交集描述更小区域"，是逻辑思维和代码能力的双重进阶。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
@@ -213,33 +202,20 @@ print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if<
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ061</span>数组的左方区域<span class="acw">AcWing 751</span></div>
-<div class="problem-desc">输入一个二维数组 M[12][12]，根据输入的要求，求出二维数组的左方区域元素的平均值或元素的和。
-数组的两条对角线将数组分为了上下左右四个部分，黄色部分为对角线，绿色部分为左方区域。</div>
+<div class="problem-title"><span class="nq">NQ058</span>数组的左方区域<span class="acw">AcWing 751</span></div>
+<div class="problem-desc">"左边区域呢？"小鲁问。小华说："对称的！把上方区域的j>i改成j<i就行——左方区域=j<i且j<11-i。"小鲁恍然大悟："所以上下左右四个区域，其实是通过交换i和j的角色、变换关系符方向得到的——就像一个魔方，每一面都是对应的。掌握对称性，四道题瞬间变成一道。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行输入一个大写字母，若为S，则表示需要求出左方区域的元素的和，若为M，则表示需要求出左方区域的元素的平均值。
-接下来 12 行，每行包含 12 个用空格隔开的浮点数，表示这个二维数组，其中第i + 1行的第j + 1个数表示数组元素 M[i][j]。
-数据范围−100.0≤M[i][j]≤100.0</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个数，表示所求的平均数或和的值，保留一位小数。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 751</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">操作类型(S/M)+144浮点数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">保留1位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">同NQ055</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>S
-4.5 -3.3 -2.3 4.5 -7.0 8.7 -4.1 -3.0 -7.6 6.3 -6.6 -4.7
-4.7 -9.3 -7.6 9.1 9.2 9.0 5.5 -7.5 -9.3 -1.6 -3.5 -4.2
-0.5 -7.5 -8.3 -9.0 -9.6 4.3 8.0 -1.5 7.9 2.1 2.4 -6.2
--4.4 -1.3 -9.7 -3.4 -7.0 8.4 -8.5 -9.3 -1.4 -2.4 -5.1 -7.0
-3.8 -9.9 6.2 -2.5 -3.5 9.4 1.6 7.0 3.3 -0.5 6.7 6.0
-1.6 -3.8 5.0 8.8 4.2 7.7 0.7 7.4 7.9 -5.9 4.4 3.3
-3.7 6.0 2.6 -1.4 6.1 -6.0 8.5 9.1 5.7 -4.2 5.9 -3.5
-5.0 0.3 2.2 -3.6 6.3 -10.0 9.5 -7.7 -8.2 -4.3 -5.3 -3.9
--7.4 -2.9 -3.3 -7.7 -2.5 -5.5 -3.1 1.0 3.1 0.9 9.9 0.0
--7.4 1.3 -9.6 -3.6 2.2 2.3 -4.3 -3.6 6.5 8.3 0.5 7.6 -4.8
-1.8 -2.7 -1.5 5.4 -6.5 -3.7 5.6 8.0 -9.9 0.1 2.2 7.6
-5.6 4.3 1.5 -0.8 5.8 -5.1 5.5 6.2 -5.8 8.8 0.0 -6.2 -2.3</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>13.3</pre></div>
+(144...)</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>(sum,1 decimal)</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>左方区域与上方区域对称：将条件改为j<i且i+j<11。观察NQ057和NQ058的条件——j和i的角色互换。这种对称模式是理解多维数组遍历的基础。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>左右对称：互换i和j的角色。上方=去掉左右三角的上部，左方=去掉上下三角的左部。对称思维是编程中的强大工具——写一遍代码，改一行条件就能得到四种区域的遍历。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
@@ -285,38 +261,29 @@ print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if<
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ062</span>平方矩阵 I<span class="acw">AcWing 753</span></div>
-<div class="problem-desc">输入整数 N，输出一个 N 阶的回字形状二维数组。
-数组的最外层为 1，次外层为 2，以此类推。</div>
+<div class="problem-title"><span class="nq">NQ059</span>平方矩阵I<span class="acw">AcWing 753</span></div>
+<div class="problem-desc">小嘉走进教室，手里拿着一张回字形的图纸："这在南洋叫'同心方'——外面一圈是1，往里一圈是2，再往里是3……最中心的值是min(N+1,N+1, N, N)+1。"小鲁看得目瞪口呆："这么复杂的图案，用一个公式就能生成？！"小华解释："每个位置的值=到四条边的最近距离+1。外层距离0→值1，往里一层距离1→值2。理解这个'距离模型'比写100行if更重要。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入包含多行，每行包含一个整数 N。
-当输入行为 N = 0 时，表示输入结束，且该行无需作任何处理。
-数据范围0≤N≤100</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">对于每个输入整数 N，输出一个满足要求的 N 阶二维数组。每个数组占 N 行，每行包含 N 个用空格隔开的整数。每个数组输出完毕后，输出一个空行。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 753</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">多个整数N，以0结束。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">每个矩阵占N行，每个数占3字符宽度右对齐。矩阵间空行。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1≤N≤100</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>1
 2
 3
-4
 0</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>1
+<div class="sample-col"><div class="col-label">输出</div><pre>  1
 
-1 1
-1 1
+  1  1
+  1  1
 
-1 1 1
-1 2 1
-1 1 1
-
-1 1 1 1
-1 2 2 1
-1 2 2 1
-1 1 1 1
-</pre></div>
+  1  1  1
+  1  2  1
+  1  1  1</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>数学公式法：val=min(i,j,n-1-i,n-1-j)+1（0-indexed）。这个公式的物理意义：每个位置的值等于它到四条边的最短距离加1。最外层距离为0→值=1，往里一层距离为1→值=2，以此类推。理解公式比手写模拟更体现编程智慧。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>到四条边的距离：上i、左j、下n-1-i、右n-1-j。取最小值+1即为该位置的值。这个公式体现了"数学建模"的力量——用数学语言描述复杂的几何规律。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -356,36 +323,20 @@ print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if<
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ063</span>数组的右下半部分<span class="acw">AcWing 748</span></div>
-<div class="problem-desc">输入一个二维数组 M[12][12]，根据要求，求出二维数组的右下半部分元素的平均值或元素的和。
-右下半部分是指次对角线下方的部分，黄色部分为对角线，绿色部分为右下半部分。</div>
+<div class="problem-title"><span class="nq">NQ060</span>数组的右下半部分<span class="acw">AcWing 748</span></div>
+<div class="problem-desc">小鲁拿着一面镜子放在矩阵的左上角——"如果从左上三角对称过去……"小华笑道："没错！右上三角(j>i)的对称是左下三角(j<i)，左上三角(j<11-i)的对称是右下三角(i+j>10)。四题八遍的遍历模式，如果用'条件表达式'分类，一共就两种本质：主对角线分割和反对角线分割。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行输入一个大写字母，若为 S，则表示需要求出右下半部分的元素的和，若为 M，则表示需要求出右下半部分的元素的平均值。
-接下来 12 行，每行包含 12 个用空格隔开的浮点数，表示这个二维数组。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个数，表示所求的平均值或和的值，保留一位小数。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 748</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">操作类型(S/M)+144浮点数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">保留1位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">同NQ055</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>S
--4.9 0.1 -6.1 -9.6 1.0 -3.2 0.6 3.2 -9.8 4.9 1.2
-9.7 -8.5 3.2 8.8 -1.9 -5.4 7.5 -2.0 5.7 2.3 5.3 -7.5 0.9
--6.8 -4.3 3.8 -6.7 5.6 -8.2 -7.1 -7.9 -3.7 -7.4 -4.4 -5.3
-6.8 4.3 3.8 -7.7 -1.4 -1.8 -1.5 -1.2 -5.4 7.8 2.1 4.8 4.7
--7.3 -1.7 -4.7 -3.1 -1.4 3.1 -2.5 -4.7 8.2 -1.4 -1.8 -4.7
-2.4 9.4 -4.3 9.6 8.6 -6.1 -7.4 8.6 0.5 -8.4 5.2
--5.2 2.9 -5.6 4.0 -8.2 3.8 -4.1 -1.6 -3.8 -3.1 -1.1 -3.3
--3.3 -3.6 -4.3 -5.4 -2.5 -4.3 -7.1 -2.5 -3.1 -1.8 -7.4 -4.5
--2.9 -3.6 7.1 -9.5 -8.7 8.2 -6.2 -1.0 7.4 -3.0 -4.4 -4.5
-0.1 9.5 4.9 1.5 0.8 -8.2 -0.4 9.5 -7.0 -1.0 -9.7 -2.1
--0.1 -7.6 7.8 -0.5 -6.5 4.4 -0.4 -4.6 -7.8 -0.6 -0.1 -1.9
--2.3 -8.4 -2.7 -3.4 -3.9 -7.1 -4.8 -1.3 -5.4 -3.3 -2.4 -3.0
--0.1 -8.2 0.8 -3.5 -7.6 -0.5 5.6 8.4 -0.6 0.9 9.9 -7.5
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>53.0
-</pre></div>
+(144...)</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>(sum,1 decimal)</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>先判断第一行字母，再计算右下半部分数据的和或平均值，保留一位小数。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>右下三角：i+j>10。与NQ056的左上三角(i+j<11)对称。通过前6个矩阵三角题的系统训练，你应该已经掌握了区域遍历的核心技巧：找到正确的行列关系表达式。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>i+j>10与11-i-1通。矩阵遍历的4个三角区域至此全部覆盖。建议画一个5×5矩阵逐格验证——对着纸面比对着屏幕理解更快。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
@@ -425,35 +376,20 @@ print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if<
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ064</span>数组的左下半部分<span class="acw">AcWing 746</span></div>
-<div class="problem-desc">输入一个二维数组 M[12][12]，根据要求，求出二维数组的左下半部分元素的平均值或元素的和。
-左下半部分是指主对角线下方的部分，黄色部分为对角线，绿色部分为左下半部分。</div>
+<div class="problem-title"><span class="nq">NQ061</span>数组的左下半部分<span class="acw">AcWing 746</span></div>
+<div class="problem-desc">"左下三角就是j<i——和右上三角j>i对称，只是方向反过来。"小鲁总结说。小华欣慰地拍拍他："你已经从'逐题应付'升级到'找规律'了。记住这种感觉——以后学任何新算法，第一步都是找pattern：有没有对称性？能不能归约成已知问题？这是从学生到工程师的思维跃迁。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行输入一个大写字母，若为 S，则表示需要求出左下半部分的元素的和，若为 M，则表示需要求出左下半部分的元素的平均值。
-接下来 12 行，每行包含 12 个用空格隔开的浮点数，表示这个二维数组。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个数，表示所求的平均值或和的值，保留一位小数。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 746</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">操作类型(S/M)+144浮点数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">保留1位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">同NQ055</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>S
-8.7 5.6 -2.0 -2.1 -7.9 -9.0 -6.4 1.7 2.9 -2.3 -8.4 0.0
--7.3 -2.1 0.6 -9.8 9.6 5.6 -1.3 -3.8 -9.3 -8.0 -2.0 2.9
--4.9 -1.5 -5.5 -5.2 -4.5 -4.1 7.6 6.9 -9.0 6.8 9.1 -8.5
--2.5 -2.0 -1.8 -5.9 -7.2 -3.3 -1.8 -4.3 -5.5 -7.1 -7.7 -3.7
--7.0 -1.2 7.8 7.1 -3.7 7.8 -2.3 4.3 0.2 -4.6 -6.6
--3.2 -3.4 -4.7 4.7 3.6 8.8 5.1 -3.2 -1.9 2.8 -4.3 -1.4
--3.0 -2.0 -7.1 -1.3 -3.7 -1.3 -1.4 -3.4 -4.0 -2.7 -4.4 -3.4
--2.5 -0.9 9.2 -8.4 -9.4 -5.1 6.5 1.5 3.4 -0.1 -7.0 -6.8
--1.8 -4.9 2.2 -8.7 -9.4 4.8 2.3 0.2 -3.2 -7.5 -4.0 -9.9
--1.1 -2.9 0.7 -0.7 -7.4 8.6 -2.0 -1.7 -0.7 -0.8 -5.4 -3.8
--5.4 -8.7 -7.1 -5.7 -1.4 -1.8 -3.3 -4.1 -2.7 -2.9 -4.6 -5.5
--2.8 -9.1 7.1 -0.2 -8.6 -6.5 1.1 -0.1 -3.6 4.0 -5.4 1.1
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>-2.8
-</pre></div>
+(144...)</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>(sum,1 decimal)</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>先判断第一行字母，再计算左下半部分数据的和或平均值，保留一位小数。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>左下三角：j<i。与右上三角(j>i)对称。遍历条件简单明了——i和j的大小关系决定位置归属。注意不包括主对角线。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>四个三角区域的条件总结：右上j>i、左下j<i、左上j<11-i、右下j>10-i。掌握这4个条件，所有标准矩阵三角题都不在话下。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
@@ -493,34 +429,20 @@ print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if<
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ065</span>数组的下方区域<span class="acw">AcWing 750</span></div>
-<div class="problem-desc">输入一个二维数组 M[12][12]，根据要求，求出二维数组的下方区域元素的平均值或元素的和。
-数组的两条对角线将数组分为了上下左右四个部分，黄色部分为对角线，绿色部分为下方区域。</div>
+<div class="problem-title"><span class="nq">NQ062</span>数组的下方区域<span class="acw">AcWing 750</span></div>
+<div class="problem-desc">"哎，下方区域的条件应该就是i>j且j>10-i吧？"小鲁试着推导。"等一下，j>10-i就是i+j>10。"小栋纠正道。"对对对，i>j且i+j>10——和上方区域的i<j且i+j<11完全对称！"小鲁兴奋地在纸上比划："四个区域就像钟表上的12、3、6、9四个方向——每个区域都可以通过翻转和旋转得到其他三个。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行输入一个大写字母，若为 S，则表示需要求出下方区域的元素的和，若为 M，则表示需要求出下方区域的元素的平均值。接下来 12 行，每行包含 12 个用空格隔开的浮点数，表示这个二维数组。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个数，表示所求的平均值或和的值，保留一位小数。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 750</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">操作类型(S/M)+144浮点数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">保留1位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">同NQ055</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>S
--0.7 -8.4 -5.7 -1.1 7.6 9.5 -9.7 4.1 0.6 -6.5 -4.9
--6.6 4.9 -3.1 5.3 0.3 -4.5 3.9 -1.5 6.7 0.5 1.2 5.5
--8.5 1.8 -7.7 0.2 -9.7 -7.2 4.3 8.8 -7.9 -9.0 -2.7 -8.8
--4.0 -9.3 -4.2 -3.7 3.3 -2.4 -3.8 1.0 -3.0 -9.9 -8.5 8.8
--2.1 -9.6 5.0 2.1 -8.7 6.4 4.2 -8.9 2.4 9.3
--6.9 -0.1 -7.8 -7.0 7.8 5.1 6.9 -7.6 0.4 -7.2 5.5 1.8
--8.6 -7.7 -7.0 -3.4 -1.7 -9.1 7.4 -9.4 -4.7 -4.4 -2.6 -0.1
-0.2 2.3 3.5 1.4 0.5 -1.1 -4.9 2.8 -1.7 -0.7 0.8 -6.0
--6.0 -4.1 -4.6 -9.4 -4.9 -4.1 4.7 6.3 -7.8 0.7 -8.1 -0.9
-8.8 -4.5 -6.6 0.6 -4.0 -7.2 0.3 -2.8 0.7 -0.1 -4.9
--3.8 -7.4 -4.9 -0.2 -4.3 -9.3 -0.4 -2.4 -8.7 -2.7 -4.1 -3.7
--3.8 -6.4 2.3 4.2 -9.8 -0.3 -9.9 -7.4 3.5 1.5 -0.2 7.8
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>-11.9
-</pre></div>
+(144...)</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>(sum,1 decimal)</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>先判断第一行字母，再计算下方区域数据的和或平均值，保留一位小数。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>下方区域：i>j且i+j>10。与上方区域(i<j且i+j<11)对称。至此8道矩阵题全部完成——4个三角区域+2个交集区域+2个对角区域+蛇形矩阵。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>对称总结：上方(i<j,i+j<11)、下方(i>j,i+j>10)、左方(j<i,i+j<11)、右方(j>i,i+j>10)。四个区域构成一个完整的"口"字形框架。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
@@ -559,34 +481,20 @@ print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if<
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ066</span>数组的右方区域<span class="acw">AcWing 752</span></div>
-<div class="problem-desc">输入一个二维数组 M[12][12]，根据要求，求出二维数组的右方区域元素的平均值或元素的和。
-数组的两条对角线将数组分为了上下左右四个部分，黄色部分为对角线，绿色部分为右方区域。</div>
+<div class="problem-title"><span class="nq">NQ063</span>数组的右方区域<span class="acw">AcWing 752</span></div>
+<div class="problem-desc">小鲁把四道区域题全部AC后，看着屏幕上的"Accepted"，长出了一口气。"8道矩阵区域遍历题全部完成了！"小华说："总结一下——你真正学到了什么？不是8个条件表达式，而是'精确描述几何区域的思维方式'。未来做图像处理、游戏碰撞检测、地图分析，用的还是这个思维——把视觉区域翻译成代码条件。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行输入一个大写字母，若为 S，则表示需要求出右方区域的元素的和，若为 M，则表示需要求出右方区域的元素的平均值。接下来 12 行，每行包含 12 个用空格隔开的浮点数，表示这个二维数组。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个数，表示所求的平均值或和的值，保留一位小数。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 752</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">操作类型(S/M)+144浮点数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">保留1位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">同NQ055</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>S
-2.4 7.8 9.4 -5.6 6.9 -4.9 4.8 0.8 3.6 1.7 -1.4 9.7
--6.8 -3.7 -2.0 -4.9 -4.5 -3.3 6.1 7.5 -4.3 5.9 -9.5 9.7
--5.5 -4.1 4.6 3.7 -4.4 -3.3 1.9 7.7 -4.7 -3.9 -7.1 -5.0
--3.4 -4.9 -7.3 -7.4 -4.0 -7.3 -3.8 -1.6 -4.8 8.5 3.9
--0.2 -2.0 -6.4 -9.8 3.7 -2.0 1.7 -3.6 -3.4 2.4 -1.2 -3.9
--9.3 3.8 -1.8 -4.4 -1.0 -2.4 2.8 -4.6 2.1 8.7 -6.8 -8.3
--4.4 -4.7 -2.3 -7.7 -3.7 -4.4 -1.2 -2.7 -4.8 -1.3 -7.1 -2.1
-0.4 8.6 -1.2 8.6 -1.2 8.9 1.6 2.8 -1.0 -3.9 2.7 -3.4
-7.5 -3.1 6.2 -4.5 -3.0 -2.5 -7.7 2.9 0.3 -3.3 -2.7 3.4
--5.8 -0.6 -0.4 -5.6 -0.6 -0.9 -0.7 -0.8 0.3 -3.7 -7.4 6.5
--3.3 -5.3 -7.3 -7.3 -0.8 -1.6 -1.3 -1.9 -1.3 -1.7 -2.1 -2.7
--6.4 6.8 -3.7 -4.7 0.2 5.8 -5.4 0.6 7.0 -4.2 -7.5 -2.4
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>40.9
-</pre></div>
+(144...)</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>(sum,1 decimal)</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>先判断第一行字母，再计算右方区域数据的和或平均值，保留一位小数。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>右方区域：j>i且i+j>10。30个元素。至此矩阵区域遍历全部完成。8道题的变化本质是条件表达式的组合。掌握了规律，任何形状的区域都能精确描述。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>四个"口"字区域全部完成后，你的二维数组遍历能力已经达到面试水平。Key takeaway：精确的行列条件表达式=矩阵操作的全部。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
@@ -631,48 +539,22 @@ print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if<
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ067</span>平方矩阵 II<span class="acw">AcWing 754</span></div>
-<div class="problem-desc">输入整数 N，输出一个 N 阶的二维数组。
-数组的形式参照样例。</div>
+<div class="problem-title"><span class="nq">NQ064</span>平方矩阵II<span class="acw">AcWing 754</span></div>
+<div class="problem-desc">"这道比上一道更简单！"小鲁看着平方矩阵II的模式：对角线是1，往外一层是2，再往外是3……"这不就是看每个位置到对角线的距离吗？"小华回答："对！abs(i-j)就是到对角线的'曼哈顿距离'——对角线上abs(i-j)=0→值0+1=1，偏离一格abs=1→值1+1=2。两种平方矩阵展示了两种数学建模：一个是到四条边的距离，一个是到对角线的距离。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入包含多行，每行包含一个整数 N。
-当输入行为 N = 0 时，表示输入结束，且该行无需作任何处理。
-数据范围0≤N≤100</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">对于每个输入整数 N，输出一个满足要求的 N 阶二维数组。
-每个数组占 N 行，每行包含 N 个用空格隔开的整数。
-每个数组输出完毕后，输出一个空行。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 754</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">多个整数N（0结束）。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">N×N矩阵，每个数占3字符宽。矩阵间空行。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1≤N≤100</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>1
-2
-3
-4
-5
+<div class="sample-col"><div class="col-label">输入</div><pre>3
 0</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>1
-
-1 2
-2 1
-
-1 2 3
-2 1 2
-3 2 1
-
-1 2 3 4
-2 1 2 3
-3 2 1 2
-4 3 2 1
-
-1 2 3 4 5
-2 1 2 3 4
-3 2 1 2 3
-4 3 2 1 2
-5 4 3 2 1
-
-</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>  1  2  3
+  2  1  2
+  3  2  1</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>|i-j|+1公式产生以主对角线为对称轴的矩阵。对角线上|i-j|=0→值=1，离对角线每远一步值增加1。这比平方矩阵I的"四边距离"公式更简单，展示了另一种数学建模方式。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>abs(i-j)+1。C++用stdlib的abs()，Python内置abs()。注意绝对值函数对负数的处理——自动取正。这种"距离模型"在矩阵题中非常常见。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -712,44 +594,22 @@ print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if<
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ068</span>平方矩阵 III<span class="acw">AcWing 755</span></div>
-<div class="problem-desc">输入整数 N，输出一个 N 阶的二维数组 M，这个 N 阶二维数组满足 M[i][j] = 2^(i+j)。
-具体形式可参考样例。</div>
+<div class="problem-title"><span class="nq">NQ065</span>平方矩阵III<span class="acw">AcWing 755</span></div>
+<div class="problem-desc">小鲁看着第三个平方矩阵：2^0, 2^1, 2^2... "这是指数增长！""对！"小华说，"两个技巧：第一，用位运算1<<(i+j)比pow(2,i+j)快很多；第二，N≤15的限制是精心设计的——N=15时最大值2^28≈2.68亿，刚好在int32范围内。如果N再大就要用long long甚至大整数了。题目设计者考虑得很周全。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入包含多行，每行包含一个整数 N。当输入行为 N = 0 时，表示输入结束，且该行无需作任何处理。
-数据范围0≤N≤15</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">对于每个输入整数 N，输出一个满足要求的 N 阶二维数组。每个数组占 N 行，每行包含 N 个用空格隔开的整数，输出完毕后需再输出一个空行。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 755</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">多个整数N（0结束）。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">每个数右对齐到最大数的宽度+1。矩阵间空行。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1≤N≤15</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>1
-2
-3
-4
-5
+<div class="sample-col"><div class="col-label">输入</div><pre>3
 0</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>1
-
-1 2
-2 4
-
-1 2 4
-2 4 8
-4 8 16
-
-1 2 4 8
-2 4 8 16
-4 8 16 32
-8 16 32 64
-
-1 2 4 8 16
-2 4 8 16 32
-4 8 16 32 64
-8 16 32 64 128
-16 32 64 128 256
-</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>  1  2  4
+  2  4  8
+  4  8 16</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>2^(i+j)模式。C++用1<<(i+j)位运算高效计算2的幂。Python可以2**(i+j)或1<<(i+j)。右对齐宽度=最长数字的位数+1。注意N≤15的限制：N=15时2^28≈2.68×10⁸(9位数)。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>C++的1<<k比pow(2,k)快得多。Python的2**k和1<<k性能相近。格式化右对齐：Python的f'{x:{w}d}'，C++的setw(w)。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
@@ -788,22 +648,21 @@ print(<span style="color: #A31515">f&#39;{</span>s <span style="color: #00F">if<
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ069</span>蛇形矩阵<span class="acw">AcWing 756</span></div>
-<div class="problem-desc">输入两个整数 n 和 m，输出一个 n 行 m 列的矩阵，将数字 1 到 n×m 按照回字蛇形填充至矩阵中。
-具体蛇形形式可参考样例。</div>
+<div class="problem-title"><span class="nq">NQ066</span>蛇形矩阵<span class="acw">AcWing 756</span></div>
+<div class="problem-desc">"最后一道是大boss——蛇形矩阵！"小鲁聚精会神地盯着屏幕。小华拿出了他的'镇山法宝'："四向数组：dx=[0,1,0,-1], dy=[1,0,-1,0]——分别代表右、下、左、上。从(0,0)出发向右走，撞墙或遇到已填的格子就顺时针转90度。方向数组是网格类问题的屠龙刀。"小栋补充道："其实你玩的贪吃蛇游戏引擎，底层就是这个算法。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入共一行，包含两个整数 n 和 m。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出满足要求的矩阵。矩阵占 n 行，每行包含 m 个用空格隔开的整数，输出完毕后需再输出一个空行。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 756</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行两个整数n和m。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">n行m列的蛇形矩阵。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1≤n,m≤100</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>3 3</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>1 2 3
 8 9 4
-7 6 5
-
-</pre></div>
+7 6 5</pre></div>
 </div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>方向数组+边界检测。dx=[0,1,0,-1], dy=[1,0,-1,0]依次控制→↓←↑。撞墙或已填则转向d=(d+1)%4。while循环填充所有格子。方向数组是解决螺旋/蛇形/遍历类问题的通用模板——只需改变方向顺序就能实现不同的遍历模式。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>方向数组是处理网格遍历的万能钥匙。记住4个方向的顺序和dx/dy的对应关系。Python中提前分配二维数组：[[0]*m for _ in range(n)]（注意不能用[[0]*m]*n——那是浅拷贝的经典陷阱！）。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -847,4 +706,13 @@ dx=[0,1,0,-1];dy=[1,0,-1,0];d=0;x=y=0
  x,y=nx,ny
 <span style="color: #00F">for</span> r <span style="color: #00F">in</span> a:print(<span style="color: #A31515">&#39; &#39;</span>.join(map(str,r)))
 </pre></div>
-</div></div><hr class="section-divider"><div class="chapter-end">— 第5章完 · 共12题 —</div></body></html>
+</div></div><hr class="section-divider">
+<div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>
+<li><strong>8种矩阵区域：</strong>4个三角（各66元素）+ 4个"口"字边（各30元素）= 精确遍历矩阵任意形状</li>
+<li><strong>3种填充模式：</strong>四边距离min公式、对角线距离abs公式、2的指数幂模式——用数学替代模拟</li>
+<li><strong>方向数组：</strong>dx=[0,1,0,-1], dy=[1,0,-1,0] → 控制四个方向旋转，蛇形/螺旋/遍历通用模板</li>
+<li><strong>对称思维：</strong>上下、左右区域只是i和j角色的互换。找规律>逐题应付——从学生到工程师的思维跃迁</li>
+<li><strong>关键技巧：</strong>Python二维列表[[0]*m for _ in range(n)]（不能用*操作符——那是浅拷贝陷阱！）</li>
+<li><strong>厦大精神：</strong>自强不息，止于至善。12道矩阵题过后，你的多维数组能力已经达到面试水平。</li>
+</ul></div>
+<div class="chapter-end">— 第5章完 · 共12题 · 自强不息 —</div></body></html>

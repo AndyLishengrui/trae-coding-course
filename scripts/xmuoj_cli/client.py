@@ -52,7 +52,7 @@ class XmuojClient:
 
     def login(self, username: str, password: str) -> Dict:
         """登录获取 token"""
-        resp = self.session.post(f"{self.public_api}/plugin/login", json={
+        resp = self.session.post(f"{self.public_api}/login", json={
             "username": username,
             "password": password,
         })
@@ -168,12 +168,12 @@ class XmuojClient:
         }
         if contest_id:
             payload["contest_id"] = contest_id
-        resp = self.session.post(f"{self.public_api}/plugin/submission", json=payload)
+        resp = self.session.post(f"{self.public_api}/submission", json=payload)
         return self._parse(resp)
 
     def get_submission(self, submission_id: str) -> Dict:
         """查询提交结果"""
-        return self._request("GET", f"{self.public_api}/plugin/submission?submission_id={submission_id}")
+        return self._request("GET", f"{self.public_api}/submission?id={submission_id}")
 
     # ===== Helper Methods =====
 

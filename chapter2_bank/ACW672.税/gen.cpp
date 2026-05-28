@@ -11,11 +11,11 @@ int main(int argc, char* argv[]) {
         case 3: cout << "4500.00" << endl; break;
         case 4: cout << "6000.00" << endl; break;
         case 5: cout << "2000.00" << endl; break;
-        case 6: printf("%.2f\n", (rand()%100000)/100.0+0.01); break;
-        case 7: printf("%.2f\n", (rand()%100000)/100.0+0.01); break;
-        case 8: printf("%.2f\n", (rand()%100000)/100.0+0.01); break;
-        case 9: printf("%.2f\n", (rand()%100000)/100.0+0.01); break;
-        case 10: printf("%.2f\n", (rand()%100000)/100.0+0.01); break;
+        case 6: printf("%.2f ", (rand()%100000)/100.0+0.01); break;
+        case 7: printf("%.2f ", (rand()%100000)/100.0+0.01); break;
+        case 8: printf("%.2f ", (rand()%100000)/100.0+0.01); break;
+        case 9: printf("%.2f ", (rand()%100000)/100.0+0.01); break;
+        case 10: printf("%.2f ", (rand()%100000)/100.0+0.01); break;
     }
     return 0;
 }

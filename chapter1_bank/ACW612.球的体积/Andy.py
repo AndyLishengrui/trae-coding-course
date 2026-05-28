@@ -1,2 +1,6 @@
-r = int(input())
-print(f"VOLUME = {4.0/3.0 * 3.14159 * r**3:.3f}")
+import sys
+data = sys.stdin.read().split()
+if data:
+    r = float(data[0])
+    v = (4.0 / 3.0) * 3.14159 * r ** 3
+    print(f"VOLUME = {v:.3f}")

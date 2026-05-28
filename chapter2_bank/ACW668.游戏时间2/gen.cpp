@@ -11,11 +11,11 @@ int main(int argc, char* argv[]) {
         case 3: cout << "7 8 9 10" << endl; break;
         case 4: cout << "0 0 0 0" << endl; break;
         case 5: cout << "23 59 0 0" << endl; break;
-        case 6: printf("%d %d\n", rand()%24, rand()%24); break;
-        case 7: printf("%d %d\n", rand()%24, rand()%24); break;
-        case 8: printf("%d %d\n", rand()%24, rand()%24); break;
-        case 9: printf("%d %d\n", rand()%24, rand()%24); break;
-        case 10: printf("%d %d\n", rand()%24, rand()%24); break;
+        case 6: printf("%d %d ", rand()%24, rand()%24); break;
+        case 7: printf("%d %d ", rand()%24, rand()%24); break;
+        case 8: printf("%d %d ", rand()%24, rand()%24); break;
+        case 9: printf("%d %d ", rand()%24, rand()%24); break;
+        case 10: printf("%d %d ", rand()%24, rand()%24); break;
     }
     return 0;
 }

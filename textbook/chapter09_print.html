@@ -1,7 +1,11 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第9章 分治之美</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999;font-family:"PingFang SC",sans-serif}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
-body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222}
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第9章 分治之美</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
+body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222;string-set:chapter"第9章 分治之美——排序与二分"}
 .chapter-title{text-align:center;font-size:20pt;font-weight:bold;margin:1.5em 0 .1em 0;letter-spacing:3pt}
 .chapter-subtitle{text-align:center;font-size:10pt;color:#777;margin-bottom:1.5em;padding-bottom:.8em;border-bottom:1px solid #bbb}
+.preface{font-size:10pt;margin-bottom:1.5em;color:#444}.preface p{margin:.3em 0;text-indent:2em}
+.preface h3{font-size:11pt;color:#2563eb;margin:1em 0 .3em 0}
+.knowledge-box{background:#f0f6ff;border:1pt solid #bdd;border-radius:4px;padding:.7em 1em;margin:.8em 0;font-size:9pt}
+.knowledge-box .k-title{font-weight:bold;color:#2563eb;margin-bottom:.3em;font-size:9.5pt}.knowledge-box p{margin:.2em 0}.knowledge-box ul{margin:.2em 0;padding-left:1.5em}
 .problem-title{font-size:12pt;font-weight:bold;margin:1.5em 0 .4em 0;padding-bottom:.15em;border-bottom:1pt solid #444}
 .problem-title .nq{color:#2563eb;margin-right:.6em;font-size:11pt}.problem-title .acw{font-size:7.5pt;color:#aaa;font-weight:normal;margin-left:1em}
 .problem-desc{margin:.6em 0 1em 0;text-indent:2em;line-height:1.85}
@@ -11,36 +15,49 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .spec-table .spec-label .tag{display:inline-block;padding:.15em .5em;border-radius:2px;color:#fff;font-size:7.5pt;letter-spacing:.5pt}
 .spec-table .spec-label .tag.in{background:#2563eb}.spec-table .spec-label .tag.out{background:#059669}.spec-table .spec-label .tag.lim{background:#d97706}
 .spec-table .spec-value{color:#333;font-size:9pt}
-.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.5em 1em;margin:.8em 0 1em 0}
-.sample-grid{display:flex;gap:1.5em}.sample-col{min-width:0}.sample-col:first-child{flex:1}.sample-col:last-child{flex:1}
-.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:0;font-weight:bold}
-.sample-col pre{background:none;border:none;padding:.2em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:8.5pt;line-height:1.3;white-space:pre-wrap;color:#333}
+.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.7em 1em;margin:1em 0 1.2em 0}
+.sample-grid{display:flex;gap:2em}.sample-col{flex:1}
+.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:.2em;font-weight:bold}
+.sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
 .insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
 .insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
 .code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
 .code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
 .code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
-.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
-body{string-set:chapter "第9章 分治之美——排序与二分"}</style></head><body>
-<div class="chapter-title">分治之美</div><div class="chapter-subtitle">排序与二分 · 7题 · C++ &amp; Python 双语对照</div>
+.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
+.chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
+.chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">分治之美</div>
+<div class="chapter-subtitle">排序与二分 · 7题 · C++ &amp; Python 双语对照</div>
+<div class="preface">
+<p>从本章开始，小鲁正式进入<strong>算法</strong>的世界。前面的语法和数据结构是工具，算法才是让程序"聪明"起来的灵魂。"排序——把混乱变成有序——是计算机科学中最基础也最深刻的主题。快排、归并、二分……这些经典算法经过几十年的打磨，至今仍是每个程序员的基本功。"小华严肃地说。</p>
+<p>本章7道题分三个板块：<strong>排序模板</strong>（快排+归并）——理解分治思想并将模板变成肌肉记忆；<strong>排序应用</strong>（快速选择+逆序对）——在排序过程中顺便解决更复杂的问题；<strong>二分查找</strong>（整数+实数）——利用有序性将搜索从O(n)降到O(log n)，这是算法优化的第一思维。</p>
+<h3>本章角色</h3>
+<p>🧑‍🎓 <strong>小鲁</strong>（进阶者）· 从语法期毕业，进入算法训练营——分治、排序、二分</p>
+<p>🧠 <strong>小华</strong>（算法队长）· "快排模板写100遍——背下来、默出来、成为肌肉记忆"</p>
+<p>🏗️ <strong>小栋</strong>（工程师）· "为什么不能直接调用sort()?"——理解算法原理和工程实践的关系</p>
+</div>
+<div class="knowledge-box"><div class="k-title">⚡ 排序与二分核心模板</div><ul>
+<li><strong>快排模板：</strong>取中值基准→do-while双指针→交换→递归[l,j]和[j+1,r]</li>
+<li><strong>归并模板：</strong>二分递归→双指针合并→复制回原数组。稳定O(n log n)</li>
+<li><strong>整数二分：</strong>左边界mid=l+r>>1, r=mid。右边界mid=l+r+1>>1, l=mid</li>
+<li><strong>实数二分：</strong>while(r-l>eps) mid=(l+r)/2。比整数二分简单——不需处理+1/-1</li>
+<li><strong>Python：</strong>sort()/sorted()快速排序，bisect_left/right二分。标准库是工程首选</li></ul></div>
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ106</span>快速排序<span class="acw">AcWing 785</span></div>
-<div class="problem-desc">给定你一个长度为n的整数数列。
-请你使用快速排序对这个数列按照从小到大进行排序。
-并将排好序的数列按顺序输出。</div>
+<div class="problem-desc">"排序——这是计算机科学里研究得最透彻的问题之一。"小华郑重地说，"给你n个乱序的整数，用快速排序把它们排好。快排的核心思想是'分治'——选一个基准数，把比它小的放左边，大的放右边，然后左右分别递归排序。这个模板你会写100遍——背下来，默出来，成为肌肉记忆。"小鲁试了试："do-while循环和指针的配合确实巧妙，不小心就会无限循环……"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入共两行，第一行包含整数 n。
-第二行包含 n 个整数（所有整数均在1--10^9范围内），表示整个数列。
-(1≤n≤100000)</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出共一行，包含 n 个整数，表示排好序的数列。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 785</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行整数n，第二行n个整数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">升序排列的n个整数，空格分隔。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n ≤ 100000，所有整数在1~10⁹范围内</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>5
 3 1 2 4 5</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>1 2 3 4 5</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>原题链接</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>快排模板：选基准x=arr[l+r>>1]，i=l-1,j=r+1双指针向中间移动，i找≥x的，j找≤x的，交换，直到i≥j，然后递归[l,j]和[j+1,r]。时间O(n log n)平均，最坏O(n²)。注意边界：用do-while避免死循环，用j而非i-1防止无限递归。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>快排背板要点：1)取中间值作基准避免最坏情况；2)i和j初始为l-1和r+1配合do-while；3)递归用j和j+1（不用i）。Python版sorted()内部用Timsort，实践中永远比手写快排好。但手写快排是理解分治思想的必修课。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
@@ -92,26 +109,45 @@ body{string-set:chapter "第9章 分治之美——排序与二分"}</style></he
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 快速排序</span>
+<span style="color: #00F">def</span> quicksort(arr, l, r):
+    <span style="color: #00F">if</span> l &gt;= r:
+        <span style="color: #00F">return</span>
+    x = arr[(l + r) // 2]
+    i, j = l - 1, r + 1
+    <span style="color: #00F">while</span> i &lt; j:
+        i += 1
+        <span style="color: #00F">while</span> arr[i] &lt; x:
+            i += 1
+        j -= 1
+        <span style="color: #00F">while</span> arr[j] &gt; x:
+            j -= 1
+        <span style="color: #00F">if</span> i &lt; j:
+            arr[i], arr[j] = arr[j], arr[i]
+    quicksort(arr, l, j)
+    quicksort(arr, j + 1, r)
+
+n = int(input())
+arr = list(map(int, input().split()))
+quicksort(arr, 0, n - 1)
+print(<span style="color: #A31515">&#39; &#39;</span>.join(map(str, arr)))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ107</span>快速选择第k个数<span class="acw">AcWing 786</span></div>
-<div class="problem-desc">给定一个长度为n的整数数列，以及一个整数k，请用快速选择算法求出数列的第k小的数是多少。</div>
+<div class="problem-title"><span class="nq">NQ107</span>第k个数<span class="acw">AcWing 786</span></div>
+<div class="problem-desc">"如果是找第k小的数——而不是排序整个数组呢？"小栋问。小华说："用快排的变种——快速选择算法。每次划分后，看第k个数落在左半边还是右半边，只递归那一边。平均O(n)时间找到第k小，比先排序O(n log n)再取第k个快。这就是'不需要的信息就不处理'的思维——算法优化的本质就是只做必要的工作。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含两个整数 n 和 k。
-第二行包含 n 个整数（所有整数均在1--10^9范围内），表示整数数列。
-数据范围:1≤n≤100000,1≤k≤n</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个整数，表示数列的第k小数。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 786</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行n和k，第二行n个整数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">第k小的数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n ≤ 100000，1 ≤ k ≤ n</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>5 3
 2 4 1 5 3</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>3</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>Andy讲解(2021)
-原题链接</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>快速选择：在快排划分基础上，设左半长度为sl=j-l+1。若k≤sl则在左半递归找第k小；否则在右半递归找第k-sl小。平均O(n)，最坏O(n²)（可通过随机选基准优化）。Python直接用nth_element或排序后取arr[k-1]。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>快速选择的核心是partition后的决策——只递归一边。这和二分查找的思想一样：每一步排除一半候选。最坏O(n²)可以用随机化基准数来规避——C++的nth_element就是这个算法。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
@@ -165,29 +201,46 @@ body{string-set:chapter "第9章 分治之美——排序与二分"}</style></he
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 第k个数</span>
+<span style="color: #00F">def</span> quick_select(arr, l, r, k):
+    <span style="color: #00F">if</span> l &gt;= r:
+        <span style="color: #00F">return</span> arr[l]
+    x = arr[(l + r) // 2]
+    i, j = l - 1, r + 1
+    <span style="color: #00F">while</span> i &lt; j:
+        i += 1
+        <span style="color: #00F">while</span> arr[i] &lt; x:
+            i += 1
+        j -= 1
+        <span style="color: #00F">while</span> arr[j] &gt; x:
+            j -= 1
+        <span style="color: #00F">if</span> i &lt; j:
+            arr[i], arr[j] = arr[j], arr[i]
+    sl = j - l + 1
+    <span style="color: #00F">if</span> k &lt;= sl:
+        <span style="color: #00F">return</span> quick_select(arr, l, j, k)
+    <span style="color: #00F">return</span> quick_select(arr, j + 1, r, k - sl)
+
+n, k = map(int, input().split())
+arr = list(map(int, input().split()))
+print(quick_select(arr, 0, n - 1, k))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ108</span>归并排序<span class="acw">AcWing 787</span></div>
-<div class="problem-desc">给定你一个长度为n的整数数列。
-请你使用归并排序对这个数列按照从小到大进行排序。
-并将排好序的数列按顺序输出。</div>
+<div class="problem-desc">"除了快排，还有一种经典排序——归并排序。"小华画出一个分叉图，"先把数组不断对半分，分到只有一个元素（自然有序），然后从下往上两两合并有序子数组。归并排序的优点是稳定且时间复杂度始终O(n log n)，缺点是需要额外O(n)空间。快排vs归并——这是算法课永恒的话题。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">输入共两行，第一行包含整数 n。
-第二行包含 n 个整数（所有整数均在1~109109范围内），表示整个数列。
-数据范围:1≤n≤100000</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出共一行，包含 n 个整数，表示排好序的数列。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 787</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行n，第二行n个整数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">升序排列的n个整数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n ≤ 100000</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>5
 3 1 2 4 5</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>1 2 3 4 5</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>Andy讲解(2021)
-
-原题链接</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>归并三步骤：1)递归划分mid=l+r>>1，merge_sort(l,mid)和merge_sort(mid+1,r)；2)双指针合并两个有序子数组到tmp；3)复制tmp回原数组。稳定排序，时间O(n log n)，空间O(n)。逆序对问题可以天然嵌入归并过程。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>归并是稳定排序——相等元素的相对位置不变。快排不稳定。Python用sorted()（稳定），C++用stable_sort（归并）和sort（快排）。理解归并对后续学习逆序对、CDQ分治至关重要。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
@@ -232,25 +285,47 @@ body{string-set:chapter "第9章 分治之美——排序与二分"}</style></he
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 归并排序</span>
+<span style="color: #00F">def</span> merge_sort(arr, l, r):
+    <span style="color: #00F">if</span> l &gt;= r:
+        <span style="color: #00F">return</span>
+    mid = (l + r) // 2
+    merge_sort(arr, l, mid)
+    merge_sort(arr, mid + 1, r)
+    tmp = []
+    i, j = l, mid + 1
+    <span style="color: #00F">while</span> i &lt;= mid <span style="color: #00F">and</span> j &lt;= r:
+        <span style="color: #00F">if</span> arr[i] &lt;= arr[j]:
+            tmp.append(arr[i])
+            i += 1
+        <span style="color: #00F">else</span>:
+            tmp.append(arr[j])
+            j += 1
+    tmp.extend(arr[i:mid + 1])
+    tmp.extend(arr[j:r + 1])
+    arr[l:r + 1] = tmp
+
+n = int(input())
+arr = list(map(int, input().split()))
+merge_sort(arr, 0, n - 1)
+print(<span style="color: #A31515">&#39; &#39;</span>.join(map(str, arr)))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ109</span>逆序对的数量<span class="acw">AcWing 788</span></div>
-<div class="problem-desc">给定一个长度为n的整数数列，请你计算数列中的逆序对的数量。
-逆序对的定义如下：对于数列的第 i 个和第 j 个元素，如果满足 i < j 且 a[i] > a[j]，则其为一个逆序对；否则不是。
-数据范围：1≤n≤100000</div>
+<div class="problem-desc">"统计数组中逆序对的数量——即i<j但a[i]>a[j]的对数。"小华说，"暴力两重循环O(n²)太慢。巧妙的方法？在归并排序的合并过程中统计！当左半的a[i]大于右半的a[j]时，左半从i到mid的所有数都大于a[j]，逆序对增加mid-i+1个。排序+统计一气呵成。注意答案可能超过int范围——用long long！"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含整数n，表示数列的长度。
-第二行包含 n 个整数，表示整个数列。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个整数，表示逆序对的个数。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 788</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行n，第二行n个整数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">逆序对总数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n ≤ 100000，答案可能超int</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>6
 2 3 4 5 6 1</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>5</pre></div>
 </div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>归并排序嵌入计数：当a[i]>a[j]时，cnt+=mid-i+1（左半剩余元素全部形成逆序对）。归并过程中自然完成了逆序对统计。时间复杂度O(n log n)，比暴力O(n²)快4个数量级（n=10⁵时）。逆序对数量是衡量数组"混乱程度"的指标。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>C++必须用long long存储cnt——n=10⁵时逆序对最多约5×10⁹超过int。Python自带大整数。这道题是归并排序最重要的应用之一——理解'在归并过程中顺便统计'是分治算法的精髓。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
@@ -302,37 +377,52 @@ body{string-set:chapter "第9章 分治之美——排序与二分"}</style></he
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 逆序对的数量</span>
+<span style="color: #00F">def</span> merge_count(arr, l, r):
+    <span style="color: #00F">if</span> l &gt;= r:
+        <span style="color: #00F">return</span> 0
+    mid = (l + r) // 2
+    cnt = merge_count(arr, l, mid) + merge_count(arr, mid + 1, r)
+    tmp = []
+    i, j = l, mid + 1
+    <span style="color: #00F">while</span> i &lt;= mid <span style="color: #00F">and</span> j &lt;= r:
+        <span style="color: #00F">if</span> arr[i] &lt;= arr[j]:
+            tmp.append(arr[i])
+            i += 1
+        <span style="color: #00F">else</span>:
+            tmp.append(arr[j])
+            j += 1
+            cnt += mid - i + 1
+    tmp.extend(arr[i:mid + 1])
+    tmp.extend(arr[j:r + 1])
+    arr[l:r + 1] = tmp
+    <span style="color: #00F">return</span> cnt
+
+n = int(input())
+arr = list(map(int, input().split()))
+print(merge_count(arr, 0, n - 1))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ110</span>二分试炼之数的范围<span class="acw">AcWing 789</span></div>
-<div class="problem-desc">给定一个按照升序排列的长度为n的整数数组，以及 q 个查询。
-对于每个查询，返回一个元素k的起始位置和终止位置（位置从0开始计数）。
-如果数组中不存在该元素，则返回“-1 -1”。
-数据范围
-1≤n≤100000
-1≤q≤10000
-1≤k≤10000</div>
+<div class="problem-title"><span class="nq">NQ110</span>数的范围<span class="acw">AcWing 789</span></div>
+<div class="problem-desc">"在一个升序数组里，某个数出现了多次——请找出它第一次和最后一次出现的位置。"小栋出题。小鲁说："遍历一遍就行！"小华摇头："数组有10⁵个元素，查询10⁴次——O(n×q)要10⁹次操作，超时。需要用二分——O(log n)每次查询。二分的精髓：用mid+1或mid不停缩小范围，直到找到边界。整数二分的边界处理是90%的人都会写错的地方。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含整数n和q，表示数组长度和询问个数。
-第二行包含n个整数（均在1~10000范围内），表示完整数组。
-接下来q行，每行包含一个整数k，表示一个询问元素。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共q行，每行包含两个整数，表示所求元素的起始位置和终止位置。
-如果数组中不存在该元素，则返回“-1 -1”。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 789</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行n和q，第二行n个升序整数，然后q行每行一个查询k。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">每个查询输出k的起始和终止位置，不存在输出-1 -1。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n ≤ 100000，1 ≤ q ≤ 10000</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>6 3
 1 2 2 3 3 4
 3
-4
+2
 5</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>3 4
-5 5
+1 2
 -1 -1</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>原题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>二分查找左右边界：左边界→while(l<r):mid=l+r>>1; if(a[mid]>=k) r=mid else l=mid+1。右边界→while(l<r):mid=l+r+1>>1; if(a[mid]<=k) l=mid else r=mid-1。注意右边界二分的mid要+1避免死循环。Python可用bisect_left和bisect_right。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>整数二分最关键的差异：左边界mid=l+r>>1，右边界mid=l+r+1>>1（不+1会死循环）。记住：l=mid时mid要+1，r=mid时不用。二分是OI/ACM中最基础也是最容易写错的算法——花时间理解透彻值得。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
@@ -406,25 +496,50 @@ body{string-set:chapter "第9章 分治之美——排序与二分"}</style></he
 <span style="color: #008000">//     return left;</span>
 <span style="color: #008000">// }</span>
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 数的范围</span>
+<span style="color: #00F">def</span> left_bound(arr, x):
+    l, r = 0, len(arr) - 1
+    <span style="color: #00F">while</span> l &lt; r:
+        mid = (l + r) // 2
+        <span style="color: #00F">if</span> arr[mid] &gt;= x:
+            r = mid
+        <span style="color: #00F">else</span>:
+            l = mid + 1
+    <span style="color: #00F">return</span> l <span style="color: #00F">if</span> arr[l] == x <span style="color: #00F">else</span> -1
+
+<span style="color: #00F">def</span> right_bound(arr, x):
+    l, r = 0, len(arr) - 1
+    <span style="color: #00F">while</span> l &lt; r:
+        mid = (l + r + 1) // 2
+        <span style="color: #00F">if</span> arr[mid] &lt;= x:
+            l = mid
+        <span style="color: #00F">else</span>:
+            r = mid - 1
+    <span style="color: #00F">return</span> l <span style="color: #00F">if</span> arr[l] == x <span style="color: #00F">else</span> -1
+
+n, q = map(int, input().split())
+arr = list(map(int, input().split()))
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(q):
+    x = int(input())
+    a = left_bound(arr, x)
+    b = right_bound(arr, x)
+    print(a, b)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ111</span>数的三次方根<span class="acw">AcWing 790</span></div>
-<div class="problem-desc">给定一个浮点数n，求它的三次方根。
-
-数据范围:−10000≤n≤10000</div>
+<div class="problem-desc">"整数二分搞定了，那实数二分呢？"小鲁问。"比如计算n的三次方根，精确到10⁻⁶。"小华说，"实数二分比整数二分简单——不需要处理+1/-1的边界。设定精度阈值（如1e-8），while(r-l>1e-8)不断对半分。浮点二分的优势：不需要纠结mid的取值，收敛极快——log₂(10⁸)≈27步即可到目标精度。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含一个浮点数n。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共一行，包含一个浮点数，表示问题的解。
-注意，结果保留6位小数。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 790</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个浮点数n。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">n的三次方根，保留6位小数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10000 ≤ n ≤ 10000</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>1000.00</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>10.000000</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>原题链接</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>实数二分：设l=-10000,r=10000（范围包含答案），while(r-l>1e-8): mid=(l+r)/2; if(mid³≥n) r=mid else l=mid。输出r保留6位小数（printf("%.6lf",r)）。收敛步数=log₂(范围/精度)≈log₂(20000/1e-8)≈41步——非常快。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>实数二分不需要处理整数二分的mid+1问题。直接mid=(l+r)/2即可。精度通常比要求多两位（要求1e-6则迭代到1e-8）。C++用double，Python用float。注意n为负数时三次方根也为负。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
@@ -447,16 +562,25 @@ body{string-set:chapter "第9章 分治之美——排序与二分"}</style></he
     printf(<span style="color: #A31515">&quot;%lf&quot;</span>, left);
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 数的三次方根</span>
+n = float(input())
+l, r = -10000.0, 10000.0
+<span style="color: #00F">while</span> r - l &gt; 1e-8:
+    mid = (l + r) / 2.0
+    <span style="color: #00F">if</span> mid ** 3 &gt;= n:
+        r = mid
+    <span style="color: #00F">else</span>:
+        l = mid
+print(<span style="color: #A31515">f&#39;{</span>r<span style="color: #A31515">:.6f}&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ112</span>菱形<span class="acw">AcWing 727</span></div>
-<div class="problem-desc">输入一个奇数n，输出一个由*构成的n阶实心菱形。菱形中心为第(n+1)/2行，每行星号数量以中心对称。</div>
+<div class="problem-desc">"最后来一道'画图题'放松一下——打印一个菱形！"小华说，"看起来简单，但其实考察的是曼哈顿距离的几何直觉。菱形中心到四边的曼哈顿距离是n/2，每个位置如果到中心距离≤n/2就填*否则填空格。这道题把几何和格式化输出结合起来——是算法竞赛中'观察规律→数学建模→代码实现'的完美微型案例。"</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个奇数n。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个由*构成的n阶实心菱形。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 727</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">n行菱形图案，中心行有n个*。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n ≤ 100，n为奇数</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>5</pre></div>
@@ -466,7 +590,8 @@ body{string-set:chapter "第9章 分治之美——排序与二分"}</style></he
  ***
   *</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>数据范围: 1≤n≤99</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>曼哈顿距离模型：设中心cx=cy=n/2。对于每个位置(i,j)，如果abs(i-cx)+abs(j-cy)≤n/2则填*否则空格。这种'距离阈值'的判断方式在心形、沙漏等图案题中都通用。时间复杂度O(n²)。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>曼哈顿距离=|x1-x2|+|y1-y2|。菱形就是曼哈顿距离≤阈值的点集。换欧几里得距离就是圆形。理解这种几何距离与图形形状的关系，是计算机图形学的基础。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
@@ -490,6 +615,25 @@ body{string-set:chapter "第9章 分治之美——排序与二分"}</style></he
   <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 菱形</span>
+n = int(input())
+cx = cy = n // 2
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(n):
+    row = []
+    <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(n):
+        <span style="color: #00F">if</span> abs(i - cx) + abs(j - cy) &lt;= n // 2:
+            row.append(<span style="color: #A31515">&#39;*&#39;</span>)
+        <span style="color: #00F">else</span>:
+            row.append(<span style="color: #A31515">&#39; &#39;</span>)
+    print(<span style="color: #A31515">&#39;&#39;</span>.join(row))
 </pre></div>
-</div></div><hr class="section-divider"><div class="chapter-end">— 第9章完 · 共7题 —</div></body></html>
+</div></div><hr class="section-divider">
+<div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>
+<li><strong>快排模板：</strong>O(n log n)平均。do-while+双指针+分治递归。非稳定排序</li>
+<li><strong>归并模板：</strong>O(n log n)保证。稳定排序。额外O(n)空间。可在合并过程统计逆序对</li>
+<li><strong>快速选择：</strong>基于快排划分，O(n)平均找第k小。只递归一边——"不需要的信息就不处理"</li>
+<li><strong>整数二分：</strong>左边界和右边界模板不同——注意mid是否需要+1避免死循环</li>
+<li><strong>实数二分：</strong>无需处理+1/-1边界。迭代到目标精度+2位即可</li>
+<li><strong>厦大精神：</strong>自强不息。把这些模板练成肌肉记忆——它们是你算法之路的基石</li>
+</ul></div>
+<div class="chapter-end">— 第9章完 · 共7题 · 自强不息 —</div></body></html>

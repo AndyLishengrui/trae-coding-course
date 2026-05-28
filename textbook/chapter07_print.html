@@ -1,7 +1,12 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第7章 模块化的力量</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999;font-family:"PingFang SC",sans-serif}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
-body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222}
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第7章 模块化的力量</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
+body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222;string-set:chapter"第7章 模块化的力量——函数、递归与库的威力"}
 .chapter-title{text-align:center;font-size:20pt;font-weight:bold;margin:1.5em 0 .1em 0;letter-spacing:3pt}
 .chapter-subtitle{text-align:center;font-size:10pt;color:#777;margin-bottom:1.5em;padding-bottom:.8em;border-bottom:1px solid #bbb}
+.preface{font-size:10pt;margin-bottom:1.5em;color:#444}.preface p{margin:.3em 0;text-indent:2em}
+.preface h3{font-size:11pt;color:#2563eb;margin:1em 0 .3em 0}
+.knowledge-box{background:#f0f6ff;border:1pt solid #bdd;border-radius:4px;padding:.7em 1em;margin:.8em 0;font-size:9pt}
+.knowledge-box .k-title{font-weight:bold;color:#2563eb;margin-bottom:.3em;font-size:9.5pt}
+.knowledge-box p{margin:.2em 0}.knowledge-box ul{margin:.2em 0;padding-left:1.5em}
 .problem-title{font-size:12pt;font-weight:bold;margin:1.5em 0 .4em 0;padding-bottom:.15em;border-bottom:1pt solid #444}
 .problem-title .nq{color:#2563eb;margin-right:.6em;font-size:11pt}.problem-title .acw{font-size:7.5pt;color:#aaa;font-weight:normal;margin-left:1em}
 .problem-desc{margin:.6em 0 1em 0;text-indent:2em;line-height:1.85}
@@ -11,31 +16,50 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .spec-table .spec-label .tag{display:inline-block;padding:.15em .5em;border-radius:2px;color:#fff;font-size:7.5pt;letter-spacing:.5pt}
 .spec-table .spec-label .tag.in{background:#2563eb}.spec-table .spec-label .tag.out{background:#059669}.spec-table .spec-label .tag.lim{background:#d97706}
 .spec-table .spec-value{color:#333;font-size:9pt}
-.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.5em 1em;margin:.8em 0 1em 0}
-.sample-grid{display:flex;gap:1.5em}.sample-col{min-width:0}.sample-col:first-child{flex:1}.sample-col:last-child{flex:1}
-.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:0;font-weight:bold}
-.sample-col pre{background:none;border:none;padding:.2em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:8.5pt;line-height:1.3;white-space:pre-wrap;color:#333}
+.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.7em 1em;margin:1em 0 1.2em 0}
+.sample-grid{display:flex;gap:2em}.sample-col{flex:1}
+.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:.2em;font-weight:bold}
+.sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
 .insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
 .insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
 .code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
 .code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
 .code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
-.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
-body{string-set:chapter "第7章 模块化的力量——函数、递归与库的威力"}</style></head><body>
-<div class="chapter-title">模块化的力量</div><div class="chapter-subtitle">函数、递归与库的威力 · 13题 · C++ &amp; Python 双语对照</div>
+.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
+.chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
+.chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">模块化的力量</div>
+<div class="chapter-subtitle">函数、递归与库的威力 · 12题 · C++ &amp; Python 双语对照</div>
+<div class="preface">
+<p>小鲁已经写了上百行代码了。但他发现一个问题："同样的逻辑我写了好几遍——求最大值、算阶乘、交换变量……能不能写一次，到处用？"小华笑道："你终于感受到<strong>函数</strong>的需求了！函数是编程中最基本、最重要的抽象手段——把一段逻辑打包装箱，贴个标签，以后直接叫名字就能用。"</p>
+<p>本章12道题分三个板块：<strong>函数定义与调用</strong>（NQ083-088）——学会参数传递、返回值、数组传参；<strong>递归思维</strong>（NQ089-093）——函数自己调用自己，基础案例→记忆化优化→回溯搜索；<strong>标准库的威力</strong>——Python的math/lib等内置库让你的代码量减少90%。记住：<strong>写函数的第一原则是</strong>——先看看标准库有没有现成的。</p>
+<h3>本章角色</h3>
+<p>🧑‍🎓 <strong>小鲁</strong>（初学者）· 从"重复代码"的痛苦中领悟函数的必要性</p>
+<p>🧠 <strong>小华</strong>（算法高手）· 深入讲解C++引用传递vs Python对象引用，递归vs递推</p>
+<p>🏗️ <strong>小栋</strong>（工程师）· 用网格走方格、跳台阶等实际问题引入DP思维</p>
+<p>🏛️ <strong>小嘉</strong>（校主精神）· 带来《九章算术》的gcd算法，强调数学与编程的千年共鸣</p>
+</div>
+<div class="knowledge-box"><div class="k-title">🧩 函数三大价值 + C++ vs Python 对比</div><ul>
+<li><strong>封装：</strong>把逻辑打包→隐藏细节→只暴露接口。调用者不需要知道内部实现</li>
+<li><strong>复用：</strong>写一次用百次。修改时只改一处</li>
+<li><strong>抽象：</strong>fact(n)比"从1乘到n"高一个思考层次——用函数名表达意图</li>
+<li><strong>参数传递：</strong>C++值传递vs引用传递(&)→&使函数能修改外部变量；Python"传对象引用"→可变对象（list）可被修改，不可变对象（int）不能</li>
+<li><strong>递归vs递推：</strong>递归自顶向下（优雅但耗栈），递推自底向上（高效但需手动管理状态）</li>
+<li><strong>标准库优先：</strong>math.gcd/factorial/comb, itertools.permutations, @lru_cache——先查库再动手</li></ul></div>
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ083</span>n的阶乘<span class="acw">AcWing 804</span></div>
-<div class="problem-desc">输入一个整数n，请你编写一个函数 int fact(int n)，计算并输出n的阶乘。</div>
+<div class="problem-desc">小鲁正对着一道数学题发愁："5! = 5×4×3×2×1 = 120，这个我还能手算……但是如果要算10!怎么办？"小华拉过键盘："函数就是做这个的！你把'计算阶乘'封装成一个fact(n)函数——每次需要算阶乘的时候调用它就行。这就叫'封装'。Python直接import math; math.factorial(10)一行搞定，但理解函数定义与调用的关系，比直接用库更重要。"</div>
 <table class="spec-table">
 <tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含一个整数n。</td></tr>
 <tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共一行，包含一个整数表示n的阶乘的值。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 804</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n ≤ 10</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>3</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>6</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>数据范围: 1≤n≤10</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>阶乘n! = 1×2×...×n。用for循环累乘。C++需定义int fact(int n)函数，Python可以def fact(n)或直接用math.factorial()。int在n≤10范围内安全（最大10! = 3,628,800）。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的math.factorial()使用高效的C实现。手写版关键是用result=1初始化然后for i in range(1,n+1):result*=i。初始化是初学者最常犯的bug——用0而不是1会导致结果永远是0。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -64,17 +88,18 @@ body{string-set:chapter "第7章 模块化的力量——函数、递归与库�
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ084</span>x和y的最大值<span class="acw">AcWing 805</span></div>
-<div class="problem-desc">输入两个整数x和y，请你编写一个函数 int max(int x, int y)，计算并输出x和y的最大值。</div>
+<div class="problem-desc">"写个函数，输入两个数，返回较大的那个。"小栋对小鲁说。"这还用函数？直接if判断不就行了。"小鲁反驳。小华摇摇头："在大的程序里，你可能要在几十个地方都用max——每次都写if多麻烦，而且如果max逻辑改了（比如要支持更多参数），你要改几十处。有了max(x,y)函数，改一次，处处生效。这就是函数的第二个价值：代码复用。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含两个整数x和y。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共一行，包含一个整数，表示两个数中较大的那个数。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 805</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，两个整数x和y。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">一个整数，较大者。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−100 ≤ x,y ≤ 100</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>3 5</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>5</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>数据范围: −100≤x,y≤100</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>函数封装max逻辑：if x>y return x else return y。C++用int max(int x,int y)，Python用def my_max(x,y): return x if x>y else y。理解函数签名（参数名+类型+返回值）是设计函数的第一步。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>C++的三元运算符：return x>y?x:y。Python: return x if x>y else y。两种语法看似不同，语义完全一样——条件→值1→值2。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -101,21 +126,18 @@ body{string-set:chapter "第7章 模块化的力量——函数、递归与库�
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ085</span>最大公约数<span class="acw">AcWing 808</span></div>
-<div class="problem-desc">输入两个整数 a 和 b，请编写一个函数 int gcd(int a, int b)，计算并输出 a 和 b 的最大公约数。</div>
+<div class="problem-desc">小嘉从南洋经商归来，带回了一道古老的问题："两个正整数，找到能同时整除它们的最大数——这就是《九章算术》里的'更相减损术'，也就是欧几里得算法。"小华在屏幕上写道："gcd(a,b)=gcd(b,a%b)，一直递归到b=0时返回a。这是两千年前的算法，至今仍然是求GCD最高效的方法。Python的math.gcd()内部用的就是它。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含两个整数 a 和 b。
-数据范围：1 ≤ a, b ≤ 1000</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共一行，包含一个整数，表示 a 和 b 的最大公约数。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 808</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，两个整数a和b。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">一个整数，a和b的最大公约数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ a,b ≤ 10⁹</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>12 16
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>4
-</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>12 18</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>6</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>欧几里得算法：while b: a,b = b,a%b; return a。Python的a,b=b,a%b一行完成交换和取余。C++用while(b){int t=a%b;a=b;b=t;}。时间复杂度O(log min(a,b))——对10⁹只需约30次运算。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python一行gcd：while b: a,b = b, a%b。这个"元组解包+赋值"的写法是Python递推算法的标志性代码。math.gcd()底层是C实现，更快但手写更理解原理。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -143,23 +165,18 @@ body{string-set:chapter "第7章 模块化的力量——函数、递归与库�
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ086</span>交换数值<span class="acw">AcWing 811</span></div>
-<div class="problem-desc">输入两个整数 x 和 y，请编写一个函数，交换两个整数的数值并输出交换后的 x 和 y。
-C++ 中的格式为：void swap(int &x, int &y) 。
-Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
+<div class="problem-desc">"交换两个变量的值——这是编程的'hello world'动作。"小华说，"C++需要传引用（&）或者用指针，否则函数内的交换不会影响外部变量。Python的函数参数是'传对象引用'——列表可变会受影响，整数不可变不会。但Python有更优雅的方式：a,b = b,a——直接元组解包交换，不需要函数！"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含两个整数 x 和 y。
-数据范围：1 ≤ x, y ≤ 100</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共一行，包含交换后的 x 和 y。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 811</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，两个整数x和y。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">一行，交换后的两个整数（用空格分开）。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">−10⁹ ≤ x,y ≤ 10⁹</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>3 5
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>5 3
-</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>3 5</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>5 3</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>C++的难点：值传递vs引用传递。void swap(int &a,int &b){int t=a;a=b;b=t;}中的&是关键——没有&则函数内的交换不影响调用处。Python直接用x,y=y,x一行交换，无需定义函数。理解这个差异是理解两种语言参数传递模型的关键。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的a,b=b,a是元组解包——等式右边先创建元组(b,a)，然后解包赋值给a和b。这是Python最优雅的语法糖之一。C++用std::swap(a,b)最简单。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -191,24 +208,19 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ087</span>打印数字<span class="acw">AcWing 812</span></div>
-<div class="problem-desc">输入一个长度为 n 的数组 a 和一个整数 size，请编写一个函数 void print(int a[], int size)，打印数组 a 中的前 size 个数。
-注意：对于 Python 语言，print 是内置函数，所以本题中使用 print1D() 这个函数名，来避免跟内置函数产生冲突。</div>
+<div class="problem-desc">"我想写一个函数print_array(arr, size)，传入一个数组和它的大小，自动打印所有元素。"小鲁跃跃欲试。小华说："C++中数组作为参数时退化为指针，必须显式传size。Python的list自带长度信息，不需要额外参数。这个差异体现了两种语言的设计哲学：C追求零开销，Python追求方便安全。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含两个整数 n 和 size。
-第二行包含 n 个整数 a[i]，表示整个数组。
-数据范围：1 ≤ n ≤ 1000，1 ≤ size ≤ n</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共一行，包含 size 个整数，表示数组的前 size 个数。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 812</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行n和size，第二行n个数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">打印前size个元素，空格分隔。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ size ≤ n ≤ 1000</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>5 3
-1 2 3 4 5
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>1 2 3
-</pre></div>
+1 2 3 4 5</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>1 2 3</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>C++数组参数退化为指针——void print(int a[], int size)。必须传size。Python的list自带__len__，for x in arr自动遍历。数组传参是理解C指针与Python引用差异的典型案例。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>C++中int a[]作参数等同于int* a——丢失了长度信息。这就是为什么C风格的数组操作几乎都带size参数。Python没有这个问题——每个list都知道自己的长度。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -243,29 +255,21 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ088</span>打印矩阵<span class="acw">AcWing 813</span></div>
-<div class="problem-desc">给定一个 row x col 的二维数组 a，请编写一个函数 void print2D(int a[][N], int row, int col)，
-打印数组构成的 row 行，col 列的矩阵。
-注意，每打印完一整行需要输出一个回车。</div>
+<div class="problem-desc">"升级了！现在要打印一个二维矩阵。"小栋把题目升级。小华说："C++需要指定第二维的大小——void print(int a[][100], int row, int col)。注意：只有第一维可以省略，第二维必须指定（编译器需要知道每行的大小来做地址计算）。Python就简单多了——list of lists，遍历即打印。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含两个整数 row, col。
-接下来 row 行，每行包含 col 个整数，表示完整二维数组 a。
-数据范围：1 ≤ row ≤ 100，1 ≤ col ≤ 100</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共 row 行，每行 col 个整数，表示打印出的矩阵。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 813</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行row和col，然后row行col列。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">按行列格式打印矩阵。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ row,col ≤ 100</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>3 4
-1 3 4 5
-2 6 9 4
-1 4 7 5
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>1 3 4 5
-2 6 9 4
-1 4 7 5
-</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>2 3
+1 2 3
+4 5 6</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>1 2 3
+4 5 6</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>C++二维数组参数：void print(int a[][100], int r, int c)。第二维必须指定大小。Python: def print_matrix(mat): for row in mat: print(*row)一键解包输出。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的print(*row)用*解包列表——等价于print(row[0],row[1],row[2])。这是Python打印列表最优雅的写法。C++的二维数组参数中第二维大小是编译期常量限制——动态大小的矩阵需要用vector或动态数组。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -303,17 +307,18 @@ Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ089</span>递归求阶乘<span class="acw">AcWing 819</span></div>
-<div class="problem-desc">请使用递归的方式求n的阶乘。递归公式：fact(n)=n×fact(n−1)，fact(1)=1。</div>
+<div class="problem-desc">"之前我们用循环写阶乘——现在用递归！"小华说，"递归就是函数自己调用自己。fact(n)=n×fact(n-1)，fact(0)=1。代码只有3行，但理解它需要'递归思维'——假设fact(n-1)已知，你只需要乘上n。"小鲁试着在纸上展开fact(4)→4×fact(3)→4×3×fact(2)→...→24。"确实优雅！但感觉比循环多用了空间。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含一个整数n。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共一行，包含一个整数，表示n的阶乘的值。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 819</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个整数n。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">n的阶乘。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0 ≤ n ≤ 10</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>5</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>120</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>4</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>24</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>数据范围: 1≤n≤10</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>递归三板斧：1.基条件if n==0 return 1；2.递归调用fact(n-1)；3.组合结果n*fact(n-1)。递归需要调用栈——每层递归占用栈空间。循环O(1)空间，递归O(n)栈空间——这是递归的代价。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python递归深度默认限制1000层（可改）。递归优雅但对深度大的问题可能栈溢出（Stack Overflow——是的，那个著名的程序员问答网站名字就这么来的）。小n用递归，大n用循环。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -341,22 +346,18 @@ print(f(int(input())))
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ090</span>递归求斐波那契数列<span class="acw">AcWing 820</span></div>
-<div class="problem-desc">请使用递归的方式求斐波那契数列的第 n 项，下标从 1 开始。
-斐波那契数列：1, 1, 2, 3, 5 ...，这个数列从第 3 项开始，每一项都等于前两项之和。</div>
+<div class="problem-desc">"fib(n) = fib(n-1) + fib(n-2)——多优雅的递归定义！"小鲁兴奋地写下了递归版的斐波那契。"但是n=40时我的电脑卡住了！"小华严肃地说："这就是经典的反面教材——朴素的递归斐波那契做了大量重复计算（fib(5)被算了8次！）。解决方法有两种：循环递推或带缓存的递归。Python的@lru_cache装饰器——一行注解，递归变成O(n)，魔法般的效果。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">共一行，包含整数 n。
-数据范围：1 ≤ n ≤ 30</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共一行，包含一个整数，表示斐波那契数列的第 n 项。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 820</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个整数n。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">第n项斐波那契数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">0 ≤ n ≤ 60</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>4
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>3
-</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>5</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>5</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>朴素递归O(2ⁿ)——指数爆炸。加缓存（Python的@lru_cache或手写字典记录已算过的值）→O(n)。递推循环O(n)+O(1)空间。递归+缓存和递推循环等价——前者自顶向下（Top-down DP），后者自底向上（Bottom-up DP）。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python: from functools import lru_cache; @lru_cache(None); def fib(n): return n if n<2 else fib(n-1)+fib(n-2)。@lru_cache是Python动态规划的核武器——加一行注解，任何纯函数的重复计算问题瞬间解决。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -383,21 +384,18 @@ print(f(int(input())))
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ091</span>跳台阶<span class="acw">AcWing 821</span></div>
-<div class="problem-desc">一个楼梯有 n 级台阶，每次可走一级或两级，求从第 0 级走到第 n 级的方案数。</div>
+<div class="problem-desc">小鲁在操场上练习跳台阶——每次可以跳1级或2级。"10级台阶有多少种不同的跳法？"小华问。小鲁想了想："到第n级的跳法=到第n-1级的跳法（跳1级上来）+到第n-2级的跳法（跳2级上来）。这不就是斐波那契数列吗？"小华笑了："没错！这就是为什么递推思维如此重要——表面上不同的问题，底层可能是同一个数学模型。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行一个整数 n。
-数据范围：1 ≤ n ≤ 15</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">一个整数表示方案数。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 821</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个整数n。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">跳法总数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n ≤ 15</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>5
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>8
-</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>4</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>5</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>f(n)=f(n-1)+f(n-2)，f(1)=1,f(2)=2。和斐波那契的递推公式一样但基条件不同（f(2)=2而非1）。注意n≤15时int足够。Python一行：a,b=1,2;for _ in range(n-1):a,b=b,a+b;print(a)。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>这是最简单的DP入门题。学会识别"可以从前一步/前两步转移过来"的模式。这种"状态转移"思维将贯穿整个算法学习——背包、最长子序列、编辑距离……本质都是这个框架。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -433,21 +431,18 @@ n=int(input());print(f(n))
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ092</span>走方格<span class="acw">AcWing 822</span></div>
-<div class="problem-desc">给定 n x m 的方格阵，从左上角 (0, 0) 开始，每次只能往右或往下走一个单位距离，求走到右下角 (n, m) 的走法数量。</div>
+<div class="problem-desc">小栋画了一个n×m的网格："从(0,0)走到(n,m)，每次只能向右或向下走一步——有多少种不同的走法？"小鲁兴奋地说："这不就是组合数C(n+m, n)吗？总共要走n+m步，选其中n步向右。"小华补充道："对——但如果你想用代码算，递推公式f[i][j]=f[i-1][j]+f[i][j-1]更通用。Python一行math.comb(n+m, n)搞定——标准库的强大之处。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行两个整数 n 和 m。
-数据范围：1 ≤ n, m ≤ 10</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">一个整数表示走法数量。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 822</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行，两个整数n和m。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">走法总数。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n,m ≤ 10</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>2 3
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>10
-</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>2 3</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>10</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>组合数C(n+m, n) = (n+m)! / (n!×m!)。Python: math.comb(n+m, n)一行。递推DP: f[i][j]=f[i-1][j]+f[i][j-1]; f[0][*]=f[*][0]=1。两种思维都正确——前者用数学知识，后者用DP框架。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python 3.8+的math.comb(n,k)计算组合数——比手写阶乘除法更安全（避免了整数溢出）。C++中n+m≤20时可用long long存组合数。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -480,26 +475,23 @@ n=int(input());print(f(n))
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ093</span>排列<span class="acw">AcWing 823</span></div>
-<div class="problem-desc">给定整数 n，将数字 1 ~ n 按字典序输出所有排列方法。</div>
+<div class="problem-desc">"用递归生成1到n的所有排列——这是搜索算法的入门课。"小华在白板上画出搜索树："第1层选第1个数（n种选择），第2层选第2个数（n-1种选择）……一直到选完n个数。每次递归深入一层，用used数组标记哪些数已经被用了。这个回溯框架将贯穿你的整个搜索算法学习——从排列到N皇后，从数独到旅行商问题。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一行一个整数 n。
-数据范围：1 ≤ n ≤ 9</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">按字典序输出所有排列方案，每个方案占一行。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 823</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">一个整数n。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">1~n的所有排列，每行一个排列。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n ≤ 9</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>3
-</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>3</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>1 2 3
 1 3 2
 2 1 3
 2 3 1
 3 1 2
-3 2 1
-</pre></div>
+3 2 1</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>DFS回溯：dfs(path, used)，当len(path)==n时输出。每次从未被used标记的数中选一个加入path，递归完成后撤销选择（回溯）。Python的itertools.permutations(range(1,n+1))一行搞定——库函数也是用类似的算法实现的。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python: from itertools import permutations; for p in permutations(range(1,n+1)): print(*p)。手写回溯用递归+used数组，itertools用C实现更快。理解回溯框架>会调库——因为库不能解决所有搜索问题。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -548,23 +540,19 @@ n=int(input())
 </div></div><hr class="section-divider">
 <div class="problem-block">
 <div class="problem-title"><span class="nq">NQ094</span>数组排序<span class="acw">AcWing 818</span></div>
-<div class="problem-desc">编写函数 void sort(int a[], int l, int r) 将 a[l] ~ a[r] 从小到大排序并输出排序后的数组 a。</div>
+<div class="problem-desc">"这一章的最后一道题——写一个函数把数组排序。"小华说，"当然Python有sort()，C++有std::sort()，但手写排序算法的意义在于——理解不同排序的思想：选择排序每次选最小的放前面，冒泡排序相邻比较交换，插入排序像整理扑克牌……这些思维训练让你的算法直觉不断提升。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行 n, l, r 分别表示数组长度、排序起始和结束位置；
-第二行 n 个整数为数组 a。
-数据范围：0 ≤ l ≤ r < n ≤ 1000</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">一行 n 个整数表示排序后的数组 a。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 818</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行n和size，第二行n个数。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">排序后的前size个元素。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ size ≤ n ≤ 1000</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>5 2 4
-4 5 1 3 2
-</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>4 5 1 2 3
-</pre></div>
+<div class="sample-col"><div class="col-label">输入</div><pre>5 3
+3 1 4 1 5</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>1 1 3</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>注意输出格式。
-来源：语法题</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>多种排序可选：选择排序（找最小放前面）、冒泡排序（相邻交换）、插入排序（扑克牌式）。复杂度O(n²)对n≤1000足矣。Python: arr.sort()或sorted(arr)一行。C++: sort(arr,arr+n)使用快速排序O(n log n)。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python的sort()是Timsort（归并+插入的混合算法），C++的std::sort()是Introsort（快速排序+堆排序的混合）。标准库的排序经过数十年优化——实际开发中绝不要手写排序。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
@@ -595,29 +583,12 @@ n=int(input())
 <div class="code-col"><div class="lang-badge">Python</div><pre>n=int(input());arr=list(map(int,input().split()));arr.sort();print(*arr)
 </pre></div>
 </div></div><hr class="section-divider">
-<div class="problem-block">
-<div class="problem-title"><span class="nq">NQ095</span>AcWing NQ016<span class="acw">AcWing NQ016</span></div>
-<div class="problem-desc">AcWing NQ016</div>
-<table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">见原题</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing NQ016</td></tr>
-</table>
-<div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #008000">// AcWing NQ016</span>
-</pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># NQ016 十六进制加法</span>
-<span style="color: #00F">import</span> sys
-<span style="color: #00F">for</span> line <span style="color: #00F">in</span> sys.stdin:
-    line=line.strip()
-    <span style="color: #00F">if</span> <span style="color: #00F">not</span> line:<span style="color: #00F">continue</span>
-    parts=line.split()
-    <span style="color: #00F">if</span> len(parts)!=2:<span style="color: #00F">continue</span>
-    a=int(parts[0],16);b=int(parts[1],16)  <span style="color: #008000"># 十六进制转整数</span>
-    res=a+b
-    <span style="color: #00F">if</span> res&lt;0:
-        print(<span style="color: #A31515">&#39;-&#39;</span>+hex(-res)[2:].upper())  <span style="color: #008000"># 负数处理</span>
-    <span style="color: #00F">else</span>:
-        print(hex(res)[2:].upper())  <span style="color: #008000"># 大写十六进制输出</span>
-</pre></div>
-</div></div><hr class="section-divider"><div class="chapter-end">— 第7章完 · 共13题 —</div></body></html>
+<div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>
+<li><strong>函数三价值：</strong>封装（隐藏细节）、复用（一次编写多次调用）、抽象（更高层次的思考）</li>
+<li><strong>参数传递差异：</strong>C++值vs引用(&)，Python"传对象引用"——理解这个差异是写出正确函数的前提</li>
+<li><strong>递归三板斧：</strong>基条件→递归调用→组合结果。注意栈溢出风险和重复计算问题</li>
+<li><strong>@lru_cache：</strong>一行注解将指数级递归变成多项式级——Python动态规划的核武器</li>
+<li><strong>回溯框架：</strong>选→递归→撤销。排列问题是搜索算法的入门课，这个框架贯穿整个算法学习</li>
+<li><strong>标准库优先：</strong>math.gcd/factorial/comb, itertools.permutations, functools.lru_cache——先查库再动手</li>
+</ul></div>
+<div class="chapter-end">— 第7章完 · 共12题 · 自强不息 —</div></body></html>

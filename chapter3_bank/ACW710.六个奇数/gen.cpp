@@ -13,9 +13,9 @@ int main(int argc,char*argv[]){
         case 5: cout<<rand()%100<<endl; break;
         case 6: cout<<rand()%100<<endl; break;
         case 7: cout<<rand()%100<<endl; break;
-        case 8: cout<<rand()%1000000+100<<endl; break;
-        case 9: cout<<rand()%1000000+100<<endl; break;
-        case 10: cout<<rand()%1000000+100<<endl; break;
+        case 8: cout<<rand()%10000+100<<endl; break;
+        case 9: cout<<rand()%10000+100<<endl; break;
+        case 10: cout<<rand()%10000+100<<endl; break;
     }
     return 0;
 }

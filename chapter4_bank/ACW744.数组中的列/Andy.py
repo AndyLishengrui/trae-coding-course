@@ -1,8 +1,13 @@
-c = int(input())
-t = input().strip()
-sum_val = 0
+import sys
+data = sys.stdin.read().split()
+c = int(data[0])
+t = data[1]
+s = 0.0
+idx = 2
 for i in range(12):
     for j in range(12):
-        x = float(input())
-        if j == c: sum_val += x
-print(f"{sum_val if t == 'S' else sum_val / 12:.1f}")
+        x = float(data[idx])
+        idx += 1
+        if j == c:
+            s += x
+print(f"{s if t == 'S' else s / 12:.1f}")

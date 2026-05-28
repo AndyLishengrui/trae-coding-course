@@ -1,5 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第14章 图的世界</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999;font-family:"PingFang SC",sans-serif}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
-body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222}
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>第14章 图的疆域</title><style>@page{size:A4;margin:2.2cm 2cm 2.2cm 2cm;@top-center{content:string(chapter);font-size:7.5pt;color:#999}@bottom-center{content:counter(page);font-size:7.5pt;color:#999}}
+body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",serif;font-size:9.5pt;line-height:1.7;color:#222;string-set:chapter"第14章 图的疆域——图论入门"}
+.preface{font-size:10pt;margin-bottom:1.5em;color:#444}.preface p{margin:.3em 0;text-indent:2em}
+.preface h3{font-size:11pt;color:#2563eb;margin:1em 0 .3em 0}
+.knowledge-box{background:#f0f6ff;border:1pt solid #bdd;border-radius:4px;padding:.7em 1em;margin:.8em 0;font-size:9pt}
+.knowledge-box .k-title{font-weight:bold;color:#2563eb;margin-bottom:.3em;font-size:9.5pt}.knowledge-box p{margin:.2em 0}.knowledge-box ul{margin:.2em 0;padding-left:1.5em}
 .chapter-title{text-align:center;font-size:20pt;font-weight:bold;margin:1.5em 0 .1em 0;letter-spacing:3pt}
 .chapter-subtitle{text-align:center;font-size:10pt;color:#777;margin-bottom:1.5em;padding-bottom:.8em;border-bottom:1px solid #bbb}
 .problem-title{font-size:12pt;font-weight:bold;margin:1.5em 0 .4em 0;padding-bottom:.15em;border-bottom:1pt solid #444}
@@ -11,38 +15,46 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .spec-table .spec-label .tag{display:inline-block;padding:.15em .5em;border-radius:2px;color:#fff;font-size:7.5pt;letter-spacing:.5pt}
 .spec-table .spec-label .tag.in{background:#2563eb}.spec-table .spec-label .tag.out{background:#059669}.spec-table .spec-label .tag.lim{background:#d97706}
 .spec-table .spec-value{color:#333;font-size:9pt}
-.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.5em 1em;margin:.8em 0 1em 0}
-.sample-grid{display:flex;gap:1.5em}.sample-col{min-width:0}.sample-col:first-child{flex:1}.sample-col:last-child{flex:1}
-.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:0;font-weight:bold}
-.sample-col pre{background:none;border:none;padding:.2em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:8.5pt;line-height:1.3;white-space:pre-wrap;color:#333}
+.sample-box{background:#f7f8fa;border:.5pt solid #dde;border-radius:4px;padding:.7em 1em;margin:1em 0 1.2em 0}
+.sample-grid{display:flex;gap:2em}.sample-col{flex:1}
+.sample-col .col-label{font-size:7.5pt;color:#888;margin-bottom:.2em;font-weight:bold}
+.sample-col pre{background:none;border:none;padding:.3em 0;margin:0;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:9pt;line-height:1.4;white-space:pre-wrap;color:#333}
 .insight-block{margin:.8em 0;padding:.5em .8em;border-left:3px solid #2563eb;background:#f8faff}
 .insight-block .insight-label{font-size:8pt;font-weight:bold;color:#2563eb;margin-right:.5em}
 .code-dual{display:flex;gap:1.2em;margin:1.2em 0;page-break-inside:avoid}.code-col{min-width:0}.code-col:first-child{flex:3}.code-col:last-child{flex:2}
 .code-col .lang-badge{display:inline-block;font-size:7.5pt;font-weight:bold;color:#fff;background:#2563eb;padding:.2em .7em;border-radius:3px;margin-bottom:.4em}
 .code-col pre{background:#f8f8f0;border:.5pt solid #e0e0e0;border-radius:4px;padding:.7em .9em;font-family:"SF Mono","Menlo","Consolas","Courier New",monospace;font-size:7.5pt;line-height:1.45;overflow-x:auto;margin:0;white-space:pre-wrap;word-break:break-all}
-.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}
-body{string-set:chapter "第14章 图的世界——图论入门"}</style></head><body>
-<div class="chapter-title">图的世界</div><div class="chapter-subtitle">图论入门 · 8题 · C++ &amp; Python 双语对照</div>
+.section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
+.chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
+.chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">图的疆域</div>
+<div class="chapter-subtitle">图论入门 · 8题 · C++ &amp; Python 双语对照</div>
+<div class="preface">
+<p>小鲁终于进入了算法竞赛中最大的领域——<strong>图论</strong>。"图可以描述世间万物——交通网络、社交关系、课程依赖、电路连接……理解图论算法就像获得了一个新的视角。"本章8道题覆盖图论四大基石：拓扑排序(DAG)、最短路(Dijkstra/SPFA/Floyd)、最小生成树(Prim/Kruskal)、二分图判定。"这些算法是竞赛和面试的高频考点——背下来、理解透。"</p>
+</div>
+<div class="knowledge-box"><div class="k-title">🗺️ 图论五大算法速查</div><ul>
+<li><strong>拓扑排序：</strong>Kahn BFS。入度为0节点入队→删除出边。O(n+m)。判环</li>
+<li><strong>Dijkstra：</strong>贪心+松弛。朴素O(n²)稠密/堆优化O(m log n)稀疏。非负权</li>
+<li><strong>SPFA：</strong>队列优化Bellman-Ford。支持负权、判负环。平均O(m)最坏O(nm)</li>
+<li><strong>Floyd：</strong>三重循环dp[k][i][j]。O(n³)。n≤200多源最短路首选</li>
+<li><strong>MST：</strong>Prim O(n²)稠密，Kruskal O(m log m)稀疏（排序+并查集）</li></ul></div>
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ147</span>拓扑排序试炼之有向图的拓扑序列<span class="acw">AcWing 848</span></div>
-<div class="problem-desc">给定一个n个点m条边的有向图，点的编号是1到n，图中可能存在重边和自环。
-请输出任意一个该有向图的拓扑序列，如果拓扑序列不存在，则输出-1。
-若一个由图中所有点构成的序列A满足：对于图中的每条边(x, y)，x在A中都出现在y之前，则称A是该图的一个拓扑序列。
-数据范围：1≤n,m≤10^5</div>
+<div class="problem-title"><span class="nq">NQ143</span>拓扑序列<span class="acw">AcWing 848</span></div>
+<div class="problem-desc">小鲁在整理课程先修关系："高数→线代→概率论——这些课有先后依赖关系。"小华说："这就是有向图的拓扑排序！Kahn算法：每次选一个入度为0的节点输出，删除它所有出边。用队列维护当前入度为0的节点集合。如果最终输出的节点数小于n，说明图中有环——拓扑排序同时也是判环算法。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含两个整数n和m
-接下来m行，每行包含两个整数x和y，表示存在一条从点x到点y的有向边(x, y)。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共一行，如果存在拓扑序列，则输出拓扑序列。
-否则输出-1。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 848</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行n,m。然后m行每行x y表示边x→y。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">一个拓扑序列，不存在输出-1。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n,m ≤ 10⁵</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
-<div class="sample-col"><div class="col-label">输入</div><pre>3 3
+<div class="sample-col"><div class="col-label">输入</div><pre>4 3
 1 2
 2 3
-1 3</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>1 2 3</pre></div>
+4 3</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>1 2 4 3</pre></div>
 </div></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>Kahn算法(BFS拓扑排序)：1)统计所有节点入度；2)入度为0的节点入队；3)while队列非空：弹出队头t输出，遍历t的所有邻居，邻居入度-1，若入度变为0则入队；4)输出数<n则有环。O(n+m)。另外DFS也能做拓扑排序。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>拓扑排序=有向无环图(DAG)的线性排列。应用：课程安排、编译依赖、任务调度。Python: 邻接表+deque+入度数组。拓扑排序是算法竞赛中最基础的图论算法之一——必须熟练掌握。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
@@ -110,19 +122,40 @@ body{string-set:chapter "第14章 图的世界——图论入门"}</style></head
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 拓扑序列</span>
+<span style="color: #00F">from</span> collections <span style="color: #00F">import</span> deque
+n, m = map(int, input().split())
+adj = [[] <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n + 1)]
+indeg = [0] * (n + 1)
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
+    x, y = map(int, input().split())
+    adj[x].append(y)
+    indeg[y] += 1
+q = deque()
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, n + 1):
+    <span style="color: #00F">if</span> indeg[i] == 0:
+        q.append(i)
+res = []
+<span style="color: #00F">while</span> q:
+    u = q.popleft()
+    res.append(str(u))
+    <span style="color: #00F">for</span> v <span style="color: #00F">in</span> adj[u]:
+        indeg[v] -= 1
+        <span style="color: #00F">if</span> indeg[v] == 0:
+            q.append(v)
+<span style="color: #00F">if</span> len(res) == n:
+    print(<span style="color: #A31515">&#39; &#39;</span>.join(res))
+<span style="color: #00F">else</span>:
+    print(-1)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ148</span>Dijkstra求最短路(1)<span class="acw">AcWing 849</span></div>
-<div class="problem-desc">给定一个n个点m条边的有向图，图中可能存在重边和自环，所有边权均为正值。
-请你求出1号点到n号点的最短距离，如果无法从1号点走到n号点，则输出-1。</div>
+<div class="problem-title"><span class="nq">NQ144</span>Dijkstra I<span class="acw">AcWing 849</span></div>
+<div class="problem-desc">"求图中从1号点到n号点的最短路径——每条边有正权重。"小华说，"Dijkstra算法——贪心法。每次从未确定最短距离的点中选距离最小的，用它去松弛(relax)它的邻居。朴素版每次O(n)找最小值，n次循环→O(n²)。适合稠密图(n不大但边多)。Python的heapq优化版更适合稀疏图，O(m log n)。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含整数n和m。
-接下来m行每行包含三个整数x，y，z，表示存在一条从点x到点y的有向边，边长为z。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个整数，表示1号点到n号点的最短距离。
-如果路径不存在，则输出-1。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 849</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行n,m。然后m行每行x y z表示边x→y权重z。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">1到n的最短距离。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n ≤ 500, 1 ≤ m ≤ 10⁵</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>3 3
@@ -131,7 +164,8 @@ body{string-set:chapter "第14章 图的世界——图论入门"}</style></head
 1 3 4</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>3</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>原题链接</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>Dijkstra朴素版：dist[1]=0, 其余INF。n次循环：每次找未被标记的最近节点t，标记t，用t松弛所有邻居v: dist[v]=min(dist[v],dist[t]+w[t][v])。O(n²+m)。证明：贪心选择正确性基于边权非负（边权为负时应用Bellman-Ford/SPFA）。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Dijkstra只适用于非负权图。找最近节点的O(n)可以用堆优化降到O(log n)。Python: heap=(dist[i],i)入堆，弹堆时检查是否过期。朴素版n≤500时O(n²)≈250K——完全够用。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -191,19 +225,34 @@ body{string-set:chapter "第14章 图的世界——图论入门"}</style></head
   <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Dijkstra I (朴素版)</span>
+n, m = map(int, input().split())
+g = [[0x3f3f3f3f] * (n + 1) <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n + 1)]
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
+    x, y, z = map(int, input().split())
+    g[x][y] = min(g[x][y], z)
+dist = [0x3f3f3f3f] * (n + 1)
+dist[1] = 0
+st = [<span style="color: #00F">False</span>] * (n + 1)
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n):
+    t = -1
+    <span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, n + 1):
+        <span style="color: #00F">if</span> <span style="color: #00F">not</span> st[i] <span style="color: #00F">and</span> (t == -1 <span style="color: #00F">or</span> dist[i] &lt; dist[t]):
+            t = i
+    st[t] = <span style="color: #00F">True</span>
+    <span style="color: #00F">for</span> v <span style="color: #00F">in</span> range(1, n + 1):
+        <span style="color: #00F">if</span> dist[v] &gt; dist[t] + g[t][v]:
+            dist[v] = dist[t] + g[t][v]
+print(dist[n] <span style="color: #00F">if</span> dist[n] != 0x3f3f3f3f <span style="color: #00F">else</span> -1)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ149</span>Dijkstra求最短路(2)<span class="acw">AcWing 850</span></div>
-<div class="problem-desc">给定一个n个点m条边的有向图，图中可能存在重边和自环，所有边权均为非负值。
-请你求出1号点到n号点的最短距离，如果无法从1号点走到n号点，则输出-1。</div>
+<div class="problem-title"><span class="nq">NQ145</span>Dijkstra II<span class="acw">AcWing 850</span></div>
+<div class="problem-desc">"上一题n=500，O(n²)没问题。但如果n=10⁵呢？"小华说，"需要用堆优化——优先队列每次O(log n)找最近节点。总复杂度O(m log n)。注意堆中可能有过期的旧值——弹堆时检查dist是否已更新。STL的priority_queue不支持修改键值，所以有重复入堆的策略。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含整数n和m。
-接下来m行每行包含三个整数x，y，z，表示存在一条从点x到点y的有向边，边长为z。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个整数，表示1号点到n号点的最短距离。
-如果路径不存在，则输出-1。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 850</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行n,m。然后m行每行x y z。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">1到n的最短距离，不可达输出-1。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n,m ≤ 1.5×10⁵，边权≤10000</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>3 3
@@ -212,9 +261,8 @@ body{string-set:chapter "第14章 图的世界——图论入门"}</style></head
 1 3 4</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>3</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
-Y总讲解
-Y总代码</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>堆优化Dijkstra：dist[1]=0, heap.push({0,1})。while heap非空：弹出{d,u}(若d>dist[u]则skip过期)，标记st[u]，遍历所有邻居v: if(dist[v]>dist[u]+w): dist[v]=dist[u]+w; heap.push({dist[v],v})。O(m log n)。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Python用heapq：heappush(heap,(dist[v],v))。过期检测：if d>dist[u]: continue。这是C++和Python都通用的堆优化模板——配上邻接表就是标准的Dijkstra优化版。背下这个模板，面试/竞赛都够用。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -294,34 +342,46 @@ Y总代码</span></div>
   <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Dijkstra II (堆优化)</span>
+<span style="color: #00F">import</span> heapq
+n, m = map(int, input().split())
+adj = [[] <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n + 1)]
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
+    x, y, z = map(int, input().split())
+    adj[x].append((y, z))
+dist = [0x3f3f3f3f] * (n + 1)
+dist[1] = 0
+st = [<span style="color: #00F">False</span>] * (n + 1)
+heap = [(0, 1)]
+<span style="color: #00F">while</span> heap:
+    d, u = heapq.heappop(heap)
+    <span style="color: #00F">if</span> st[u]:
+        <span style="color: #00F">continue</span>
+    st[u] = <span style="color: #00F">True</span>
+    <span style="color: #00F">for</span> v, w <span style="color: #00F">in</span> adj[u]:
+        <span style="color: #00F">if</span> dist[v] &gt; d + w:
+            dist[v] = d + w
+            heapq.heappush(heap, (dist[v], v))
+print(dist[n] <span style="color: #00F">if</span> dist[n] != 0x3f3f3f3f <span style="color: #00F">else</span> -1)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ150</span>spfa求最短路<span class="acw">AcWing 851</span></div>
-<div class="problem-desc">给定一个 n 个点 m 条边的有向图，图中可能存在重边和自环，边权可能为负数。
-请你求出 1 号点到 n 号点的最短距离，如果无法从 1 号点走到 n 号点，则输出 impossible。
-数据保证不存在负权回路。</div>
+<div class="problem-title"><span class="nq">NQ146</span>spfa求最短路<span class="acw">AcWing 851</span></div>
+<div class="problem-desc">"Dijkstra不能处理负权边——Bellman-Ford可以但O(n×m)太慢。SPFA是Bellman-Ford的队列优化版——只有被松弛过的节点才入队去松弛别人。平均O(m)，最坏O(n×m)可能被卡。"小华补充，"SPFA还能判断负环——如果一个节点入队超过n次，存在负环。虽然竞赛中经常被卡，但实现简单、思路巧妙。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含整数 n 和 m。
-接下来 m 行每行包含三个整数 x, y, z，表示存在一条从点 x 到点 y 的有向边，边长为 z。
-数据范围
-1≤n, m≤10^5,
-图中涉及边长绝对值均不超过 10000。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">输出一个整数，表示 1 号点到 n 号点的最短距离。
-如果路径不存在，则输出 impossible。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 851</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行n,m。然后m行每行x y z（可能有负权）。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">1到n最短路，有负环输出impossible。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n,m ≤ 10⁵</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>3 3
-1 2 5
-2 3 -3
+1 2 1
+2 3 2
 1 3 4</pre></div>
-<div class="sample-col"><div class="col-label">输出</div><pre>2</pre></div>
+<div class="sample-col"><div class="col-label">输出</div><pre>3</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
-Y总讲解
-Y总代码</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>SPFA：dist[1]=0, q.push(1), st[1]=true。while q非空：t=q.front(); q.pop(); st[t]=false。遍历t的邻居v: if(dist[v]>dist[t]+w): dist[v]=dist[t]+w; if(!st[v]) q.push(v), st[v]=true。复杂度：平均O(m)最坏O(nm)。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>st数组记录节点是否在队列中——避免重复入队。负环检测：维护cnt[v]=到v的最短路边数，若cnt[v]≥n则有负环。SPFA容易被构造数据卡掉——正权图用Dijkstra更安全。但理解SPFA的松弛传播思想对理解更多图论算法有帮助。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;queue&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
@@ -395,39 +455,50 @@ Y总代码</span></div>
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># spfa求最短路</span>
+<span style="color: #00F">from</span> collections <span style="color: #00F">import</span> deque
+n, m = map(int, input().split())
+adj = [[] <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n + 1)]
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
+    x, y, z = map(int, input().split())
+    adj[x].append((y, z))
+dist = [0x3f3f3f3f] * (n + 1)
+dist[1] = 0
+st = [<span style="color: #00F">False</span>] * (n + 1)
+q = deque([1])
+st[1] = <span style="color: #00F">True</span>
+<span style="color: #00F">while</span> q:
+    u = q.popleft()
+    st[u] = <span style="color: #00F">False</span>
+    <span style="color: #00F">for</span> v, w <span style="color: #00F">in</span> adj[u]:
+        <span style="color: #00F">if</span> dist[v] &gt; dist[u] + w:
+            dist[v] = dist[u] + w
+            <span style="color: #00F">if</span> <span style="color: #00F">not</span> st[v]:
+                q.append(v)
+                st[v] = <span style="color: #00F">True</span>
+print(dist[n] <span style="color: #00F">if</span> dist[n] != 0x3f3f3f3f <span style="color: #00F">else</span> <span style="color: #A31515">&#39;impossible&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ151</span>Floyd求最短路<span class="acw">AcWing 854</span></div>
-<div class="problem-desc">给定一个 n 个点 m 条边的有向图，图中可能存在重边和自环，边权可能为负数。
-再给定 k 个询问，每个询问包含两个整数 x 和 y，表示查询从点 x 到点 y 的最短距离，如果路径不存在，则输出 impossible。
-数据保证图中不存在负权回路。
-数据范围
-1≤n≤200,
-1≤k≤n^2,
-1≤m≤20000,
-图中涉及边长绝对值均不超过 10000。</div>
+<div class="problem-title"><span class="nq">NQ147</span>Floyd求最短路<span class="acw">AcWing 854</span></div>
+<div class="problem-desc">"如果要查询任意两点之间的最短距离——多源最短路径——怎么办？"小华说，"Floyd-Warshall算法！三重循环——for k,i,j: dist[i][j]=min(dist[i][j], dist[i][k]+dist[k][j])。这个简洁的三行代码本质是动态规划——dp[k][i][j]表示只经过前k个节点作中间节点时i到j的最短距离，压缩掉k维就是最终的三重循环。O(n³)但n≤200时完全OK。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含三个整数 n, m, k。
-接下来 m 行，每行包含三个整数 x, y, z，表示存在一条从点 x 到点 y 的有向边，边长为 z。
-接下来 k 行，每行包含两个整数 x, y，表示询问点 x 到点 y 的最短距离。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共 k 行，每行输出一个整数，表示询问的结果，若询问两点间不存在路径，则输出 impossible。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 854</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行n,m,q。然后m行每行x y z。然后q行每行a b查询。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">每行查询结果，不可达输出impossible。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n ≤ 200, 1 ≤ q ≤ 10⁵</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>3 3 2
 1 2 1
 2 3 2
-1 3 1
+1 3 4
 2 1
 1 3</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>impossible
-1</pre></div>
+3</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
-Y总讲解
-Y总代码</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>Floyd模板：初始化dist[i][i]=0，dist[i][j]=INF。读入边权(注意去重——可能有多条边取min)。三重循环：for k: for i: for j: d[i][j]=min(d[i][j], d[i][k]+d[k][j])。时间O(n³)=8×10⁶(n=200)，空间O(n²)。注意INF不要用0x3f3f3f3f以免溢出。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Floyd是n≤200的多源最短路首选。它能同时处理正负权边（不能有负环）。k循环必须在最外层——这是理解Floyd为DP的直接体现。Python三重循环可能较慢，n=200时约需0.5秒。INF设为10⁹避免溢出。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -481,23 +552,32 @@ Y总代码</span></div>
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Floyd求最短路</span>
+n, m, q = map(int, input().split())
+INF = 0x3f3f3f3f
+d = [[INF] * (n + 1) <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n + 1)]
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, n + 1):
+    d[i][i] = 0
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
+    x, y, z = map(int, input().split())
+    d[x][y] = min(d[x][y], z)
+<span style="color: #00F">for</span> k <span style="color: #00F">in</span> range(1, n + 1):
+    <span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, n + 1):
+        <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(1, n + 1):
+            <span style="color: #00F">if</span> d[i][k] != INF <span style="color: #00F">and</span> d[k][j] != INF:
+                d[i][j] = min(d[i][j], d[i][k] + d[k][j])
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(q):
+    a, b = map(int, input().split())
+    print(d[a][b] <span style="color: #00F">if</span> d[a][b] &lt; INF // 2 <span style="color: #00F">else</span> <span style="color: #A31515">&#39;impossible&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ152</span>Prim算法求最小生成树<span class="acw">AcWing 858</span></div>
-<div class="problem-desc">给定一个 n 个点 m 条边的无向图，图中可能存在重边和自环，边权可能为负数。
-求最小生成树的树边权重之和，如果最小生成树不存在则输出 impossible。
-给定一张边带权的无向图 G = (V, E)，其中 V 表示图中点的集合，E 表示图中边的集合，n = |V|，m = |E|。
-由 V 中的全部 n 个顶点和 E 中 n - 1 条边构成的无向连通子图被称为 G 的一棵生成树，其中边的权值之和最小的生成树被称为无向图 G 的最小生成树。
-数据范围
-1 ≤ n ≤ 500,1 ≤ m ≤ 10^5,
-图中涉及边的边权的绝对值均不超过 10000。</div>
+<div class="problem-title"><span class="nq">NQ148</span>Prim<span class="acw">AcWing 858</span></div>
+<div class="problem-desc">"最小生成树——连接所有节点的最小总权重。"Prim算法——从一个点开始，每次选距离当前集合最近的节点加入。这和Dijkstra几乎一模一样！区别只在于dist的定义：Dijkstra是到起点的距离，Prim是到当前集合的距离。代码只差一行。"小华总结道，"Prim适合稠密图O(n²)，Kruskal适合稀疏图O(m log m)。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含两个整数 n 和 m。
-接下来 m 行，每行包含三个整数 u, v, w，表示点 u 和点 v 之间存在一条权值为 w 的边。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共一行，若存在最小生成树，则输出一个整数，表示最小生成树的树边权重之和，如果最小生成树不存在则输出 impossible。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 858</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行n,m。然后m行每行u v w（无向边）。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">最小生成树的总权重，不连通输出impossible。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n ≤ 500, 1 ≤ m ≤ 10⁵</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>4 5
@@ -508,10 +588,8 @@ Y总代码</span></div>
 3 4 4</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>6</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
-Y总讲解
-参考题解
-Y总代码</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>Prim朴素版：dist[i]=到当前生成树的最近距离。n次循环：每次找未标记的最近点t，标记t，ans+=dist[t]。用t更新所有邻居v的dist[v]=min(dist[v], w[t][v])。O(n²+m)。与Dijkstra的唯一区别：dist的更新公式是w[t][v]而非dist[t]+w[t][v]。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Prim=Dijkstra改一行。Dijkstra: dist[v]=min(dist[v], dist[t]+w)。Prim: dist[v]=min(dist[v], w)。这个区别体现了两者的本质差异——一个求路径累积最短，一个求集合距离最近。稠密图(n≤500)用Prim O(n²)，稀疏图用Kruskal。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -569,23 +647,40 @@ Y总代码</span></div>
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Prim</span>
+n, m = map(int, input().split())
+g = [[0x3f3f3f3f] * (n + 1) <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n + 1)]
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
+    u, v, w = map(int, input().split())
+    g[u][v] = g[v][u] = min(g[u][v], w)
+dist = [0x3f3f3f3f] * (n + 1)
+st = [<span style="color: #00F">False</span>] * (n + 1)
+ans = 0
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n):
+    t = -1
+    <span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, n + 1):
+        <span style="color: #00F">if</span> <span style="color: #00F">not</span> st[i] <span style="color: #00F">and</span> (t == -1 <span style="color: #00F">or</span> dist[i] &lt; dist[t]):
+            t = i
+    <span style="color: #00F">if</span> _ &gt; 0 <span style="color: #00F">and</span> dist[t] == 0x3f3f3f3f:
+        print(<span style="color: #A31515">&#39;impossible&#39;</span>)
+        <span style="color: #00F">break</span>
+    <span style="color: #00F">if</span> _ &gt; 0:
+        ans += dist[t]
+    st[t] = <span style="color: #00F">True</span>
+    <span style="color: #00F">for</span> v <span style="color: #00F">in</span> range(1, n + 1):
+        <span style="color: #00F">if</span> dist[v] &gt; g[t][v]:
+            dist[v] = g[t][v]
+<span style="color: #00F">else</span>:
+    print(ans)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ153</span>Kruskal算法求最小生成树<span class="acw">AcWing 859</span></div>
-<div class="problem-desc">给定一个n个点m条边的无向图，图中可能存在重边和自环，边权可能为负数。
-求最小生成树的树边权重之和，如果最小生成树不存在则输出impossible。
-给定一张边带权的无向图G=(V, E)，其中V表示图中点的集合，E表示图中边的集合，n = |V|，m = |E|。
-由V中的全部n个顶点和E中n - 1条边构成的无向连通子图被称为G的一棵生成树，其中边的权值之和最小的生成树被称为无向图G的最小生成树。
-数据范围
-1≤n≤10^51≤m≤2*10^5
-图中涉及边的边权的绝对值均不超过1000</div>
+<div class="problem-title"><span class="nq">NQ149</span>Kruskal<span class="acw">AcWing 859</span></div>
+<div class="problem-desc">"Kruskal——另一种MST算法。把所有边按权重排序，从小到大尝试每条边——如果边的两端不在同一集合中（并查集判断），就加入这条边。贪心法！因为排序后轻边优先加入，保证了树的总权重最小。需要并查集维护连通性——find+union操作。Kruskal=排序+并查集——两个简单工具组合出强大算法。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含两个整数n和m。
-接下来m行，每行包含三个整数u、v、w，表示点u和点v之间存在一条权值为w的边。</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">共一行，若存在最小生成树，则输出一个整数，表示最小生成树的树边权重之和，如果最小生成树不存在则输出impossible。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 859</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行n,m。然后m行每行u v w。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">MST总权重，不连通输出impossible。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n ≤ 10⁵, 1 ≤ m ≤ 2×10⁵</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>4 5
@@ -596,10 +691,8 @@ Y总代码</span></div>
 3 4 4</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>6</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
-Y总讲解
-参考题解
-Y总代码</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>Kruskal：1)所有边按w升序排序；2)初始化并查集(p[i]=i)；3)遍历每条边(u,v,w)：若find(u)!=find(v)则union(u,v), ans+=w, cnt++；4)若cnt==n-1则连通输出ans，否则impossible。时间O(m log m)（排序主导）。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>Kruskal=排序+并查集。并查集：p[x]存父节点，find(x)路径压缩返回根，union(a,b)将a根连到b根。排序O(m log m)是Kruskal的瓶颈——稀疏图(m≈n)时log m小因此Kruskal快于Prim O(n²)。稠密图反之。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
@@ -668,33 +761,49 @@ Y总代码</span></div>
     <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Kruskal</span>
+n, m = map(int, input().split())
+edges = []
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
+    u, v, w = map(int, input().split())
+    edges.append((w, u, v))
+edges.sort()
+p = list(range(n + 1))
+
+<span style="color: #00F">def</span> find(x):
+    <span style="color: #00F">if</span> p[x] != x:
+        p[x] = find(p[x])
+    <span style="color: #00F">return</span> p[x]
+
+ans = 0
+cnt = 0
+<span style="color: #00F">for</span> w, u, v <span style="color: #00F">in</span> edges:
+    ru, rv = find(u), find(v)
+    <span style="color: #00F">if</span> ru != rv:
+        p[ru] = rv
+        ans += w
+        cnt += 1
+print(ans <span style="color: #00F">if</span> cnt == n - 1 <span style="color: #00F">else</span> <span style="color: #A31515">&#39;impossible&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
-<div class="problem-title"><span class="nq">NQ154</span>染色法判定二分图<span class="acw">AcWing 860</span></div>
-<div class="problem-desc">给定一个n个点m条边的无向图，图中可能存在重边和自环。
-请你判断这个图是否是二分图。</div>
+<div class="problem-title"><span class="nq">NQ150</span>染色法判定二分图<span class="acw">AcWing 860</span></div>
+<div class="problem-desc">"二分图——能把所有节点分成两组，使所有边的两端都在不同组中。用染色法判断：从一个未染色节点出发，染成1，它的所有邻居染成2，邻居的邻居染成1……如果发现一条边的两端同色——不是二分图。这就是二染色判定——本质是BFS/DFS遍历中检查冲突。是匈牙利算法(最大匹配)的前置知识。"</div>
 <table class="spec-table">
-<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行包含两个整数n和m。
-接下来m行，每行包含两个整数u和v，表示点u和点v之间存在一条边。
-数据范围
-1≤n,m≤10^5</td></tr>
-<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">如果给定图是二分图，则输出Yes，否则输出No。</td></tr>
-<tr><td class="spec-label"><span class="tag lim">来源</span></td><td class="spec-value">AcWing 860</td></tr>
+<tr><td class="spec-label"><span class="tag in">输入</span></td><td class="spec-value">第一行n,m。然后m行每行u v表示无向边。</td></tr>
+<tr><td class="spec-label"><span class="tag out">输出</span></td><td class="spec-value">是二分图输出Yes否则No。</td></tr>
+<tr><td class="spec-label"><span class="tag lim">范围</span></td><td class="spec-value">1 ≤ n,m ≤ 10⁵</td></tr>
 </table>
 <div class="sample-box"><div class="sample-grid">
 <div class="sample-col"><div class="col-label">输入</div><pre>4 4
-1 3
-1 4
+1 2
 2 3
-2 4</pre></div>
+3 4
+4 1</pre></div>
 <div class="sample-col"><div class="col-label">输出</div><pre>Yes</pre></div>
 </div></div>
-<div class="insight-block"><span class="insight-label">提示</span><span>原题链接
-视频讲解
-参考题解
-Y总代码</span></div>
+<div class="insight-block"><span class="insight-label">思路</span><span>二染色判定：color数组初始0(未染色)。遍历每个节点，若未染色则BFS/DFS：染色1，邻居染色-1(或2)，邻居的邻居染色1……若遇到已染色且颜色与期望不符→冲突→不是二分图。O(n+m)。BFS和DFS都行——DFS递归简单但深度大时需注意栈溢出。</span></div>
+<div class="insight-block"><span class="insight-label">技巧</span><span>二分图=不包含奇环。染色过程本质是BFS涂色——涂色冲突=奇环存在。Python的DFS递归可能栈溢出→用BFS或迭代DFS。二分图判定是图论中的基础算法——后续最大匹配、最小点覆盖都依赖于此。</span></div>
 <div class="code-dual">
 <div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 <span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
@@ -748,6 +857,37 @@ Y总代码</span></div>
   <span style="color: #00F">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Python solution pending</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 染色法判定二分图</span>
+n, m = map(int, input().split())
+adj = [[] <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n + 1)]
+<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
+    u, v = map(int, input().split())
+    adj[u].append(v)
+    adj[v].append(u)
+color = [0] * (n + 1)
+
+<span style="color: #00F">def</span> dfs(u, c):
+    color[u] = c
+    <span style="color: #00F">for</span> v <span style="color: #00F">in</span> adj[u]:
+        <span style="color: #00F">if</span> color[v] == 0:
+            <span style="color: #00F">if</span> <span style="color: #00F">not</span> dfs(v, 3 - c):
+                <span style="color: #00F">return</span> <span style="color: #00F">False</span>
+        <span style="color: #00F">elif</span> color[v] == c:
+            <span style="color: #00F">return</span> <span style="color: #00F">False</span>
+    <span style="color: #00F">return</span> <span style="color: #00F">True</span>
+
+ok = <span style="color: #00F">True</span>
+<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, n + 1):
+    <span style="color: #00F">if</span> color[i] == 0:
+        <span style="color: #00F">if</span> <span style="color: #00F">not</span> dfs(i, 1):
+            ok = <span style="color: #00F">False</span>
+            <span style="color: #00F">break</span>
+print(<span style="color: #A31515">&#39;Yes&#39;</span> <span style="color: #00F">if</span> ok <span style="color: #00F">else</span> <span style="color: #A31515">&#39;No&#39;</span>)
 </pre></div>
-</div></div><hr class="section-divider"><div class="chapter-end">— 第14章完 · 共8题 —</div></body></html>
+</div></div><hr class="section-divider">
+<div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>
+<li><strong>图论四大基石：</strong>拓扑排序、最短路、最小生成树、二分图——背下模板终身受用</li>
+<li><strong>Dijkstra vs SPFA vs Floyd：</strong>正权选Dijkstra(堆)，负权选SPFA(慎用)，多源n≤200选Floyd</li>
+<li><strong>Prim vs Kruskal：</strong>Prim=改一行Dijkstra，稠密O(n²)。Kruskal=排序+并查集，稀疏O(m log m)</li>
+</ul></div>
+<div class="chapter-end">— 第14章完 · 共8题 · 自强不息 —</div></body></html>
