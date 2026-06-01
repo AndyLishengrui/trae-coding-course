@@ -1,4 +1,3 @@
-# NQ: AcWing 659
 x = float(input())
 if 0 <= x <= 25:
     print("Intervalo [0,25]")

@@ -1,7 +1,6 @@
-# NQ: AcWing 672
 x = float(input())
 if x <= 2000:
-    print('Isento')
+    print("Isento")
 else:
     x -= 2000
     t = 0

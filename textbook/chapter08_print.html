@@ -60,29 +60,29 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 <div class="insight-block"><span class="insight-label">思路</span><span>字符串构建：遍历每个字符，是空格就追加%20，否则追原字符。Python: s.replace(' ', '%20')一行。C++: for(char c:str) res+=(c==' '?"%20":string(1,c))。注意构建新字符串而非原地修改。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python的replace()返回新字符串（不可变性）。C++的std::string支持+=拼接。这道题也是理解Python字符串不可变性的好例子——所有的'修改'其实都是'创建新版'。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">class</span> <span style="color: #2B91AF">Solution</span> {
-<span style="color: #00F">public</span>:
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">class</span> <span style="color: #2b91af">Solution</span> {
+<span style="color: #0000ff">public</span>:
     string replaceSpaces(string &amp;str) {
         string res;
-        <span style="color: #00F">for</span> (<span style="color: #00F">auto</span> c : str)
-            <span style="color: #00F">if</span> (c == <span style="color: #A31515">&#39; &#39;</span> ) res += <span style="color: #A31515">&quot;%20&quot;</span>;
-            <span style="color: #00F">else</span> res += c;
-        <span style="color: #00F">return</span> res;
+        <span style="color: #0000ff">for</span> (<span style="color: #0000ff">auto</span> c : str)
+            <span style="color: #0000ff">if</span> (c == <span style="color: #a31515">&#39; &#39;</span> ) res += <span style="color: #a31515">&quot;%20&quot;</span>;
+            <span style="color: #0000ff">else</span> res += c;
+        <span style="color: #0000ff">return</span> res;
     }
 };
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">import</span> sys
-<span style="color: #00F">for</span> line <span style="color: #00F">in</span> sys.stdin:
-    s = line.rstrip(<span style="color: #A31515">&#39;\n&#39;</span>)
-    <span style="color: #00F">if</span> <span style="color: #00F">not</span> s:
-        <span style="color: #00F">continue</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+<span style="color: #0000ff">for</span> line <span style="color: #0000ff">in</span> sys.stdin:
+    s = line.rstrip(<span style="color: #a31515">&#39;\n&#39;</span>)
+    <span style="color: #0000ff">if</span> <span style="color: #0000ff">not</span> s:
+        <span style="color: #0000ff">continue</span>
     res = []
-    <span style="color: #00F">for</span> c <span style="color: #00F">in</span> s:
-        <span style="color: #00F">if</span> c == <span style="color: #A31515">&#39; &#39;</span>:
-            res.append(<span style="color: #A31515">&#39;%20&#39;</span>)
-        <span style="color: #00F">else</span>:
+    <span style="color: #0000ff">for</span> c <span style="color: #0000ff">in</span> s:
+        <span style="color: #0000ff">if</span> c == <span style="color: #a31515">&#39; &#39;</span>:
+            res.append(<span style="color: #a31515">&#39;%20&#39;</span>)
+        <span style="color: #0000ff">else</span>:
             res.append(c)
-    print(<span style="color: #A31515">&#39;&#39;</span>.join(res))
+    print(<span style="color: #a31515">&#39;&#39;</span>.join(res))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -110,30 +110,30 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 <span style="color: #008000"> *     ListNode(int x) : val(x), next(NULL) {}</span>
 <span style="color: #008000"> * };</span>
 <span style="color: #008000"> */</span>
-<span style="color: #00F">class</span> <span style="color: #2B91AF">Solution</span> {
-<span style="color: #00F">public</span>:
+<span style="color: #0000ff">class</span> <span style="color: #2b91af">Solution</span> {
+<span style="color: #0000ff">public</span>:
 
-    vector&lt;<span style="color: #2B91AF">int</span>&gt; printListReversingly(ListNode* head) {
-        vector&lt;<span style="color: #2B91AF">int</span>&gt; res;
-        <span style="color: #00F">if</span> (!head) <span style="color: #00F">return</span> res;
-        <span style="color: #00F">auto</span> p = head;
-        <span style="color: #00F">while</span>(p) {
+    vector&lt;<span style="color: #2b91af">int</span>&gt; printListReversingly(ListNode* head) {
+        vector&lt;<span style="color: #2b91af">int</span>&gt; res;
+        <span style="color: #0000ff">if</span> (!head) <span style="color: #0000ff">return</span> res;
+        <span style="color: #0000ff">auto</span> p = head;
+        <span style="color: #0000ff">while</span>(p) {
             res.push_back(p-&gt;val);
             p=p-&gt;next;
         }
         reverse(res.begin(), res.end());
-        <span style="color: #00F">return</span> res;
+        <span style="color: #0000ff">return</span> res;
     }
 };
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">import</span> sys
-<span style="color: #00F">for</span> line <span style="color: #00F">in</span> sys.stdin:
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+<span style="color: #0000ff">for</span> line <span style="color: #0000ff">in</span> sys.stdin:
     line = line.strip()
-    <span style="color: #00F">if</span> <span style="color: #00F">not</span> line:
-        <span style="color: #00F">continue</span>
+    <span style="color: #0000ff">if</span> <span style="color: #0000ff">not</span> line:
+        <span style="color: #0000ff">continue</span>
     nums = list(map(int, line.split()))
     nums.pop()  <span style="color: #008000"># remove -1</span>
-    <span style="color: #00F">for</span> x <span style="color: #00F">in</span> reversed(nums):
+    <span style="color: #0000ff">for</span> x <span style="color: #0000ff">in</span> reversed(nums):
         print(x)
 </pre></div>
 </div></div><hr class="section-divider">
@@ -161,45 +161,45 @@ empty!</pre></div>
 <div class="insight-block"><span class="insight-label">思路</span><span>双栈模拟队列：stack1负责push，stack2负责pop。pop时若stack2为空则将stack1全部倒入stack2（翻转顺序）。时间复杂度：每个元素最多入栈2次出栈2次，均摊O(1)。这是理解"均摊分析"的经典案例。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python用list作栈：append()=push, pop()=pop。两个list分别模拟两个栈。虽然Python有collections.deque，但理解手写实现比调用库更重要——面试常考题。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">class</span> <span style="color: #2B91AF">MyQueue</span> {
-<span style="color: #00F">public</span>:
-    stack&lt;<span style="color: #2B91AF">int</span>&gt; stk, cache;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">class</span> <span style="color: #2b91af">MyQueue</span> {
+<span style="color: #0000ff">public</span>:
+    stack&lt;<span style="color: #2b91af">int</span>&gt; stk, cache;
     <span style="color: #008000">/** Initialize your data structure here. */</span>
     MyQueue() {
 
     }
 
     <span style="color: #008000">/** Push element x to the back of queue. */</span>
-    <span style="color: #2B91AF">void</span> push(<span style="color: #2B91AF">int</span> x) {
+    <span style="color: #2b91af">void</span> push(<span style="color: #2b91af">int</span> x) {
         stk.push(x);
 
     }
-    <span style="color: #2B91AF">void</span> copy(stack&lt;<span style="color: #2B91AF">int</span>&gt;&amp; a, stack&lt;<span style="color: #2B91AF">int</span>&gt;&amp; b){
-        <span style="color: #00F">while</span> (a.size()) {
+    <span style="color: #2b91af">void</span> copy(stack&lt;<span style="color: #2b91af">int</span>&gt;&amp; a, stack&lt;<span style="color: #2b91af">int</span>&gt;&amp; b){
+        <span style="color: #0000ff">while</span> (a.size()) {
             b.push(a.top());
             a.pop();
         }
     }
     <span style="color: #008000">/** Removes the element from in front of queue and returns that element. */</span>
-    <span style="color: #2B91AF">int</span> pop() {
+    <span style="color: #2b91af">int</span> pop() {
         copy(stk,cache);<span style="color: #008000">//拷贝到cache数组</span>
-        <span style="color: #2B91AF">int</span> res = cache.top();
+        <span style="color: #2b91af">int</span> res = cache.top();
         cache.pop();
         copy(cache,stk);
-        <span style="color: #00F">return</span> res;
+        <span style="color: #0000ff">return</span> res;
     }
 
     <span style="color: #008000">/** Get the front element. */</span>
-    <span style="color: #2B91AF">int</span> peek() {
+    <span style="color: #2b91af">int</span> peek() {
         copy(stk,cache);<span style="color: #008000">//拷贝到cache数组</span>
-        <span style="color: #2B91AF">int</span> res = cache.top();
+        <span style="color: #2b91af">int</span> res = cache.top();
         copy(cache,stk);
-        <span style="color: #00F">return</span> res;
+        <span style="color: #0000ff">return</span> res;
     }
 
     <span style="color: #008000">/** Returns whether the queue is empty. */</span>
-    <span style="color: #2B91AF">bool</span> empty() {
-        <span style="color: #00F">return</span> stk.empty();
+    <span style="color: #2b91af">bool</span> empty() {
+        <span style="color: #0000ff">return</span> stk.empty();
     }
 };
 
@@ -212,32 +212,32 @@ empty!</pre></div>
 <span style="color: #008000"> * bool param_4 = obj.empty();</span>
 <span style="color: #008000"> */</span>
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">import</span> sys
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
 
 stack1 = []
 stack2 = []
 
-<span style="color: #00F">for</span> line <span style="color: #00F">in</span> sys.stdin:
+<span style="color: #0000ff">for</span> line <span style="color: #0000ff">in</span> sys.stdin:
     line = line.strip()
-    <span style="color: #00F">if</span> <span style="color: #00F">not</span> line:
-        <span style="color: #00F">continue</span>
+    <span style="color: #0000ff">if</span> <span style="color: #0000ff">not</span> line:
+        <span style="color: #0000ff">continue</span>
     parts = line.split()
-    <span style="color: #00F">if</span> parts[0] == <span style="color: #A31515">&#39;push&#39;</span>:
+    <span style="color: #0000ff">if</span> parts[0] == <span style="color: #a31515">&#39;push&#39;</span>:
         stack1.append(int(parts[1]))
-    <span style="color: #00F">elif</span> parts[0] == <span style="color: #A31515">&#39;pop&#39;</span>:
-        <span style="color: #00F">if</span> <span style="color: #00F">not</span> stack2:
-            <span style="color: #00F">while</span> stack1:
+    <span style="color: #0000ff">elif</span> parts[0] == <span style="color: #a31515">&#39;pop&#39;</span>:
+        <span style="color: #0000ff">if</span> <span style="color: #0000ff">not</span> stack2:
+            <span style="color: #0000ff">while</span> stack1:
                 stack2.append(stack1.pop())
-        <span style="color: #00F">if</span> stack2:
+        <span style="color: #0000ff">if</span> stack2:
             print(stack2.pop())
-    <span style="color: #00F">elif</span> parts[0] == <span style="color: #A31515">&#39;peek&#39;</span>:
-        <span style="color: #00F">if</span> <span style="color: #00F">not</span> stack2:
-            <span style="color: #00F">while</span> stack1:
+    <span style="color: #0000ff">elif</span> parts[0] == <span style="color: #a31515">&#39;peek&#39;</span>:
+        <span style="color: #0000ff">if</span> <span style="color: #0000ff">not</span> stack2:
+            <span style="color: #0000ff">while</span> stack1:
                 stack2.append(stack1.pop())
-        <span style="color: #00F">if</span> stack2:
+        <span style="color: #0000ff">if</span> stack2:
             print(stack2[-1])
-    <span style="color: #00F">elif</span> parts[0] == <span style="color: #A31515">&#39;empty&#39;</span>:
-        print(<span style="color: #A31515">&#39;true&#39;</span> <span style="color: #00F">if</span> (<span style="color: #00F">not</span> stack1 <span style="color: #00F">and</span> <span style="color: #00F">not</span> stack2) <span style="color: #00F">else</span> <span style="color: #A31515">&#39;false&#39;</span>)
+    <span style="color: #0000ff">elif</span> parts[0] == <span style="color: #a31515">&#39;empty&#39;</span>:
+        print(<span style="color: #a31515">&#39;true&#39;</span> <span style="color: #0000ff">if</span> (<span style="color: #0000ff">not</span> stack1 <span style="color: #0000ff">and</span> <span style="color: #0000ff">not</span> stack2) <span style="color: #0000ff">else</span> <span style="color: #a31515">&#39;false&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -255,17 +255,17 @@ stack2 = []
 <div class="insight-block"><span class="insight-label">思路</span><span>用类封装：C++ class Solution { public: int Fibonacci(int n) {...} }。递推法O(n)，a,b=b,a+b模式。n≤39时int够用（F(39)≈6.3×10⁷＜2³¹）。n≥40需long long。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python的类不需要声明成员变量类型——构造函数__init__中直接赋值。C++的struct和class唯一区别是默认访问权限。此题的核心是理解"将算法封装成类的方法"——OO思想的萌芽。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">class</span> <span style="color: #2B91AF">Solution</span> {
-<span style="color: #00F">public</span>:
-    <span style="color: #2B91AF">int</span> Fibonacci(<span style="color: #2B91AF">int</span> n) {
-        <span style="color: #00F">if</span> (n &lt;= 1) <span style="color: #00F">return</span> n;
-        <span style="color: #00F">return</span> Fibonacci(n - 1) + Fibonacci(n - 2);
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">class</span> <span style="color: #2b91af">Solution</span> {
+<span style="color: #0000ff">public</span>:
+    <span style="color: #2b91af">int</span> Fibonacci(<span style="color: #2b91af">int</span> n) {
+        <span style="color: #0000ff">if</span> (n &lt;= 1) <span style="color: #0000ff">return</span> n;
+        <span style="color: #0000ff">return</span> Fibonacci(n - 1) + Fibonacci(n - 2);
     }
 };
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>n = int(input())
 a, b = 0, 1
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n):
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(n):
     a, b = b, a + b
 print(a)
 </pre></div>
@@ -295,33 +295,30 @@ print(a)
 <span style="color: #008000"> *     ListNode(int x) : val(x), next(NULL) {}</span>
 <span style="color: #008000"> * };</span>
 <span style="color: #008000"> */</span>
-<span style="color: #00F">class</span> <span style="color: #2B91AF">Solution</span> {
-<span style="color: #00F">public</span>:
+<span style="color: #0000ff">class</span> <span style="color: #2b91af">Solution</span> {
+<span style="color: #0000ff">public</span>:
     ListNode* reverseList(ListNode* head) {
-        <span style="color: #00F">if</span> (!head || !head-&gt;next) <span style="color: #00F">return</span> head;
+        <span style="color: #0000ff">if</span> (!head || !head-&gt;next) <span style="color: #0000ff">return</span> head;
 
-        <span style="color: #00F">auto</span> p = head, q = p-&gt;next;
-        <span style="color: #00F">while</span> (q)
+        <span style="color: #0000ff">auto</span> p = head, q = p-&gt;next;
+        <span style="color: #0000ff">while</span> (q)
         {
-          <span style="color: #00F">auto</span> o = q-&gt;next;
+          <span style="color: #0000ff">auto</span> o = q-&gt;next;
           q-&gt;next = p;
           p = q, q = o;
         }
         head-&gt;next = NULL;
 
-        <span style="color: #00F">return</span> p;
+        <span style="color: #0000ff">return</span> p;
     }
 };
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">import</span> sys
-<span style="color: #00F">for</span> line <span style="color: #00F">in</span> sys.stdin:
-    line = line.strip()
-    <span style="color: #00F">if</span> <span style="color: #00F">not</span> line:
-        <span style="color: #00F">continue</span>
-    nums = list(map(int, line.split()))
-    nums.pop()  <span style="color: #008000"># remove -1</span>
-    <span style="color: #00F">for</span> x <span style="color: #00F">in</span> reversed(nums):
-        print(x)
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+text = sys.stdin.read().strip()
+parts = text.split(<span style="color: #a31515">&quot;-&gt;&quot;</span>)
+values = [p <span style="color: #0000ff">for</span> p <span style="color: #0000ff">in</span> parts <span style="color: #0000ff">if</span> p != <span style="color: #a31515">&quot;NULL&quot;</span>]
+values.reverse()
+print(<span style="color: #a31515">&quot;-&gt;&quot;</span>.join(values) + <span style="color: #a31515">&quot;-&gt;NULL&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -348,49 +345,45 @@ print(a)
 <span style="color: #008000"> *     ListNode(int x) : val(x), next(NULL) {}</span>
 <span style="color: #008000"> * };</span>
 <span style="color: #008000"> */</span>
-<span style="color: #00F">class</span> <span style="color: #2B91AF">Solution</span> {
-<span style="color: #00F">public</span>:
+<span style="color: #0000ff">class</span> <span style="color: #2b91af">Solution</span> {
+<span style="color: #0000ff">public</span>:
     ListNode* merge(ListNode* l1, ListNode* l2) {
-        <span style="color: #00F">auto</span> dummy = <span style="color: #00F">new</span> ListNode(-1), tail = dummy;
-        <span style="color: #00F">while</span> (l1 &amp;&amp; l2)
-            <span style="color: #00F">if</span> (l1-&gt;val &lt; l2-&gt;val)
+        <span style="color: #0000ff">auto</span> dummy = <span style="color: #0000ff">new</span> ListNode(-1), tail = dummy;
+        <span style="color: #0000ff">while</span> (l1 &amp;&amp; l2)
+            <span style="color: #0000ff">if</span> (l1-&gt;val &lt; l2-&gt;val)
             {
               tail = tail-&gt;next = l1;
               l1 = l1-&gt;next;
             }
-            <span style="color: #00F">else</span>
+            <span style="color: #0000ff">else</span>
             {
               tail = tail-&gt;next = l2;
               l2 = l2-&gt;next;
             }
 
-        <span style="color: #00F">if</span> (l1) tail-&gt;next = l1;
-        <span style="color: #00F">if</span> (l2) tail-&gt;next = l2;
+        <span style="color: #0000ff">if</span> (l1) tail-&gt;next = l1;
+        <span style="color: #0000ff">if</span> (l2) tail-&gt;next = l2;
 
-        <span style="color: #00F">return</span> dummy-&gt;next;  
+        <span style="color: #0000ff">return</span> dummy-&gt;next;  
     }
 };
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">import</span> sys
-
-<span style="color: #00F">def</span> merge(a, b):
-    i = j = 0
-    res = []
-    <span style="color: #00F">while</span> i &lt; len(a) <span style="color: #00F">and</span> j &lt; len(b):
-        <span style="color: #00F">if</span> a[i] &lt; b[j]:
-            res.append(a[i])
-            i += 1
-        <span style="color: #00F">else</span>:
-            res.append(b[j])
-            j += 1
-    res.extend(a[i:])
-    res.extend(b[j:])
-    <span style="color: #00F">return</span> res
-
-lines = sys.stdin.read().strip().split(<span style="color: #A31515">&#39;\n&#39;</span>)
-a = [int(x) <span style="color: #00F">for</span> x <span style="color: #00F">in</span> lines[0].split() <span style="color: #00F">if</span> int(x) != -1]
-b = [int(x) <span style="color: #00F">for</span> x <span style="color: #00F">in</span> lines[1].split() <span style="color: #00F">if</span> int(x) != -1]
-print(<span style="color: #A31515">&#39; &#39;</span>.join(map(str, merge(a, b))))
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+lines = sys.stdin.read().strip().split(<span style="color: #a31515">&#39;\n&#39;</span>)
+a = [int(x) <span style="color: #0000ff">for</span> x <span style="color: #0000ff">in</span> lines[0].split(<span style="color: #a31515">&quot;-&gt;&quot;</span>) <span style="color: #0000ff">if</span> x != <span style="color: #a31515">&quot;NULL&quot;</span>]
+b = [int(x) <span style="color: #0000ff">for</span> x <span style="color: #0000ff">in</span> lines[1].split(<span style="color: #a31515">&quot;-&gt;&quot;</span>) <span style="color: #0000ff">if</span> x != <span style="color: #a31515">&quot;NULL&quot;</span>]
+i = j = 0
+res = []
+<span style="color: #0000ff">while</span> i &lt; len(a) <span style="color: #0000ff">and</span> j &lt; len(b):
+    <span style="color: #0000ff">if</span> a[i] &lt;= b[j]:
+        res.append(str(a[i]))
+        i += 1
+    <span style="color: #0000ff">else</span>:
+        res.append(str(b[j]))
+        j += 1
+res.extend(str(x) <span style="color: #0000ff">for</span> x <span style="color: #0000ff">in</span> a[i:])
+res.extend(str(x) <span style="color: #0000ff">for</span> x <span style="color: #0000ff">in</span> b[j:])
+print(<span style="color: #a31515">&quot;-&gt;&quot;</span>.join(res))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -413,46 +406,46 @@ print(<span style="color: #A31515">&#39; &#39;</span>.join(map(str, merge(a, b))
 <div class="insight-block"><span class="insight-label">思路</span><span>结构体/元组排序。C++: struct+sort+cmp；Python: sorted(arr, key=lambda x: x[0])。Python的lambda是匿名函数——快速定义比较逻辑而不需要单独定义函数。理解排序的稳定性（x相同时保持原序）。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python: sorted(arr, key=lambda t: t[0])。lambda是Python函数式编程的利器——它就是一个只能写一行表达式的匿名函数。C++可用lambda: [](auto &a, auto &b){return a.x<b.x;}。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 10010;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 10010;
 
-<span style="color: #00F">struct</span> <span style="color: #2B91AF">data</span> {
-    <span style="color: #2B91AF">int</span> x;
-    <span style="color: #2B91AF">double</span> y;
+<span style="color: #0000ff">struct</span> <span style="color: #2b91af">data</span> {
+    <span style="color: #2b91af">int</span> x;
+    <span style="color: #2b91af">double</span> y;
     string z;
-    <span style="color: #2B91AF">bool</span> <span style="color: #00F">operator</span>&lt; (<span style="color: #00F">const</span> data &amp; t) <span style="color: #00F">const</span>
+    <span style="color: #2b91af">bool</span> <span style="color: #0000ff">operator</span>&lt; (<span style="color: #0000ff">const</span> data &amp; t) <span style="color: #0000ff">const</span>
     {
-        <span style="color: #00F">return</span> x &lt; t.x;
+        <span style="color: #0000ff">return</span> x &lt; t.x;
     }
 } a[N];
 
-<span style="color: #2B91AF">int</span> main() {
-    <span style="color: #2B91AF">int</span> n;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> n;
     cin&gt;&gt;n;
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i=0; i&lt; n; i++) cin&gt;&gt; a[i].x &gt;&gt; a[i].y &gt;&gt; a[i].z;
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i=0; i&lt; n; i++) cin&gt;&gt; a[i].x &gt;&gt; a[i].y &gt;&gt; a[i].z;
     <span style="color: #008000">//结构体排序</span>
     sort(a, a+n);
     <span style="color: #008000">//输出结果</span>
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i++)
-        printf(<span style="color: #A31515">&quot;%d %.2lf %s\n&quot;</span>, a[i].x, a[i].y, a[i].z.c_str());
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; n; i++)
+        printf(<span style="color: #a31515">&quot;%d %.2lf %s\n&quot;</span>, a[i].x, a[i].y, a[i].z.c_str());
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>n = int(input())
 data = []
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n):
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(n):
     parts = input().split()
     x = int(parts[0])
     y = float(parts[1])
     z = parts[2]
     data.append((x, y, z))
-data.sort(key=<span style="color: #00F">lambda</span> t: t[0])
-<span style="color: #00F">for</span> x, y, z <span style="color: #00F">in</span> data:
-    print(<span style="color: #A31515">f&#39;{</span>x<span style="color: #A31515">} {</span>y<span style="color: #A31515">:.2f} {</span>z<span style="color: #A31515">}&#39;</span>)
+data.sort(key=<span style="color: #0000ff">lambda</span> t: t[0])
+<span style="color: #0000ff">for</span> x, y, z <span style="color: #0000ff">in</span> data:
+    print(<span style="color: #a31515">f&#39;{</span>x<span style="color: #a31515">} {</span>y<span style="color: #a31515">:.2f} {</span>z<span style="color: #a31515">}&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -470,27 +463,27 @@ data.sort(key=<span style="color: #00F">lambda</span> t: t[0])
 <div class="insight-block"><span class="insight-label">思路</span><span>C++函数重载：int abs(int x)和double abs(double x)可以共存。编译器根据参数类型自动选择。Python不需要——def abs(x): return -x if x<0 else x就行（鸭子类型）。Python内置abs()已经是多态的。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>C++函数重载的核心：同名不同参。编译器根据参数类型/数量自动匹配。Python通过鸭子类型（duck typing）实现类似效果——只要对象支持所需操作就行。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
-<span style="color: #2B91AF">int</span> abs(<span style="color: #2B91AF">int</span> x)
+<span style="color: #2b91af">int</span> abs(<span style="color: #2b91af">int</span> x)
 {
-  <span style="color: #00F">if</span> (x &gt; 0) <span style="color: #00F">return</span> x;
-  <span style="color: #00F">return</span> -x;
+  <span style="color: #0000ff">if</span> (x &gt; 0) <span style="color: #0000ff">return</span> x;
+  <span style="color: #0000ff">return</span> -x;
 }
 
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
-    <span style="color: #2B91AF">int</span> x;
+    <span style="color: #2b91af">int</span> x;
     cin &gt;&gt; x;
     cout &lt;&lt; abs(x) &lt;&lt; endl;
 
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>x = int(input())
-print(x <span style="color: #00F">if</span> x &gt;= 0 <span style="color: #00F">else</span> -x)
+print(x <span style="color: #0000ff">if</span> x &gt;= 0 <span style="color: #0000ff">else</span> -x)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -509,39 +502,39 @@ print(x <span style="color: #00F">if</span> x &gt;= 0 <span style="color: #00F">
 <div class="insight-block"><span class="insight-label">思路</span><span>数组复制函数：遍历赋值b[i]=a[i]。C++用for循环或memcpy，Python用切片a[:]（浅拷贝）。理解浅拷贝vs深拷贝——对于int这种不可变对象，浅拷贝安全；对于嵌套list需要用copy.deepcopy。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python切片a[:]创建新列表——最常用的复制方式。list.copy()和list(a)也创建浅拷贝。C++的memcpy是原始内存复制——对非POD类型不安全，现代C++推荐std::copy。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 110;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 110;
 
-<span style="color: #2B91AF">void</span> copy(<span style="color: #2B91AF">int</span> a[], <span style="color: #2B91AF">int</span> b[], <span style="color: #2B91AF">int</span> size)
+<span style="color: #2b91af">void</span> copy(<span style="color: #2b91af">int</span> a[], <span style="color: #2b91af">int</span> b[], <span style="color: #2b91af">int</span> size)
 {
     memcpy(b, a, size * 4);
 }
 
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
-    <span style="color: #2B91AF">int</span> a[N], b[N];
-    <span style="color: #2B91AF">int</span> n, m, size;
+    <span style="color: #2b91af">int</span> a[N], b[N];
+    <span style="color: #2b91af">int</span> n, m, size;
     cin &gt;&gt; n &gt;&gt; m &gt;&gt; size;
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i ++ ) cin &gt;&gt; a[i];
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; m; i ++ ) cin &gt;&gt; b[i];
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; n; i ++ ) cin &gt;&gt; a[i];
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; m; i ++ ) cin &gt;&gt; b[i];
 
     copy(a, b, size);
 
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; m; i ++ ) cout &lt;&lt; b[i] &lt;&lt; <span style="color: #A31515">&#39; &#39;</span>;
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; m; i ++ ) cout &lt;&lt; b[i] &lt;&lt; <span style="color: #a31515">&#39; &#39;</span>;
     cout &lt;&lt; endl;
 
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>n, m, size = map(int, input().split())
 a = list(map(int, input().split()))
 b = list(map(int, input().split()))
 b[:size] = a[:size]
-print(<span style="color: #A31515">&#39; &#39;</span>.join(map(str, b)))
+print(<span style="color: #a31515">&#39; &#39;</span>.join(map(str, b)))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -560,34 +553,34 @@ print(<span style="color: #A31515">&#39; &#39;</span>.join(map(str, b)))
 <div class="insight-block"><span class="insight-label">思路</span><span>部分翻转：for i in range(size//2): swap(arr[i], arr[size-1-i])。只交换前size个元素，后面的不动。时间O(size/2)，空间O(1)。Python用arr[:size]=arr[size-1::-1]结合切片赋值。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python切片翻转arr[::-1]最简洁但创建新列表。原地翻转用reverse()或手写交换。理解'对称交换'是理解更多高级翻转（旋转、循环移位）的基础。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
-<span style="color: #2B91AF">void</span> reverse(<span style="color: #2B91AF">int</span> a[], <span style="color: #2B91AF">int</span> size)
+<span style="color: #2b91af">void</span> reverse(<span style="color: #2b91af">int</span> a[], <span style="color: #2b91af">int</span> size)
 {
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0, j = size - 1; i &lt; j; i ++, j -- )
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0, j = size - 1; i &lt; j; i ++, j -- )
         swap(a[i], a[j]);
 }
 
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
-    <span style="color: #2B91AF">int</span> a[1000];
-    <span style="color: #2B91AF">int</span> n, size;
+    <span style="color: #2b91af">int</span> a[1000];
+    <span style="color: #2b91af">int</span> n, size;
 
     cin &gt;&gt; n &gt;&gt; size;
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i ++ ) cin &gt;&gt; a[i];
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; n; i ++ ) cin &gt;&gt; a[i];
     reverse(a, size);
 
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i ++ ) cout &lt;&lt; a[i] &lt;&lt; <span style="color: #A31515">&#39; &#39;</span>;
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; n; i ++ ) cout &lt;&lt; a[i] &lt;&lt; <span style="color: #a31515">&#39; &#39;</span>;
 
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>n, size = map(int, input().split())
 a = list(map(int, input().split()))
 a[:size] = reversed(a[:size])
-print(<span style="color: #A31515">&#39; &#39;</span>.join(map(str, a)))
+print(<span style="color: #a31515">&#39; &#39;</span>.join(map(str, a)))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>

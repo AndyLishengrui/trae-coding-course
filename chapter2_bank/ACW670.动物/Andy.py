@@ -1,4 +1,5 @@
-a, b, c = input(), input(), input()
+import sys
+a, b, c = sys.stdin.read().split()
 if a == "vertebrado":
     if b == "ave":
         print("aguia" if c == "carnivoro" else "pomba")

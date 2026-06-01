@@ -1,11 +1,4 @@
-# NQ: AcWing 713
 n = int(input())
-in_count = out_count = 0
-for _ in range(n):
-    x = int(input())
-    if 10 <= x <= 20:
-        in_count += 1
-    else:
-        out_count += 1
-print(f"{in_count} in")
-print(f"{out_count} out")
+in_cnt = sum(1 for _ in range(n) if 10 <= int(input()) <= 20)
+print(f"{in_cnt} in")
+print(f"{n - in_cnt} out")

@@ -56,97 +56,92 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 <div class="insight-block"><span class="insight-label">思路</span><span>Kahn算法(BFS拓扑排序)：1)统计所有节点入度；2)入度为0的节点入队；3)while队列非空：弹出队头t输出，遍历t的所有邻居，邻居入度-1，若入度变为0则入队；4)输出数<n则有环。O(n+m)。另外DFS也能做拓扑排序。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>拓扑排序=有向无环图(DAG)的线性排列。应用：课程安排、编译依赖、任务调度。Python: 邻接表+deque+入度数组。拓扑排序是算法竞赛中最基础的图论算法之一——必须熟练掌握。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;queue&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;queue&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #00F">#define For(a, begin, end) for (int a = (begin); a &lt; (end); a++)</span>
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 1000007;
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #0000ff">#define For(a, begin, end) for (int a = (begin); a &lt; (end); a++)</span>
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 1000007;
 
-<span style="color: #2B91AF">int</span> n, m;
-<span style="color: #2B91AF">int</span> head[N], edge[N], nextVertex[N], idx; <span style="color: #008000">//邻接表</span>
-<span style="color: #2B91AF">int</span> q[N], d[N]; <span style="color: #008000">//队列，入度</span>
+<span style="color: #2b91af">int</span> n, m;
+<span style="color: #2b91af">int</span> head[N], edge[N], nextVertex[N], idx; <span style="color: #008000">//邻接表</span>
+<span style="color: #2b91af">int</span> q[N], d[N]; <span style="color: #008000">//队列，入度</span>
 
-<span style="color: #2B91AF">void</span> add(<span style="color: #2B91AF">int</span> a, <span style="color: #2B91AF">int</span> b)
+<span style="color: #2b91af">void</span> add(<span style="color: #2b91af">int</span> a, <span style="color: #2b91af">int</span> b)
 {    
     edge[idx] = b;
     nextVertex[idx] = head[a];
     head[a] = idx++;
 }
 
-<span style="color: #2B91AF">bool</span> topsort()
+<span style="color: #2b91af">bool</span> topsort()
 {
-    <span style="color: #2B91AF">int</span> qHeadIdx = 0, qTailIdx = -1; <span style="color: #008000">//队头，队尾</span>
+    <span style="color: #2b91af">int</span> qHeadIdx = 0, qTailIdx = -1; <span style="color: #008000">//队头，队尾</span>
     <span style="color: #008000">//从前往后遍历入度为0的点，插入队列</span>
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i++)
-        <span style="color: #00F">if</span> (!d[i])
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= n; i++)
+        <span style="color: #0000ff">if</span> (!d[i])
             q[++qTailIdx] = i; <span style="color: #008000">//数组模拟队列，入队是尾指针+1</span>
-    <span style="color: #00F">while</span> (qHeadIdx &lt;= qTailIdx) <span style="color: #008000">//如果头指针小于尾指针</span>
+    <span style="color: #0000ff">while</span> (qHeadIdx &lt;= qTailIdx) <span style="color: #008000">//如果头指针小于尾指针</span>
     {
-        <span style="color: #2B91AF">int</span> t = q[qHeadIdx++]; <span style="color: #008000">//取队列头元素，，出队只是把头指针往后移动一位</span>
+        <span style="color: #2b91af">int</span> t = q[qHeadIdx++]; <span style="color: #008000">//取队列头元素，，出队只是把头指针往后移动一位</span>
         <span style="color: #008000">//遍历t的临边，空指针初始化为-1</span>
-        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = head[t]; i != -1; i = nextVertex[i])
+        <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = head[t]; i != -1; i = nextVertex[i])
         {
-            <span style="color: #2B91AF">int</span> j = edge[i]; <span style="color: #008000">//取到出边</span>
+            <span style="color: #2b91af">int</span> j = edge[i]; <span style="color: #008000">//取到出边</span>
             d[j]--;   <span style="color: #008000">//入度减一</span>
-            <span style="color: #00F">if</span> (d[j] == 0)
+            <span style="color: #0000ff">if</span> (d[j] == 0)
                 q[++qTailIdx] = j; <span style="color: #008000">//如若入度为0，压入队列</span>
         }
     }
     <span style="color: #008000">//判断是否所有顶点都入队</span>
     <span style="color: #008000">//也就是头指针qTailIdx是否等于n-1,即所有点都进入队列了</span>
-    <span style="color: #00F">return</span> qTailIdx==n-1;
+    <span style="color: #0000ff">return</span> qTailIdx==n-1;
 }
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
 
     cin &gt;&gt; n &gt;&gt; m;            <span style="color: #008000">//读入n,m</span>
-    memset(head, -1, <span style="color: #00F">sizeof</span>(head)); <span style="color: #008000">//初始化Head数组指向-1顶点</span>
+    memset(head, -1, <span style="color: #0000ff">sizeof</span>(head)); <span style="color: #008000">//初始化Head数组指向-1顶点</span>
 
     For(i, 0, m)
     {
-        <span style="color: #2B91AF">int</span> a, b;
+        <span style="color: #2b91af">int</span> a, b;
         cin &gt;&gt; a &gt;&gt; b;
         add(a, b); <span style="color: #008000">//插入边</span>
         d[b]++;    <span style="color: #008000">//更新入度</span>
     }
 
-    <span style="color: #00F">if</span> (topsort())
+    <span style="color: #0000ff">if</span> (topsort())
     {<span style="color: #008000">//数组队列里面的元素就是拓扑序</span>
-      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i =0; i&lt;n; i++) printf(<span style="color: #A31515">&quot;%d &quot;</span>,q[i]);
+      <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i =0; i&lt;n; i++) printf(<span style="color: #a31515">&quot;%d &quot;</span>,q[i]);
     }
-    <span style="color: #00F">else</span>
-        puts(<span style="color: #A31515">&quot;-1&quot;</span>);
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">else</span>
+        puts(<span style="color: #a31515">&quot;-1&quot;</span>);
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 拓扑序列</span>
-<span style="color: #00F">from</span> collections <span style="color: #00F">import</span> deque
-n, m = map(int, input().split())
-adj = [[] <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n + 1)]
-indeg = [0] * (n + 1)
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
-    x, y = map(int, input().split())
-    adj[x].append(y)
-    indeg[y] += 1
-q = deque()
-<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, n + 1):
-    <span style="color: #00F">if</span> indeg[i] == 0:
-        q.append(i)
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+<span style="color: #0000ff">from</span> collections <span style="color: #0000ff">import</span> deque
+data = sys.stdin.read().split()
+n, m = int(data[0]), int(data[1])
+adj = [[] <span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(n+1)]
+indeg = [0]*(n+1)
+idx = 2
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(m):
+    x, y = int(data[idx]), int(data[idx+1])
+    idx += 2
+    adj[x].append(y); indeg[y] += 1
+q = deque([i <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1,n+1) <span style="color: #0000ff">if</span> indeg[i]==0])
 res = []
-<span style="color: #00F">while</span> q:
+<span style="color: #0000ff">while</span> q:
     u = q.popleft()
     res.append(str(u))
-    <span style="color: #00F">for</span> v <span style="color: #00F">in</span> adj[u]:
+    <span style="color: #0000ff">for</span> v <span style="color: #0000ff">in</span> adj[u]:
         indeg[v] -= 1
-        <span style="color: #00F">if</span> indeg[v] == 0:
-            q.append(v)
-<span style="color: #00F">if</span> len(res) == n:
-    print(<span style="color: #A31515">&#39; &#39;</span>.join(res))
-<span style="color: #00F">else</span>:
-    print(-1)
+        <span style="color: #0000ff">if</span> indeg[v] == 0: q.append(v)
+print(<span style="color: #a31515">&#39; &#39;</span>.join(res) <span style="color: #0000ff">if</span> len(res)==n <span style="color: #0000ff">else</span> -1)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -167,83 +162,83 @@ res = []
 <div class="insight-block"><span class="insight-label">思路</span><span>Dijkstra朴素版：dist[1]=0, 其余INF。n次循环：每次找未被标记的最近节点t，标记t，用t松弛所有邻居v: dist[v]=min(dist[v],dist[t]+w[t][v])。O(n²+m)。证明：贪心选择正确性基于边权非负（边权为负时应用Bellman-Ford/SPFA）。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Dijkstra只适用于非负权图。找最近节点的O(n)可以用堆优化降到O(log n)。Python: heap=(dist[i],i)入堆，弹堆时检查是否过期。朴素版n≤500时O(n²)≈250K——完全够用。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 510;<span style="color: #008000">//500*500</span>
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> INF = 0x3f3f3f3f;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 510;<span style="color: #008000">//500*500</span>
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> INF = 0x3f3f3f3f;
 
-<span style="color: #2B91AF">int</span> g[N][N]; 
-<span style="color: #2B91AF">int</span> dist[N];
-<span style="color: #2B91AF">bool</span> st[N];
+<span style="color: #2b91af">int</span> g[N][N]; 
+<span style="color: #2b91af">int</span> dist[N];
+<span style="color: #2b91af">bool</span> st[N];
 
-<span style="color: #2B91AF">int</span> n,m;
+<span style="color: #2b91af">int</span> n,m;
 
-<span style="color: #2B91AF">int</span> Dijkstra()
+<span style="color: #2b91af">int</span> Dijkstra()
 {
-  memset(dist,0x3f, <span style="color: #00F">sizeof</span> dist);<span style="color: #008000">//初始化距离  0x3f代表无限大</span>
+  memset(dist,0x3f, <span style="color: #0000ff">sizeof</span> dist);<span style="color: #008000">//初始化距离  0x3f代表无限大</span>
 
   dist[1] = 0; <span style="color: #008000">//第一个点到自身的距离为0</span>
 
   <span style="color: #008000">//有n个点，迭代n次</span>
-  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i&lt;n; i++)
+  <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i&lt;n; i++)
   {
-    <span style="color: #2B91AF">int</span> t = -1;<span style="color: #008000">//当前访问点的编号初始为-1</span>
+    <span style="color: #2b91af">int</span> t = -1;<span style="color: #008000">//当前访问点的编号初始为-1</span>
 
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;= n; j++) <span style="color: #008000">//从点1到点n开始计算dist</span>
-      <span style="color: #00F">if</span> (!st[j] &amp;&amp; (t == -1 || dist[t] &gt; dist[j]))
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> j = 1; j &lt;= n; j++) <span style="color: #008000">//从点1到点n开始计算dist</span>
+      <span style="color: #0000ff">if</span> (!st[j] &amp;&amp; (t == -1 || dist[t] &gt; dist[j]))
         t = j;<span style="color: #008000">// 更新点t，直到找到dist最小的点</span>
 
     st[t]= true;<span style="color: #008000">//标记此点确定</span>
 
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;=n; j++)<span style="color: #008000">//每个点都要遍历所有点一遍</span>
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> j = 1; j &lt;=n; j++)<span style="color: #008000">//每个点都要遍历所有点一遍</span>
        dist[j] = min( dist[j], dist[t]+ g[t][j]);<span style="color: #008000">//遍历所有的点，求从点t到点j的最小值</span>
    }
 
 
-   <span style="color: #00F">if</span> (dist[n] == INF) <span style="color: #00F">return</span> -1;
-   <span style="color: #00F">return</span> dist[n];<span style="color: #008000">//返回第n个点的最短距离</span>
+   <span style="color: #0000ff">if</span> (dist[n] == INF) <span style="color: #0000ff">return</span> -1;
+   <span style="color: #0000ff">return</span> dist[n];<span style="color: #008000">//返回第n个点的最短距离</span>
 }
 
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
   cin&gt;&gt;n&gt;&gt;m;
 
-  memset(g, 0x3f, <span style="color: #00F">sizeof</span> g);
+  memset(g, 0x3f, <span style="color: #0000ff">sizeof</span> g);
 
-  <span style="color: #00F">while</span> (m--)
+  <span style="color: #0000ff">while</span> (m--)
   {
-    <span style="color: #2B91AF">int</span> x,y,z;
+    <span style="color: #2b91af">int</span> x,y,z;
     cin&gt;&gt;x&gt;&gt;y&gt;&gt;z;
     g[x][y] = min( g[x][y],z);<span style="color: #008000">//取重边和自环的最小值，保留一条边</span>
   }
   cout&lt;&lt;Dijkstra()&lt;&lt;endl;
 
-  <span style="color: #00F">return</span> 0;
+  <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Dijkstra I (朴素版)</span>
 n, m = map(int, input().split())
-g = [[0x3f3f3f3f] * (n + 1) <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n + 1)]
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
+g = [[0x3f3f3f3f] * (n + 1) <span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(n + 1)]
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(m):
     x, y, z = map(int, input().split())
     g[x][y] = min(g[x][y], z)
 dist = [0x3f3f3f3f] * (n + 1)
 dist[1] = 0
-st = [<span style="color: #00F">False</span>] * (n + 1)
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n):
+st = [<span style="color: #0000ff">False</span>] * (n + 1)
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(n):
     t = -1
-    <span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, n + 1):
-        <span style="color: #00F">if</span> <span style="color: #00F">not</span> st[i] <span style="color: #00F">and</span> (t == -1 <span style="color: #00F">or</span> dist[i] &lt; dist[t]):
+    <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1, n + 1):
+        <span style="color: #0000ff">if</span> <span style="color: #0000ff">not</span> st[i] <span style="color: #0000ff">and</span> (t == -1 <span style="color: #0000ff">or</span> dist[i] &lt; dist[t]):
             t = i
-    st[t] = <span style="color: #00F">True</span>
-    <span style="color: #00F">for</span> v <span style="color: #00F">in</span> range(1, n + 1):
-        <span style="color: #00F">if</span> dist[v] &gt; dist[t] + g[t][v]:
+    st[t] = <span style="color: #0000ff">True</span>
+    <span style="color: #0000ff">for</span> v <span style="color: #0000ff">in</span> range(1, n + 1):
+        <span style="color: #0000ff">if</span> dist[v] &gt; dist[t] + g[t][v]:
             dist[v] = dist[t] + g[t][v]
-print(dist[n] <span style="color: #00F">if</span> dist[n] != 0x3f3f3f3f <span style="color: #00F">else</span> -1)
+print(dist[n] <span style="color: #0000ff">if</span> dist[n] != 0x3f3f3f3f <span style="color: #0000ff">else</span> -1)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -264,31 +259,31 @@ print(dist[n] <span style="color: #00F">if</span> dist[n] != 0x3f3f3f3f <span st
 <div class="insight-block"><span class="insight-label">思路</span><span>堆优化Dijkstra：dist[1]=0, heap.push({0,1})。while heap非空：弹出{d,u}(若d>dist[u]则skip过期)，标记st[u]，遍历所有邻居v: if(dist[v]>dist[u]+w): dist[v]=dist[u]+w; heap.push({dist[v],v})。O(m log n)。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python用heapq：heappush(heap,(dist[v],v))。过期检测：if d>dist[u]: continue。这是C++和Python都通用的堆优化模板——配上邻接表就是标准的Dijkstra优化版。背下这个模板，面试/竞赛都够用。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;queue&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;queue&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
-<span style="color: #00F">typedef</span> pair&lt;<span style="color: #2B91AF">int</span>, <span style="color: #2B91AF">int</span>&gt; PII;
+<span style="color: #0000ff">typedef</span> pair&lt;<span style="color: #2b91af">int</span>, <span style="color: #2b91af">int</span>&gt; PII;
 
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 1e6 + 10;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 1e6 + 10;
 
-<span style="color: #2B91AF">int</span> n, m;                          <span style="color: #008000">//行，列</span>
-<span style="color: #2B91AF">int</span> h[N], w[N], e[N], ne[N], idx;  <span style="color: #008000">//数组模拟链表</span>
-<span style="color: #2B91AF">int</span> dist[N];                       <span style="color: #008000">//距离矩阵</span>
-<span style="color: #2B91AF">bool</span> st[N];                        <span style="color: #008000">//状态矩阵</span>
+<span style="color: #2b91af">int</span> n, m;                          <span style="color: #008000">//行，列</span>
+<span style="color: #2b91af">int</span> h[N], w[N], e[N], ne[N], idx;  <span style="color: #008000">//数组模拟链表</span>
+<span style="color: #2b91af">int</span> dist[N];                       <span style="color: #008000">//距离矩阵</span>
+<span style="color: #2b91af">bool</span> st[N];                        <span style="color: #008000">//状态矩阵</span>
 
 <span style="color: #008000">//建边函数（数组模拟链表)</span>
-<span style="color: #2B91AF">void</span> add(<span style="color: #2B91AF">int</span> a, <span style="color: #2B91AF">int</span> b, <span style="color: #2B91AF">int</span> c) {
+<span style="color: #2b91af">void</span> add(<span style="color: #2b91af">int</span> a, <span style="color: #2b91af">int</span> b, <span style="color: #2b91af">int</span> c) {
   e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx++;
 }
 
 <span style="color: #008000">//改进版，使用小根堆</span>
-<span style="color: #2B91AF">int</span> dijkstra() {
+<span style="color: #2b91af">int</span> dijkstra() {
   <span style="color: #008000">//初始化距离矩阵</span>
-  memset(dist, 0x3f, <span style="color: #00F">sizeof</span> dist);
+  memset(dist, 0x3f, <span style="color: #0000ff">sizeof</span> dist);
   dist[1] = 0;
   <span style="color: #008000">//调用优先队列，以及greater算子，创建小根堆</span>
   priority_queue&lt;PII, vector&lt;PII&gt;, greater&lt;PII&gt;&gt; heap;
@@ -297,72 +292,75 @@ print(dist[n] <span style="color: #00F">if</span> dist[n] != 0x3f3f3f3f <span st
   heap.push({0, 1});
 
   <span style="color: #008000">// BFS计算最短距离</span>
-  <span style="color: #00F">while</span> (heap.size()) {
+  <span style="color: #0000ff">while</span> (heap.size()) {
     <span style="color: #008000">//取堆头元素</span>
-    <span style="color: #00F">auto</span> t = heap.top();
+    <span style="color: #0000ff">auto</span> t = heap.top();
     heap.pop();
 
     <span style="color: #008000">// 取顶点编号、顶点距离</span>
-    <span style="color: #2B91AF">int</span> ver = t.second, distance = t.first;
+    <span style="color: #2b91af">int</span> ver = t.second, distance = t.first;
 
     <span style="color: #008000">// 顶点遍历过就跳过，不展开改顶点</span>
-    <span style="color: #00F">if</span> (st[ver]) <span style="color: #00F">continue</span>;
+    <span style="color: #0000ff">if</span> (st[ver]) <span style="color: #0000ff">continue</span>;
     st[ver] = true;
 
     <span style="color: #008000">//遍历所有相邻顶点</span>
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = h[ver]; i != -1; i = ne[i]) {
-      <span style="color: #2B91AF">int</span> j = e[i];
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = h[ver]; i != -1; i = ne[i]) {
+      <span style="color: #2b91af">int</span> j = e[i];
       <span style="color: #008000">//判断dist[ver]+w[i]是否比原来顶点j的距离大</span>
-      <span style="color: #00F">if</span> (dist[j] &gt; dist[ver] + w[i]) {
+      <span style="color: #0000ff">if</span> (dist[j] &gt; dist[ver] + w[i]) {
         dist[j] = dist[ver] + w[i];  <span style="color: #008000">//更新顶点j的距离值</span>
         heap.push({dist[j], j});     <span style="color: #008000">//把更小的距离值入堆</span>
       }
     }
   }
   <span style="color: #008000">//如果第n点距离值没被更新，表明不可达</span>
-  <span style="color: #00F">if</span> (dist[n] == 0x3f3f3f3f) <span style="color: #00F">return</span> -1;
+  <span style="color: #0000ff">if</span> (dist[n] == 0x3f3f3f3f) <span style="color: #0000ff">return</span> -1;
   <span style="color: #008000">//返回点n的距离值</span>
-  <span style="color: #00F">return</span> dist[n];
+  <span style="color: #0000ff">return</span> dist[n];
 }
 
-<span style="color: #2B91AF">int</span> main() {
+<span style="color: #2b91af">int</span> main() {
   <span style="color: #008000">//读入行n，列m</span>
-  scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>, &amp;n, &amp;m);
+  scanf(<span style="color: #a31515">&quot;%d%d&quot;</span>, &amp;n, &amp;m);
   <span style="color: #008000">//把邻接链表的头指针化为-1，表明当前为空，不指向任何链表</span>
-  memset(h, -1, <span style="color: #00F">sizeof</span> h);
+  memset(h, -1, <span style="color: #0000ff">sizeof</span> h);
   <span style="color: #008000">//处理m条边</span>
-  <span style="color: #00F">while</span> (m--) {
-    <span style="color: #2B91AF">int</span> a, b, c;
-    scanf(<span style="color: #A31515">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);
+  <span style="color: #0000ff">while</span> (m--) {
+    <span style="color: #2b91af">int</span> a, b, c;
+    scanf(<span style="color: #a31515">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);
     add(a, b, c);<span style="color: #008000">//调用add建图</span>
   }
   <span style="color: #008000">//调用改进版的dijkstra()</span>
   cout &lt;&lt; dijkstra() &lt;&lt; endl;
 
-  <span style="color: #00F">return</span> 0;
+  <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Dijkstra II (堆优化)</span>
-<span style="color: #00F">import</span> heapq
-n, m = map(int, input().split())
-adj = [[] <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n + 1)]
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
-    x, y, z = map(int, input().split())
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+<span style="color: #0000ff">import</span> heapq
+data = sys.stdin.read().split()
+n, m = int(data[0]), int(data[1])
+adj = [[] <span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(n+1)]
+idx = 2
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(m):
+    x, y, z = int(data[idx]), int(data[idx+1]), int(data[idx+2])
+    idx += 3
     adj[x].append((y, z))
-dist = [0x3f3f3f3f] * (n + 1)
+INF = 10**15
+dist = [INF]*(n+1)
 dist[1] = 0
-st = [<span style="color: #00F">False</span>] * (n + 1)
+st = [<span style="color: #0000ff">False</span>]*(n+1)
 heap = [(0, 1)]
-<span style="color: #00F">while</span> heap:
+<span style="color: #0000ff">while</span> heap:
     d, u = heapq.heappop(heap)
-    <span style="color: #00F">if</span> st[u]:
-        <span style="color: #00F">continue</span>
-    st[u] = <span style="color: #00F">True</span>
-    <span style="color: #00F">for</span> v, w <span style="color: #00F">in</span> adj[u]:
-        <span style="color: #00F">if</span> dist[v] &gt; d + w:
+    <span style="color: #0000ff">if</span> st[u]: <span style="color: #0000ff">continue</span>
+    st[u] = <span style="color: #0000ff">True</span>
+    <span style="color: #0000ff">for</span> v, w <span style="color: #0000ff">in</span> adj[u]:
+        <span style="color: #0000ff">if</span> dist[v] &gt; d + w:
             dist[v] = d + w
             heapq.heappush(heap, (dist[v], v))
-print(dist[n] <span style="color: #00F">if</span> dist[n] != 0x3f3f3f3f <span style="color: #00F">else</span> -1)
+print(dist[n] <span style="color: #0000ff">if</span> dist[n] != INF <span style="color: #0000ff">else</span> -1)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -383,100 +381,103 @@ print(dist[n] <span style="color: #00F">if</span> dist[n] != 0x3f3f3f3f <span st
 <div class="insight-block"><span class="insight-label">思路</span><span>SPFA：dist[1]=0, q.push(1), st[1]=true。while q非空：t=q.front(); q.pop(); st[t]=false。遍历t的邻居v: if(dist[v]>dist[t]+w): dist[v]=dist[t]+w; if(!st[v]) q.push(v), st[v]=true。复杂度：平均O(m)最坏O(nm)。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>st数组记录节点是否在队列中——避免重复入队。负环检测：维护cnt[v]=到v的最短路边数，若cnt[v]≥n则有负环。SPFA容易被构造数据卡掉——正权图用Dijkstra更安全。但理解SPFA的松弛传播思想对理解更多图论算法有帮助。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;queue&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;queue&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 100007;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 100007;
 
-<span style="color: #2B91AF">int</span> n,m;
-<span style="color: #2B91AF">int</span> h[N], e[N], w[N], ne[N], idx;
-<span style="color: #2B91AF">int</span> q[N], dist[N];
-<span style="color: #2B91AF">bool</span> st[N];
+<span style="color: #2b91af">int</span> n,m;
+<span style="color: #2b91af">int</span> h[N], e[N], w[N], ne[N], idx;
+<span style="color: #2b91af">int</span> q[N], dist[N];
+<span style="color: #2b91af">bool</span> st[N];
 
-<span style="color: #2B91AF">void</span> add(<span style="color: #2B91AF">int</span> a, <span style="color: #2B91AF">int</span> b, <span style="color: #2B91AF">int</span> c)  <span style="color: #008000">// 添加一条边a-&gt;b，边权为c</span>
+<span style="color: #2b91af">void</span> add(<span style="color: #2b91af">int</span> a, <span style="color: #2b91af">int</span> b, <span style="color: #2b91af">int</span> c)  <span style="color: #008000">// 添加一条边a-&gt;b，边权为c</span>
 {
     e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx ++ ;
 }
 
-<span style="color: #2B91AF">int</span> spfa()  <span style="color: #008000">// 求1号点到n号点的最短路距离，如果从1号点无法走到n号点则返回-1</span>
+<span style="color: #2b91af">int</span> spfa()  <span style="color: #008000">// 求1号点到n号点的最短路距离，如果从1号点无法走到n号点则返回-1</span>
 {
-    <span style="color: #2B91AF">int</span> hh = 0, tt = 0;
-    memset(dist, 0x3f, <span style="color: #00F">sizeof</span> dist);
+    <span style="color: #2b91af">int</span> hh = 0, tt = 0;
+    memset(dist, 0x3f, <span style="color: #0000ff">sizeof</span> dist);
     dist[1] = 0;
     q[tt ++ ] = 1;
     st[1] = true;
 
-    <span style="color: #00F">while</span> (hh != tt)
+    <span style="color: #0000ff">while</span> (hh != tt)
     {
-        <span style="color: #2B91AF">int</span> t = q[hh ++ ];
-        <span style="color: #00F">if</span> (hh == N) hh = 0;
+        <span style="color: #2b91af">int</span> t = q[hh ++ ];
+        <span style="color: #0000ff">if</span> (hh == N) hh = 0;
         st[t] = false;
 
-        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = h[t]; i != -1; i = ne[i])
+        <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = h[t]; i != -1; i = ne[i])
         {
-            <span style="color: #2B91AF">int</span> j = e[i];
-            <span style="color: #00F">if</span> (dist[j] &gt; dist[t] + w[i])
+            <span style="color: #2b91af">int</span> j = e[i];
+            <span style="color: #0000ff">if</span> (dist[j] &gt; dist[t] + w[i])
             {
                 dist[j] = dist[t] + w[i];
-                <span style="color: #00F">if</span> (!st[j])     <span style="color: #008000">// 如果队列中已存在j，则不需要将j重复插入</span>
+                <span style="color: #0000ff">if</span> (!st[j])     <span style="color: #008000">// 如果队列中已存在j，则不需要将j重复插入</span>
                 {
                     q[tt ++ ] = j;
-                    <span style="color: #00F">if</span> (tt == N) tt = 0;
+                    <span style="color: #0000ff">if</span> (tt == N) tt = 0;
                     st[j] = true;
                 }
             }
         }
     }
 
-    <span style="color: #00F">if</span> (dist[n] == 0x3f3f3f3f) <span style="color: #00F">return</span> -1;
-    <span style="color: #00F">return</span> dist[n];
+    <span style="color: #0000ff">if</span> (dist[n] == 0x3f3f3f3f) <span style="color: #0000ff">return</span> -1;
+    <span style="color: #0000ff">return</span> dist[n];
 }
 
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
-    scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>, &amp;n, &amp;m);
-    memset(h, -1, <span style="color: #00F">sizeof</span> h);
-    <span style="color: #00F">while</span> (m -- )
+    scanf(<span style="color: #a31515">&quot;%d%d&quot;</span>, &amp;n, &amp;m);
+    memset(h, -1, <span style="color: #0000ff">sizeof</span> h);
+    <span style="color: #0000ff">while</span> (m -- )
     {
-      <span style="color: #2B91AF">int</span> a, b, c;
-      scanf(<span style="color: #A31515">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);
+      <span style="color: #2b91af">int</span> a, b, c;
+      scanf(<span style="color: #a31515">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);
       add(a, b, c);
     }
 
-    <span style="color: #2B91AF">int</span> t = spfa();
+    <span style="color: #2b91af">int</span> t = spfa();
 
-    <span style="color: #00F">if</span> (t == -1) puts(<span style="color: #A31515">&quot;impossible&quot;</span>);
-    <span style="color: #00F">else</span> printf(<span style="color: #A31515">&quot;%d\n&quot;</span>,t);
+    <span style="color: #0000ff">if</span> (t == -1) puts(<span style="color: #a31515">&quot;impossible&quot;</span>);
+    <span style="color: #0000ff">else</span> printf(<span style="color: #a31515">&quot;%d\n&quot;</span>,t);
 
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># spfa求最短路</span>
-<span style="color: #00F">from</span> collections <span style="color: #00F">import</span> deque
-n, m = map(int, input().split())
-adj = [[] <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n + 1)]
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
-    x, y, z = map(int, input().split())
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+<span style="color: #0000ff">from</span> collections <span style="color: #0000ff">import</span> deque
+data = sys.stdin.read().split()
+n, m = int(data[0]), int(data[1])
+adj = [[] <span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(n+1)]
+idx = 2
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(m):
+    x, y, z = int(data[idx]), int(data[idx+1]), int(data[idx+2])
+    idx += 3
     adj[x].append((y, z))
-dist = [0x3f3f3f3f] * (n + 1)
+INF = 10**15
+dist = [INF]*(n+1)
 dist[1] = 0
-st = [<span style="color: #00F">False</span>] * (n + 1)
+st = [<span style="color: #0000ff">False</span>]*(n+1)
 q = deque([1])
-st[1] = <span style="color: #00F">True</span>
-<span style="color: #00F">while</span> q:
+st[1] = <span style="color: #0000ff">True</span>
+<span style="color: #0000ff">while</span> q:
     u = q.popleft()
-    st[u] = <span style="color: #00F">False</span>
-    <span style="color: #00F">for</span> v, w <span style="color: #00F">in</span> adj[u]:
-        <span style="color: #00F">if</span> dist[v] &gt; dist[u] + w:
+    st[u] = <span style="color: #0000ff">False</span>
+    <span style="color: #0000ff">for</span> v, w <span style="color: #0000ff">in</span> adj[u]:
+        <span style="color: #0000ff">if</span> dist[v] &gt; dist[u] + w:
             dist[v] = dist[u] + w
-            <span style="color: #00F">if</span> <span style="color: #00F">not</span> st[v]:
-                q.append(v)
-                st[v] = <span style="color: #00F">True</span>
-print(dist[n] <span style="color: #00F">if</span> dist[n] != 0x3f3f3f3f <span style="color: #00F">else</span> <span style="color: #A31515">&#39;impossible&#39;</span>)
+            <span style="color: #0000ff">if</span> <span style="color: #0000ff">not</span> st[v]:
+                q.append(v); st[v] = <span style="color: #0000ff">True</span>
+print(dist[n] <span style="color: #0000ff">if</span> dist[n] != INF <span style="color: #0000ff">else</span> <span style="color: #a31515">&#39;impossible&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -500,75 +501,85 @@ print(dist[n] <span style="color: #00F">if</span> dist[n] != 0x3f3f3f3f <span st
 <div class="insight-block"><span class="insight-label">思路</span><span>Floyd模板：初始化dist[i][i]=0，dist[i][j]=INF。读入边权(注意去重——可能有多条边取min)。三重循环：for k: for i: for j: d[i][j]=min(d[i][j], d[i][k]+d[k][j])。时间O(n³)=8×10⁶(n=200)，空间O(n²)。注意INF不要用0x3f3f3f3f以免溢出。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Floyd是n≤200的多源最短路首选。它能同时处理正负权边（不能有负环）。k循环必须在最外层——这是理解Floyd为DP的直接体现。Python三重循环可能较慢，n=200时约需0.5秒。INF设为10⁹避免溢出。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 207,INF = 0x3f3f3f3f;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 207,INF = 0x3f3f3f3f;
 
-<span style="color: #2B91AF">int</span> n,m,k;<span style="color: #008000">//k组询问</span>
-<span style="color: #2B91AF">int</span> d[N][N];
+<span style="color: #2b91af">int</span> n,m,k;<span style="color: #008000">//k组询问</span>
+<span style="color: #2b91af">int</span> d[N][N];
 
-<span style="color: #2B91AF">void</span> floyd()
+<span style="color: #2b91af">void</span> floyd()
 {
   <span style="color: #008000">//用动态规划分析得出这个递推公式，使用三重循环</span>
-  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> k = 1; k &lt;=n; k++)
-   <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;=n; i++)
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;= n; j ++ )
+  <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> k = 1; k &lt;=n; k++)
+   <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;=n; i++)
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> j = 1; j &lt;= n; j ++ )
       d[i][j] = min(d[i][j], d[i][k]+d[k][j]);
 }
 
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
-    scanf(<span style="color: #A31515">&quot;%d%d%d&quot;</span>, &amp;n, &amp;m, &amp;k);
+    scanf(<span style="color: #a31515">&quot;%d%d%d&quot;</span>, &amp;n, &amp;m, &amp;k);
 
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i ++ )
-     <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;= n; j ++ )
-       <span style="color: #00F">if</span> (i==j) d[i][j] = 0;
-       <span style="color: #00F">else</span> d[i][j] = INF;
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= n; i ++ )
+     <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> j = 1; j &lt;= n; j ++ )
+       <span style="color: #0000ff">if</span> (i==j) d[i][j] = 0;
+       <span style="color: #0000ff">else</span> d[i][j] = INF;
 
     <span style="color: #008000">//处理每条边，去掉重边和自环</span>
-    <span style="color: #00F">while</span> (m -- )
+    <span style="color: #0000ff">while</span> (m -- )
     {
-      <span style="color: #2B91AF">int</span> a,b,c;
-      scanf(<span style="color: #A31515">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);
+      <span style="color: #2b91af">int</span> a,b,c;
+      scanf(<span style="color: #a31515">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);
       d[a][b] = min(d[a][b],c);
     }
 
     floyd();
 
     <span style="color: #008000">//k组查询</span>
-    <span style="color: #00F">while</span>(k--)
+    <span style="color: #0000ff">while</span>(k--)
     {
-      <span style="color: #2B91AF">int</span> a,b;
-      scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>, &amp;a, &amp;b);
-      <span style="color: #2B91AF">int</span> t = d[a][b];
-      <span style="color: #00F">if</span> (t &gt; INF /2) puts(<span style="color: #A31515">&quot;impossible&quot;</span>);
-      <span style="color: #00F">else</span> printf(<span style="color: #A31515">&quot;%d\n&quot;</span>,t);
+      <span style="color: #2b91af">int</span> a,b;
+      scanf(<span style="color: #a31515">&quot;%d%d&quot;</span>, &amp;a, &amp;b);
+      <span style="color: #2b91af">int</span> t = d[a][b];
+      <span style="color: #0000ff">if</span> (t &gt; INF /2) puts(<span style="color: #a31515">&quot;impossible&quot;</span>);
+      <span style="color: #0000ff">else</span> printf(<span style="color: #a31515">&quot;%d\n&quot;</span>,t);
     }
 
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Floyd求最短路</span>
-n, m, q = map(int, input().split())
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = sys.stdin.read().split()
+idx = 0
+n, m, q = int(data[idx]), int(data[idx+1]), int(data[idx+2])
+idx += 3
 INF = 0x3f3f3f3f
-d = [[INF] * (n + 1) <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n + 1)]
-<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, n + 1):
+d = [[INF] * (n + 1) <span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(n + 1)]
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1, n + 1):
     d[i][i] = 0
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
-    x, y, z = map(int, input().split())
-    d[x][y] = min(d[x][y], z)
-<span style="color: #00F">for</span> k <span style="color: #00F">in</span> range(1, n + 1):
-    <span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, n + 1):
-        <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(1, n + 1):
-            <span style="color: #00F">if</span> d[i][k] != INF <span style="color: #00F">and</span> d[k][j] != INF:
-                d[i][j] = min(d[i][j], d[i][k] + d[k][j])
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(q):
-    a, b = map(int, input().split())
-    print(d[a][b] <span style="color: #00F">if</span> d[a][b] &lt; INF // 2 <span style="color: #00F">else</span> <span style="color: #A31515">&#39;impossible&#39;</span>)
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(m):
+    x, y, z = int(data[idx]), int(data[idx+1]), int(data[idx+2])
+    idx += 3
+    <span style="color: #0000ff">if</span> z &lt; d[x][y]:
+        d[x][y] = z
+<span style="color: #0000ff">for</span> k <span style="color: #0000ff">in</span> range(1, n + 1):
+    <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1, n + 1):
+        <span style="color: #0000ff">if</span> d[i][k] == INF:
+            <span style="color: #0000ff">continue</span>
+        <span style="color: #0000ff">for</span> j <span style="color: #0000ff">in</span> range(1, n + 1):
+            <span style="color: #0000ff">if</span> d[k][j] != INF <span style="color: #0000ff">and</span> d[i][j] &gt; d[i][k] + d[k][j]:
+                d[i][j] = d[i][k] + d[k][j]
+out = []
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(q):
+    a, b = int(data[idx]), int(data[idx+1])
+    idx += 2
+    out.append(str(d[a][b]) <span style="color: #0000ff">if</span> d[a][b] &lt; INF // 2 <span style="color: #0000ff">else</span> <span style="color: #a31515">&#39;impossible&#39;</span>)
+sys.stdout.write(<span style="color: #a31515">&#39;\n&#39;</span>.join(out) + <span style="color: #a31515">&#39;\n&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -591,87 +602,85 @@ d = [[INF] * (n + 1) <span style="color: #00F">for</span> _ <span style="color: 
 <div class="insight-block"><span class="insight-label">思路</span><span>Prim朴素版：dist[i]=到当前生成树的最近距离。n次循环：每次找未标记的最近点t，标记t，ans+=dist[t]。用t更新所有邻居v的dist[v]=min(dist[v], w[t][v])。O(n²+m)。与Dijkstra的唯一区别：dist的更新公式是w[t][v]而非dist[t]+w[t][v]。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Prim=Dijkstra改一行。Dijkstra: dist[v]=min(dist[v], dist[t]+w)。Prim: dist[v]=min(dist[v], w)。这个区别体现了两者的本质差异——一个求路径累积最短，一个求集合距离最近。稠密图(n≤500)用Prim O(n²)，稀疏图用Kruskal。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 507,INF = 0x3f3f3f3f;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 507,INF = 0x3f3f3f3f;
 
-<span style="color: #2B91AF">int</span> n,m;
-<span style="color: #2B91AF">int</span> g[N][N];
-<span style="color: #2B91AF">int</span> dist[N];
-<span style="color: #2B91AF">bool</span> st[N];
+<span style="color: #2b91af">int</span> n,m;
+<span style="color: #2b91af">int</span> g[N][N];
+<span style="color: #2b91af">int</span> dist[N];
+<span style="color: #2b91af">bool</span> st[N];
 
-<span style="color: #2B91AF">int</span> prim()
+<span style="color: #2b91af">int</span> prim()
 {
-  memset(dist,0x3f,<span style="color: #00F">sizeof</span> dist);
+  memset(dist,0x3f,<span style="color: #0000ff">sizeof</span> dist);
 
-  <span style="color: #2B91AF">int</span> res = 0;
-  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i++)
+  <span style="color: #2b91af">int</span> res = 0;
+  <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; n; i++)
   {
     <span style="color: #008000">//第一个点</span>
-   <span style="color: #2B91AF">int</span> t = -1;
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;= n; j ++ )
-        <span style="color: #00F">if</span>(!st[j] &amp;&amp; (t == -1 || dist[t] &gt; dist[j]))
+   <span style="color: #2b91af">int</span> t = -1;
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> j = 1; j &lt;= n; j ++ )
+        <span style="color: #0000ff">if</span>(!st[j] &amp;&amp; (t == -1 || dist[t] &gt; dist[j]))
         t = j;
 
-    <span style="color: #00F">if</span> (i &amp;&amp; dist[t] == INF) <span style="color: #00F">return</span> INF;<span style="color: #008000">//没有最小生成树，不连通</span>
+    <span style="color: #0000ff">if</span> (i &amp;&amp; dist[t] == INF) <span style="color: #0000ff">return</span> INF;<span style="color: #008000">//没有最小生成树，不连通</span>
 
-    <span style="color: #00F">if</span> (i) res += dist[t];
+    <span style="color: #0000ff">if</span> (i) res += dist[t];
     st[t] = true;
 
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;= n; j ++ ) dist[j] = min(dist[j], g[t][j]);
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> j = 1; j &lt;= n; j ++ ) dist[j] = min(dist[j], g[t][j]);
   }
-   <span style="color: #00F">return</span> res;
+   <span style="color: #0000ff">return</span> res;
 
 }
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
-    scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>, &amp;n, &amp;m);
+    scanf(<span style="color: #a31515">&quot;%d%d&quot;</span>, &amp;n, &amp;m);
 
-    memset(g, 0x3f, <span style="color: #00F">sizeof</span> g);
+    memset(g, 0x3f, <span style="color: #0000ff">sizeof</span> g);
 
-    <span style="color: #00F">while</span> (m -- )
+    <span style="color: #0000ff">while</span> (m -- )
     {
-      <span style="color: #2B91AF">int</span> a,b,c;
-      scanf(<span style="color: #A31515">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);
+      <span style="color: #2b91af">int</span> a,b,c;
+      scanf(<span style="color: #a31515">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);
       g[a][b] = g[b][a] = min(g[a][b],c);<span style="color: #008000">//无向图，去重</span>
     }
 
-    <span style="color: #2B91AF">int</span> t = prim();
-    <span style="color: #00F">if</span> (t== INF) puts(<span style="color: #A31515">&quot;impossible&quot;</span>);
-    <span style="color: #00F">else</span> printf(<span style="color: #A31515">&quot;%d\n&quot;</span>,t);
+    <span style="color: #2b91af">int</span> t = prim();
+    <span style="color: #0000ff">if</span> (t== INF) puts(<span style="color: #a31515">&quot;impossible&quot;</span>);
+    <span style="color: #0000ff">else</span> printf(<span style="color: #a31515">&quot;%d\n&quot;</span>,t);
 
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Prim</span>
-n, m = map(int, input().split())
-g = [[0x3f3f3f3f] * (n + 1) <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n + 1)]
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
-    u, v, w = map(int, input().split())
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = sys.stdin.read().split()
+n, m = int(data[0]), int(data[1])
+g = [[10**15]*(n+1) <span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(n+1)]
+idx = 2
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(m):
+    u, v, w = int(data[idx]), int(data[idx+1]), int(data[idx+2])
+    idx += 3
     g[u][v] = g[v][u] = min(g[u][v], w)
-dist = [0x3f3f3f3f] * (n + 1)
-st = [<span style="color: #00F">False</span>] * (n + 1)
+INF = 10**15
+dist = [INF]*(n+1)
+st = [<span style="color: #0000ff">False</span>]*(n+1)
 ans = 0
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n):
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(n):
     t = -1
-    <span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, n + 1):
-        <span style="color: #00F">if</span> <span style="color: #00F">not</span> st[i] <span style="color: #00F">and</span> (t == -1 <span style="color: #00F">or</span> dist[i] &lt; dist[t]):
-            t = i
-    <span style="color: #00F">if</span> _ &gt; 0 <span style="color: #00F">and</span> dist[t] == 0x3f3f3f3f:
-        print(<span style="color: #A31515">&#39;impossible&#39;</span>)
-        <span style="color: #00F">break</span>
-    <span style="color: #00F">if</span> _ &gt; 0:
-        ans += dist[t]
-    st[t] = <span style="color: #00F">True</span>
-    <span style="color: #00F">for</span> v <span style="color: #00F">in</span> range(1, n + 1):
-        <span style="color: #00F">if</span> dist[v] &gt; g[t][v]:
-            dist[v] = g[t][v]
-<span style="color: #00F">else</span>:
-    print(ans)
+    <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1, n+1):
+        <span style="color: #0000ff">if</span> <span style="color: #0000ff">not</span> st[i] <span style="color: #0000ff">and</span> (t == -1 <span style="color: #0000ff">or</span> dist[i] &lt; dist[t]): t = i
+    <span style="color: #0000ff">if</span> _ &gt; 0 <span style="color: #0000ff">and</span> dist[t] == INF: print(<span style="color: #a31515">&#39;impossible&#39;</span>); sys.exit(0)
+    <span style="color: #0000ff">if</span> _ &gt; 0: ans += dist[t]
+    st[t] = <span style="color: #0000ff">True</span>
+    <span style="color: #0000ff">for</span> v <span style="color: #0000ff">in</span> range(1, n+1):
+        <span style="color: #0000ff">if</span> dist[v] &gt; g[t][v]: dist[v] = g[t][v]
+print(ans)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -694,96 +703,96 @@ ans = 0
 <div class="insight-block"><span class="insight-label">思路</span><span>Kruskal：1)所有边按w升序排序；2)初始化并查集(p[i]=i)；3)遍历每条边(u,v,w)：若find(u)!=find(v)则union(u,v), ans+=w, cnt++；4)若cnt==n-1则连通输出ans，否则impossible。时间O(m log m)（排序主导）。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Kruskal=排序+并查集。并查集：p[x]存父节点，find(x)路径压缩返回根，union(a,b)将a根连到b根。排序O(m log m)是Kruskal的瓶颈——稀疏图(m≈n)时log m小因此Kruskal快于Prim O(n²)。稠密图反之。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 100007, M = 2000007, INF = 0x3f3f3f3f;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 100007, M = 2000007, INF = 0x3f3f3f3f;
 
-<span style="color: #2B91AF">int</span> n,m;
-<span style="color: #2B91AF">int</span> p[N];<span style="color: #008000">//并查集</span>
+<span style="color: #2b91af">int</span> n,m;
+<span style="color: #2b91af">int</span> p[N];<span style="color: #008000">//并查集</span>
 
-<span style="color: #00F">struct</span> <span style="color: #2B91AF">Edge</span>
+<span style="color: #0000ff">struct</span> <span style="color: #2b91af">Edge</span>
 {
-  <span style="color: #2B91AF">int</span> a, b, w;
-  <span style="color: #2B91AF">bool</span> <span style="color: #00F">operator</span>&lt; (<span style="color: #00F">const</span> Edge &amp;a) <span style="color: #00F">const</span>
+  <span style="color: #2b91af">int</span> a, b, w;
+  <span style="color: #2b91af">bool</span> <span style="color: #0000ff">operator</span>&lt; (<span style="color: #0000ff">const</span> Edge &amp;a) <span style="color: #0000ff">const</span>
   {
-    <span style="color: #00F">return</span> w &lt; a.w;
+    <span style="color: #0000ff">return</span> w &lt; a.w;
   }
 } edges[M];<span style="color: #008000">//重载&lt;,安装权重w比大小</span>
 
-<span style="color: #2B91AF">int</span> find(<span style="color: #2B91AF">int</span> x)  <span style="color: #008000">// 并查集</span>
+<span style="color: #2b91af">int</span> find(<span style="color: #2b91af">int</span> x)  <span style="color: #008000">// 并查集</span>
 {
-    <span style="color: #00F">if</span> (p[x] != x) p[x] = find(p[x]);
-    <span style="color: #00F">return</span> p[x];
+    <span style="color: #0000ff">if</span> (p[x] != x) p[x] = find(p[x]);
+    <span style="color: #0000ff">return</span> p[x];
 }
 
-<span style="color: #2B91AF">int</span> kruskal()
+<span style="color: #2b91af">int</span> kruskal()
 {
   <span style="color: #008000">//1.排序</span>
   sort(edges, edges+m);
   <span style="color: #008000">//并查集初始化</span>
-  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i&lt;=n; i++) p[i] = i;
+  <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i&lt;=n; i++) p[i] = i;
 
-  <span style="color: #2B91AF">int</span> res = 0, cnt = 0;
-  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i&lt;m; i++)
+  <span style="color: #2b91af">int</span> res = 0, cnt = 0;
+  <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i&lt;m; i++)
   {
-    <span style="color: #2B91AF">int</span> a = edges[i].a, b = edges[i].b, w=edges[i].w;
+    <span style="color: #2b91af">int</span> a = edges[i].a, b = edges[i].b, w=edges[i].w;
     a = find(a), b = find(b);
-    <span style="color: #00F">if</span> (a != b)
+    <span style="color: #0000ff">if</span> (a != b)
     {
       p[a] = b;
       res += w;
       cnt ++;
     }
   }
-  <span style="color: #00F">if</span> (cnt &lt; n-1) <span style="color: #00F">return</span> INF;
-  <span style="color: #00F">return</span> res;
+  <span style="color: #0000ff">if</span> (cnt &lt; n-1) <span style="color: #0000ff">return</span> INF;
+  <span style="color: #0000ff">return</span> res;
 }
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
-     scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>, &amp;n, &amp;m);
+     scanf(<span style="color: #a31515">&quot;%d%d&quot;</span>, &amp;n, &amp;m);
 
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; m; i ++ )
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; m; i ++ )
     {
-        <span style="color: #2B91AF">int</span> a, b, w;
-        scanf(<span style="color: #A31515">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;w);
+        <span style="color: #2b91af">int</span> a, b, w;
+        scanf(<span style="color: #a31515">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;w);
         edges[i] = {a, b, w};
     }
 
-    <span style="color: #2B91AF">int</span> t = kruskal();
+    <span style="color: #2b91af">int</span> t = kruskal();
 
-    <span style="color: #00F">if</span> (t == INF) puts(<span style="color: #A31515">&quot;impossible&quot;</span>);
-    <span style="color: #00F">else</span> printf(<span style="color: #A31515">&quot;%d\n&quot;</span>, t);
+    <span style="color: #0000ff">if</span> (t == INF) puts(<span style="color: #a31515">&quot;impossible&quot;</span>);
+    <span style="color: #0000ff">else</span> printf(<span style="color: #a31515">&quot;%d\n&quot;</span>, t);
 
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># Kruskal</span>
 n, m = map(int, input().split())
 edges = []
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(m):
     u, v, w = map(int, input().split())
     edges.append((w, u, v))
 edges.sort()
 p = list(range(n + 1))
 
-<span style="color: #00F">def</span> find(x):
-    <span style="color: #00F">if</span> p[x] != x:
+<span style="color: #0000ff">def</span> find(x):
+    <span style="color: #0000ff">if</span> p[x] != x:
         p[x] = find(p[x])
-    <span style="color: #00F">return</span> p[x]
+    <span style="color: #0000ff">return</span> p[x]
 
 ans = 0
 cnt = 0
-<span style="color: #00F">for</span> w, u, v <span style="color: #00F">in</span> edges:
+<span style="color: #0000ff">for</span> w, u, v <span style="color: #0000ff">in</span> edges:
     ru, rv = find(u), find(v)
-    <span style="color: #00F">if</span> ru != rv:
+    <span style="color: #0000ff">if</span> ru != rv:
         p[ru] = rv
         ans += w
         cnt += 1
-print(ans <span style="color: #00F">if</span> cnt == n - 1 <span style="color: #00F">else</span> <span style="color: #A31515">&#39;impossible&#39;</span>)
+print(ans <span style="color: #0000ff">if</span> cnt == n - 1 <span style="color: #0000ff">else</span> <span style="color: #a31515">&#39;impossible&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -805,84 +814,86 @@ print(ans <span style="color: #00F">if</span> cnt == n - 1 <span style="color: #
 <div class="insight-block"><span class="insight-label">思路</span><span>二染色判定：color数组初始0(未染色)。遍历每个节点，若未染色则BFS/DFS：染色1，邻居染色-1(或2)，邻居的邻居染色1……若遇到已染色且颜色与期望不符→冲突→不是二分图。O(n+m)。BFS和DFS都行——DFS递归简单但深度大时需注意栈溢出。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>二分图=不包含奇环。染色过程本质是BFS涂色——涂色冲突=奇环存在。Python的DFS递归可能栈溢出→用BFS或迭代DFS。二分图判定是图论中的基础算法——后续最大匹配、最小点覆盖都依赖于此。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 <span style="color: #008000">//无向图</span>
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N=100007,M=200007;<span style="color: #008000">//两倍的边</span>
-<span style="color: #2B91AF">int</span> n,m;
-<span style="color: #2B91AF">int</span> h[N],e[M],ne[M],idx;
-<span style="color: #2B91AF">int</span> color[N];<span style="color: #008000">//0表示未访问，1表示颜色1，2表示颜色2.</span>
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N=100007,M=200007;<span style="color: #008000">//两倍的边</span>
+<span style="color: #2b91af">int</span> n,m;
+<span style="color: #2b91af">int</span> h[N],e[M],ne[M],idx;
+<span style="color: #2b91af">int</span> color[N];<span style="color: #008000">//0表示未访问，1表示颜色1，2表示颜色2.</span>
 
-<span style="color: #2B91AF">void</span> add(<span style="color: #2B91AF">int</span> a, <span style="color: #2B91AF">int</span> b){
+<span style="color: #2b91af">void</span> add(<span style="color: #2b91af">int</span> a, <span style="color: #2b91af">int</span> b){
   e[idx]=b, ne[idx]=h[a], h[a]=idx++; <span style="color: #008000">//数组模拟链表add操作</span>
 }
 
-<span style="color: #2B91AF">bool</span> dfs(<span style="color: #2B91AF">int</span> u, <span style="color: #2B91AF">int</span> c){
+<span style="color: #2b91af">bool</span> dfs(<span style="color: #2b91af">int</span> u, <span style="color: #2b91af">int</span> c){
   color[u]=c;
 
-  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i=h[u]; i!=-1; i=ne[i])
+  <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i=h[u]; i!=-1; i=ne[i])
   {
-    <span style="color: #2B91AF">int</span> j=e[i]; <span style="color: #008000">//取i对应的另外一个顶点编号</span>
-    <span style="color: #00F">if</span> (!color[j]) {
-       <span style="color: #00F">if</span> (!dfs(j,3-c)) <span style="color: #00F">return</span> false;<span style="color: #008000">//颜色是1或者2切换，所以用3-color可以交换两种颜色</span>
+    <span style="color: #2b91af">int</span> j=e[i]; <span style="color: #008000">//取i对应的另外一个顶点编号</span>
+    <span style="color: #0000ff">if</span> (!color[j]) {
+       <span style="color: #0000ff">if</span> (!dfs(j,3-c)) <span style="color: #0000ff">return</span> false;<span style="color: #008000">//颜色是1或者2切换，所以用3-color可以交换两种颜色</span>
     }
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (color[j]==c) <span style="color: #00F">return</span> false;<span style="color: #008000">//端点颜色相同</span>
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (color[j]==c) <span style="color: #0000ff">return</span> false;<span style="color: #008000">//端点颜色相同</span>
   }
-  <span style="color: #00F">return</span> true;  
+  <span style="color: #0000ff">return</span> true;  
 }
-<span style="color: #2B91AF">int</span> main(){
+<span style="color: #2b91af">int</span> main(){
 
-  scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>,&amp;n,&amp;m);
-  memset(h,-1,<span style="color: #00F">sizeof</span> h);<span style="color: #008000">//初始化头结点</span>
+  scanf(<span style="color: #a31515">&quot;%d%d&quot;</span>,&amp;n,&amp;m);
+  memset(h,-1,<span style="color: #0000ff">sizeof</span> h);<span style="color: #008000">//初始化头结点</span>
   <span style="color: #008000">//建图</span>
-  <span style="color: #00F">while</span> (m--)
+  <span style="color: #0000ff">while</span> (m--)
   {
-     <span style="color: #2B91AF">int</span> a,b;
-     scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>,&amp;a,&amp;b);
+     <span style="color: #2b91af">int</span> a,b;
+     scanf(<span style="color: #a31515">&quot;%d%d&quot;</span>,&amp;a,&amp;b);
      add(a,b); add(b,a);
   }
-  <span style="color: #2B91AF">bool</span> flag = true;<span style="color: #008000">//表示染色有矛盾</span>
-  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i=1; i&lt;=n; i++)
-    <span style="color: #00F">if</span> (!color[i]) {
-      <span style="color: #00F">if</span> (!dfs(i,1))
+  <span style="color: #2b91af">bool</span> flag = true;<span style="color: #008000">//表示染色有矛盾</span>
+  <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i=1; i&lt;=n; i++)
+    <span style="color: #0000ff">if</span> (!color[i]) {
+      <span style="color: #0000ff">if</span> (!dfs(i,1))
       {
         flag = false;
-        <span style="color: #00F">break</span>;
+        <span style="color: #0000ff">break</span>;
       }
     } 
-  <span style="color: #00F">if</span> (flag) puts(<span style="color: #A31515">&quot;Yes&quot;</span>); <span style="color: #00F">else</span> puts (<span style="color: #A31515">&quot;No&quot;</span>);
+  <span style="color: #0000ff">if</span> (flag) puts(<span style="color: #a31515">&quot;Yes&quot;</span>); <span style="color: #0000ff">else</span> puts (<span style="color: #a31515">&quot;No&quot;</span>);
 
-  <span style="color: #00F">return</span> 0;
+  <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 染色法判定二分图</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+sys.setrecursionlimit(200000)
+<span style="color: #008000"># 染色法判定二分图</span>
 n, m = map(int, input().split())
-adj = [[] <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n + 1)]
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
+adj = [[] <span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(n + 1)]
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(m):
     u, v = map(int, input().split())
     adj[u].append(v)
     adj[v].append(u)
 color = [0] * (n + 1)
 
-<span style="color: #00F">def</span> dfs(u, c):
+<span style="color: #0000ff">def</span> dfs(u, c):
     color[u] = c
-    <span style="color: #00F">for</span> v <span style="color: #00F">in</span> adj[u]:
-        <span style="color: #00F">if</span> color[v] == 0:
-            <span style="color: #00F">if</span> <span style="color: #00F">not</span> dfs(v, 3 - c):
-                <span style="color: #00F">return</span> <span style="color: #00F">False</span>
-        <span style="color: #00F">elif</span> color[v] == c:
-            <span style="color: #00F">return</span> <span style="color: #00F">False</span>
-    <span style="color: #00F">return</span> <span style="color: #00F">True</span>
+    <span style="color: #0000ff">for</span> v <span style="color: #0000ff">in</span> adj[u]:
+        <span style="color: #0000ff">if</span> color[v] == 0:
+            <span style="color: #0000ff">if</span> <span style="color: #0000ff">not</span> dfs(v, 3 - c):
+                <span style="color: #0000ff">return</span> <span style="color: #0000ff">False</span>
+        <span style="color: #0000ff">elif</span> color[v] == c:
+            <span style="color: #0000ff">return</span> <span style="color: #0000ff">False</span>
+    <span style="color: #0000ff">return</span> <span style="color: #0000ff">True</span>
 
-ok = <span style="color: #00F">True</span>
-<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, n + 1):
-    <span style="color: #00F">if</span> color[i] == 0:
-        <span style="color: #00F">if</span> <span style="color: #00F">not</span> dfs(i, 1):
-            ok = <span style="color: #00F">False</span>
-            <span style="color: #00F">break</span>
-print(<span style="color: #A31515">&#39;Yes&#39;</span> <span style="color: #00F">if</span> ok <span style="color: #00F">else</span> <span style="color: #A31515">&#39;No&#39;</span>)
+ok = <span style="color: #0000ff">True</span>
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1, n + 1):
+    <span style="color: #0000ff">if</span> color[i] == 0:
+        <span style="color: #0000ff">if</span> <span style="color: #0000ff">not</span> dfs(i, 1):
+            ok = <span style="color: #0000ff">False</span>
+            <span style="color: #0000ff">break</span>
+print(<span style="color: #a31515">&#39;Yes&#39;</span> <span style="color: #0000ff">if</span> ok <span style="color: #0000ff">else</span> <span style="color: #a31515">&#39;No&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>

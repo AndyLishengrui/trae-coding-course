@@ -1,38 +1,28 @@
-#include <iostream>
-using namespace std;
+#include <cstdio>
 const int N = 100007;
 int p[N];
 int n;
 
-//返回x的father节点+路径压缩
 int find(int x)
 {
-  if (p[x] != x) p[x] = find(p[x]);
-  return p[x];
+  while (p[x] != x) {
+    p[x] = p[p[x]];
+    x = p[x];
+  }
+  return x;
 }
-void merge(int a, int b)
-{
-  p[find(a)] = find(b);
-}
-void query(int a, int b)
-{
-   if (find(a) == find(b)) puts("Yes");
-    else puts("No");
-}
+
 int main()
-{ 
-   int  m;
-   cin>>n>>m;//输入n
-  //创造并查集数
-  for (int i = 1; i <=n; i++) p[i] = i;
-  while (m--)
-  {
+{
+  int m;
+  scanf("%d%d", &n, &m);
+  for (int i = 1; i <= n; i++) p[i] = i;
+  while (m--) {
     char op;
-    int a,b;
-    cin>>op;
-    cin>>a>>b;
-    if (op == 'M') merge(a,b);
-    else if (op == 'Q') query(a,b);
+    int a, b;
+    scanf(" %c%d%d", &op, &a, &b);
+    if (op == 'M') p[find(a)] = find(b);
+    else puts(find(a) == find(b) ? "Yes" : "No");
   }
   return 0;
 }

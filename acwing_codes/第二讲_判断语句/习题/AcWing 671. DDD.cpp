@@ -1,9 +1,6 @@
 #include <iostream>
-
 using namespace std;
-
-int main()
-{
+int main() {
     int x;
     cin >> x;
     if (x == 61) cout << "Brasilia" << endl;
@@ -15,6 +12,5 @@ int main()
     else if (x == 27) cout << "Vitoria" << endl;
     else if (x == 31) cout << "Belo Horizonte" << endl;
     else cout << "DDD nao cadastrado" << endl;
-
     return 0;
 }

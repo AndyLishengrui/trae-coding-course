@@ -1,4 +1,3 @@
-# NQ: AcWing 664
 a, b, c = map(float, input().split())
 if a + b > c and a + c > b and b + c > a:
     print(f"Perimetro = {a + b + c:.1f}")

@@ -1,6 +1,6 @@
-# NQ: AcWing 667
 a, b = map(int, input().split())
 if a < b:
-    print(f"O JOGO DUROU {b - a} HORA(S)")
+    horas = b - a
 else:
-    print(f"O JOGO DUROU {b - a + 24} HORA(S)")
+    horas = 24 - a + b
+print(f"O JOGO DUROU {horas} HORA(S)")

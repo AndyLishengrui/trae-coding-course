@@ -1,14 +1,9 @@
 #include <cstdio>
-
-int main()
-{
-  double a[100];
-
-  for (int i = 0; i < 100; i ++ ) scanf("%lf", &a[i]);
-
-  for (int i = 0 ; i < 100; i ++ )
-      if (a[i] <= 10)
-          printf("A[%d] = %.1lf\n", i, a[i]);
-
-  return 0;        
+int main() {
+    for (int i = 0; i < 100; i++) {
+        double x;
+        scanf("%lf", &x);
+        if (x <= 10) printf("A[%d] = %.1f\n", i, x);
+    }
+    return 0;
 }

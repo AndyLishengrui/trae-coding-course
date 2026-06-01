@@ -15,7 +15,7 @@
     },
     "output_description": {
         "format": "html",
-        "value": "<p>一个整数，即三个数中的最大值。</p>"
+        "value": "<p>一行，格式为：\"{max_value} eh o maior\"，输出三个数中的最大值。</p>"
     },
     "test_case_score": [
         {
@@ -78,7 +78,7 @@
     "samples": [
         {
             "input": "7 14 106",
-            "output": "106"
+            "output": "106 eh o maior"
         }
     ],
     "template": {},

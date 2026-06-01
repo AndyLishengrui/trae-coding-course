@@ -1,12 +1,2 @@
 #include <cstdio>
-
-int main ()
-{
-  int number, hour;
-  double money;
-  scanf("%d%d%lf", &number, &hour, &money);
-  printf("NUMBER = %d\n", number);
-  printf("SALARY = U$ %.2lf\n", hour * money);
-
-  return 0;
-}
+int main() { int n,h; double m; scanf("%d%d%lf",&n,&h,&m); printf("NUMBER = %d\nSALARY = U$ %.2lf\n",n,h*m); return 0; }

@@ -1,3 +1,2 @@
-# NQ078: AcWing 774
-# Python solution
-
+words=input().split()
+print(max(words,key=len))

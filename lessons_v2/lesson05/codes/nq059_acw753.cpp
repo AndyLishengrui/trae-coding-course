@@ -1,24 +1,17 @@
-#include <iostream>
-
-using namespace std;
-
-int main()
-{
-    int n;
-    while (cin >> n, n)
-    {
-      for (int i = 1; i <= n; i ++ )
-      {
-        for (int j = 1; j <= n; j ++ )
-        {
-         int up = i, down = n - i + 1, left = j, right = n - j + 1;
-         cout << min(min(up, down), min(left, right)) << ' ';
-        }
-        cout << endl;
+#include <cstdio>
+int main() {
+  int n;
+  while(scanf("%d",&n)==1&&n) {
+    for(int i=0;i<n;i++) {
+      for(int j=0;j<n;j++) {
+        int v=i<j?i:j;
+        int w=n-1-i<n-1-j?n-1-i:n-1-j;
+        int m=v<w?v:w;
+        printf("%3d",m+1);
       }
-
-      cout << endl;
+      printf("\n");
     }
-
-    return 0;
+    printf("\n");
+  }
+  return 0;
 }

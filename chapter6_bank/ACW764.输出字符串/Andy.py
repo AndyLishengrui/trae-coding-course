@@ -1,9 +1,5 @@
 import sys
-data = sys.stdin.read().split()
-a, b = data[0], data[1]
-for i in range(len(a)):
-    if a[i] != b[i]:
-        print(b[i:])
-        break
-else:
-    print(b)
+s = sys.stdin.read().rstrip('\n')
+n = len(s)
+result = ''.join(chr(ord(s[i]) + ord(s[(i+1) % n])) for i in range(n))
+print(result)

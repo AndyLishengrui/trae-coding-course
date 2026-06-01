@@ -1,17 +1,2 @@
-#include <iostream>
-
-using namespace std;
-
-int main()
-{
-  int a, b, c;
-  cin >> a >> b >> c;
-
-  int t = (a + b + abs(a - b)) / 2;
-  int r = (t + c + abs(t - c)) / 2;
-
-  cout << r << " eh o maior" << endl;
-
-  return 0;
-
-}
+#include <cstdio>
+int main() { int a,b,c; scanf("%d%d%d",&a,&b,&c); int mx=a; if(b>mx)mx=b; if(c>mx)mx=c; printf("%d eh o maior\n",mx); return 0; }

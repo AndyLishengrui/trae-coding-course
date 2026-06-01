@@ -1,27 +1,15 @@
-#include <cstdio>
 #include <iostream>
-
+#include <cmath>
 using namespace std;
-
-int main()
-{
-  int n;
-  cin >> n;
-  while (n -- )
-  {
-    int p;
-    cin >> p;
-
-    bool is_prime = true;
-    for (int i = 2; i * i <= p; i ++ )
-        if (p % i == 0)
-        {
-           is_prime = false;
-           break;
+int main() {
+    int n;
+    cin >> n;
+    for (int i = 2; i <= n; i++) {
+        bool prime = true;
+        for (int j = 2; j * j <= i; j++) {
+            if (i % j == 0) { prime = false; break; }
         }
-    if (is_prime) printf("%d is prime\n", p);
-    else printf("%d is not prime\n", p);
-  }
-
-  return 0;
+        if (prime) cout << i << endl;
+    }
+    return 0;
 }

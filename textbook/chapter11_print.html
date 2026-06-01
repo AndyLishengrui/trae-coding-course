@@ -57,46 +57,48 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 <div class="insight-block"><span class="insight-label">思路</span><span>C++高精度加法：字符串读入→倒序存入vector<int>→按位相加处理进位→倒序输出。核心代码：for i from 0 to max(len): t+=A[i]+B[i]; C.push_back(t%10); t/=10。Python: print(int(input())+int(input()))——震撼教育时刻。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python的int底层用30-bit数组存储，自动扩展——可以处理任意大的整数（只受内存限制）。这是Python在算法竞赛中的最大优势之一——高精度计算零负担。C++手写高精度是理解数字表示和进位机制的好练习。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 1e6+7; 
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 1e6+7; 
 
-vector&lt;<span style="color: #2B91AF">int</span>&gt; add(vector&lt;<span style="color: #2B91AF">int</span>&gt; &amp;A, vector&lt;<span style="color: #2B91AF">int</span>&gt;&amp;B){
-    vector&lt;<span style="color: #2B91AF">int</span>&gt; C;
-    <span style="color: #2B91AF">int</span> t=0;
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i=0; i&lt;A.size()||i&lt;B.size(); i++) {
-        <span style="color: #00F">if</span> (i&lt;A.size()) t+=A[i];
-        <span style="color: #00F">if</span> (i&lt;B.size()) t+=B[i];
+vector&lt;<span style="color: #2b91af">int</span>&gt; add(vector&lt;<span style="color: #2b91af">int</span>&gt; &amp;A, vector&lt;<span style="color: #2b91af">int</span>&gt;&amp;B){
+    vector&lt;<span style="color: #2b91af">int</span>&gt; C;
+    <span style="color: #2b91af">int</span> t=0;
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i=0; i&lt;A.size()||i&lt;B.size(); i++) {
+        <span style="color: #0000ff">if</span> (i&lt;A.size()) t+=A[i];
+        <span style="color: #0000ff">if</span> (i&lt;B.size()) t+=B[i];
         <span style="color: #008000">//对t取模，取进位</span>
         C.push_back(t %10);<span style="color: #008000">//把t模10的余数入数组，商为进位</span>
         t /= 10; <span style="color: #008000">//算出进位，供下一次循环使用</span>
     }
-    <span style="color: #00F">if</span>(t) C.push_back(1);<span style="color: #008000">//最高位进位</span>
-    <span style="color: #00F">return</span> C;
+    <span style="color: #0000ff">if</span>(t) C.push_back(1);<span style="color: #008000">//最高位进位</span>
+    <span style="color: #0000ff">return</span> C;
 }
 
-<span style="color: #2B91AF">int</span> main(){
+<span style="color: #2b91af">int</span> main(){
     <span style="color: #008000">//输入为字符串</span>
     string a,b;
-    vector&lt;<span style="color: #2B91AF">int</span>&gt; A,B;
+    vector&lt;<span style="color: #2b91af">int</span>&gt; A,B;
 
     cin &gt;&gt; a&gt;&gt;b; <span style="color: #008000">// a=&quot;786654&quot;</span>
     <span style="color: #008000">//倒序存储A，B，a[0]乃是最低位</span>
-    <span style="color: #00F">for</span>(<span style="color: #2B91AF">int</span> i= a.size()-1; i&gt;=0; i--) A.push_back(a[i]-<span style="color: #A31515">&#39;0&#39;</span>);
-    <span style="color: #00F">for</span>(<span style="color: #2B91AF">int</span> i= b.size()-1; i&gt;=0; i--) B.push_back(b[i]-<span style="color: #A31515">&#39;0&#39;</span>);
+    <span style="color: #0000ff">for</span>(<span style="color: #2b91af">int</span> i= a.size()-1; i&gt;=0; i--) A.push_back(a[i]-<span style="color: #a31515">&#39;0&#39;</span>);
+    <span style="color: #0000ff">for</span>(<span style="color: #2b91af">int</span> i= b.size()-1; i&gt;=0; i--) B.push_back(b[i]-<span style="color: #a31515">&#39;0&#39;</span>);
 
-    <span style="color: #00F">auto</span> C = add(A,B);
+    <span style="color: #0000ff">auto</span> C = add(A,B);
 
-    <span style="color: #00F">for</span>(<span style="color: #2B91AF">int</span> i= C.size()-1; i&gt;=0; i--) cout&lt;&lt;C[i];<span style="color: #008000">//打印C</span>
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">for</span>(<span style="color: #2b91af">int</span> i= C.size()-1; i&gt;=0; i--) cout&lt;&lt;C[i];<span style="color: #008000">//打印C</span>
+    <span style="color: #0000ff">return</span> 0;
 
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 高精度加法</span>
-a = int(input())
-b = int(input())
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+sys.set_int_max_str_digits(1000000)
+data = sys.stdin.read().split()
+a = int(data[0])
+b = int(data[1])
 print(a + b)
 </pre></div>
 </div></div><hr class="section-divider">
@@ -116,74 +118,76 @@ print(a + b)
 <div class="insight-block"><span class="insight-label">思路</span><span>C++高精度减法：先判断A≥B，若A<B则输出负号并交换。逐位相减：若A[i]<B[i]则借位(A[i]+=10, A[i+1]--)。去掉结果中的前导0。Python: print(int(input())-int(input()))。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>借位处理：if A[i]<B[i]: A[i]+=10; A[i+1]--。前导0如'00123'应输出'123'（但保留最后一个0——结果为0时输出0）。Python的int自动处理所有这些问题。这就是为什么Python在数据处理和AI领域如此流行。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 1e6 + 7;
-<span style="color: #2B91AF">bool</span> isGreater(vector&lt;<span style="color: #2B91AF">int</span>&gt; &amp;A, vector&lt;<span style="color: #2B91AF">int</span>&gt; &amp;B)
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 1e6 + 7;
+<span style="color: #2b91af">bool</span> isGreater(vector&lt;<span style="color: #2b91af">int</span>&gt; &amp;A, vector&lt;<span style="color: #2b91af">int</span>&gt; &amp;B)
 {
-    <span style="color: #00F">if</span> (A.size() != B.size()) <span style="color: #008000">//比较大小</span>
-        <span style="color: #00F">return</span> A.size() &gt; B.size();
+    <span style="color: #0000ff">if</span> (A.size() != B.size()) <span style="color: #008000">//比较大小</span>
+        <span style="color: #0000ff">return</span> A.size() &gt; B.size();
     <span style="color: #008000">//否则大小相等，逐位比较大小</span>
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = A.size() - 1; i &gt;= 0; i--)
-        <span style="color: #00F">if</span> (A[i] != B[i])
-            <span style="color: #00F">return</span> A[i] &gt; B[i];
-    <span style="color: #00F">return</span> true; <span style="color: #008000">//每个数字都相同，长度相同，两数相等</span>
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = A.size() - 1; i &gt;= 0; i--)
+        <span style="color: #0000ff">if</span> (A[i] != B[i])
+            <span style="color: #0000ff">return</span> A[i] &gt; B[i];
+    <span style="color: #0000ff">return</span> true; <span style="color: #008000">//每个数字都相同，长度相同，两数相等</span>
 }
 <span style="color: #008000">//C= A-B</span>
-vector&lt;<span style="color: #2B91AF">int</span>&gt; sub(vector&lt;<span style="color: #2B91AF">int</span>&gt; &amp;A, vector&lt;<span style="color: #2B91AF">int</span>&gt; &amp;B)
+vector&lt;<span style="color: #2b91af">int</span>&gt; sub(vector&lt;<span style="color: #2b91af">int</span>&gt; &amp;A, vector&lt;<span style="color: #2b91af">int</span>&gt; &amp;B)
 {
-    vector&lt;<span style="color: #2B91AF">int</span>&gt; C;
+    vector&lt;<span style="color: #2b91af">int</span>&gt; C;
     <span style="color: #008000">//A是比较大的数</span>
-    <span style="color: #2B91AF">int</span> t = 0; <span style="color: #008000">//第一轮减法进位为0</span>
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; A.size(); i++)
+    <span style="color: #2b91af">int</span> t = 0; <span style="color: #008000">//第一轮减法进位为0</span>
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; A.size(); i++)
     {
         t = A[i] - t;
-        <span style="color: #00F">if</span> (i &lt; B.size())
+        <span style="color: #0000ff">if</span> (i &lt; B.size())
             t -= B[i];              <span style="color: #008000">//A[i]-B[i] + t</span>
         C.push_back((t + 10) % 10); <span style="color: #008000">//得到对应位</span>
-        <span style="color: #00F">if</span> (t &lt; 0)
+        <span style="color: #0000ff">if</span> (t &lt; 0)
             t = 1;
-        <span style="color: #00F">else</span>
+        <span style="color: #0000ff">else</span>
             t = 0; <span style="color: #008000">//判断是否借一位</span>
     }
     <span style="color: #008000">//去掉开头的0</span>
-    <span style="color: #00F">while</span> (C.size() &gt; 1 &amp;&amp; C.back()==0) C.pop_back();
+    <span style="color: #0000ff">while</span> (C.size() &gt; 1 &amp;&amp; C.back()==0) C.pop_back();
 
-    <span style="color: #00F">return</span> C;
+    <span style="color: #0000ff">return</span> C;
 }
 
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
     <span style="color: #008000">//输入为字符串</span>
     string a, b;
-    vector&lt;<span style="color: #2B91AF">int</span>&gt; A, B;
+    vector&lt;<span style="color: #2b91af">int</span>&gt; A, B;
 
     cin &gt;&gt; a &gt;&gt; b; <span style="color: #008000">// a=&quot;786654&quot;</span>
     <span style="color: #008000">//倒序存储A，B，a[0]乃是最低位</span>
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = a.size() - 1; i &gt;= 0; i--)
-        A.push_back(a[i] - <span style="color: #A31515">&#39;0&#39;</span>);
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = b.size() - 1; i &gt;= 0; i--)
-        B.push_back(b[i] - <span style="color: #A31515">&#39;0&#39;</span>);
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = a.size() - 1; i &gt;= 0; i--)
+        A.push_back(a[i] - <span style="color: #a31515">&#39;0&#39;</span>);
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = b.size() - 1; i &gt;= 0; i--)
+        B.push_back(b[i] - <span style="color: #a31515">&#39;0&#39;</span>);
     <span style="color: #008000">//判断A与B的大小</span>
-    <span style="color: #00F">if</span> (isGreater(A, B))
+    <span style="color: #0000ff">if</span> (isGreater(A, B))
     {
-        <span style="color: #00F">auto</span> C = sub(A, B);
-        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = C.size() - 1; i &gt;= 0; i--)
+        <span style="color: #0000ff">auto</span> C = sub(A, B);
+        <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = C.size() - 1; i &gt;= 0; i--)
             cout &lt;&lt; C[i]; <span style="color: #008000">//打印C</span>
     }
-    <span style="color: #00F">else</span>
+    <span style="color: #0000ff">else</span>
     {
-        <span style="color: #00F">auto</span> C = sub(B, A);
-        cout &lt;&lt; <span style="color: #A31515">&quot;-&quot;</span>;
-        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = C.size() - 1; i &gt;= 0; i--)
+        <span style="color: #0000ff">auto</span> C = sub(B, A);
+        cout &lt;&lt; <span style="color: #a31515">&quot;-&quot;</span>;
+        <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = C.size() - 1; i &gt;= 0; i--)
             cout &lt;&lt; C[i]; <span style="color: #008000">//打印C</span>
     }
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 高精度减法</span>
+<span style="color: #0000ff">import</span> sys
+sys.set_int_max_str_digits(1000000)
 a = int(input())
 b = int(input())
 print(a - b)
@@ -204,31 +208,35 @@ print(a - b)
 <div class="insight-block"><span class="insight-label">思路</span><span>三种方法：1)逐位检查while(n): cnt+=n&1; n>>=1；2)lowbit法while(n): n-=n&-n; cnt++——复杂度=1的个数而非位数；3)__builtin_popcount/Python bit_count()一行搞定。lowbit=n&-n是位运算中最精妙的trick之一。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>x&-x取x的最低位的1——证明：负数用补码表示，-x=~x+1，x&~x+1就是最低位1的位置。这个trick在树状数组（Fenwick Tree）中是核心操作。bit_count()是Python 3.8+新特性，C++20有std::popcount。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #00F">inline</span> <span style="color: #2B91AF">int</span> lowbit(<span style="color: #2B91AF">int</span> &amp;x)
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #0000ff">inline</span> <span style="color: #2b91af">int</span> lowbit(<span style="color: #2b91af">int</span> &amp;x)
 {
-    <span style="color: #00F">return</span> x &amp; -x;<span style="color: #008000">//x的二进制的最后一个1所构成的整数</span>
+    <span style="color: #0000ff">return</span> x &amp; -x;<span style="color: #008000">//x的二进制的最后一个1所构成的整数</span>
 }
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
-    <span style="color: #2B91AF">int</span> n, x;
+    <span style="color: #2b91af">int</span> n, x;
     cin &gt;&gt; n;
-    <span style="color: #00F">while</span> (n--)
+    <span style="color: #0000ff">while</span> (n--)
     {
         <span style="color: #008000">//读入一个数，并且计算1的个数，并且输出</span>
         cin &gt;&gt; x;
-        <span style="color: #2B91AF">int</span> res = 0;<span style="color: #008000">//计数变量</span>
-        <span style="color: #00F">while</span> (x)
+        <span style="color: #2b91af">int</span> res = 0;<span style="color: #008000">//计数变量</span>
+        <span style="color: #0000ff">while</span> (x)
             x -= lowbit(x), res++; <span style="color: #008000">//使用,表达式，简化代码去括号</span>
-        cout &lt;&lt; res &lt;&lt; <span style="color: #A31515">&quot; &quot;</span>;        <span style="color: #008000">//输出运算结果</span>
+        cout &lt;&lt; res &lt;&lt; <span style="color: #a31515">&quot; &quot;</span>;        <span style="color: #008000">//输出运算结果</span>
     }
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 二进制中1的个数</span>
-n = int(input())
-print(n.bit_count())
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = sys.stdin.read().split()
+n = int(data[0])
+out = []
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1, n + 1):
+    out.append(str(bin(int(data[i])).count(<span style="color: #a31515">&#39;1&#39;</span>)))
+sys.stdout.write(<span style="color: #a31515">&#39; &#39;</span>.join(out) + <span style="color: #a31515">&#39; &#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -247,44 +255,46 @@ print(n.bit_count())
 <div class="insight-block"><span class="insight-label">思路</span><span>C++高精度乘法：两重循环 C[i+j]+=A[i]*B[j]; C[i+j+1]+=C[i+j]/10; C[i+j]%=10; 最后去前导0。时间复杂度O(len(A)×len(B))。Python的int乘法底层用Karatsuba算法优化——对超长整数自动切换，比手写快得多。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python int乘法内部根据数字大小自动选择算法：小数字用基础乘法，大数字切到Karatsuba(O(n^1.585))，超大数字用Toom-Cook。这就是为什么Python数据处理生态如此强大——底层的数学运算经过极致优化。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 1e6 + 7;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 1e6 + 7;
 
 <span style="color: #008000">//C= A*b,t的用法很精彩！</span>
-vector&lt;<span style="color: #2B91AF">int</span>&gt; mul(vector&lt;<span style="color: #2B91AF">int</span>&gt; &amp;A, <span style="color: #2B91AF">int</span> b){
-    vector&lt;<span style="color: #2B91AF">int</span>&gt; C;
-    <span style="color: #2B91AF">int</span> t=0;
-    <span style="color: #00F">for</span>(<span style="color: #2B91AF">int</span> i=0; i&lt;A.size() || t; i++){
+vector&lt;<span style="color: #2b91af">int</span>&gt; mul(vector&lt;<span style="color: #2b91af">int</span>&gt; &amp;A, <span style="color: #2b91af">int</span> b){
+    vector&lt;<span style="color: #2b91af">int</span>&gt; C;
+    <span style="color: #2b91af">int</span> t=0;
+    <span style="color: #0000ff">for</span>(<span style="color: #2b91af">int</span> i=0; i&lt;A.size() || t; i++){
         <span style="color: #008000">//如果t还有剩余或者A还有剩余，乘法结果C需要加新的位</span>
-        <span style="color: #00F">if</span>(i&lt;A.size()) t+=A[i]*b;<span style="color: #008000">//把b当作整体做乘法</span>
+        <span style="color: #0000ff">if</span>(i&lt;A.size()) t+=A[i]*b;<span style="color: #008000">//把b当作整体做乘法</span>
         C.push_back(t % 10);<span style="color: #008000">//存储第i位</span>
         t /=10; <span style="color: #008000">//更新t</span>
     }
-    <span style="color: #00F">while</span>(C.size()&gt;1 &amp;&amp; C.back()==0) C.pop_back();<span style="color: #008000">//去掉C开头的0</span>
-    <span style="color: #00F">return</span> C;
+    <span style="color: #0000ff">while</span>(C.size()&gt;1 &amp;&amp; C.back()==0) C.pop_back();<span style="color: #008000">//去掉C开头的0</span>
+    <span style="color: #0000ff">return</span> C;
 }
 
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
     <span style="color: #008000">//输入为字符串</span>
     string a;
-    <span style="color: #2B91AF">int</span> b;<span style="color: #008000">//输入的b比较小，作为一个整体处理</span>
-    vector&lt;<span style="color: #2B91AF">int</span>&gt; A,C;
+    <span style="color: #2b91af">int</span> b;<span style="color: #008000">//输入的b比较小，作为一个整体处理</span>
+    vector&lt;<span style="color: #2b91af">int</span>&gt; A,C;
 
     cin &gt;&gt; a &gt;&gt; b; <span style="color: #008000">// a=&quot;786654&quot;</span>
     <span style="color: #008000">//倒序存储A，B，a[0]乃是最低位</span>
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = a.size() - 1; i &gt;= 0; i--)
-        A.push_back(a[i] - <span style="color: #A31515">&#39;0&#39;</span>);
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = a.size() - 1; i &gt;= 0; i--)
+        A.push_back(a[i] - <span style="color: #a31515">&#39;0&#39;</span>);
     C=mul(A,b);
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = C.size() - 1; i &gt;= 0; i--)
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = C.size() - 1; i &gt;= 0; i--)
             cout &lt;&lt; C[i]; <span style="color: #008000">//打印C</span>
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 高精度乘法</span>
+<span style="color: #0000ff">import</span> sys
+sys.set_int_max_str_digits(1000000)
 a = int(input())
 b = int(input())
 print(a * b)
@@ -307,52 +317,54 @@ print(a * b)
 <div class="insight-block"><span class="insight-label">思路</span><span>C++高精度除以低精度：从高位到低位，r=r*10+A[i]; C.push_back(r/B); r%=B。高精度除以高精度需二分或减法模拟。Python: divmod(a,b)返回(商,余数)元组。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python高精度总结：input(),int(),四则运算——零负担。C++手写高精度的意义在于理解底层运算原理——数字如何存储、进位借位如何处理。两种路径都有价值——但竞赛时用Python省下的时间可以做更多题。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 1e6 + 7;
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 1e6 + 7;
 
 <span style="color: #008000">//C= A/b 余数为r</span>
-vector&lt;<span style="color: #2B91AF">int</span>&gt; div(vector&lt;<span style="color: #2B91AF">int</span>&gt; &amp;A, <span style="color: #2B91AF">int</span> b, <span style="color: #2B91AF">int</span> &amp;r){
-    vector&lt;<span style="color: #2B91AF">int</span>&gt; C;
+vector&lt;<span style="color: #2b91af">int</span>&gt; div(vector&lt;<span style="color: #2b91af">int</span>&gt; &amp;A, <span style="color: #2b91af">int</span> b, <span style="color: #2b91af">int</span> &amp;r){
+    vector&lt;<span style="color: #2b91af">int</span>&gt; C;
     r=0;<span style="color: #008000">//余数</span>
-    <span style="color: #00F">for</span>(<span style="color: #2B91AF">int</span> i=A.size()-1; i&gt;=0; i--){
+    <span style="color: #0000ff">for</span>(<span style="color: #2b91af">int</span> i=A.size()-1; i&gt;=0; i--){
         r = r* 10 + A[i];<span style="color: #008000">//从最高位开始，当前余数r需要上一次运算的r乘10</span>
         C.push_back(r/b);
         r %= b;
     }
     reverse(C.begin(), C.end());<span style="color: #008000">//定义的数是最低位在C[0],因此需要取逆</span>
-    <span style="color: #00F">while</span>(C.size()&gt;1 &amp;&amp; C.back()==0) C.pop_back();<span style="color: #008000">//去掉C开头的0字符</span>
-    <span style="color: #00F">return</span> C;
+    <span style="color: #0000ff">while</span>(C.size()&gt;1 &amp;&amp; C.back()==0) C.pop_back();<span style="color: #008000">//去掉C开头的0字符</span>
+    <span style="color: #0000ff">return</span> C;
 }
 
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
     <span style="color: #008000">//输入为字符串</span>
     string a;
-    <span style="color: #2B91AF">int</span> b;<span style="color: #008000">//输入的b比较小，作为一个整体处理</span>
-    vector&lt;<span style="color: #2B91AF">int</span>&gt; A;
+    <span style="color: #2b91af">int</span> b;<span style="color: #008000">//输入的b比较小，作为一个整体处理</span>
+    vector&lt;<span style="color: #2b91af">int</span>&gt; A;
 
     cin &gt;&gt; a &gt;&gt; b; <span style="color: #008000">// a=&quot;786654&quot;</span>
     <span style="color: #008000">//倒序存储A，B，a[0]乃是最低位</span>
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = a.size() - 1; i &gt;= 0; i--)
-        A.push_back(a[i] - <span style="color: #A31515">&#39;0&#39;</span>);
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = a.size() - 1; i &gt;= 0; i--)
+        A.push_back(a[i] - <span style="color: #a31515">&#39;0&#39;</span>);
 
-    <span style="color: #2B91AF">int</span> r;
-    <span style="color: #00F">auto</span> C=div(A,b,r);<span style="color: #008000">//使用auto自动辨别变量类型</span>
+    <span style="color: #2b91af">int</span> r;
+    <span style="color: #0000ff">auto</span> C=div(A,b,r);<span style="color: #008000">//使用auto自动辨别变量类型</span>
 
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = C.size() - 1; i &gt;= 0; i--)
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = C.size() - 1; i &gt;= 0; i--)
             cout &lt;&lt; C[i]; <span style="color: #008000">//打印C</span>
             cout&lt;&lt;endl&lt;&lt;r&lt;&lt;endl;<span style="color: #008000">//打印余数</span>
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 高精度除法</span>
-a = int(input())
-b = int(input())
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+sys.set_int_max_str_digits(1000000)
+data = sys.stdin.read().split()
+a = int(data[0])
+b = int(data[1])
 print(a // b)
 print(a % b)
 </pre></div>
@@ -380,54 +392,54 @@ print(a % b)
 <div class="insight-block"><span class="insight-label">思路</span><span>离散化三步骤：1)收集所有坐标(x, l, r)；2)排序去重→映射为0..k-1；3)在压缩后的数组上做前缀和+查询。用二分查找原坐标对应的压缩下标。Python用bisect_left。时间O((n+2m)log(n+2m))。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>离散化是处理稀疏大范围数据的标准手段——坐标0和10⁹之间的空间不需要全部存储。Python: all_x=sorted(set(coords)); idx={v:i+1 for i,v in enumerate(all_x)}（1-indexed）。结合前缀和，大范围区间查询轻松解决。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #00F">typedef</span> pair&lt;<span style="color: #2B91AF">int</span>, <span style="color: #2B91AF">int</span>&gt; PII; <span style="color: #008000">//自定义类型PII，表示容器类型是&lt;int,int&gt;的pair</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #0000ff">typedef</span> pair&lt;<span style="color: #2b91af">int</span>, <span style="color: #2b91af">int</span>&gt; PII; <span style="color: #008000">//自定义类型PII，表示容器类型是&lt;int,int&gt;的pair</span>
 
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 300007; <span style="color: #008000">//需要记录n个坐标值，以及m个区间的坐标，所以是100000*(1+2)</span>
-<span style="color: #2B91AF">int</span> n, m;
-<span style="color: #2B91AF">int</span> a[N], s[N];
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 300007; <span style="color: #008000">//需要记录n个坐标值，以及m个区间的坐标，所以是100000*(1+2)</span>
+<span style="color: #2b91af">int</span> n, m;
+<span style="color: #2b91af">int</span> a[N], s[N];
 
-vector&lt;<span style="color: #2B91AF">int</span>&gt; alls;       <span style="color: #008000">//存储所有的点坐标，包括询问点坐标</span>
+vector&lt;<span style="color: #2b91af">int</span>&gt; alls;       <span style="color: #008000">//存储所有的点坐标，包括询问点坐标</span>
 vector&lt;PII&gt; add, query; <span style="color: #008000">//输入操作的坐标，查询的区间坐标</span>
 <span style="color: #008000">//在alls之中，查找值是x的元素值的下标，并且映射到[1...n]</span>
-<span style="color: #2B91AF">int</span> find(<span style="color: #2B91AF">int</span> x)
+<span style="color: #2b91af">int</span> find(<span style="color: #2b91af">int</span> x)
 {
-    <span style="color: #2B91AF">int</span> left = 0, right = alls.size() - 1; <span style="color: #008000">//vector从0开始计数</span>
-    <span style="color: #00F">while</span> (left &lt; right)
+    <span style="color: #2b91af">int</span> left = 0, right = alls.size() - 1; <span style="color: #008000">//vector从0开始计数</span>
+    <span style="color: #0000ff">while</span> (left &lt; right)
     {
-        <span style="color: #2B91AF">int</span> mid = left + right &gt;&gt; 1; <span style="color: #008000">//取中值</span>
-        <span style="color: #00F">if</span> (alls[mid] &gt;= x)
+        <span style="color: #2b91af">int</span> mid = left + right &gt;&gt; 1; <span style="color: #008000">//取中值</span>
+        <span style="color: #0000ff">if</span> (alls[mid] &gt;= x)
             right = mid;
-        <span style="color: #00F">else</span>
+        <span style="color: #0000ff">else</span>
             left = mid + 1;
     }
-    <span style="color: #00F">return</span> right + 1; <span style="color: #008000">//把坐标值映射到1，2，3...而不是从0开始</span>
+    <span style="color: #0000ff">return</span> right + 1; <span style="color: #008000">//把坐标值映射到1，2，3...而不是从0开始</span>
 }
 
 <span style="color: #008000">//? 使用离散化的方式来预处理输入数据</span>
 <span style="color: #008000">//? 把输入的数字映射成{下标，数字}的pair，然后再用差分的方法计算区间和</span>
 <span style="color: #008000">//? 本题目可以参考797.差分的模板写成</span>
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
     cin &gt;&gt; n &gt;&gt; m;
     <span style="color: #008000">//!离散化：构造映射表</span>
 
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i++)
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; n; i++)
     {
         <span style="color: #008000">//todo 不直接把数存入a[i],乃是存入add容器内</span>
-        <span style="color: #2B91AF">int</span> x, c;
+        <span style="color: #2b91af">int</span> x, c;
         cin &gt;&gt; x &gt;&gt; c;
         add.push_back({x, c}); <span style="color: #008000">//?将某一位置x上的数加c</span>
         alls.push_back(x);     <span style="color: #008000">//把x位置加入alls</span>
     }
     <span style="color: #008000">// 读入query</span>
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; m; i++)
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; m; i++)
     {
-        <span style="color: #2B91AF">int</span> l, r; <span style="color: #008000">//区间l和r</span>
+        <span style="color: #2b91af">int</span> l, r; <span style="color: #008000">//区间l和r</span>
         cin &gt;&gt; l &gt;&gt; r;
         query.push_back({l, r});
         alls.push_back(l); <span style="color: #008000">//坐标与alls的下标做映射</span>
@@ -440,21 +452,21 @@ vector&lt;PII&gt; add, query; <span style="color: #008000">//输入操作的坐�
     alls.erase(unique(alls.begin(), alls.end()), alls.end());
 
     <span style="color: #008000">//针对离散化的数据，计算区间和</span>
-    <span style="color: #00F">for</span> (<span style="color: #00F">auto</span> it : add) <span style="color: #008000">//用c++11语法遍历add vector</span>
+    <span style="color: #0000ff">for</span> (<span style="color: #0000ff">auto</span> it : add) <span style="color: #008000">//用c++11语法遍历add vector</span>
     {                   <span style="color: #008000">//初始化a[i],用离散化后的坐标</span>
-        <span style="color: #2B91AF">int</span> index = find(it.first);
+        <span style="color: #2b91af">int</span> index = find(it.first);
         a[index] += it.second; <span style="color: #008000">//将index位置上的数加c</span>
     }
     <span style="color: #008000">//预处理前缀和</span>
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= alls.size(); i++)
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= alls.size(); i++)
         s[i] = s[i - 1] + a[i];
     <span style="color: #008000">//处理询问，并且输出</span>
-    <span style="color: #00F">for</span> (<span style="color: #00F">auto</span> item : query)
+    <span style="color: #0000ff">for</span> (<span style="color: #0000ff">auto</span> item : query)
     {
-        <span style="color: #2B91AF">int</span> l = find(item.first), r = find(item.second);
+        <span style="color: #2b91af">int</span> l = find(item.first), r = find(item.second);
         cout &lt;&lt; s[r] - s[l - 1] &lt;&lt; endl; <span style="color: #008000">//前缀和计算公式</span>
     }
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 区间和</span>
@@ -462,24 +474,24 @@ n, m = map(int, input().split())
 adds = []
 queries = []
 all_x = []
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n):
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(n):
     x, c = map(int, input().split())
     adds.append((x, c))
     all_x.append(x)
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(m):
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(m):
     l, r = map(int, input().split())
     queries.append((l, r))
     all_x.append(l)
     all_x.append(r)
 all_x = sorted(set(all_x))
-idx = {v: i + 1 <span style="color: #00F">for</span> i, v <span style="color: #00F">in</span> enumerate(all_x)}
+idx = {v: i + 1 <span style="color: #0000ff">for</span> i, v <span style="color: #0000ff">in</span> enumerate(all_x)}
 a = [0] * (len(all_x) + 1)
 s = [0] * (len(all_x) + 1)
-<span style="color: #00F">for</span> x, c <span style="color: #00F">in</span> adds:
+<span style="color: #0000ff">for</span> x, c <span style="color: #0000ff">in</span> adds:
     a[idx[x]] += c
-<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, len(all_x) + 1):
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1, len(all_x) + 1):
     s[i] = s[i - 1] + a[i]
-<span style="color: #00F">for</span> l, r <span style="color: #00F">in</span> queries:
+<span style="color: #0000ff">for</span> l, r <span style="color: #0000ff">in</span> queries:
     print(s[idx[r]] - s[idx[l] - 1])
 </pre></div>
 </div></div><hr class="section-divider">
@@ -506,48 +518,48 @@ s = [0] * (len(all_x) + 1)
 <div class="insight-block"><span class="insight-label">思路</span><span>区间合并：1)按左端点升序排序；2)初始化st,ed为第一个区间；3)遍历剩余：如果l≤ed则ed=max(ed,r)（合并）；否则输出[st,ed]并开始新区间。注意输入区间可能不完全排序——必须先排序。时间O(n log n)。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>贪心的核心：按左端点排序后，重叠区间一定连续出现。边界条件ed<l才断开（注意不含等于）。区间合并是贪心入门的经典题——理解'排序→贪心遍历'的模式后，更多的区间问题（区间选点、最大不相交区间数）也是类似思路。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;vector&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #00F">typedef</span> pair&lt;<span style="color: #2B91AF">int</span>, <span style="color: #2B91AF">int</span>&gt; PII; <span style="color: #008000">//自定义类型PII，表示容器类型是&lt;int,int&gt;的pair</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #0000ff">typedef</span> pair&lt;<span style="color: #2b91af">int</span>, <span style="color: #2b91af">int</span>&gt; PII; <span style="color: #008000">//自定义类型PII，表示容器类型是&lt;int,int&gt;的pair</span>
 
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 100007; <span style="color: #008000">//1&lt;=n&lt;=100000</span>
-<span style="color: #2B91AF">int</span> n;<span style="color: #008000">//n个区间</span>
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 100007; <span style="color: #008000">//1&lt;=n&lt;=100000</span>
+<span style="color: #2b91af">int</span> n;<span style="color: #008000">//n个区间</span>
 
 vector&lt;PII&gt; segments; <span style="color: #008000">//区间坐标</span>
 
-<span style="color: #2B91AF">void</span> merge(vector&lt;PII&gt; &amp;segs)
+<span style="color: #2b91af">void</span> merge(vector&lt;PII&gt; &amp;segs)
 {
     vector&lt;PII&gt; res;
     <span style="color: #008000">//pair排序先按左端点，后右端点</span>
     sort(segs.begin(), segs.end());
 
     <span style="color: #008000">//数字范围是-10^9&lt;num&lt;10^9,因此负无穷大初始化为-2e9</span>
-    <span style="color: #2B91AF">int</span> left = -2e9, right = -2e9;<span style="color: #008000">//当前操作的区间[left,right]</span>
-    <span style="color: #00F">for</span> (<span style="color: #00F">auto</span> seg : segs)<span style="color: #008000">//遍历segs</span>
-        <span style="color: #00F">if</span> (right &lt; seg.first)<span style="color: #008000">//区间没有交集，更新当前区间</span>
+    <span style="color: #2b91af">int</span> left = -2e9, right = -2e9;<span style="color: #008000">//当前操作的区间[left,right]</span>
+    <span style="color: #0000ff">for</span> (<span style="color: #0000ff">auto</span> seg : segs)<span style="color: #008000">//遍历segs</span>
+        <span style="color: #0000ff">if</span> (right &lt; seg.first)<span style="color: #008000">//区间没有交集，更新当前区间</span>
         {
             <span style="color: #008000">//存储合并完毕的区间[left,right]</span>
-            <span style="color: #00F">if</span> (left != -2e9) res.push_back({left, right});
+            <span style="color: #0000ff">if</span> (left != -2e9) res.push_back({left, right});
             <span style="color: #008000">//更新当前操作区间</span>
             left = seg.first, right = seg.second;
         }
-        <span style="color: #00F">else</span> right = max(right, seg.second);<span style="color: #008000">//更新右端点，扩展区间</span>
+        <span style="color: #0000ff">else</span> right = max(right, seg.second);<span style="color: #008000">//更新右端点，扩展区间</span>
 
-    <span style="color: #00F">if</span> (left != -2e9) res.push_back({left, right});<span style="color: #008000">//把最后一个区间入栈</span>
+    <span style="color: #0000ff">if</span> (left != -2e9) res.push_back({left, right});<span style="color: #008000">//把最后一个区间入栈</span>
 
     segs = res;<span style="color: #008000">//更新segs</span>
 }
 
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
     cin &gt;&gt; n;
     <span style="color: #008000">// 读入n组区间</span>
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i++)
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; n; i++)
     {
-        <span style="color: #2B91AF">int</span> l, r; <span style="color: #008000">//区间l和r</span>
+        <span style="color: #2b91af">int</span> l, r; <span style="color: #008000">//区间l和r</span>
         cin &gt;&gt; l &gt;&gt; r;
         segments.push_back({l, r});
     }
@@ -556,30 +568,27 @@ vector&lt;PII&gt; segments; <span style="color: #008000">//区间坐标</span>
     <span style="color: #008000">//输出合并后的区间个数</span>
     cout&lt;&lt;segments.size()&lt;&lt;endl;<span style="color: #008000">//输出合并后的区间元素个数</span>
 
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 区间合并</span>
-n = int(input())
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = sys.stdin.read().split()
+n = int(data[0])
 segs = []
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n):
-    l, r = map(int, input().split())
+idx = 1
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(n):
+    l, r = int(data[idx]), int(data[idx+1])
+    idx += 2
     segs.append((l, r))
 segs.sort()
 merged = []
-st, ed = -2 * 10**9, -2 * 10**9
-<span style="color: #00F">for</span> l, r <span style="color: #00F">in</span> segs:
-    <span style="color: #00F">if</span> l &gt; ed:
-        <span style="color: #00F">if</span> st != -2 * 10**9:
-            merged.append((st, ed))
-        st, ed = l, r
-    <span style="color: #00F">else</span>:
-        ed = max(ed, r)
-<span style="color: #00F">if</span> st != -2 * 10**9:
-    merged.append((st, ed))
+st, ed = segs[0]
+<span style="color: #0000ff">for</span> l, r <span style="color: #0000ff">in</span> segs[1:]:
+    <span style="color: #0000ff">if</span> l &lt;= ed: ed = max(ed, r)
+    <span style="color: #0000ff">else</span>: merged.append((st, ed)); st, ed = l, r
+merged.append((st, ed))
 print(len(merged))
-<span style="color: #00F">for</span> l, r <span style="color: #00F">in</span> merged:
-    print(l, r)
+<span style="color: #0000ff">for</span> l, r <span style="color: #0000ff">in</span> merged: print(l, r)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>

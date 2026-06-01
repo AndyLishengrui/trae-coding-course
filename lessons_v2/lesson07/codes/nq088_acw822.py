@@ -1,3 +1,1 @@
-# NQ088: AcWing 822
-# Python solution
-
+import math;n,m=map(int,input().split());print(math.comb(n+m,n))

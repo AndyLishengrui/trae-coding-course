@@ -1,3 +1,1 @@
-# NQ070: AcWing 765
-# Python solution
-
+print(" ".join(input()))

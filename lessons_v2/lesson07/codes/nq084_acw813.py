@@ -1,3 +1,2 @@
-# NQ084: AcWing 813
-# Python solution
-
+r,c=map(int,input().split())
+for _ in range(r):print(' '.join(input().split()))

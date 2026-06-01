@@ -1,0 +1,75 @@
+{
+    "spj": false,
+    "test_cases": {
+        "1": {
+            "stripped_output_md5": "fcceb96906318ac7733f076cc4691114",
+            "input_size": 87,
+            "output_size": 76,
+            "input_name": "1.in",
+            "output_name": "1.out"
+        },
+        "2": {
+            "stripped_output_md5": "df49d39999a40b338301e50d27d9b070",
+            "input_size": 84,
+            "output_size": 72,
+            "input_name": "2.in",
+            "output_name": "2.out"
+        },
+        "3": {
+            "stripped_output_md5": "f428bbf4ac5079f2cfa825b97cd4f9ad",
+            "input_size": 106,
+            "output_size": 97,
+            "input_name": "3.in",
+            "output_name": "3.out"
+        },
+        "4": {
+            "stripped_output_md5": "38828f4e88ad407104de58fa731af091",
+            "input_size": 30,
+            "output_size": 20,
+            "input_name": "4.in",
+            "output_name": "4.out"
+        },
+        "5": {
+            "stripped_output_md5": "0481a75bfc105158ec6c1977c3d3cf4e",
+            "input_size": 98,
+            "output_size": 87,
+            "input_name": "5.in",
+            "output_name": "5.out"
+        },
+        "6": {
+            "stripped_output_md5": "3e944c26f273f30c030e4a96647dc174",
+            "input_size": 92,
+            "output_size": 87,
+            "input_name": "6.in",
+            "output_name": "6.out"
+        },
+        "7": {
+            "stripped_output_md5": "f192a89cab0c68891ee065ae07636fbf",
+            "input_size": 69,
+            "output_size": 59,
+            "input_name": "7.in",
+            "output_name": "7.out"
+        },
+        "8": {
+            "stripped_output_md5": "09c958de65fd1b80e406cf4f817102b4",
+            "input_size": 99,
+            "output_size": 87,
+            "input_name": "8.in",
+            "output_name": "8.out"
+        },
+        "9": {
+            "stripped_output_md5": "8727b7aaf204330cf7d557474564f52e",
+            "input_size": 70,
+            "output_size": 61,
+            "input_name": "9.in",
+            "output_name": "9.out"
+        },
+        "10": {
+            "stripped_output_md5": "73bbd5d23620bc3048442e5548cd8ee7",
+            "input_size": 100,
+            "output_size": 88,
+            "input_name": "10.in",
+            "output_name": "10.out"
+        }
+    }
+}

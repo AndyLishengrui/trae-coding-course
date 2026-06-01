@@ -1,12 +1,2 @@
 #include <cstdio>
-
-using namespace std;
-
-int main()
-{
-  double pi = 3.14159, r;
-  scanf("%lf", &r);
-  printf("A=%.4lf\n",pi * r * r);
-
-  return 0;
-}
+int main() { double r; scanf("%lf",&r); printf("A=%.4lf\n",3.14159*r*r); return 0; }

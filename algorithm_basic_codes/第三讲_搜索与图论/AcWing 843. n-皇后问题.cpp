@@ -1,36 +1,32 @@
 #include <iostream>
+#include <cstring>
+#include <algorithm>
+
 using namespace std;
 
-const int N = 20;  //最大值
-int n;             //输入的n
-char g[N][N];      //棋盘
-//三个指示器列、对角线、反对角线,对角线以截距为编号
-bool col[N], dg[N], udg[N];
+const int N = 1007;
 
-void dfs(int u) {
-  if (u == n) {
-    //输出排列
-    for (int i = 0; i < n; i++) puts(g[i]);
-    puts("");
-    return;
-  }
-  //枚举列0--n
-  for (int i = 0; i < n; i++) {
-    if (!col[i] && !dg[i + u] && !udg[i - u + n]) {
-      g[u][i] = 'Q';  //当前位置设置为Q字符
-      col[i] = dg[i + u] = udg[i - u + n] = true;  //标记数字i为已经使用郭
-      dfs(u + 1);                                  //递归处理下一个位
-      g[u][i] = '.';                               //恢复现场
-      col[i] = dg[i + u] = udg[i - u + n] = false;  //恢复现场
-    }
-  }
-}
+int n,m;
+int f[N][N];
+int v[N],w[N];
 
-int main() {
-  cin >> n;
-  //初始化图
-  for (int i = 0; i < n; i++)
-    for (int j = 0; j < n; j++) g[i][j] = '.';
-  dfs(0);
-  return 0;
+int main()
+{
+    cin >>n >>m;
+    for (int i = 1; i <= n; i++) cin>>v[i]>>w[i];
+
+    //完全背包
+    // 1.f[i][j] = f[i-1][j];(不选物品i)
+    // 2.f[i][j]= max(f[i-1][j], f[i][j-v]+w)(选若干个物品i)
+    for (int i = 1; i <= n; i++)
+      for (int j=0; j <= m; j ++)
+      {
+        f[i][j]=f[i-1][j];
+        if (j >= v[i])
+          f[i][j] = max(f[i-1][j], f[i][j-v[i]]+w[i]);
+      }
+
+
+    cout<<f[n][m]<<endl;
+    return 0;
 }

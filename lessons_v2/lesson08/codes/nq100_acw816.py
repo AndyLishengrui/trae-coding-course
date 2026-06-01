@@ -1,3 +1,4 @@
-# NQ100: AcWing 816
-# Python solution
-
+n, size = map(int, input().split())
+a = list(map(int, input().split()))
+a[:size] = reversed(a[:size])
+print(' '.join(map(str, a)))

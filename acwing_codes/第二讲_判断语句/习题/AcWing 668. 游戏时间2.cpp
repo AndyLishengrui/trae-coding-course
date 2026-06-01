@@ -1,18 +1,10 @@
 #include <cstdio>
-
-int main()
-{
+int main() {
     int a, b, c, d;
     scanf("%d%d%d%d", &a, &b, &c, &d);
-
-    int start = a * 60 + b;
-    int end = c * 60 + d;
-
-    int spent_time = end - start;
-    if (spent_time <= 0) spent_time += 1440;
-
-    printf("O JOGO DUROU %d HORA(S) E %d MINUTO(S)", spent_time / 60, spent_time % 60);
-
+    int start = a * 60 + b, end = c * 60 + d;
+    if (end <= start) end += 24 * 60;
+    int diff = end - start;
+    printf("O JOGO DUROU %d HORA(S) E %d MINUTO(S)\n", diff / 60, diff % 60);
     return 0;
-
 }

@@ -1,80 +1,28 @@
-#include <cstring>
 #include <iostream>
+#include <cstring>
 #include <algorithm>
-#include <queue>
 
 using namespace std;
 
-const int N = 2007, M=10007;
-
-int n, m;
-int h[N], w[M], e[M], ne[M], idx;
-int dist[N],cnt[N];
-bool st[N];
-
-void add(int a, int b, int c)
-{
-    e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx ++ ;
-}
-
-bool spfa()
-{
-
-    queue<int> q;
-
-    //所有点都压入队列
-    for (int i = 1; i <= n; i ++ )
-    {
-      st[i]= true;
-      q.push(i);
-    }
-
-    while (q.size())
-    {
-        int t = q.front();
-        q.pop();
-
-        st[t] = false;
-
-        for (int i = h[t]; i != -1; i = ne[i])
-        {
-            int j = e[i];
-            if (dist[j] > dist[t] + w[i])
-            {
-                dist[j] = dist[t] + w[i];
-                cnt[j] = cnt[t]+1;//更新cnt
-
-                if (cnt[j]>=n) return true;//找到一个负环
-
-                if (!st[j])
-                {
-                    q.push(j);
-                    st[j] = true;
-                }
-            }
-        }
-    }
-
-    return false;
-}
+const int N= 1007;
+// 2维的解法
+int n,m;
+int f[N][N];
+int v[N],w[N];
 
 int main()
 {
-    scanf("%d%d", &n, &m);
-
-    memset(h, -1, sizeof h);
-
-    while (m -- )
+  cin>>n>>m;//读入N,V
+  //读入v,w
+  for (int i = 1; i <= n; i++) cin>>v[i]>>w[i];
+  //朴素的二维dp
+  for (int i = 1; i <= n; i++)
+    for (int j = 0; j <=m; j++)
     {
-        int a, b, c;
-        scanf("%d%d%d", &a, &b, &c);
-        add(a, b, c);
+      f[i][j]=f[i-1][j];
+      if ( j >= v[i]) //剩余体积大于第i项的体积
+      f[i][j] = max(f[i][j],f[i-1][j-v[i]]+w[i]);
     }
-
-    int t = spfa();
-
-    if (spfa()) puts("Yes");
-    else puts("No");
-
-    return 0;
+  //根据定义，从前n个物品中，选取总体积不超过m的选法集合f[n][m]就是答案
+  cout<<f[n][m]<<endl;
 }

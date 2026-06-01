@@ -1,3 +1,2 @@
-# NQ068: AcWing 761
-# Python solution
-
+s = input()
+print(sum(1 for c in s if c.isdigit()))

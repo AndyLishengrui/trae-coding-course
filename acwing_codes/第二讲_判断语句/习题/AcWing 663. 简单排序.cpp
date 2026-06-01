@@ -1,35 +1,11 @@
 #include <iostream>
-
 using namespace std;
-
-int main()
-{
+int main() {
     int a, b, c;
     cin >> a >> b >> c;
-
-    int x = a, y = b, z = c;
-
-    if (b < a)
-    {
-      int t = a;
-      a = b;
-      b = t;
-    }
-    if (c < a)
-    {
-      int t = a;
-      a = c;
-      c = t;
-    }
-    if (c < b)
-    {
-      int t = b;
-      b = c;
-      c = t;
-    }
-
-    cout << a << endl << b << endl << c << endl << endl;
-    cout << x << endl << y << endl << z << endl;
-
+    if (a > b) swap(a, b);
+    if (a > c) swap(a, c);
+    if (b > c) swap(b, c);
+    cout << a << " " << b << " " << c << endl;
     return 0;
 }

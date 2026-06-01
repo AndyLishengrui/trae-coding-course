@@ -15,7 +15,7 @@
     },
     "output_description": {
         "format": "html",
-        "value": "<p>三行：TRIANGULO: X / CIRCULO: X / TRAPEZIO: X，各保留3位小数。</p>"
+        "value": "<p>五行，每行格式为：TRIANGULO: X / CIRCULO: X / TRAPEZIO: X / QUADRADO: X / RETANGULO: X，各保留3位小数。</p>"
     },
     "test_case_score": [
         {
@@ -78,7 +78,7 @@
     "samples": [
         {
             "input": "3.0 4.0 5.2",
-            "output": "TRIANGULO: 7.800\nCIRCULO: 84.949\nTRAPEZIO: 18.200"
+            "output": "TRIANGULO: 7.800\nCIRCULO: 84.949\nTRAPEZIO: 18.200\nQUADRADO: 16.000\nRETANGULO: 12.000"
         }
     ],
     "template": {},

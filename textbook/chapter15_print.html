@@ -56,29 +56,29 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 <div class="insight-block"><span class="insight-label">思路</span><span>二维DP：f[i][j]=max(f[i-1][j], f[i-1][j-v]+w)。一维优化：f[j]=max(f[j], f[j-v]+w)，j从V倒序到v（防止重复使用）。时间O(NV)，空间O(V)。初始化f[0]=0（全0初值表示恰好装满？不——恰好装满需f[1..V]=-INF）。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>01背包的变形：完全背包(j正序)、多重背包(二进制拆分)。一维优化的关键是j倒序——保证每件物品只被选一次。DP的五步法：1)确定状态定义 2)初始化 3)转移方程 4)遍历顺序 5)答案位置。这个框架适用于所有DP问题。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N= 1007;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N= 1007;
 <span style="color: #008000">// 2维的解法</span>
-<span style="color: #2B91AF">int</span> n,m;
-<span style="color: #2B91AF">int</span> f[N][N];
-<span style="color: #2B91AF">int</span> v[N],w[N];
+<span style="color: #2b91af">int</span> n,m;
+<span style="color: #2b91af">int</span> f[N][N];
+<span style="color: #2b91af">int</span> v[N],w[N];
 
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
   cin&gt;&gt;n&gt;&gt;m;<span style="color: #008000">//读入N,V</span>
   <span style="color: #008000">//读入v,w</span>
-  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i++) cin&gt;&gt;v[i]&gt;&gt;w[i];
+  <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= n; i++) cin&gt;&gt;v[i]&gt;&gt;w[i];
   <span style="color: #008000">//朴素的二维dp</span>
-  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i++)
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt;=m; j++)
+  <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= n; i++)
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> j = 0; j &lt;=m; j++)
     {
       f[i][j]=f[i-1][j];
-      <span style="color: #00F">if</span> ( j &gt;= v[i]) <span style="color: #008000">//剩余体积大于第i项的体积</span>
+      <span style="color: #0000ff">if</span> ( j &gt;= v[i]) <span style="color: #008000">//剩余体积大于第i项的体积</span>
       f[i][j] = max(f[i][j],f[i-1][j-v[i]]+w[i]);
     }
   <span style="color: #008000">//根据定义，从前n个物品中，选取总体积不超过m的选法集合f[n][m]就是答案</span>
@@ -88,9 +88,9 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 01背包问题</span>
 N, V = map(int, input().split())
 f = [0] * (V + 1)
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(N):
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(N):
     v, w = map(int, input().split())
-    <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(V, v - 1, -1):
+    <span style="color: #0000ff">for</span> j <span style="color: #0000ff">in</span> range(V, v - 1, -1):
         f[j] = max(f[j], f[j - v] + w)
 print(f[V])
 </pre></div>
@@ -114,45 +114,45 @@ print(f[V])
 <div class="insight-block"><span class="insight-label">思路</span><span>完全背包一维：for i: for j from v to V: f[j]=max(f[j], f[j-v]+w)。j正序遍历！因为同一件物品可以被多次选取——正序遍历时f[j-v]是已更新过的第i层状态，允许重复选。时间O(NV)，空间O(V)。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>完全背包正序、01背包倒序——背后是同一个转移方程在不同遍历顺序下的不同效果。理解这一点，多重背包的二进制拆分也就懂了。完全背包的初始化同样要注意是否恰好装满。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 1007;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 1007;
 
-<span style="color: #2B91AF">int</span> n,m;
-<span style="color: #2B91AF">int</span> f[N][N];
-<span style="color: #2B91AF">int</span> v[N],w[N];
+<span style="color: #2b91af">int</span> n,m;
+<span style="color: #2b91af">int</span> f[N][N];
+<span style="color: #2b91af">int</span> v[N],w[N];
 
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
     cin &gt;&gt;n &gt;&gt;m;
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i++) cin&gt;&gt;v[i]&gt;&gt;w[i];
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= n; i++) cin&gt;&gt;v[i]&gt;&gt;w[i];
 
     <span style="color: #008000">//完全背包</span>
     <span style="color: #008000">// 1.f[i][j] = f[i-1][j];(不选物品i)</span>
     <span style="color: #008000">// 2.f[i][j]= max(f[i-1][j], f[i][j-v]+w)(选若干个物品i)</span>
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i++)
-      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j=0; j &lt;= m; j ++)
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= n; i++)
+      <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> j=0; j &lt;= m; j ++)
       {
         f[i][j]=f[i-1][j];
-        <span style="color: #00F">if</span> (j &gt;= v[i])
+        <span style="color: #0000ff">if</span> (j &gt;= v[i])
           f[i][j] = max(f[i-1][j], f[i][j-v[i]]+w[i]);
       }
 
 
     cout&lt;&lt;f[n][m]&lt;&lt;endl;
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 完全背包问题</span>
 N, V = map(int, input().split())
 f = [0] * (V + 1)
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(N):
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(N):
     v, w = map(int, input().split())
-    <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(v, V + 1):
+    <span style="color: #0000ff">for</span> j <span style="color: #0000ff">in</span> range(v, V + 1):
         f[j] = max(f[j], f[j - v] + w)
 print(f[V])
 </pre></div>
@@ -177,46 +177,49 @@ print(f[V])
 <div class="insight-block"><span class="insight-label">思路</span><span>自底向上DP：从倒数第二行开始，f[i][j]=max(f[i+1][j],f[i+1][j+1])+a[i][j]。顶部f[0][0]为答案。时间O(n²)，空间O(n²)(滚动数组可O(n))。这是最短路径DP和三角形DP的最基本形态。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>自底向上避免了边界检查——每一层总有下一层。自顶向下需要处理j==0和j==i的边界。这是一个重要经验：DP的迭代方向选择直接影响代码复杂度。数字三角形也是树形DP和网格DP的简化版。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 507;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 507;
 
-<span style="color: #2B91AF">int</span> n;
-<span style="color: #2B91AF">int</span> w[N][N], f[N][N];<span style="color: #008000">//三角矩阵依旧用2纬存储</span>
+<span style="color: #2b91af">int</span> n;
+<span style="color: #2b91af">int</span> w[N][N], f[N][N];<span style="color: #008000">//三角矩阵依旧用2纬存储</span>
 
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
     <span style="color: #008000">//读入n，w</span>
     cin&gt;&gt;n;
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;=n; i++)
-      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;= i; j++)
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;=n; i++)
+      <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> j = 1; j &lt;= i; j++)
         cin &gt;&gt; w[i][j];
 
    <span style="color: #008000">//初始化最底层的f[n][j]</span>
-   <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i++) f[n][i] = w[n][i];
+   <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= n; i++) f[n][i] = w[n][i];
 
    <span style="color: #008000">//用dp从底层往上计算每个f[i][j]的值</span>
-   <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = n-1; i; i--)
-     <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt; n; j++)
+   <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = n-1; i; i--)
+     <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> j = 1; j &lt; n; j++)
         f[i][j] = max(f[i+1][j]+w[i][j], f[i+1][j+1] + w[i][j]);
 
   cout&lt;&lt;f[1][1]&lt;&lt;endl;
-  <span style="color: #00F">return</span> 0;
+  <span style="color: #0000ff">return</span> 0;
 
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 数字三角形</span>
-n = int(input())
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = sys.stdin.read().split()
+n = int(data[0])
+idx = 1
 a = []
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n):
-    a.append(list(map(int, input().split())))
-<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(n - 2, -1, -1):
-    <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(i + 1):
-        a[i][j] += max(a[i + 1][j], a[i + 1][j + 1])
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(n):
+    a.append([int(data[idx+j]) <span style="color: #0000ff">for</span> j <span style="color: #0000ff">in</span> range(i+1)])
+    idx += i + 1
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(n-2, -1, -1):
+    <span style="color: #0000ff">for</span> j <span style="color: #0000ff">in</span> range(i+1):
+        a[i][j] += max(a[i+1][j], a[i+1][j+1])
 print(a[0][0])
 </pre></div>
 </div></div><hr class="section-divider">
@@ -236,54 +239,56 @@ print(a[0][0])
 <div class="insight-block"><span class="insight-label">思路</span><span>朴素O(n²)：对每个i遍历j<i。优化O(n log n)：tails数组——对每个x，二分找到tails中第一个≥x的位置，替换或追加。若x比所有tails大则append，否则替换。最终tails的长度=LIS。Python用bisect_left。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>LIS的优化是用贪心维护'最小结尾值'——保证tails数组始终是递增的，可以用二分。这个优化思路也用于LIS的变种（LNDS/带权LIS）。DP+贪心+二分=算法设计中最经典的技术融合。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 <span style="color: #008000">// f[i]定义为以s[i]结尾的最长的子序列</span>
 <span style="color: #008000">// 集合：所有以第i个数结尾的上升子序列集合</span>
 <span style="color: #008000">// 属性: Max 上升子序列长度的最大值</span>
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 10007;
-<span style="color: #2B91AF">int</span> n;
-<span style="color: #2B91AF">int</span> a[N], f[N];
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 10007;
+<span style="color: #2b91af">int</span> n;
+<span style="color: #2b91af">int</span> a[N], f[N];
 <span style="color: #008000">//状态计算</span>
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
     cin &gt;&gt; n;
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i++)
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= n; i++)
         cin &gt;&gt; a[i]; <span style="color: #008000">//从1开始初始化</span>
 
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i++)
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= n; i++)
     {
 
         f[i] = 1;                   <span style="color: #008000">// a[i]只有一个元素，所以f[i]=1;</span>
-        <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt; i; j++) <span style="color: #008000">//求i之前的f[j]</span>
-            <span style="color: #00F">if</span> (a[j] &lt; a[i])
+        <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> j = 1; j &lt; i; j++) <span style="color: #008000">//求i之前的f[j]</span>
+            <span style="color: #0000ff">if</span> (a[j] &lt; a[i])
                 f[i] = max(f[i], f[j] + 1);
     }
 
-    <span style="color: #2B91AF">int</span> res = 1;
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i++)
+    <span style="color: #2b91af">int</span> res = 1;
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= n; i++)
         res = max(res, f[i]);
     cout &lt;&lt; res &lt;&lt; endl;
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 最长上升子序列</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+sys.setrecursionlimit(200000)
+<span style="color: #008000"># 最长上升子序列</span>
 n = int(input())
 a = list(map(int, input().split()))
 tails = []
-<span style="color: #00F">for</span> x <span style="color: #00F">in</span> a:
+<span style="color: #0000ff">for</span> x <span style="color: #0000ff">in</span> a:
     l, r = 0, len(tails)
-    <span style="color: #00F">while</span> l &lt; r:
+    <span style="color: #0000ff">while</span> l &lt; r:
         mid = (l + r) // 2
-        <span style="color: #00F">if</span> tails[mid] &gt;= x:
+        <span style="color: #0000ff">if</span> tails[mid] &gt;= x:
             r = mid
-        <span style="color: #00F">else</span>:
+        <span style="color: #0000ff">else</span>:
             l = mid + 1
-    <span style="color: #00F">if</span> l == len(tails):
+    <span style="color: #0000ff">if</span> l == len(tails):
         tails.append(x)
-    <span style="color: #00F">else</span>:
+    <span style="color: #0000ff">else</span>:
         tails[l] = x
 print(len(tails))
 </pre></div>
@@ -305,28 +310,42 @@ abedc</pre></div>
 <div class="insight-block"><span class="insight-label">思路</span><span>二维DP：f[i][j]定义如上。双重循环填充：若匹配则左上+1，否则取上/左的最大值。最终答案在f[n][m]。时间O(nm)，空间O(nm)可压到O(min(n,m))滚动数组。这是编辑距离的前身——只是代价函数不同。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>LCS的转移图示：方向箭头——左上(匹配)、上(跳过A[i])、左(跳过B[j])。空间优化：只用两行交替(f[cur]和f[prev])。LCS可以扩展为带权版本、多串版本——理解基本模型后扩展到海量变种。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;=n; i++)
- <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;=m; j++)
- {
-   f[i][j] = max(f[i-1][j],f[i][j-1]);
-   <span style="color: #00F">if</span> (a[i]==b[j]) f[i][j] = max(f[i][j], f[i-1][j-1]+ 1);
- }
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;string&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
- cout&lt;&lt;f[n][m]&lt;&lt;endl;
- <span style="color: #00F">return</span> 0;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 1010;
+<span style="color: #2b91af">int</span> f[N][N];
+
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">int</span> n, m;
+    string a, b;
+    cin &gt;&gt; n &gt;&gt; m;
+    cin &gt;&gt; a &gt;&gt; b;
+
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= n; i++)
+        <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> j = 1; j &lt;= m; j++)
+        {
+            f[i][j] = max(f[i-1][j], f[i][j-1]);
+            <span style="color: #0000ff">if</span> (a[i-1] == b[j-1]) f[i][j] = max(f[i][j], f[i-1][j-1] + 1);
+        }
+
+    cout &lt;&lt; f[n][m] &lt;&lt; endl;
+    <span style="color: #0000ff">return</span> 0;
+}
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 最长公共子序列</span>
-n, m = map(int, input().split())
-a = input().strip()
-b = input().strip()
-f = [[0] * (m + 1) <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n + 1)]
-<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, n + 1):
-    <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(1, m + 1):
-        <span style="color: #00F">if</span> a[i - 1] == b[j - 1]:
-            f[i][j] = f[i - 1][j - 1] + 1
-        <span style="color: #00F">else</span>:
-            f[i][j] = max(f[i - 1][j], f[i][j - 1])
-print(f[n][m])
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = sys.stdin.read().split()
+n, m = int(data[0]), int(data[1])
+a, b = data[2], data[3]
+dp = [[0]*(m+1) <span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(n+1)]
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1, n+1):
+    <span style="color: #0000ff">for</span> j <span style="color: #0000ff">in</span> range(1, m+1):
+        <span style="color: #0000ff">if</span> a[i-1] == b[j-1]: dp[i][j] = dp[i-1][j-1] + 1
+        <span style="color: #0000ff">else</span>: dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+print(dp[n][m])
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -345,53 +364,53 @@ print(f[n][m])
 <div class="insight-block"><span class="insight-label">思路</span><span>区间DP模板：for len=2 to n: for l=0 to n-len: r=l+len-1; f[l][r]=INF; for k=l to r-1: f[l][r]=min(f[l][r], f[l][k]+f[k+1][r]+s[r+1]-s[l])。前缀和s[i]=前i堆的总和快速求区间和。O(n³)，n≤300时OK。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>区间DP三要素：len从小到大(保证子区间已算好)、l遍历起点、k遍历分割点。前缀和O(1)求区间和。这题可以用平行四边形优化到O(n²)但不在本课范围。理解这个三层循环模式，所有区间DP问题都是它的变体。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 307;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 307;
 
-<span style="color: #2B91AF">int</span> n;
-<span style="color: #2B91AF">int</span> s[N]; <span style="color: #008000">//前缀和</span>
-<span style="color: #2B91AF">int</span> f[N][N]; <span style="color: #008000">//所有将[i,j]合并成一堆的方案数</span>
+<span style="color: #2b91af">int</span> n;
+<span style="color: #2b91af">int</span> s[N]; <span style="color: #008000">//前缀和</span>
+<span style="color: #2b91af">int</span> f[N][N]; <span style="color: #008000">//所有将[i,j]合并成一堆的方案数</span>
 
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
     cin&gt;&gt;n;
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;=n; i ++) cin&gt;&gt;s[i], s[i] += s[i-1];<span style="color: #008000">//计算前缀和</span>
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;=n; i ++) cin&gt;&gt;s[i], s[i] += s[i-1];<span style="color: #008000">//计算前缀和</span>
 
     <span style="color: #008000">//区间DP，先枚举长度，后枚举端点</span>
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> len = 2; len &lt;= n; len ++)
-     <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i+len-1 &lt;= n; i++)<span style="color: #008000">//区间左端点</span>
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> len = 2; len &lt;= n; len ++)
+     <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i+len-1 &lt;= n; i++)<span style="color: #008000">//区间左端点</span>
      {
        <span style="color: #008000">//区间右端点</span>
-       <span style="color: #2B91AF">int</span> j = i + len -1;
+       <span style="color: #2b91af">int</span> j = i + len -1;
        f[i][j] = 1e9;<span style="color: #008000">//初始化为无穷大</span>
-       <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> k = i ; k &lt; j; k++)<span style="color: #008000">//区间dp，枚举分隔点</span>
+       <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> k = i ; k &lt; j; k++)<span style="color: #008000">//区间dp，枚举分隔点</span>
          f[i][j] = min(f[i][j], f[i][k]+f[k+1][j]+s[j]-s[i-1]);
      }
 
      cout&lt;&lt;f[1][n]&lt;&lt;endl;
-     <span style="color: #00F">return</span> 0;
+     <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 石子合并</span>
-n = int(input())
-a = list(map(int, input().split()))
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = sys.stdin.read().split()
+n = int(data[0])
+a = list(map(int, data[1:1+n]))
 s = [0] * (n + 1)
-<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, n + 1):
-    s[i] = s[i - 1] + a[i - 1]
-INF = 0x3f3f3f3f
-f = [[0] * n <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n)]
-<span style="color: #00F">for</span> length <span style="color: #00F">in</span> range(2, n + 1):
-    <span style="color: #00F">for</span> l <span style="color: #00F">in</span> range(n - length + 1):
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1, n+1): s[i] = s[i-1] + a[i-1]
+INF = 10**9
+f = [[0]*n <span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(n)]
+<span style="color: #0000ff">for</span> length <span style="color: #0000ff">in</span> range(2, n+1):
+    <span style="color: #0000ff">for</span> l <span style="color: #0000ff">in</span> range(n-length+1):
         r = l + length - 1
         f[l][r] = INF
-        <span style="color: #00F">for</span> k <span style="color: #00F">in</span> range(l, r):
-            f[l][r] = min(f[l][r], f[l][k] + f[k + 1][r] + s[r + 1] - s[l])
-print(f[0][n - 1])
+        <span style="color: #0000ff">for</span> k <span style="color: #0000ff">in</span> range(l, r):
+            f[l][r] = min(f[l][r], f[l][k] + f[k+1][r] + s[r+1] - s[l])
+print(f[0][n-1])
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -412,56 +431,58 @@ AGTAAGTAGGC</pre></div>
 <div class="insight-block"><span class="insight-label">思路</span><span>编辑距离DP：f[i][j]如上。初始化f[i][0]=i(全删), f[0][j]=j(全增)。三重min转移。时间O(nm)，空间O(nm)→滚动数组O(min(n,m))。与LCS的区别在于可以有替换操作且替换cost=1而非跳过代价。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>编辑距离的初始化不要忘——空串变j字符=j次增加。三个操作对应三个方向：上=删、左=增、左上=改。每个方向+1(替换是否+1取决于字符是否相同)。这个DP是所有字符串距离算法的根基。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 1007;
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 1007;
 
-<span style="color: #2B91AF">int</span> n,m;
-<span style="color: #2B91AF">char</span> a[N],b[N];
-<span style="color: #2B91AF">int</span> f[N][N];<span style="color: #008000">//所有將a[i]變爲b[i]的操作步驟</span>
+<span style="color: #2b91af">int</span> n,m;
+<span style="color: #2b91af">char</span> a[N],b[N];
+<span style="color: #2b91af">int</span> f[N][N];<span style="color: #008000">//所有將a[i]變爲b[i]的操作步驟</span>
 
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
     cin&gt;&gt;n&gt;&gt;a+1;<span style="color: #008000">//下標從1開始</span>
     cin&gt;&gt;m&gt;&gt;b+1;
 
     <span style="color: #008000">//初始化</span>
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; N; i ++ ) f[i][0] = i;<span style="color: #008000">//把a[i]變爲空串</span>
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; N; i ++ ) f[0][i] = i;<span style="color: #008000">//把空串變爲b[i]</span>
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; N; i ++ ) f[i][0] = i;<span style="color: #008000">//把a[i]變爲空串</span>
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; N; i ++ ) f[0][i] = i;<span style="color: #008000">//把空串變爲b[i]</span>
 
     <span style="color: #008000">// DP</span>
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;=n; i++)
-      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;= m; j++)
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;=n; i++)
+      <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> j = 1; j &lt;= m; j++)
       {
         f[i][j] = min(f[i-1][j] +1, f[i][j-1]+1);
-        <span style="color: #00F">if</span> (a[i]==b[j]) f[i][j] = min(f[i][j], f[i-1][j-1]);
-        <span style="color: #00F">else</span> f[i][j] = min(f[i][j], f[i-1][j-1]+ 1);
+        <span style="color: #0000ff">if</span> (a[i]==b[j]) f[i][j] = min(f[i][j], f[i-1][j-1]);
+        <span style="color: #0000ff">else</span> f[i][j] = min(f[i][j], f[i-1][j-1]+ 1);
       }
 
     cout&lt;&lt;f[n][m]&lt;&lt;endl;
 
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 最短编辑距离</span>
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+sys.setrecursionlimit(200000)
+<span style="color: #008000"># 最短编辑距离</span>
 n = int(input())
 a = input().strip()
 m = int(input())
 b = input().strip()
-f = [[0] * (m + 1) <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n + 1)]
-<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(n + 1):
+f = [[0] * (m + 1) <span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(n + 1)]
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(n + 1):
     f[i][0] = i
-<span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(m + 1):
+<span style="color: #0000ff">for</span> j <span style="color: #0000ff">in</span> range(m + 1):
     f[0][j] = j
-<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, n + 1):
-    <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(1, m + 1):
-        <span style="color: #00F">if</span> a[i - 1] == b[j - 1]:
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1, n + 1):
+    <span style="color: #0000ff">for</span> j <span style="color: #0000ff">in</span> range(1, m + 1):
+        <span style="color: #0000ff">if</span> a[i - 1] == b[j - 1]:
             f[i][j] = f[i - 1][j - 1]
-        <span style="color: #00F">else</span>:
+        <span style="color: #0000ff">else</span>:
             f[i][j] = min(f[i - 1][j], f[i][j - 1], f[i - 1][j - 1]) + 1
 print(f[n][m])
 </pre></div>
@@ -486,82 +507,82 @@ print(f[n][m])
 <div class="insight-block"><span class="insight-label">思路</span><span>记忆化DFS：dp[i][j]=1+max(dfs(nx,ny) for 所有高度更低的邻居)。每次dfs先检查dp[i][j]是否已算(不等于-1)，已算直接返回。每个状态算一次，O(RC)。比纯DFS快是因为避免了重复搜索——这正是DP的威力。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>记忆化搜索=自顶向下DP。优势：按需计算（只计算能到达的状态）。劣势：递归栈深度限制。DFS中四个方向的顺序不影响结果。Python递归可能需要sys.setrecursionlimit(1000000)。这道题展示了搜索→DP的自然过渡。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstring&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 307;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 307;
 
-<span style="color: #2B91AF">int</span> g[N][N];<span style="color: #008000">//地图高度</span>
-<span style="color: #2B91AF">int</span> f[N][N];<span style="color: #008000">//从[i,j]开始滑的最长的轨迹</span>
+<span style="color: #2b91af">int</span> g[N][N];<span style="color: #008000">//地图高度</span>
+<span style="color: #2b91af">int</span> f[N][N];<span style="color: #008000">//从[i,j]开始滑的最长的轨迹</span>
 
-<span style="color: #2B91AF">int</span> n,m;<span style="color: #008000">//宽高</span>
+<span style="color: #2b91af">int</span> n,m;<span style="color: #008000">//宽高</span>
 
-<span style="color: #2B91AF">int</span> dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
+<span style="color: #2b91af">int</span> dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 
-<span style="color: #2B91AF">int</span> dp(<span style="color: #2B91AF">int</span> x, <span style="color: #2B91AF">int</span> y)
+<span style="color: #2b91af">int</span> dp(<span style="color: #2b91af">int</span> x, <span style="color: #2b91af">int</span> y)
 {
   <span style="color: #008000">//记忆化搜索</span>
-  <span style="color: #00F">if</span> (f[x][y] != -1) <span style="color: #00F">return</span> f[x][y];
+  <span style="color: #0000ff">if</span> (f[x][y] != -1) <span style="color: #0000ff">return</span> f[x][y];
   <span style="color: #008000">//否则，从x,y开始滑</span>
   f[x][y] = 1;<span style="color: #008000">//当前位置至少是1格</span>
   <span style="color: #008000">//分上下左右四个方向滑雪</span>
-  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 4; i++)
+  <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; 4; i++)
   {
-    <span style="color: #2B91AF">int</span> a = x + dx[i], b = y + dy[i];
-    <span style="color: #00F">if</span> (a&lt;1 || a &gt;n || b &lt;1 || b &gt; m) <span style="color: #00F">continue</span>;<span style="color: #008000">//越界</span>
-    <span style="color: #00F">if</span> (g[a][b] &gt;= g[x][y]) <span style="color: #00F">continue</span>;<span style="color: #008000">//不能走</span>
+    <span style="color: #2b91af">int</span> a = x + dx[i], b = y + dy[i];
+    <span style="color: #0000ff">if</span> (a&lt;1 || a &gt;n || b &lt;1 || b &gt; m) <span style="color: #0000ff">continue</span>;<span style="color: #008000">//越界</span>
+    <span style="color: #0000ff">if</span> (g[a][b] &gt;= g[x][y]) <span style="color: #0000ff">continue</span>;<span style="color: #008000">//不能走</span>
     <span style="color: #008000">//四个方向深搜，更新f[a][b],取最大值</span>
     f[x][y] = max(f[x][y], dp(a,b) + 1);
   }
 
-  <span style="color: #00F">return</span> f[x][y];<span style="color: #008000">//返回f[x][y]</span>
+  <span style="color: #0000ff">return</span> f[x][y];<span style="color: #008000">//返回f[x][y]</span>
 }
 
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
     cin&gt;&gt;n&gt;&gt;m;
     <span style="color: #008000">//读入高度图</span>
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i ++ )
-     <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;= m; j ++ )
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= n; i ++ )
+     <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> j = 1; j &lt;= m; j ++ )
        cin&gt;&gt;g[i][j];
 
-    memset(f,-1,<span style="color: #00F">sizeof</span> f);<span style="color: #008000">//初始化为-1，表示该点未被访问</span>
+    memset(f,-1,<span style="color: #0000ff">sizeof</span> f);<span style="color: #008000">//初始化为-1，表示该点未被访问</span>
 
     <span style="color: #008000">//把每个点作为起点深搜</span>
-    <span style="color: #2B91AF">int</span> res = 0;
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i ++ )
-     <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 1; j &lt;= m; j ++ )
+    <span style="color: #2b91af">int</span> res = 0;
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= n; i ++ )
+     <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> j = 1; j &lt;= m; j ++ )
        res = max(res,dp(i,j));
 
     cout &lt;&lt;res &lt;&lt;endl;
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 滑雪</span>
-<span style="color: #00F">import</span> sys
+<span style="color: #0000ff">import</span> sys
 sys.setrecursionlimit(1000000)
 R, C = map(int, input().split())
-h = [list(map(int, input().split())) <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(R)]
-dp = [[-1] * C <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(R)]
+h = [list(map(int, input().split())) <span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(R)]
+dp = [[-1] * C <span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(R)]
 dx = [-1, 0, 1, 0]
 dy = [0, 1, 0, -1]
 
-<span style="color: #00F">def</span> dfs(x, y):
-    <span style="color: #00F">if</span> dp[x][y] != -1:
-        <span style="color: #00F">return</span> dp[x][y]
+<span style="color: #0000ff">def</span> dfs(x, y):
+    <span style="color: #0000ff">if</span> dp[x][y] != -1:
+        <span style="color: #0000ff">return</span> dp[x][y]
     dp[x][y] = 1
-    <span style="color: #00F">for</span> d <span style="color: #00F">in</span> range(4):
+    <span style="color: #0000ff">for</span> d <span style="color: #0000ff">in</span> range(4):
         nx, ny = x + dx[d], y + dy[d]
-        <span style="color: #00F">if</span> 0 &lt;= nx &lt; R <span style="color: #00F">and</span> 0 &lt;= ny &lt; C <span style="color: #00F">and</span> h[nx][ny] &lt; h[x][y]:
+        <span style="color: #0000ff">if</span> 0 &lt;= nx &lt; R <span style="color: #0000ff">and</span> 0 &lt;= ny &lt; C <span style="color: #0000ff">and</span> h[nx][ny] &lt; h[x][y]:
             dp[x][y] = max(dp[x][y], dfs(nx, ny) + 1)
-    <span style="color: #00F">return</span> dp[x][y]
+    <span style="color: #0000ff">return</span> dp[x][y]
 
 ans = 0
-<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(R):
-    <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(C):
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(R):
+    <span style="color: #0000ff">for</span> j <span style="color: #0000ff">in</span> range(C):
         ans = max(ans, dfs(i, j))
 print(ans)
 </pre></div>

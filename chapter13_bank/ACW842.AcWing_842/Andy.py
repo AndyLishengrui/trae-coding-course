@@ -7,7 +7,7 @@ used = [False] * (n + 1)
 
 def dfs():
     if len(path) == n:
-        print(' '.join(map(str, path)))
+        print(' '.join(map(str, path)) + ' ')
         return
     for i in range(1, n + 1):
         if not used[i]:

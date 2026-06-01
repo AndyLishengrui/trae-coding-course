@@ -1,14 +1,19 @@
-# NQ: AcWing 718
-from collections import Counter
-n = int(input())
-cnt = Counter()
+import sys
+data = sys.stdin.read().split()
+n = int(data[0])
+c = r = f = 0
+idx = 1
 for _ in range(n):
-    k, t = input().split()
-    cnt[t] += int(k)
-print(f"Total: {sum(cnt.values())} animals")
-print(f"Total coneys: {cnt.get('C', 0)}")
-print(f"Total rats: {cnt.get('R', 0)}")
-print(f"Total frogs: {cnt.get('F', 0)}")
-total = sum(cnt.values())
-for t, name in [('C', 'coneys'), ('R', 'rats'), ('F', 'frogs')]:
-    print(f"Percentage of {name}: {cnt.get(t, 0) / total * 100:.2f} %")
+    k = int(data[idx]); t = data[idx + 1]
+    idx += 2
+    if t == 'C': c += k
+    elif t == 'R': r += k
+    else: f += k
+s = c + r + f
+print(f"Total: {s} animals")
+print(f"Total coneys: {c}")
+print(f"Total rats: {r}")
+print(f"Total frogs: {f}")
+print(f"Percentage of coneys: {c / s * 100:.2f} %")
+print(f"Percentage of rats: {r / s * 100:.2f} %")
+print(f"Percentage of frogs: {f / s * 100:.2f} %")

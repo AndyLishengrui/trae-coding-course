@@ -1,3 +1,2 @@
-# NQ098: AcWing 810
-# Python solution
-
+x = int(input())
+print(x if x >= 0 else -x)

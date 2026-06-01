@@ -59,70 +59,70 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 <div class="insight-block"><span class="insight-label">思路</span><span>快排模板：选基准x=arr[l+r>>1]，i=l-1,j=r+1双指针向中间移动，i找≥x的，j找≤x的，交换，直到i≥j，然后递归[l,j]和[j+1,r]。时间O(n log n)平均，最坏O(n²)。注意边界：用do-while避免死循环，用j而非i-1防止无限递归。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>快排背板要点：1)取中间值作基准避免最坏情况；2)i和j初始为l-1和r+1配合do-while；3)递归用j和j+1（不用i）。Python版sorted()内部用Timsort，实践中永远比手写快排好。但手写快排是理解分治思想的必修课。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
-<span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> *numbers;
+<span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span> *numbers;
 
-<span style="color: #2B91AF">void</span> quicksort(<span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> nums[], <span style="color: #2B91AF">int</span> left, <span style="color: #2B91AF">int</span> right)
+<span style="color: #2b91af">void</span> quicksort(<span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span> nums[], <span style="color: #2b91af">int</span> left, <span style="color: #2b91af">int</span> right)
 {
-    <span style="color: #00F">if</span> (left &gt;= right)
-        <span style="color: #00F">return</span>;
+    <span style="color: #0000ff">if</span> (left &gt;= right)
+        <span style="color: #0000ff">return</span>;
     <span style="color: #008000">//选取分割数</span>
-    <span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> target = nums[left]; <span style="color: #008000">//选取第一个快排的分割数</span>
-    <span style="color: #2B91AF">int</span> i = left - 1, j = right + 1;
-    <span style="color: #00F">while</span> (i &lt; j)
+    <span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span> target = nums[left]; <span style="color: #008000">//选取第一个快排的分割数</span>
+    <span style="color: #2b91af">int</span> i = left - 1, j = right + 1;
+    <span style="color: #0000ff">while</span> (i &lt; j)
     {
-        <span style="color: #00F">do</span>
+        <span style="color: #0000ff">do</span>
             i++;
-        <span style="color: #00F">while</span> (nums[i] &lt; target); <span style="color: #008000">//i指针定位</span>
-        <span style="color: #00F">do</span>
+        <span style="color: #0000ff">while</span> (nums[i] &lt; target); <span style="color: #008000">//i指针定位</span>
+        <span style="color: #0000ff">do</span>
             j--;
-        <span style="color: #00F">while</span> (nums[j] &gt; target); <span style="color: #008000">//j指针定位</span>
-        <span style="color: #00F">if</span> (i &lt; j)
+        <span style="color: #0000ff">while</span> (nums[j] &gt; target); <span style="color: #008000">//j指针定位</span>
+        <span style="color: #0000ff">if</span> (i &lt; j)
             swap(nums[i], nums[j]); <span style="color: #008000">//交换</span>
     }
     <span style="color: #008000">//分治</span>
     quicksort(nums, left, j);      <span style="color: #008000">//j左边的都是不比Target大的</span>
     quicksort(nums, j + 1, right); <span style="color: #008000">// j右边的都比Target大</span>
 }
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
     <span style="color: #008000">//!cin\cout提速</span>
     ios::sync_with_stdio(false); <span style="color: #008000">//来打消iostream的输入输出缓存</span>
     cin.tie(0);                  <span style="color: #008000">//cin.tie(0)来解除cin与cout的绑定,0表示NULL</span>
 
-    <span style="color: #2B91AF">int</span> n;
+    <span style="color: #2b91af">int</span> n;
     <span style="color: #008000">//创建动态数组</span>
     cin &gt;&gt; n;
-    numbers = <span style="color: #00F">new</span> <span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span>[n];
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i++)
+    numbers = <span style="color: #0000ff">new</span> <span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span>[n];
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; n; i++)
         cin &gt;&gt; numbers[i];
     quicksort(numbers, 0, n - 1); <span style="color: #008000">//注意边界</span>
 
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i++)
-        cout &lt;&lt; numbers[i] &lt;&lt; <span style="color: #A31515">&quot; &quot;</span>;
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; n; i++)
+        cout &lt;&lt; numbers[i] &lt;&lt; <span style="color: #a31515">&quot; &quot;</span>;
 
-    <span style="color: #00F">delete</span> numbers;
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">delete</span> numbers;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 快速排序</span>
-<span style="color: #00F">def</span> quicksort(arr, l, r):
-    <span style="color: #00F">if</span> l &gt;= r:
-        <span style="color: #00F">return</span>
+<span style="color: #0000ff">def</span> quicksort(arr, l, r):
+    <span style="color: #0000ff">if</span> l &gt;= r:
+        <span style="color: #0000ff">return</span>
     x = arr[(l + r) // 2]
     i, j = l - 1, r + 1
-    <span style="color: #00F">while</span> i &lt; j:
+    <span style="color: #0000ff">while</span> i &lt; j:
         i += 1
-        <span style="color: #00F">while</span> arr[i] &lt; x:
+        <span style="color: #0000ff">while</span> arr[i] &lt; x:
             i += 1
         j -= 1
-        <span style="color: #00F">while</span> arr[j] &gt; x:
+        <span style="color: #0000ff">while</span> arr[j] &gt; x:
             j -= 1
-        <span style="color: #00F">if</span> i &lt; j:
+        <span style="color: #0000ff">if</span> i &lt; j:
             arr[i], arr[j] = arr[j], arr[i]
     quicksort(arr, l, j)
     quicksort(arr, j + 1, r)
@@ -130,7 +130,7 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 n = int(input())
 arr = list(map(int, input().split()))
 quicksort(arr, 0, n - 1)
-print(<span style="color: #A31515">&#39; &#39;</span>.join(map(str, arr)))
+print(<span style="color: #a31515">&#39; &#39;</span>.join(map(str, arr)))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -149,80 +149,83 @@ print(<span style="color: #A31515">&#39; &#39;</span>.join(map(str, arr)))
 <div class="insight-block"><span class="insight-label">思路</span><span>快速选择：在快排划分基础上，设左半长度为sl=j-l+1。若k≤sl则在左半递归找第k小；否则在右半递归找第k-sl小。平均O(n)，最坏O(n²)（可通过随机选基准优化）。Python直接用nth_element或排序后取arr[k-1]。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>快速选择的核心是partition后的决策——只递归一边。这和二分查找的思想一样：每一步排除一半候选。最坏O(n²)可以用随机化基准数来规避——C++的nth_element就是这个算法。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
-<span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> *numbers;
+<span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span> *numbers;
 
-<span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> quickFind(<span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> nums[], <span style="color: #2B91AF">int</span> left, <span style="color: #2B91AF">int</span> right, <span style="color: #2B91AF">int</span> k)
+<span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span> quickFind(<span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span> nums[], <span style="color: #2b91af">int</span> left, <span style="color: #2b91af">int</span> right, <span style="color: #2b91af">int</span> k)
 {
-    <span style="color: #00F">if</span> (left == right)
-        <span style="color: #00F">return</span> nums[left]; <span style="color: #008000">//只有一个元素，左开右闭</span>
+    <span style="color: #0000ff">if</span> (left == right)
+        <span style="color: #0000ff">return</span> nums[left]; <span style="color: #008000">//只有一个元素，左开右闭</span>
     <span style="color: #008000">//选取分割数</span>
-    <span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> target = nums[left]; <span style="color: #008000">//选取第一个快排的分割数</span>
-    <span style="color: #2B91AF">int</span> i = left - 1, j = right + 1;
-    <span style="color: #00F">while</span> (i &lt; j)
+    <span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span> target = nums[left]; <span style="color: #008000">//选取第一个快排的分割数</span>
+    <span style="color: #2b91af">int</span> i = left - 1, j = right + 1;
+    <span style="color: #0000ff">while</span> (i &lt; j)
     {
-        <span style="color: #00F">do</span>
+        <span style="color: #0000ff">do</span>
             i++;
-        <span style="color: #00F">while</span> (nums[i] &lt; target); <span style="color: #008000">//i指针定位</span>
-        <span style="color: #00F">do</span>
+        <span style="color: #0000ff">while</span> (nums[i] &lt; target); <span style="color: #008000">//i指针定位</span>
+        <span style="color: #0000ff">do</span>
             j--;
-        <span style="color: #00F">while</span> (nums[j] &gt; target); <span style="color: #008000">//j指针定位</span>
-        <span style="color: #00F">if</span> (i &lt; j)
+        <span style="color: #0000ff">while</span> (nums[j] &gt; target); <span style="color: #008000">//j指针定位</span>
+        <span style="color: #0000ff">if</span> (i &lt; j)
             swap(nums[i], nums[j]); <span style="color: #008000">//交换</span>
     }
     <span style="color: #008000">//判断i与k的关系</span>
-    <span style="color: #2B91AF">int</span> sumofLeft = j - left + 1; <span style="color: #008000">//计算左边区间数字个数，用于与k比较</span>
+    <span style="color: #2b91af">int</span> sumofLeft = j - left + 1; <span style="color: #008000">//计算左边区间数字个数，用于与k比较</span>
 
-    <span style="color: #00F">if</span> (k &lt;= sumofLeft)              <span style="color: #008000">//分治</span>
+    <span style="color: #0000ff">if</span> (k &lt;= sumofLeft)              <span style="color: #008000">//分治</span>
         quickFind(nums, left, j, k); <span style="color: #008000">//j左边的都是不比Target大的</span>
-    <span style="color: #00F">else</span>
+    <span style="color: #0000ff">else</span>
         quickFind(nums, j + 1, right, k - sumofLeft); <span style="color: #008000">// j右边的都比Target大</span>
 }
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
     <span style="color: #008000">//!cin\cout提速</span>
     ios::sync_with_stdio(false); <span style="color: #008000">//来打消iostream的输入输出缓存</span>
     cin.tie(0);                  <span style="color: #008000">//cin.tie(0)来解除cin与cout的绑定,0表示NULL</span>
 
-    <span style="color: #2B91AF">int</span> n, k;
+    <span style="color: #2b91af">int</span> n, k;
     <span style="color: #008000">//创建动态数组</span>
     cin &gt;&gt; n &gt;&gt; k;
-    numbers = <span style="color: #00F">new</span> <span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span>[n];
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i++)
+    numbers = <span style="color: #0000ff">new</span> <span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span>[n];
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; n; i++)
         cin &gt;&gt; numbers[i];
     <span style="color: #008000">//查找第k小数，输出之</span>
     cout &lt;&lt; quickFind(numbers, 0, n - 1, k) &lt;&lt; endl; <span style="color: #008000">//注意边界</span>
 
-    <span style="color: #00F">delete</span> numbers;
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">delete</span> numbers;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 第k个数</span>
-<span style="color: #00F">def</span> quick_select(arr, l, r, k):
-    <span style="color: #00F">if</span> l &gt;= r:
-        <span style="color: #00F">return</span> arr[l]
-    x = arr[(l + r) // 2]
-    i, j = l - 1, r + 1
-    <span style="color: #00F">while</span> i &lt; j:
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+
+<span style="color: #0000ff">def</span> quick_select(nums, left, right, k):
+    <span style="color: #0000ff">if</span> left == right:
+        <span style="color: #0000ff">return</span> nums[left]
+    target = nums[left]
+    i, j = left - 1, right + 1
+    <span style="color: #0000ff">while</span> i &lt; j:
         i += 1
-        <span style="color: #00F">while</span> arr[i] &lt; x:
+        <span style="color: #0000ff">while</span> nums[i] &lt; target:
             i += 1
         j -= 1
-        <span style="color: #00F">while</span> arr[j] &gt; x:
+        <span style="color: #0000ff">while</span> nums[j] &gt; target:
             j -= 1
-        <span style="color: #00F">if</span> i &lt; j:
-            arr[i], arr[j] = arr[j], arr[i]
-    sl = j - l + 1
-    <span style="color: #00F">if</span> k &lt;= sl:
-        <span style="color: #00F">return</span> quick_select(arr, l, j, k)
-    <span style="color: #00F">return</span> quick_select(arr, j + 1, r, k - sl)
+        <span style="color: #0000ff">if</span> i &lt; j:
+            nums[i], nums[j] = nums[j], nums[i]
+    sl = j - left + 1
+    <span style="color: #0000ff">if</span> k &lt;= sl:
+        <span style="color: #0000ff">return</span> quick_select(nums, left, j, k)
+    <span style="color: #0000ff">else</span>:
+        <span style="color: #0000ff">return</span> quick_select(nums, j + 1, right, k - sl)
 
-n, k = map(int, input().split())
-arr = list(map(int, input().split()))
+data = sys.stdin.read().split()
+n, k = int(data[0]), int(data[1])
+arr = list(map(int, data[2:2 + n]))
 print(quick_select(arr, 0, n - 1, k))
 </pre></div>
 </div></div><hr class="section-divider">
@@ -242,63 +245,63 @@ print(quick_select(arr, 0, n - 1, k))
 <div class="insight-block"><span class="insight-label">思路</span><span>归并三步骤：1)递归划分mid=l+r>>1，merge_sort(l,mid)和merge_sort(mid+1,r)；2)双指针合并两个有序子数组到tmp；3)复制tmp回原数组。稳定排序，时间O(n log n)，空间O(n)。逆序对问题可以天然嵌入归并过程。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>归并是稳定排序——相等元素的相对位置不变。快排不稳定。Python用sorted()（稳定），C++用stable_sort（归并）和sort（快排）。理解归并对后续学习逆序对、CDQ分治至关重要。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 100007;
-<span style="color: #2B91AF">int</span> n;
-<span style="color: #2B91AF">int</span> numbers[N],tmp[N];
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 100007;
+<span style="color: #2b91af">int</span> n;
+<span style="color: #2b91af">int</span> numbers[N],tmp[N];
 
-<span style="color: #2B91AF">void</span> mergeSort(<span style="color: #2B91AF">int</span> nums[], <span style="color: #2B91AF">int</span> left, <span style="color: #2B91AF">int</span> right)
+<span style="color: #2b91af">void</span> mergeSort(<span style="color: #2b91af">int</span> nums[], <span style="color: #2b91af">int</span> left, <span style="color: #2b91af">int</span> right)
 {
-    <span style="color: #00F">if</span> (left&gt;=right) <span style="color: #00F">return</span>;
+    <span style="color: #0000ff">if</span> (left&gt;=right) <span style="color: #0000ff">return</span>;
 
-    <span style="color: #2B91AF">int</span> mid = left+(right-left)/2;<span style="color: #008000">//防止溢出</span>
+    <span style="color: #2b91af">int</span> mid = left+(right-left)/2;<span style="color: #008000">//防止溢出</span>
 
     mergeSort(nums,left,mid), mergeSort(nums,mid+1,right);<span style="color: #008000">//先调用归并排序</span>
     <span style="color: #008000">//合二为一</span>
-    <span style="color: #2B91AF">int</span> k=0, i=left, j=mid+1;<span style="color: #008000">//左右两部分数组的起点</span>
+    <span style="color: #2b91af">int</span> k=0, i=left, j=mid+1;<span style="color: #008000">//左右两部分数组的起点</span>
 
-    <span style="color: #00F">while</span>(i&lt;=mid &amp;&amp; j&lt;=right) <span style="color: #008000">//扫描还未抵达终点</span>
-      <span style="color: #00F">if</span> (nums[i]&lt;=nums[j])<span style="color: #008000">//把小的放到tmp数组里面</span>
+    <span style="color: #0000ff">while</span>(i&lt;=mid &amp;&amp; j&lt;=right) <span style="color: #008000">//扫描还未抵达终点</span>
+      <span style="color: #0000ff">if</span> (nums[i]&lt;=nums[j])<span style="color: #008000">//把小的放到tmp数组里面</span>
         tmp[k++] = nums[i++];
-        <span style="color: #00F">else</span> tmp[k++] = nums[j++];
+        <span style="color: #0000ff">else</span> tmp[k++] = nums[j++];
 
-    <span style="color: #00F">while</span>(i&lt;=mid) tmp[k++]=nums[i++];<span style="color: #008000">//把左边剩余的部分插入tmp</span>
-    <span style="color: #00F">while</span>(j&lt;=right) tmp[k++]=nums[j++];<span style="color: #008000">//把右边剩余的部分插入tmp</span>
+    <span style="color: #0000ff">while</span>(i&lt;=mid) tmp[k++]=nums[i++];<span style="color: #008000">//把左边剩余的部分插入tmp</span>
+    <span style="color: #0000ff">while</span>(j&lt;=right) tmp[k++]=nums[j++];<span style="color: #008000">//把右边剩余的部分插入tmp</span>
 
     <span style="color: #008000">//把tmp的部分复制回数组</span>
-    <span style="color: #00F">for</span> (i=left,k=0; i&lt;=right; i++, k++) nums[i]=tmp[k];
+    <span style="color: #0000ff">for</span> (i=left,k=0; i&lt;=right; i++, k++) nums[i]=tmp[k];
 
 }
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
     <span style="color: #008000">//数据大，使用printf和scanf</span>
-    scanf(<span style="color: #A31515">&quot;%d&quot;</span>,&amp;n);
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i&lt;n ;i++) scanf(<span style="color: #A31515">&quot;%d&quot;</span>,&amp;numbers[i]);
+    scanf(<span style="color: #a31515">&quot;%d&quot;</span>,&amp;n);
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i&lt;n ;i++) scanf(<span style="color: #a31515">&quot;%d&quot;</span>,&amp;numbers[i]);
 
     mergeSort(numbers,0,n-1);
 
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i=0; i&lt;n ;i++) printf(<span style="color: #A31515">&quot;%d &quot;</span>,numbers[i]);
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i=0; i&lt;n ;i++) printf(<span style="color: #a31515">&quot;%d &quot;</span>,numbers[i]);
 
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 归并排序</span>
-<span style="color: #00F">def</span> merge_sort(arr, l, r):
-    <span style="color: #00F">if</span> l &gt;= r:
-        <span style="color: #00F">return</span>
+<span style="color: #0000ff">def</span> merge_sort(arr, l, r):
+    <span style="color: #0000ff">if</span> l &gt;= r:
+        <span style="color: #0000ff">return</span>
     mid = (l + r) // 2
     merge_sort(arr, l, mid)
     merge_sort(arr, mid + 1, r)
     tmp = []
     i, j = l, mid + 1
-    <span style="color: #00F">while</span> i &lt;= mid <span style="color: #00F">and</span> j &lt;= r:
-        <span style="color: #00F">if</span> arr[i] &lt;= arr[j]:
+    <span style="color: #0000ff">while</span> i &lt;= mid <span style="color: #0000ff">and</span> j &lt;= r:
+        <span style="color: #0000ff">if</span> arr[i] &lt;= arr[j]:
             tmp.append(arr[i])
             i += 1
-        <span style="color: #00F">else</span>:
+        <span style="color: #0000ff">else</span>:
             tmp.append(arr[j])
             j += 1
     tmp.extend(arr[i:mid + 1])
@@ -308,7 +311,7 @@ print(quick_select(arr, 0, n - 1, k))
 n = int(input())
 arr = list(map(int, input().split()))
 merge_sort(arr, 0, n - 1)
-print(<span style="color: #A31515">&#39; &#39;</span>.join(map(str, arr)))
+print(<span style="color: #a31515">&#39; &#39;</span>.join(map(str, arr)))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -327,80 +330,74 @@ print(<span style="color: #A31515">&#39; &#39;</span>.join(map(str, arr)))
 <div class="insight-block"><span class="insight-label">思路</span><span>归并排序嵌入计数：当a[i]>a[j]时，cnt+=mid-i+1（左半剩余元素全部形成逆序对）。归并过程中自然完成了逆序对统计。时间复杂度O(n log n)，比暴力O(n²)快4个数量级（n=10⁵时）。逆序对数量是衡量数组"混乱程度"的指标。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>C++必须用long long存储cnt——n=10⁵时逆序对最多约5×10⁹超过int。Python自带大整数。这道题是归并排序最重要的应用之一——理解'在归并过程中顺便统计'是分治算法的精髓。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #00F">typedef</span> <span style="color: #2B91AF">long</span> <span style="color: #2B91AF">long</span> LL;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #0000ff">typedef</span> <span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span> LL;
 
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 100007;
-<span style="color: #2B91AF">int</span> n;
-<span style="color: #2B91AF">int</span> numbers[N],tmp[N];
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 100007;
+<span style="color: #2b91af">int</span> n;
+<span style="color: #2b91af">int</span> numbers[N],tmp[N];
 <span style="color: #008000">//最大的数可能会是 n^2/2 </span>
- LL mergeSort(<span style="color: #2B91AF">int</span> nums[], <span style="color: #2B91AF">int</span> left, <span style="color: #2B91AF">int</span> right)
+ LL mergeSort(<span style="color: #2b91af">int</span> nums[], <span style="color: #2b91af">int</span> left, <span style="color: #2b91af">int</span> right)
 {
-    <span style="color: #00F">if</span> (left&gt;=right) <span style="color: #00F">return</span> 0; <span style="color: #008000">//如果左指针越过右指针，则返回</span>
+    <span style="color: #0000ff">if</span> (left&gt;=right) <span style="color: #0000ff">return</span> 0; <span style="color: #008000">//如果左指针越过右指针，则返回</span>
 
-    <span style="color: #2B91AF">int</span> mid = left+(right-left)/2;<span style="color: #008000">//防止溢出</span>
+    <span style="color: #2b91af">int</span> mid = left+(right-left)/2;<span style="color: #008000">//防止溢出</span>
 
     LL result = mergeSort(nums,left,mid)+mergeSort(nums,mid+1,right);<span style="color: #008000">//先调用归并排序</span>
     <span style="color: #008000">//合二为一</span>
-    <span style="color: #2B91AF">int</span> k=0, i=left, j=mid+1;<span style="color: #008000">//左右两部分数组的起点</span>
+    <span style="color: #2b91af">int</span> k=0, i=left, j=mid+1;<span style="color: #008000">//左右两部分数组的起点</span>
 
-    <span style="color: #00F">while</span>(i&lt;=mid &amp;&amp; j&lt;=right) <span style="color: #008000">//扫描还未抵达终点</span>
-      <span style="color: #00F">if</span> (nums[i]&lt;=nums[j])<span style="color: #008000">//把小的放到tmp数组里面</span>
+    <span style="color: #0000ff">while</span>(i&lt;=mid &amp;&amp; j&lt;=right) <span style="color: #008000">//扫描还未抵达终点</span>
+      <span style="color: #0000ff">if</span> (nums[i]&lt;=nums[j])<span style="color: #008000">//把小的放到tmp数组里面</span>
         tmp[k++] = nums[i++];
-        <span style="color: #00F">else</span> {
+        <span style="color: #0000ff">else</span> {
             <span style="color: #008000">//计算逆序对的个数mid-i+1</span>
             result += mid -i +1;
             tmp[k++] = nums[j++];
         }
 
-    <span style="color: #00F">while</span>(i&lt;=mid) tmp[k++]=nums[i++];<span style="color: #008000">//把左边剩余的部分插入tmp</span>
-    <span style="color: #00F">while</span>(j&lt;=right) tmp[k++]=nums[j++];<span style="color: #008000">//把右边剩余的部分插入tmp</span>
+    <span style="color: #0000ff">while</span>(i&lt;=mid) tmp[k++]=nums[i++];<span style="color: #008000">//把左边剩余的部分插入tmp</span>
+    <span style="color: #0000ff">while</span>(j&lt;=right) tmp[k++]=nums[j++];<span style="color: #008000">//把右边剩余的部分插入tmp</span>
 
     <span style="color: #008000">//把tmp的部分复制回数组</span>
-    <span style="color: #00F">for</span> (i=left,k=0; i&lt;=right; i++, k++) nums[i]=tmp[k];
+    <span style="color: #0000ff">for</span> (i=left,k=0; i&lt;=right; i++, k++) nums[i]=tmp[k];
 
-    <span style="color: #00F">return</span> result;
+    <span style="color: #0000ff">return</span> result;
 
 }
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
     <span style="color: #008000">//数据大，使用printf和scanf</span>
-    scanf(<span style="color: #A31515">&quot;%d&quot;</span>,&amp;n);
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i&lt;n ;i++) scanf(<span style="color: #A31515">&quot;%d&quot;</span>,&amp;numbers[i]);
+    scanf(<span style="color: #a31515">&quot;%d&quot;</span>,&amp;n);
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i&lt;n ;i++) scanf(<span style="color: #a31515">&quot;%d&quot;</span>,&amp;numbers[i]);
 
    cout&lt;&lt;mergeSort(numbers,0,n-1)&lt;&lt;endl;
 
 
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 逆序对的数量</span>
-<span style="color: #00F">def</span> merge_count(arr, l, r):
-    <span style="color: #00F">if</span> l &gt;= r:
-        <span style="color: #00F">return</span> 0
-    mid = (l + r) // 2
-    cnt = merge_count(arr, l, mid) + merge_count(arr, mid + 1, r)
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+sys.setrecursionlimit(200000)
+<span style="color: #0000ff">def</span> merge(a, l, r):
+    <span style="color: #0000ff">if</span> l &gt;= r: <span style="color: #0000ff">return</span> 0
+    m = (l+r)//2
+    cnt = merge(a,l,m) + merge(a,m+1,r)
     tmp = []
-    i, j = l, mid + 1
-    <span style="color: #00F">while</span> i &lt;= mid <span style="color: #00F">and</span> j &lt;= r:
-        <span style="color: #00F">if</span> arr[i] &lt;= arr[j]:
-            tmp.append(arr[i])
-            i += 1
-        <span style="color: #00F">else</span>:
-            tmp.append(arr[j])
-            j += 1
-            cnt += mid - i + 1
-    tmp.extend(arr[i:mid + 1])
-    tmp.extend(arr[j:r + 1])
-    arr[l:r + 1] = tmp
-    <span style="color: #00F">return</span> cnt
-
-n = int(input())
-arr = list(map(int, input().split()))
-print(merge_count(arr, 0, n - 1))
+    i, j = l, m+1
+    <span style="color: #0000ff">while</span> i &lt;= m <span style="color: #0000ff">and</span> j &lt;= r:
+        <span style="color: #0000ff">if</span> a[i] &lt;= a[j]: tmp.append(a[i]); i += 1
+        <span style="color: #0000ff">else</span>: tmp.append(a[j]); j += 1; cnt += m - i + 1
+    tmp.extend(a[i:m+1]); tmp.extend(a[j:r+1])
+    a[l:r+1] = tmp
+    <span style="color: #0000ff">return</span> cnt
+data = sys.stdin.read().split()
+n = int(data[0])
+arr = list(map(int, data[1:1+n]))
+print(merge(arr, 0, n-1))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -424,54 +421,54 @@ print(merge_count(arr, 0, n - 1))
 <div class="insight-block"><span class="insight-label">思路</span><span>二分查找左右边界：左边界→while(l<r):mid=l+r>>1; if(a[mid]>=k) r=mid else l=mid+1。右边界→while(l<r):mid=l+r+1>>1; if(a[mid]<=k) l=mid else r=mid-1。注意右边界二分的mid要+1避免死循环。Python可用bisect_left和bisect_right。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>整数二分最关键的差异：左边界mid=l+r>>1，右边界mid=l+r+1>>1（不+1会死循环）。记住：l=mid时mid要+1，r=mid时不用。二分是OI/ACM中最基础也是最容易写错的算法——花时间理解透彻值得。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #00F">const</span> <span style="color: #2B91AF">int</span> N = 100007;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> N = 100007;
 
-<span style="color: #2B91AF">int</span> nums[N];
+<span style="color: #2b91af">int</span> nums[N];
 
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
 
     <span style="color: #008000">// 第一行包含整数n和q，表示数组长度和询问个数。</span>
-    <span style="color: #2B91AF">int</span> n, q;
-    scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>, &amp;n, &amp;q);
+    <span style="color: #2b91af">int</span> n, q;
+    scanf(<span style="color: #a31515">&quot;%d%d&quot;</span>, &amp;n, &amp;q);
     <span style="color: #008000">// 第二行包含n个整数（均在1~10000范围内），表示完整数组。</span>
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i++)
-        scanf(<span style="color: #A31515">&quot;%d&quot;</span>, &amp;nums[i]);
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; n; i++)
+        scanf(<span style="color: #a31515">&quot;%d&quot;</span>, &amp;nums[i]);
     <span style="color: #008000">// 接下来q行，每行包含一个整数k，表示一个询问元素。</span>
-    <span style="color: #00F">while</span>(q--){
+    <span style="color: #0000ff">while</span>(q--){
       <span style="color: #008000">//读入要查找的数，并且二分查找其范围</span>
-      <span style="color: #2B91AF">int</span> k; 
-      scanf(<span style="color: #A31515">&quot;%d&quot;</span>,&amp;k);<span style="color: #008000">// 读入k</span>
+      <span style="color: #2b91af">int</span> k; 
+      scanf(<span style="color: #a31515">&quot;%d&quot;</span>,&amp;k);<span style="color: #008000">// 读入k</span>
 
-      <span style="color: #2B91AF">int</span> left = 0, right = n-1;<span style="color: #008000">//初始化left和right</span>
-      <span style="color: #00F">while</span> (left &lt; right) <span style="color: #008000">//模板2</span>
+      <span style="color: #2b91af">int</span> left = 0, right = n-1;<span style="color: #008000">//初始化left和right</span>
+      <span style="color: #0000ff">while</span> (left &lt; right) <span style="color: #008000">//模板2</span>
       {
-          <span style="color: #2B91AF">int</span> mid = left + right&gt;&gt;1;
-          <span style="color: #00F">if</span> (nums[mid]&gt;=k) right = mid;<span style="color: #008000">//模板1,</span>
-          <span style="color: #00F">else</span> left = mid +1;
+          <span style="color: #2b91af">int</span> mid = left + right&gt;&gt;1;
+          <span style="color: #0000ff">if</span> (nums[mid]&gt;=k) right = mid;<span style="color: #008000">//模板1,</span>
+          <span style="color: #0000ff">else</span> left = mid +1;
       }
       <span style="color: #008000">//left就是左端点值</span>
       <span style="color: #008000">//判断是否找得到</span>
-      <span style="color: #00F">if</span> (nums[left]!=k) cout&lt;&lt;<span style="color: #A31515">&quot;-1 -1&quot;</span>&lt;&lt;endl;<span style="color: #008000">//找不到x</span>
-      <span style="color: #00F">else</span>
+      <span style="color: #0000ff">if</span> (nums[left]!=k) cout&lt;&lt;<span style="color: #a31515">&quot;-1 -1&quot;</span>&lt;&lt;endl;<span style="color: #008000">//找不到x</span>
+      <span style="color: #0000ff">else</span>
       {
-          cout&lt;&lt;left&lt;&lt;<span style="color: #A31515">&quot; &quot;</span>;
+          cout&lt;&lt;left&lt;&lt;<span style="color: #a31515">&quot; &quot;</span>;
           <span style="color: #008000">//继续寻找右边界</span>
           left=0, right=n-1;<span style="color: #008000">//重新初始化left,riight,进行第二次二分搜索</span>
-          <span style="color: #00F">while</span> (left &lt; right)
+          <span style="color: #0000ff">while</span> (left &lt; right)
           {
-              <span style="color: #2B91AF">int</span> mid = left+right+1&gt;&gt;1;
-              <span style="color: #00F">if</span> (nums[mid]&lt;=k) left=mid;
-              <span style="color: #00F">else</span> right = mid -1;              
+              <span style="color: #2b91af">int</span> mid = left+right+1&gt;&gt;1;
+              <span style="color: #0000ff">if</span> (nums[mid]&lt;=k) left=mid;
+              <span style="color: #0000ff">else</span> right = mid -1;              
           }
           cout&lt;&lt;left&lt;&lt;endl;
       }
     }
 
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 
 <span style="color: #008000">// int bsearch_1(int left, int right)</span>
@@ -496,34 +493,20 @@ print(merge_count(arr, 0, n - 1))
 <span style="color: #008000">//     return left;</span>
 <span style="color: #008000">// }</span>
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 数的范围</span>
-<span style="color: #00F">def</span> left_bound(arr, x):
-    l, r = 0, len(arr) - 1
-    <span style="color: #00F">while</span> l &lt; r:
-        mid = (l + r) // 2
-        <span style="color: #00F">if</span> arr[mid] &gt;= x:
-            r = mid
-        <span style="color: #00F">else</span>:
-            l = mid + 1
-    <span style="color: #00F">return</span> l <span style="color: #00F">if</span> arr[l] == x <span style="color: #00F">else</span> -1
-
-<span style="color: #00F">def</span> right_bound(arr, x):
-    l, r = 0, len(arr) - 1
-    <span style="color: #00F">while</span> l &lt; r:
-        mid = (l + r + 1) // 2
-        <span style="color: #00F">if</span> arr[mid] &lt;= x:
-            l = mid
-        <span style="color: #00F">else</span>:
-            r = mid - 1
-    <span style="color: #00F">return</span> l <span style="color: #00F">if</span> arr[l] == x <span style="color: #00F">else</span> -1
-
-n, q = map(int, input().split())
-arr = list(map(int, input().split()))
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(q):
-    x = int(input())
-    a = left_bound(arr, x)
-    b = right_bound(arr, x)
-    print(a, b)
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+<span style="color: #0000ff">import</span> bisect
+data = sys.stdin.read().split()
+n, q = int(data[0]), int(data[1])
+a = list(map(int, data[2:2+n]))
+idx = 2 + n
+out = []
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(q):
+    x = int(data[idx]); idx += 1
+    l = bisect.bisect_left(a, x)
+    r = bisect.bisect_right(a, x) - 1
+    <span style="color: #0000ff">if</span> l &lt; n <span style="color: #0000ff">and</span> a[l] == x: out.append(<span style="color: #a31515">f&#39;{</span>l<span style="color: #a31515">} {</span>r<span style="color: #a31515">}&#39;</span>)
+    <span style="color: #0000ff">else</span>: out.append(<span style="color: #a31515">&#39;-1 -1&#39;</span>)
+print(<span style="color: #a31515">&#39;\n&#39;</span>.join(out))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -541,37 +524,37 @@ arr = list(map(int, input().split()))
 <div class="insight-block"><span class="insight-label">思路</span><span>实数二分：设l=-10000,r=10000（范围包含答案），while(r-l>1e-8): mid=(l+r)/2; if(mid³≥n) r=mid else l=mid。输出r保留6位小数（printf("%.6lf",r)）。收敛步数=log₂(范围/精度)≈log₂(20000/1e-8)≈41步——非常快。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>实数二分不需要处理整数二分的mid+1问题。直接mid=(l+r)/2即可。精度通常比要求多两位（要求1e-6则迭代到1e-8）。C++用double，Python用float。注意n为负数时三次方根也为负。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
-    <span style="color: #2B91AF">double</span> number;
-    scanf(<span style="color: #A31515">&quot;%lf&quot;</span>, &amp;number);
-    <span style="color: #2B91AF">double</span> left = -10000, right = 10000;
-    <span style="color: #00F">while</span> (right - left &gt;= 1e-8)
+    <span style="color: #2b91af">double</span> number;
+    scanf(<span style="color: #a31515">&quot;%lf&quot;</span>, &amp;number);
+    <span style="color: #2b91af">double</span> left = -10000, right = 10000;
+    <span style="color: #0000ff">while</span> (right - left &gt;= 1e-8)
     {
-        <span style="color: #2B91AF">double</span> mid = (right + left) / 2; <span style="color: #008000">//二分</span>
-        <span style="color: #00F">if</span> (mid * mid * mid &gt;= number)
+        <span style="color: #2b91af">double</span> mid = (right + left) / 2; <span style="color: #008000">//二分</span>
+        <span style="color: #0000ff">if</span> (mid * mid * mid &gt;= number)
             right = mid;
-        <span style="color: #00F">else</span>
+        <span style="color: #0000ff">else</span>
             left = mid;
     }
     <span style="color: #008000">//输出left</span>
-    printf(<span style="color: #A31515">&quot;%lf&quot;</span>, left);
+    printf(<span style="color: #a31515">&quot;%lf&quot;</span>, left);
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 数的三次方根</span>
 n = float(input())
 l, r = -10000.0, 10000.0
-<span style="color: #00F">while</span> r - l &gt; 1e-8:
+<span style="color: #0000ff">while</span> r - l &gt; 1e-8:
     mid = (l + r) / 2.0
-    <span style="color: #00F">if</span> mid ** 3 &gt;= n:
+    <span style="color: #0000ff">if</span> mid ** 3 &gt;= n:
         r = mid
-    <span style="color: #00F">else</span>:
+    <span style="color: #0000ff">else</span>:
         l = mid
-print(<span style="color: #A31515">f&#39;{</span>r<span style="color: #A31515">:.6f}&#39;</span>)
+print(<span style="color: #a31515">f&#39;{</span>r<span style="color: #a31515">:.6f}&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -593,39 +576,37 @@ print(<span style="color: #A31515">f&#39;{</span>r<span style="color: #A31515">:
 <div class="insight-block"><span class="insight-label">思路</span><span>曼哈顿距离模型：设中心cx=cy=n/2。对于每个位置(i,j)，如果abs(i-cx)+abs(j-cy)≤n/2则填*否则空格。这种'距离阈值'的判断方式在心形、沙漏等图案题中都通用。时间复杂度O(n²)。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>曼哈顿距离=|x1-x2|+|y1-y2|。菱形就是曼哈顿距离≤阈值的点集。换欧几里得距离就是圆形。理解这种几何距离与图形形状的关系，是计算机图形学的基础。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
 
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
 
-<span style="color: #2B91AF">int</span> main()
+<span style="color: #2b91af">int</span> main()
 {
-  <span style="color: #2B91AF">int</span> n;
+  <span style="color: #2b91af">int</span> n;
   cin &gt;&gt; n;
 
-  <span style="color: #2B91AF">int</span> cx = n / 2, cy = n / 2;
-  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i ++ )
+  <span style="color: #2b91af">int</span> cx = n / 2, cy = n / 2;
+  <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; n; i ++ )
   {
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt; n; j ++ )
-        <span style="color: #00F">if</span> (abs(i - cx) + abs(j - cy) &lt;= n / 2) cout &lt;&lt; <span style="color: #A31515">&#39;*&#39;</span>;
-        <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&#39; &#39;</span>;
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> j = 0; j &lt; n; j ++ )
+        <span style="color: #0000ff">if</span> (abs(i - cx) + abs(j - cy) &lt;= n / 2) cout &lt;&lt; <span style="color: #a31515">&#39;*&#39;</span>;
+        <span style="color: #0000ff">else</span> cout &lt;&lt; <span style="color: #a31515">&#39; &#39;</span>;
     cout &lt;&lt; endl;    
   }
 
-  <span style="color: #00F">return</span> 0;
+  <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #008000"># 菱形</span>
-n = int(input())
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+n = int(sys.stdin.read().split()[0])
 cx = cy = n // 2
-<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(n):
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(n):
     row = []
-    <span style="color: #00F">for</span> j <span style="color: #00F">in</span> range(n):
-        <span style="color: #00F">if</span> abs(i - cx) + abs(j - cy) &lt;= n // 2:
-            row.append(<span style="color: #A31515">&#39;*&#39;</span>)
-        <span style="color: #00F">else</span>:
-            row.append(<span style="color: #A31515">&#39; &#39;</span>)
-    print(<span style="color: #A31515">&#39;&#39;</span>.join(row))
+    <span style="color: #0000ff">for</span> j <span style="color: #0000ff">in</span> range(n):
+        <span style="color: #0000ff">if</span> abs(i-cx) + abs(j-cy) &lt;= n//2: row.append(<span style="color: #a31515">&#39;*&#39;</span>)
+        <span style="color: #0000ff">else</span>: row.append(<span style="color: #a31515">&#39; &#39;</span>)
+    print(<span style="color: #a31515">&#39;&#39;</span>.join(row))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>

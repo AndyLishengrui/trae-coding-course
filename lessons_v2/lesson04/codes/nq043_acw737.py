@@ -1,5 +1,4 @@
-# NQ: AcWing 737
-arr = [0] * 10
 for i in range(10):
-    arr[i] = max(1, int(input()))
-    print(f"X[{i}] = {arr[i]}")
+    x = int(input())
+    if x <= 0: x = 1
+    print(f"X[{i}] = {x}")

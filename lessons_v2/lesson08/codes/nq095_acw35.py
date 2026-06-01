@@ -1,3 +1,6 @@
-# NQ095: AcWing 35
-# Python solution
-
+import sys
+text = sys.stdin.read().strip()
+parts = text.split("->")
+values = [p for p in parts if p != "NULL"]
+values.reverse()
+print("->".join(values) + "->NULL")

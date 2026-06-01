@@ -65,18 +65,15 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 <div class="insight-block"><span class="insight-label">思路</span><span>for循环的基础形态：设定起始值、终止条件、步长。C++: for(int i=2;i<=100;i+=2)，Python: for i in range(2,101,2)。注意range的end是不包含的，所以写101而非100。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python的range(start, end, step)中end是exclusive。这是Python初学者最常见的off-by-one错误来源。i+=2比i=i+2更简洁——在所有类C语言中都通用。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 2; i &lt;= 100; i += 2) cout &lt;&lt; i &lt;&lt; endl;
-
-    <span style="color: #00F">return</span> 0;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 2; i &lt;= 100; i += 2)
+        cout &lt;&lt; i &lt;&lt; endl;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(2, 101, 2):
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(2, 101, 2):
     print(i)
 </pre></div>
 </div></div><hr class="section-divider">
@@ -98,22 +95,18 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 <div class="insight-block"><span class="insight-label">思路</span><span>奇数序列：步长固定为2，起始值决定是奇数(1)还是偶数(2)。range(1, X+1, 2)自动跳过偶数。注意上限是X（包含），所以写X+1。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python的range不会包含end值——这是与很多其他语言不同的地方。记住这个特征：range(a,b)实际遍历[a, b-1]。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">int</span> x;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> x;
     cin &gt;&gt; x;
-
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= x; i += 2) cout &lt;&lt; i &lt;&lt; endl;
-
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= x; i += 2)
+        cout &lt;&lt; i &lt;&lt; endl;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>x = int(input())
-<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, x + 1, 2):
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1, x + 1, 2):
     print(i)
 </pre></div>
 </div></div><hr class="section-divider">
@@ -137,29 +130,22 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 <div class="insight-block"><span class="insight-label">思路</span><span>条件计数模式：遍历→判断→累加计数器。计数器初始化为0，每次满足条件+1。Python的sum()配合生成器表达式一行搞定。C++中浮点数与0比较注意精度。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python生成器表达式sum(1 for x in arr if x>0)以O(n)时间和O(1)空间优雅地完成计数。C++的条件判断中整数和浮点数都适用>0。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">int</span> cnt = 0;
-
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 6; i ++ )
-    {
-      <span style="color: #2B91AF">double</span> x;
-      cin &gt;&gt; x;
-
-      <span style="color: #00F">if</span> (x &gt; 0) cnt ++ ;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> cnt = 0;
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; 6; i++) {
+        <span style="color: #2b91af">double</span> x; cin &gt;&gt; x;
+        <span style="color: #0000ff">if</span> (x &gt; 0) cnt++;
     }
-
-    cout &lt;&lt; cnt &lt;&lt; <span style="color: #A31515">&quot; positive numbers&quot;</span> &lt;&lt; endl;
-
-    <span style="color: #00F">return</span> 0;
+    cout &lt;&lt; cnt &lt;&lt; <span style="color: #a31515">&quot; positive numbers&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>cnt = sum(1 <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(6) <span style="color: #00F">if</span> float(input()) &gt; 0)
-print(<span style="color: #A31515">f&quot;{</span>cnt<span style="color: #A31515">} positive numbers&quot;</span>)
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+nums = list(map(float, sys.stdin.read().split()))
+cnt = sum(1 <span style="color: #0000ff">for</span> x <span style="color: #0000ff">in</span> nums <span style="color: #0000ff">if</span> x &gt; 0)
+print(<span style="color: #a31515">f&quot;{</span>cnt<span style="color: #a31515">} positive numbers&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -177,33 +163,22 @@ print(<span style="color: #A31515">f&quot;{</span>cnt<span style="color: #A31515
 <div class="insight-block"><span class="insight-label">思路</span><span>三步：1.确保起点≤终点（交换）；2.从起点到终点遍历每个数；3.如果是奇数则累加。Python的sum(i for i in range(lo,hi+1) if i%2==1)一行完成。C++需要手写for+if+累加。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python的range(lo,hi+1)[lo%2::2]可以只生成奇数——利用切片+步长直接跳过偶数。但生成器表达式更可读。先确定边界再遍历是处理区间问题的通用习惯。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">int</span> x, y;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> x, y, sum = 0;
     cin &gt;&gt; x &gt;&gt; y;
-
-    <span style="color: #00F">if</span> (x &gt; y) swap(x, y);
-
-    <span style="color: #2B91AF">int</span> sum = 0;
-    <span style="color: #2B91AF">int</span> i = x + 1;
-    <span style="color: #00F">while</span> (i &lt; y)
-    {
-      <span style="color: #00F">if</span> (i % 2) sum += i;
-      i ++;
-    }
+    <span style="color: #0000ff">if</span> (x &gt; y) swap(x, y);
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = x + 1; i &lt; y; i++)
+        <span style="color: #0000ff">if</span> (i % 2) sum += i;
     cout &lt;&lt; sum &lt;&lt; endl;
-
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>x, y = map(int, input().split())
-<span style="color: #00F">if</span> x &gt; y: x, y = y, x
-print(sum(i <span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(x + 1, y) <span style="color: #00F">if</span> i % 2))
+<span style="color: #0000ff">if</span> x &gt; y: x, y = y, x
+print(sum(i <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(x + 1, y) <span style="color: #0000ff">if</span> i % 2))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -227,37 +202,27 @@ print(sum(i <span style="color: #00F">for</span> i <span style="color: #00F">in<
 <div class="insight-block"><span class="insight-label">思路</span><span>一次遍历找最值：初设第一个为最大值位置1，然后从第二个开始，遇到更大的就更新值和位置。O(n)一次遍历完成。这比Python的max()+index()两次遍历更高效——算法优化的意识从小题培养。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python的max()底层也是C实现的O(n)。但max()+index()会导致两次O(n)遍历。手写的O(n)单次遍历在数据量大时更优。这种"一次遍历完成多件事"的思维是算法设计的核心。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-<span style="color: #2B91AF">int</span> a[100];
-
-<span style="color: #2B91AF">int</span> main()
-{
-  <span style="color: #2B91AF">int</span> maxa = -1;
-  <span style="color: #2B91AF">int</span> index = -1;
-  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 100; i ++) 
-  {
-    cin &gt;&gt; a[i];
-
-    <span style="color: #00F">if</span> (a[i] &gt; maxa) 
-    {
-      maxa = a[i];
-      index = i;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> n, x, mx, pos = 1;
+    cin &gt;&gt; n;
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= n; i++) {
+        cin &gt;&gt; x;
+        <span style="color: #0000ff">if</span> (i == 1 || x &gt; mx) { mx = x; pos = i; }
     }
-  }
-
-  cout &lt;&lt; maxa &lt;&lt; endl;
-  cout &lt;&lt; index+1 &lt;&lt; endl;
-
-  <span style="color: #00F">return</span> 0;
+    cout &lt;&lt; mx &lt;&lt; endl &lt;&lt; pos &lt;&lt; endl;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>n = int(input())
-arr = list(map(int, input().split()))
-mx = max(arr)
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = list(map(int, sys.stdin.read().split()))
+n = data[0]
+vals = data[1:n+1]
+mx = max(vals)
+pos = vals.index(mx) + 1
 print(mx)
-print(arr.index(mx) + 1)
+print(pos)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -280,27 +245,24 @@ print(arr.index(mx) + 1)
 <div class="insight-block"><span class="insight-label">思路</span><span>while+break是不定长输入的标准处理模式：while(1){读入; if(==0) break; 处理}。Python的while True和C++的while(cin>>x,x)都支持。while和for的区别在于：while适合"不知道次数"的循环。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python: while True: x=int(input()); if x==0: break; 输出序列。C++可以用逗号表达式while(cin>>x,x)——利用逗号运算符取最后一个值。但可读性不如先读入再break。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">int</span> x;
-    <span style="color: #00F">while</span> (cin &gt;&gt; x, x)
-    {
-      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= x; i ++) cout &lt;&lt; i &lt;&lt; <span style="color: #A31515">&#39; &#39;</span>;
-      cout &lt;&lt; endl;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> x;
+    <span style="color: #0000ff">while</span> (cin &gt;&gt; x, x) {
+        <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= x; i++) {
+            <span style="color: #0000ff">if</span> (i &gt; 1) cout &lt;&lt; <span style="color: #a31515">&quot; &quot;</span>;
+            cout &lt;&lt; i;
+        }
+        cout &lt;&lt; endl;
     }
-
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">while</span> <span style="color: #00F">True</span>:
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">while</span> <span style="color: #0000ff">True</span>:
     x = int(input())
-    <span style="color: #00F">if</span> x == 0: <span style="color: #00F">break</span>
-    print(<span style="color: #A31515">&#39; &#39;</span>.join(str(i) <span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, x + 1)))
+    <span style="color: #0000ff">if</span> x == 0: <span style="color: #0000ff">break</span>
+    print(<span style="color: #a31515">&#39; &#39;</span>.join(str(i) <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1, x + 1)))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -319,30 +281,23 @@ print(arr.index(mx) + 1)
 <div class="insight-block"><span class="insight-label">思路</span><span>连续N个整数从A+A+1+...+A+N-1 = N×A+N(N-1)/2。但循环版本更易懂：sum=0; for i in range(a, a+n): sum+=i。也可以数学公式直接算——但理解循环累加的思维更重要。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python: sum(range(a, a+n))一行完成。但手写循环累加才能理解"累加器模式"——这是所有求和、求积、统计类问题的基础。数学公式法体现了"先思考再编码"——但不要忘了循环是理解问题的第一步。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">int</span> a, n;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> a, n, sum = 0;
     cin &gt;&gt; a;
-    <span style="color: #00F">while</span> (cin &gt;&gt; n, n &lt;= 0);
-
-    <span style="color: #2B91AF">int</span> s = 0;
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i ++) s += a + i;
-
-    cout &lt;&lt; s &lt;&lt; endl;
-
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">while</span> (cin &gt;&gt; n, n &lt;= 0);
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; n; i++) sum += a++;
+    cout &lt;&lt; sum &lt;&lt; endl;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>a = int(input())
-<span style="color: #00F">while</span> <span style="color: #00F">True</span>:
-    <span style="color: #00F">for</span> n <span style="color: #00F">in</span> map(int, input().split()):
-        <span style="color: #00F">if</span> n &gt; 0: <span style="color: #00F">break</span>
-    <span style="color: #00F">if</span> n &gt; 0: <span style="color: #00F">break</span>
-print(sum(a + i <span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(n)))
+<span style="color: #0000ff">while</span> <span style="color: #0000ff">True</span>:
+    <span style="color: #0000ff">for</span> n <span style="color: #0000ff">in</span> map(int, input().split()):
+        <span style="color: #0000ff">if</span> n &gt; 0: <span style="color: #0000ff">break</span>
+    <span style="color: #0000ff">if</span> n &gt; 0: <span style="color: #0000ff">break</span>
+print(sum(a + i <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(n)))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -363,24 +318,19 @@ print(sum(a + i <span style="color: #00F">for</span> i <span style="color: #00F"
 <div class="insight-block"><span class="insight-label">思路</span><span>基础方法：从1到N遍历，N%i==0则输出。优化方法：只遍历到√N，每个i找到两个约数i和N/i。注意完全平方数（如16）时i=N/i只算一次。√N优化将复杂度从O(N)降到O(√N)——对于N=10⁹，从10亿降到3万。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>C++的遍历条件i*i<=N比i<=sqrt(N)更高效（避免浮点数）。Python用while i*i<=n。注意输出顺序——如果要求升序，需要收集约数再排序输出。本课主要理解基本的枚举模式。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">int</span> n;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> n;
     cin &gt;&gt; n;
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= n; i ++)
-        <span style="color: #00F">if</span> (n % i == 0)
-           cout &lt;&lt; i &lt;&lt; endl;
-
-    <span style="color: #00F">return</span> 0;         
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= n; i++)
+        <span style="color: #0000ff">if</span> (n % i == 0) cout &lt;&lt; i &lt;&lt; endl;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>n = int(input())
-<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, n + 1):
-    <span style="color: #00F">if</span> n % i == 0:
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1, n + 1):
+    <span style="color: #0000ff">if</span> n % i == 0:
         print(i)
 </pre></div>
 </div></div><hr class="section-divider">
@@ -402,36 +352,24 @@ print(sum(a + i <span style="color: #00F">for</span> i <span style="color: #00F"
 <div class="insight-block"><span class="insight-label">思路</span><span>计数器从1开始，每输出一个数+1。判断是否第M列：用cnt%M==0（cnt从1开始）。是则输出PUM换行，否则输出数字+空格。这是格式化循环输出题——训练对循环索引和输出格式的精确控制。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python: for i in range(n): 输出一行m-1个数字(空格分隔)+' PUM'。C++注意末尾空格的处理。理解%取模判断"是否该换行"是这类题的通用技巧。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">int</span> n, m;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> n, m;
     cin &gt;&gt; n &gt;&gt; m;
-
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0, k = 1; i &lt; n; i ++ )
-    {
-      <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> j = 0; j &lt; m - 1; j ++ )
-      {
-        cout &lt;&lt; k &lt;&lt; <span style="color: #A31515">&#39; &#39;</span>;
-        k ++ ;
-      }
-
-      cout &lt;&lt; <span style="color: #A31515">&quot;PUM&quot;</span> &lt;&lt; endl;
-      k ++ ;
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= n * m; i++) {
+        <span style="color: #0000ff">if</span> (i % m == 0) cout &lt;&lt; <span style="color: #a31515">&quot;PUM&quot;</span> &lt;&lt; endl;
+        <span style="color: #0000ff">else</span> cout &lt;&lt; i &lt;&lt; <span style="color: #a31515">&quot; &quot;</span>;
     }
-
-    <span style="color: #00F">return</span> 0;  
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>n, m = map(int, input().split())
-<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, n * m + 1):
-    <span style="color: #00F">if</span> i % m == 0:
-        print(<span style="color: #A31515">&quot;PUM&quot;</span>)
-    <span style="color: #00F">else</span>:
-        print(i, end=<span style="color: #A31515">&#39; &#39;</span>)
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1, n * m + 1):
+    <span style="color: #0000ff">if</span> i % m == 0:
+        print(<span style="color: #a31515">&quot;PUM&quot;</span>)
+    <span style="color: #0000ff">else</span>:
+        print(i, end=<span style="color: #a31515">&#39; &#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -454,26 +392,21 @@ print(sum(a + i <span style="color: #00F">for</span> i <span style="color: #00F"
 <div class="insight-block"><span class="insight-label">思路</span><span>先归一化起点：if x%2==0: start=x+1 else start=x。然后用for循环6次，每次输出start+2*i。这是"预处理起点"的标准模式——先统一格式，再统一处理。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python一行：start = x+1 if x%2==0 else x，然后for i in range(6): print(start + 2*i)。C++可以用x%2==0?x+1:x做起点。这种"先定点再循环"的模式在循环题中反复出现。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">int</span> x;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> x;
     cin &gt;&gt; x;
-
-    <span style="color: #00F">if</span> (x % 2 == 0) x ++ ;
-
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; 6; i ++ ) cout &lt;&lt; x + i * 2 &lt;&lt; endl;
-
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">if</span> (x % 2 == 0) x++;
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; 6; i++, x += 2)
+        cout &lt;&lt; x &lt;&lt; endl;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>x = int(input())
-<span style="color: #00F">if</span> x % 2 == 0:
+<span style="color: #0000ff">if</span> x % 2 == 0:
     x += 1
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(6):
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(6):
     print(x)
     x += 2
 </pre></div>
@@ -495,21 +428,19 @@ print(sum(a + i <span style="color: #00F">for</span> i <span style="color: #00F"
 <div class="insight-block"><span class="insight-label">思路</span><span>嵌套循环的标准结构：for i in range(1,N+1): for j in range(1,N+1): print(i*j)。内层循环完整执行N次后外层才进入下一次。注意格式化宽度——Python的f'{i*j:4d}'。嵌套循环是程序设计的第一个心智跃迁。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python的f'{val:4d}'表示4宽度右对齐。C++用setw(4)或printf("%4d")。嵌套循环复杂度O(N²)——当N翻倍时运算量翻4倍。这是理解"时间复杂度"的入门。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-
-<span style="color: #2B91AF">int</span> main()
-{
-  <span style="color: #2B91AF">int</span> n;
-  scanf(<span style="color: #A31515">&quot;%d&quot;</span>, &amp;n);
-
-  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt;= 10; i ++ ) printf(<span style="color: #A31515">&quot;%d x %d = %d\n&quot;</span>, i, n, i * n);
-
-  <span style="color: #00F">return</span> 0;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> n;
+    scanf(<span style="color: #a31515">&quot;%d&quot;</span>, &amp;n);
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= 10; i++)
+        printf(<span style="color: #a31515">&quot;%d x %d = %d\n&quot;</span>, i, n, i * n);
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>n = int(input())
-<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, 11):
-    print(<span style="color: #A31515">f&quot;{</span>i<span style="color: #A31515">} x {</span>n<span style="color: #A31515">} = {</span>i * n<span style="color: #A31515">}&quot;</span>)
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+n = int(sys.stdin.read().strip())
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1, 11):
+    print(<span style="color: #a31515">f&quot;{</span>i<span style="color: #a31515">} x {</span>n<span style="color: #a31515">} = {</span>i * n<span style="color: #a31515">}&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -536,53 +467,49 @@ Percentual de sapos: 40.00 %</pre></div>
 <div class="insight-block"><span class="insight-label">思路</span><span>分类统计：three counters。每次根据类型字符判断加到哪个计数器。最后算百分比=各类/总数×100。注意保留两位小数。Python的if-elif或dict映射都比C++的if-else更简洁。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python用dict映射：cnt={'C':0,'R':0,'S':0}，然后cnt[t]+=qty。比三个if更灵活。百分比输出用f"{cnt['C']/total*100:.2f} %"。注意%号的转义——f-string中用%%。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-  <span style="color: #2B91AF">int</span> n;
-  cin &gt;&gt; n;
-
-  <span style="color: #2B91AF">int</span> c = 0, r = 0, f = 0;
-  <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 0; i &lt; n; i ++ )
-  {
-    <span style="color: #2B91AF">int</span> k;
-    <span style="color: #2B91AF">char</span> t;
-    cin &gt;&gt; k &gt;&gt; t;
-    <span style="color: #00F">if</span> (t == <span style="color: #A31515">&#39;C&#39;</span>) c += k;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (t == <span style="color: #A31515">&#39;R&#39;</span>) r += k;
-    <span style="color: #00F">else</span> f += k;
-  }
-
-  <span style="color: #2B91AF">int</span> s = c + r + f;
-  printf(<span style="color: #A31515">&quot;Total: %d animals\n&quot;</span>, s);
-  printf(<span style="color: #A31515">&quot;Total coneys: %d\n&quot;</span>, c);
-  printf(<span style="color: #A31515">&quot;Total rats: %d\n&quot;</span>, r);
-  printf(<span style="color: #A31515">&quot;Total frogs: %d\n&quot;</span>, f);
-  printf(<span style="color: #A31515">&quot;Percentage of coneys: %.2lf %%\n&quot;</span>, (<span style="color: #2B91AF">double</span>)c / s * 100);
-  printf(<span style="color: #A31515">&quot;Percentage of rats: %.2lf %%\n&quot;</span>, (<span style="color: #2B91AF">double</span>)r / s * 100);
-  printf(<span style="color: #A31515">&quot;Percentage of frogs: %.2lf %%\n&quot;</span>, (<span style="color: #2B91AF">double</span>)f / s * 100);
-
-  <span style="color: #00F">return</span> 0;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> n, c = 0, r = 0, f = 0;
+    cin &gt;&gt; n;
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; n; i++) {
+        <span style="color: #2b91af">int</span> k; <span style="color: #2b91af">char</span> t;
+        cin &gt;&gt; k &gt;&gt; t;
+        <span style="color: #0000ff">if</span> (t == <span style="color: #a31515">&#39;C&#39;</span>) c += k;
+        <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (t == <span style="color: #a31515">&#39;R&#39;</span>) r += k;
+        <span style="color: #0000ff">else</span> f += k;
+    }
+    <span style="color: #2b91af">int</span> s = c + r + f;
+    printf(<span style="color: #a31515">&quot;Total: %d animals\n&quot;</span>, s);
+    printf(<span style="color: #a31515">&quot;Total coneys: %d\n&quot;</span>, c);
+    printf(<span style="color: #a31515">&quot;Total rats: %d\n&quot;</span>, r);
+    printf(<span style="color: #a31515">&quot;Total frogs: %d\n&quot;</span>, f);
+    printf(<span style="color: #a31515">&quot;Percentage of coneys: %.2lf %%\n&quot;</span>, 100.0 * c / s);
+    printf(<span style="color: #a31515">&quot;Percentage of rats: %.2lf %%\n&quot;</span>, 100.0 * r / s);
+    printf(<span style="color: #a31515">&quot;Percentage of frogs: %.2lf %%\n&quot;</span>, 100.0 * f / s);
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>n = int(input())
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = sys.stdin.read().split()
+n = int(data[0])
 c = r = f = 0
-<span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n):
-    k, t = input().split()
-    k = int(k)
-    <span style="color: #00F">if</span> t == <span style="color: #A31515">&#39;C&#39;</span>: c += k
-    <span style="color: #00F">elif</span> t == <span style="color: #A31515">&#39;R&#39;</span>: r += k
-    <span style="color: #00F">else</span>: f += k
+idx = 1
+<span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(n):
+    k = int(data[idx]); t = data[idx + 1]
+    idx += 2
+    <span style="color: #0000ff">if</span> t == <span style="color: #a31515">&#39;C&#39;</span>: c += k
+    <span style="color: #0000ff">elif</span> t == <span style="color: #a31515">&#39;R&#39;</span>: r += k
+    <span style="color: #0000ff">else</span>: f += k
 s = c + r + f
-print(<span style="color: #A31515">f&quot;Total: {</span>s<span style="color: #A31515">} animals&quot;</span>)
-<span style="color: #00F">for</span> name, cnt <span style="color: #00F">in</span> [(<span style="color: #A31515">&#39;coneys&#39;</span>,c),(<span style="color: #A31515">&#39;rats&#39;</span>,r),(<span style="color: #A31515">&#39;frogs&#39;</span>,f)]:
-    print(<span style="color: #A31515">f&quot;Total {</span>name<span style="color: #A31515">}: {</span>cnt<span style="color: #A31515">}&quot;</span>)
-<span style="color: #00F">for</span> name, cnt <span style="color: #00F">in</span> [(<span style="color: #A31515">&#39;coneys&#39;</span>,c),(<span style="color: #A31515">&#39;rats&#39;</span>,r),(<span style="color: #A31515">&#39;frogs&#39;</span>,f)]:
-    print(<span style="color: #A31515">f&quot;Percentage of {</span>name<span style="color: #A31515">}: {</span>cnt/s*100<span style="color: #A31515">:.2f} %&quot;</span>)
+print(<span style="color: #a31515">f&quot;Total: {</span>s<span style="color: #a31515">} animals&quot;</span>)
+print(<span style="color: #a31515">f&quot;Total coneys: {</span>c<span style="color: #a31515">}&quot;</span>)
+print(<span style="color: #a31515">f&quot;Total rats: {</span>r<span style="color: #a31515">}&quot;</span>)
+print(<span style="color: #a31515">f&quot;Total frogs: {</span>f<span style="color: #a31515">}&quot;</span>)
+print(<span style="color: #a31515">f&quot;Percentage of coneys: {</span>c / s * 100<span style="color: #a31515">:.2f} %&quot;</span>)
+print(<span style="color: #a31515">f&quot;Percentage of rats: {</span>r / s * 100<span style="color: #a31515">:.2f} %&quot;</span>)
+print(<span style="color: #a31515">f&quot;Percentage of frogs: {</span>f / s * 100<span style="color: #a31515">:.2f} %&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -603,25 +530,19 @@ print(<span style="color: #A31515">f&quot;Total: {</span>s<span style="color: #A
 <div class="insight-block"><span class="insight-label">思路</span><span>条件循环：for i in range(1,10001): if i%N==2: print(i)。取模运算%是循环中最高频的条件运算符——余数判断可用于奇偶(i%2)、整除(i%N==0)、特定余数(i%N==k)等。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>if i%N==2表示i除以N的余数等于2。比如N=13时，2÷13=0余2，15÷13=1余2，28÷13=2余2……余数是最基础的数论概念之一——理解它，后续的哈希、质数等问题才不会被拦在门外。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">int</span> n;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> n;
     cin &gt;&gt; n;
-
-    <span style="color: #00F">for</span> (<span style="color: #2B91AF">int</span> i = 1; i &lt; 10000; i ++ )
-        <span style="color: #00F">if</span> (i % n == 2)
-           cout &lt;&lt; i &lt;&lt; endl;
-
-  <span style="color: #00F">return</span> 0;         
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 1; i &lt;= 10000; i++)
+        <span style="color: #0000ff">if</span> (i % n == 2) cout &lt;&lt; i &lt;&lt; endl;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>n = int(input())
-<span style="color: #00F">for</span> i <span style="color: #00F">in</span> range(1, 10001):
-    <span style="color: #00F">if</span> i % n == 2:
+<span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1, 10001):
+    <span style="color: #0000ff">if</span> i % n == 2:
         print(i)
 </pre></div>
 </div></div><hr class="section-divider">
@@ -645,34 +566,25 @@ print(<span style="color: #A31515">f&quot;Total: {</span>s<span style="color: #A
 <div class="insight-block"><span class="insight-label">思路</span><span>双计数器+区间判断：in_cnt统计10≤x≤20，out_cnt统计x其他。一次遍历完成两个统计任务。Python用链式比较10<=x<=20最直观。注意包含端点——10和20都算in。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python链式比较：if 10 <= x <= 20。比C++的x>=10 && x<=20更自然。两个计数器互斥且完备——in+out = N，可以只统一个数推另一个，但分别统计更安全（验证用的N个都处理了）。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-  <span style="color: #2B91AF">int</span> n;
-  cin &gt;&gt; n;
-
-  <span style="color: #2B91AF">int</span> x = 0, y = 0;
-  <span style="color: #00F">while</span> (n -- )
-  {
-    <span style="color: #2B91AF">int</span> t;
-    cin &gt;&gt; t;
-    <span style="color: #00F">if</span> (t &gt;= 10 &amp;&amp; t &lt;= 20) x ++ ;
-    <span style="color: #00F">else</span> y ++ ;
-  }
-
-  cout &lt;&lt; x &lt;&lt; <span style="color: #A31515">&quot; in&quot;</span> &lt;&lt; endl;
-  cout &lt;&lt; y &lt;&lt; <span style="color: #A31515">&quot; out&quot;</span> &lt;&lt; endl;
-
-  <span style="color: #00F">return</span> 0;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> n, x, in = 0, out = 0;
+    cin &gt;&gt; n;
+    <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i = 0; i &lt; n; i++) {
+        cin &gt;&gt; x;
+        <span style="color: #0000ff">if</span> (x &gt;= 10 &amp;&amp; x &lt;= 20) in++;
+        <span style="color: #0000ff">else</span> out++;
+    }
+    cout &lt;&lt; in &lt;&lt; <span style="color: #a31515">&quot; in&quot;</span> &lt;&lt; endl;
+    cout &lt;&lt; out &lt;&lt; <span style="color: #a31515">&quot; out&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>n = int(input())
-in_cnt = sum(1 <span style="color: #00F">for</span> _ <span style="color: #00F">in</span> range(n) <span style="color: #00F">if</span> 10 &lt;= int(input()) &lt;= 20)
-print(<span style="color: #A31515">f&quot;{</span>in_cnt<span style="color: #A31515">} in&quot;</span>)
-print(<span style="color: #A31515">f&quot;{</span>n - in_cnt<span style="color: #A31515">} out&quot;</span>)
+in_cnt = sum(1 <span style="color: #0000ff">for</span> _ <span style="color: #0000ff">in</span> range(n) <span style="color: #0000ff">if</span> 10 &lt;= int(input()) &lt;= 20)
+print(<span style="color: #a31515">f&quot;{</span>in_cnt<span style="color: #a31515">} in&quot;</span>)
+print(<span style="color: #a31515">f&quot;{</span>n - in_cnt<span style="color: #a31515">} out&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>

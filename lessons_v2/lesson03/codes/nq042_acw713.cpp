@@ -1,23 +1,14 @@
 #include <iostream>
-
 using namespace std;
-
-int main()
-{
-  int n;
-  cin >> n;
-
-  int x = 0, y = 0;
-  while (n -- )
-  {
-    int t;
-    cin >> t;
-    if (t >= 10 && t <= 20) x ++ ;
-    else y ++ ;
-  }
-
-  cout << x << " in" << endl;
-  cout << y << " out" << endl;
-
-  return 0;
+int main() {
+    int n, x, in = 0, out = 0;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> x;
+        if (x >= 10 && x <= 20) in++;
+        else out++;
+    }
+    cout << in << " in" << endl;
+    cout << out << " out" << endl;
+    return 0;
 }

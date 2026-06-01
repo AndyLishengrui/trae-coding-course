@@ -49,22 +49,15 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 <div class="insight-block"><span class="insight-label">思路</span><span>这是所有程序的基本骨架：读入→计算→输出。C++用cin/cout，Python用input/print。两种语言体现了不同的设计哲学——C++需要声明main函数和变量类型，Python则更直白，直接写逻辑即可。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python的a,b=map(int,input().split())是处理空格分隔整数输入的标准写法。C++的cin>>a>>b自动跳过空白字符。记住这个模式，它将伴随你整个编程生涯。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">int</span> a, b;
-    cin &gt;&gt; a &gt;&gt; b;
-
-    cout &lt;&lt; a + b &lt;&lt; endl;
-
-    <span style="color: #00F">return</span> 0;
-}
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() { <span style="color: #2b91af">int</span> a, b; cin &gt;&gt; a &gt;&gt; b; cout &lt;&lt; a + b &lt;&lt; endl; <span style="color: #0000ff">return</span> 0; }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>a, b = map(int, input().split())
-print(a + b)
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = sys.stdin.read().split()
+<span style="color: #0000ff">if</span> data:
+    a, b = map(int, data[:2])
+    print(a + b)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -82,18 +75,18 @@ print(a + b)
 <div class="insight-block"><span class="insight-label">思路</span><span>按公式计算，注意运算顺序（先乘后减）。C++用int可满足范围。Python的int无范围限制。输出需要带前缀"DIFERENCA = "——这种"前缀+结果"的格式是OJ题目常见要求。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python的f-string格式化：f"DIFERENCA = {a*b-c*d}"。f-string是Python 3.6+最推荐的格式化方式，比%和.format()更直观清晰。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-
-<span style="color: #2B91AF">int</span> main()
-{
-  <span style="color: #2B91AF">int</span> a, b, c, d;
-  scanf(<span style="color: #A31515">&quot;%d%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c, &amp;d);
-  printf(<span style="color: #A31515">&quot;DIFERENCA = %d\n&quot;</span>,a * b - c * d);
-  <span style="color: #00F">return</span> 0;
-}
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2b91af">int</span> main() { <span style="color: #2b91af">int</span> a,b,c,d; scanf(<span style="color: #a31515">&quot;%d%d%d%d&quot;</span>,&amp;a,&amp;b,&amp;c,&amp;d); printf(<span style="color: #a31515">&quot;DIFERENCA = %d\n&quot;</span>,a*b-c*d); <span style="color: #0000ff">return</span> 0; }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>a, b, c, d = map(int, input().split())
-print(<span style="color: #A31515">f&quot;DIFERENCA = {</span>a * b - c * d<span style="color: #A31515">}&quot;</span>)
+<div class="code-col"><div class="lang-badge">Python</div><pre>s = __import__(<span style="color: #a31515">&#39;sys&#39;</span>).stdin.read()
+nums = []
+<span style="color: #0000ff">for</span> tok <span style="color: #0000ff">in</span> s.replace(<span style="color: #a31515">&#39;\r&#39;</span>,<span style="color: #a31515">&#39; &#39;</span>).replace(<span style="color: #a31515">&#39;\n&#39;</span>,<span style="color: #a31515">&#39; &#39;</span>).split(<span style="color: #a31515">&#39; &#39;</span>):
+    tok = tok.strip()
+    <span style="color: #0000ff">if</span> tok:
+        <span style="color: #0000ff">try</span>: nums.append(int(tok))
+        <span style="color: #0000ff">except</span>: <span style="color: #0000ff">pass</span>
+a,b,c,d = nums[0], nums[1], nums[2], nums[3]
+print(<span style="color: #a31515">f&quot;DIFERENCA = {</span>a * b - c * d<span style="color: #a31515">}&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -111,21 +104,11 @@ print(<span style="color: #A31515">f&quot;DIFERENCA = {</span>a * b - c * d<span
 <div class="insight-block"><span class="insight-label">思路</span><span>圆面积=π×r²。需要浮点数类型：C++的double，Python的float。C++用printf("%.4lf")控制小数位；Python用f"{area:.4f}"。这是第一次用到实数精度控制。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>C++两种格式化输出：C风格printf("%.4lf",x)简洁精确；C++风格cout<<fixed<<setprecision(4)<<x类型安全。Python的f"{x:.4f}"最直观。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-  <span style="color: #2B91AF">double</span> pi = 3.14159, r;
-  scanf(<span style="color: #A31515">&quot;%lf&quot;</span>, &amp;r);
-  printf(<span style="color: #A31515">&quot;A=%.4lf\n&quot;</span>,pi * r * r);
-
-  <span style="color: #00F">return</span> 0;
-}
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2b91af">int</span> main() { <span style="color: #2b91af">double</span> r; scanf(<span style="color: #a31515">&quot;%lf&quot;</span>,&amp;r); printf(<span style="color: #a31515">&quot;A=%.4lf\n&quot;</span>,3.14159*r*r); <span style="color: #0000ff">return</span> 0; }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>r = float(input())
-print(<span style="color: #A31515">f&quot;A={</span>3.14159 * r * r<span style="color: #A31515">:.4f}&quot;</span>)
+print(<span style="color: #a31515">f&quot;A={</span>3.14159 * r * r<span style="color: #a31515">:.4f}&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -144,20 +127,15 @@ print(<span style="color: #A31515">f&quot;A={</span>3.14159 * r * r<span style="
 <div class="insight-block"><span class="insight-label">思路</span><span>加权平均公式：(A×3.5+B×7.5)/(3.5+7.5)= (A×3.5+B×7.5)/11。分母是权重之和，不是题目数——这是加权平均最常见的陷阱。保留5位小数需要精确的浮点格式化。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>C++所有浮点字面量默认double。Python的/总是返回浮点数。注意：3.5+7.5=11.0不是2——这与普通平均完全不同。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-
-<span style="color: #2B91AF">int</span> main()
-{
-  <span style="color: #2B91AF">double</span> a, b;
-  scanf(<span style="color: #A31515">&quot;%lf%lf&quot;</span>, &amp;a, &amp;b);
-  printf(<span style="color: #A31515">&quot;MEDIA = %.5lf\n&quot;</span>, (a * 3.5 + b * 7.5 ) / 11);
-
-  <span style="color: #00F">return</span> 0;
-}
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2b91af">int</span> main() { <span style="color: #2b91af">double</span> a,b; scanf(<span style="color: #a31515">&quot;%lf%lf&quot;</span>,&amp;a,&amp;b); printf(<span style="color: #a31515">&quot;MEDIA = %.5lf\n&quot;</span>,(a*3.5+b*7.5)/11); <span style="color: #0000ff">return</span> 0; }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>a = float(input())
-b = float(input())
-print(<span style="color: #A31515">f&quot;MEDIA = {</span>(a * 3.5 + b * 7.5) / 11<span style="color: #A31515">:.5f}&quot;</span>)
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = sys.stdin.read().split()
+<span style="color: #0000ff">if</span> data:
+    a = float(data[0])
+    b = float(data[1])
+    print(<span style="color: #a31515">f&quot;MEDIA = {</span>(a * 3.5 + b * 7.5) / 11<span style="color: #a31515">:.5f}&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -178,24 +156,17 @@ SALARY = U$ 550.00</pre></div>
 <div class="insight-block"><span class="insight-label">思路</span><span>工资=时数×时薪。混合使用int和double/float：C++的scanf可精确控制格式，Python逐行读取更清晰。输出两行各自需要格式化。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>C++: scanf("%d%d%lf",&n,&h,&m)精确控制混合输入。Python: 逐行int(input())和float(input())更安全清晰。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-
-<span style="color: #2B91AF">int</span> main ()
-{
-  <span style="color: #2B91AF">int</span> number, hour;
-  <span style="color: #2B91AF">double</span> money;
-  scanf(<span style="color: #A31515">&quot;%d%d%lf&quot;</span>, &amp;number, &amp;hour, &amp;money);
-  printf(<span style="color: #A31515">&quot;NUMBER = %d\n&quot;</span>, number);
-  printf(<span style="color: #A31515">&quot;SALARY = U$ %.2lf\n&quot;</span>, hour * money);
-
-  <span style="color: #00F">return</span> 0;
-}
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2b91af">int</span> main() { <span style="color: #2b91af">int</span> n,h; <span style="color: #2b91af">double</span> m; scanf(<span style="color: #a31515">&quot;%d%d%lf&quot;</span>,&amp;n,&amp;h,&amp;m); printf(<span style="color: #a31515">&quot;NUMBER = %d\nSALARY = U$ %.2lf\n&quot;</span>,n,h*m); <span style="color: #0000ff">return</span> 0; }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>n = int(input())
-h = int(input())
-m = float(input())
-print(<span style="color: #A31515">f&quot;NUMBER = {</span>n<span style="color: #A31515">}&quot;</span>)
-print(<span style="color: #A31515">f&quot;SALARY = U$ {</span>h * m<span style="color: #A31515">:.2f}&quot;</span>)
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = sys.stdin.read().split()
+<span style="color: #0000ff">if</span> data:
+    n = int(data[0])
+    h = int(data[1])
+    m = float(data[2])
+    print(<span style="color: #a31515">f&quot;NUMBER = {</span>n<span style="color: #a31515">}&quot;</span>)
+    print(<span style="color: #a31515">f&quot;SALARY = U$ {</span>h * m<span style="color: #a31515">:.2f}&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -214,20 +185,15 @@ print(<span style="color: #A31515">f&quot;SALARY = U$ {</span>h * m<span style="
 <div class="insight-block"><span class="insight-label">思路</span><span>燃油效率=距离÷汽油量。浮点除法，保留3位小数。C++中距离如果是整数需先转double。Python的/自动浮点——这是两种语言在处理除法上的核心差异。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>C++整数除法陷阱：5/2=2不是2.5！必须写成5.0/2或(double)5/2。Python的5/2=2.5自动浮点——这也是C++初学者最易犯的错误之一。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">double</span> x, y;
-    scanf(<span style="color: #A31515">&quot;%lf%lf&quot;</span>, &amp;x, &amp;y);
-    printf(<span style="color: #A31515">&quot;%.3lf km/l&quot;</span>, x / y);
-
-    <span style="color: #00F">return</span> 0;
-}
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2b91af">int</span> main() { <span style="color: #2b91af">double</span> x,y; scanf(<span style="color: #a31515">&quot;%lf%lf&quot;</span>,&amp;x,&amp;y); printf(<span style="color: #a31515">&quot;%.3lf km/l\n&quot;</span>,x/y); <span style="color: #0000ff">return</span> 0; }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>x = float(input())
-y = float(input())
-print(<span style="color: #A31515">f&quot;{</span>x / y<span style="color: #A31515">:.3f} km/l&quot;</span>)
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = sys.stdin.read().split()
+<span style="color: #0000ff">if</span> data:
+    x = float(data[0])
+    y = float(data[1])
+    print(<span style="color: #a31515">f&quot;{</span>x / y<span style="color: #a31515">:.3f} km/l&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -245,22 +211,17 @@ print(<span style="color: #A31515">f&quot;{</span>x / y<span style="color: #A315
 <div class="insight-block"><span class="insight-label">思路</span><span>距离=√((x1−x2)²+(y1−y2)²)。C++需要#include<cmath>，Python需import math。注意使用double而非float（精度更高）。保留4位小数。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>C++链接时需要-lm（某些编译器）。Python的import math后调用math.sqrt()。f"{dist:.4f}"格式化输出。这是数学库使用的第一课。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">double</span> x1,y1,x2,y2;
-    scanf(<span style="color: #A31515">&quot;%lf%lf&quot;</span>,&amp;x1,&amp;y1);
-    scanf(<span style="color: #A31515">&quot;%lf%lf&quot;</span>,&amp;x2,&amp;y2);
-    printf(<span style="color: #A31515">&quot;%.4lf\n&quot;</span>,sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)));
-
-    <span style="color: #00F">return</span> 0;
-}
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cmath&gt;</span>
+<span style="color: #2b91af">int</span> main() { <span style="color: #2b91af">double</span> x1,y1,x2,y2; scanf(<span style="color: #a31515">&quot;%lf%lf%lf%lf&quot;</span>,&amp;x1,&amp;y1,&amp;x2,&amp;y2); printf(<span style="color: #a31515">&quot;%.4lf\n&quot;</span>,sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))); <span style="color: #0000ff">return</span> 0; }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #00F">import</span> math
-x1, y1, x2, y2 = map(float, input().split())
-print(<span style="color: #A31515">f&quot;{</span>math.sqrt((x1-x2)**2 + (y1-y2)**2)<span style="color: #A31515">:.4f}&quot;</span>)
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+<span style="color: #0000ff">import</span> math
+data = sys.stdin.read().split()
+<span style="color: #0000ff">if</span> data:
+    x1, y1, x2, y2 = map(float, data[:4])
+    d = math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+    print(<span style="color: #a31515">f&quot;{</span>d<span style="color: #a31515">:.4f}&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -285,36 +246,17 @@ print(<span style="color: #A31515">f&quot;{</span>math.sqrt((x1-x2)**2 + (y1-y2)
 <div class="insight-block"><span class="insight-label">思路</span><span>贪心策略：count=N/face_value; N%=face_value。C++写了7段重复代码，Python用列表+循环消除了重复——这是本课最重要的工程思维：用数据结构消除重复逻辑。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python: for v in [100,50,20,10,5,2,1]: print(f"{n//v} nota(s) de R$ {v},00"); n%=v。7行→3行，这就是"用数据结构替代重复代码"的力量。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-
-<span style="color: #2B91AF">int</span> main()
-{
-  <span style="color: #2B91AF">int</span> n;
-  scanf(<span style="color: #A31515">&quot;%d&quot;</span>, &amp;n);
-  printf(<span style="color: #A31515">&quot;%d\n&quot;</span>, n);
-
-  printf(<span style="color: #A31515">&quot;%d nota(s) de R$ 100,00\n&quot;</span>, n / 100 );
-  n %= 100;
-  printf(<span style="color: #A31515">&quot;%d nota(s) de R$ 50,00\n&quot;</span>, n / 50 );
-  n %= 50;
-  printf(<span style="color: #A31515">&quot;%d nota(s) de R$ 20,00\n&quot;</span>, n / 20 );
-  n %= 20;
-  printf(<span style="color: #A31515">&quot;%d nota(s) de R$ 10,00\n&quot;</span>, n / 10 );
-  n %= 10;
-  printf(<span style="color: #A31515">&quot;%d nota(s) de R$ 5,00\n&quot;</span>, n / 5 );
-  n %= 5;
-  printf(<span style="color: #A31515">&quot;%d nota(s) de R$ 2,00\n&quot;</span>, n / 2 );
-  n %= 2;
-  printf(<span style="color: #A31515">&quot;%d nota(s) de R$ 1,00\n&quot;</span>, n);
-
-<span style="color: #00F">return</span> 0;
-}
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2b91af">int</span> main() { <span style="color: #2b91af">int</span> n,s[]={100,50,20,10,5,2,1}; scanf(<span style="color: #a31515">&quot;%d&quot;</span>,&amp;n); printf(<span style="color: #a31515">&quot;%d\n&quot;</span>,n); <span style="color: #0000ff">for</span>(<span style="color: #2b91af">int</span> i=0;i&lt;7;i++){printf(<span style="color: #a31515">&quot;%d nota(s) de R$ %d,00\n&quot;</span>,n/s[i],s[i]);n%=s[i];} <span style="color: #0000ff">return</span> 0; }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>n = int(input())
-print(n)
-<span style="color: #00F">for</span> v <span style="color: #00F">in</span> [100,50,20,10,5,2,1]:
-    print(<span style="color: #A31515">f&quot;{</span>n // v<span style="color: #A31515">} nota(s) de R$ {</span>v<span style="color: #A31515">},00&quot;</span>)
-    n %= v
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = sys.stdin.read().split()
+<span style="color: #0000ff">if</span> data:
+    n = int(data[0])
+    print(n)
+    <span style="color: #0000ff">for</span> v <span style="color: #0000ff">in</span> [100, 50, 20, 10, 5, 2, 1]:
+        print(<span style="color: #a31515">f&quot;{</span>n // v<span style="color: #a31515">} nota(s) de R$ {</span>v<span style="color: #a31515">},00&quot;</span>)
+        n %= v
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -332,21 +274,17 @@ print(n)
 <div class="insight-block"><span class="insight-label">思路</span><span>时=N/3600, 分=N%3600/60, 秒=N%60。Python的divmod(a,b)返回(商,余数)元组：h,r=divmod(n,3600); m,s=divmod(r,60)。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python的divmod()优雅解包接收。C++需分别计算/和%。divmod是Python"电池已包含"哲学的体现——常见操作都内置了。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-
-<span style="color: #2B91AF">int</span> main()
-{
-  <span style="color: #2B91AF">int</span> n;
-  scanf(<span style="color: #A31515">&quot;%d&quot;</span>,&amp;n);
-  printf(<span style="color: #A31515">&quot;%d:%d:%d&quot;</span>, n / 3600, n % 3600 / 60, n % 60);
-
-  <span style="color: #00F">return</span> 0;
-}
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2b91af">int</span> main() { <span style="color: #2b91af">int</span> n; scanf(<span style="color: #a31515">&quot;%d&quot;</span>,&amp;n); printf(<span style="color: #a31515">&quot;%d:%d:%d&quot;</span>,n/3600,n%3600/60,n%60); <span style="color: #0000ff">return</span> 0; }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>n = int(input())
-h, r = divmod(n, 3600)
-m, s = divmod(r, 60)
-print(<span style="color: #A31515">f&quot;{</span>h<span style="color: #A31515">}:{</span>m<span style="color: #A31515">}:{</span>s<span style="color: #A31515">}&quot;</span>)
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = sys.stdin.read().split()
+<span style="color: #0000ff">if</span> data:
+    n = int(data[0])
+    h = n // 3600
+    m = n % 3600 // 60
+    s = n % 60
+    print(<span style="color: #a31515">f&quot;{</span>h<span style="color: #a31515">}:{</span>m<span style="color: #a31515">}:{</span>s<span style="color: #a31515">}&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -365,23 +303,14 @@ print(<span style="color: #A31515">f&quot;{</span>h<span style="color: #A31515">
 <div class="insight-block"><span class="insight-label">思路</span><span>与NQ001结构完全相同，+改成*，加"PROD = "前缀即可。这是让学生独立完成"修改→编译→AC"完整流程的训练题。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>修改已有代码是最实用的编程技能之一。用TRAE打开NQ001的代码，告诉AI"把加法改成乘法，加PROD前缀"——这就是AI协同编程的日常。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">int</span> a, b;
-    cin &gt;&gt; a &gt;&gt; b;
-
-    cout &lt;&lt; <span style="color: #A31515">&quot;PROD = &quot;</span> &lt;&lt; a * b &lt;&lt; endl;
-
-    <span style="color: #00F">return</span> 0;
-}
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() { <span style="color: #2b91af">int</span> a,b; cin&gt;&gt;a&gt;&gt;b; cout&lt;&lt;<span style="color: #a31515">&quot;PROD = &quot;</span>&lt;&lt;a*b&lt;&lt;endl; <span style="color: #0000ff">return</span> 0; }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>a = int(input())
-b = int(input())
-print(<span style="color: #A31515">f&quot;PROD = {</span>a * b<span style="color: #A31515">}&quot;</span>)
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = sys.stdin.read().split()
+a, b = int(data[0]), int(data[1])
+print(<span style="color: #a31515">f&quot;PROD = {</span>a * b<span style="color: #a31515">}&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -400,27 +329,13 @@ print(<span style="color: #A31515">f&quot;PROD = {</span>a * b<span style="color
 <div class="insight-block"><span class="insight-label">思路</span><span>总价=数量×单价。int×float自动提升为float/double。C++中int×double→double。Python中int×float→float。类型提升规则确保精度不丢失。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>类型自动提升：宽类型"吸收"窄类型。记住这个原则：运算中最宽的类型决定结果类型。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">double</span> n1, s1, p1;
-    <span style="color: #2B91AF">double</span> n2, s2, p2;
-
-    cin &gt;&gt; n1 &gt;&gt; s1 &gt;&gt; p1;
-    cin &gt;&gt; n2 &gt;&gt; s2 &gt;&gt; p2;
-
-    printf(<span style="color: #A31515">&quot;VALOR A PAGAR: R$ %.2lf\n&quot;</span>, s1 * p1 + s2 * p2);
-
-    <span style="color: #00F">return</span> 0;
-}
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2b91af">int</span> main() { <span style="color: #2b91af">int</span> c,q; <span style="color: #2b91af">double</span> p; scanf(<span style="color: #a31515">&quot;%d%d%lf&quot;</span>,&amp;c,&amp;q,&amp;p); printf(<span style="color: #a31515">&quot;VALOR A PAGAR: R$ %.2lf\n&quot;</span>,q*p); <span style="color: #0000ff">return</span> 0; }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>c, q = map(int, input().split())
-p = float(input())
-print(<span style="color: #A31515">f&quot;VALOR A PAGAR: R$ {</span>q * p<span style="color: #A31515">:.2f}&quot;</span>)
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = sys.stdin.read().split()
+c, q, p = int(data[0]), int(data[1]), float(data[2])
+print(<span style="color: #a31515">f&quot;VALOR A PAGAR: R$ {</span>q * p<span style="color: #a31515">:.2f}&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -438,20 +353,15 @@ print(<span style="color: #A31515">f&quot;VALOR A PAGAR: R$ {</span>q * p<span s
 <div class="insight-block"><span class="insight-label">思路</span><span>V=(4.0/3.0)×π×r³。C++中4/3=1(整数除法)！必须写成4.0/3.0。Python自动浮点无此问题。这是C++整数除法的经典陷阱。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>C++的4/3=1是初学者最容易犯的错误。任何涉及除法的表达式，至少保证一个操作数是浮点数。Python没有这个烦恼。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">double</span> r;
-    scanf(<span style="color: #A31515">&quot;%lf&quot;</span>, &amp;r);
-
-    printf(<span style="color: #A31515">&quot;VOLUME = %.3lf\n&quot;</span>, 4.0 / 3.0 * 3.14159 * r * r * r);
-
-    <span style="color: #00F">return</span> 0;
-}
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2b91af">int</span> main() { <span style="color: #2b91af">int</span> r; scanf(<span style="color: #a31515">&quot;%d&quot;</span>,&amp;r); printf(<span style="color: #a31515">&quot;VOLUME = %.3lf\n&quot;</span>,4.0/3.0*3.14159*r*r*r); <span style="color: #0000ff">return</span> 0; }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>r = int(input())
-print(<span style="color: #A31515">f&quot;VOLUME = {</span>4.0/3.0 * 3.14159 * r**3<span style="color: #A31515">:.3f}&quot;</span>)
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = sys.stdin.read().split()
+<span style="color: #0000ff">if</span> data:
+    r = float(data[0])
+    v = (4.0 / 3.0) * 3.14159 * r ** 3
+    print(<span style="color: #a31515">f&quot;VOLUME = {</span>v<span style="color: #a31515">:.3f}&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -471,26 +381,18 @@ TRAPEZIO: 18.200</pre></div>
 <div class="insight-block"><span class="insight-label">思路</span><span>三个独立公式，每个一行计算一行输出。三角形=A*C/2，圆=3.14159*C²，梯形=(A+B)*C/2。PI=3.14159。代码组织能力训练。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>一道题含三个计算是测试代码组织能力的好题。每个面积独立计算、独立输出，清晰直观。多使用const/常量避免魔法数字。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-
-<span style="color: #2B91AF">int</span> main()
-{
-  <span style="color: #2B91AF">double</span> a, b, c;  
-  scanf(<span style="color: #A31515">&quot;%lf%lf%lf&quot;</span>, &amp;a, &amp;b, &amp;c);
-
-  printf(<span style="color: #A31515">&quot;TRIANGULO: %.3lf\n&quot;</span>, a * c / 2);
-  printf(<span style="color: #A31515">&quot;CIRCULO: %.3lf\n&quot;</span>, 3.14159 * c * c);
-  printf(<span style="color: #A31515">&quot;TRAPEZIO: %.3lf\n&quot;</span>, (a + b) * c / 2);
-  printf(<span style="color: #A31515">&quot;QUADRADO: %.3lf\n&quot;</span>, b * b);
-  printf(<span style="color: #A31515">&quot;RETANGULO: %.3lf\n&quot;</span>, a * b);
-
-  <span style="color: #00F">return</span> 0;
-}
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2b91af">int</span> main() { <span style="color: #2b91af">double</span> a,b,c; scanf(<span style="color: #a31515">&quot;%lf%lf%lf&quot;</span>,&amp;a,&amp;b,&amp;c); printf(<span style="color: #a31515">&quot;TRIANGULO: %.3lf\nCIRCULO: %.3lf\nTRAPEZIO: %.3lf\nQUADRADO: %.3lf\nRETANGULO: %.3lf\n&quot;</span>,a*c/2,3.14159*c*c,(a+b)*c/2,b*b,a*b); <span style="color: #0000ff">return</span> 0; }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>a, b, c = map(float, input().split())
-print(<span style="color: #A31515">f&quot;TRIANGULO: {</span>a*c/2<span style="color: #A31515">:.3f}&quot;</span>)
-print(<span style="color: #A31515">f&quot;CIRCULO: {</span>3.14159*c*c<span style="color: #A31515">:.3f}&quot;</span>)
-print(<span style="color: #A31515">f&quot;TRAPEZIO: {</span>(a+b)*c/2<span style="color: #A31515">:.3f}&quot;</span>)
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = sys.stdin.read().split()
+<span style="color: #0000ff">if</span> data:
+    a, b, c = map(float, data[:3])
+    print(<span style="color: #a31515">f&quot;TRIANGULO: {</span>a * c / 2<span style="color: #a31515">:.3f}&quot;</span>)
+    print(<span style="color: #a31515">f&quot;CIRCULO: {</span>3.14159 * c * c<span style="color: #a31515">:.3f}&quot;</span>)
+    print(<span style="color: #a31515">f&quot;TRAPEZIO: {</span>(a + b) * c / 2<span style="color: #a31515">:.3f}&quot;</span>)
+    print(<span style="color: #a31515">f&quot;QUADRADO: {</span>b * b<span style="color: #a31515">:.3f}&quot;</span>)
+    print(<span style="color: #a31515">f&quot;RETANGULO: {</span>a * b<span style="color: #a31515">:.3f}&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -508,26 +410,15 @@ print(<span style="color: #A31515">f&quot;TRAPEZIO: {</span>(a+b)*c/2<span style
 <div class="insight-block"><span class="insight-label">思路</span><span>Python的max(a,b,c)接收多参数。C++的max({a,b,c})需C++11和<algorithm>，或嵌套max(a,max(b,c))。体现了Python"电池已包含"vs C++"按需引入"的设计差异。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python内置max/min/sum/abs等函数无需import。C++需要#include<algorithm>。两种语言的哲学差异在这一题得到完美体现。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-  <span style="color: #2B91AF">int</span> a, b, c;
-  cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
-
-  <span style="color: #2B91AF">int</span> t = (a + b + abs(a - b)) / 2;
-  <span style="color: #2B91AF">int</span> r = (t + c + abs(t - c)) / 2;
-
-  cout &lt;&lt; r &lt;&lt; <span style="color: #A31515">&quot; eh o maior&quot;</span> &lt;&lt; endl;
-
-  <span style="color: #00F">return</span> 0;
-
-}
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2b91af">int</span> main() { <span style="color: #2b91af">int</span> a,b,c; scanf(<span style="color: #a31515">&quot;%d%d%d&quot;</span>,&amp;a,&amp;b,&amp;c); <span style="color: #2b91af">int</span> mx=a; <span style="color: #0000ff">if</span>(b&gt;mx)mx=b; <span style="color: #0000ff">if</span>(c&gt;mx)mx=c; printf(<span style="color: #a31515">&quot;%d eh o maior\n&quot;</span>,mx); <span style="color: #0000ff">return</span> 0; }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>a, b, c = map(int, input().split())
-print(max(a, b, c))
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+data = sys.stdin.read().split()
+<span style="color: #0000ff">if</span> data:
+    a, b, c = map(int, data[:3])
+    mx = max(a, b, c)
+    print(<span style="color: #a31515">f&quot;{</span>mx<span style="color: #a31515">} eh o maior&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="chapter-summary"><h3>本章知识点总结</h3><ul>

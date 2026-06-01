@@ -1,4 +1,4 @@
-# NQ: AcWing 739
-for i, x in enumerate(float(input()) for _ in range(100)):
+for i in range(100):
+    x = float(input())
     if x <= 10:
-        print(f"A[{i}] = {x}")
+        print(f"A[{i}] = {x:.1f}")

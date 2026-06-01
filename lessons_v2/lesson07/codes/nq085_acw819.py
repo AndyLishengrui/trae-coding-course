@@ -1,3 +1,4 @@
-# NQ085: AcWing 819
-# Python solution
-
+import sys
+sys.setrecursionlimit(200000)
+def f(n):return 1 if n<=1 else n*f(n-1)
+print(f(int(input())))

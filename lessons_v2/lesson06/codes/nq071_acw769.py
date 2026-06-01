@@ -1,3 +1,3 @@
-# NQ071: AcWing 769
-# Python solution
-
+s = input()
+c = input()
+print(s.replace(c, "#"))

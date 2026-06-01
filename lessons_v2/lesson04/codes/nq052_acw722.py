@@ -1,6 +1,6 @@
-# NQ: AcWing 722
 while True:
-    a, b = map(int, input().split())
-    if a <= 0 or b <= 0: break
-    if a > b: a, b = b, a
-    print(' '.join(str(i) for i in range(a, b + 1)), f"Sum={sum(range(a, b + 1))}")
+    m, n = map(int, input().split())
+    if m <= 0 or n <= 0: break
+    if m > n: m, n = n, m
+    nums = range(m, n + 1)
+    print(' '.join(map(str, nums)), f"Sum={sum(nums)}")

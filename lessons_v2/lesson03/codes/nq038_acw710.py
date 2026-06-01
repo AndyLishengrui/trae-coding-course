@@ -1,5 +1,6 @@
-# NQ: AcWing 710
 x = int(input())
-for i in range(x, x + 12):
-    if i % 2:
-        print(i)
+if x % 2 == 0:
+    x += 1
+for _ in range(6):
+    print(x)
+    x += 2

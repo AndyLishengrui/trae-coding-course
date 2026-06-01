@@ -1,3 +1,1 @@
-# NQ079: AcWing 804
-# Python solution
-
+import math;print(math.factorial(int(input())))

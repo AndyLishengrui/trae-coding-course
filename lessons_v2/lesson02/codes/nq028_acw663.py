@@ -1,4 +1,3 @@
-# NQ: AcWing 663
 a, b, c = map(int, input().split())
 if a > b: a, b = b, a
 if a > c: a, c = c, a

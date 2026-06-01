@@ -53,26 +53,23 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 <div class="insight-block"><span class="insight-label">思路</span><span>用取模判断倍数关系：A%B==0或B%A==0。两个条件用"或"连接。这是if-else最简单的形式——单一条件判断，两个分支。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Py的if语句不需要括号。C++的%运算符要求整数。a%b==0比!(a%b)更易读。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">int</span> a, b;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> a, b;
     cin &gt;&gt; a &gt;&gt; b;
-
-    <span style="color: #00F">if</span> (a % b == 0 || b % a == 0 ) cout &lt;&lt; <span style="color: #A31515">&quot;Sao Multiplos&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;Nao sao Multiplos&quot;</span> &lt;&lt; endl;
-
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">if</span> (a % b == 0 || b % a == 0)
+        cout &lt;&lt; <span style="color: #a31515">&quot;Sao Multiplos&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span>
+        cout &lt;&lt; <span style="color: #a31515">&quot;Nao sao Multiplos&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>a, b = map(int, input().split())
-<span style="color: #00F">if</span> a % b == 0 <span style="color: #00F">or</span> b % a == 0:
-    print(<span style="color: #A31515">&quot;Sao Multiplos&quot;</span>)
-<span style="color: #00F">else</span>:
-    print(<span style="color: #A31515">&quot;Nao sao Multiplos&quot;</span>)
+<span style="color: #0000ff">if</span> a % b == 0 <span style="color: #0000ff">or</span> b % a == 0:
+    print(<span style="color: #a31515">&quot;Sao Multiplos&quot;</span>)
+<span style="color: #0000ff">else</span>:
+    print(<span style="color: #a31515">&quot;Nao sao Multiplos&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -90,28 +87,23 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 <div class="insight-block"><span class="insight-label">思路</span><span>多分支选择。C++用if-else链或switch，Python用if-elif或dict映射。本课重点：dict={1:4.0,2:4.5,3:5.0,4:2.0,5:1.5}，prices[x]*y一行出结果——O(1)查找，代码量减少50%。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Py的dict映射表：prices={1:4.0,2:4.5,3:5.0,4:2.0,5:1.5}。替代if-elif链。"用数据驱动替代逻辑堆叠"是进阶编程的核心理念。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">int</span> x, y;
-    scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>, &amp;x, &amp;y);
-
-    <span style="color: #2B91AF">double</span> price;
-    <span style="color: #00F">if</span> (x == 1) price = 4;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 2) price = 4.5;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 3) price = 5;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 4) price = 2;
-    <span style="color: #00F">else</span> price = 1.5;
-
-    printf(<span style="color: #A31515">&quot;Total: R$ %.2lf\n&quot;</span>, price * y);
-
-    <span style="color: #00F">return</span> 0;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> x, y;
+    scanf(<span style="color: #a31515">&quot;%d%d&quot;</span>, &amp;x, &amp;y);
+    <span style="color: #2b91af">double</span> p;
+    <span style="color: #0000ff">if</span> (x == 1) p = 4.0;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x == 2) p = 4.5;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x == 3) p = 5.0;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x == 4) p = 2.0;
+    <span style="color: #0000ff">else</span> p = 1.5;
+    printf(<span style="color: #a31515">&quot;Total: R$ %.2lf\n&quot;</span>, p * y);
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>prices = {1: 4.0, 2: 4.5, 3: 5.0, 4: 2.0, 5: 1.5}
 x, y = map(int, input().split())
-print(<span style="color: #A31515">f&quot;Total: R$ {</span>prices[x] * y<span style="color: #A31515">:.2f}&quot;</span>)
+print(<span style="color: #a31515">f&quot;Total: R$ {</span>prices[x] * y<span style="color: #a31515">:.2f}&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -129,36 +121,30 @@ print(<span style="color: #A31515">f&quot;Total: R$ {</span>prices[x] * y<span s
 <div class="insight-block"><span class="insight-label">思路</span><span>从最小区间开始判断，逐级向上。Python链式比较更直观，C++需分开写&&。注意开闭括号[包含](不包含)的数学含义——这是区间判断最容易出错的地方。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python链式比较：0<=x<=25。C++需要0<=x&&x<=25。Python的链式比较是语法糖——编译器自动转换成两个比较的and。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">double</span> x;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">double</span> x;
     cin &gt;&gt; x;
-
-    <span style="color: #00F">if</span> (x &gt;= 0 &amp;&amp; x &lt;= 25) cout &lt;&lt; <span style="color: #A31515">&quot;Intervalo [0,25]&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x &gt; 25 &amp;&amp; x &lt;= 50) cout &lt;&lt; <span style="color: #A31515">&quot;Intervalo (25,50]&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x &gt; 50 &amp;&amp; x &lt;= 75) cout &lt;&lt; <span style="color: #A31515">&quot;Intervalo (50,75]&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x &gt; 75 &amp;&amp; x &lt;= 100) cout &lt;&lt; <span style="color: #A31515">&quot;Intervalo (75,100]&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;Fora de intervalo&quot;</span> &lt;&lt; endl;
-
-    <span style="color: #00F">return</span> 0;
-
+    <span style="color: #0000ff">if</span> (x &gt;= 0 &amp;&amp; x &lt;= 25) cout &lt;&lt; <span style="color: #a31515">&quot;Intervalo [0,25]&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x &gt; 25 &amp;&amp; x &lt;= 50) cout &lt;&lt; <span style="color: #a31515">&quot;Intervalo (25,50]&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x &gt; 50 &amp;&amp; x &lt;= 75) cout &lt;&lt; <span style="color: #a31515">&quot;Intervalo (50,75]&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x &gt; 75 &amp;&amp; x &lt;= 100) cout &lt;&lt; <span style="color: #a31515">&quot;Intervalo (75,100]&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span> cout &lt;&lt; <span style="color: #a31515">&quot;Fora de intervalo&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>x = float(input())
-<span style="color: #00F">if</span> 0 &lt;= x &lt;= 25:
-    print(<span style="color: #A31515">&quot;Intervalo [0,25]&quot;</span>)
-<span style="color: #00F">elif</span> 25 &lt; x &lt;= 50:
-    print(<span style="color: #A31515">&quot;Intervalo (25,50]&quot;</span>)
-<span style="color: #00F">elif</span> 50 &lt; x &lt;= 75:
-    print(<span style="color: #A31515">&quot;Intervalo (50,75]&quot;</span>)
-<span style="color: #00F">elif</span> 75 &lt; x &lt;= 100:
-    print(<span style="color: #A31515">&quot;Intervalo (75,100]&quot;</span>)
-<span style="color: #00F">else</span>:
-    print(<span style="color: #A31515">&quot;Fora de intervalo&quot;</span>)
+<span style="color: #0000ff">if</span> 0 &lt;= x &lt;= 25:
+    print(<span style="color: #a31515">&quot;Intervalo [0,25]&quot;</span>)
+<span style="color: #0000ff">elif</span> 25 &lt; x &lt;= 50:
+    print(<span style="color: #a31515">&quot;Intervalo (25,50]&quot;</span>)
+<span style="color: #0000ff">elif</span> 50 &lt; x &lt;= 75:
+    print(<span style="color: #a31515">&quot;Intervalo (50,75]&quot;</span>)
+<span style="color: #0000ff">elif</span> 75 &lt; x &lt;= 100:
+    print(<span style="color: #a31515">&quot;Intervalo (75,100]&quot;</span>)
+<span style="color: #0000ff">else</span>:
+    print(<span style="color: #a31515">&quot;Fora de intervalo&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -176,28 +162,24 @@ print(<span style="color: #A31515">f&quot;Total: R$ {</span>prices[x] * y<span s
 <div class="insight-block"><span class="insight-label">思路</span><span>三角形判定：A+B>C且A+C>B且B+C>A。三个条件必须同时满足，用&&(C++)或and(Python)连接。不能构成时输出梯形面积(A+B)*C/2。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>三个条件同时满足：if a+b>c and a+c>b and b+c>a。Python可以写得非常干净。注意浮点数比较的精度问题——对于大数或极端接近的情况需谨慎。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-<span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">double</span> a, b, c;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">double</span> a, b, c;
     cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
-    <span style="color: #00F">if</span>(a + b &gt; c &amp;&amp; a + c &gt; b &amp;&amp; b + c &gt; a)
-      printf(<span style="color: #A31515">&quot;Perimetro = %.1lf\n&quot;</span>, a + b + c);
-    <span style="color: #00F">else</span>
-      printf(<span style="color: #A31515">&quot;Area = %.1lf\n&quot;</span>,(a + b) * c / 2);
-
-      <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">if</span> (a + b &gt; c &amp;&amp; a + c &gt; b &amp;&amp; b + c &gt; a)
+        printf(<span style="color: #a31515">&quot;Perimetro = %.1lf\n&quot;</span>, a + b + c);
+    <span style="color: #0000ff">else</span>
+        printf(<span style="color: #a31515">&quot;Area = %.1lf\n&quot;</span>, (a + b) * c / 2);
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>a, b, c = map(float, input().split())
-<span style="color: #00F">if</span> a + b &gt; c <span style="color: #00F">and</span> a + c &gt; b <span style="color: #00F">and</span> b + c &gt; a:
-    print(<span style="color: #A31515">f&quot;Perimetro = {</span>a + b + c<span style="color: #A31515">:.1f}&quot;</span>)
-<span style="color: #00F">else</span>:
-    print(<span style="color: #A31515">f&quot;Area = {</span>(a + b) * c / 2<span style="color: #A31515">:.1f}&quot;</span>)
+<span style="color: #0000ff">if</span> a + b &gt; c <span style="color: #0000ff">and</span> a + c &gt; b <span style="color: #0000ff">and</span> b + c &gt; a:
+    print(<span style="color: #a31515">f&quot;Perimetro = {</span>a + b + c<span style="color: #a31515">:.1f}&quot;</span>)
+<span style="color: #0000ff">else</span>:
+    print(<span style="color: #a31515">f&quot;Area = {</span>(a + b) * c / 2<span style="color: #a31515">:.1f}&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -215,28 +197,23 @@ print(<span style="color: #A31515">f&quot;Total: R$ {</span>prices[x] * y<span s
 <div class="insight-block"><span class="insight-label">思路</span><span>先判断是否跨天：A<B则B-A，否则(24-A)+B。这是时间循环判断的经典题，也是if-else的天然应用。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>可以统一为(B-A+24)%24，但结果为0时需要特殊处理（表示24小时）。这种"循环型"问题在时间/角度/周期问题中反复出现。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-
-<span style="color: #2B91AF">int</span> main()
-{
-  <span style="color: #2B91AF">int</span> a, b;
-  scanf(<span style="color: #A31515">&quot;%d%d&quot;</span>, &amp;a, &amp;b);
-
-  <span style="color: #2B91AF">int</span> res;
-  <span style="color: #00F">if</span> (a &lt; b) res = b - a;
-  <span style="color: #00F">else</span>  res = b - a + 24;
-
-  printf(<span style="color: #A31515">&quot;O JOGO DUROU %d HORA(S)\n&quot;</span>, res);
-
-  <span style="color: #00F">return</span> 0;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> a, b;
+    scanf(<span style="color: #a31515">&quot;%d%d&quot;</span>, &amp;a, &amp;b);
+    <span style="color: #2b91af">int</span> res;
+    <span style="color: #0000ff">if</span> (a &lt; b) res = b - a;
+    <span style="color: #0000ff">else</span> res = b - a + 24;
+    printf(<span style="color: #a31515">&quot;O JOGO DUROU %d HORA(S)\n&quot;</span>, res);
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>a, b = map(int, input().split())
-<span style="color: #00F">if</span> a &lt; b:
-    d = b - a
-<span style="color: #00F">else</span>:
-    d = b - a + 24
-print(<span style="color: #A31515">f&quot;O JOGO DUROU {</span>d<span style="color: #A31515">} HORA(S)&quot;</span>)
+<span style="color: #0000ff">if</span> a &lt; b:
+    horas = b - a
+<span style="color: #0000ff">else</span>:
+    horas = 24 - a + b
+print(<span style="color: #a31515">f&quot;O JOGO DUROU {</span>horas<span style="color: #a31515">} HORA(S)&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -256,39 +233,31 @@ Em percentual: 15 %</pre></div>
 <div class="insight-block"><span class="insight-label">思路</span><span>从低到高的if-elif链。区间互斥，顺序很重要——先判断小值再判断大值可以不加&&上限条件（因为前面的判断已经排除了）。注意输出格式：保留2位小数+空格+%。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>C++中%%输出%字面量（printf需要转义）。Python直接写%。区间判断顺序从低到高可以利用else的"否则"语义简化条件。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">double</span> salary;
-    scanf(<span style="color: #A31515">&quot;%lf&quot;</span>, &amp;salary);
-
-    <span style="color: #2B91AF">double</span> x;
-
-    <span style="color: #00F">if</span> (salary &lt;= 400) x = 0.15;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (salary &lt;= 800) x = 0.12;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (salary &lt;= 1200) x = 0.1;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (salary &lt;= 2000) x = 0.07;
-    <span style="color: #00F">else</span> x = 0.04;
-
-    printf(<span style="color: #A31515">&quot;Novo salario: %.2lf\n&quot;</span>, salary * (1 + x));
-    printf(<span style="color: #A31515">&quot;Reajuste ganho: %.2lf\n&quot;</span>, salary * x);
-    printf(<span style="color: #A31515">&quot;Em percentual: %.0lf %%&quot;</span>, x * 100);
-
-    <span style="color: #00F">return</span> 0;
-
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">double</span> s;
+    scanf(<span style="color: #a31515">&quot;%lf&quot;</span>, &amp;s);
+    <span style="color: #2b91af">int</span> p;
+    <span style="color: #0000ff">if</span> (s &lt;= 400) p = 15;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (s &lt;= 800) p = 12;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (s &lt;= 1200) p = 10;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (s &lt;= 2000) p = 7;
+    <span style="color: #0000ff">else</span> p = 4;
+    <span style="color: #2b91af">double</span> r = s * p / 100;
+    printf(<span style="color: #a31515">&quot;Novo salario: %.2lf\nReajuste ganho: %.2lf\nEm percentual: %d %%\n&quot;</span>, s + r, r, p);
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>s = float(input())
-<span style="color: #00F">if</span> s &lt;= 400: p = 15
-<span style="color: #00F">elif</span> s &lt;= 800: p = 12
-<span style="color: #00F">elif</span> s &lt;= 1200: p = 10
-<span style="color: #00F">elif</span> s &lt;= 2000: p = 7
-<span style="color: #00F">else</span>: p = 4
+<span style="color: #0000ff">if</span> s &lt;= 400: p = 15
+<span style="color: #0000ff">elif</span> s &lt;= 800: p = 12
+<span style="color: #0000ff">elif</span> s &lt;= 1200: p = 10
+<span style="color: #0000ff">elif</span> s &lt;= 2000: p = 7
+<span style="color: #0000ff">else</span>: p = 4
 r = s * p / 100
-print(<span style="color: #A31515">f&quot;Novo salario: {</span>s + r<span style="color: #A31515">:.2f}&quot;</span>)
-print(<span style="color: #A31515">f&quot;Reajuste ganho: {</span>r<span style="color: #A31515">:.2f}&quot;</span>)
-print(<span style="color: #A31515">f&quot;Em percentual: {</span>p<span style="color: #A31515">} %&quot;</span>)
+print(<span style="color: #a31515">f&quot;Novo salario: {</span>s + r<span style="color: #a31515">:.2f}&quot;</span>)
+print(<span style="color: #a31515">f&quot;Reajuste ganho: {</span>r<span style="color: #a31515">:.2f}&quot;</span>)
+print(<span style="color: #a31515">f&quot;Em percentual: {</span>p<span style="color: #a31515">} %&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -308,44 +277,43 @@ onivoro</pre></div>
 <div class="insight-block"><span class="insight-label">思路</span><span>三层嵌套if。先判断脊椎/非脊椎→再判断纲→再判断食性。本质是一棵深度为3的决策树。Python的嵌套if-elif结构清晰易读。也可用dict嵌套：tree={'vertebrado':{'ave':{...}}}。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python的嵌套dict可以替代嵌套if——tree[a][b][c]一行定位答案。但写if逻辑更透明，两者都是合理的方案。"数据结构化思维"是编程进阶的关键能力。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">if</span> (a == <span style="color: #A31515">&quot;vertebrado&quot;</span>)
-{
-  <span style="color: #00F">if</span> (b == <span style="color: #A31515">&quot;ave&quot;</span>)
-  {
-    <span style="color: #00F">if</span> (c == <span style="color: #A31515">&quot;carnivoro&quot;</span>) cout &lt;&lt; <span style="color: #A31515">&quot;aguia&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;pomba&quot;</span> &lt;&lt; endl;
-  }
-  <span style="color: #00F">else</span>
-  {
-    <span style="color: #00F">if</span> (c == <span style="color: #A31515">&quot;onivoro&quot;</span>) cout &lt;&lt; <span style="color: #A31515">&quot;homem&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;vaca&quot;</span> &lt;&lt; endl;
-  }
-}
-<span style="color: #00F">else</span> 
-{
- <span style="color: #00F">if</span> (b == <span style="color: #A31515">&quot;inseto&quot;</span>) 
-  {
-    <span style="color: #00F">if</span> (c == <span style="color: #A31515">&quot;hematofago&quot;</span>) cout &lt;&lt; <span style="color: #A31515">&quot;pulga&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;lagarta&quot;</span> &lt;&lt; endl;
-  }
-  <span style="color: #00F">else</span>
-  {
-    <span style="color: #00F">if</span> (c == <span style="color: #A31515">&quot;hematofago&quot;</span>) cout &lt;&lt; <span style="color: #A31515">&quot;sanguessuga&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;minhoca&quot;</span> &lt;&lt; endl;
-  }
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    string a, b, c;
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+    <span style="color: #0000ff">if</span> (a == <span style="color: #a31515">&quot;vertebrado&quot;</span>) {
+        <span style="color: #0000ff">if</span> (b == <span style="color: #a31515">&quot;ave&quot;</span>) {
+            <span style="color: #0000ff">if</span> (c == <span style="color: #a31515">&quot;carnivoro&quot;</span>) cout &lt;&lt; <span style="color: #a31515">&quot;aguia&quot;</span> &lt;&lt; endl;
+            <span style="color: #0000ff">else</span> cout &lt;&lt; <span style="color: #a31515">&quot;pomba&quot;</span> &lt;&lt; endl;
+        } <span style="color: #0000ff">else</span> {
+            <span style="color: #0000ff">if</span> (c == <span style="color: #a31515">&quot;onivoro&quot;</span>) cout &lt;&lt; <span style="color: #a31515">&quot;homem&quot;</span> &lt;&lt; endl;
+            <span style="color: #0000ff">else</span> cout &lt;&lt; <span style="color: #a31515">&quot;vaca&quot;</span> &lt;&lt; endl;
+        }
+    } <span style="color: #0000ff">else</span> {
+        <span style="color: #0000ff">if</span> (b == <span style="color: #a31515">&quot;inseto&quot;</span>) {
+            <span style="color: #0000ff">if</span> (c == <span style="color: #a31515">&quot;hematofago&quot;</span>) cout &lt;&lt; <span style="color: #a31515">&quot;pulga&quot;</span> &lt;&lt; endl;
+            <span style="color: #0000ff">else</span> cout &lt;&lt; <span style="color: #a31515">&quot;lagarta&quot;</span> &lt;&lt; endl;
+        } <span style="color: #0000ff">else</span> {
+            <span style="color: #0000ff">if</span> (c == <span style="color: #a31515">&quot;hematofago&quot;</span>) cout &lt;&lt; <span style="color: #a31515">&quot;sanguessuga&quot;</span> &lt;&lt; endl;
+            <span style="color: #0000ff">else</span> cout &lt;&lt; <span style="color: #a31515">&quot;minhoca&quot;</span> &lt;&lt; endl;
+        }
+    }
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>a, b, c = input(), input(), input()
-<span style="color: #00F">if</span> a == <span style="color: #A31515">&quot;vertebrado&quot;</span>:
-    <span style="color: #00F">if</span> b == <span style="color: #A31515">&quot;ave&quot;</span>:
-        print(<span style="color: #A31515">&quot;aguia&quot;</span> <span style="color: #00F">if</span> c == <span style="color: #A31515">&quot;carnivoro&quot;</span> <span style="color: #00F">else</span> <span style="color: #A31515">&quot;pomba&quot;</span>)
-    <span style="color: #00F">else</span>:
-        print(<span style="color: #A31515">&quot;homem&quot;</span> <span style="color: #00F">if</span> c == <span style="color: #A31515">&quot;onivoro&quot;</span> <span style="color: #00F">else</span> <span style="color: #A31515">&quot;vaca&quot;</span>)
-<span style="color: #00F">else</span>:
-    <span style="color: #00F">if</span> b == <span style="color: #A31515">&quot;inseto&quot;</span>:
-        print(<span style="color: #A31515">&quot;pulga&quot;</span> <span style="color: #00F">if</span> c == <span style="color: #A31515">&quot;hematofago&quot;</span> <span style="color: #00F">else</span> <span style="color: #A31515">&quot;lagarta&quot;</span>)
-    <span style="color: #00F">else</span>:
-        print(<span style="color: #A31515">&quot;sanguessuga&quot;</span> <span style="color: #00F">if</span> c == <span style="color: #A31515">&quot;hematofago&quot;</span> <span style="color: #00F">else</span> <span style="color: #A31515">&quot;minhoca&quot;</span>)
+<div class="code-col"><div class="lang-badge">Python</div><pre><span style="color: #0000ff">import</span> sys
+a, b, c = sys.stdin.read().split()
+<span style="color: #0000ff">if</span> a == <span style="color: #a31515">&quot;vertebrado&quot;</span>:
+    <span style="color: #0000ff">if</span> b == <span style="color: #a31515">&quot;ave&quot;</span>:
+        print(<span style="color: #a31515">&quot;aguia&quot;</span> <span style="color: #0000ff">if</span> c == <span style="color: #a31515">&quot;carnivoro&quot;</span> <span style="color: #0000ff">else</span> <span style="color: #a31515">&quot;pomba&quot;</span>)
+    <span style="color: #0000ff">else</span>:
+        print(<span style="color: #a31515">&quot;homem&quot;</span> <span style="color: #0000ff">if</span> c == <span style="color: #a31515">&quot;onivoro&quot;</span> <span style="color: #0000ff">else</span> <span style="color: #a31515">&quot;vaca&quot;</span>)
+<span style="color: #0000ff">else</span>:
+    <span style="color: #0000ff">if</span> b == <span style="color: #a31515">&quot;inseto&quot;</span>:
+        print(<span style="color: #a31515">&quot;pulga&quot;</span> <span style="color: #0000ff">if</span> c == <span style="color: #a31515">&quot;hematofago&quot;</span> <span style="color: #0000ff">else</span> <span style="color: #a31515">&quot;lagarta&quot;</span>)
+    <span style="color: #0000ff">else</span>:
+        print(<span style="color: #a31515">&quot;sanguessuga&quot;</span> <span style="color: #0000ff">if</span> c == <span style="color: #a31515">&quot;hematofago&quot;</span> <span style="color: #0000ff">else</span> <span style="color: #a31515">&quot;minhoca&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -363,18 +331,23 @@ onivoro</pre></div>
 <div class="insight-block"><span class="insight-label">思路</span><span>5个条件用&&(and)连接。同时满足才输出accepted。训练复杂布尔表达式的使用。条件的排列顺序影响短路求值——先放最容易判断的。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python把5个条件写一行：if b>c and d>a and c+d>a+b and c>0 and d>0 and a%2==0。可读性极好。先放C>0、D>0这种简单条件可以触发短路优化。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">if</span>(b &gt; c &amp;&amp; d &gt; a &amp;&amp; c + d &gt; a + b &amp;&amp; c &gt; 0 &amp;&amp; d &gt; 0 &amp;&amp; a % 2 == 0) 
-   cout &lt;&lt; <span style="color: #A31515">&quot;Valores aceitos&quot;</span> &lt;&lt; endl;
-<span style="color: #00F">else</span>
-   cout &lt;&lt; <span style="color: #A31515">&quot;Valores nao aceitos&quot;</span> &lt;&lt; endl;
-
-<span style="color: #00F">return</span> 0;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> a, b, c, d;
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;
+    <span style="color: #0000ff">if</span> (b &gt; c &amp;&amp; d &gt; a &amp;&amp; c + d &gt; a + b &amp;&amp; c &gt; 0 &amp;&amp; d &gt; 0 &amp;&amp; a % 2 == 0)
+        cout &lt;&lt; <span style="color: #a31515">&quot;Valores aceitos&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span>
+        cout &lt;&lt; <span style="color: #a31515">&quot;Valores nao aceitos&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">return</span> 0;
+}
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>a, b, c, d = map(int, input().split())
-<span style="color: #00F">if</span> b &gt; c <span style="color: #00F">and</span> d &gt; a <span style="color: #00F">and</span> c + d &gt; a + b <span style="color: #00F">and</span> c &gt; 0 <span style="color: #00F">and</span> d &gt; 0 <span style="color: #00F">and</span> a % 2 == 0:
-    print(<span style="color: #A31515">&quot;Valores aceitos&quot;</span>)
-<span style="color: #00F">else</span>:
-    print(<span style="color: #A31515">&quot;Valores nao aceitos&quot;</span>)
+<span style="color: #0000ff">if</span> b &gt; c <span style="color: #0000ff">and</span> d &gt; a <span style="color: #0000ff">and</span> c + d &gt; a + b <span style="color: #0000ff">and</span> c &gt; 0 <span style="color: #0000ff">and</span> d &gt; 0 <span style="color: #0000ff">and</span> a % 2 == 0:
+    print(<span style="color: #a31515">&quot;Valores aceitos&quot;</span>)
+<span style="color: #0000ff">else</span>:
+    print(<span style="color: #a31515">&quot;Valores nao aceitos&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -392,30 +365,26 @@ onivoro</pre></div>
 <div class="insight-block"><span class="insight-label">思路</span><span>Python的dict映射表一行替代8个if-else。ddd.get(ddd, 'DDD nao cadastrado')——查找存在就返回，不存在就返回默认值。这是本课最重要的工程思维：看到重复的if-else模式时，用数据结构替代。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>ddd={61:'Brasilia',71:'Salvador',11:'Sao Paulo',21:'Rio de Janeiro',32:'Juiz de Fora',19:'Campinas',27:'Vitoria',31:'Belo Horizonte'}。print(ddd.get(x,'DDD nao cadastrado'))。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">int</span> x;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> x;
     cin &gt;&gt; x;
-    <span style="color: #00F">if</span> (x == 61) cout &lt;&lt; <span style="color: #A31515">&quot;Brasilia&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 71) cout &lt;&lt; <span style="color: #A31515">&quot;Salvador&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 11) cout &lt;&lt; <span style="color: #A31515">&quot;Sao Paulo&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 21) cout &lt;&lt; <span style="color: #A31515">&quot;Rio de Janeiro&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 32) cout &lt;&lt; <span style="color: #A31515">&quot;Juiz de Fora&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 19) cout &lt;&lt; <span style="color: #A31515">&quot;Campinas&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 27) cout &lt;&lt; <span style="color: #A31515">&quot;Vitoria&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x == 31) cout &lt;&lt; <span style="color: #A31515">&quot;Belo Horizonte&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;DDD nao cadastrado&quot;</span> &lt;&lt; endl;
-
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">if</span> (x == 61) cout &lt;&lt; <span style="color: #a31515">&quot;Brasilia&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x == 71) cout &lt;&lt; <span style="color: #a31515">&quot;Salvador&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x == 11) cout &lt;&lt; <span style="color: #a31515">&quot;Sao Paulo&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x == 21) cout &lt;&lt; <span style="color: #a31515">&quot;Rio de Janeiro&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x == 32) cout &lt;&lt; <span style="color: #a31515">&quot;Juiz de Fora&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x == 19) cout &lt;&lt; <span style="color: #a31515">&quot;Campinas&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x == 27) cout &lt;&lt; <span style="color: #a31515">&quot;Vitoria&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x == 31) cout &lt;&lt; <span style="color: #a31515">&quot;Belo Horizonte&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span> cout &lt;&lt; <span style="color: #a31515">&quot;DDD nao cadastrado&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>ddd = {61:<span style="color: #A31515">&quot;Brasilia&quot;</span>,71:<span style="color: #A31515">&quot;Salvador&quot;</span>,11:<span style="color: #A31515">&quot;Sao Paulo&quot;</span>,21:<span style="color: #A31515">&quot;Rio de Janeiro&quot;</span>,32:<span style="color: #A31515">&quot;Juiz de Fora&quot;</span>,19:<span style="color: #A31515">&quot;Campinas&quot;</span>,27:<span style="color: #A31515">&quot;Vitoria&quot;</span>,31:<span style="color: #A31515">&quot;Belo Horizonte&quot;</span>}
+<div class="code-col"><div class="lang-badge">Python</div><pre>ddd = {61:<span style="color: #a31515">&quot;Brasilia&quot;</span>,71:<span style="color: #a31515">&quot;Salvador&quot;</span>,11:<span style="color: #a31515">&quot;Sao Paulo&quot;</span>,21:<span style="color: #a31515">&quot;Rio de Janeiro&quot;</span>,32:<span style="color: #a31515">&quot;Juiz de Fora&quot;</span>,19:<span style="color: #a31515">&quot;Campinas&quot;</span>,27:<span style="color: #a31515">&quot;Vitoria&quot;</span>,31:<span style="color: #a31515">&quot;Belo Horizonte&quot;</span>}
 x = int(input())
-print(ddd.get(x, <span style="color: #A31515">&quot;DDD nao cadastrado&quot;</span>))
+print(ddd.get(x, <span style="color: #a31515">&quot;DDD nao cadastrado&quot;</span>))
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -433,36 +402,29 @@ print(ddd.get(x, <span style="color: #A31515">&quot;DDD nao cadastrado&quot;</sp
 <div class="insight-block"><span class="insight-label">思路</span><span>判断顺序：原点→轴→象限。这是分类讨论的标准流程——先特殊后一般。x>0且y>0→Q1，x<0且y>0→Q2，x<0且y<0→Q3，x>0且y<0→Q4。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>判断顺序从特殊到一般：原点→轴→象限。Python中x==0和y==0用浮点比较在本题数据范围内安全。对于更精确的场景可使用abs(x)<1e-9。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">double</span> x, y;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">double</span> x, y;
     cin &gt;&gt; x &gt;&gt; y;
-
-    <span style="color: #00F">if</span> (x &gt; 0 &amp;&amp; y &gt; 0) cout &lt;&lt; <span style="color: #A31515">&quot;Q1&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x &lt; 0 &amp;&amp; y &gt; 0) cout &lt;&lt; <span style="color: #A31515">&quot;Q2&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x &lt; 0 &amp;&amp; y &lt; 0) cout &lt;&lt; <span style="color: #A31515">&quot;Q3&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span> <span style="color: #00F">if</span> (x &gt; 0 &amp;&amp; y &lt; 0) cout &lt;&lt; <span style="color: #A31515">&quot;Q4&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span>
-    {
-      <span style="color: #00F">if</span> (!x &amp;&amp; !y) cout &lt;&lt; <span style="color: #A31515">&quot;Origem&quot;</span> &lt;&lt; endl;
-      <span style="color: #00F">else</span> <span style="color: #00F">if</span> (!y) cout &lt;&lt; <span style="color: #A31515">&quot;Eixo X&quot;</span> &lt;&lt; endl;
-      <span style="color: #00F">else</span> cout &lt;&lt; <span style="color: #A31515">&quot;Eixo Y&quot;</span> &lt;&lt; endl;
-    }
-  <span style="color: #00F">return</span> 0;  
+    <span style="color: #0000ff">if</span> (x &gt; 0 &amp;&amp; y &gt; 0) cout &lt;&lt; <span style="color: #a31515">&quot;Q1&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x &lt; 0 &amp;&amp; y &gt; 0) cout &lt;&lt; <span style="color: #a31515">&quot;Q2&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x &lt; 0 &amp;&amp; y &lt; 0) cout &lt;&lt; <span style="color: #a31515">&quot;Q3&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x &gt; 0 &amp;&amp; y &lt; 0) cout &lt;&lt; <span style="color: #a31515">&quot;Q4&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x == 0 &amp;&amp; y == 0) cout &lt;&lt; <span style="color: #a31515">&quot;Origem&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x == 0) cout &lt;&lt; <span style="color: #a31515">&quot;Eixo Y&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span> cout &lt;&lt; <span style="color: #a31515">&quot;Eixo X&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>x, y = map(float, input().split())
-<span style="color: #00F">if</span> x &gt; 0 <span style="color: #00F">and</span> y &gt; 0: print(<span style="color: #A31515">&quot;Q1&quot;</span>)
-<span style="color: #00F">elif</span> x &lt; 0 <span style="color: #00F">and</span> y &gt; 0: print(<span style="color: #A31515">&quot;Q2&quot;</span>)
-<span style="color: #00F">elif</span> x &lt; 0 <span style="color: #00F">and</span> y &lt; 0: print(<span style="color: #A31515">&quot;Q3&quot;</span>)
-<span style="color: #00F">elif</span> x &gt; 0 <span style="color: #00F">and</span> y &lt; 0: print(<span style="color: #A31515">&quot;Q4&quot;</span>)
-<span style="color: #00F">elif</span> x == 0 <span style="color: #00F">and</span> y == 0: print(<span style="color: #A31515">&quot;Origem&quot;</span>)
-<span style="color: #00F">elif</span> x == 0: print(<span style="color: #A31515">&quot;Eixo Y&quot;</span>)
-<span style="color: #00F">else</span>: print(<span style="color: #A31515">&quot;Eixo X&quot;</span>)
+<span style="color: #0000ff">if</span> x &gt; 0 <span style="color: #0000ff">and</span> y &gt; 0: print(<span style="color: #a31515">&quot;Q1&quot;</span>)
+<span style="color: #0000ff">elif</span> x &lt; 0 <span style="color: #0000ff">and</span> y &gt; 0: print(<span style="color: #a31515">&quot;Q2&quot;</span>)
+<span style="color: #0000ff">elif</span> x &lt; 0 <span style="color: #0000ff">and</span> y &lt; 0: print(<span style="color: #a31515">&quot;Q3&quot;</span>)
+<span style="color: #0000ff">elif</span> x &gt; 0 <span style="color: #0000ff">and</span> y &lt; 0: print(<span style="color: #a31515">&quot;Q4&quot;</span>)
+<span style="color: #0000ff">elif</span> x == 0 <span style="color: #0000ff">and</span> y == 0: print(<span style="color: #a31515">&quot;Origem&quot;</span>)
+<span style="color: #0000ff">elif</span> x == 0: print(<span style="color: #a31515">&quot;Eixo Y&quot;</span>)
+<span style="color: #0000ff">else</span>: print(<span style="color: #a31515">&quot;Eixo X&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -481,56 +443,35 @@ TRIANGULO ISOSCELES</pre></div>
 <div class="insight-block"><span class="insight-label">思路</span><span>三步法：1.降序排列(swap直到a≥b≥c)；2.判三角形：a≥b+c?不能构成；3.角度类型：a²=b²+c²(直角)、a²>b²+c²(钝角)、a²<b²+c²(锐角)；4.边类型：a=b=c(等边)/a=b或b=c(等腰)。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python一行排序：a,b,c=sorted([a,b,c],reverse=True)。排序降序后所有判断条件都变得简单。注意用多个if而非if-elif——因为可能同时满足多个条件（如既是锐角又是等腰）。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">double</span> a, b, c;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;algorithm&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">double</span> a, b, c;
     cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
-
-    <span style="color: #00F">if</span> (b &gt; a)
-    {
-      <span style="color: #2B91AF">double</span> t = a;
-      a = b;
-      b = t;
+    <span style="color: #0000ff">if</span> (b &gt; a) swap(a, b);
+    <span style="color: #0000ff">if</span> (c &gt; a) swap(a, c);
+    <span style="color: #0000ff">if</span> (c &gt; b) swap(b, c);
+    <span style="color: #0000ff">if</span> (a &gt;= b + c) cout &lt;&lt; <span style="color: #a31515">&quot;NAO FORMA TRIANGULO&quot;</span> &lt;&lt; endl;
+    <span style="color: #0000ff">else</span> {
+        <span style="color: #0000ff">if</span> (a*a == b*b + c*c) cout &lt;&lt; <span style="color: #a31515">&quot;TRIANGULO RETANGULO&quot;</span> &lt;&lt; endl;
+        <span style="color: #0000ff">if</span> (a*a &gt; b*b + c*c) cout &lt;&lt; <span style="color: #a31515">&quot;TRIANGULO OBTUSANGULO&quot;</span> &lt;&lt; endl;
+        <span style="color: #0000ff">if</span> (a*a &lt; b*b + c*c) cout &lt;&lt; <span style="color: #a31515">&quot;TRIANGULO ACUTANGULO&quot;</span> &lt;&lt; endl;
+        <span style="color: #0000ff">if</span> (a == b &amp;&amp; b == c) cout &lt;&lt; <span style="color: #a31515">&quot;TRIANGULO EQUILATERO&quot;</span> &lt;&lt; endl;
+        <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (a == b || a == c || b == c) cout &lt;&lt; <span style="color: #a31515">&quot;TRIANGULO ISOSCELES&quot;</span> &lt;&lt; endl;
     }
-    <span style="color: #00F">if</span> (c &gt; a)
-    {
-      <span style="color: #2B91AF">double</span> t = a;
-      a = c;
-      c = t;
-    }
-    <span style="color: #00F">if</span> (c &gt; b)
-    {
-      <span style="color: #2B91AF">double</span> t = b;
-      b = c;
-      c = t;
-    }
-
-    <span style="color: #00F">if</span> (a &gt;= b + c) cout &lt;&lt; <span style="color: #A31515">&quot;NAO FORMA TRIANGULO&quot;</span> &lt;&lt; endl;
-    <span style="color: #00F">else</span>
-    {
-      <span style="color: #00F">if</span> (a * a == b * b + c * c) cout &lt;&lt; <span style="color: #A31515">&quot;TRIANGULO RETANGULO&quot;</span> &lt;&lt; endl;
-      <span style="color: #00F">if</span> (a * a &gt; b * b + c * c) cout &lt;&lt; <span style="color: #A31515">&quot;TRIANGULO OBTUSANGULO&quot;</span> &lt;&lt; endl;
-      <span style="color: #00F">if</span> (a * a &lt; b * b + c * c) cout &lt;&lt; <span style="color: #A31515">&quot;TRIANGULO ACUTANGULO&quot;</span> &lt;&lt; endl;
-      <span style="color: #00F">if</span> (a == b &amp;&amp; b == c) cout &lt;&lt; <span style="color: #A31515">&quot;TRIANGULO EQUILATERO&quot;</span> &lt;&lt; endl;
-      <span style="color: #00F">else</span> <span style="color: #00F">if</span> (a == b || a == c || b == c) cout &lt;&lt; <span style="color: #A31515">&quot;TRIANGULO ISOSCELES&quot;</span> &lt;&lt; endl;
-    }
-
-   <span style="color: #00F">return</span> 0; 
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
-<div class="code-col"><div class="lang-badge">Python</div><pre>a, b, c = sorted(map(float, input().split()), reverse=<span style="color: #00F">True</span>)
-<span style="color: #00F">if</span> a &gt;= b + c:
-    print(<span style="color: #A31515">&quot;NAO FORMA TRIANGULO&quot;</span>)
-<span style="color: #00F">else</span>:
-    <span style="color: #00F">if</span> a*a == b*b + c*c: print(<span style="color: #A31515">&quot;TRIANGULO RETANGULO&quot;</span>)
-    <span style="color: #00F">if</span> a*a &gt; b*b + c*c: print(<span style="color: #A31515">&quot;TRIANGULO OBTUSANGULO&quot;</span>)
-    <span style="color: #00F">if</span> a*a &lt; b*b + c*c: print(<span style="color: #A31515">&quot;TRIANGULO ACUTANGULO&quot;</span>)
-    <span style="color: #00F">if</span> a == b == c: print(<span style="color: #A31515">&quot;TRIANGULO EQUILATERO&quot;</span>)
-    <span style="color: #00F">elif</span> a == b <span style="color: #00F">or</span> b == c <span style="color: #00F">or</span> a == c: print(<span style="color: #A31515">&quot;TRIANGULO ISOSCELES&quot;</span>)
+<div class="code-col"><div class="lang-badge">Python</div><pre>a, b, c = sorted(map(float, input().split()), reverse=<span style="color: #0000ff">True</span>)
+<span style="color: #0000ff">if</span> a &gt;= b + c:
+    print(<span style="color: #a31515">&quot;NAO FORMA TRIANGULO&quot;</span>)
+<span style="color: #0000ff">else</span>:
+    <span style="color: #0000ff">if</span> a*a == b*b + c*c: print(<span style="color: #a31515">&quot;TRIANGULO RETANGULO&quot;</span>)
+    <span style="color: #0000ff">if</span> a*a &gt; b*b + c*c: print(<span style="color: #a31515">&quot;TRIANGULO OBTUSANGULO&quot;</span>)
+    <span style="color: #0000ff">if</span> a*a &lt; b*b + c*c: print(<span style="color: #a31515">&quot;TRIANGULO ACUTANGULO&quot;</span>)
+    <span style="color: #0000ff">if</span> a == b == c: print(<span style="color: #a31515">&quot;TRIANGULO EQUILATERO&quot;</span>)
+    <span style="color: #0000ff">elif</span> a == b <span style="color: #0000ff">or</span> b == c <span style="color: #0000ff">or</span> a == c: print(<span style="color: #a31515">&quot;TRIANGULO ISOSCELES&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -548,31 +489,23 @@ TRIANGULO ISOSCELES</pre></div>
 <div class="insight-block"><span class="insight-label">思路</span><span>统一转换为分钟：start=A*60+B,end=C*60+D。若end≤start则加24*60。diff=end-start，再转回时=diff/60,分=diff%60。"统一量纲"是时间问题的通用技巧。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>统一量纲(分钟)后比较和计算避免分别处理小时和分钟的复杂情况。Python的divmod(diff,60)可以直接分解时和分。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">int</span> a, b, c, d;
-    scanf(<span style="color: #A31515">&quot;%d%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c, &amp;d);
-
-    <span style="color: #2B91AF">int</span> start = a * 60 + b;
-    <span style="color: #2B91AF">int</span> end = c * 60 + d;
-
-    <span style="color: #2B91AF">int</span> spent_time = end - start;
-    <span style="color: #00F">if</span> (spent_time &lt;= 0) spent_time += 1440;
-
-    printf(<span style="color: #A31515">&quot;O JOGO DUROU %d HORA(S) E %d MINUTO(S)&quot;</span>, spent_time / 60, spent_time % 60);
-
-    <span style="color: #00F">return</span> 0;
-
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> a, b, c, d;
+    scanf(<span style="color: #a31515">&quot;%d%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c, &amp;d);
+    <span style="color: #2b91af">int</span> start = a * 60 + b, end = c * 60 + d;
+    <span style="color: #0000ff">if</span> (end &lt;= start) end += 24 * 60;
+    <span style="color: #2b91af">int</span> diff = end - start;
+    printf(<span style="color: #a31515">&quot;O JOGO DUROU %d HORA(S) E %d MINUTO(S)\n&quot;</span>, diff / 60, diff % 60);
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>a, b, c, d = map(int, input().split())
 s = a * 60 + b
 e = c * 60 + d
-<span style="color: #00F">if</span> e &lt;= s: e += 24 * 60
+<span style="color: #0000ff">if</span> e &lt;= s: e += 24 * 60
 d = e - s
-print(<span style="color: #A31515">f&quot;O JOGO DUROU {</span>d // 60<span style="color: #A31515">} HORA(S) E {</span>d % 60<span style="color: #A31515">} MINUTO(S)&quot;</span>)
+print(<span style="color: #a31515">f&quot;O JOGO DUROU {</span>d // 60<span style="color: #a31515">} HORA(S) E {</span>d % 60<span style="color: #a31515">} MINUTO(S)&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -590,52 +523,37 @@ print(<span style="color: #A31515">f&quot;O JOGO DUROU {</span>d // 60<span styl
 <div class="insight-block"><span class="insight-label">思路</span><span>分段计税：先判断是否≤2000(免税)。超出2000部分逐段按税率计算。Python用min()限制每段上限：tax=min(x,1000)*0.08+min(max(x-1000,0),1500)*0.18+...</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python的min/max组合：min(x,1000)*0.08处理第一段(0-1000按8%)。理解"分段"原理比写出代码更重要——这是个人所得税的核心逻辑。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">double</span> x;
-    scanf(<span style="color: #A31515">&quot;%lf&quot;</span>, &amp;x);
-
-    <span style="color: #2B91AF">double</span> sum = 0;
-    <span style="color: #00F">if</span> (x &gt; 2000)
-    {
-      <span style="color: #2B91AF">double</span> y = 3000;
-      <span style="color: #00F">if</span> (x &lt; 3000) y = x;
-      sum += (y - 2000) * 0.08;
-    }
-    <span style="color: #00F">if</span> (x &gt; 3000)
-    {
-      <span style="color: #2B91AF">double</span> y = 4500;
-      <span style="color: #00F">if</span> (x &lt; 4500) y = x;
-      sum += (y - 3000) * 0.18;
-    }
-    <span style="color: #00F">if</span> (x &gt; 4500) sum += (x - 4500) * 0.28;
-
-    <span style="color: #00F">if</span> (sum == 0) printf(<span style="color: #A31515">&quot;Isento&quot;</span>);
-    <span style="color: #00F">else</span> printf(<span style="color: #A31515">&quot;R$ %.2lf\n&quot;</span>, sum);
-
-    <span style="color: #00F">return</span> 0;
-
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;cstdio&gt;</span>
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">double</span> x;
+    scanf(<span style="color: #a31515">&quot;%lf&quot;</span>, &amp;x);
+    <span style="color: #0000ff">if</span> (x &lt;= 2000) { printf(<span style="color: #a31515">&quot;Isento\n&quot;</span>); <span style="color: #0000ff">return</span> 0; }
+    x -= 2000;
+    <span style="color: #2b91af">double</span> t = 0;
+    <span style="color: #0000ff">if</span> (x &gt; 0) { <span style="color: #2b91af">double</span> v = x &lt; 1000 ? x : 1000; t += v * 0.08; x -= v; }
+    <span style="color: #0000ff">if</span> (x &gt; 0) { <span style="color: #2b91af">double</span> v = x &lt; 1500 ? x : 1500; t += v * 0.18; x -= v; }
+    <span style="color: #0000ff">if</span> (x &gt; 0) t += x * 0.28;
+    printf(<span style="color: #a31515">&quot;R$ %.2lf\n&quot;</span>, t);
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>x = float(input())
-<span style="color: #00F">if</span> x &lt;= 2000:
-    print(<span style="color: #A31515">&quot;Isento&quot;</span>)
-<span style="color: #00F">else</span>:
+<span style="color: #0000ff">if</span> x &lt;= 2000:
+    print(<span style="color: #a31515">&quot;Isento&quot;</span>)
+<span style="color: #0000ff">else</span>:
     x -= 2000
     t = 0
-    <span style="color: #00F">if</span> x &gt; 0:
+    <span style="color: #0000ff">if</span> x &gt; 0:
         v = min(x, 1000)
         t += v * 0.08
         x -= v
-    <span style="color: #00F">if</span> x &gt; 0:
+    <span style="color: #0000ff">if</span> x &gt; 0:
         v = min(x, 1500)
         t += v * 0.18
         x -= v
-    <span style="color: #00F">if</span> x &gt; 0:
+    <span style="color: #0000ff">if</span> x &gt; 0:
         t += x * 0.28
-    print(<span style="color: #A31515">f&quot;R$ {</span>t<span style="color: #A31515">:.2f}&quot;</span>)
+    print(<span style="color: #a31515">f&quot;R$ {</span>t<span style="color: #a31515">:.2f}&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
 <div class="problem-block">
@@ -653,46 +571,22 @@ print(<span style="color: #A31515">f&quot;O JOGO DUROU {</span>d // 60<span styl
 <div class="insight-block"><span class="insight-label">思路</span><span>三步交换排序：if a>b:swap(a,b); if a>c:swap(a,c); if b>c:swap(b,c)。这是排序算法的最小实现——理解交换操作的原理为后续学习排序算法打下基础。</span></div>
 <div class="insight-block"><span class="insight-label">技巧</span><span>Python的a,b=b,a是最优雅的交换写法——基于元组解包。C++用std::swap或临时变量。Python一行sorted()也行但手写交换理解原理更重要。</span></div>
 <div class="code-dual">
-<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #00F">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
-
-<span style="color: #00F">using</span> <span style="color: #00F">namespace</span> std;
-
-<span style="color: #2B91AF">int</span> main()
-{
-    <span style="color: #2B91AF">int</span> a, b, c;
+<div class="code-col"><div class="lang-badge">C++</div><pre><span style="color: #0000ff">#include</span> <span style="color: #008000">&lt;iostream&gt;</span>
+<span style="color: #0000ff">using</span> <span style="color: #0000ff">namespace</span> std;
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> a, b, c;
     cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
-
-    <span style="color: #2B91AF">int</span> x = a, y = b, z = c;
-
-    <span style="color: #00F">if</span> (b &lt; a)
-    {
-      <span style="color: #2B91AF">int</span> t = a;
-      a = b;
-      b = t;
-    }
-    <span style="color: #00F">if</span> (c &lt; a)
-    {
-      <span style="color: #2B91AF">int</span> t = a;
-      a = c;
-      c = t;
-    }
-    <span style="color: #00F">if</span> (c &lt; b)
-    {
-      <span style="color: #2B91AF">int</span> t = b;
-      b = c;
-      c = t;
-    }
-
-    cout &lt;&lt; a &lt;&lt; endl &lt;&lt; b &lt;&lt; endl &lt;&lt; c &lt;&lt; endl &lt;&lt; endl;
-    cout &lt;&lt; x &lt;&lt; endl &lt;&lt; y &lt;&lt; endl &lt;&lt; z &lt;&lt; endl;
-
-    <span style="color: #00F">return</span> 0;
+    <span style="color: #0000ff">if</span> (a &gt; b) swap(a, b);
+    <span style="color: #0000ff">if</span> (a &gt; c) swap(a, c);
+    <span style="color: #0000ff">if</span> (b &gt; c) swap(b, c);
+    cout &lt;&lt; a &lt;&lt; <span style="color: #a31515">&quot; &quot;</span> &lt;&lt; b &lt;&lt; <span style="color: #a31515">&quot; &quot;</span> &lt;&lt; c &lt;&lt; endl;
+    <span style="color: #0000ff">return</span> 0;
 }
 </pre></div>
 <div class="code-col"><div class="lang-badge">Python</div><pre>a, b, c = map(int, input().split())
-<span style="color: #00F">if</span> a &gt; b: a, b = b, a
-<span style="color: #00F">if</span> a &gt; c: a, c = c, a
-<span style="color: #00F">if</span> b &gt; c: b, c = c, b
+<span style="color: #0000ff">if</span> a &gt; b: a, b = b, a
+<span style="color: #0000ff">if</span> a &gt; c: a, c = c, a
+<span style="color: #0000ff">if</span> b &gt; c: b, c = c, b
 print(a, b, c)
 </pre></div>
 </div></div><hr class="section-divider">

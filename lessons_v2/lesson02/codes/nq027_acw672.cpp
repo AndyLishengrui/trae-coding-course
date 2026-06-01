@@ -1,28 +1,13 @@
 #include <cstdio>
-
-int main()
-{
+int main() {
     double x;
     scanf("%lf", &x);
-
-    double sum = 0;
-    if (x > 2000)
-    {
-      double y = 3000;
-      if (x < 3000) y = x;
-      sum += (y - 2000) * 0.08;
-    }
-    if (x > 3000)
-    {
-      double y = 4500;
-      if (x < 4500) y = x;
-      sum += (y - 3000) * 0.18;
-    }
-    if (x > 4500) sum += (x - 4500) * 0.28;
-
-    if (sum == 0) printf("Isento");
-    else printf("R$ %.2lf\n", sum);
-
+    if (x <= 2000) { printf("Isento\n"); return 0; }
+    x -= 2000;
+    double t = 0;
+    if (x > 0) { double v = x < 1000 ? x : 1000; t += v * 0.08; x -= v; }
+    if (x > 0) { double v = x < 1500 ? x : 1500; t += v * 0.18; x -= v; }
+    if (x > 0) t += x * 0.28;
+    printf("R$ %.2lf\n", t);
     return 0;
-
 }

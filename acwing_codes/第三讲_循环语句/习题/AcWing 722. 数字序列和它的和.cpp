@@ -1,24 +1,15 @@
 #include <iostream>
-#include <algorithm>
-
 using namespace std;
-
-int main()
-{
-  int n, m;
-  while (cin >> n >> m, n > 0 && m > 0)
-  {
-    if (n > m) swap(n, m);
-
-    int sum = 0;
-    for (int i = n; i <= m; i ++ )
-    {
-      cout << i << ' ';
-      sum += i;
+int main() {
+    int m, n;
+    while (cin >> m >> n, m > 0 && n > 0) {
+        if (m > n) swap(m, n);
+        int sum = 0;
+        for (int i = m; i <= n; i++) {
+            cout << i << " ";
+            sum += i;
+        }
+        cout << "Sum=" << sum << endl;
     }
-
-    cout << "Sum=" << sum << endl;
-  }
-
-  return 0;
+    return 0;
 }
