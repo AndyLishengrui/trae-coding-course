@@ -9,6 +9,7 @@ from .views import (
     ProblemAssignmentAdminAPI,
     MoveProblemAdminAPI,
     SyncCourseContestAPI,
+    ProblemTitlesAPI,
 )
 
 urlpatterns = [
@@ -17,4 +18,5 @@ urlpatterns = [
     url(r"^groups/problems/?$", ProblemAssignmentAdminAPI.as_view(), name="admin_course_problems"),
     url(r"^groups/problems/move/?$", MoveProblemAdminAPI.as_view(), name="admin_course_problem_move"),
     url(r"^groups/sync_contest/?$", SyncCourseContestAPI.as_view(), name="admin_course_sync_contest"),
+    url(r"^groups/problem_titles/?$", ProblemTitlesAPI.as_view(), name="admin_problem_titles"),
 ]
