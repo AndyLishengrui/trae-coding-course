@@ -1,5 +1,5 @@
 #!/bin/bash
-# 课程管理模块部署脚本
+# 教材管理模块部署脚本
 # 将 courses_app 安装到 OJ 后端容器中
 
 set -e

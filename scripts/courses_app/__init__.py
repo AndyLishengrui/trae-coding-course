@@ -1,2 +1,2 @@
-# courses_app - 课程管理模块
+# courses_app - 教材管理模块
 # JSON-based persistence, no database changes

@@ -1,8 +1,8 @@
 """
-课程模块 API Views — 公开API
+教材模块 API Views — 公开API
 - Public APIs: /api/courses, /api/course/detail
 - Admin APIs: 已迁移至 problem/views/admin.py（基于Django ORM）
-- 课程→章节→题目三级结构，使用 Course/Chapter/ChapterProblem 模型
+- 教材→章节→题目三级结构，使用 Course/Chapter/ChapterProblem 模型
 """
 from django.db.models import Prefetch
 from utils.api import APIView

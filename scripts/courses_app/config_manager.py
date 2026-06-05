@@ -1,5 +1,5 @@
 """
-课程配置持久化层 - 基于JSON文件的线程安全读写
+教材配置持久化层 - 基于JSON文件的线程安全读写
 Config file: /app/data/groups_config.json
 """
 import json
@@ -61,14 +61,14 @@ def _ensure_loaded():
 # ==================== Course CRUD ====================
 
 def get_all_courses():
-    """返回所有课程列表（包含章节和题目）"""
+    """返回所有教材列表（包含章节和题目）"""
     _ensure_loaded()
     with _lock:
         return list(_cache.get("courses", []))
 
 
 def get_course(course_id):
-    """根据ID获取单个课程"""
+    """根据ID获取单个教材"""
     _ensure_loaded()
     with _lock:
         for c in _cache.get("courses", []):
@@ -78,7 +78,7 @@ def get_course(course_id):
 
 
 def create_course(course_data):
-    """创建新课程，自动分配ID"""
+    """创建新教材，自动分配ID"""
     _ensure_loaded()
     with _lock:
         courses = _cache.setdefault("courses", [])
@@ -97,7 +97,7 @@ def create_course(course_data):
 
 
 def update_course(course_id, updates):
-    """更新课程属性"""
+    """更新教材属性"""
     _ensure_loaded()
     with _lock:
         for c in _cache["courses"]:
@@ -111,7 +111,7 @@ def update_course(course_id, updates):
 
 
 def delete_course(course_id):
-    """删除课程及其所有章节"""
+    """删除教材及其所有章节"""
     _ensure_loaded()
     with _lock:
         _cache["courses"] = [c for c in _cache["courses"] if c["id"] != course_id]
@@ -122,13 +122,13 @@ def delete_course(course_id):
 # ==================== Chapter CRUD ====================
 
 def get_chapters(course_id):
-    """获取课程的所有章节"""
+    """获取教材的所有章节"""
     course = get_course(course_id)
     return list(course.get("chapters", [])) if course else []
 
 
 def _find_chapter(course, chapter_id):
-    """在课程中查找章节，返回(chapter_dict, index)或(None, -1)"""
+    """在教材中查找章节，返回(chapter_dict, index)或(None, -1)"""
     for i, ch in enumerate(course.get("chapters", [])):
         if ch["id"] == chapter_id:
             return ch, i
@@ -136,7 +136,7 @@ def _find_chapter(course, chapter_id):
 
 
 def create_chapter(course_id, chapter_data):
-    """在课程中创建新章节"""
+    """在教材中创建新章节"""
     _ensure_loaded()
     with _lock:
         for c in _cache["courses"]:
