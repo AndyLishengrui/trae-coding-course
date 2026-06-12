@@ -3,18 +3,18 @@
   "title": "AcWing 898",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 898</p>"
+    "value": "<p>给定一个如下图所示的数字三角形，从顶部出发，在每一结点可以选择移动至其左下方的结点或移动至其右下方的结点，一直走到底层，要求找出一条路径，使路径上的数字的和最大。<br/>        7<br/>      3   8<br/>    8   1   0<br/>  2   7   4   4<br/>4   5   2   6   5</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含整数n，表示数字三角形的层数。<br/>接下来n行，每行包含若干整数，其中第 i 行表示数字三角形第 i 层包含的整数。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>输出一个整数，表示最大的路径数字和。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "5\n7\n3 8\n8 1 0 \n2 7 4 4\n4 5 2 6 5",
+      "output": "30"
     }
   ],
   "template": {},

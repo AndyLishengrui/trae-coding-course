@@ -3,18 +3,18 @@
   "title": "AcWing 854",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 854</p>"
+    "value": "<p>给定一个 n 个点 m 条边的有向图，图中可能存在重边和自环，边权可能为负数。<br/>再给定 k 个询问，每个询问包含两个整数 x 和 y，表示查询从点 x 到点 y 的最短距离，如果路径不存在，则输出 impossible。<br/>数据保证图中不存在负权回路。<br/>数据范围<br/>1≤n≤200,<br/>1≤k≤n^2,<br/>1≤m≤20000,<br/>图中涉及边长绝对值均不超过 10000。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含三个整数 n, m, k。<br/>接下来 m 行，每行包含三个整数 x, y, z，表示存在一条从点 x 到点 y 的有向边，边长为 z。<br/>接下来 k 行，每行包含两个整数 x, y，表示询问点 x 到点 y 的最短距离。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共 k 行，每行输出一个整数，表示询问的结果，若询问两点间不存在路径，则输出 impossible。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "3 3 2\n1 2 1\n2 3 2\n1 3 1\n2 1\n1 3",
+      "output": "impossible\n1"
     }
   ],
   "template": {},

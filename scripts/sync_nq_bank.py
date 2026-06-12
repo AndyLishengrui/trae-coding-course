@@ -19,6 +19,8 @@ from pathlib import Path
 
 BOOK = Path(__file__).parent.parent.resolve()
 TEXTBOOK = BOOK / "textbook"
+ALL_PROBLEMS_DATA = BOOK / "scripts/all_problems_data.json"
+BASELINE_DATA = None
 CONTEST_ID = 354
 TOKEN = "63310cdaec0bc93b08f856568e125e75"
 
@@ -88,34 +90,32 @@ class OJ:
             "problem_id": problem_id, "code": code, "language": language
         })
 
-# ---- Textbook Description Extractor ----
-def get_desc(html_path, acw_id):
-    if not html_path.exists():
+def _text_to_html(text: str) -> str:
+    text = (text or "").strip()
+    if not text:
+        return "<p></p>"
+    paragraphs = [p.strip() for p in re.split(r"\n\s*\n", text) if p.strip()]
+    if not paragraphs:
+        return "<p></p>"
+    return "".join(f"<p>{p.replace(chr(10), '<br/>')}</p>" for p in paragraphs)
+
+
+def get_desc_from_baseline(ch, acw):
+    global BASELINE_DATA
+    if not ALL_PROBLEMS_DATA.exists():
         return None
-    html = html_path.read_text(encoding='utf-8')
-    # Find problem block for this ACW
-    pat = rf'AcWing {acw_id}.*?</div>\s*<div class="problem-desc">(.*?)</div>'
-    m = re.search(pat, html, re.DOTALL)
-    if not m: return None
-    rest = html[m.start():]
-    story = m.group(1).strip()
-    def _extract(label, rest_text):
-        p = rf'<span class="tag {label}">[^<]+</span></td><td class="spec-value">(.*?)</td>'
-        mm = re.search(p, rest_text, re.DOTALL)
-        return mm.group(1).strip() if mm else ""
-    inp = _extract("in", rest)
-    out = _extract("out", rest)
-    lim = _extract("lim", rest)
-    sin = re.search(r'<div class="col-label">输入</div><pre>(.*?)</pre>', rest, re.DOTALL)
-    sout = re.search(r'<div class="col-label">输出</div><pre>(.*?)</pre>', rest, re.DOTALL)
-    sample_in = sin.group(1).strip() if sin else ""
-    sample_out = sout.group(1).strip() if sout else ""
+    if BASELINE_DATA is None:
+        with open(ALL_PROBLEMS_DATA, encoding="utf-8") as f:
+            BASELINE_DATA = json.load(f)
+    item = BASELINE_DATA.get(str(ch), {}).get(str(acw))
+    if not item:
+        return None
     return {
-        "description": story,
-        "input_description": inp,
-        "output_description": out,
-        "hint": lim,
-        "samples": [{"input": sample_in, "output": sample_out}],
+        "description": _text_to_html(item.get("description", "")),
+        "input_description": _text_to_html(item.get("input_description", "")),
+        "output_description": _text_to_html(item.get("output_description", "")),
+        "hint": item.get("hint", ""),
+        "samples": item.get("samples", []) or [],
     }
 
 # ---- Code Finder ----
@@ -139,8 +139,8 @@ def sync_one(oj, nq_id, info, html_path, force=False):
     src = oj.get_problem(src_pid)
     if not src: return {"status": "no_source"}
 
-    # Get textbook description
-    desc = get_desc(html_path, acw)
+    # Get baseline description (full problem statement fields)
+    desc = get_desc_from_baseline(ch, acw)
     if not desc: return {"status": "no_desc"}
 
     result = {"nq": nq_id, "acw": acw}

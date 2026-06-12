@@ -3,18 +3,18 @@
   "title": "走方格",
   "description": {
     "format": "html",
-    "value": "<p>n×m网格，从(0,0)到(n,m)，只能向右或向下，求路径数。</p>"
+    "value": "<p>给定 n x m 的方格阵，从左上角 (0, 0) 开始，每次只能往右或往下走一个单位距离，求走到右下角 (n, m) 的走法数量。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>n m</p>"
+    "value": "<p>一行两个整数 n 和 m。<br/>数据范围：1 ≤ n, m ≤ 10</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>路径数</p>"
+    "value": "<p>一个整数表示走法数量。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "2 3",
-      "output": "10"
+      "input": "2 3\n",
+      "output": "10\n"
     }
   ],
   "template": {},

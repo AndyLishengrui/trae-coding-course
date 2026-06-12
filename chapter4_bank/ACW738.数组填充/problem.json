@@ -3,18 +3,18 @@
   "title": "数组填充",
   "description": {
     "format": "html",
-    "value": "<p>给定一个整数V，构造一个长度为10的数组，第0个元素是V，此后每个元素是前一个的两倍。</p>"
+    "value": "<p>输入一个整数 V，输出一个长度为 10 的数组 N，其中 N[0] = V，每个后续元素的值都为前一个元素的值的 2 倍。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>一个整数V。</p>"
+    "value": "<p>输入一行，包含一个整数 V（1 ≤ V ≤ 50）。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>10行，每行\"N[i] = X\"。</p>"
+    "value": "<p>输出数组中的所有元素，每个元素占一行，格式为 N[i] = x，其中 i 为数组下标（从 0 开始），x 为对应的数值。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "1",
-      "output": "N[0] = 1\nN[1] = 2\nN[2] = 4\n..."
+      "input": "1\n",
+      "output": "N[0] = 1\nN[1] = 2\nN[2] = 4\nN[3] = 8\nN[4] = 16\nN[5] = 32\nN[6] = 64\nN[7] = 128\nN[8] = 256\nN[9] = 512\n"
     }
   ],
   "template": {},

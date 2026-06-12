@@ -3,18 +3,18 @@
   "title": "数组排序",
   "description": {
     "format": "html",
-    "value": "<p>对数组排序后输出。</p>"
+    "value": "<p>编写函数 void sort(int a[], int l, int r) 将 a[l] ~ a[r] 从小到大排序并输出排序后的数组 a。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>N+数组</p>"
+    "value": "<p>第一行 n, l, r 分别表示数组长度、排序起始和结束位置；<br/>第二行 n 个整数为数组 a。<br/>数据范围：0 ≤ l ≤ r < n ≤ 1000</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>升序数组</p>"
+    "value": "<p>一行 n 个整数表示排序后的数组 a。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "5\n3 1 4 1 5",
-      "output": "1 1 3 4 5"
+      "input": "5 2 4\n4 5 1 3 2\n",
+      "output": "4 5 1 2 3\n"
     }
   ],
   "template": {},

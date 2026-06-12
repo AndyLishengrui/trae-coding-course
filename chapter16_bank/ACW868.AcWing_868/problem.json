@@ -3,18 +3,18 @@
   "title": "AcWing 868",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 868</p>"
+    "value": "<p>给定一个正整数n，请你求出 1∼n中质数的个数。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共一行，包含整数n。<br/>数据范围<br/>1≤n≤10^6</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共一行，包含一个整数，表示 1∼n中质数的个数。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "8",
+      "output": "4"
     }
   ],
   "template": {},

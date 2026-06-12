@@ -3,18 +3,18 @@
   "title": "AcWing 860",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 860</p>"
+    "value": "<p>给定一个n个点m条边的无向图，图中可能存在重边和自环。<br/>请你判断这个图是否是二分图。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含两个整数n和m。<br/>接下来m行，每行包含两个整数u和v，表示点u和点v之间存在一条边。<br/>数据范围<br/>1≤n,m≤10^5</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>如果给定图是二分图，则输出Yes，否则输出No。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "4 4\n1 3\n1 4\n2 3\n2 4",
+      "output": "Yes"
     }
   ],
   "template": {},

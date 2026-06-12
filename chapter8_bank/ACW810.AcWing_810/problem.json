@@ -3,18 +3,18 @@
   "title": "AcWing 810",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 810</p>"
+    "value": "<p>输入一个整数x，请你编写一个函数 int abs(int x)，输出x的绝对值。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共一行，包含一个整数x。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共一行，包含x的绝对值。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "-5",
+      "output": "5"
     }
   ],
   "template": {},

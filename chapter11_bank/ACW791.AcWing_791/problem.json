@@ -3,18 +3,18 @@
   "title": "AcWing 791",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 791</p>"
+    "value": "<p>给定两个正整数，计算它们的和。</p><p>数据范围：1≤整数长度≤100000</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共两行，每行包含一个整数。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共一行，包含所求的和。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "12\n23",
+      "output": "35"
     }
   ],
   "template": {},

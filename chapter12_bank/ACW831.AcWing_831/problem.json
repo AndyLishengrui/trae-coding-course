@@ -3,18 +3,18 @@
   "title": "AcWing 831",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 831</p>"
+    "value": "<p>给定一个模式串S，以及一个模板串P，所有字符串中只包含大小写英文字母以及阿拉伯数字。<br/>模板串P在模式串S中多次作为子串出现。<br/>求出模板串P在模式串S中所有出现的位置的起始下标。<br/>数据范围：<br/>1≤N≤10^5<br/>1≤M≤10^6</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行输入整数N，表示字符串P的长度。<br/>第二行输入字符串P。<br/>第三行输入整数M，表示字符串S的长度。<br/>第四行输入字符串S。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共一行，输出所有出现位置的起始下标（下标从0开始计数），整数之间用空格隔开。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "3\naba\n5\nababa",
+      "output": "0 2"
     }
   ],
   "template": {},

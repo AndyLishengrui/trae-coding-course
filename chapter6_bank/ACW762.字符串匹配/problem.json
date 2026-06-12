@@ -3,18 +3,18 @@
   "title": "字符串匹配",
   "description": {
     "format": "html",
-    "value": "<p>给定两个字符串，判断str1是否包含str2作为连续子串。</p>"
+    "value": "<p>给定两个长度相同的字符串 a 和字符串 b。如果在某个位置 i 上，满足字符串 a 上的字符 a[i] 和字符串 b 上的字符 b[i] 相同，那么这个位置上的字符就是匹配的。<br/>如果两个字符串的匹配位置的数量与字符串总长度的比值大于或等于 k，则称两个字符串是匹配的。现在请你判断给定的两个字符串是否匹配。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>两行：主串和模式串。</p>"
+    "value": "<p>第一行包含一个浮点数 k，第二行包含字符串 a，第三行包含字符串 b。输入的字符串中不包含空格。<br/>数据范围：0 < k ≤ 1，字符串的长度不超过 100。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>包含输出\"yes\"，否则\"no\"。</p>"
+    "value": "<p>如果两个字符串匹配，则输出yes。否则，输出no。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "abcdefg\ncde",
-      "output": "yes"
+      "input": "0.4\naaaa\nabed\n",
+      "output": "no\n"
     }
   ],
   "template": {},

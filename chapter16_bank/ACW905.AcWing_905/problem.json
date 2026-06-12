@@ -3,18 +3,18 @@
   "title": "AcWing 905",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 905</p>"
+    "value": "<p>给定N个闭区间[ai,bi]，请你在数轴上选择尽量少的点，使得每个区间内至少包含一个选出的点。<br/>输出选择的点的最小数量。<br/>位于区间端点上的点也算作区间内。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含整数N，表示区间数。<br/>接下来N行，每行包含两个整数ai,bi，表示一个区间的两个端点。<br/>数据范围<br/>1≤N≤10^5,<br/>−10^9≤ai≤bi≤10^9</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>输出一个整数，表示所需的点的最小数量。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "3\n-1 1\n2 4\n3 5",
+      "output": "2"
     }
   ],
   "template": {},

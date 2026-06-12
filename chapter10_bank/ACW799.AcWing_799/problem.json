@@ -3,18 +3,18 @@
   "title": "AcWing 799",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 799</p>"
+    "value": "<p>给定一个长度为n的整数序列，请找出最长的不包含重复数字的连续区间，输出它的长度。</p><p>数据范围：<br/>1≤n≤100000</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含整数n。<br/>第二行包含n个整数（均在0~100000范围内），表示整数序列。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共一行，包含一个整数，表示最长的不包含重复数字的连续子序列的长度。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "5\n1 2 2 3 5",
+      "output": "3"
     }
   ],
   "template": {},

@@ -3,18 +3,18 @@
   "title": "最大公约数",
   "description": {
     "format": "html",
-    "value": "<p>输入a,b求最大公约数。</p>"
+    "value": "<p>输入两个整数 a 和 b，请编写一个函数 int gcd(int a, int b)，计算并输出 a 和 b 的最大公约数。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>a b</p>"
+    "value": "<p>共一行，包含两个整数 a 和 b。<br/>数据范围：1 ≤ a, b ≤ 1000</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>gcd</p>"
+    "value": "<p>共一行，包含一个整数，表示 a 和 b 的最大公约数。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "12 16",
-      "output": "4"
+      "input": "12 16\n",
+      "output": "4\n"
     }
   ],
   "template": {},

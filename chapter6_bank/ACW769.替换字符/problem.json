@@ -3,18 +3,18 @@
   "title": "替换字符",
   "description": {
     "format": "html",
-    "value": "<p>将字符串中所有的特定字符替换为'#'。</p>"
+    "value": "<p>给定一个由大小写字母构成的字符串。把该字符串中特定的字符全部用字符 # 替换。请你输出替换后的字符串。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>第一行字符串。第二行要替换的字符。</p>"
+    "value": "<p>输入共两行。<br/>第一行包含一个长度不超过 30 的字符串。<br/>第二行包含一个字符，表示要替换的特定字符。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>替换后的字符串。</p>"
+    "value": "<p>输出共一行，为替换后的字符串。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "hello\no",
-      "output": "hell#"
+      "input": "hello\nl\n",
+      "output": "he##o\n"
     }
   ],
   "template": {},

@@ -3,18 +3,18 @@
   "title": "AcWing 800",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 800</p>"
+    "value": "<p>给定两个升序排序的有序数组A和B，以及一个目标值x。数组下标从0开始。<br/>请你求出满足A[i] + B[j] = x的数对(i, j)。<br/>数据保证有唯一解。<br/>数据范围：<br/>数组长度不超过100000。<br/>同一数组内元素各不相同。<br/>1≤数组元素≤10^9</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含三个整数n，m，x，分别表示A的长度，B的长度以及目标值x。<br/>第二行包含n个整数，表示数组A。<br/>第三行包含m个整数，表示数组B。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共一行，包含两个整数 i 和 j。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "4 5 6\n1 2 4 7\n3 4 6 8 9",
+      "output": "1 1"
     }
   ],
   "template": {},

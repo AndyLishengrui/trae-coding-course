@@ -3,18 +3,18 @@
   "title": "平方矩阵II",
   "description": {
     "format": "html",
-    "value": "<p>输入N，输出N×N矩阵。每个位置的值=|i-j|+1。</p>"
+    "value": "<p>输入整数 N，输出一个 N 阶的二维数组。<br/>数组的形式参照样例。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>多个整数N(0结束)。</p>"
+    "value": "<p>输入包含多行，每行包含一个整数 N。<br/>当输入行为 N = 0 时，表示输入结束，且该行无需作任何处理。<br/>数据范围0≤N≤100</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>N×N矩阵，每个数占3字符宽。</p>"
+    "value": "<p>对于每个输入整数 N，输出一个满足要求的 N 阶二维数组。<br/>每个数组占 N 行，每行包含 N 个用空格隔开的整数。<br/>每个数组输出完毕后，输出一个空行。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "3\n0",
-      "output": "  1  2  3\n  2  1  2\n  3  2  1"
+      "input": "1\n2\n3\n4\n5\n0",
+      "output": "1\n\n1 2\n2 1\n\n1 2 3\n2 1 2\n3 2 1\n\n1 2 3 4\n2 1 2 3\n3 2 1 2\n4 3 2 1\n\n1 2 3 4 5\n2 1 2 3 4\n3 2 1 2 3\n4 3 2 1 2\n5 4 3 2 1\n\n"
     }
   ],
   "template": {},

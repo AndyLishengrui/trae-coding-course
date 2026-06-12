@@ -3,18 +3,18 @@
   "title": "AcWing 801",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 801</p>"
+    "value": "<p>给定一个长度为n的数列，请你求出数列中每个数的二进制表示中1的个数。</p><p>数据范围：1≤n≤100000,0≤数列中元素的值≤10^9</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含整数n。<br/>第二行包含n个整数，表示整个数列。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共一行，包含n个整数，其中的第 i 个数表示数列中的第 i 个数的二进制表示中1的个数。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "5\n1 2 3 4 5",
+      "output": "1 1 2 1 2"
     }
   ],
   "template": {},

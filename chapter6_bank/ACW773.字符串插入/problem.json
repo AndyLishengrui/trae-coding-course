@@ -3,18 +3,18 @@
   "title": "字符串插入",
   "description": {
     "format": "html",
-    "value": "<p>给定字符串str和substr。将substr插入到str中（从str正中间位置开始插入）。</p>"
+    "value": "<p>有两个不包含空白字符的字符串 str 和 substr，str 的字符个数不超过 10，substr 的字符个数为 3。<br/>将 substr 插入到 str 中 ASCII 码最大的那个字符后面，若有多个最大则只考虑第一个。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>两行：str和substr。</p>"
+    "value": "<p>输入包括若干行，每一行为一组测试数据，格式为 str substr。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>插入后的字符串。</p>"
+    "value": "<p>对于每一组测试数据，输出插入之后的字符串。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "hello\nX",
-      "output": "heXllo"
+      "input": "abcab eee\n12343 555\n",
+      "output": "abceeeab\n12345553\n"
     }
   ],
   "template": {},

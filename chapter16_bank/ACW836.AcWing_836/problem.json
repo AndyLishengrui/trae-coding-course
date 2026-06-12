@@ -3,18 +3,18 @@
   "title": "AcWing 836",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 836</p>"
+    "value": "<p>一共有n个数，编号是1~n，最开始每个数各自在一个集合中。<br/>现在要进行m个操作，操作共有两种：<br/>“M a b”，将编号为a和b的两个数所在的集合合并，如果两个数已经在同一个集合中，则忽略这个操作；“Q a b”，询问编号为a和b的两个数是否在同一个集合中；数据范围：1≤n,m≤10^5</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行输入整数n和m。<br/>接下来m行，每行包含一个操作指令，指令为“M a b”或“Q a b”中的一种。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>对于每个询问指令”Q a b”，都要输出一个结果，如果a和b在同一集合内，则输出“Yes”，否则输出“No”。<br/>每个结果占一行。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "4 5\nM 1 2\nM 3 4\nQ 1 2\nQ 1 3\nQ 3 4",
+      "output": "Yes\nNo\nYes"
     }
   ],
   "template": {},

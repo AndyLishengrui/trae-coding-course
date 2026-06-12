@@ -3,18 +3,18 @@
   "title": "输出字符串",
   "description": {
     "format": "html",
-    "value": "<p>输出字符串中每个字符的ASCII码后继字符（'a'→'b', 'z'→'{')。</p>"
+    "value": "<p>给定字符串 a，请按照如下要求构造字符串 b：<br/>对于 a 的每个位置 i（从第 1 个字符到倒数第二个字符），令 b[i] 为字符，其 ASCII 值等于 a[i] 和 a[i+1] 的 ASCII 值之和；<br/>最后 b 的最后一个字符的 ASCII 值等于 a 的最后一个字符和第一个字符的 ASCII 值之和。<br/>输出字符串 b。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>一行字符串。</p>"
+    "value": "<p>输入共一行，包含字符串 a（字符串长度范围：3 ~ 100），其中每个字符的 ASCII 值均不超过 63（例如空格、!、\"、#、...、?）。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>每字符的后继。</p>"
+    "value": "<p>输出一行，表示字符串 b。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "abc",
-      "output": "bcd"
+      "input": "1 2 3\n",
+      "output": "QRRSd\n"
     }
   ],
   "template": {},

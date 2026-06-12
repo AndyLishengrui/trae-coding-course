@@ -3,18 +3,18 @@
   "title": "AcWing 786",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 786</p>"
+    "value": "<p>给定一个长度为n的整数数列，以及一个整数k，请用快速选择算法求出数列的第k小的数是多少。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含两个整数 n 和 k。<br/>第二行包含 n 个整数（所有整数均在1--10^9范围内），表示整数数列。<br/>数据范围:1≤n≤100000,1≤k≤n</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>输出一个整数，表示数列的第k小数。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "5 3\n2 4 1 5 3",
+      "output": "3"
     }
   ],
   "template": {},

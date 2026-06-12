@@ -3,18 +3,18 @@
   "title": "乘法表",
   "description": {
     "format": "html",
-    "value": "<p>小鲁在背九九乘法表。给定一个整数N，请输出N的乘法表：从1×N到10×N。</p>"
+    "value": "<p>输入一个整数 N，输出 N 的乘法表，格式如下：<br/>1 x N = N<br/>2 x N = 2N<br/>...<br/>10 x N = 10N</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>一个整数N。</p>"
+    "value": "<p>一个整数 N。<br/>数据范围1<N<1000</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>10行，每行\"i x N = result\"。</p>"
+    "value": "<p>输出 N 的乘法表，具体形式参照输出样例。</p>"
   },
   "test_case_score": [
     {
@@ -77,7 +77,7 @@
   "samples": [
     {
       "input": "140",
-      "output": "1 x 140 = 140\n2 x 140 = 280\n...\n10 x 140 = 1400"
+      "output": "1 x 140 = 140\n2 x 140 = 280\n3 x 140 = 420\n4 x 140 = 560\n5 x 140 = 700\n6 x 140 = 840\n7 x 140 = 980\n8 x 140 = 1120\n9 x 140 = 1260\n10 x 140 = 1400"
     }
   ],
   "template": {},

@@ -3,18 +3,18 @@
   "title": "AcWing 837",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 837</p>"
+    "value": "<p>给定一个包含n个点（编号为1~n）的无向图，初始时图中没有边。<br/>现在要进行m个操作，操作共有三种：<br/>“C a b”，在点a和点b之间连一条边，a和b可能相等；“Q1 a b”，询问点a和点b是否在同一个连通块中，a和b可能相等；“Q2 a”，询问点a所在连通块中点的数量；数据范围:1≤n,m≤10^5</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行输入整数n和m。<br/>接下来m行，每行包含一个操作指令，指令为“C a b”，“Q1 a b”或“Q2 a”中的一种。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>对于每个询问指令”Q1 a b”，如果a和b在同一个连通块中，则输出“Yes”，否则输出“No”。<br/>对于每个询问指令“Q2 a”，输出一个整数表示点a所在连通块中点的数量<br/>每个结果占一行。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "5 5\nC 1 2\nQ1 1 2\nQ2 1\nC 2 5\nQ2 5",
+      "output": "Yes\n2\n3"
     }
   ],
   "template": {},

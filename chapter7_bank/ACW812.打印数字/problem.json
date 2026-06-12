@@ -3,18 +3,18 @@
   "title": "打印数字",
   "description": {
     "format": "html",
-    "value": "<p>写函数print(int a[],int size)打印数组。</p>"
+    "value": "<p>输入一个长度为 n 的数组 a 和一个整数 size，请编写一个函数 void print(int a[], int size)，打印数组 a 中的前 size 个数。<br/>注意：对于 Python 语言，print 是内置函数，所以本题中使用 print1D() 这个函数名，来避免跟内置函数产生冲突。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>N+数组</p>"
+    "value": "<p>第一行包含两个整数 n 和 size。<br/>第二行包含 n 个整数 a[i]，表示整个数组。<br/>数据范围：1 ≤ n ≤ 1000，1 ≤ size ≤ n</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>每行一个</p>"
+    "value": "<p>共一行，包含 size 个整数，表示数组的前 size 个数。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "",
-      "output": ""
+      "input": "5 3\n1 2 3 4 5\n",
+      "output": "1 2 3\n"
     }
   ],
   "template": {},

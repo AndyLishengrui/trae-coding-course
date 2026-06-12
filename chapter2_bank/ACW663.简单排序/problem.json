@@ -3,18 +3,18 @@
   "title": "简单排序",
   "description": {
     "format": "html",
-    "value": "<p>小鲁想把三个数从小到大排列。给定三个整数，输出它们按升序排列的结果。</p>"
+    "value": "<p>读取三个整数并按升序对它们进行排序。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>一行，三个整数。</p>"
+    "value": "<p>共一行，包含三个整数。<br/>数据范围<br/>−100≤输入整数≤100,输入整数各不相同。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>升序排列的三个数，空格隔开。</p>"
+    "value": "<p>首先，将三个整数按升序顺序输出，每行输出一个整数。<br/>然后，输出一个空行。<br/>紧接着，将三个整数按原输入顺序输出，每行输出一个整数。</p>"
   },
   "test_case_score": [
     {
@@ -77,7 +77,7 @@
   "samples": [
     {
       "input": "7 21 -14",
-      "output": "-14 7 21"
+      "output": "-14\n7\n21\n\n7\n21\n-14"
     }
   ],
   "template": {},

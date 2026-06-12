@@ -3,18 +3,18 @@
   "title": "AcWing 846",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 846</p>"
+    "value": "<p>给定一颗树，树中包含n个结点（编号1~n）和n-1条无向边。<br/>请你找到树的重心，并输出将重心删除后，剩余各个连通块中点数的最大值。<br/>重心定义：重心是指树中的一个结点，如果将这个点删除后，剩余各个连通块中点数的最大值最小，那么这个节点被称为树的重心。<br/>数据范围：1≤n≤10^5</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含整数n，表示树的结点数。<br/>接下来n-1行，每行包含两个整数a和b，表示点a和点b之间存在一条边。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>输出一个整数m，表示重心的所有的子树中最大的子树的结点数目。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "9\n1 2\n1 7\n1 4\n2 8\n2 5\n4 3\n3 9\n4 6",
+      "output": "4"
     }
   ],
   "template": {},

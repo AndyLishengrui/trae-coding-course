@@ -3,18 +3,18 @@
   "title": "跳台阶",
   "description": {
     "format": "html",
-    "value": "<p>N级台阶，每次跳1或2级，求跳法数。</p>"
+    "value": "<p>一个楼梯有 n 级台阶，每次可走一级或两级，求从第 0 级走到第 n 级的方案数。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>N</p>"
+    "value": "<p>一行一个整数 n。<br/>数据范围：1 ≤ n ≤ 15</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>方法数</p>"
+    "value": "<p>一个整数表示方案数。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "5",
-      "output": "8"
+      "input": "5\n",
+      "output": "8\n"
     }
   ],
   "template": {},

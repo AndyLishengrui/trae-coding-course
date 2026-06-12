@@ -3,18 +3,18 @@
   "title": "最长单词",
   "description": {
     "format": "html",
-    "value": "<p>找出英文句子中最长的单词。如果有多个，输出第一个。</p>"
+    "value": "<p>一个以.结尾的简单英文句子，单词之间用单个空格分隔，没有缩写形式和其它特殊形式，求句子中的最长单词。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>一个英文句子。</p>"
+    "value": "<p>输入一行字符串，表示这个简单英文句子，长度不超过 500。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>最长的单词。</p>"
+    "value": "<p>该句子中最长的单词。如果多于一个，则输出第一个。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "I love programming",
-      "output": "programming"
+      "input": "I am a student of Peking University.\n",
+      "output": "University\n"
     }
   ],
   "template": {},

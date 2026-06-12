@@ -3,18 +3,18 @@
   "title": "平方矩阵I",
   "description": {
     "format": "html",
-    "value": "<p>输入整数N，输出N×N的回字形矩阵。每个位置的值=min(i+1,j+1,N-i,N-j)。</p>"
+    "value": "<p>输入整数 N，输出一个 N 阶的回字形状二维数组。<br/>数组的最外层为 1，次外层为 2，以此类推。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>多个整数N(0结束)。</p>"
+    "value": "<p>输入包含多行，每行包含一个整数 N。<br/>当输入行为 N = 0 时，表示输入结束，且该行无需作任何处理。<br/>数据范围0≤N≤100</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>N×N矩阵，每个数占3字符宽。</p>"
+    "value": "<p>对于每个输入整数 N，输出一个满足要求的 N 阶二维数组。每个数组占 N 行，每行包含 N 个用空格隔开的整数。每个数组输出完毕后，输出一个空行。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "1\n2\n3\n0",
-      "output": "  1\n\n  1  1\n  1  1\n\n  1  1  1\n  1  2  1\n  1  1  1"
+      "input": "1\n2\n3\n4\n0",
+      "output": "1\n\n1 1\n1 1\n\n1 1 1\n1 2 1\n1 1 1\n\n1 1 1 1\n1 2 2 1\n1 2 2 1\n1 1 1 1\n"
     }
   ],
   "template": {},

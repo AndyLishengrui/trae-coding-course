@@ -3,18 +3,18 @@
   "title": "区间2",
   "description": {
     "format": "html",
-    "value": "<p>小鲁在统计区间内的数据。给定N和N个整数，统计落在[10,20]区间内和区间外的数的个数。</p>"
+    "value": "<p>读取 N 个整数 X1,X2,…,XN，判断这 N 个整数中有多少个在 [10,20] 的范围内，有多少个在范围外。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>第一行N。接下来N行，每行一个整数。</p>"
+    "value": "<p>第一行包含整数 N，表示共有 N 个整数需要进行判断。<br/>接下来 N 行，每行包含一个整数 Xi。<br/>数据范围<br/>1≤N≤10000,<br/>−10^7<Xi<10^7</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>\"X in\"换行\"Y out\"。</p>"
+    "value": "<p>第一行输出x in，其中 x 为在范围内的整数的数量。第二行输出y out，其中 y 为在范围外的整数的数量。</p>"
   },
   "test_case_score": [
     {

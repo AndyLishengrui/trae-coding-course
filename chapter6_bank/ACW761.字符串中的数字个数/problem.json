@@ -3,18 +3,18 @@
   "title": "字符串中的数字个数",
   "description": {
     "format": "html",
-    "value": "<p>统计给定字符串中数字字符('0'-'9')的个数。</p>"
+    "value": "<p>输入一行字符（长度不超过 100），请你统计一下其中的数字字符的个数。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>一行字符串。</p>"
+    "value": "<p>输入一行字符。字符中可能包含空格。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>数字字符的个数。</p>"
+    "value": "<p>输出一个整数，表示该行字符中数字字符的个数。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "hello2024world",
-      "output": "4"
+      "input": "I am 18 years old this year.\n",
+      "output": "2\n"
     }
   ],
   "template": {},

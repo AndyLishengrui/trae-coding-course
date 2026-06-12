@@ -3,18 +3,18 @@
   "title": "AcWing 21",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 21</p>"
+    "value": "<p>输入一个整数n，要求斐波那契数列的第n项。<br/>假定从0开始，第0项为0。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>输入一个整数n。<br/>数据范围：0 ≤ n ≤ 39</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>返回斐波那契数列的第n项。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "5\n",
+      "output": "5\n"
     }
   ],
   "template": {},

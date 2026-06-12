@@ -1,90 +1,90 @@
 {
-    "display_id": "ACW614",
-    "title": "最大值",
-    "description": {
-        "format": "html",
-        "value": "<p>输入三个整数a、b、c，输出其中的最大者。</p>"
+  "display_id": "ACW614",
+  "title": "最大值",
+  "description": {
+    "format": "html",
+    "value": "<p>输入三个整数a、b、c，输出其中的最大者。</p>"
+  },
+  "tags": [
+    "基础语法",
+    "最值"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一行，三个整数，用空格隔开。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一个整数，即三个数中的最大值。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
     },
-    "tags": [
-        "基础语法",
-        "最值"
-    ],
-    "input_description": {
-        "format": "html",
-        "value": "<p>一行，三个整数，用空格隔开。</p>"
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
     },
-    "output_description": {
-        "format": "html",
-        "value": "<p>一行，格式为：\"{max_value} eh o maior\"，输出三个数中的最大值。</p>"
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
     },
-    "test_case_score": [
-        {
-            "score": 10,
-            "input_name": "1.in",
-            "output_name": "1.out"
-        },
-        {
-            "score": 10,
-            "input_name": "2.in",
-            "output_name": "2.out"
-        },
-        {
-            "score": 10,
-            "input_name": "3.in",
-            "output_name": "3.out"
-        },
-        {
-            "score": 10,
-            "input_name": "4.in",
-            "output_name": "4.out"
-        },
-        {
-            "score": 10,
-            "input_name": "5.in",
-            "output_name": "5.out"
-        },
-        {
-            "score": 10,
-            "input_name": "6.in",
-            "output_name": "6.out"
-        },
-        {
-            "score": 10,
-            "input_name": "7.in",
-            "output_name": "7.out"
-        },
-        {
-            "score": 10,
-            "input_name": "8.in",
-            "output_name": "8.out"
-        },
-        {
-            "score": 10,
-            "input_name": "9.in",
-            "output_name": "9.out"
-        },
-        {
-            "score": 10,
-            "input_name": "10.in",
-            "output_name": "10.out"
-        }
-    ],
-    "hint": {
-        "format": "html",
-        "value": "<a href=\"https://www.acwing.com/problem/content/614/\" target=\"_blank\">原题链接</a>"
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
     },
-    "time_limit": 1000,
-    "memory_limit": 256,
-    "samples": [
-        {
-            "input": "7 14 106",
-            "output": "106 eh o maior"
-        }
-    ],
-    "template": {},
-    "spj": null,
-    "rule_type": "OI",
-    "source": "AcWing 614 | NQ014 | 第1章 程序设计的第一个脚印",
-    "answers": [],
-    "allow_public_test_case_download": false
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/614/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "7 14 106",
+      "output": "106"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "source": "AcWing 614 | NQ014 | 第1章 程序设计的第一个脚印",
+  "answers": [],
+  "allow_public_test_case_download": false
 }

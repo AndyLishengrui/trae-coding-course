@@ -3,18 +3,18 @@
   "title": "AcWing 798",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 798</p>"
+    "value": "<p>输入一个n行m列的整数矩阵，再输入q个操作，每个操作包含五个整数x1, y1, x2, y2, c，其中(x1, y1)和(x2, y2)表示一个子矩阵的左上角坐标和右下角坐标。<br/>每个操作都要将选中的子矩阵中的每个元素的值加上c。<br/>请你将进行完所有操作后的矩阵输出。<br/>数据范围：<br/>1≤n,m≤1000 ,1≤q≤100000,<br/>1≤x1≤x2≤n,1≤y1≤y2≤m,<br/>−1000≤c≤1000,−1000≤矩阵内元素的值≤1000</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含整数n,m,q。<br/>接下来n行，每行包含m个整数，表示整数矩阵。<br/>接下来q行，每行包含5个整数x1, y1, x2, y2, c，表示一个操作。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共 n 行，每行 m 个整数，表示所有操作进行完毕后的最终矩阵。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "3 4 3\n1 2 2 1\n3 2 2 1\n1 1 1 1\n1 1 2 2 1\n1 3 2 3 2\n3 1 3 4 1",
+      "output": "2 3 4 1\n4 3 4 1\n2 2 2 2"
     }
   ],
   "template": {},

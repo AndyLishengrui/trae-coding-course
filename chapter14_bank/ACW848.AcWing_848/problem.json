@@ -3,18 +3,18 @@
   "title": "AcWing 848",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 848</p>"
+    "value": "<p>给定一个n个点m条边的有向图，点的编号是1到n，图中可能存在重边和自环。<br/>请输出任意一个该有向图的拓扑序列，如果拓扑序列不存在，则输出-1。<br/>若一个由图中所有点构成的序列A满足：对于图中的每条边(x, y)，x在A中都出现在y之前，则称A是该图的一个拓扑序列。<br/>数据范围：1≤n,m≤10^5</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含两个整数n和m<br/>接下来m行，每行包含两个整数x和y，表示存在一条从点x到点y的有向边(x, y)。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共一行，如果存在拓扑序列，则输出拓扑序列。<br/>否则输出-1。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "3 3\n1 2\n2 3\n1 3",
+      "output": "1 2 3"
     }
   ],
   "template": {},

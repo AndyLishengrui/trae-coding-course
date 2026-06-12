@@ -3,18 +3,18 @@
   "title": "AcWing 875",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 875</p>"
+    "value": "<p>给定n组ai, bi, pi，对于每组数据，求出a^b i mod p i的值。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含整数n。<br/>接下来n行，每行包含三个整数ai, bi, pi。<br/>数据范围<br/>1≤n≤100000<br/>1≤ai, bi, pi≤2×10^9</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>对于每组数据，输出一个结果，表示a^b i mod p i的值。<br/>每个结果占一行。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "5\n1326 8312 7553\n1550 7708 3792\n500 6795 6235\n6880 7895 7532\n1904 9984 7790",
+      "output": "2613\n3520\n1785\n7244\n5346"
     }
   ],
   "template": {},

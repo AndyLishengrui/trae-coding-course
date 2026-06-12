@@ -3,18 +3,18 @@
   "title": "斐波那契数列",
   "description": {
     "format": "html",
-    "value": "<p>小鲁在学数列。斐波那契数列的前两项是0和1，之后每一项都是前两项之和。给定N，输出前N项。</p>"
+    "value": "<p>输入整数 T 表示共有 T 个测试数据。接下来 T 行，每行输入一个整数 N（0 ≤ N ≤ 60）。<br/>斐波那契数列定义为：Fib(0)=0, Fib(1)=1，从 Fib(2) 开始，Fib(N)=Fib(N-1)+Fib(N-2)。<br/>对于每个 N，输出格式为Fib(N) = x，其中 x 为第 N 项的值。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>一个整数N（1≤N≤60）。</p>"
+    "value": "<p>第一行输入 T；接下来 T 行，每行包含一个整数 N，数据范围：0 ≤ N ≤ 60</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>一行，空格隔开的N个整数。</p>"
+    "value": "<p>对于每组测试数据，输出一行结果，格式为Fib(N) = x</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "5",
-      "output": "0 1 1 2 3"
+      "input": "3\n0\n4\n2\n",
+      "output": "Fib(0) = 0\nFib(4) = 3\nFib(2) = 1\n"
     }
   ],
   "template": {},

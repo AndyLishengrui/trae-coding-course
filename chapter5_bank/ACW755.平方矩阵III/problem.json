@@ -3,18 +3,18 @@
   "title": "平方矩阵III",
   "description": {
     "format": "html",
-    "value": "<p>输入N，输出N×N矩阵。每个位置的值=2^(i+j)。</p>"
+    "value": "<p>输入整数 N，输出一个 N 阶的二维数组 M，这个 N 阶二维数组满足 M[i][j] = 2^(i+j)。<br/>具体形式可参考样例。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>多个整数N(0结束)。</p>"
+    "value": "<p>输入包含多行，每行包含一个整数 N。当输入行为 N = 0 时，表示输入结束，且该行无需作任何处理。<br/>数据范围0≤N≤15</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>N×N矩阵，每个数右对齐到最大数的宽度+1。</p>"
+    "value": "<p>对于每个输入整数 N，输出一个满足要求的 N 阶二维数组。每个数组占 N 行，每行包含 N 个用空格隔开的整数，输出完毕后需再输出一个空行。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "3\n0",
-      "output": "  1  2  4\n  2  4  8\n  4  8 16"
+      "input": "1\n2\n3\n4\n5\n0",
+      "output": "1\n\n1 2\n2 4\n\n1 2 4\n2 4 8\n4 8 16\n\n1 2 4 8\n2 4 8 16\n4 8 16 32\n8 16 32 64\n\n1 2 4 8 16\n2 4 8 16 32\n4 8 16 32 64\n8 16 32 64 128\n16 32 64 128 256\n"
     }
   ],
   "template": {},

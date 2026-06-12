@@ -3,18 +3,18 @@
   "title": "AcWing 849",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 849</p>"
+    "value": "<p>给定一个n个点m条边的有向图，图中可能存在重边和自环，所有边权均为正值。<br/>请你求出1号点到n号点的最短距离，如果无法从1号点走到n号点，则输出-1。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含整数n和m。<br/>接下来m行每行包含三个整数x，y，z，表示存在一条从点x到点y的有向边，边长为z。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>输出一个整数，表示1号点到n号点的最短距离。<br/>如果路径不存在，则输出-1。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "3 3\n1 2 2\n2 3 1\n1 3 4",
+      "output": "3"
     }
   ],
   "template": {},

@@ -3,18 +3,18 @@
   "title": "只出现一次的字符",
   "description": {
     "format": "html",
-    "value": "<p>给定字符串，找出第一个只出现一次的字符。如果没有则输出\"no\"。</p>"
+    "value": "<p>给你一个只包含小写字母的字符串。请你判断是否存在只在字符串中出现过一次的字符。如果存在，输出满足条件的字符中位置最靠前的那个。如果没有，输出 no。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>一行字符串。</p>"
+    "value": "<p>共一行，包含一个由小写字母构成的字符串。数据保证字符串的长度不超过 100000。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>第一个只出现一次的字符或\"no\"。</p>"
+    "value": "<p>输出满足条件的第一个字符。如果没有，则输出 no。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "abaccdeff",
-      "output": "b"
+      "input": "abcabcd\n",
+      "output": "d\n"
     }
   ],
   "template": {},

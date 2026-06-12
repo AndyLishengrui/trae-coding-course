@@ -3,18 +3,18 @@
   "title": "AcWing 777",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 777</p>"
+    "value": "<p>给定两个字符串a和b，定义a × b为它们的连接。例如，如果a = \"abc\"而b = \"def\"，则a × b = \"abcdef\"。如果将连接考虑成乘法，一个非负整数的乘方将用一种通常的方式定义：a^0 = \"\"（空字符串），a^(n+1) = a × (a^n)。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>输入包含不超过 10 组测试样例，每组测试样例占一行。<br/>每组样例包含一个由小写字母构成的字符串s，s的长度不超过 100，且不包含空格。<br/>最后的测试样例后面将是一个点号作为一行。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>对于每一个s，需要输出最大的n，使得存在一个字符串a，让s = a^n。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "abcd\naaaa\nababab\n.\n",
+      "output": "1\n4\n3\n"
     }
   ],
   "template": {},

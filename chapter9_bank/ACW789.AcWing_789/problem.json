@@ -3,18 +3,18 @@
   "title": "AcWing 789",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 789</p>"
+    "value": "<p>给定一个按照升序排列的长度为n的整数数组，以及 q 个查询。<br/>对于每个查询，返回一个元素k的起始位置和终止位置（位置从0开始计数）。<br/>如果数组中不存在该元素，则返回“-1 -1”。<br/>数据范围<br/>1≤n≤100000<br/>1≤q≤10000<br/>1≤k≤10000</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含整数n和q，表示数组长度和询问个数。<br/>第二行包含n个整数（均在1~10000范围内），表示完整数组。<br/>接下来q行，每行包含一个整数k，表示一个询问元素。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共q行，每行包含两个整数，表示所求元素的起始位置和终止位置。<br/>如果数组中不存在该元素，则返回“-1 -1”。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "6 3\n1 2 2 3 3 4\n3\n4\n5",
+      "output": "3 4\n5 5\n-1 -1"
     }
   ],
   "template": {},

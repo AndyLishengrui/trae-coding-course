@@ -3,18 +3,18 @@
   "title": "字符串长度",
   "description": {
     "format": "html",
-    "value": "<p>给定一行字符串（可能含空格），输出其长度。</p>"
+    "value": "<p>给定一行长度不超过100的非空字符串，求出其实际长度（包括空格）。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>一行字符串。</p>"
+    "value": "<p>输入一行字符串，注意字符串中可能包含空格。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>字符串长度。</p>"
+    "value": "<p>输出一个整数，表示该字符串的长度。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "Hello World",
-      "output": "11"
+      "input": "I love Beijing.\n",
+      "output": "15\n"
     }
   ],
   "template": {},

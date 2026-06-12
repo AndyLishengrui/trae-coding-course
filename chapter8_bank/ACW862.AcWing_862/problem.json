@@ -3,18 +3,18 @@
   "title": "AcWing 862",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 862</p>"
+    "value": "<p>给定N个三元组(x,y,z)，每个三元组包含一个整数x、一个整数y和一个字符串z。按照x从小到大的顺序输出所有三元组。数据保证不同三元组的x值互不相同。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含整数N。接下来N行，每行包含一个整数x、一个整数y和一个由小写字母组成的字符串z。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共N行，按照x从小到大的顺序，每行输出一个三元组。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "3\n1 2 abc\n3 4 def\n2 1 ghi",
+      "output": "1 2 abc\n2 1 ghi\n3 4 def"
     }
   ],
   "template": {},

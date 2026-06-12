@@ -3,18 +3,18 @@
   "title": "AcWing 897",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 897</p>"
+    "value": "<p>给定两个长度分别为N和M的字符串A和B，求既是A的子序列又是B的子序列的字符串长度最长是多少。<br/>数据范围1≤N,M≤1000</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含两个整数N和M。<br/>第二行包含一个长度为N的字符串，表示字符串A。<br/>第三行包含一个长度为M的字符串，表示字符串B。<br/>字符串均由小写字母构成。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>输出一个整数，表示最大长度。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "4 5\nacbd\nabedc",
+      "output": "3"
     }
   ],
   "template": {},

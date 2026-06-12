@@ -3,18 +3,18 @@
   "title": "区间",
   "description": {
     "format": "html",
-    "value": "<p>小鲁在做数据分析，需要判断一个浮点数属于哪个数值区间。给定一个浮点数x，判断它落在[0,25], (25,50], (50,75], (75,100]中的哪一个，或者都不在。</p>"
+    "value": "<p>给定一个浮点数，请你判断该数字属于以下哪个区间：[0, 25], (25, 50], (50, 75], (75, 100]。<br/>如果给定的数值小于 0 或大于 100，则程序输出Fora de intervalo，表示超出范围。<br/>开区间 (a, b)：在实数 a 和实数 b 之间的所有实数，但不包含 a 和 b。<br/>闭区间 [a, b]：在实数 a 和实数 b 之间的所有实数，包含 a 和 b。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>一个浮点数x。</p>"
+    "value": "<p>输入一个浮点数。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>输出区间名称，或\"Fora de intervalo\"。</p>"
+    "value": "<p>判断输入数值位于哪个区间，按格式Intervalo x输出，其中 x 为区间范围 [0, 25], (25, 50], (50, 75], (75, 100] 中的一个。<br/>如果数值位于所有区间之外，则输出Fora de intervalo。</p>"
   },
   "test_case_score": [
     {
@@ -77,7 +77,7 @@
   "samples": [
     {
       "input": "25.01",
-      "output": "Intervalo (25,50]"
+      "output": "Intervalo (25, 50]"
     }
   ],
   "template": {},

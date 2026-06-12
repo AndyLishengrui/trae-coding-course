@@ -3,18 +3,18 @@
   "title": "交换数值",
   "description": {
     "format": "html",
-    "value": "<p>写函数swap交换两个整数。</p>"
+    "value": "<p>输入两个整数 x 和 y，请编写一个函数，交换两个整数的数值并输出交换后的 x 和 y。<br/>C++ 中的格式为：void swap(int &x, int &y) 。<br/>Java 中的格式为：void swap(int[] a)，交换 a[0] 和 a[1] 。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>a b</p>"
+    "value": "<p>共一行，包含两个整数 x 和 y。<br/>数据范围：1 ≤ x, y ≤ 100</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>b a</p>"
+    "value": "<p>共一行，包含交换后的 x 和 y。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "1 2",
-      "output": "2 1"
+      "input": "3 5\n",
+      "output": "5 3\n"
     }
   ],
   "template": {},

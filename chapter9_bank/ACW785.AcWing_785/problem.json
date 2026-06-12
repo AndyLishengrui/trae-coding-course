@@ -3,18 +3,18 @@
   "title": "AcWing 785",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 785</p>"
+    "value": "<p>给定你一个长度为n的整数数列。<br/>请你使用快速排序对这个数列按照从小到大进行排序。<br/>并将排好序的数列按顺序输出。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>输入共两行，第一行包含整数 n。<br/>第二行包含 n 个整数（所有整数均在1--10^9范围内），表示整个数列。<br/>(1≤n≤100000)</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>输出共一行，包含 n 个整数，表示排好序的数列。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "5\n3 1 2 4 5",
+      "output": "1 2 3 4 5"
     }
   ],
   "template": {},

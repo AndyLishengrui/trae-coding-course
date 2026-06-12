@@ -3,18 +3,18 @@
   "title": "字符串加空格",
   "description": {
     "format": "html",
-    "value": "<p>给定一个字符串，在每个字符后加一个空格。</p>"
+    "value": "<p>给定一个字符串，在字符串的每个字符之间都加一个空格。输出修改后的新字符串。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>一行字符串。</p>"
+    "value": "<p>共一行，包含一个字符串。注意字符串中可能包含空格。<br/>数据范围：1 ≤ 字符串长度 ≤ 100</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>字符间加空格的字符串。</p>"
+    "value": "<p>输出增加空格后的字符串。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "abc",
-      "output": "a b c"
+      "input": "test case\n",
+      "output": "t e s t   c a s e\n"
     }
   ],
   "template": {},

@@ -3,7 +3,7 @@
   "title": "数字序列和它的和",
   "description": {
     "format": "html",
-    "value": "<p>对于每一对输入的正整数M和N（M<N），输出从M到N的所有整数及它们的和。以读入的M或N≤0为结束标志。</p>"
+    "value": "<p>对于每一对输入的正整数M和N（M</p>"
   },
   "tags": [
     "基础语法"

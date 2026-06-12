@@ -3,18 +3,18 @@
   "title": "AcWing 2816",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 2816</p>"
+    "value": "<p>给定一个长度为n的整数序列a1,a2,…,an以及一个长度为m的整数序列b1,b2,…,bm。<br/>请你判断a序列是否为b序列的子序列。<br/>子序列指序列的一部分项按原有次序排列而得的序列，例如序列{a1,a3,a5}是序列{a1,a2,a3,a4,a5}的一个子序列。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含两个整数n,m。<br/>第二行包含n个整数，表示a1,a2,…,an。<br/>第三行包含m个整数，表示b1,b2,…,bm。<br/>数据范围<br/>1≤n≤m≤10^5<br/>−10^9≤ai,bi≤10^9</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>如果a序列是b序列的子序列，输出一行Yes。<br/>否则，输出No。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "3 5\n1 3 5\n1 2 3 4 5",
+      "output": "Yes\n"
     }
   ],
   "template": {},

@@ -3,18 +3,18 @@
   "title": "最小数和它的位置",
   "description": {
     "format": "html",
-    "value": "<p>给定N和一个包含N个整数的数组，找出数组中的最小值及其位置（如果有多个最小值，输出第一个的位置）。</p>"
+    "value": "<p>输入一个整数 N 和一个长度为 N 的整数数组 X。请你找到数组中最小的元素，并输出它的值和下标。<br/>注意，如果有多个最小值，则返回下标最小的那个。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>第一行N。第二行N个整数。</p>"
+    "value": "<p>第一行包含整数 N。<br/>第二行包含 N 个用空格隔开的整数 X[i]。<br/>数据范围：1 < N ≤ 1000，-1000 < X[i] ≤ 1000</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>第一行\"Menor valor: X\"。第二行\"Posicao: Y\"（位置从0开始）。</p>"
+    "value": "<p>第一行输出Minimum value: x，其中 x 为数组元素最小值。第二行输出Position: y，其中 y 为最小值元素的下标（下标从 0 开始计数）。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "10\n1 2 3 4 -5 6 7 8 9 10",
-      "output": "Menor valor: -5\nPosicao: 4"
+      "input": "10\n1 2 3 4 -5 6 7 8 9 10\n",
+      "output": "Minimum value: -5\nPosition: 4\n"
     }
   ],
   "template": {},

@@ -3,18 +3,18 @@
   "title": "AcWing 778",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 778</p>"
+    "value": "<p>有三个字符串S、S1、S2。其中，S长度不超过 300，S1和S2的长度不超过 10。<br/>现在，我们想要检测S1和S2是否同时在S中出现，且S1位于S2的左边，并在S中不交叉（即，S1的右边界点在S2的左边界点的左侧）。<br/>计算满足上述条件的最大跨距（即，最大间隔距离：最右边的S2的起始点与最左边的S1的终止点之间的字符数目）。<br/>如果没有满足条件的S1、S2存在，则输出-1。<br/>例如，S = abcd123dABdefghjsdef76ki，S1 = ab，S2 = ef。其中，S1在S中出现了若干次，S2也在S中出现了若干次，最大跨距为18。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>输入共一行，包含三个字符串S、S1、S2，字符串之间用逗号隔开。数据保证三个字符串中不含空格和逗号。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>输出一个整数，表示最大跨距。如果没有满足条件的S1和S2存在，则输出-1。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "abcd123dABdefghjsdef76ki,ab,ef\n",
+      "output": "18\n"
     }
   ],
   "template": {},

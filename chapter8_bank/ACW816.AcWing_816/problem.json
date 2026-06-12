@@ -3,18 +3,18 @@
   "title": "AcWing 816",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 816</p>"
+    "value": "<p>编写函数 void reverse(int a[], int size) 实现将数组 a 中的前 size 个数翻转并输出翻转后的数组 a。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行 n 和 size 分别表示数组长度和要翻转的个数；<br/>第二行 n 个整数为数组 a。<br/>数据范围：1 ≤ size ≤ n ≤ 1000，1 ≤ a[i] ≤ 1000</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>一行 n 个整数表示翻转后的数组 a。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "5 3\n1 2 3 4 5\n",
+      "output": "3 2 1 4 5\n"
     }
   ],
   "template": {},

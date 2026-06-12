@@ -3,18 +3,18 @@
   "title": "选择练习1",
   "description": {
     "format": "html",
-    "value": "<p>给定四个整数A、B、C、D，请判断是否同时满足：B>C、D>A、C+D>A+B、C和D都是正数、A是偶数。所有条件都满足才输出\"Valores aceitos\"。</p>"
+    "value": "<p>读取 4 个整数 A，B，C 和 D。如果四个整数同时满足以下条件：<br/>B 大于 A。D 大于 A。C 和 D 的总和大于 A 和 B 的总和。C 是正数。A 是偶数。则输出Valores aceitos，否则，输出Valores nao aceitos。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>一行，四个整数A、B、C、D。</p>"
+    "value": "<p>输入占一行，包含四个整数 A, B, C, D。<br/>数据范围<br/>−100≤A,B,C,D≤100</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>满足所有条件输出\"Valores aceitos\"，否则\"Valores nao aceitos\"。</p>"
+    "value": "<p>如果输入数值满足题目条件则输出Valores aceitos，否则输出Valores nao aceitos。</p>"
   },
   "test_case_score": [
     {

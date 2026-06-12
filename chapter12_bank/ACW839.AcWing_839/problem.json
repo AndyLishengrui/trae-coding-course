@@ -3,18 +3,18 @@
   "title": "AcWing 839",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 839</p>"
+    "value": "<p>维护一个集合，初始时集合为空，支持如下几种操作：<br/>“I x”，插入一个数x；“PM”，输出当前集合中的最小值；“DM”，删除当前集合中的最小值（数据保证此时的最小值唯一）；“D k”，删除第k个插入的数；“C k x”，修改第k个插入的数，将其变为x；现在要进行N次操作，对于所有第2个操作，输出当前集合的最小值。<br/>1≤N≤10^5<br/>−109≤x≤10^9<br/>数据保证合法。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含整数N。<br/>接下来N行，每行包含一个操作指令，操作指令为”I x”，”PM”，”DM”，”D k”或”C k x”中的一种。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>对于每个输出指令“PM”，输出一个结果，表示当前集合中的最小值。<br/>每个结果占一行。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "8\nI -10\nPM\nI -10\nD 1\nC 2 8\nI 6\nPM\nDM",
+      "output": "-10\n6"
     }
   ],
   "template": {},

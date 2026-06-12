@@ -3,18 +3,18 @@
   "title": "AcWing 803",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 803</p>"
+    "value": "<p>给定 n 个区间 [ li , ri ]，要求合并所有有交集的区间。<br/>注意如果在端点处相交，也算有交集。<br/>输出合并完成后的区间个数。<br/>例如：[1,3]和[2,6]可以合并为一个区间[1,6]。<br/>数据范围：<br/>1≤n≤100000,<br/>−10^9 ≤ li ≤ ri ≤ 10^9</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含整数n。<br/>接下来n行，每行包含两个整数 l 和 r。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共一行，包含一个整数，表示合并区间完成后的区间个数。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "5\n1 2\n2 4\n5 6\n7 8\n7 9",
+      "output": "3"
     }
   ],
   "template": {},

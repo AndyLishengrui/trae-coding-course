@@ -3,18 +3,18 @@
   "title": "AcWing 727",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 727</p>"
+    "value": "<p>输入一个奇数n，输出一个由*构成的n阶实心菱形。菱形中心为第(n+1)/2行，每行星号数量以中心对称。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>一个奇数n。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>输出一个由*构成的n阶实心菱形。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "5",
+      "output": "  *\n ***\n*****\n ***\n  *"
     }
   ],
   "template": {},

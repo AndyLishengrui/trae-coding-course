@@ -3,18 +3,18 @@
   "title": "数组变换",
   "description": {
     "format": "html",
-    "value": "<p>给定一个20个整数的数组。将数组前后对称位置互换（第0个和第19个交换，第1个和第18个交换...），输出变换后的数组。</p>"
+    "value": "<p>输入一个长度为 20 的整数数组 N，将整个数组翻转，使得第一个元素成为最后一个元素，依此类推。输出翻转后的数组。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>20个整数。</p>"
+    "value": "<p>输入包含 20 个整数，每个整数占一行，数据范围：-100 ≤ N[i] ≤ 100</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>20行，每行\"N[i] = X\"。</p>"
+    "value": "<p>输出数组中所有元素，每个元素占一行，格式为N[i] = x，其中 i 从 0 开始。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "0\n1\n2\n...\n19",
-      "output": "N[0] = 19\nN[1] = 18\n..."
+      "input": "0\n-5\n63\n23\n... (共20个数)\n",
+      "output": "N[0] = 23\nN[1] = 63\n... \nN[18] = -5\nN[19] = 0\n"
     }
   ],
   "template": {},

@@ -3,18 +3,18 @@
   "title": "AcWing 794",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 794</p>"
+    "value": "<p>给定两个非负整数A，B，请你计算 A / B的商和余数。</p><p>数据范围：<br/>1≤A的长度≤100000,<br/>1≤B≤10000<br/>B 一定不为0</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共两行，第一行包含整数A，第二行包含整数B。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共两行，第一行输出所求的商，第二行输出所求余数。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "7\n2",
+      "output": "3\n1"
     }
   ],
   "template": {},

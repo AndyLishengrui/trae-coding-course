@@ -3,18 +3,18 @@
   "title": "AcWing 802",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 802</p>"
+    "value": "<p>假定有一个无限长的数轴，数轴上每个坐标上的数都是0。<br/>现在，我们首先进行 n 次操作，每次操作将某一位置x上的数加c。<br/>接下来，进行 m 次询问，每个询问包含两个整数l和r，你需要求出在区间[l, r]之间的所有数的和。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含两个整数n和m。<br/>接下来 n 行，每行包含两个整数x和c。<br/>再接下里 m 行，每行包含两个整数l和r。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共m行，每行输出一个询问中所求的区间内数字和。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "3 3\n1 2\n3 6\n7 5\n1 3\n4 6\n7 8",
+      "output": "8\n0\n5"
     }
   ],
   "template": {},

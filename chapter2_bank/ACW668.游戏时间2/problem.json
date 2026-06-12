@@ -3,18 +3,18 @@
   "title": "游戏时间2",
   "description": {
     "format": "html",
-    "value": "<p>和NQ019类似，但这次游戏时间精确到分钟。输入开始和结束的小时和分钟，计算游戏的持续时间（时和分）。</p>"
+    "value": "<p>读取四个整数 A, B, C, D，用来表示游戏的开始时间和结束时间。<br/>其中 A 和 B 为开始时刻的小时和分钟数，C 和 D 为结束时刻的小时和分钟数。<br/>请你计算游戏的持续时间。游戏最短持续 1 分钟，最长持续 24 小时。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>一行，四个整数：开始的小时A、分钟B，结束的小时C、分钟D。</p>"
+    "value": "<p>共一行，包含四个整数 A, B, C, D。<br/>数据范围<br/>0≤A,C≤23,0≤B,D≤59</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>\"O JOGO DUROU X HORA(S) E Y MINUTO(S)\"。</p>"
+    "value": "<p>输出格式为O JOGO DUROU X HORA(S) E Y MINUTO(S)，表示游戏共持续了 X 小时 Y 分钟。</p>"
   },
   "test_case_score": [
     {
@@ -78,6 +78,14 @@
     {
       "input": "7 8 9 10",
       "output": "O JOGO DUROU 2 HORA(S) E 2 MINUTO(S)"
+    },
+    {
+      "input": "7 7 7 7",
+      "output": "O JOGO DUROU 24 HORA(S) E 0 MINUTO(S)"
+    },
+    {
+      "input": "7 8 8 9",
+      "output": "O JOGO DUROU 1 HORA(S) E 1 MINUTO(S)"
     }
   ],
   "template": {},

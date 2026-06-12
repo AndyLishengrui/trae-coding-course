@@ -3,18 +3,18 @@
   "title": "AcWing 843",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 843</p>"
+    "value": "<p>n-皇后问题是指将 n 个皇后放在 n∗n 的国际象棋棋盘上，使得皇后不能相互攻击到，即任意两个皇后都不能处于同一行、同一列或同一斜线上。</p><p>数据范围:1<=n<=12</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共一行，包含整数n。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>每个解决方案占n行，每行输出一个长度为n的字符串，用来表示完整的棋盘状态。<br/>其中”.”表示某一个位置的方格状态为空，”Q”表示某一个位置的方格上摆着皇后。<br/>每个方案输出完成后，输出一个空行。<br/>输出方案的顺序请根据样例，按照次序从小到大，从左到右输出。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "4",
+      "output": ".Q..\n...Q\nQ...\n..Q.\n..Q.\nQ...\n...Q\n.Q.."
     }
   ],
   "template": {},

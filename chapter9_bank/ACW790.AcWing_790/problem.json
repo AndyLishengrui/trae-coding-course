@@ -3,18 +3,18 @@
   "title": "AcWing 790",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 790</p>"
+    "value": "<p>给定一个浮点数n，求它的三次方根。</p><p>数据范围:−10000≤n≤10000</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共一行，包含一个浮点数n。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>共一行，包含一个浮点数，表示问题的解。<br/>注意，结果保留6位小数。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "1000.00",
+      "output": "10.000000"
     }
   ],
   "template": {},

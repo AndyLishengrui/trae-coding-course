@@ -3,18 +3,18 @@
   "title": "AcWing 16",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 16</p>"
+    "value": "<p>请实现一个函数，把字符串中的每个空格替换成%20。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>输入一个字符串。<br/>数据范围：0 ≤ 输入字符串的长度 ≤ 1000</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>输出替换后的字符串。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "We are happy.\n",
+      "output": "We%20are%20happy.\n"
     }
   ],
   "template": {},

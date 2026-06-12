@@ -3,18 +3,18 @@
   "title": "信息加密",
   "description": {
     "format": "html",
-    "value": "<p>凯撒加密：将每个字母替换为字母表中其后一个字母(z→a,Z→A)，非字母不变。</p>"
+    "value": "<p>对给定的字符串进行加密处理，加密规则如下：<br/>1. 小写字母：a→b, b→c, …, z→a；<br/>2. 大写字母：A→B, B→C, …, Z→A；<br/>3. 数字：0→1, 1→2, …, 9→0；<br/>4. 其他字符不变。<br/>输出加密后的字符串。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>一行字符串。</p>"
+    "value": "<p>输入共一行，包含一个字符串，注意字符串中可能包含空格。<br/>数据范围：字符串长度不超过100。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>加密后字符串。</p>"
+    "value": "<p>输出一行，即加密后的字符串。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "Hello, World!",
-      "output": "Ifmmp, Xpsme!"
+      "input": "Hello! How are you!\n",
+      "output": "Ifmmp! Ipx bsf zpv!\n"
     }
   ],
   "template": {},

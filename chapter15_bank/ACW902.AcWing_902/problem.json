@@ -3,18 +3,18 @@
   "title": "AcWing 902",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 902</p>"
+    "value": "<p>给定两个字符串A和B，现在要将A经过若干操作变为B，可进行的操作有：<br/>删除–将字符串A中的某个字符删除。插入–在字符串A的某个位置插入某个字符。替换–将字符串A中的某个字符替换为另一个字符。现在请你求出，将A变为B至少需要进行多少次操作。<br/>数据范围1≤n,m≤1000</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含整数n，表示字符串A的长度。<br/>第二行包含一个长度为n的字符串A。<br/>第三行包含整数m，表示字符串B的长度。<br/>第四行包含一个长度为m的字符串B。<br/>字符串中均只包含大写字母。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>输出一个整数，表示最少操作次数。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "10 \nAGTCTGACGC\n11 \nAGTAAGTAGGC",
+      "output": "4"
     }
   ],
   "template": {},

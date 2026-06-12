@@ -3,18 +3,18 @@
   "title": "AcWing 895",
   "description": {
     "format": "html",
-    "value": "<p>AcWing 895</p>"
+    "value": "<p>给定一个长度为N的数列，求数值严格单调递增的子序列的长度最长是多少。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>第一行包含整数N。<br/>第二行包含N个整数，表示完整序列。</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>见原题</p>"
+    "value": "<p>输出一个整数，表示最大长度。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "见原题",
-      "output": "见原题"
+      "input": "7\n3 1 2 1 8 5 6",
+      "output": "4"
     }
   ],
   "template": {},

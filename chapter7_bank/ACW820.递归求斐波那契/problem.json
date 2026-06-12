@@ -3,18 +3,18 @@
   "title": "递归求斐波那契",
   "description": {
     "format": "html",
-    "value": "<p>用递归求第n项斐波那契数。</p>"
+    "value": "<p>请使用递归的方式求斐波那契数列的第 n 项，下标从 1 开始。<br/>斐波那契数列：1, 1, 2, 3, 5 ...，这个数列从第 3 项开始，每一项都等于前两项之和。</p>"
   },
   "tags": [
     "基础语法"
   ],
   "input_description": {
     "format": "html",
-    "value": "<p>n</p>"
+    "value": "<p>共一行，包含整数 n。<br/>数据范围：1 ≤ n ≤ 30</p>"
   },
   "output_description": {
     "format": "html",
-    "value": "<p>fib(n)</p>"
+    "value": "<p>共一行，包含一个整数，表示斐波那契数列的第 n 项。</p>"
   },
   "test_case_score": [
     {
@@ -76,8 +76,8 @@
   "memory_limit": 256,
   "samples": [
     {
-      "input": "5",
-      "output": "5"
+      "input": "4\n",
+      "output": "3\n"
     }
   ],
   "template": {},

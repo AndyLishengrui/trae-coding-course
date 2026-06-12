@@ -1,90 +1,90 @@
 {
-    "display_id": "ACW613",
-    "title": "面积",
-    "description": {
-        "format": "html",
-        "value": "<p>计算三个图形面积：直角三角形A*C/2、圆π*C²、梯形(A+B)*C/2。π=3.14159。</p>"
+  "display_id": "ACW613",
+  "title": "面积",
+  "description": {
+    "format": "html",
+    "value": "<p>计算三个图形面积：直角三角形A*C/2、圆π*C²、梯形(A+B)*C/2。π=3.14159。</p>"
+  },
+  "tags": [
+    "基础语法",
+    "几何"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一行，三个浮点数A、B、C。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>三行：TRIANGULO: X / CIRCULO: X / TRAPEZIO: X，各保留3位小数。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
     },
-    "tags": [
-        "基础语法",
-        "几何"
-    ],
-    "input_description": {
-        "format": "html",
-        "value": "<p>一行，三个浮点数A、B、C。</p>"
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
     },
-    "output_description": {
-        "format": "html",
-        "value": "<p>五行，每行格式为：TRIANGULO: X / CIRCULO: X / TRAPEZIO: X / QUADRADO: X / RETANGULO: X，各保留3位小数。</p>"
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
     },
-    "test_case_score": [
-        {
-            "score": 10,
-            "input_name": "1.in",
-            "output_name": "1.out"
-        },
-        {
-            "score": 10,
-            "input_name": "2.in",
-            "output_name": "2.out"
-        },
-        {
-            "score": 10,
-            "input_name": "3.in",
-            "output_name": "3.out"
-        },
-        {
-            "score": 10,
-            "input_name": "4.in",
-            "output_name": "4.out"
-        },
-        {
-            "score": 10,
-            "input_name": "5.in",
-            "output_name": "5.out"
-        },
-        {
-            "score": 10,
-            "input_name": "6.in",
-            "output_name": "6.out"
-        },
-        {
-            "score": 10,
-            "input_name": "7.in",
-            "output_name": "7.out"
-        },
-        {
-            "score": 10,
-            "input_name": "8.in",
-            "output_name": "8.out"
-        },
-        {
-            "score": 10,
-            "input_name": "9.in",
-            "output_name": "9.out"
-        },
-        {
-            "score": 10,
-            "input_name": "10.in",
-            "output_name": "10.out"
-        }
-    ],
-    "hint": {
-        "format": "html",
-        "value": "<a href=\"https://www.acwing.com/problem/content/613/\" target=\"_blank\">原题链接</a>"
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
     },
-    "time_limit": 1000,
-    "memory_limit": 256,
-    "samples": [
-        {
-            "input": "3.0 4.0 5.2",
-            "output": "TRIANGULO: 7.800\nCIRCULO: 84.949\nTRAPEZIO: 18.200\nQUADRADO: 16.000\nRETANGULO: 12.000"
-        }
-    ],
-    "template": {},
-    "spj": null,
-    "rule_type": "OI",
-    "source": "AcWing 613 | NQ013 | 第1章 程序设计的第一个脚印",
-    "answers": [],
-    "allow_public_test_case_download": false
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/613/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "3.0 4.0 5.2",
+      "output": "TRIANGULO: 7.800\nCIRCULO: 84.949\nTRAPEZIO: 18.200"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "source": "AcWing 613 | NQ013 | 第1章 程序设计的第一个脚印",
+  "answers": [],
+  "allow_public_test_case_download": false
 }
