@@ -10,7 +10,7 @@
   python build_jd_textbook.py --pdf        # 生成后转 PDF
   python build_jd_textbook.py --docx       # 生成后转 DOCX
 """
-import json, re, os, sys, subprocess
+import json, re, os, sys, subprocess, html as html_mod
 from pathlib import Path
 
 BOOK_ROOT = Path(__file__).parent.parent.resolve()
@@ -117,9 +117,33 @@ def md_to_html(text):
 
 
 def syntax_highlight(code, lang='cpp'):
-    """Simple syntax highlighting for code blocks."""
-    # Escape HTML
-    code = code.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+    """Regex-based syntax highlighting for code blocks."""
+    code = html_mod.escape(code)
+
+    if lang in ('cpp', 'c'):
+        # C++ keywords
+        keywords = r'\b(int|long|float|double|char|void|bool|string|auto|const|static|return|if|else|for|while|do|switch|case|break|continue|default|class|struct|public|private|protected|virtual|new|delete|this|true|false|nullptr|include|using|namespace|std|template|typename|sizeof|typedef|enum|union|extern|register|volatile|inline|constexpr|NULL)\b'
+        # Comments: // and /* */
+        code = re.sub(r'(//[^\n]*)', r'<span class="comment">\1</span>', code)
+        # Strings
+        code = re.sub(r'("(?:[^"\\]|\\.)*")', r'<span class="string">\1</span>', code)
+        # Numbers
+        code = re.sub(r'\b(\d+\.?\d*[fFlLuU]*)\b', r'<span class="number">\1</span>', code)
+        # Keywords
+        code = re.sub(keywords, r'<span class="keyword">\1</span>', code)
+    elif lang == 'python':
+        # Python keywords
+        keywords = r'\b(def|class|return|if|elif|else|for|while|break|continue|pass|import|from|as|try|except|finally|raise|with|yield|lambda|and|or|not|in|is|True|False|None|print|range|len|int|float|str|list|dict|set|tuple|input|map|sorted|enumerate|zip|reversed|sum|min|max|abs|all|any|open|super|self)\b'
+        # Comments
+        code = re.sub(r'(#[^\n]*)', r'<span class="comment">\1</span>', code)
+        # Strings (triple-quoted and single/double)
+        code = re.sub(r'(""".*?"""|\'\'\'.*?\'\'\')', r'<span class="string">\1</span>', code, flags=re.DOTALL)
+        code = re.sub(r'("(?:[^"\\]|\\.)*"|\'(?:[^\'\\]|\\.)*\')', r'<span class="string">\1</span>', code)
+        # Numbers
+        code = re.sub(r'\b(\d+\.?\d*)\b', r'<span class="number">\1</span>', code)
+        # Keywords
+        code = re.sub(keywords, r'<span class="keyword">\1</span>', code)
+
     return f'<pre><code class="language-{lang}">{code}</code></pre>'
 
 

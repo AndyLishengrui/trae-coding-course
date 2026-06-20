@@ -239,13 +239,13 @@ code:not(pre code) {
 .sample {
     background: var(--color-sample-bg);
     color: var(--color-code-text);
-    padding: var(--gap-md);
+    padding: var(--gap-sm) var(--gap-md);
     border-radius: var(--radius-md);
     margin: var(--gap-sm) 0;
     font-family: var(--font-mono);
     white-space: pre-wrap;
-    font-size: 0.9em;
-    line-height: var(--line-height-code);
+    font-size: 0.82em;
+    line-height: 1.5;
     overflow-x: auto;
 }
 

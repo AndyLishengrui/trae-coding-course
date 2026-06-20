@@ -75,56 +75,56 @@
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-using namespace std;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-const int N = 10;  //最大值
-int n;             //读入的n
-int path[N];       //记录路径每个位的值
-bool used[N];      //记录第i个数是否被用过
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">10</span>;  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//最大值</span>
+<span class="keyword">int</span> n;             <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//读入的n</span>
+<span class="keyword">int</span> path[N];       <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//记录路径每个位的值</span>
+<span class="keyword">bool</span> used[N];      <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//记录第i个数是否被用过</span>
 
-void dfs(int u) {
-  if (u == n) {
-    //输出排列
-    for (int i = 0; i &lt; n; i++) cout &lt;&lt; path[i] &lt;&lt; " ";
+<span class="keyword">void</span> dfs(<span class="keyword">int</span> u) {
+  <span class="keyword">if</span> (u == n) {
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//输出排列</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++) cout &lt;&lt; path[i] &lt;&lt; &quot; &quot;;
     cout &lt;&lt; endl;
-    return;
+    <span class="keyword">return</span>;
   }
-  //枚举数字1--n
-  for (int i = 1; i &lt;= n; i++) {
-    if (!used[i]) {
-      path[u] = i;      //记录当前位path[u]的数字为i
-      used[i] = true;   //标记数字i为已经使用郭
-      dfs(u + 1);       //递归处理下一个位
-      used[i] = false;  //恢复现场
+  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//枚举数字1--n</span>
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++) {
+    <span class="keyword">if</span> (!used[i]) {
+      path[u] = i;      <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//记录当前位path[u]的数字为i</span>
+      used[i] = <span class="keyword">true</span>;   <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//标记数字i为已经使用郭</span>
+      dfs(u + <span <span class="keyword">class</span>="number">1</span>);       <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//递归处理下一个位</span>
+      used[i] = <span class="keyword">false</span>;  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//恢复现场</span>
     }
   }
 }
 
-int main() {
+<span class="keyword">int</span> main() {
   cin &gt;&gt; n;
-  dfs(0);
-  return 0;
+  dfs(<span <span class="keyword">class</span>="number">0</span>);
+  <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">import sys
-sys.setrecursionlimit(200000)
-# 排列数字
-n = int(input())
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+sys.setrecursionlimit(<span <span class="keyword">class</span>="number">200000</span>)
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 排列数字</span>
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
 path = []
-used = [False] * (n + 1)
+used = [<span class="keyword">False</span>] * (n + <span <span class="keyword">class</span>="number">1</span>)
 
-def dfs():
-    if len(path) == n:
-        print(' '.join(map(str, path)) + ' ')
-        return
-    for i in range(1, n + 1):
-        if not used[i]:
-            used[i] = True
+<span class="keyword">def</span> dfs():
+    <span class="keyword">if</span> <span class="keyword">len</span>(path) == n:
+        <span class="keyword">print</span>(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27; &#x27;.join(<span class="keyword">map</span>(<span class="keyword">str</span>, path)) + &#x27; &#x27;)</span>
+        <span class="keyword">return</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, n + <span <span class="keyword">class</span>="number">1</span>):
+        <span class="keyword">if</span> <span class="keyword">not</span> used[i]:
+            used[i] = <span class="keyword">True</span>
             path.append(i)
             dfs()
             path.pop()
-            used[i] = False
+            used[i] = <span class="keyword">False</span>
 
 dfs()</code></pre>
             </details>
@@ -178,67 +178,67 @@ Q...
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-using namespace std;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-const int N = 20;  //最大值
-int n;             //输入的n
-char g[N][N];      //棋盘
-//三个指示器列、对角线、反对角线,对角线以截距为编号
-bool col[N], dg[N], udg[N];
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">20</span>;  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//最大值</span>
+<span class="keyword">int</span> n;             <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//输入的n</span>
+<span class="keyword">char</span> g[N][N];      <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//棋盘</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//三个指示器列、对角线、反对角线,对角线以截距为编号</span>
+<span class="keyword">bool</span> col[N], dg[N], udg[N];
 
-void dfs(int u) {
-  if (u == n) {
-    //输出排列
-    for (int i = 0; i &lt; n; i++) puts(g[i]);
-    puts("");
-    return;
+<span class="keyword">void</span> dfs(<span class="keyword">int</span> u) {
+  <span class="keyword">if</span> (u == n) {
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//输出排列</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++) puts(g[i]);
+    puts(&quot;&quot;);
+    <span class="keyword">return</span>;
   }
-  //枚举列0--n
-  for (int i = 0; i &lt; n; i++) {
-    if (!col[i] &amp;&amp; !dg[i + u] &amp;&amp; !udg[i - u + n]) {
-      g[u][i] = 'Q';  //当前位置设置为Q字符
-      col[i] = dg[i + u] = udg[i - u + n] = true;  //标记数字i为已经使用郭
-      dfs(u + 1);                                  //递归处理下一个位
-      g[u][i] = '.';                               //恢复现场
-      col[i] = dg[i + u] = udg[i - u + n] = false;  //恢复现场
+  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//枚举列0--n</span>
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++) {
+    <span class="keyword">if</span> (!col[i] &amp;&amp; !dg[i + u] &amp;&amp; !udg[i - u + n]) {
+      g[u][i] = &#x27;Q&#x27;;  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//当前位置设置为Q字符</span>
+      col[i] = dg[i + u] = udg[i - u + n] = <span class="keyword">true</span>;  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//标记数字i为已经使用郭</span>
+      dfs(u + <span <span class="keyword">class</span>="number">1</span>);                                  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//递归处理下一个位</span>
+      g[u][i] = &#x27;.&#x27;;                               <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//恢复现场</span>
+      col[i] = dg[i + u] = udg[i - u + n] = <span class="keyword">false</span>;  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//恢复现场</span>
     }
   }
 }
 
-int main() {
+<span class="keyword">int</span> main() {
   cin &gt;&gt; n;
-  //初始化图
-  for (int i = 0; i &lt; n; i++)
-    for (int j = 0; j &lt; n; j++) g[i][j] = '.';
-  dfs(0);
-  return 0;
+  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//初始化图</span>
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt; n; j++) g[i][j] = &#x27;.&#x27;;
+  dfs(<span <span class="keyword">class</span>="number">0</span>);
+  <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">import sys
-sys.setrecursionlimit(200000)
-# n-皇后问题
-n = int(input())
-g = [['.'] * n for _ in range(n)]
-col = [False] * n
-dg = [False] * (2 * n)
-udg = [False] * (2 * n)
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+sys.setrecursionlimit(<span <span class="keyword">class</span>="number">200000</span>)
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># n-皇后问题</span>
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+g = [[&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;.&#x27;] * n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n)]</span>
+col = [<span class="keyword">False</span>] * n
+dg = [<span class="keyword">False</span>] * (<span <span class="keyword">class</span>="number">2</span> * n)
+udg = [<span class="keyword">False</span>] * (<span <span class="keyword">class</span>="number">2</span> * n)
 
-def dfs(r):
-    if r == n:
-        for row in g:
-            print(''.join(row))
-        print()
-        return
-    for c in range(n):
-        if not col[c] and not dg[r + c] and not udg[r - c + n]:
-            col[c] = dg[r + c] = udg[r - c + n] = True
-            g[r][c] = 'Q'
-            dfs(r + 1)
-            g[r][c] = '.'
-            col[c] = dg[r + c] = udg[r - c + n] = False
+<span class="keyword">def</span> dfs(r):
+    <span class="keyword">if</span> r == n:
+        <span class="keyword">for</span> row <span class="keyword">in</span> g:
+            <span class="keyword">print</span>(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;&#x27;.join(row))</span>
+        <span class="keyword">print</span>()
+        <span class="keyword">return</span>
+    <span class="keyword">for</span> c <span class="keyword">in</span> <span class="keyword">range</span>(n):
+        <span class="keyword">if</span> <span class="keyword">not</span> col[c] <span class="keyword">and</span> <span class="keyword">not</span> dg[r + c] <span class="keyword">and</span> <span class="keyword">not</span> udg[r - c + n]:
+            col[c] = dg[r + c] = udg[r - c + n] = <span class="keyword">True</span>
+            g[r][c] = &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;Q&#x27;</span>
+            dfs(r + <span <span class="keyword">class</span>="number">1</span>)
+            g[r][c] = &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;.&#x27;</span>
+            col[c] = dg[r + c] = udg[r - c + n] = <span class="keyword">False</span>
 
-dfs(0)</code></pre>
+dfs(<span <span class="keyword">class</span>="number">0</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -287,90 +287,90 @@ dfs(0)</code></pre>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;algorithm&gt;
-#include &lt;iostream&gt;
-#include &lt;queue&gt;
-#include &lt;cstring&gt;
-using namespace std;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;algorithm&gt;
+#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;queue&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-typedef pair&lt;int, int&gt; PII;  // Y总风格pair&lt;int,int&gt;声明
+<span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII;  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// Y总风格pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;声明</span>
 
-const int N = 107;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">107</span>;
 
-int n, m;
-int g[N][N],d[N][N];  
+<span class="keyword">int</span> n, m;
+<span class="keyword">int</span> g[N][N],d[N][N];  
 
-//广搜
-int bfs() {
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//广搜</span>
+<span class="keyword">int</span> bfs() {
 
-  queue&lt;PII&gt; q;      //队列
+  queue&lt;PII&gt; q;      <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//队列</span>
 
-  memset(d,-1,sizeof d);
-  d[0][0]=0;
-  q.push({0,0});
+  memset(d,-<span <span class="keyword">class</span>="number">1</span>,<span class="keyword">sizeof</span> d);
+  d[<span <span class="keyword">class</span>="number">0</span>][<span <span class="keyword">class</span>="number">0</span>]=<span <span class="keyword">class</span>="number">0</span>;
+  q.push({<span <span class="keyword">class</span>="number">0</span>,<span <span class="keyword">class</span>="number">0</span>});
 
-  // 四个方向向量
-  int dx[] = {-1, 0, 1, 0}, dy[] = {0, 1, 0, -1};
+  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 四个方向向量</span>
+  <span class="keyword">int</span> dx[] = {-<span <span class="keyword">class</span>="number">1</span>, <span <span class="keyword">class</span>="number">0</span>, <span <span class="keyword">class</span>="number">1</span>, <span <span class="keyword">class</span>="number">0</span>}, dy[] = {<span <span class="keyword">class</span>="number">0</span>, <span <span class="keyword">class</span>="number">1</span>, <span <span class="keyword">class</span>="number">0</span>, -<span <span class="keyword">class</span>="number">1</span>};
 
-  while (q.size()) 
-  { //队列为空的时候退出广搜
-    auto t = q.front();  //取队头
-    q.pop();             //弹出队头
+  <span class="keyword">while</span> (q.size()) 
+  { <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//队列为空的时候退出广搜</span>
+    <span class="keyword">auto</span> t = q.front();  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//取队头</span>
+    q.pop();             <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//弹出队头</span>
 
-    //搜索四个方向
-    for (int i = 0; i &lt; 4; i++)
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//搜索四个方向</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; <span <span class="keyword">class</span>="number">4</span>; i++)
     {
-      int x = t.first + dx[i], y = t.second + dy[i];  //待搜索的新坐标点
+      <span class="keyword">int</span> x = t.first + dx[i], y = t.second + dy[i];  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//待搜索的新坐标点</span>
 
-      if (x &lt; 0 || x &gt;= n || y &lt; 0 || y &gt;= m || g[x][y] != 0 || d[x][y]!=-1) continue;
+      <span class="keyword">if</span> (x &lt; <span <span class="keyword">class</span>="number">0</span> || x &gt;= n || y &lt; <span <span class="keyword">class</span>="number">0</span> || y &gt;= m || g[x][y] != <span <span class="keyword">class</span>="number">0</span> || d[x][y]!=-<span <span class="keyword">class</span>="number">1</span>) <span class="keyword">continue</span>;
 
-      d[x][y] = d[t.first][t.second]+1;
+      d[x][y] = d[t.first][t.second]+<span <span class="keyword">class</span>="number">1</span>;
 
-      q.push({x, y});//入队
+      q.push({x, y});<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//入队</span>
 
 
     }
   }
 
-  return d[n-1][m-1];
+  <span class="keyword">return</span> d[n-<span <span class="keyword">class</span>="number">1</span>][m-<span <span class="keyword">class</span>="number">1</span>];
 }
 
-int main() {
+<span class="keyword">int</span> main() {
 
     cin &gt;&gt; n &gt;&gt; m;
 
-    for (int i = 0; i &lt; n; i++) 
-      for (int j = 0; j &lt;m; j++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++) 
+      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt;m; j++)
         cin &gt;&gt; g[i][j];
 
     cout &lt;&lt; bfs() &lt;&lt; endl;
 
-  return 0;
+  <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">import sys
-from collections import deque
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+<span class="keyword">from</span> collections <span class="keyword">import</span> deque
 data = sys.stdin.read().split()
-n, m = int(data[0]), int(data[1])
+n, m = <span class="keyword">int</span>(data[<span <span class="keyword">class</span>="number">0</span>]), <span class="keyword">int</span>(data[<span <span class="keyword">class</span>="number">1</span>])
 g = []
-idx = 2
-for _ in range(n):
-    g.append([int(data[idx+j]) for j in range(m)])
+idx = <span <span class="keyword">class</span>="number">2</span>
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n):
+    g.append([<span class="keyword">int</span>(data[idx+j]) <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(m)])
     idx += m
-dist = [[-1] * m for _ in range(n)]
-dx = [-1, 0, 1, 0]
-dy = [0, 1, 0, -1]
+dist = [[-<span <span class="keyword">class</span>="number">1</span>] * m <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n)]
+dx = [-<span <span class="keyword">class</span>="number">1</span>, <span <span class="keyword">class</span>="number">0</span>, <span <span class="keyword">class</span>="number">1</span>, <span <span class="keyword">class</span>="number">0</span>]
+dy = [<span <span class="keyword">class</span>="number">0</span>, <span <span class="keyword">class</span>="number">1</span>, <span <span class="keyword">class</span>="number">0</span>, -<span <span class="keyword">class</span>="number">1</span>]
 q = deque()
-q.append((0, 0))
-dist[0][0] = 0
-while q:
+q.append((<span <span class="keyword">class</span>="number">0</span>, <span <span class="keyword">class</span>="number">0</span>))
+dist[<span <span class="keyword">class</span>="number">0</span>][<span <span class="keyword">class</span>="number">0</span>] = <span <span class="keyword">class</span>="number">0</span>
+<span class="keyword">while</span> q:
     x, y = q.popleft()
-    for d in range(4):
+    <span class="keyword">for</span> d <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">4</span>):
         nx, ny = x + dx[d], y + dy[d]
-        if 0 &lt;= nx &lt; n and 0 &lt;= ny &lt; m and g[nx][ny] == 0 and dist[nx][ny] == -1:
-            dist[nx][ny] = dist[x][y] + 1
+        <span class="keyword">if</span> <span <span class="keyword">class</span>="number">0</span> &lt;= nx &lt; n <span class="keyword">and</span> <span <span class="keyword">class</span>="number">0</span> &lt;= ny &lt; m <span class="keyword">and</span> g[nx][ny] == <span <span class="keyword">class</span>="number">0</span> <span class="keyword">and</span> dist[nx][ny] == -<span <span class="keyword">class</span>="number">1</span>:
+            dist[nx][ny] = dist[x][y] + <span <span class="keyword">class</span>="number">1</span>
             q.append((nx, ny))
-print(dist[n - 1][m - 1])</code></pre>
+<span class="keyword">print</span>(dist[n - <span <span class="keyword">class</span>="number">1</span>][m - <span <span class="keyword">class</span>="number">1</span>])</code></pre>
             </details>
         </div>
     </div>
@@ -420,71 +420,71 @@ x 4 6
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-#include &lt;unordered_map&gt;
-#include &lt;queue&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+#<span class="keyword">include</span> &lt;unordered_map&gt;
+#<span class="keyword">include</span> &lt;queue&gt;
 
-using namespace std;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 /**
- * NQ13-04: BFS试炼之八数码
- * 搜索与回溯 | AcWing 845
+ * NQ13-<span <span class="keyword">class</span>="number">04</span>: BFS试炼之八数码
+ * 搜索与回溯 | AcWing <span <span class="keyword">class</span>="number">845</span>
  * 时间: O(n!) | 空间: O(n)
  */
 
-int bfs(string start)
+<span class="keyword">int</span> bfs(<span class="keyword">string</span> start)
 {
-  string end = "12345678x";
+  <span class="keyword">string</span> end = &quot;12345678x&quot;;
 
-  queue&lt;string&gt; q;
-  unordered_map&lt;string,int&gt; d;//字符串映射到整数
+  queue&lt;<span class="keyword">string</span>&gt; q;
+  unordered_map&lt;<span class="keyword">string</span>,<span class="keyword">int</span>&gt; d;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//字符串映射到整数</span>
 
   q.push(start);
-  d[start] = 0;//map的用法
+  d[start] = <span <span class="keyword">class</span>="number">0</span>;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//map的用法</span>
 
-  //方向向量
-  int dx[4] = {1,-1,0,0},dy[4]={0,0,1,-1};
+  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//方向向量</span>
+  <span class="keyword">int</span> dx[<span <span class="keyword">class</span>="number">4</span>] = {<span <span class="keyword">class</span>="number">1</span>,-<span <span class="keyword">class</span>="number">1</span>,<span <span class="keyword">class</span>="number">0</span>,<span <span class="keyword">class</span>="number">0</span>},dy[<span <span class="keyword">class</span>="number">4</span>]={<span <span class="keyword">class</span>="number">0</span>,<span <span class="keyword">class</span>="number">0</span>,<span <span class="keyword">class</span>="number">1</span>,-<span <span class="keyword">class</span>="number">1</span>};
 
-  //广搜
-  while(q.size())
+  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//广搜</span>
+  <span class="keyword">while</span>(q.size())
   {
-    auto t = q.front();
+    <span class="keyword">auto</span> t = q.front();
     q.pop();
 
-    int distance = d[t];
-    if (t==end) return distance;//找到目标
+    <span class="keyword">int</span> distance = d[t];
+    <span class="keyword">if</span> (t==end) <span class="keyword">return</span> distance;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//找到目标</span>
 
-    //查询x在字符串中的下标
-    int k = t.find('x');
-    int x = k / 3, y = k % 3;//转换为宫格坐标
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//查询x在字符串中的下标</span>
+    <span class="keyword">int</span> k = t.find(&#x27;x&#x27;);
+    <span class="keyword">int</span> x = k / <span <span class="keyword">class</span>="number">3</span>, y = k % <span <span class="keyword">class</span>="number">3</span>;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//转换为宫格坐标</span>
 
-    for (int i = 0; i &lt; 4; i ++ )
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; <span <span class="keyword">class</span>="number">4</span>; i ++ )
     {
-      int a = x + dx[i], b = y + dy[i];
+      <span class="keyword">int</span> a = x + dx[i], b = y + dy[i];
 
-      if (a &gt;= 0 &amp;&amp; a &lt; 3 &amp;&amp; b &gt;= 0 &amp;&amp; b &lt; 3)
+      <span class="keyword">if</span> (a &gt;= <span <span class="keyword">class</span>="number">0</span> &amp;&amp; a &lt; <span <span class="keyword">class</span>="number">3</span> &amp;&amp; b &gt;= <span <span class="keyword">class</span>="number">0</span> &amp;&amp; b &lt; <span <span class="keyword">class</span>="number">3</span>)
       {
-        swap(t[k], t[a*3+b]);//移动x的位置
-        if (!d.count(t))
+        swap(t[k], t[a*<span <span class="keyword">class</span>="number">3</span>+b]);<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//移动x的位置</span>
+        <span class="keyword">if</span> (!d.count(t))
         {
-          d[t] = distance + 1;
-          q.push(t);//压入队列
+          d[t] = distance + <span <span class="keyword">class</span>="number">1</span>;
+          q.push(t);<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//压入队列</span>
         }
-        swap(t[k],t[a*3+b]);//还原现场
+        swap(t[k],t[a*<span <span class="keyword">class</span>="number">3</span>+b]);<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//还原现场</span>
       }
     }
   }
-  return -1;
+  <span class="keyword">return</span> -<span <span class="keyword">class</span>="number">1</span>;
 
 }
 
-int main()
+<span class="keyword">int</span> main()
 {
-    string c, start;
-    //去掉空格
-    for (int i = 0; i &lt; 9; i ++ )
+    <span class="keyword">string</span> c, start;
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//去掉空格</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; <span <span class="keyword">class</span>="number">9</span>; i ++ )
     {
       cin&gt;&gt;c;
       start += c;
@@ -493,30 +493,30 @@ int main()
     cout&lt;&lt;bfs(start)&lt;&lt;endl;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">import sys
-from collections import deque
-start = ''.join(sys.stdin.read().split())
-target = '12345678x'
-if start == target: print(0); sys.exit(0)
-dx, dy = [-1,0,1,0], [0,1,0,-1]
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+<span class="keyword">from</span> collections <span class="keyword">import</span> deque
+start = &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;&#x27;.join(sys.stdin.read().split())</span>
+target = &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;12345678x&#x27;</span>
+<span class="keyword">if</span> start == target: <span class="keyword">print</span>(<span <span class="keyword">class</span>="number">0</span>); sys.exit(<span <span class="keyword">class</span>="number">0</span>)
+dx, dy = [-<span <span class="keyword">class</span>="number">1</span>,<span <span class="keyword">class</span>="number">0</span>,<span <span class="keyword">class</span>="number">1</span>,<span <span class="keyword">class</span>="number">0</span>], [<span <span class="keyword">class</span>="number">0</span>,<span <span class="keyword">class</span>="number">1</span>,<span <span class="keyword">class</span>="number">0</span>,-<span <span class="keyword">class</span>="number">1</span>]
 q = deque([start])
-dist = {start: 0}
-while q:
+dist = {start: <span <span class="keyword">class</span>="number">0</span>}
+<span class="keyword">while</span> q:
     s = q.popleft()
-    k = s.index('x')
-    x, y = k//3, k%3
-    for d in range(4):
+    k = s.index(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;x&#x27;)</span>
+    x, y = k//<span <span class="keyword">class</span>="number">3</span>, k%<span <span class="keyword">class</span>="number">3</span>
+    <span class="keyword">for</span> d <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">4</span>):
         nx, ny = x+dx[d], y+dy[d]
-        if 0&lt;=nx&lt;3 and 0&lt;=ny&lt;3:
-            nk = nx*3 + ny
-            lst = list(s)
+        <span class="keyword">if</span> <span <span class="keyword">class</span>="number">0</span>&lt;=nx&lt;<span <span class="keyword">class</span>="number">3</span> <span class="keyword">and</span> <span <span class="keyword">class</span>="number">0</span>&lt;=ny&lt;<span <span class="keyword">class</span>="number">3</span>:
+            nk = nx*<span <span class="keyword">class</span>="number">3</span> + ny
+            lst = <span class="keyword">list</span>(s)
             lst[k], lst[nk] = lst[nk], lst[k]
-            ns = ''.join(lst)
-            if ns not in dist:
-                dist[ns] = dist[s] + 1
-                if ns == target: print(dist[ns]); sys.exit(0)
+            ns = &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;&#x27;.join(lst)</span>
+            <span class="keyword">if</span> ns <span class="keyword">not</span> <span class="keyword">in</span> dist:
+                dist[ns] = dist[s] + <span <span class="keyword">class</span>="number">1</span>
+                <span class="keyword">if</span> ns == target: <span class="keyword">print</span>(dist[ns]); sys.exit(<span <span class="keyword">class</span>="number">0</span>)
                 q.append(ns)
-print(-1)</code></pre>
+<span class="keyword">print</span>(-<span <span class="keyword">class</span>="number">1</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -568,87 +568,87 @@ print(-1)</code></pre>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
 
-using namespace std;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-const int N = 100007, M= N*2;//无向图
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">100007</span>, M= N*<span <span class="keyword">class</span>="number">2</span>;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//无向图</span>
 
-int n;
-int h[N], e[M], ne[M], idx;
-int ans = N;
-bool st[N];//顶点n是否访问
+<span class="keyword">int</span> n;
+<span class="keyword">int</span> h[N], e[M], ne[M], idx;
+<span class="keyword">int</span> ans = N;
+<span class="keyword">bool</span> st[N];<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//顶点n是否访问</span>
 
-void add(int a, int b)  // 添加一条边a-&gt;b
+<span class="keyword">void</span> add(<span class="keyword">int</span> a, <span class="keyword">int</span> b)  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 添加一条边a-&gt;b</span>
 {
     e[idx] = b, ne[idx] = h[a], h[a] = idx ++ ;
 }
 
-int dfs(int u)
+<span class="keyword">int</span> dfs(<span class="keyword">int</span> u)
 {
-  st[u] = true;
+  st[u] = <span class="keyword">true</span>;
 
-  int size = 0;//去掉i节点后，i子树的最大子树节点数
-  int sum = 0;//i子树的节点总数
-  for (int i = h[u]; i!=-1; i=ne[i])
+  <span class="keyword">int</span> size = <span <span class="keyword">class</span>="number">0</span>;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//去掉i节点后，i子树的最大子树节点数</span>
+  <span class="keyword">int</span> sum = <span <span class="keyword">class</span>="number">0</span>;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//i子树的节点总数</span>
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = h[u]; i!=-<span <span class="keyword">class</span>="number">1</span>; i=ne[i])
   {
-    int j = e[i];
-    if (st[j]) continue;
+    <span class="keyword">int</span> j = e[i];
+    <span class="keyword">if</span> (st[j]) <span class="keyword">continue</span>;
 
-    int s = dfs(j);//返回j子树的大小
+    <span class="keyword">int</span> s = dfs(j);<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//返回j子树的大小</span>
     size = max(size,s);
-    sum += s;//计算所有子树和
+    sum += s;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//计算所有子树和</span>
   }
 
-  size = max(size, n - sum - 1);//i子树和与 非i子树部分的和，取最大值
+  size = max(size, n - sum - <span <span class="keyword">class</span>="number">1</span>);<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//i子树和与 非i子树部分的和，取最大值</span>
   ans = min(ans,size);
 
-  return sum+1;//加上i节点本身
+  <span class="keyword">return</span> sum+<span <span class="keyword">class</span>="number">1</span>;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//加上i节点本身</span>
 }
 
-int main()
+<span class="keyword">int</span> main()
 {
     cin&gt;&gt;n;
-    memset(h, -1, sizeof h);
-    for (int i = 0; i &lt; n-1; i ++ )
+    memset(h, -<span <span class="keyword">class</span>="number">1</span>, <span class="keyword">sizeof</span> h);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n-<span <span class="keyword">class</span>="number">1</span>; i ++ )
     {
-      int a,b;
+      <span class="keyword">int</span> a,b;
       cin&gt;&gt;a&gt;&gt;b;
-      add(a, b),add(b,a);//无向边
+      add(a, b),add(b,a);<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//无向边</span>
     }
-    dfs(1);
+    dfs(<span <span class="keyword">class</span>="number">1</span>);
     cout&lt;&lt;ans&lt;&lt;endl;
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 树的重心
-import sys
-sys.setrecursionlimit(200000)
-n = int(input())
-adj = [[] for _ in range(n + 1)]
-for _ in range(n - 1):
-    a, b = map(int, input().split())
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 树的重心</span>
+<span class="keyword">import</span> sys
+sys.setrecursionlimit(<span <span class="keyword">class</span>="number">200000</span>)
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+adj = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n + <span <span class="keyword">class</span>="number">1</span>)]
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n - <span <span class="keyword">class</span>="number">1</span>):
+    a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
     adj[a].append(b)
     adj[b].append(a)
 
 ans = n
-def dfs(u, fa):
+<span class="keyword">def</span> dfs(u, fa):
     global ans
-    sz = 1
-    max_part = 0
-    for v in adj[u]:
-        if v != fa:
+    sz = <span <span class="keyword">class</span>="number">1</span>
+    max_part = <span <span class="keyword">class</span>="number">0</span>
+    <span class="keyword">for</span> v <span class="keyword">in</span> adj[u]:
+        <span class="keyword">if</span> v != fa:
             sv = dfs(v, u)
             sz += sv
-            max_part = max(max_part, sv)
-    max_part = max(max_part, n - sz)
-    ans = min(ans, max_part)
-    return sz
+            max_part = <span class="keyword">max</span>(max_part, sv)
+    max_part = <span class="keyword">max</span>(max_part, n - sz)
+    ans = <span class="keyword">min</span>(ans, max_part)
+    <span class="keyword">return</span> sz
 
-dfs(1, -1)
-print(ans)</code></pre>
+dfs(<span <span class="keyword">class</span>="number">1</span>, -<span <span class="keyword">class</span>="number">1</span>)
+<span class="keyword">print</span>(ans)</code></pre>
             </details>
         </div>
     </div>
@@ -696,88 +696,88 @@ print(ans)</code></pre>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-#include &lt;queue&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+#<span class="keyword">include</span> &lt;queue&gt;
 
-using namespace std;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 /**
- * NQ13-06: 图中点的层次
- * 搜索与回溯 | AcWing 847
+ * NQ13-<span <span class="keyword">class</span>="number">06</span>: 图中点的层次
+ * 搜索与回溯 | AcWing <span <span class="keyword">class</span>="number">847</span>
  * 时间: O(n) | 空间: O(n)
  */
 
-const int N = 100007;//有向图
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">100007</span>;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//有向图</span>
 
-int n,m;
-int h[N], e[N], ne[N], idx;
-int d[N];
+<span class="keyword">int</span> n,m;
+<span class="keyword">int</span> h[N], e[N], ne[N], idx;
+<span class="keyword">int</span> d[N];
 
-void add(int a, int b)  // 添加一条边a-&gt;b
+<span class="keyword">void</span> add(<span class="keyword">int</span> a, <span class="keyword">int</span> b)  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 添加一条边a-&gt;b</span>
 {
     e[idx] = b, ne[idx] = h[a], h[a] = idx ++ ;
 }
 
-int bfs()
+<span class="keyword">int</span> bfs()
 {
-  memset(d,-1,sizeof d);
-  queue&lt;int&gt; q;
-  d[1] = 0;//起始点
-  q.push(1);
+  memset(d,-<span <span class="keyword">class</span>="number">1</span>,<span class="keyword">sizeof</span> d);
+  queue&lt;<span class="keyword">int</span>&gt; q;
+  d[<span <span class="keyword">class</span>="number">1</span>] = <span <span class="keyword">class</span>="number">0</span>;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//起始点</span>
+  q.push(<span <span class="keyword">class</span>="number">1</span>);
 
-  while (q.size())
+  <span class="keyword">while</span> (q.size())
   {
-    auto t = q.front();
+    <span class="keyword">auto</span> t = q.front();
     q.pop();
 
-    for (int i = h[t]; i!=-1; i = ne[i])
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i!=-<span <span class="keyword">class</span>="number">1</span>; i = ne[i])
     {
-      int j = e[i];
-      if (d[j]==-1)
+      <span class="keyword">int</span> j = e[i];
+      <span class="keyword">if</span> (d[j]==-<span <span class="keyword">class</span>="number">1</span>)
       {
-        d[j] = d[t]+1; //层次加1
+        d[j] = d[t]+<span <span class="keyword">class</span>="number">1</span>; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//层次加1</span>
         q.push(j);
       }
     }
   }
-  return d[n];
+  <span class="keyword">return</span> d[n];
 }
 
-int main()
+<span class="keyword">int</span> main()
 {
     cin&gt;&gt;n&gt;&gt;m;
-    memset(h, -1, sizeof h);
+    memset(h, -<span <span class="keyword">class</span>="number">1</span>, <span class="keyword">sizeof</span> h);
 
-    for (int i = 0; i &lt; m; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; m; i++)
     {
-      int a, b;
+      <span class="keyword">int</span> a, b;
       cin&gt;&gt;a&gt;&gt;b;
       add(a,b);
     }
 
     cout&lt;&lt;bfs()&lt;&lt;endl;
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 图中点的层次
-from collections import deque
-n, m = map(int, input().split())
-adj = [[] for _ in range(n + 1)]
-for _ in range(m):
-    a, b = map(int, input().split())
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 图中点的层次</span>
+<span class="keyword">from</span> collections <span class="keyword">import</span> deque
+n, m = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+adj = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n + <span <span class="keyword">class</span>="number">1</span>)]
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(m):
+    a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
     adj[a].append(b)
-dist = [-1] * (n + 1)
-dist[1] = 0
-q = deque([1])
-while q:
+dist = [-<span <span class="keyword">class</span>="number">1</span>] * (n + <span <span class="keyword">class</span>="number">1</span>)
+dist[<span <span class="keyword">class</span>="number">1</span>] = <span <span class="keyword">class</span>="number">0</span>
+q = deque([<span <span class="keyword">class</span>="number">1</span>])
+<span class="keyword">while</span> q:
     u = q.popleft()
-    for v in adj[u]:
-        if dist[v] == -1:
-            dist[v] = dist[u] + 1
+    <span class="keyword">for</span> v <span class="keyword">in</span> adj[u]:
+        <span class="keyword">if</span> dist[v] == -<span <span class="keyword">class</span>="number">1</span>:
+            dist[v] = dist[u] + <span <span class="keyword">class</span>="number">1</span>
             q.append(v)
-print(dist[n])</code></pre>
+<span class="keyword">print</span>(dist[n])</code></pre>
             </details>
         </div>
     </div>

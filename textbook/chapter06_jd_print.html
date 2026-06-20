@@ -69,24 +69,24 @@ Hello World
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
-// 古卷测长：输出字符串长度
-int main()
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 古卷测长：输出字符串长度</span>
+<span class="keyword">int</span> main()
 {
-    char str[101];
+    <span class="keyword">char</span> str[<span <span class="keyword">class</span>="number">101</span>];
 
-    fgets(str, 101, stdin);
+    fgets(str, <span <span class="keyword">class</span>="number">101</span>, stdin);
 
-    int len = 0;
-    for (int i = 0; str[i] &amp;&amp; str[i] != '\n'; i ++ ) len ++ ;
+    <span class="keyword">int</span> len = <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; str[i] &amp;&amp; str[i] != &#x27;\n&#x27;; i ++ ) len ++ ;
 
-    printf("%d\n", len);
+    printf(&quot;%d\n&quot;, len);
 
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">print(len(input()))</code></pre>
+            <pre><code class="language-python"><span class="keyword">print</span>(<span class="keyword">len</span>(<span class="keyword">input</span>()))</code></pre>
             </details>
         </div>
     </div>
@@ -128,27 +128,27 @@ a b c
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 
-using namespace std;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-// 密文留白：每个字符后加空格
-int main()
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 密文留白：每个字符后加空格</span>
+<span class="keyword">int</span> main()
 {
-    string a;
+    <span class="keyword">string</span> a;
     getline(cin, a);
 
-    string b;
-    for (auto c : a) b = b + c + ' ';
+    <span class="keyword">string</span> b;
+    <span class="keyword">for</span> (<span class="keyword">auto</span> c : a) b = b + c + &#x27; &#x27;;
 
     b.pop_back();
 
     cout &lt;&lt; b &lt;&lt; endl;
 
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">print(" ".join(input()))</code></pre>
+            <pre><code class="language-python"><span class="keyword">print</span>(&quot; &quot;.join(<span class="keyword">input</span>()))</code></pre>
             </details>
         </div>
     </div>
@@ -201,32 +201,32 @@ hell#
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;iostream&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;iostream&gt;
 
-using namespace std;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-// 墨迹遮字：字符串中指定字符替换为#
-int main()
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 墨迹遮字：字符串中指定字符替换为#</span>
+<span class="keyword">int</span> main()
 {
-    char str[31];
-    scanf("%s", str);
+    <span class="keyword">char</span> str[<span <span class="keyword">class</span>="number">31</span>];
+    scanf(&quot;%s&quot;, str);
 
-    char c;
-    scanf("\n%c", &amp;c);
+    <span class="keyword">char</span> c;
+    scanf(&quot;\n%c&quot;, &amp;c);
 
-    for (int i = 0; str[i]; i ++ )
-        if (str[i] == c)
-            str[i] = '#';
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; str[i]; i ++ )
+        <span class="keyword">if</span> (str[i] == c)
+            str[i] = &#x27;#&#x27;;
 
     puts(str);
 
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">s = input()
-c = input()
-print(s.replace(c, "#"))</code></pre>
+            <pre><code class="language-python">s = <span class="keyword">input</span>()
+c = <span class="keyword">input</span>()
+<span class="keyword">print</span>(s.replace(c, &quot;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#&quot;))</span></code></pre>
             </details>
         </div>
     </div>
@@ -268,28 +268,28 @@ jfdhkaZcxiNBHR`cjklhZbimiqxobc^caZUO^mbG]c_`R^dVcruhSgqhXXceiURchojXYS[njVCVfUUn
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 
-using namespace std;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-// 经文重构：按规则构造新字符串
-int main()
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 经文重构：按规则构造新字符串</span>
+<span class="keyword">int</span> main()
 {
-    string a, b;
+    <span class="keyword">string</span> a, b;
     getline(cin, a);
 
-    for (int i = 0; i &lt; a.size(); i ++ ) b += (char)(a[i] + a[(i + 1) % a.size()]);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; a.size(); i ++ ) b += (<span class="keyword">char</span>)(a[i] + a[(i + <span <span class="keyword">class</span>="number">1</span>) % a.size()]);
 
     cout &lt;&lt; b &lt;&lt; endl;
 
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">import sys
-s = sys.stdin.read().rstrip('\n')
-n = len(s)
-result = ''.join(chr(ord(s[i]) + ord(s[(i+1) % n])) for i in range(n))
-print(result)</code></pre>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+s = sys.stdin.read().rstrip(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;\n&#x27;)</span>
+n = <span class="keyword">len</span>(s)
+result = &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;&#x27;.join(chr(ord(s[i]) + ord(s[(i+<span <span class="keyword">class</span>="number">1</span>) % n])) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n))</span>
+<span class="keyword">print</span>(result)</code></pre>
             </details>
         </div>
     </div>
@@ -331,27 +331,27 @@ hello2024world
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
-// 密文数符：统计字符串中数字个数
-int main()
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 密文数符：统计字符串中数字个数</span>
+<span class="keyword">int</span> main()
 {
-    char str[101];
+    <span class="keyword">char</span> str[<span <span class="keyword">class</span>="number">101</span>];
 
-    fgets(str, 101, stdin);
+    fgets(str, <span <span class="keyword">class</span>="number">101</span>, stdin);
 
-    int cnt = 0;
-    for (int i = 0; str[i]; i ++ )
-        if (str[i] &gt;= '0' &amp;&amp; str[i] &lt;= '9')
+    <span class="keyword">int</span> cnt = <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; str[i]; i ++ )
+        <span class="keyword">if</span> (str[i] &gt;= &#x27;<span <span class="keyword">class</span>="number">0</span>&#x27; &amp;&amp; str[i] &lt;= &#x27;<span <span class="keyword">class</span>="number">9</span>&#x27;)
            cnt ++ ;
 
-    printf("%d\n", cnt);
+    printf(&quot;%d\n&quot;, cnt);
 
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">s = input()
-print(sum(1 for c in s if c.isdigit()))</code></pre>
+            <pre><code class="language-python">s = <span class="keyword">input</span>()
+<span class="keyword">print</span>(<span class="keyword">sum</span>(<span <span class="keyword">class</span>="number">1</span> <span class="keyword">for</span> c <span class="keyword">in</span> s <span class="keyword">if</span> c.isdigit()))</code></pre>
             </details>
         </div>
     </div>
@@ -393,27 +393,27 @@ Player2
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-// 拳掌对决：剪刀石头布胜负判断
-int main() {
-  char a[20],b[20];
-  while(scanf("%s%s",a,b)==2) {
-    if(!strcmp(a,b)) printf("Tie\n");
-    else if((!strcmp(a,"Hunter")&amp;&amp;!strcmp(b,"Gun"))||(!strcmp(a,"Gun")&amp;&amp;!strcmp(b,"Bear"))||(!strcmp(a,"Bear")&amp;&amp;!strcmp(b,"Hunter"))) printf("Player1\n");
-    else printf("Player2\n");
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 拳掌对决：剪刀石头布胜负判断</span>
+<span class="keyword">int</span> main() {
+  <span class="keyword">char</span> a[<span <span class="keyword">class</span>="number">20</span>],b[<span <span class="keyword">class</span>="number">20</span>];
+  <span class="keyword">while</span>(scanf(&quot;%s%s&quot;,a,b)==<span <span class="keyword">class</span>="number">2</span>) {
+    <span class="keyword">if</span>(!strcmp(a,b)) printf(&quot;Tie\n&quot;);
+    <span class="keyword">else</span> <span class="keyword">if</span>((!strcmp(a,&quot;Hunter&quot;)&amp;&amp;!strcmp(b,&quot;Gun&quot;))||(!strcmp(a,&quot;Gun&quot;)&amp;&amp;!strcmp(b,&quot;Bear&quot;))||(!strcmp(a,&quot;Bear&quot;)&amp;&amp;!strcmp(b,&quot;Hunter&quot;))) printf(&quot;Player1\n&quot;);
+    <span class="keyword">else</span> printf(&quot;Player2\n&quot;);
   }
-  return 0;
+  <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">import sys
+            <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
-p1, p2 = data[0], data[1]
-if p1 == p2: print('Tie')
-elif (p1=='Hunter' and p2=='Gun') or (p1=='Bear' and p2=='Hunter') or (p1=='Gun' and p2=='Bear'):
-    print('Player1')
-else:
-    print('Player2')</code></pre>
+p1, p2 = data[<span <span class="keyword">class</span>="number">0</span>], data[<span <span class="keyword">class</span>="number">1</span>]
+<span class="keyword">if</span> p1 == p2: <span class="keyword">print</span>(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;Tie&#x27;)</span>
+<span class="keyword">elif</span> (p1==&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;Hunter&#x27; <span class="keyword">and</span> p2==&#x27;Gun&#x27;) <span class="keyword">or</span> (p1==&#x27;Bear&#x27; <span class="keyword">and</span> p2==&#x27;Hunter&#x27;) <span class="keyword">or</span> (p1==&#x27;Gun&#x27; <span class="keyword">and</span> p2==&#x27;Bear&#x27;):</span>
+    <span class="keyword">print</span>(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;Player1&#x27;)</span>
+<span class="keyword">else</span>:
+    <span class="keyword">print</span>(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;Player2&#x27;)</span></code></pre>
             </details>
         </div>
     </div>
@@ -455,33 +455,33 @@ Ifmmp, Xpsme!
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;cstring&gt;
-using namespace std;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-int main(){
+<span class="keyword">int</span> main(){
 
-    string s;
-    getline(cin,s);//读入一行
+    <span class="keyword">string</span> s;
+    getline(cin,s);<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//读入一行</span>
 
-    for (auto &amp;c:s)//使用auto注意&amp;c直接引用字符串直接修改
-      if (c&gt;='a' &amp;&amp; c&lt;='z') 
-          c = 'a'+ (c-'a'+1) % 26;//取模运算
-         else if (c&gt;='A' &amp;&amp; c&lt;='Z') 
-          c = 'A' + (c-'A'+1) % 26;
+    <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;c:s)<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//使用auto注意&amp;c直接引用字符串直接修改</span>
+      <span class="keyword">if</span> (c&gt;=&#x27;a&#x27; &amp;&amp; c&lt;=&#x27;z&#x27;) 
+          c = &#x27;a&#x27;+ (c-&#x27;a&#x27;+<span <span class="keyword">class</span>="number">1</span>) % <span <span class="keyword">class</span>="number">26</span>;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//取模运算</span>
+         <span class="keyword">else</span> <span class="keyword">if</span> (c&gt;=&#x27;A&#x27; &amp;&amp; c&lt;=&#x27;Z&#x27;) 
+          c = &#x27;A&#x27; + (c-&#x27;A&#x27;+<span <span class="keyword">class</span>="number">1</span>) % <span <span class="keyword">class</span>="number">26</span>;
 
-    cout&lt;&lt;s&lt;&lt;endl;//输出结果
+    cout&lt;&lt;s&lt;&lt;endl;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//输出结果</span>
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">r = []
-for c in input():
-    if "a" &lt;= c &lt;= "z":
-        r.append(chr((ord(c) - 97 + 1) % 26 + 97))
-    elif "A" &lt;= c &lt;= "Z":
-        r.append(chr((ord(c) - 65 + 1) % 26 + 65))
-    else:
+<span class="keyword">for</span> c <span class="keyword">in</span> <span class="keyword">input</span>():
+    <span class="keyword">if</span> &quot;a&quot; &lt;= c &lt;= &quot;z&quot;:
+        r.append(chr((ord(c) - <span <span class="keyword">class</span>="number">97</span> + <span <span class="keyword">class</span>="number">1</span>) % <span <span class="keyword">class</span>="number">26</span> + <span <span class="keyword">class</span>="number">97</span>))
+    <span class="keyword">elif</span> &quot;A&quot; &lt;= c &lt;= &quot;Z&quot;:
+        r.append(chr((ord(c) - <span <span class="keyword">class</span>="number">65</span> + <span <span class="keyword">class</span>="number">1</span>) % <span <span class="keyword">class</span>="number">26</span> + <span <span class="keyword">class</span>="number">65</span>))
+    <span class="keyword">else</span>:
         r.append(c)
-print("".join(r))</code></pre>
+<span class="keyword">print</span>(&quot;&quot;.join(r))</code></pre>
             </details>
         </div>
     </div>
@@ -525,36 +525,36 @@ first late system see school still great different year Place far take same
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;sstream&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;sstream&gt;
 
-using namespace std;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-// 古卷替换：字符串中单词替换
-int main()
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 古卷替换：字符串中单词替换</span>
+<span class="keyword">int</span> main()
 {
-    string s, a, b;
+    <span class="keyword">string</span> s, a, b;
 
     getline(cin, s);
     cin &gt;&gt; a &gt;&gt; b;
 
     stringstream ssin(s);
-    string str;
-    while (ssin &gt;&gt; str)
-        if (str == a) cout &lt;&lt; b &lt;&lt; ' ';
-        else cout &lt;&lt; str &lt;&lt; ' ';
+    <span class="keyword">string</span> str;
+    <span class="keyword">while</span> (ssin &gt;&gt; str)
+        <span class="keyword">if</span> (str == a) cout &lt;&lt; b &lt;&lt; &#x27; &#x27;;
+        <span class="keyword">else</span> cout &lt;&lt; str &lt;&lt; &#x27; &#x27;;
 
-    return 0;    
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;    
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">import sys
+            <pre><code class="language-python"><span class="keyword">import</span> sys
 lines = sys.stdin.read().splitlines()
-s = lines[0] if len(lines) &gt; 0 else ''
-a = lines[1] if len(lines) &gt; 1 else ''
-b = lines[2] if len(lines) &gt; 2 else ''
+s = lines[<span <span class="keyword">class</span>="number">0</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) &gt; <span <span class="keyword">class</span>="number">0</span> <span class="keyword">else</span> &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;&#x27;</span>
+a = lines[<span <span class="keyword">class</span>="number">1</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) &gt; <span <span class="keyword">class</span>="number">1</span> <span class="keyword">else</span> &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;&#x27;</span>
+b = lines[<span <span class="keyword">class</span>="number">2</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) &gt; <span <span class="keyword">class</span>="number">2</span> <span class="keyword">else</span> &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;&#x27;</span>
 words = s.split()
-result = ' '.join(b if w == a else w for w in words)
-print(result)</code></pre>
+result = &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27; &#x27;.join(b <span class="keyword">if</span> w == a <span class="keyword">else</span> w <span class="keyword">for</span> w <span class="keyword">in</span> words)</span>
+<span class="keyword">print</span>(result)</code></pre>
             </details>
         </div>
     </div>
@@ -596,28 +596,28 @@ University
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 
-using namespace std;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-// 寻最长词：找出最长的单词
-int main()
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 寻最长词：找出最长的单词</span>
+<span class="keyword">int</span> main()
 {
-    string res, str;
+    <span class="keyword">string</span> res, str;
 
-    while (cin &gt;&gt; str)
+    <span class="keyword">while</span> (cin &gt;&gt; str)
     {
-      if (str.back() == '.') str.pop_back();
-      if (str.size() &gt; res.size()) res = str;
+      <span class="keyword">if</span> (str.back() == &#x27;.&#x27;) str.pop_back();
+      <span class="keyword">if</span> (str.size() &gt; res.size()) res = str;
     }
 
     cout &lt;&lt; res &lt;&lt; endl;
 
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">words=input().split()
-print(max(words,key=len))</code></pre>
+            <pre><code class="language-python">words=<span class="keyword">input</span>().split()
+<span class="keyword">print</span>(<span class="keyword">max</span>(words,key=<span class="keyword">len</span>))</code></pre>
             </details>
         </div>
     </div>
@@ -660,34 +660,34 @@ helloX
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;cstring&gt;
-using namespace std;
-int main()
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main()
 {
-    string a,b;
-    while(cin&gt;&gt;a&gt;&gt;b){
+    <span class="keyword">string</span> a,b;
+    <span class="keyword">while</span>(cin&gt;&gt;a&gt;&gt;b){
 
-        int p=0;
-        for (int i=0;i&lt;a.size();i++)
-            if (a[i]&gt;a[p]) p=i;//找到最大的位置
+        <span class="keyword">int</span> p=<span <span class="keyword">class</span>="number">0</span>;
+        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span <span class="keyword">class</span>="number">0</span>;i&lt;a.size();i++)
+            <span class="keyword">if</span> (a[i]&gt;a[p]) p=i;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//找到最大的位置</span>
 
-        cout&lt;&lt;a.substr(0,p+1)+b+a.substr(p+1)&lt;&lt;endl;
+        cout&lt;&lt;a.substr(<span <span class="keyword">class</span>="number">0</span>,p+<span <span class="keyword">class</span>="number">1</span>)+b+a.substr(p+<span <span class="keyword">class</span>="number">1</span>)&lt;&lt;endl;
 
     }
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">import sys
+            <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
-if len(data) &gt;= 2:
-    a = data[0]
-    b = data[1]
-    p = 0
-    for i in range(len(a)):
-        if a[i] &gt; a[p]:
+<span class="keyword">if</span> <span class="keyword">len</span>(data) &gt;= <span <span class="keyword">class</span>="number">2</span>:
+    a = data[<span <span class="keyword">class</span>="number">0</span>]
+    b = data[<span <span class="keyword">class</span>="number">1</span>]
+    p = <span <span class="keyword">class</span>="number">0</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="keyword">len</span>(a)):
+        <span class="keyword">if</span> a[i] &gt; a[p]:
             p = i
-    print(a[:p+1] + b + a[p+1:])</code></pre>
+    <span class="keyword">print</span>(a[:p+<span <span class="keyword">class</span>="number">1</span>] + b + a[p+<span <span class="keyword">class</span>="number">1</span>:])</code></pre>
             </details>
         </div>
     </div>
@@ -729,42 +729,42 @@ b
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;cstring&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
 
-using namespace std;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-int cnt[26];
-char str[100010];
+<span class="keyword">int</span> cnt[<span <span class="keyword">class</span>="number">26</span>];
+<span class="keyword">char</span> str[<span <span class="keyword">class</span>="number">100010</span>];
 
-// 独字寻踪：找第一个不重复字符
-int main()
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 独字寻踪：找第一个不重复字符</span>
+<span class="keyword">int</span> main()
 {
     cin &gt;&gt; str;
 
-    for (int i = 0; str[i]; i ++ ) cnt[str[i] - 'a'] ++ ;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; str[i]; i ++ ) cnt[str[i] - &#x27;a&#x27;] ++ ;
 
-    for (int i = 0; str[i]; i ++ )
-        if (cnt[str[i] - 'a'] == 1)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; str[i]; i ++ )
+        <span class="keyword">if</span> (cnt[str[i] - &#x27;a&#x27;] == <span <span class="keyword">class</span>="number">1</span>)
         {
           cout &lt;&lt; str[i] &lt;&lt; endl;
-          return 0;
+          <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
         }
 
-        puts("no");
+        puts(&quot;no&quot;);
 
-    return 0;    
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;    
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">s = input()
-from collections import Counter
+            <pre><code class="language-python">s = <span class="keyword">input</span>()
+<span class="keyword">from</span> collections <span class="keyword">import</span> Counter
 cnt = Counter(s)
-for c in s:
-    if cnt[c] == 1:
-        print(c)
-        break
-else:
-    print("no")</code></pre>
+<span class="keyword">for</span> c <span class="keyword">in</span> s:
+    <span class="keyword">if</span> cnt[c] == <span <span class="keyword">class</span>="number">1</span>:
+        <span class="keyword">print</span>(c)
+        <span class="keyword">break</span>
+<span class="keyword">else</span>:
+    <span class="keyword">print</span>(&quot;no&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -807,27 +807,27 @@ no
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-// 两卷对校：判断b是否为a的子串
-int main() {
-  double k;
-  char a[110],b[110];
-  scanf("%lf%s%s",&amp;k,a,b);
-  int match=0;
-  int la=strlen(a),lb=strlen(b);
-  for(int i=0;i+lb&lt;=la;i++) {
-    if(!strncmp(a+i,b,lb)) {match=1;break;}
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 两卷对校：判断b是否为a的子串</span>
+<span class="keyword">int</span> main() {
+  <span class="keyword">double</span> k;
+  <span class="keyword">char</span> a[<span <span class="keyword">class</span>="number">110</span>],b[<span <span class="keyword">class</span>="number">110</span>];
+  scanf(&quot;%lf%s%s&quot;,&amp;k,a,b);
+  <span class="keyword">int</span> match=<span <span class="keyword">class</span>="number">0</span>;
+  <span class="keyword">int</span> la=strlen(a),lb=strlen(b);
+  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span <span class="keyword">class</span>="number">0</span>;i+lb&lt;=la;i++) {
+    <span class="keyword">if</span>(!strncmp(a+i,b,lb)) {match=<span <span class="keyword">class</span>="number">1</span>;<span class="keyword">break</span>;}
   }
-  printf(match?"yes\n":"no\n");
-  return 0;
+  printf(match?&quot;yes\n&quot;:&quot;no\n&quot;);
+  <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">import sys
+            <pre><code class="language-python"><span class="keyword">import</span> sys
 lines = sys.stdin.read().splitlines()
-a = lines[0] if len(lines) &gt; 0 else ''
-b = lines[1] if len(lines) &gt; 1 else ''
-print("yes" if b in a else "no")</code></pre>
+a = lines[<span <span class="keyword">class</span>="number">0</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) &gt; <span <span class="keyword">class</span>="number">0</span> <span class="keyword">else</span> &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;&#x27;</span>
+b = lines[<span <span class="keyword">class</span>="number">1</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) &gt; <span <span class="keyword">class</span>="number">1</span> <span class="keyword">else</span> &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;&#x27;</span>
+<span class="keyword">print</span>(&quot;yes&quot; <span class="keyword">if</span> b <span class="keyword">in</span> a <span class="keyword">else</span> &quot;no&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -874,57 +874,57 @@ ababab
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 
-using namespace std;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-// 经文周期：找字符串最小重复周期
-int main()
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 经文周期：找字符串最小重复周期</span>
+<span class="keyword">int</span> main()
 {
-    string str;
+    <span class="keyword">string</span> str;
 
-    while (cin &gt;&gt; str, str != ".")
+    <span class="keyword">while</span> (cin &gt;&gt; str, str != &quot;.&quot;)
     {
-      int len = str.size();
+      <span class="keyword">int</span> len = str.size();
 
-      for (int n = len; n; n -- )
-          if (len % n == 0)
+      <span class="keyword">for</span> (<span class="keyword">int</span> n = len; n; n -- )
+          <span class="keyword">if</span> (len % n == <span <span class="keyword">class</span>="number">0</span>)
           {
-            int m = len / n;
-            string s = str.substr(0, m);
-            string r;
-            for (int i = 0; i &lt; n; i ++ ) r += s;
+            <span class="keyword">int</span> m = len / n;
+            <span class="keyword">string</span> s = str.substr(<span <span class="keyword">class</span>="number">0</span>, m);
+            <span class="keyword">string</span> r;
+            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i ++ ) r += s;
 
-            if (r == str)
+            <span class="keyword">if</span> (r == str)
             {
               cout &lt;&lt; n &lt;&lt; endl;
-              break;
+              <span class="keyword">break</span>;
             }
           }
     }
 
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 字符串乘方
-while True:
-    s = input().strip()
-    if s == '.':
-        break
-    n = len(s)
-    ne = [0] * n
-    j = 0
-    for i in range(1, n):
-        while j &gt; 0 and s[i] != s[j]:
-            j = ne[j - 1]
-        if s[i] == s[j]:
-            j += 1
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 字符串乘方</span>
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    s = <span class="keyword">input</span>().strip()
+    <span class="keyword">if</span> s == &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;.&#x27;:</span>
+        <span class="keyword">break</span>
+    n = <span class="keyword">len</span>(s)
+    ne = [<span <span class="keyword">class</span>="number">0</span>] * n
+    j = <span <span class="keyword">class</span>="number">0</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, n):
+        <span class="keyword">while</span> j &gt; <span <span class="keyword">class</span>="number">0</span> <span class="keyword">and</span> s[i] != s[j]:
+            j = ne[j - <span <span class="keyword">class</span>="number">1</span>]
+        <span class="keyword">if</span> s[i] == s[j]:
+            j += <span <span class="keyword">class</span>="number">1</span>
         ne[i] = j
-    length = n - ne[n - 1]
-    if n % length == 0:
-        print(n // length)
-    else:
-        print(1)</code></pre>
+    length = n - ne[n - <span <span class="keyword">class</span>="number">1</span>]
+    <span class="keyword">if</span> n % length == <span <span class="keyword">class</span>="number">0</span>:
+        <span class="keyword">print</span>(n // length)
+    <span class="keyword">else</span>:
+        <span class="keyword">print</span>(<span <span class="keyword">class</span>="number">1</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -966,67 +966,67 @@ abcd123dABdefghjsdef76ki,ab,ef
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 
-using namespace std;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-// 密文跨距：两子串最大间距
-int main()
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 密文跨距：两子串最大间距</span>
+<span class="keyword">int</span> main()
 {
-    string s, s1, s2;
+    <span class="keyword">string</span> s, s1, s2;
 
-    char c;
-    while (cin &gt;&gt; c, c != ',') s += c;
-    while (cin &gt;&gt; c, c != ',') s1 += c;
-    while (cin &gt;&gt; c) s2 += c;
+    <span class="keyword">char</span> c;
+    <span class="keyword">while</span> (cin &gt;&gt; c, c != &#x27;,&#x27;) s += c;
+    <span class="keyword">while</span> (cin &gt;&gt; c, c != &#x27;,&#x27;) s1 += c;
+    <span class="keyword">while</span> (cin &gt;&gt; c) s2 += c;
 
-    if (s.size() &lt; s1.size() || s.size() &lt; s2.size()) puts("-1");
-    else
+    <span class="keyword">if</span> (s.size() &lt; s1.size() || s.size() &lt; s2.size()) puts(&quot;-<span <span class="keyword">class</span>="number">1</span>&quot;);
+    <span class="keyword">else</span>
     {
-      int l = 0; 
-      while (l + s1.size() &lt;= s.size())
+      <span class="keyword">int</span> l = <span <span class="keyword">class</span>="number">0</span>; 
+      <span class="keyword">while</span> (l + s1.size() &lt;= s.size())
       {
-        int k = 0;
-        while (k &lt; s1.size())
+        <span class="keyword">int</span> k = <span <span class="keyword">class</span>="number">0</span>;
+        <span class="keyword">while</span> (k &lt; s1.size())
         {
-          if (s[l + k] != s1[k]) break;
+          <span class="keyword">if</span> (s[l + k] != s1[k]) <span class="keyword">break</span>;
           k ++ ;
         }
-        if (k == s1.size()) break;
+        <span class="keyword">if</span> (k == s1.size()) <span class="keyword">break</span>;
         l ++ ;
       }
 
-      int r = s.size() - s2.size();
-      while (r &gt;= 0)
+      <span class="keyword">int</span> r = s.size() - s2.size();
+      <span class="keyword">while</span> (r &gt;= <span <span class="keyword">class</span>="number">0</span>)
       {
-        int k = 0;
-        while (k &lt; s2.size())
+        <span class="keyword">int</span> k = <span <span class="keyword">class</span>="number">0</span>;
+        <span class="keyword">while</span> (k &lt; s2.size())
         {
-          if (s[r + k] != s2[k]) break;
+          <span class="keyword">if</span> (s[r + k] != s2[k]) <span class="keyword">break</span>;
           k ++ ;
         }
-        if (k == s2.size()) break;
+        <span class="keyword">if</span> (k == s2.size()) <span class="keyword">break</span>;
         r -- ;
       }
 
-      l += s1.size() - 1;
+      l += s1.size() - <span <span class="keyword">class</span>="number">1</span>;
 
-      if (l &gt;= r) puts("-1");
-      else printf("%d\n", r - l - 1);
+      <span class="keyword">if</span> (l &gt;= r) puts(&quot;-<span <span class="keyword">class</span>="number">1</span>&quot;);
+      <span class="keyword">else</span> printf(&quot;%d\n&quot;, r - l - <span <span class="keyword">class</span>="number">1</span>);
     }
 
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 字符串最大跨距
-s, s1, s2 = input().split(',')
-n = len(s)
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 字符串最大跨距</span>
+s, s1, s2 = <span class="keyword">input</span>().split(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;,&#x27;)</span>
+n = <span class="keyword">len</span>(s)
 l = s.find(s1)
 r = s.rfind(s2)
-if l == -1 or r == -1 or l + len(s1) &gt; r:
-    print(-1)
-else:
-    print(r - l - len(s1))</code></pre>
+<span class="keyword">if</span> l == -<span <span class="keyword">class</span>="number">1</span> <span class="keyword">or</span> r == -<span <span class="keyword">class</span>="number">1</span> <span class="keyword">or</span> l + <span class="keyword">len</span>(s1) &gt; r:
+    <span class="keyword">print</span>(-<span <span class="keyword">class</span>="number">1</span>)
+<span class="keyword">else</span>:
+    <span class="keyword">print</span>(r - l - <span class="keyword">len</span>(s1))</code></pre>
             </details>
         </div>
     </div>

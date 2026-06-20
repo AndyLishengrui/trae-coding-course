@@ -71,22 +71,22 @@ Hello%20World
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;string&gt;
-using namespace std;
-int main() {
-    string s;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;<span class="keyword">string</span>&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">string</span> s;
     getline(cin, s);
-    for (char c : s) {
-        if (c == ' ') cout &lt;&lt; "%20";
-        else cout &lt;&lt; c;
+    <span class="keyword">for</span> (<span class="keyword">char</span> c : s) {
+        <span class="keyword">if</span> (c == &#x27; &#x27;) cout &lt;&lt; &quot;%<span <span class="keyword">class</span>="number">20</span>&quot;;
+        <span class="keyword">else</span> cout &lt;&lt; c;
     }
     cout &lt;&lt; endl;
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">s = input()
-print(s.replace(' ', '%20'))</code></pre>
+            <pre><code class="language-python">s = <span class="keyword">input</span>()
+<span class="keyword">print</span>(s.replace(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27; &#x27;, &#x27;%<span <span class="keyword">class</span>="number">20</span>&#x27;))</span></code></pre>
             </details>
         </div>
     </div>
@@ -131,32 +131,32 @@ print(s.replace(' ', '%20'))</code></pre>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-// 用 vector 存储斐波那契数列，迭代计算
-int main() {
-    int n;
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 用 vector 存储斐波那契数列，迭代计算</span>
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n;
     cin &gt;&gt; n;
-    if (n == 0) { cout &lt;&lt; 0 &lt;&lt; endl; return 0; }
+    <span class="keyword">if</span> (n == <span <span class="keyword">class</span>="number">0</span>) { cout &lt;&lt; <span <span class="keyword">class</span>="number">0</span> &lt;&lt; endl; <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>; }
 
-    vector&lt;long long&gt; fib;
-    fib.push_back(0);  // fib[0] = 0
-    fib.push_back(1);  // fib[1] = 1
-    for (int i = 2; i &lt;= n; i++) {
-        fib.push_back(fib[i - 1] + fib[i - 2]);
+    vector&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; fib;
+    fib.push_back(<span <span class="keyword">class</span>="number">0</span>);  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// fib[<span <span class="keyword">class</span>="number">0</span>] = <span <span class="keyword">class</span>="number">0</span></span>
+    fib.push_back(<span <span class="keyword">class</span>="number">1</span>);  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// fib[<span <span class="keyword">class</span>="number">1</span>] = <span <span class="keyword">class</span>="number">1</span></span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">2</span>; i &lt;= n; i++) {
+        fib.push_back(fib[i - <span <span class="keyword">class</span>="number">1</span>] + fib[i - <span <span class="keyword">class</span>="number">2</span>]);
     }
     cout &lt;&lt; fib[n] &lt;&lt; endl;
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">n = int(input())
-if n == 0: print(0)
-else:
-    a, b = 0, 1
-    for _ in range(n - 1): a, b = b, a + b
-    print(b)</code></pre>
+            <pre><code class="language-python">n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">if</span> n == <span <span class="keyword">class</span>="number">0</span>: <span class="keyword">print</span>(<span <span class="keyword">class</span>="number">0</span>)
+<span class="keyword">else</span>:
+    a, b = <span <span class="keyword">class</span>="number">0</span>, <span <span class="keyword">class</span>="number">1</span>
+    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n - <span <span class="keyword">class</span>="number">1</span>): a, b = b, a + b
+    <span class="keyword">print</span>(b)</code></pre>
             </details>
         </div>
     </div>
@@ -202,32 +202,32 @@ else:
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
-using namespace std;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-int main() {
-    vector&lt;int&gt; nums;
-    int x;
-    while (cin &gt;&gt; x &amp;&amp; x != -1) {
+<span class="keyword">int</span> main() {
+    vector&lt;<span class="keyword">int</span>&gt; nums;
+    <span class="keyword">int</span> x;
+    <span class="keyword">while</span> (cin &gt;&gt; x &amp;&amp; x != -<span <span class="keyword">class</span>="number">1</span>) {
         nums.push_back(x);
     }
-    for (int i = nums.size() - 1; i &gt;= 0; i--) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = nums.size() - <span <span class="keyword">class</span>="number">1</span>; i &gt;= <span <span class="keyword">class</span>="number">0</span>; i--) {
         cout &lt;&lt; nums[i] &lt;&lt; endl;
     }
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">import sys
-for line in sys.stdin:
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+<span class="keyword">for</span> line <span class="keyword">in</span> sys.stdin:
     line = line.strip()
-    if not line:
-        continue
-    nums = list(map(int, line.split()))
-    nums.pop()  # remove -1
-    for x in reversed(nums):
-        print(x)</code></pre>
+    <span class="keyword">if</span> <span class="keyword">not</span> line:
+        <span class="keyword">continue</span>
+    nums = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, line.split()))
+    nums.pop()  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># remove -<span <span class="keyword">class</span>="number">1</span></span>
+    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="keyword">reversed</span>(nums):
+        <span class="keyword">print</span>(x)</code></pre>
             </details>
         </div>
     </div>
@@ -286,66 +286,66 @@ yes
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;stack&gt;
-#include &lt;string&gt;
-using namespace std;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;stack&gt;
+#<span class="keyword">include</span> &lt;<span class="keyword">string</span>&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-// 用两个栈模拟队列
-// 栈1负责入队，栈2负责出队
-// 出队时若栈2空，把栈1全部倒入栈2
-stack&lt;int&gt; s1, s2;
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 用两个栈模拟队列</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 栈1负责入队，栈2负责出队</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 出队时若栈2空，把栈1全部倒入栈2</span>
+stack&lt;<span class="keyword">int</span>&gt; s1, s2;
 
-void transfer() {
-    while (s1.size()) {
+<span class="keyword">void</span> transfer() {
+    <span class="keyword">while</span> (s1.size()) {
         s2.push(s1.top());
         s1.pop();
     }
 }
 
-int main() {
-    string cmd;
-    while (cin &gt;&gt; cmd) {
-        if (cmd == "push") {
-            int x; cin &gt;&gt; x;
+<span class="keyword">int</span> main() {
+    <span class="keyword">string</span> cmd;
+    <span class="keyword">while</span> (cin &gt;&gt; cmd) {
+        <span class="keyword">if</span> (cmd == &quot;push&quot;) {
+            <span class="keyword">int</span> x; cin &gt;&gt; x;
             s1.push(x);
-        } else if (cmd == "pop") {
-            if (s2.empty()) transfer();
+        } <span class="keyword">else</span> <span class="keyword">if</span> (cmd == &quot;pop&quot;) {
+            <span class="keyword">if</span> (s2.empty()) transfer();
             cout &lt;&lt; s2.top() &lt;&lt; endl;
             s2.pop();
-        } else if (cmd == "empty") {
-            cout &lt;&lt; (s1.empty() &amp;&amp; s2.empty() ? "yes" : "no") &lt;&lt; endl;
+        } <span class="keyword">else</span> <span class="keyword">if</span> (cmd == &quot;empty&quot;) {
+            cout &lt;&lt; (s1.empty() &amp;&amp; s2.empty() ? &quot;yes&quot; : &quot;no&quot;) &lt;&lt; endl;
         }
     }
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">import sys
+            <pre><code class="language-python"><span class="keyword">import</span> sys
 
 stack1 = []
 stack2 = []
 
-for line in sys.stdin:
+<span class="keyword">for</span> line <span class="keyword">in</span> sys.stdin:
     line = line.strip()
-    if not line:
-        continue
+    <span class="keyword">if</span> <span class="keyword">not</span> line:
+        <span class="keyword">continue</span>
     parts = line.split()
-    if parts[0] == 'push':
-        stack1.append(int(parts[1]))
-    elif parts[0] == 'pop':
-        if not stack2:
-            while stack1:
+    <span class="keyword">if</span> parts[<span <span class="keyword">class</span>="number">0</span>] == &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;push&#x27;:</span>
+        stack1.append(<span class="keyword">int</span>(parts[<span <span class="keyword">class</span>="number">1</span>]))
+    <span class="keyword">elif</span> parts[<span <span class="keyword">class</span>="number">0</span>] == &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;pop&#x27;:</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> stack2:
+            <span class="keyword">while</span> stack1:
                 stack2.append(stack1.pop())
-        if stack2:
-            print(stack2.pop())
-    elif parts[0] == 'peek':
-        if not stack2:
-            while stack1:
+        <span class="keyword">if</span> stack2:
+            <span class="keyword">print</span>(stack2.pop())
+    <span class="keyword">elif</span> parts[<span <span class="keyword">class</span>="number">0</span>] == &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;peek&#x27;:</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> stack2:
+            <span class="keyword">while</span> stack1:
                 stack2.append(stack1.pop())
-        if stack2:
-            print(stack2[-1])
-    elif parts[0] == 'empty':
-        print('true' if (not stack1 and not stack2) else 'false')</code></pre>
+        <span class="keyword">if</span> stack2:
+            <span class="keyword">print</span>(stack2[-<span <span class="keyword">class</span>="number">1</span>])
+    <span class="keyword">elif</span> parts[<span <span class="keyword">class</span>="number">0</span>] == &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;empty&#x27;:</span>
+        <span class="keyword">print</span>(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;true&#x27; <span class="keyword">if</span> (<span class="keyword">not</span> stack1 <span class="keyword">and</span> <span class="keyword">not</span> stack2) <span class="keyword">else</span> &#x27;false&#x27;)</span></code></pre>
             </details>
         </div>
     </div>
@@ -389,32 +389,32 @@ for line in sys.stdin:
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;stack&gt;
-using namespace std;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;stack&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-// 用栈实现链表反转：读入时压栈，输出时弹栈（后进先出 = 反转）
-int main() {
-    stack&lt;int&gt; stk;
-    int x;
-    while (cin &gt;&gt; x &amp;&amp; x != -1) {
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 用栈实现链表反转：读入时压栈，输出时弹栈（后进先出 = 反转）</span>
+<span class="keyword">int</span> main() {
+    stack&lt;<span class="keyword">int</span>&gt; stk;
+    <span class="keyword">int</span> x;
+    <span class="keyword">while</span> (cin &gt;&gt; x &amp;&amp; x != -<span <span class="keyword">class</span>="number">1</span>) {
         stk.push(x);
     }
-    while (!stk.empty()) {
+    <span class="keyword">while</span> (!stk.empty()) {
         cout &lt;&lt; stk.top();
         stk.pop();
-        if (!stk.empty()) cout &lt;&lt; " ";
+        <span class="keyword">if</span> (!stk.empty()) cout &lt;&lt; &quot; &quot;;
     }
     cout &lt;&lt; endl;
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">import sys
+            <pre><code class="language-python"><span class="keyword">import</span> sys
 text = sys.stdin.read().strip()
-parts = text.split("-&gt;")
-values = [p for p in parts if p != "NULL"]
+parts = text.split(&quot;-&gt;&quot;)
+values = [p <span class="keyword">for</span> p <span class="keyword">in</span> parts <span class="keyword">if</span> p != &quot;NULL&quot;]
 values.reverse()
-print("-&gt;".join(values) + "-&gt;NULL")</code></pre>
+<span class="keyword">print</span>(&quot;-&gt;&quot;.join(values) + &quot;-&gt;NULL&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -459,45 +459,45 @@ print("-&gt;".join(values) + "-&gt;NULL")</code></pre>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
-using namespace std;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-// 合并两条有序链表
-// 读入两行，每行以-1结尾，输出合并后的有序序列
-int main() {
-    vector&lt;int&gt; a;
-    int x;
-    // 读入第一条链表
-    while (cin &gt;&gt; x &amp;&amp; x != -1) a.push_back(x);
-    // 读入第二条链表
-    while (cin &gt;&gt; x &amp;&amp; x != -1) a.push_back(x);
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 合并两条有序链表</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 读入两行，每行以-1结尾，输出合并后的有序序列</span>
+<span class="keyword">int</span> main() {
+    vector&lt;<span class="keyword">int</span>&gt; a;
+    <span class="keyword">int</span> x;
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 读入第一条链表</span>
+    <span class="keyword">while</span> (cin &gt;&gt; x &amp;&amp; x != -<span <span class="keyword">class</span>="number">1</span>) a.push_back(x);
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 读入第二条链表</span>
+    <span class="keyword">while</span> (cin &gt;&gt; x &amp;&amp; x != -<span <span class="keyword">class</span>="number">1</span>) a.push_back(x);
     sort(a.begin(), a.end());
-    for (size_t i = 0; i &lt; a.size(); i++) {
+    <span class="keyword">for</span> (size_t i = <span <span class="keyword">class</span>="number">0</span>; i &lt; a.size(); i++) {
         cout &lt;&lt; a[i];
-        if (i + 1 &lt; a.size()) cout &lt;&lt; " ";
+        <span class="keyword">if</span> (i + <span <span class="keyword">class</span>="number">1</span> &lt; a.size()) cout &lt;&lt; &quot; &quot;;
     }
     cout &lt;&lt; endl;
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">import sys
-lines = sys.stdin.read().strip().split('\n')
-a = [int(x) for x in lines[0].split("-&gt;") if x != "NULL"]
-b = [int(x) for x in lines[1].split("-&gt;") if x != "NULL"]
-i = j = 0
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+lines = sys.stdin.read().strip().split(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;\n&#x27;)</span>
+a = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> lines[<span <span class="keyword">class</span>="number">0</span>].split(&quot;-&gt;&quot;) <span class="keyword">if</span> x != &quot;NULL&quot;]
+b = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> lines[<span <span class="keyword">class</span>="number">1</span>].split(&quot;-&gt;&quot;) <span class="keyword">if</span> x != &quot;NULL&quot;]
+i = j = <span <span class="keyword">class</span>="number">0</span>
 res = []
-while i &lt; len(a) and j &lt; len(b):
-    if a[i] &lt;= b[j]:
-        res.append(str(a[i]))
-        i += 1
-    else:
-        res.append(str(b[j]))
-        j += 1
-res.extend(str(x) for x in a[i:])
-res.extend(str(x) for x in b[j:])
-print("-&gt;".join(res))</code></pre>
+<span class="keyword">while</span> i &lt; <span class="keyword">len</span>(a) <span class="keyword">and</span> j &lt; <span class="keyword">len</span>(b):
+    <span class="keyword">if</span> a[i] &lt;= b[j]:
+        res.append(<span class="keyword">str</span>(a[i]))
+        i += <span <span class="keyword">class</span>="number">1</span>
+    <span class="keyword">else</span>:
+        res.append(<span class="keyword">str</span>(b[j]))
+        j += <span <span class="keyword">class</span>="number">1</span>
+res.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> a[i:])
+res.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> b[j:])
+<span class="keyword">print</span>(&quot;-&gt;&quot;.join(res))</code></pre>
             </details>
         </div>
     </div>
@@ -547,29 +547,29 @@ print("-&gt;".join(res))</code></pre>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
-using namespace std;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-// 用 vector + struct 存储三元组，自定义排序
-struct Record {
-    int x;      // 编号
-    double y;   // 重量
-    string z;   // 名称
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 用 vector + <span class="keyword">struct</span> 存储三元组，自定义排序</span>
+<span class="keyword">struct</span> Record {
+    <span class="keyword">int</span> x;      <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 编号</span>
+    <span class="keyword">double</span> y;   <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 重量</span>
+    <span class="keyword">string</span> z;   <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 名称</span>
 };
 
-bool cmp(const Record &amp;a, const Record &amp;b) {
-    if (a.x != b.x) return a.x &lt; b.x;
-    return a.y &lt; b.y;
+<span class="keyword">bool</span> cmp(<span class="keyword">const</span> Record &amp;a, <span class="keyword">const</span> Record &amp;b) {
+    <span class="keyword">if</span> (a.x != b.x) <span class="keyword">return</span> a.x &lt; b.x;
+    <span class="keyword">return</span> a.y &lt; b.y;
 }
 
-int main() {
-    int n;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n;
     cin &gt;&gt; n;
 
     vector&lt;Record&gt; records;
-    for (int i = 0; i &lt; n; i++) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++) {
         Record r;
         cin &gt;&gt; r.x &gt;&gt; r.y &gt;&gt; r.z;
         records.push_back(r);
@@ -577,23 +577,23 @@ int main() {
 
     sort(records.begin(), records.end(), cmp);
 
-    for (int i = 0; i &lt; n; i++) {
-        printf("%d %.2lf %s\n", records[i].x, records[i].y, records[i].z.c_str());
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++) {
+        printf(&quot;%d %.<span <span class="keyword">class</span>="number">2lf</span> %s\n&quot;, records[i].x, records[i].y, records[i].z.c_str());
     }
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">n = int(input())
+            <pre><code class="language-python">n = <span class="keyword">int</span>(<span class="keyword">input</span>())
 data = []
-for _ in range(n):
-    parts = input().split()
-    x = int(parts[0])
-    y = float(parts[1])
-    z = parts[2]
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n):
+    parts = <span class="keyword">input</span>().split()
+    x = <span class="keyword">int</span>(parts[<span <span class="keyword">class</span>="number">0</span>])
+    y = <span class="keyword">float</span>(parts[<span <span class="keyword">class</span>="number">1</span>])
+    z = parts[<span <span class="keyword">class</span>="number">2</span>]
     data.append((x, y, z))
-data.sort(key=lambda t: t[0])
-for x, y, z in data:
-    print(f'{x} {y:.2f} {z}')</code></pre>
+data.sort(key=<span class="keyword">lambda</span> t: t[<span <span class="keyword">class</span>="number">0</span>])
+<span class="keyword">for</span> x, y, z <span class="keyword">in</span> data:
+    <span class="keyword">print</span>(f&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;{x} {y:.2f} {z}&#x27;)</span></code></pre>
             </details>
         </div>
     </div>

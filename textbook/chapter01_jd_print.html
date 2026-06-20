@@ -69,19 +69,19 @@
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-using namespace std;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-int main() {
-    int a, b;
-    cin &gt;&gt; a &gt;&gt; b;        // 读入两个整数
-    cout &lt;&lt; a + b &lt;&lt; endl; // 输出它们的和
-    return 0;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> a, b;
+    cin &gt;&gt; a &gt;&gt; b;        <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 读入两个整数</span>
+    cout &lt;&lt; a + b &lt;&lt; endl; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 输出它们的和</span>
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 铁令求和：读入两个整数，输出它们的和
-a, b = map(int, input().split())
-print(a + b)</code></pre>
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 铁令求和：读入两个整数，输出它们的和</span>
+a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="keyword">print</span>(a + b)</code></pre>
             </details>
         </div>
     </div>
@@ -123,19 +123,19 @@ PROD = 27
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-using namespace std;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-int main() {
-    int a, b;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> a, b;
     cin &gt;&gt; a &gt;&gt; b;
-    cout &lt;&lt; "PROD = " &lt;&lt; a * b &lt;&lt; endl;  // 输出乘积
-    return 0;
+    cout &lt;&lt; &quot;PROD = &quot; &lt;&lt; a * b &lt;&lt; endl;  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 输出乘积</span>
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 铁令相乘：读入两个整数，输出乘积
-a, b = map(int, input().split())
-print(f"PROD = {a * b}")</code></pre>
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 铁令相乘：读入两个整数，输出乘积</span>
+a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="keyword">print</span>(f&quot;PROD = {a * b}&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -177,19 +177,19 @@ DIFFERENCE = -26
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
-int main() {
-    int a, b, c, d;
-    scanf("%d%d%d%d", &amp;a, &amp;b, &amp;c, &amp;d);
-    // 先各自相乘，再求差
-    printf("DIFFERENCE = %d\n", a * b - c * d);
-    return 0;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> a, b, c, d;
+    scanf(&quot;%d%d%d%d&quot;, &amp;a, &amp;b, &amp;c, &amp;d);
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 先各自相乘，再求差</span>
+    printf(&quot;DIFFERENCE = %d\n&quot;, a * b - c * d);
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 四令求差：A*B - C*D
-a, b, c, d = map(int, input().split())
-print(f"DIFFERENCE = {a * b - c * d}")</code></pre>
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 四令求差：A*B - C*D</span>
+a, b, c, d = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="keyword">print</span>(f&quot;DIFFERENCE = {a * b - c * d}&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -231,22 +231,22 @@ TOTAL = 5.30
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
-int main() {
-    int id, qty;
-    double price;
-    scanf("%d%d", &amp;id, &amp;qty);     // 第一行：编号和数量
-    scanf("%lf", &amp;price);          // 第二行：单价
-    // 总价 = 数量 × 单价
-    printf("TOTAL = %.2f\n", qty * price);
-    return 0;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> id, qty;
+    <span class="keyword">double</span> price;
+    scanf(&quot;%d%d&quot;, &amp;id, &amp;qty);     <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 第一行：编号和数量</span>
+    scanf(&quot;%lf&quot;, &amp;price);          <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 第二行：单价</span>
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 总价 = 数量 × 单价</span>
+    printf(&quot;TOTAL = %.<span <span class="keyword">class</span>="number">2f</span>\n&quot;, qty * price);
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 集市算账：编号×数量，第二行单价
-id_num, qty = map(int, input().split())
-price = float(input())
-print(f"TOTAL = {qty * price:.2f}")</code></pre>
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 集市算账：编号×数量，第二行单价</span>
+id_num, qty = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+price = <span class="keyword">float</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(f&quot;TOTAL = {qty * price:.2f}&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -288,19 +288,19 @@ A=12.5664
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
-int main() {
-    double r;
-    scanf("%lf", &amp;r);
-    // 圆的面积 = π * r²
-    printf("A=%.4f\n", 3.14159 * r * r);
-    return 0;
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> r;
+    scanf(&quot;%lf&quot;, &amp;r);
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 圆的面积 = π * r²</span>
+    printf(&quot;A=%.<span <span class="keyword">class</span>="number">4f</span>\n&quot;, <span <span class="keyword">class</span>="number">3.14159</span> * r * r);
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 比武台：圆的面积 = π * r²
-r = float(input())
-print(f"A={3.14159 * r * r:.4f}")</code></pre>
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 比武台：圆的面积 = π * r²</span>
+r = <span class="keyword">float</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(f&quot;A={<span <span class="keyword">class</span>="number">3.14159</span> * r * r:.4f}&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -343,19 +343,19 @@ Average = 6.70000
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
-int main() {
-    double a, b;
-    scanf("%lf%lf", &amp;a, &amp;b);
-    // 加权平均 = (剑术*3.5 + 心法*7.5) / 11
-    printf("Average = %.5f\n", (a * 3.5 + b * 7.5) / 11);
-    return 0;
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> a, b;
+    scanf(&quot;%lf%lf&quot;, &amp;a, &amp;b);
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 加权平均 = (剑术*<span <span class="keyword">class</span>="number">3.5</span> + 心法*<span <span class="keyword">class</span>="number">7.5</span>) / <span <span class="keyword">class</span>="number">11</span></span>
+    printf(&quot;Average = %.<span <span class="keyword">class</span>="number">5f</span>\n&quot;, (a * <span <span class="keyword">class</span>="number">3.5</span> + b * <span <span class="keyword">class</span>="number">7.5</span>) / <span <span class="keyword">class</span>="number">11</span>);
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 剑术考核：加权平均分
-a, b = float(input()), float(input())
-print(f"Average = {(a * 3.5 + b * 7.5) / 11:.5f}")</code></pre>
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 剑术考核：加权平均分</span>
+a, b = <span class="keyword">float</span>(<span class="keyword">input</span>()), <span class="keyword">float</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(f&quot;Average = {(a * <span <span class="keyword">class</span>="number">3.5</span> + b * <span <span class="keyword">class</span>="number">7.5</span>) / <span <span class="keyword">class</span>="number">11</span>:.5f}&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -399,24 +399,24 @@ SALARY = U$ 550.00
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
-int main() {
-    int id, days;
-    double rate;
-    scanf("%d", &amp;id);       // 第一行：工号
-    scanf("%d%lf", &amp;days, &amp;rate);  // 第二行：出工天数和每日工钱
-    // 输出工号和实发金额
-    printf("NUMBER = %d\n", id);
-    printf("SALARY = U$ %.2f\n", days * rate);
-    return 0;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> id, days;
+    <span class="keyword">double</span> rate;
+    scanf(&quot;%d&quot;, &amp;id);       <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 第一行：工号</span>
+    scanf(&quot;%d%lf&quot;, &amp;days, &amp;rate);  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 第二行：出工天数和每日工钱</span>
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 输出工号和实发金额</span>
+    printf(&quot;NUMBER = %d\n&quot;, id);
+    printf(&quot;SALARY = U$ %.<span <span class="keyword">class</span>="number">2f</span>\n&quot;, days * rate);
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 月底发饷：工号(第一行)，天数和工钱(第二行)
-id_num = int(input())
-days, rate = map(float, input().split())
-print(f"NUMBER = {id_num}")
-print(f"SALARY = U$ {days * rate:.2f}")</code></pre>
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 月底发饷：工号(第一行)，天数和工钱(第二行)</span>
+id_num = <span class="keyword">int</span>(<span class="keyword">input</span>())
+days, rate = <span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split())
+<span class="keyword">print</span>(f&quot;NUMBER = {id_num}&quot;)
+<span class="keyword">print</span>(f&quot;SALARY = U$ {days * rate:.2f}&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -458,19 +458,19 @@ print(f"SALARY = U$ {days * rate:.2f}")</code></pre>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
-int main() {
-    double s, l;
-    scanf("%lf%lf", &amp;s, &amp;l);
-    // 每升草料汁能跑的里数 = 总路程 / 消耗量
-    printf("%.3f km/l\n", s / l);
-    return 0;
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> s, l;
+    scanf(&quot;%lf%lf&quot;, &amp;s, &amp;l);
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 每升草料汁能跑的里数 = 总路程 / 消耗量</span>
+    printf(&quot;%.<span <span class="keyword">class</span>="number">3f</span> km/l\n&quot;, s / l);
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 马匹脚力：每升草料汁能跑多少里
-s, l = map(float, input().split())
-print(f"{s / l:.3f} km/l")</code></pre>
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 马匹脚力：每升草料汁能跑多少里</span>
+s, l = <span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split())
+<span class="keyword">print</span>(f&quot;{s / l:.3f} km/l&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -512,19 +512,19 @@ VOLUME = 113.097
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
-int main() {
-    double r;
-    scanf("%lf", &amp;r);
-    // 球的体积 = (4/3) * π * r³
-    printf("VOLUME = %.3f\n", 4.0 / 3.0 * 3.14159 * r * r * r);
-    return 0;
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> r;
+    scanf(&quot;%lf&quot;, &amp;r);
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 球的体积 = (<span <span class="keyword">class</span>="number">4</span>/<span <span class="keyword">class</span>="number">3</span>) * π * r³</span>
+    printf(&quot;VOLUME = %.<span <span class="keyword">class</span>="number">3f</span>\n&quot;, <span <span class="keyword">class</span>="number">4.0</span> / <span <span class="keyword">class</span>="number">3.0</span> * <span <span class="keyword">class</span>="number">3.14159</span> * r * r * r);
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 铁球体积：V = (4/3) * π * r³
-r = float(input())
-print(f"VOLUME = {4.0 / 3.0 * 3.14159 * r ** 3:.3f}")</code></pre>
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 铁球体积：V = (<span <span class="keyword">class</span>="number">4</span>/<span <span class="keyword">class</span>="number">3</span>) * π * r³</span>
+r = <span class="keyword">float</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(f&quot;VOLUME = {<span <span class="keyword">class</span>="number">4.0</span> / <span <span class="keyword">class</span>="number">3.0</span> * <span <span class="keyword">class</span>="number">3.14159</span> * r ** <span <span class="keyword">class</span>="number">3</span>:.3f}&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -566,22 +566,22 @@ Max = 106
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
-int main() {
-    int a, b, c;
-    scanf("%d%d%d", &amp;a, &amp;b, &amp;c);
-    // 找三个数中的最大值
-    int max_val = a;
-    if (b &gt; max_val) max_val = b;
-    if (c &gt; max_val) max_val = c;
-    printf("Max = %d\n", max_val);
-    return 0;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> a, b, c;
+    scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c);
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 找三个数中的最大值</span>
+    <span class="keyword">int</span> max_val = a;
+    <span class="keyword">if</span> (b &gt; max_val) max_val = b;
+    <span class="keyword">if</span> (c &gt; max_val) max_val = c;
+    printf(&quot;Max = %d\n&quot;, max_val);
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 三令比大：找三个数中的最大值
-a, b, c = map(int, input().split())
-print(f"Max = {max(a, b, c)}")</code></pre>
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 三令比大：找三个数中的最大值</span>
+a, b, c = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="keyword">print</span>(f&quot;Max = {<span class="keyword">max</span>(a, b, c)}&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -623,22 +623,22 @@ print(f"Max = {max(a, b, c)}")</code></pre>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cmath&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;cmath&gt;
 
-int main() {
-    double x1, y1, x2, y2;
-    scanf("%lf%lf%lf%lf", &amp;x1, &amp;y1, &amp;x2, &amp;y2);
-    // 两点间距离公式
-    double d = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
-    printf("%.4f\n", d);
-    return 0;
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> x1, y1, x2, y2;
+    scanf(&quot;%lf%lf%lf%lf&quot;, &amp;x1, &amp;y1, &amp;x2, &amp;y2);
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 两点间距离公式</span>
+    <span class="keyword">double</span> d = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+    printf(&quot;%.<span <span class="keyword">class</span>="number">4f</span>\n&quot;, d);
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 哨塔测距：两点间距离公式
-import math
-x1, y1, x2, y2 = map(float, input().split())
-print(f"{math.sqrt((x2-x1)**2 + (y2-y1)**2):.4f}")</code></pre>
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 哨塔测距：两点间距离公式</span>
+<span class="keyword">import</span> math
+x1, y1, x2, y2 = <span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split())
+<span class="keyword">print</span>(f&quot;{math.sqrt((x2-x1)**<span <span class="keyword">class</span>="number">2</span> + (y2-y1)**<span <span class="keyword">class</span>="number">2</span>):.4f}&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -690,29 +690,29 @@ RETANGULO: 12.000
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;cstdio&gt;
-#define PI 3.14159
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#define PI <span <span class="keyword">class</span>="number">3.14159</span>
 
-int main() {
-    double a, b, c;
-    scanf("%lf%lf%lf", &amp;a, &amp;b, &amp;c);
-    // 五个图形的面积
-    printf("TRIANGULO: %.3f\n", a * c / 2);       // 三角形
-    printf("CIRCULO: %.3f\n", PI * c * c);         // 圆形
-    printf("TRAPEZIO: %.3f\n", (a + b) * c / 2);  // 梯形
-    printf("QUADRADO: %.3f\n", b * b);             // 正方形
-    printf("RETANGULO: %.3f\n", a * b);            // 长方形
-    return 0;
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> a, b, c;
+    scanf(&quot;%lf%lf%lf&quot;, &amp;a, &amp;b, &amp;c);
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 五个图形的面积</span>
+    printf(&quot;TRIANGULO: %.<span <span class="keyword">class</span>="number">3f</span>\n&quot;, a * c / <span <span class="keyword">class</span>="number">2</span>);       <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 三角形</span>
+    printf(&quot;CIRCULO: %.<span <span class="keyword">class</span>="number">3f</span>\n&quot;, PI * c * c);         <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 圆形</span>
+    printf(&quot;TRAPEZIO: %.<span <span class="keyword">class</span>="number">3f</span>\n&quot;, (a + b) * c / <span <span class="keyword">class</span>="number">2</span>);  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 梯形</span>
+    printf(&quot;QUADRADO: %.<span <span class="keyword">class</span>="number">3f</span>\n&quot;, b * b);             <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 正方形</span>
+    printf(&quot;RETANGULO: %.<span <span class="keyword">class</span>="number">3f</span>\n&quot;, a * b);            <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 长方形</span>
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 圆盘开孔：五个图形的面积
-a, b, c = map(float, input().split())
-pi = 3.14159
-print(f"TRIANGULO: {a * c / 2:.3f}")
-print(f"CIRCULO: {pi * c * c:.3f}")
-print(f"TRAPEZIO: {(a + b) * c / 2:.3f}")
-print(f"QUADRADO: {b * b:.3f}")
-print(f"RETANGULO: {a * b:.3f}")</code></pre>
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 圆盘开孔：五个图形的面积</span>
+a, b, c = <span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split())
+pi = <span <span class="keyword">class</span>="number">3.14159</span>
+<span class="keyword">print</span>(f&quot;TRIANGULO: {a * c / <span <span class="keyword">class</span>="number">2</span>:.3f}&quot;)
+<span class="keyword">print</span>(f&quot;CIRCULO: {pi * c * c:.3f}&quot;)
+<span class="keyword">print</span>(f&quot;TRAPEZIO: {(a + b) * c / <span <span class="keyword">class</span>="number">2</span>:.3f}&quot;)
+<span class="keyword">print</span>(f&quot;QUADRADO: {b * b:.3f}&quot;)
+<span class="keyword">print</span>(f&quot;RETANGULO: {a * b:.3f}&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -754,25 +754,25 @@ print(f"RETANGULO: {a * b:.3f}")</code></pre>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
-int main() {
-    int n;
-    scanf("%d", &amp;n);
-    // 总秒数转换为 时:分:秒
-    int h = n / 3600;
-    int m = (n % 3600) / 60;
-    int s = n % 60;
-    printf("%d:%d:%d\n", h, m, s);
-    return 0;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n;
+    scanf(&quot;%d&quot;, &amp;n);
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 总秒数转换为 时:分:秒</span>
+    <span class="keyword">int</span> h = n / <span <span class="keyword">class</span>="number">3600</span>;
+    <span class="keyword">int</span> m = (n % <span <span class="keyword">class</span>="number">3600</span>) / <span <span class="keyword">class</span>="number">60</span>;
+    <span class="keyword">int</span> s = n % <span <span class="keyword">class</span>="number">60</span>;
+    printf(&quot;%d:%d:%d\n&quot;, h, m, s);
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 水钟报时：总秒数转 时:分:秒
-n = int(input())
-h = n // 3600
-m = (n % 3600) // 60
-s = n % 60
-print(f"{h}:{m}:{s}")</code></pre>
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 水钟报时：总秒数转 时:分:秒</span>
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+h = n // <span <span class="keyword">class</span>="number">3600</span>
+m = (n % <span <span class="keyword">class</span>="number">3600</span>) // <span <span class="keyword">class</span>="number">60</span>
+s = n % <span <span class="keyword">class</span>="number">60</span>
+<span class="keyword">print</span>(f&quot;{h}:{m}:{s}&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -821,27 +821,27 @@ print(f"{h}:{m}:{s}")</code></pre>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
-int main() {
-    int n;
-    scanf("%d", &amp;n);
-    printf("%d\n", n);
-    // 面额：100, 50, 20, 10, 5, 2, 1
-    int denoms[] = {100, 50, 20, 10, 5, 2, 1};
-    for (int i = 0; i &lt; 7; i++) {
-        printf("%d nota(s) de R$ %d,00\n", n / denoms[i], denoms[i]);
-        n %= denoms[i];  // 剩余金额
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n;
+    scanf(&quot;%d&quot;, &amp;n);
+    printf(&quot;%d\n&quot;, n);
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 面额：<span <span class="keyword">class</span>="number">100</span>, <span <span class="keyword">class</span>="number">50</span>, <span <span class="keyword">class</span>="number">20</span>, <span <span class="keyword">class</span>="number">10</span>, <span <span class="keyword">class</span>="number">5</span>, <span <span class="keyword">class</span>="number">2</span>, <span <span class="keyword">class</span>="number">1</span></span>
+    <span class="keyword">int</span> denoms[] = {<span <span class="keyword">class</span>="number">100</span>, <span <span class="keyword">class</span>="number">50</span>, <span <span class="keyword">class</span>="number">20</span>, <span <span class="keyword">class</span>="number">10</span>, <span <span class="keyword">class</span>="number">5</span>, <span <span class="keyword">class</span>="number">2</span>, <span <span class="keyword">class</span>="number">1</span>};
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; <span <span class="keyword">class</span>="number">7</span>; i++) {
+        printf(&quot;%d nota(s) de R$ %d,<span <span class="keyword">class</span>="number">00</span>\n&quot;, n / denoms[i], denoms[i]);
+        n %= denoms[i];  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 剩余金额</span>
     }
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 钱庄换银：贪心换零钱
-n = int(input())
-print(n)
-denoms = [100, 50, 20, 10, 5, 2, 1]
-for d in denoms:
-    print(f"{n // d} nota(s) de R$ {d},00")
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 钱庄换银：贪心换零钱</span>
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(n)
+denoms = [<span <span class="keyword">class</span>="number">100</span>, <span <span class="keyword">class</span>="number">50</span>, <span <span class="keyword">class</span>="number">20</span>, <span <span class="keyword">class</span>="number">10</span>, <span <span class="keyword">class</span>="number">5</span>, <span <span class="keyword">class</span>="number">2</span>, <span <span class="keyword">class</span>="number">1</span>]
+<span class="keyword">for</span> d <span class="keyword">in</span> denoms:
+    <span class="keyword">print</span>(f&quot;{n // d} nota(s) de R$ {d},<span <span class="keyword">class</span>="number">00</span>&quot;)
     n %= d</code></pre>
             </details>
         </div>

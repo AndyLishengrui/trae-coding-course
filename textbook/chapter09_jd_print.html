@@ -73,78 +73,78 @@
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;cmath&gt;
-#include &lt;algorithm&gt;
-using namespace std;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cmath&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-long long *numbers;
+<span class="keyword">long</span> <span class="keyword">long</span> *numbers;
 
-void quicksort(long long nums[], int left, int right)
+<span class="keyword">void</span> quicksort(<span class="keyword">long</span> <span class="keyword">long</span> nums[], <span class="keyword">int</span> left, <span class="keyword">int</span> right)
 {
-    if (left &gt;= right)
-        return;
-    //选取分割数
-    long long target = nums[left]; //选取第一个快排的分割数
-    int i = left - 1, j = right + 1;
-    while (i &lt; j)
+    <span class="keyword">if</span> (left &gt;= right)
+        <span class="keyword">return</span>;
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//选取分割数</span>
+    <span class="keyword">long</span> <span class="keyword">long</span> target = nums[left]; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//选取第一个快排的分割数</span>
+    <span class="keyword">int</span> i = left - <span <span class="keyword">class</span>="number">1</span>, j = right + <span <span class="keyword">class</span>="number">1</span>;
+    <span class="keyword">while</span> (i &lt; j)
     {
-        do
+        <span class="keyword">do</span>
             i++;
-        while (nums[i] &lt; target); //i指针定位
-        do
+        <span class="keyword">while</span> (nums[i] &lt; target); <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//i指针定位</span>
+        <span class="keyword">do</span>
             j--;
-        while (nums[j] &gt; target); //j指针定位
-        if (i &lt; j)
-            swap(nums[i], nums[j]); //交换
+        <span class="keyword">while</span> (nums[j] &gt; target); <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//j指针定位</span>
+        <span class="keyword">if</span> (i &lt; j)
+            swap(nums[i], nums[j]); <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//交换</span>
     }
-    //分治
-    quicksort(nums, left, j);      //j左边的都是不比Target大的
-    quicksort(nums, j + 1, right); // j右边的都比Target大
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//分治</span>
+    quicksort(nums, left, j);      <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//j左边的都是不比Target大的</span>
+    quicksort(nums, j + <span <span class="keyword">class</span>="number">1</span>, right); <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// j右边的都比Target大</span>
 }
-int main()
+<span class="keyword">int</span> main()
 {
-    //!cin\cout提速
-    ios::sync_with_stdio(false); //来打消iostream的输入输出缓存
-    cin.tie(0);                  //cin.tie(0)来解除cin与cout的绑定,0表示NULL
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//!cin\cout提速</span>
+    ios::sync_with_stdio(<span class="keyword">false</span>); <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//来打消iostream的输入输出缓存</span>
+    cin.tie(<span <span class="keyword">class</span>="number">0</span>);                  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//cin.tie(<span <span class="keyword">class</span>="number">0</span>)来解除cin与cout的绑定,0表示NULL</span>
 
-    int n;
-    //创建动态数组
+    <span class="keyword">int</span> n;
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//创建动态数组</span>
     cin &gt;&gt; n;
-    numbers = new long long[n];
-    for (int i = 0; i &lt; n; i++)
+    numbers = <span class="keyword">new</span> <span class="keyword">long</span> <span class="keyword">long</span>[n];
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++)
         cin &gt;&gt; numbers[i];
-    quicksort(numbers, 0, n - 1); //注意边界
+    quicksort(numbers, <span <span class="keyword">class</span>="number">0</span>, n - <span <span class="keyword">class</span>="number">1</span>); <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//注意边界</span>
 
-    for (int i = 0; i &lt; n; i++)
-        cout &lt;&lt; numbers[i] &lt;&lt; " ";
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++)
+        cout &lt;&lt; numbers[i] &lt;&lt; &quot; &quot;;
 
-    delete[] numbers;
-    return 0;
+    <span class="keyword">delete</span>[] numbers;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 快速排序
-def quicksort(arr, l, r):
-    if l &gt;= r:
-        return
-    x = arr[(l + r) // 2]
-    i, j = l - 1, r + 1
-    while i &lt; j:
-        i += 1
-        while arr[i] &lt; x:
-            i += 1
-        j -= 1
-        while arr[j] &gt; x:
-            j -= 1
-        if i &lt; j:
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 快速排序</span>
+<span class="keyword">def</span> quicksort(arr, l, r):
+    <span class="keyword">if</span> l &gt;= r:
+        <span class="keyword">return</span>
+    x = arr[(l + r) // <span <span class="keyword">class</span>="number">2</span>]
+    i, j = l - <span <span class="keyword">class</span>="number">1</span>, r + <span <span class="keyword">class</span>="number">1</span>
+    <span class="keyword">while</span> i &lt; j:
+        i += <span <span class="keyword">class</span>="number">1</span>
+        <span class="keyword">while</span> arr[i] &lt; x:
+            i += <span <span class="keyword">class</span>="number">1</span>
+        j -= <span <span class="keyword">class</span>="number">1</span>
+        <span class="keyword">while</span> arr[j] &gt; x:
+            j -= <span <span class="keyword">class</span>="number">1</span>
+        <span class="keyword">if</span> i &lt; j:
             arr[i], arr[j] = arr[j], arr[i]
     quicksort(arr, l, j)
-    quicksort(arr, j + 1, r)
+    quicksort(arr, j + <span <span class="keyword">class</span>="number">1</span>, r)
 
-n = int(input())
-arr = list(map(int, input().split()))
-quicksort(arr, 0, n - 1)
-print(' '.join(map(str, arr)))</code></pre>
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
+quicksort(arr, <span <span class="keyword">class</span>="number">0</span>, n - <span <span class="keyword">class</span>="number">1</span>)
+<span class="keyword">print</span>(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27; &#x27;.join(<span class="keyword">map</span>(<span class="keyword">str</span>, arr)))</span></code></pre>
             </details>
         </div>
     </div>
@@ -190,84 +190,84 @@ print(' '.join(map(str, arr)))</code></pre>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;cmath&gt;
-#include &lt;algorithm&gt;
-using namespace std;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cmath&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-long long *numbers;
+<span class="keyword">long</span> <span class="keyword">long</span> *numbers;
 
-long long quickFind(long long nums[], int left, int right, int k)
+<span class="keyword">long</span> <span class="keyword">long</span> quickFind(<span class="keyword">long</span> <span class="keyword">long</span> nums[], <span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="keyword">int</span> k)
 {
-    if (left == right)
-        return nums[left]; //只有一个元素，左开右闭
-    //选取分割数
-    long long target = nums[left]; //选取第一个快排的分割数
-    int i = left - 1, j = right + 1;
-    while (i &lt; j)
+    <span class="keyword">if</span> (left == right)
+        <span class="keyword">return</span> nums[left]; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//只有一个元素，左开右闭</span>
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//选取分割数</span>
+    <span class="keyword">long</span> <span class="keyword">long</span> target = nums[left]; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//选取第一个快排的分割数</span>
+    <span class="keyword">int</span> i = left - <span <span class="keyword">class</span>="number">1</span>, j = right + <span <span class="keyword">class</span>="number">1</span>;
+    <span class="keyword">while</span> (i &lt; j)
     {
-        do
+        <span class="keyword">do</span>
             i++;
-        while (nums[i] &lt; target); //i指针定位
-        do
+        <span class="keyword">while</span> (nums[i] &lt; target); <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//i指针定位</span>
+        <span class="keyword">do</span>
             j--;
-        while (nums[j] &gt; target); //j指针定位
-        if (i &lt; j)
-            swap(nums[i], nums[j]); //交换
+        <span class="keyword">while</span> (nums[j] &gt; target); <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//j指针定位</span>
+        <span class="keyword">if</span> (i &lt; j)
+            swap(nums[i], nums[j]); <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//交换</span>
     }
-    //判断i与k的关系
-    int sumofLeft = j - left + 1; //计算左边区间数字个数，用于与k比较
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//判断i与k的关系</span>
+    <span class="keyword">int</span> sumofLeft = j - left + <span <span class="keyword">class</span>="number">1</span>; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//计算左边区间数字个数，用于与k比较</span>
 
-    if (k &lt;= sumofLeft)              //分治
-        return quickFind(nums, left, j, k); //j左边的都是不比Target大的
-    else
-        return quickFind(nums, j + 1, right, k - sumofLeft); // j右边的都比Target大
+    <span class="keyword">if</span> (k &lt;= sumofLeft)              <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//分治</span>
+        <span class="keyword">return</span> quickFind(nums, left, j, k); <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//j左边的都是不比Target大的</span>
+    <span class="keyword">else</span>
+        <span class="keyword">return</span> quickFind(nums, j + <span <span class="keyword">class</span>="number">1</span>, right, k - sumofLeft); <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// j右边的都比Target大</span>
 }
-int main()
+<span class="keyword">int</span> main()
 {
-    //!cin\cout提速
-    ios::sync_with_stdio(false); //来打消iostream的输入输出缓存
-    cin.tie(0);                  //cin.tie(0)来解除cin与cout的绑定,0表示NULL
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//!cin\cout提速</span>
+    ios::sync_with_stdio(<span class="keyword">false</span>); <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//来打消iostream的输入输出缓存</span>
+    cin.tie(<span <span class="keyword">class</span>="number">0</span>);                  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//cin.tie(<span <span class="keyword">class</span>="number">0</span>)来解除cin与cout的绑定,0表示NULL</span>
 
-    int n, k;
-    //创建动态数组
+    <span class="keyword">int</span> n, k;
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//创建动态数组</span>
     cin &gt;&gt; n &gt;&gt; k;
-    numbers = new long long[n];
-    for (int i = 0; i &lt; n; i++)
+    numbers = <span class="keyword">new</span> <span class="keyword">long</span> <span class="keyword">long</span>[n];
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++)
         cin &gt;&gt; numbers[i];
-    //查找第k小数，输出之
-    cout &lt;&lt; quickFind(numbers, 0, n - 1, k) &lt;&lt; endl; //注意边界
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//查找第k小数，输出之</span>
+    cout &lt;&lt; quickFind(numbers, <span <span class="keyword">class</span>="number">0</span>, n - <span <span class="keyword">class</span>="number">1</span>, k) &lt;&lt; endl; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//注意边界</span>
 
-    delete[] numbers;
-    return 0;
+    <span class="keyword">delete</span>[] numbers;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">import sys
+            <pre><code class="language-python"><span class="keyword">import</span> sys
 
-def quick_select(nums, left, right, k):
-    if left == right:
-        return nums[left]
+<span class="keyword">def</span> quick_select(nums, left, right, k):
+    <span class="keyword">if</span> left == right:
+        <span class="keyword">return</span> nums[left]
     target = nums[left]
-    i, j = left - 1, right + 1
-    while i &lt; j:
-        i += 1
-        while nums[i] &lt; target:
-            i += 1
-        j -= 1
-        while nums[j] &gt; target:
-            j -= 1
-        if i &lt; j:
+    i, j = left - <span <span class="keyword">class</span>="number">1</span>, right + <span <span class="keyword">class</span>="number">1</span>
+    <span class="keyword">while</span> i &lt; j:
+        i += <span <span class="keyword">class</span>="number">1</span>
+        <span class="keyword">while</span> nums[i] &lt; target:
+            i += <span <span class="keyword">class</span>="number">1</span>
+        j -= <span <span class="keyword">class</span>="number">1</span>
+        <span class="keyword">while</span> nums[j] &gt; target:
+            j -= <span <span class="keyword">class</span>="number">1</span>
+        <span class="keyword">if</span> i &lt; j:
             nums[i], nums[j] = nums[j], nums[i]
-    sl = j - left + 1
-    if k &lt;= sl:
-        return quick_select(nums, left, j, k)
-    else:
-        return quick_select(nums, j + 1, right, k - sl)
+    sl = j - left + <span <span class="keyword">class</span>="number">1</span>
+    <span class="keyword">if</span> k &lt;= sl:
+        <span class="keyword">return</span> quick_select(nums, left, j, k)
+    <span class="keyword">else</span>:
+        <span class="keyword">return</span> quick_select(nums, j + <span <span class="keyword">class</span>="number">1</span>, right, k - sl)
 
 data = sys.stdin.read().split()
-n, k = int(data[0]), int(data[1])
-arr = list(map(int, data[2:2 + n]))
-print(quick_select(arr, 0, n - 1, k))</code></pre>
+n, k = <span class="keyword">int</span>(data[<span <span class="keyword">class</span>="number">0</span>]), <span class="keyword">int</span>(data[<span <span class="keyword">class</span>="number">1</span>])
+arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span <span class="keyword">class</span>="number">2</span>:<span <span class="keyword">class</span>="number">2</span> + n]))
+<span class="keyword">print</span>(quick_select(arr, <span <span class="keyword">class</span>="number">0</span>, n - <span <span class="keyword">class</span>="number">1</span>, k))</code></pre>
             </details>
         </div>
     </div>
@@ -313,73 +313,73 @@ print(quick_select(arr, 0, n - 1, k))</code></pre>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;cmath&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int N = 100007;
-int n;
-int numbers[N],tmp[N];
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cmath&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">100007</span>;
+<span class="keyword">int</span> n;
+<span class="keyword">int</span> numbers[N],tmp[N];
 
-void mergeSort(int nums[], int left, int right)
+<span class="keyword">void</span> mergeSort(<span class="keyword">int</span> nums[], <span class="keyword">int</span> left, <span class="keyword">int</span> right)
 {
-    if (left&gt;=right) return;
+    <span class="keyword">if</span> (left&gt;=right) <span class="keyword">return</span>;
 
-    int mid = left+(right-left)/2;//防止溢出
+    <span class="keyword">int</span> mid = left+(right-left)/<span <span class="keyword">class</span>="number">2</span>;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//防止溢出</span>
 
-    mergeSort(nums,left,mid), mergeSort(nums,mid+1,right);//先调用归并排序
-    //合二为一
-    int k=0, i=left, j=mid+1;//左右两部分数组的起点
+    mergeSort(nums,left,mid), mergeSort(nums,mid+<span <span class="keyword">class</span>="number">1</span>,right);<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//先调用归并排序</span>
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//合二为一</span>
+    <span class="keyword">int</span> k=<span <span class="keyword">class</span>="number">0</span>, i=left, j=mid+<span <span class="keyword">class</span>="number">1</span>;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//左右两部分数组的起点</span>
 
-    while(i&lt;=mid &amp;&amp; j&lt;=right) //扫描还未抵达终点
-      if (nums[i]&lt;=nums[j])//把小的放到tmp数组里面
+    <span class="keyword">while</span>(i&lt;=mid &amp;&amp; j&lt;=right) <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//扫描还未抵达终点</span>
+      <span class="keyword">if</span> (nums[i]&lt;=nums[j])<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//把小的放到tmp数组里面</span>
         tmp[k++] = nums[i++];
-        else tmp[k++] = nums[j++];
+        <span class="keyword">else</span> tmp[k++] = nums[j++];
 
-    while(i&lt;=mid) tmp[k++]=nums[i++];//把左边剩余的部分插入tmp
-    while(j&lt;=right) tmp[k++]=nums[j++];//把右边剩余的部分插入tmp
+    <span class="keyword">while</span>(i&lt;=mid) tmp[k++]=nums[i++];<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//把左边剩余的部分插入tmp</span>
+    <span class="keyword">while</span>(j&lt;=right) tmp[k++]=nums[j++];<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//把右边剩余的部分插入tmp</span>
 
-    //把tmp的部分复制回数组
-    for (i=left,k=0; i&lt;=right; i++, k++) nums[i]=tmp[k];
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//把tmp的部分复制回数组</span>
+    <span class="keyword">for</span> (i=left,k=<span <span class="keyword">class</span>="number">0</span>; i&lt;=right; i++, k++) nums[i]=tmp[k];
 
 }
-int main()
+<span class="keyword">int</span> main()
 {
-    //数据大，使用printf和scanf
-    scanf("%d",&amp;n);
-    for (int i = 0; i&lt;n ;i++) scanf("%d",&amp;numbers[i]);
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//数据大，使用printf和scanf</span>
+    scanf(&quot;%d&quot;,&amp;n);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i&lt;n ;i++) scanf(&quot;%d&quot;,&amp;numbers[i]);
 
-    mergeSort(numbers,0,n-1);
+    mergeSort(numbers,<span <span class="keyword">class</span>="number">0</span>,n-<span <span class="keyword">class</span>="number">1</span>);
 
-    for (int i=0; i&lt;n ;i++) printf("%d ",numbers[i]);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span <span class="keyword">class</span>="number">0</span>; i&lt;n ;i++) printf(&quot;%d &quot;,numbers[i]);
 
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 归并排序
-def merge_sort(arr, l, r):
-    if l &gt;= r:
-        return
-    mid = (l + r) // 2
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 归并排序</span>
+<span class="keyword">def</span> merge_sort(arr, l, r):
+    <span class="keyword">if</span> l &gt;= r:
+        <span class="keyword">return</span>
+    mid = (l + r) // <span <span class="keyword">class</span>="number">2</span>
     merge_sort(arr, l, mid)
-    merge_sort(arr, mid + 1, r)
+    merge_sort(arr, mid + <span <span class="keyword">class</span>="number">1</span>, r)
     tmp = []
-    i, j = l, mid + 1
-    while i &lt;= mid and j &lt;= r:
-        if arr[i] &lt;= arr[j]:
+    i, j = l, mid + <span <span class="keyword">class</span>="number">1</span>
+    <span class="keyword">while</span> i &lt;= mid <span class="keyword">and</span> j &lt;= r:
+        <span class="keyword">if</span> arr[i] &lt;= arr[j]:
             tmp.append(arr[i])
-            i += 1
-        else:
+            i += <span <span class="keyword">class</span>="number">1</span>
+        <span class="keyword">else</span>:
             tmp.append(arr[j])
-            j += 1
-    tmp.extend(arr[i:mid + 1])
-    tmp.extend(arr[j:r + 1])
-    arr[l:r + 1] = tmp
+            j += <span <span class="keyword">class</span>="number">1</span>
+    tmp.extend(arr[i:mid + <span <span class="keyword">class</span>="number">1</span>])
+    tmp.extend(arr[j:r + <span <span class="keyword">class</span>="number">1</span>])
+    arr[l:r + <span <span class="keyword">class</span>="number">1</span>] = tmp
 
-n = int(input())
-arr = list(map(int, input().split()))
-merge_sort(arr, 0, n - 1)
-print(' '.join(map(str, arr)))</code></pre>
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
+merge_sort(arr, <span <span class="keyword">class</span>="number">0</span>, n - <span <span class="keyword">class</span>="number">1</span>)
+<span class="keyword">print</span>(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27; &#x27;.join(<span class="keyword">map</span>(<span class="keyword">str</span>, arr)))</span></code></pre>
             </details>
         </div>
     </div>
@@ -426,86 +426,86 @@ print(' '.join(map(str, arr)))</code></pre>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;cmath&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-typedef long long LL;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cmath&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;
 
-const int N = 100007;
-int n;
-int numbers[N],tmp[N];
-//最大的数可能会是 n^2/2 
- LL mergeSort(int nums[], int left, int right)
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">100007</span>;
+<span class="keyword">int</span> n;
+<span class="keyword">int</span> numbers[N],tmp[N];
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//最大的数可能会是 n^<span <span class="keyword">class</span>="number">2</span>/<span <span class="keyword">class</span>="number">2</span> </span>
+ LL mergeSort(<span class="keyword">int</span> nums[], <span class="keyword">int</span> left, <span class="keyword">int</span> right)
 {
-    if (left&gt;=right) return 0; //如果左指针越过右指针，则返回
+    <span class="keyword">if</span> (left&gt;=right) <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//如果左指针越过右指针，则返回</span>
 
-    int mid = left+(right-left)/2;//防止溢出
+    <span class="keyword">int</span> mid = left+(right-left)/<span <span class="keyword">class</span>="number">2</span>;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//防止溢出</span>
 
-    LL result = mergeSort(nums,left,mid)+mergeSort(nums,mid+1,right);//先调用归并排序
-    //合二为一
-    int k=0, i=left, j=mid+1;//左右两部分数组的起点
+    LL result = mergeSort(nums,left,mid)+mergeSort(nums,mid+<span <span class="keyword">class</span>="number">1</span>,right);<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//先调用归并排序</span>
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//合二为一</span>
+    <span class="keyword">int</span> k=<span <span class="keyword">class</span>="number">0</span>, i=left, j=mid+<span <span class="keyword">class</span>="number">1</span>;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//左右两部分数组的起点</span>
 
-    while(i&lt;=mid &amp;&amp; j&lt;=right) //扫描还未抵达终点
-      if (nums[i]&lt;=nums[j])//把小的放到tmp数组里面
+    <span class="keyword">while</span>(i&lt;=mid &amp;&amp; j&lt;=right) <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//扫描还未抵达终点</span>
+      <span class="keyword">if</span> (nums[i]&lt;=nums[j])<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//把小的放到tmp数组里面</span>
         tmp[k++] = nums[i++];
-        else {
-            //计算逆序对的个数mid-i+1
-            result += mid -i +1;
+        <span class="keyword">else</span> {
+            <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//计算逆序对的个数mid-i+<span <span class="keyword">class</span>="number">1</span></span>
+            result += mid -i +<span <span class="keyword">class</span>="number">1</span>;
             tmp[k++] = nums[j++];
         }
 
-    while(i&lt;=mid) tmp[k++]=nums[i++];//把左边剩余的部分插入tmp
-    while(j&lt;=right) tmp[k++]=nums[j++];//把右边剩余的部分插入tmp
+    <span class="keyword">while</span>(i&lt;=mid) tmp[k++]=nums[i++];<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//把左边剩余的部分插入tmp</span>
+    <span class="keyword">while</span>(j&lt;=right) tmp[k++]=nums[j++];<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//把右边剩余的部分插入tmp</span>
 
-    //把tmp的部分复制回数组
-    for (i=left,k=0; i&lt;=right; i++, k++) nums[i]=tmp[k];
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//把tmp的部分复制回数组</span>
+    <span class="keyword">for</span> (i=left,k=<span <span class="keyword">class</span>="number">0</span>; i&lt;=right; i++, k++) nums[i]=tmp[k];
 
-    return result;
+    <span class="keyword">return</span> result;
 
 }
-int main()
+<span class="keyword">int</span> main()
 {
-    //数据大，使用printf和scanf
-    scanf("%d",&amp;n);
-    for (int i = 0; i&lt;n ;i++) scanf("%d",&amp;numbers[i]);
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//数据大，使用printf和scanf</span>
+    scanf(&quot;%d&quot;,&amp;n);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i&lt;n ;i++) scanf(&quot;%d&quot;,&amp;numbers[i]);
 
-   cout&lt;&lt;mergeSort(numbers,0,n-1)&lt;&lt;endl;
+   cout&lt;&lt;mergeSort(numbers,<span <span class="keyword">class</span>="number">0</span>,n-<span <span class="keyword">class</span>="number">1</span>)&lt;&lt;endl;
 
 
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">import sys
+            <pre><code class="language-python"><span class="keyword">import</span> sys
 
-def merge_sort_count(arr):
-    """Return sorted array and inversion count."""
-    n = len(arr)
-    if n &lt;= 1:
-        return arr, 0
-    mid = n // 2
+<span class="keyword">def</span> merge_sort_count(arr):
+    &quot;&quot;&quot;Return <span class="keyword">sorted</span> array <span class="keyword">and</span> inversion count.&quot;&quot;&quot;
+    n = <span class="keyword">len</span>(arr)
+    <span class="keyword">if</span> n &lt;= <span <span class="keyword">class</span>="number">1</span>:
+        <span class="keyword">return</span> arr, <span <span class="keyword">class</span>="number">0</span>
+    mid = n // <span <span class="keyword">class</span>="number">2</span>
     left, inv_left = merge_sort_count(arr[:mid])
     right, inv_right = merge_sort_count(arr[mid:])
     merged = []
-    i = j = 0
+    i = j = <span <span class="keyword">class</span>="number">0</span>
     inv = inv_left + inv_right
-    while i &lt; len(left) and j &lt; len(right):
-        if left[i] &lt;= right[j]:
+    <span class="keyword">while</span> i &lt; <span class="keyword">len</span>(left) <span class="keyword">and</span> j &lt; <span class="keyword">len</span>(right):
+        <span class="keyword">if</span> left[i] &lt;= right[j]:
             merged.append(left[i])
-            i += 1
-        else:
+            i += <span <span class="keyword">class</span>="number">1</span>
+        <span class="keyword">else</span>:
             merged.append(right[j])
-            j += 1
-            inv += len(left) - i
+            j += <span <span class="keyword">class</span>="number">1</span>
+            inv += <span class="keyword">len</span>(left) - i
     merged.extend(left[i:])
     merged.extend(right[j:])
-    return merged, inv
+    <span class="keyword">return</span> merged, inv
 
 data = sys.stdin.read().split()
-n = int(data[0])
-arr = [int(x) for x in data[1:1+n]]
+n = <span class="keyword">int</span>(data[<span <span class="keyword">class</span>="number">0</span>])
+arr = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> data[<span <span class="keyword">class</span>="number">1</span>:<span <span class="keyword">class</span>="number">1</span>+n]]
 _, ans = merge_sort_count(arr)
-print(ans)</code></pre>
+<span class="keyword">print</span>(ans)</code></pre>
             </details>
         </div>
     </div>
@@ -555,92 +555,92 @@ print(ans)</code></pre>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-const int N = 100007;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">100007</span>;
 
-int nums[N];
+<span class="keyword">int</span> nums[N];
 
-int main()
+<span class="keyword">int</span> main()
 {
 
-    // 第一行包含整数n和q，表示数组长度和询问个数。
-    int n, q;
-    scanf("%d%d", &amp;n, &amp;q);
-    // 第二行包含n个整数（均在1~10000范围内），表示完整数组。
-    for (int i = 0; i &lt; n; i++)
-        scanf("%d", &amp;nums[i]);
-    // 接下来q行，每行包含一个整数k，表示一个询问元素。
-    while(q--){
-      //读入要查找的数，并且二分查找其范围
-      int k; 
-      scanf("%d",&amp;k);// 读入k
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 第一行包含整数n和q，表示数组长度和询问个数。</span>
+    <span class="keyword">int</span> n, q;
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;q);
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 第二行包含n个整数（均在1~10000范围内），表示完整数组。</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++)
+        scanf(&quot;%d&quot;, &amp;nums[i]);
+    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 接下来q行，每行包含一个整数k，表示一个询问元素。</span>
+    <span class="keyword">while</span>(q--){
+      <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//读入要查找的数，并且二分查找其范围</span>
+      <span class="keyword">int</span> k; 
+      scanf(&quot;%d&quot;,&amp;k);<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 读入k</span>
 
-      int left = 0, right = n-1;//初始化left和right
-      while (left &lt; right) //模板2
+      <span class="keyword">int</span> left = <span <span class="keyword">class</span>="number">0</span>, right = n-<span <span class="keyword">class</span>="number">1</span>;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//初始化left和right</span>
+      <span class="keyword">while</span> (left &lt; right) <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//模板2</span>
       {
-          int mid = left + right&gt;&gt;1;
-          if (nums[mid]&gt;=k) right = mid;//模板1,
-          else left = mid +1;
+          <span class="keyword">int</span> mid = left + right&gt;&gt;<span <span class="keyword">class</span>="number">1</span>;
+          <span class="keyword">if</span> (nums[mid]&gt;=k) right = mid;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//模板1,</span>
+          <span class="keyword">else</span> left = mid +<span <span class="keyword">class</span>="number">1</span>;
       }
-      //left就是左端点值
-      //判断是否找得到
-      if (nums[left]!=k) cout&lt;&lt;"-1 -1"&lt;&lt;endl;//找不到x
-      else
+      <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//left就是左端点值</span>
+      <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//判断是否找得到</span>
+      <span class="keyword">if</span> (nums[left]!=k) cout&lt;&lt;&quot;-<span <span class="keyword">class</span>="number">1</span> -<span <span class="keyword">class</span>="number">1</span>&quot;&lt;&lt;endl;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//找不到x</span>
+      <span class="keyword">else</span>
       {
-          cout&lt;&lt;left&lt;&lt;" ";
-          //继续寻找右边界
-          left=0, right=n-1;//重新初始化left,riight,进行第二次二分搜索
-          while (left &lt; right)
+          cout&lt;&lt;left&lt;&lt;&quot; &quot;;
+          <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//继续寻找右边界</span>
+          left=<span <span class="keyword">class</span>="number">0</span>, right=n-<span <span class="keyword">class</span>="number">1</span>;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//重新初始化left,riight,进行第二次二分搜索</span>
+          <span class="keyword">while</span> (left &lt; right)
           {
-              int mid = left+right+1&gt;&gt;1;
-              if (nums[mid]&lt;=k) left=mid;
-              else right = mid -1;              
+              <span class="keyword">int</span> mid = left+right+<span <span class="keyword">class</span>="number">1</span>&gt;&gt;<span <span class="keyword">class</span>="number">1</span>;
+              <span class="keyword">if</span> (nums[mid]&lt;=k) left=mid;
+              <span class="keyword">else</span> right = mid -<span <span class="keyword">class</span>="number">1</span>;              
           }
           cout&lt;&lt;left&lt;&lt;endl;
       }
     }
 
-    return 0;
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }
 
-// int bsearch_1(int left, int right)
-// {
-//     while (left &lt; right)
-//     {
-//         int mid = left + right &gt;&gt; 1;
-//         if (check(mid)) right = mid;
-//         else left = mid + 1;
-//     }
-//     return left;
-// }
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// <span class="keyword">int</span> bsearch_1(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// {</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//     <span class="keyword">while</span> (left &lt; right)</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//     {</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//         <span class="keyword">int</span> mid = left + right &gt;&gt; <span <span class="keyword">class</span>="number">1</span>;</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//         <span class="keyword">if</span> (check(mid)) right = mid;</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//         <span class="keyword">else</span> left = mid + <span <span class="keyword">class</span>="number">1</span>;</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//     }</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//     <span class="keyword">return</span> left;</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// }</span>
 
-// int bsearch_2(int left, int right)
-// {
-//     while (left &lt; right)
-//     {
-//         int mid = left + right + 1 &gt;&gt; 1;
-//         if (check(mid)) left = mid;
-//         else right = mid - 1;
-//     }
-//     return left;
-// }</code></pre>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// <span class="keyword">int</span> bsearch_2(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// {</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//     <span class="keyword">while</span> (left &lt; right)</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//     {</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//         <span class="keyword">int</span> mid = left + right + <span <span class="keyword">class</span>="number">1</span> &gt;&gt; <span <span class="keyword">class</span>="number">1</span>;</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//         <span class="keyword">if</span> (check(mid)) left = mid;</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//         <span class="keyword">else</span> right = mid - <span <span class="keyword">class</span>="number">1</span>;</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//     }</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//     <span class="keyword">return</span> left;</span>
+<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// }</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">import sys
-import bisect
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+<span class="keyword">import</span> bisect
 data = sys.stdin.read().split()
-n, q = int(data[0]), int(data[1])
-a = list(map(int, data[2:2+n]))
-idx = 2 + n
+n, q = <span class="keyword">int</span>(data[<span <span class="keyword">class</span>="number">0</span>]), <span class="keyword">int</span>(data[<span <span class="keyword">class</span>="number">1</span>])
+a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span <span class="keyword">class</span>="number">2</span>:<span <span class="keyword">class</span>="number">2</span>+n]))
+idx = <span <span class="keyword">class</span>="number">2</span> + n
 out = []
-for _ in range(q):
-    x = int(data[idx]); idx += 1
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(q):
+    x = <span class="keyword">int</span>(data[idx]); idx += <span <span class="keyword">class</span>="number">1</span>
     l = bisect.bisect_left(a, x)
-    r = bisect.bisect_right(a, x) - 1
-    if l &lt; n and a[l] == x: out.append(f'{l} {r}')
-    else: out.append('-1 -1')
-print('\n'.join(out))</code></pre>
+    r = bisect.bisect_right(a, x) - <span <span class="keyword">class</span>="number">1</span>
+    <span class="keyword">if</span> l &lt; n <span class="keyword">and</span> a[l] == x: out.append(f&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;{l} {r}&#x27;)</span>
+    <span class="keyword">else</span>: out.append(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;-<span <span class="keyword">class</span>="number">1</span> -<span <span class="keyword">class</span>="number">1</span>&#x27;)</span>
+<span class="keyword">print</span>(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;\n&#x27;.join(out))</span></code></pre>
             </details>
         </div>
     </div>
@@ -686,30 +686,30 @@ print('\n'.join(out))</code></pre>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#include &lt;cstdio&gt;
-int main() {
-    double n;
-    scanf("%lf", &amp;n);
-    double l = -10000, r = 10000;
-    while (r - l &gt; 1e-8) {
-        double mid = (l + r) / 2;
-        if (mid * mid * mid &gt;= n) r = mid;
-        else l = mid;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> n;
+    scanf(&quot;%lf&quot;, &amp;n);
+    <span class="keyword">double</span> l = -<span <span class="keyword">class</span>="number">10000</span>, r = <span <span class="keyword">class</span>="number">10000</span>;
+    <span class="keyword">while</span> (r - l &gt; 1e-<span <span class="keyword">class</span>="number">8</span>) {
+        <span class="keyword">double</span> mid = (l + r) / <span <span class="keyword">class</span>="number">2</span>;
+        <span class="keyword">if</span> (mid * mid * mid &gt;= n) r = mid;
+        <span class="keyword">else</span> l = mid;
     }
-    printf("%.6lf\n", r);
-    return 0;
+    printf(&quot;%.<span <span class="keyword">class</span>="number">6lf</span>\n&quot;, r);
+    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"># 数的三次方根
-n = float(input())
-l, r = -10000.0, 10000.0
-while r - l &gt; 1e-8:
-    mid = (l + r) / 2.0
-    if mid ** 3 &gt;= n:
+            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 数的三次方根</span>
+n = <span class="keyword">float</span>(<span class="keyword">input</span>())
+l, r = -<span <span class="keyword">class</span>="number">10000.0</span>, <span <span class="keyword">class</span>="number">10000.0</span>
+<span class="keyword">while</span> r - l &gt; 1e-<span <span class="keyword">class</span>="number">8</span>:
+    mid = (l + r) / <span <span class="keyword">class</span>="number">2.0</span>
+    <span class="keyword">if</span> mid ** <span <span class="keyword">class</span>="number">3</span> &gt;= n:
         r = mid
-    else:
+    <span class="keyword">else</span>:
         l = mid
-print(f'{r:.6f}')</code></pre>
+<span class="keyword">print</span>(f&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;{r:.6f}&#x27;)</span></code></pre>
             </details>
         </div>
     </div>
