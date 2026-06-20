@@ -1,0 +1,90 @@
+{
+  "display_id": "JD032",
+  "title": "六奇连珠",
+  "description": {
+    "format": "html",
+    "value": "<p>梁嘉峰递给李少白一个数X：「从X之后开始，找出6个连续的奇数，一个一个报给我。」</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一个整数X。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>从X之后开始的6个连续奇数，每行一个。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>如果X是奇数，从X+2开始；如果X是偶数，从X+1开始。循环6次，每次加2。</p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "8",
+      "output": "9\n11\n13\n15\n17\n19"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing ??? | JD032 | 第3章 千回百转",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

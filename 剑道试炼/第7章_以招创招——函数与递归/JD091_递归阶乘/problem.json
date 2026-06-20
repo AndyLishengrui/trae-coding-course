@@ -1,0 +1,90 @@
+{
+  "display_id": "JD091",
+  "title": "递归阶乘",
+  "description": {
+    "format": "html",
+    "value": "<p>李少白在丹房翻到一本古籍，上面记载着一种\"以丹炼丹\"的奇术——要炼n味丹药，先炼好n-1味；要炼n-1味，先炼好n-2味……直到只剩1味，直接炼成。</p><p>赵晴儿看了笑道：\"这就是递归。一个函数调用自己，层层深入，直到触底再层层返回。阶乘的定义本身就是递归的——fact(n) = n × fact(n-1)，fact(1) = 1。\"</p><p>\"用递归重新实现阶乘函数。\"</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一个整数n。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出n的阶乘。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>递归三要素：终止条件(n==1返回1)、递推关系(n*fact(n-1))、缩小规模。</p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5",
+      "output": "120"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "JD | JD091 | 第7章 以招创招",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

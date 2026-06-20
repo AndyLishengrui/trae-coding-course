@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>第5章 十二宫剑阵——二维数组</title>
+    <style>
+        body { font-family: "Noto Serif SC", "Source Han Serif CN", serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.8; color: #333; }
+        h1 { text-align: center; color: #8B0000; border-bottom: 2px solid #8B0000; padding-bottom: 10px; }
+        h2 { color: #4A0080; margin-top: 2em; }
+        h3 { color: #2E5090; }
+        .chapter-subtitle { text-align: center; color: #666; font-size: 1.1em; margin-bottom: 2em; }
+        .problem { border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin: 20px 0; background: #fafafa; }
+        .problem-title { color: #8B0000; font-size: 1.3em; font-weight: bold; margin-bottom: 10px; }
+        .problem-meta { color: #666; font-size: 0.9em; margin-bottom: 15px; }
+        .description { margin: 15px 0; }
+        .description p { margin: 8px 0; }
+        .io-section { background: #f0f0f0; padding: 12px; border-radius: 4px; margin: 10px 0; }
+        .io-section h4 { margin: 0 0 8px 0; color: #555; font-size: 0.95em; }
+        .sample { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; margin: 10px 0; font-family: "Consolas", "Courier New", monospace; white-space: pre-wrap; }
+        .sample-label { color: #569cd6; font-weight: bold; margin-bottom: 5px; }
+        .hint { background: #fff8e1; border-left: 4px solid #ffc107; padding: 12px; margin: 15px 0; }
+        .code-section { margin: 15px 0; }
+        .code-section summary { cursor: pointer; color: #2E5090; font-weight: bold; }
+        pre { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; overflow-x: auto; font-size: 0.9em; }
+        code { font-family: "Consolas", "Courier New", monospace; }
+        .lang-tabs { display: flex; gap: 10px; margin: 10px 0; }
+        .lang-tab { padding: 5px 15px; cursor: pointer; border: 1px solid #ddd; border-radius: 4px 4px 0 0; }
+        .lang-tab.active { background: #1e1e1e; color: #d4d4d4; border-color: #1e1e1e; }
+    </style>
+</head>
+<body>
+    <h1>第5章 十二宫剑阵</h1>
+    <div class="chapter-subtitle">二维数组</div>
+
+    <div class="problem" id="JD055">
+        <div class="problem-title">JD055：上方剑域</div>
+        <div class="problem-meta">AcWing JD | JD055</div>
+
+        <div class="description">
+            <p>演武场上空，赵晴儿凌空画出一道12×12的剑气光幕。剑阵分十二宫方位，她指向光幕上方：</p>
+<p>「上域之剑，取天位之力。首行的剑主攻正面，越往下剑气越弱。算算上域之力和。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个大写字母S或M。接下来12行，每行12个浮点数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出对应区域的和或平均值，保留一位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+S
+5.0 65.0 82.0 54.0 60.0 96.0 64.0 88.0 81.0 2.0 86.0 29.0
+66.0 16.0 27.0 63.0 1.0 52.0 67.0 76.0 94.0 88.0 65.0 39.0
+48.0 61.0 15.0 22.0 48.0 30.0 57.0 15.0 97.0 18.0 19.0 49.0
+...
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1594.0
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>先读操作类型（S求和/M求平均），再判断行号。上方区域即i<j的元素。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+
+int main() {
+    char op;
+    cin &gt;&gt; op;
+    double sum = 0;
+    int cnt = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        for (int j = 0; j &lt; 12; j++) {
+            double x;
+            cin &gt;&gt; x;
+            if (i&lt;j&amp;&amp;i+j&lt;11) {
+                sum += x;
+                cnt++;
+            }
+        }
+    }
+    if (op == 'S') printf("%.1f\n", sum);
+    else printf("%.1f\n", sum / cnt);
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">t=input().strip();s=c=0
+for i in range(12):
+ for j in range(12):
+  x=float(input())
+  if i&lt;j and i+j&lt;11:s+=x;c+=1
+print(f'{s if t=="S" else s/c:.1f}')</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD056">
+        <div class="problem-title">JD056：下方剑域</div>
+        <div class="problem-meta">AcWing JD | JD056</div>
+
+        <div class="description">
+            <p>「下域之剑，承地脉之气。」</p>
+<p>赵晴儿的手指向光幕下方划去，</p>
+<p>「靠近大地的剑势更沉。算算下域之力和。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个大写字母S或M。接下来12行，每行12个浮点数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出对应区域的和或平均值，保留一位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+S
+6.0 90.0 70.0 55.0 69.0 69.0 62.0 79.0 7.0 9.0 54.0 43.0
+30.0 75.0 74.0 58.0 99.0 52.0 88.0 51.0 77.0 92.0 77.0 10.0
+89.0 99.0 84.0 60.0 90.0 25.0 95.0 82.0 96.0 5.0 92.0 10.0
+...
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1694.0
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>下方区域即i>j的元素。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+
+int main() {
+    char op;
+    cin &gt;&gt; op;
+    double sum = 0;
+    int cnt = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        for (int j = 0; j &lt; 12; j++) {
+            double x;
+            cin &gt;&gt; x;
+            if (i&gt;j&amp;&amp;i+j&gt;11) {
+                sum += x;
+                cnt++;
+            }
+        }
+    }
+    if (op == 'S') printf("%.1f\n", sum);
+    else printf("%.1f\n", sum / cnt);
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+data = sys.stdin.read().split()
+t = data[0]
+s = 0.0
+idx = 1
+for i in range(12):
+    for j in range(12):
+        x = float(data[idx]); idx += 1
+        if i &gt; j and i + j &gt; 11: s += x
+print(f"{s:.1f}" if t == 'S' else f"{s/30:.1f}")</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD057">
+        <div class="problem-title">JD057：左方剑域</div>
+        <div class="problem-meta">AcWing JD | JD057</div>
+
+        <div class="description">
+            <p>「左域之剑，守青龙之位。」</p>
+<p>赵晴儿指向光幕左侧，</p>
+<p>「左方剑阵主守，去势较短。算算左域之力和。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个大写字母S或M。接下来12行，每行12个浮点数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出对应区域的和或平均值，保留一位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+S
+68.0 59.0 10.0 88.0 95.0 50.0 60.0 8.0 6.0 7.0 5.0 79.0
+18.0 94.0 63.0 2.0 15.0 13.0 39.0 37.0 33.0 27.0 11.0 29.0
+12.0 23.0 6.0 42.0 4.0 63.0 7.0 20.0 11.0 74.0 27.0 5.0
+...
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1410.0
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>左方区域即满足j < i && i + j < 11的元素（主对角线下且反对角线上）。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+
+int main() {
+    char op;
+    cin &gt;&gt; op;
+    double sum = 0;
+    int cnt = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        for (int j = 0; j &lt; 12; j++) {
+            double x;
+            cin &gt;&gt; x;
+            if (j&lt;i&amp;&amp;i+j&lt;11) {
+                sum += x;
+                cnt++;
+            }
+        }
+    }
+    if (op == 'S') printf("%.1f\n", sum);
+    else printf("%.1f\n", sum / cnt);
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">t=input().strip();s=c=0
+for i in range(12):
+ for j in range(12):
+  x=float(input())
+  if j&lt;i and i+j&lt;11:s+=x;c+=1
+print(f'{s if t=="S" else s/c:.1f}')</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD058">
+        <div class="problem-title">JD058：右方剑域</div>
+        <div class="problem-meta">AcWing JD | JD058</div>
+
+        <div class="description">
+            <p>「右域之剑，据白虎之位。」</p>
+<p>赵晴儿指向光幕右侧，</p>
+<p>「右方剑阵主攻，去势较长。算算右域之力和。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个大写字母S或M。接下来12行，每行12个浮点数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出对应区域的和或平均值，保留一位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+S
+69.0 84.0 98.0 42.0 4.0 23.0 58.0 99.0 32.0 14.0 26.0 40.0
+29.0 6.0 10.0 50.0 60.0 13.0 7.0 59.0 16.0 31.0 23.0 0.0
+0.0 61.0 75.0 80.0 46.0 58.0 45.0 34.0 10.0 61.0 53.0 66.0
+...
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1203.0
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>右方区域即满足j > i && i + j > 11的元素（主对角线上且反对角线下）。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+
+int main() {
+    char op;
+    cin &gt;&gt; op;
+    double sum = 0;
+    int cnt = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        for (int j = 0; j &lt; 12; j++) {
+            double x;
+            cin &gt;&gt; x;
+            if (j&gt;i&amp;&amp;i+j&gt;11) {
+                sum += x;
+                cnt++;
+            }
+        }
+    }
+    if (op == 'S') printf("%.1f\n", sum);
+    else printf("%.1f\n", sum / cnt);
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+data = sys.stdin.read().split()
+t = data[0]
+s = 0.0
+idx = 1
+for i in range(12):
+    for j in range(12):
+        x = float(data[idx]); idx += 1
+        if j &gt; i and i + j &gt; 11: s += x
+print(f"{s:.1f}" if t == 'S' else f"{s/30:.1f}")</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD059">
+        <div class="problem-title">JD059：右上剑角</div>
+        <div class="problem-meta">AcWing JD | JD059</div>
+
+        <div class="description">
+            <p>「右上剑角——天乾之位，日升之处。」</p>
+<p>赵晴儿在沙盘上比划，</p>
+<p>「从主对角线往上，剑势腾空而起，覆盖右上半壁。算算这角的剑气总和。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个大写字母S或M。接下来12行，每行12个浮点数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出右上半部分的和或平均值，保留一位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+S
+86.0 26.0 52.0 44.0 73.0 60.0 63.0 26.0 54.0 1.0 35.0 0.0
+60.0 49.0 95.0 82.0 59.0 59.0 69.0 19.0 72.0 79.0 82.0 75.0
+86.0 23.0 26.0 13.0 5.0 99.0 13.0 84.0 28.0 26.0 60.0 23.0
+...
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+3319.0
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>右上部分即j>i的元素。S求和，M求平均。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+
+int main() {
+    char op;
+    cin &gt;&gt; op;
+    double sum = 0;
+    int cnt = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        for (int j = 0; j &lt; 12; j++) {
+            double x;
+            cin &gt;&gt; x;
+            if (j&gt;i) {
+                sum += x;
+                cnt++;
+            }
+        }
+    }
+    if (op == 'S') printf("%.1f\n", sum);
+    else printf("%.1f\n", sum / cnt);
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+data = sys.stdin.read().split()
+t = data[0]
+s = 0.0
+idx = 1
+for i in range(12):
+    for j in range(12):
+        x = float(data[idx])
+        idx += 1
+        if j &gt; i:
+            s += x
+print(f"{s if t == 'S' else s / 66:.1f}")</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD060">
+        <div class="problem-title">JD060：左上剑角</div>
+        <div class="problem-meta">AcWing JD | JD060</div>
+
+        <div class="description">
+            <p>「左上剑角——天坤之位，月落之处。从主对角线往上左方，剑气如新月之弧，划出一角天地。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个大写字母S或M。接下来12行，每行12个浮点数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出对应区域的和或平均值，保留一位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+S
+49.0 20.0 80.0 78.0 8.0 14.0 59.0 46.0 32.0 6.0 7.0 97.0
+59.0 80.0 31.0 74.0 20.0 20.0 88.0 27.0 11.0 18.0 28.0 12.0
+97.0 85.0 70.0 33.0 61.0 32.0 10.0 89.0 42.0 82.0 21.0 79.0
+...
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+2981.0
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>左上部分即i+j<11的元素。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+
+int main() {
+    char op;
+    cin &gt;&gt; op;
+    double sum = 0;
+    int cnt = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        for (int j = 0; j &lt; 12; j++) {
+            double x;
+            cin &gt;&gt; x;
+            if (i+j&lt;11) {
+                sum += x;
+                cnt++;
+            }
+        }
+    }
+    if (op == 'S') printf("%.1f\n", sum);
+    else printf("%.1f\n", sum / cnt);
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">t=input().strip();s=0
+for i in range(12):
+ for j in range(12):
+  x=float(input())
+  if j&lt;11-i:s+=x
+print(f'{s if t=="S" else s/66:.1f}')</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD061">
+        <div class="problem-title">JD061：右下剑角</div>
+        <div class="problem-meta">AcWing JD | JD061</div>
+
+        <div class="description">
+            <p>「右下剑角——地乾之位，日落之处。从主对角线往下右方，剑势如残阳下沉，渐行渐远。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个大写字母S或M。接下来12行，每行12个浮点数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出对应区域的和或平均值，保留一位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+S
+80.0 49.0 14.0 87.0 99.0 61.0 17.0 39.0 57.0 46.0 63.0 43.0
+79.0 19.0 8.0 27.0 77.0 77.0 97.0 82.0 52.0 14.0 85.0 36.0
+61.0 75.0 96.0 20.0 78.0 6.0 1.0 72.0 15.0 46.0 23.0 98.0
+...
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+2790.0
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>右下部分即满足i + j > 11的元素（反对角线以下）。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+
+int main() {
+    char op;
+    cin &gt;&gt; op;
+    double sum = 0;
+    int cnt = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        for (int j = 0; j &lt; 12; j++) {
+            double x;
+            cin &gt;&gt; x;
+            if (i+j&gt;11) {
+                sum += x;
+                cnt++;
+            }
+        }
+    }
+    if (op == 'S') printf("%.1f\n", sum);
+    else printf("%.1f\n", sum / cnt);
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+data = sys.stdin.read().split()
+t = data[0]
+s = 0.0
+idx = 1
+for i in range(12):
+    for j in range(12):
+        x = float(data[idx]); idx += 1
+        if i + j &gt; 11: s += x
+print(f"{s:.1f}" if t == 'S' else f"{s/66:.1f}")</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD062">
+        <div class="problem-title">JD062：左下剑角</div>
+        <div class="problem-meta">AcWing JD | JD062</div>
+
+        <div class="description">
+            <p>「左下剑角——地坤之位，月升之处。从主对角线往下左方，剑气似初月升空，一弧清辉。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个大写字母S或M。接下来12行，每行12个浮点数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出对应区域的和或平均值，保留一位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+S
+43.0 96.0 42.0 21.0 34.0 15.0 13.0 59.0 82.0 4.0 35.0 93.0
+78.0 97.0 91.0 19.0 38.0 91.0 16.0 90.0 38.0 53.0 31.0 73.0
+25.0 37.0 40.0 40.0 34.0 39.0 98.0 77.0 29.0 2.0 84.0 54.0
+...
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+3154.0
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>左下部分即满足j < i的元素（主对角线以下）。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+
+int main() {
+    char op;
+    cin &gt;&gt; op;
+    double sum = 0;
+    int cnt = 0;
+    for (int i = 0; i &lt; 12; i++) {
+        for (int j = 0; j &lt; 12; j++) {
+            double x;
+            cin &gt;&gt; x;
+            if (j&lt;i) {
+                sum += x;
+                cnt++;
+            }
+        }
+    }
+    if (op == 'S') printf("%.1f\n", sum);
+    else printf("%.1f\n", sum / cnt);
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">t=input().strip();s=0
+for i in range(12):
+ for j in range(12):
+  x=float(input())
+  if j&lt;i:s+=x
+print(f'{s if t=="S" else s/66:.1f}')</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD063">
+        <div class="problem-title">JD063：方圆初阵</div>
+        <div class="problem-meta">AcWing JD | JD063</div>
+
+        <div class="description">
+            <p>「此乃方圆剑阵——最外圈剑气最淡，标记为1；往里一圈剑气渐浓，标记为2。」</p>
+<p>赵晴儿在沙盘上画出一圈圈剑芒，</p>
+<p>「到剑阵中心，剑气愈凝愈实。每一圈剑芒的强度，就是你离外界最远的那道剑气的距离。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>多行，每行一个整数N。N=0时结束。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>每个N输出一个N阶矩阵，每个数字占3个字符宽度。每个矩阵后跟一个空行。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+1
+0
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>每个位置的值 = min(i+1, j+1, N-i, N-j)，即到四条边的最小距离。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;cstdio&gt;
+
+int min(int a, int b) { return a &lt; b ? a : b; }
+
+int main() {
+    int n;
+    while (scanf("%d", &amp;n) == 1 &amp;&amp; n) {
+        for (int i = 0; i &lt; n; i++) {
+            for (int j = 0; j &lt; n; j++) {
+                int v = min(min(i, j), min(n - 1 - i, n - 1 - j));
+                printf("%3d", v + 1);
+            }
+            printf("\n");
+        }
+        printf("\n");
+    }
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+data = sys.stdin.read().split()
+for val in data:
+    n = int(val)
+    if n == 0: break
+    for i in range(n):
+        row = []
+        for j in range(n):
+            v = min(i, j, n-1-i, n-1-j) + 1
+            row.append(f'{v:3d}')
+        print(''.join(row))
+    print()</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD064">
+        <div class="problem-title">JD064：镜像方阵</div>
+        <div class="problem-meta">AcWing JD | JD064</div>
+
+        <div class="description">
+            <p>「此阵以主对角线为镜——镜中剑影，左右互映。」</p>
+<p>赵晴儿落下第一柄长剑，</p>
+<p>「主对角线上的剑势最强，为1；往右上和左下方逐次递减，如剑光在水面的倒影越远越淡。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>多行，每行一个整数N。N=0时结束。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>每个N输出一个N阶矩阵，每个数字占3个字符宽度。每个矩阵后跟一个空行。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+1
+0
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>M[i][j] = |i-j|+1。对角线为1，离对角线越远数越大。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+
+int main() {
+    int n;
+    while (scanf("%d", &amp;n) == 1 &amp;&amp; n) {
+        for (int i = 0; i &lt; n; i++) {
+            for (int j = 0; j &lt; n; j++)
+                printf("%3d", abs(i - j) + 1);
+            printf("\n");
+        }
+        printf("\n");
+    }
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">while True:
+ n=int(input())
+ if n==0:break
+ for i in range(n):
+  print(''.join(f'{abs(i-j)+1:3d}'for j in range(n)))
+ print()</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD065">
+        <div class="problem-title">JD065：倍增方阵</div>
+        <div class="problem-meta">AcWing JD | JD065</div>
+
+        <div class="description">
+            <p>「此阵每一格，剑气强度皆由剑气原点(0,0)倍增而来。」</p>
+<p>赵晴儿剑尖轻点沙盘，</p>
+<p>「位在(i,j)的剑势，强度为2的(i+j)次方。一生二，二生四，剑气倍增如潮水蔓延。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>多行，每行一个整数N（0≤N≤15）。N=0时结束。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>每个N输出一个N阶矩阵，每行N个整数用空格隔开。每个矩阵后跟一个空行。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3 0
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 2 4 
+2 4 8 
+4 8 16
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>M[i][j] = 2^(i+j)。用位运算 1<<(i+j) 或 pow函数。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;cstdio&gt;
+
+int main() {
+    int n;
+    while (scanf("%d", &amp;n) == 1 &amp;&amp; n) {
+        for (int i = 0; i &lt; n; i++) {
+            for (int j = 0; j &lt; n; j++)
+                printf("%lld ", 1LL &lt;&lt; (i + j));
+            printf("\n");
+        }
+        printf("\n");
+    }
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+data = sys.stdin.read().split()
+for val in data:
+    n = int(val)
+    if n == 0: break
+    for i in range(n):
+        row = []
+        for j in range(n):
+            v = 1
+            for k in range(i + j):
+                v *= 2
+            row.append(str(v))
+        print(' '.join(row) + ' ')
+    print()</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD066">
+        <div class="problem-title">JD066：蛇形剑阵</div>
+        <div class="problem-meta">AcWing JD | JD066</div>
+
+        <div class="description">
+            <p>「剑阵蜿蜒如蛇，以身引气，气走周身。」</p>
+<p>赵晴儿在沙盘上画了一个n行m列的剑阵，</p>
+<p>「从左上角开始，依次填入从1到n×m的剑气。行到尽头便拐弯，似灵蛇折返。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，两个整数n和m。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>n行，每行m个整数用空格隔开。输出后跟一个空行。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3 3
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 2 3 
+8 9 4 
+7 6 5
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>模拟蛇形遍历：右→下→左→上循环。维护四个边界。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;cstdio&gt;
+
+int res[110][110];
+
+int main() {
+    int n, m;
+    scanf("%d%d", &amp;n, &amp;m);
+
+    int dx[] = {0, 1, 0, -1}, dy[] = {1, 0, -1, 0};
+    for (int x = 0, y = 0, d = 0, k = 1; k &lt;= n * m; k++) {
+        res[x][y] = k;
+        int a = x + dx[d], b = y + dy[d];
+        if (a &lt; 0 || a &gt;= n || b &lt; 0 || b &gt;= m || res[a][b]) {
+            d = (d + 1) % 4;
+            a = x + dx[d], b = y + dy[d];
+        }
+        x = a, y = b;
+    }
+
+    for (int i = 0; i &lt; n; i++) {
+        for (int j = 0; j &lt; m; j++)
+            printf("%d ", res[i][j]);
+        printf("\n");
+    }
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+data = sys.stdin.read().split()
+n, m = int(data[0]), int(data[1])
+a = [[0] * m for _ in range(n)]
+dx = [0, 1, 0, -1]
+dy = [1, 0, -1, 0]
+d = x = y = 0
+for v in range(1, n * m + 1):
+    a[x][y] = v
+    nx, ny = x + dx[d], y + dy[d]
+    if nx &lt; 0 or nx &gt;= n or ny &lt; 0 or ny &gt;= m or a[nx][ny]:
+        d = (d + 1) % 4
+        nx, ny = x + dx[d], y + dy[d]
+    x, y = nx, ny
+for r in a:
+    print(' '.join(map(str, r)) + ' ')</code></pre>
+            </details>
+        </div>
+    </div>
+
+</body>
+</html>

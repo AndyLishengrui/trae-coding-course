@@ -1,0 +1,90 @@
+{
+  "display_id": "NQ14-01",
+  "title": "拓扑排序试炼之有向图的拓扑序列",
+  "description": {
+    "format": "html",
+    "value": "<p>给定一个n个点m条边的有向图，点的编号是1到n，图中可能存在重边和自环。<br/>请输出任意一个该有向图的拓扑序列，如果拓扑序列不存在，则输出-1。<br/>若一个由图中所有点构成的序列A满足：对于图中的每条边(x, y)，x在A中都出现在y之前，则称A是该图的一个拓扑序列。<br/>数据范围：1≤n,m≤10^5</p>"
+  },
+  "tags": [
+    "拓扑排序试炼"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行包含两个整数n和m<br/>接下来m行，每行包含两个整数x和y，表示存在一条从点x到点y的有向边(x, y)。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>共一行，如果存在拓扑序列，则输出拓扑序列。<br/>否则输出-1。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/848/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "3 3\n1 2\n2 3\n1 3",
+      "output": "1 2 3"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 848 | NQ14-01 | 第14章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

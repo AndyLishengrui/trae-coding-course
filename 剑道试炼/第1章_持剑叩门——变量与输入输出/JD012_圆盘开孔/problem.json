@@ -1,0 +1,90 @@
+{
+  "display_id": "JD012",
+  "title": "圆盘开孔",
+  "description": {
+    "format": "html",
+    "value": "<p>赵晴儿画了一个大圆盘（半径C），上面要开三个孔：一个直角三角形（底A高C）、一个圆形（半径C）、一个梯形（上底A下底B高C）。算算三个孔的面积各是多少。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一行，三个浮点数R、r1、r2。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>五行，分别输出 TRIANGULO（三角形）、CIRCULO（圆形）、TRAPEZIO（梯形）、QUADRADO（正方形）、RETANGULO（长方形）的面积，各保留3位小数。格式为 `名称: 面积`。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>剩余面积 = πR² − πr₁² − πr₂²。</p><p><a href='https://www.acwing.com/problem/content/613/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "3.0 4.0 5.2",
+      "output": "TRIANGULO: 7.800\nCIRCULO: 84.949\nTRAPEZIO: 18.200\nQUADRADO: 16.000\nRETANGULO: 12.000"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 613 | JD012 | 第1章 持剑叩门",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

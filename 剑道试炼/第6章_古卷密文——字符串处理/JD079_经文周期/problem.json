@@ -1,0 +1,90 @@
+{
+  "display_id": "JD079",
+  "title": "经文周期",
+  "description": {
+    "format": "html",
+    "value": "<p>赵晴儿指着一篇重复的经文：「这段文字是某个子串重复几次写成的？找出最小的重复次数。」</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一行字符串。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，最大的n。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>枚举周期p（p是len的因子），检查s[0:p]重复len/p次是否等于原串。</p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "abcd\naaaa\nababab\n.",
+      "output": "1\n4\n3"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "JD | JD079 | 第6章 古卷密文",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

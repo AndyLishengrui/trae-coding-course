@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ11-02",
+  "title": "高精度减法",
+  "description": {
+    "format": "html",
+    "value": "<p>给定两个正整数，计算它们的差，计算结果可能为负数。</p><p>1≤整数长度≤100000</p>"
+  },
+  "tags": [
+    "基础算法",
+    "高精度"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>共两行，每行包含一个整数。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>共一行，包含所求的差。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/792/\" target=\"_blank\">原题链接\nY总讲解\n参考题解\nY总代码</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "32\n11",
+      "output": "21"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 792 | NQ11-02 | 第11章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

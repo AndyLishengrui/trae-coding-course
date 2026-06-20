@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ11-07",
+  "title": "区间合并",
+  "description": {
+    "format": "html",
+    "value": "<p>给定 n 个区间 [ li , ri ]，要求合并所有有交集的区间。<br/>注意如果在端点处相交，也算有交集。<br/>输出合并完成后的区间个数。<br/>例如：[1,3]和[2,6]可以合并为一个区间[1,6]。<br/>数据范围：<br/>1≤n≤100000,<br/>−10^9 ≤ li ≤ ri ≤ 10^9</p>"
+  },
+  "tags": [
+    "区间合并",
+    "基础算法"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行包含整数n。<br/>接下来n行，每行包含两个整数 l 和 r。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>共一行，包含一个整数，表示合并区间完成后的区间个数。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/803/\" target=\"_blank\">Y总讲解\n参考题解</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5\n1 2\n2 4\n5 6\n7 8\n7 9",
+      "output": "3"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 803 | NQ11-07 | 第11章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

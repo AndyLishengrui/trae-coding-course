@@ -1,0 +1,90 @@
+{
+  "display_id": "JD122",
+  "title": "方阵蓄势",
+  "description": {
+    "format": "html",
+    "value": "<p>赵晴儿在沙盘上画了一个 n 行 m 列的数字矩阵。\"如果我问你左上角 (x1,y1) 到右下角 (x2,y2) 这个子矩阵里所有数的和，你怎么算？\"</p><p>李少白想逐行累加。赵晴儿摇头：\"太慢了。和一维前缀和一样的思路——提前算好从 (1,1) 到每个位置的累积和。查询时用容斥原理：大矩形减去左边和上边的多余部分，加上左上角多减的部分。\"</p><p>\"蓄势蓄到二维，一击覆盖任意子矩阵。\"</p><p>给定一个 n×m 的整数矩阵和 q 个查询，每个查询求子矩阵的和。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行一个整数n（1≤n≤100000）。接下来n行每行两个整数l和r。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，合并后的区间个数。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>二维前缀和+容斥。子矩阵和 = s[x2][y2] - s[x1-1][y2] - s[x2][y1-1] + s[x1-1][y1-1]。</p><p><a href='https://www.acwing.com/problem/content/796/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "3 4 2\n1 3 4 5\n2 6 9 4\n1 4 7 5\n1 1 2 2\n2 1 3 3",
+      "output": "18\n43"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 796 | JD124",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

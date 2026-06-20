@@ -1,0 +1,90 @@
+{
+  "display_id": "JD139",
+  "title": "门派计数",
+  "description": {
+    "format": "html",
+    "value": "<p>赵晴儿在并查集的基础上问：\"每个门派有多少人？\"</p><p>梁嘉峰说：\"在合并时，把一个门派的人数加到另一个上。查询时直接读人数。\"</p><p>给定N个元素和M个操作：合并两个集合，或查询某个元素所在集合的大小。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行两个整数N和M。接下来M行，每行M a b（合并）或C a（查询a所在集合大小）。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>对每个C操作输出一行集合大小。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>维护size[]数组，合并时更新size。</p><p><a href='https://www.acwing.com/problem/content/837/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "4 5\nM 1 2\nC 1\nM 2 3\nC 1\nC 4",
+      "output": "2\n3\n1"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 837 | JD139",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

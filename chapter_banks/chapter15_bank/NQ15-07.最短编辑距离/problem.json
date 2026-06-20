@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ15-07",
+  "title": "最短编辑距离",
+  "description": {
+    "format": "html",
+    "value": "<p>给定两个字符串A和B，现在要将A经过若干操作变为B，可进行的操作有：<br/>删除–将字符串A中的某个字符删除。插入–在字符串A的某个位置插入某个字符。替换–将字符串A中的某个字符替换为另一个字符。现在请你求出，将A变为B至少需要进行多少次操作。<br/>数据范围1≤n,m≤1000</p>"
+  },
+  "tags": [
+    "动态规划",
+    "线性DP"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行包含整数n，表示字符串A的长度。<br/>第二行包含一个长度为n的字符串A。<br/>第三行包含整数m，表示字符串B的长度。<br/>第四行包含一个长度为m的字符串B。<br/>字符串中均只包含大写字母。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出一个整数，表示最少操作次数。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/902/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "10 \nAGTCTGACGC\n11 \nAGTAAGTAGGC",
+      "output": "4"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "High",
+  "source": "AcWing 902 | NQ15-07 | 第15章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

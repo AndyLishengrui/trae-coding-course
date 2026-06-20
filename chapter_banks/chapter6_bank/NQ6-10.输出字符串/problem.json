@@ -1,0 +1,90 @@
+{
+  "display_id": "NQ6-10",
+  "title": "输出字符串",
+  "description": {
+    "format": "html",
+    "value": "<p>给定字符串 a，请按照如下要求构造字符串 b：<br/>对于 a 的每个位置 i（从第 1 个字符到倒数第二个字符），令 b[i] 为字符，其 ASCII 值等于 a[i] 和 a[i+1] 的 ASCII 值之和；<br/>最后 b 的最后一个字符的 ASCII 值等于 a 的最后一个字符和第一个字符的 ASCII 值之和。<br/>输出字符串 b。</p>"
+  },
+  "tags": [
+    "字符串"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>输入共一行，包含字符串 a（字符串长度范围：3 ~ 100），其中每个字符的 ASCII 值均不超过 63（例如空格、!、\"、#、...、?）。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出一行，表示字符串 b。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/764/\" target=\"_blank\">提示：读取整行字符串，然后依次计算相邻两个字符 ASCII 值之和，最后一个字符与第一个字符相加。\n来源：语法题</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "1 2 3\n",
+      "output": "QRRSd\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 764 | NQ6-10 | 第6章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

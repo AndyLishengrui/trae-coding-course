@@ -1,0 +1,90 @@
+{
+  "display_id": "JD104",
+  "title": "照妖辨品",
+  "description": {
+    "format": "html",
+    "value": "<p>梁嘉峰指着那排弟子：\"我不需要所有人都排好——只要知道第 K 矮的人是谁。\"</p><p>赵晴儿想了想：\"还是用刚才的方法：挑一个人站中间，矮的左、高的右。数一数左边有几个人——如果左边刚好有 K-1 个人，那中间那个就是答案。如果左边人比 K-1 多，说明答案在左边，只管左边就行。如果不够，就去右边找第 K-左-1 矮的。\"</p><p>\"所以快排是把两边都排好，快选只需要管一边。\"梁嘉峰点头，\"省了一半的力气。\"</p><p>给定一个长度为 n 的整数数列和一个整数 k，求数列中第 k 小的数。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行两个整数n和k。第二行n个整数。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，第k小的数。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>partition 后判断 k 在左半还是右半，只递归一半。平均 O(n)。</p><p><a href='https://www.acwing.com/problem/content/786/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5 3\n3 1 2 4 5",
+      "output": "3"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 786 | JD104 | 第9章 快剑如风",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

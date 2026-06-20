@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ16-07",
+  "title": "筛质数",
+  "description": {
+    "format": "html",
+    "value": "<p>给定一个正整数n，请你求出 1∼n中质数的个数。</p>"
+  },
+  "tags": [
+    "数学知识",
+    "质数"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>共一行，包含整数n。<br/>数据范围<br/>1≤n≤10^6</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>共一行，包含一个整数，表示 1∼n中质数的个数。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/868/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "8",
+      "output": "4"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 868 | NQ16-07 | 第16章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

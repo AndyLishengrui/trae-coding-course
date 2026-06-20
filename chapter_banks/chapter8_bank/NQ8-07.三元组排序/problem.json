@@ -1,0 +1,88 @@
+{
+  "display_id": "NQ8-07",
+  "title": "三元组排序",
+  "description": {
+    "format": "html",
+    "value": "<p>给定N个三元组(x,y,z)，每个三元组包含一个整数x、一个整数y和一个字符串z。按照x从小到大的顺序输出所有三元组。数据保证不同三元组的x值互不相同。</p>"
+  },
+  "tags": [],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行包含整数N。接下来N行，每行包含一个整数x、一个整数y和一个由小写字母组成的字符串z。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>共N行，按照x从小到大的顺序，每行输出一个三元组。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/862/\" target=\"_blank\">数据范围: 1≤N≤10000, 1≤x,y≤10^5, 字符串总长度不超过10^5</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "3\n1 2 abc\n3 4 def\n2 1 ghi",
+      "output": "1 2 abc\n2 1 ghi\n3 4 def"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 862 | NQ8-07 | 第8章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

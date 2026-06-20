@@ -1,0 +1,86 @@
+[
+  {
+    "nq_id": "NQ1-01",
+    "title": "A + B",
+    "cpp": "MISSING",
+    "py": "MISSING"
+  },
+  {
+    "nq_id": "NQ1-02",
+    "title": "差",
+    "cpp": "MISSING",
+    "py": "MISSING"
+  },
+  {
+    "nq_id": "NQ1-03",
+    "title": "圆的面积",
+    "cpp": "MISSING",
+    "py": "MISSING"
+  },
+  {
+    "nq_id": "NQ1-04",
+    "title": "平均数1",
+    "cpp": "MISSING",
+    "py": "MISSING"
+  },
+  {
+    "nq_id": "NQ1-05",
+    "title": "工资",
+    "cpp": "MISSING",
+    "py": "MISSING"
+  },
+  {
+    "nq_id": "NQ1-06",
+    "title": "油耗",
+    "cpp": "MISSING",
+    "py": "MISSING"
+  },
+  {
+    "nq_id": "NQ1-07",
+    "title": "两点间的距离",
+    "cpp": "MISSING",
+    "py": "MISSING"
+  },
+  {
+    "nq_id": "NQ1-08",
+    "title": "钞票",
+    "cpp": "MISSING",
+    "py": "MISSING"
+  },
+  {
+    "nq_id": "NQ1-09",
+    "title": "时间转换",
+    "cpp": "MISSING",
+    "py": "MISSING"
+  },
+  {
+    "nq_id": "NQ1-10",
+    "title": "简单乘积",
+    "cpp": "MISSING",
+    "py": "MISSING"
+  },
+  {
+    "nq_id": "NQ1-11",
+    "title": "简单计算",
+    "cpp": "MISSING",
+    "py": "MISSING"
+  },
+  {
+    "nq_id": "NQ1-12",
+    "title": "球的体积",
+    "cpp": "MISSING",
+    "py": "MISSING"
+  },
+  {
+    "nq_id": "NQ1-13",
+    "title": "面积",
+    "cpp": "MISSING",
+    "py": "MISSING"
+  },
+  {
+    "nq_id": "NQ1-14",
+    "title": "最大值",
+    "cpp": "MISSING",
+    "py": "MISSING"
+  }
+]

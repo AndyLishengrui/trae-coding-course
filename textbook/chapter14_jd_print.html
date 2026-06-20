@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>第14章 千里奔袭——最短路与生成树</title>
+    <style>
+        body { font-family: "Noto Serif SC", "Source Han Serif CN", serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.8; color: #333; }
+        h1 { text-align: center; color: #8B0000; border-bottom: 2px solid #8B0000; padding-bottom: 10px; }
+        h2 { color: #4A0080; margin-top: 2em; }
+        h3 { color: #2E5090; }
+        .chapter-subtitle { text-align: center; color: #666; font-size: 1.1em; margin-bottom: 2em; }
+        .problem { border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin: 20px 0; background: #fafafa; }
+        .problem-title { color: #8B0000; font-size: 1.3em; font-weight: bold; margin-bottom: 10px; }
+        .problem-meta { color: #666; font-size: 0.9em; margin-bottom: 15px; }
+        .description { margin: 15px 0; }
+        .description p { margin: 8px 0; }
+        .io-section { background: #f0f0f0; padding: 12px; border-radius: 4px; margin: 10px 0; }
+        .io-section h4 { margin: 0 0 8px 0; color: #555; font-size: 0.95em; }
+        .sample { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; margin: 10px 0; font-family: "Consolas", "Courier New", monospace; white-space: pre-wrap; }
+        .sample-label { color: #569cd6; font-weight: bold; margin-bottom: 5px; }
+        .hint { background: #fff8e1; border-left: 4px solid #ffc107; padding: 12px; margin: 15px 0; }
+        .code-section { margin: 15px 0; }
+        .code-section summary { cursor: pointer; color: #2E5090; font-weight: bold; }
+        pre { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; overflow-x: auto; font-size: 0.9em; }
+        code { font-family: "Consolas", "Courier New", monospace; }
+        .lang-tabs { display: flex; gap: 10px; margin: 10px 0; }
+        .lang-tab { padding: 5px 15px; cursor: pointer; border: 1px solid #ddd; border-radius: 4px 4px 0 0; }
+        .lang-tab.active { background: #1e1e1e; color: #d4d4d4; border-color: #1e1e1e; }
+    </style>
+</head>
+<body>
+    <h1>第14章 千里奔袭</h1>
+    <div class="chapter-subtitle">最短路与生成树</div>
+
+    <div class="problem" id="JD147">
+        <div class="problem-title">JD147：拓扑之序</div>
+        <div class="problem-meta">AcWing 848 | JD147</div>
+
+        <div class="description">
+            <p>城际连横。赵晴儿铺开城池图："城池之间有方向道路。排出一个合法的建设顺序——每条道路都是从先建的城池指向后建的。"</p>
+<p>梁嘉峰说："拓扑排序——找入度为0的点，输出后删除它的出边，再找下一个入度为0的点。如果有环，就不可能全部输出。"</p>
+<p>给定一个有向图，输出拓扑序。有环则输出-1。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数n和m。接下来m行每行两个整数a b表示一条有向边。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，拓扑序，空格隔开。有环输出-1。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3 3
+1 2
+2 3
+1 3
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 2 3
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>BFS+入度维护。有环则无解。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+#include &lt;cstring&gt;
+
+using namespace std;
+#define For(a, begin, end) for (int a = (begin); a &lt; (end); a++)
+const int N = 1000007;
+
+int n, m;
+int head[N], edge[N], nextVertex[N], idx; //邻接表
+int q[N], d[N]; //队列，入度
+
+void add(int a, int b)
+{    
+    edge[idx] = b;
+    nextVertex[idx] = head[a];
+    head[a] = idx++;
+}
+
+bool topsort()
+{
+    int qHeadIdx = 0, qTailIdx = -1; //队头，队尾
+    //从前往后遍历入度为0的点，插入队列
+    for (int i = 1; i &lt;= n; i++)
+        if (!d[i])
+            q[++qTailIdx] = i; //数组模拟队列，入队是尾指针+1
+    while (qHeadIdx &lt;= qTailIdx) //如果头指针小于尾指针
+    {
+        int t = q[qHeadIdx++]; //取队列头元素，，出队只是把头指针往后移动一位
+        //遍历t的临边，空指针初始化为-1
+        for (int i = head[t]; i != -1; i = nextVertex[i])
+        {
+            int j = edge[i]; //取到出边
+            d[j]--;   //入度减一
+            if (d[j] == 0)
+                q[++qTailIdx] = j; //如若入度为0，压入队列
+        }
+    }
+    //判断是否所有顶点都入队
+    //也就是头指针qTailIdx是否等于n-1,即所有点都进入队列了
+    return qTailIdx==n-1;
+}
+int main()
+{
+
+    cin &gt;&gt; n &gt;&gt; m;            //读入n,m
+    memset(head, -1, sizeof(head)); //初始化Head数组指向-1顶点
+
+    For(i, 0, m)
+    {
+        int a, b;
+        cin &gt;&gt; a &gt;&gt; b;
+        add(a, b); //插入边
+        d[b]++;    //更新入度
+    }
+
+    if (topsort())
+    {//数组队列里面的元素就是拓扑序
+      for (int i =0; i&lt;n; i++) { if(i) printf(" "); printf("%d",q[i]); }
+      printf("\n");
+    }
+    else
+        puts("-1");
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+from collections import deque
+data = sys.stdin.read().split()
+n, m = int(data[0]), int(data[1])
+adj = [[] for _ in range(n+1)]
+indeg = [0]*(n+1)
+idx = 2
+for _ in range(m):
+    x, y = int(data[idx]), int(data[idx+1])
+    idx += 2
+    adj[x].append(y); indeg[y] += 1
+q = deque([i for i in range(1,n+1) if indeg[i]==0])
+res = []
+while q:
+    u = q.popleft()
+    res.append(str(u))
+    for v in adj[u]:
+        indeg[v] -= 1
+        if indeg[v] == 0: q.append(v)
+print(' '.join(res) if len(res)==n else -1)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD148">
+        <div class="problem-title">JD148：近者先行</div>
+        <div class="problem-meta">AcWing 849 | JD148</div>
+
+        <div class="description">
+            <p>赵晴儿在城池图上标了距离："从城1出发，到每个城池的最短距离是多少？边权都是正数。"</p>
+<p>梁嘉峰说："朴素Dijkstra——每次选未访问的最近点，用它更新邻居的距离。选过的点不再更新。"</p>
+<p>给定一个带权有向图和起点，求到每个点的最短距离。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数n和m。接下来m行每行三个整数a b w表示一条从a到b的权为w的有向边。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，n个整数表示到点1的最短距离。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3 3
+1 2 2
+2 3 1
+1 3 4
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+0 2 3
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>Dijkstra：O(n²)。每次选最近未访问点，更新邻居。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+const int N = 510;//500*500
+const int INF = 0x3f3f3f3f;
+
+int g[N][N]; 
+int dist[N];
+bool st[N];
+
+int n,m;
+
+int Dijkstra()
+{
+  memset(dist,0x3f, sizeof dist);//初始化距离  0x3f代表无限大
+
+  dist[1] = 0; //第一个点到自身的距离为0
+
+  //有n个点，迭代n次
+  for (int i = 0; i&lt;n; i++)
+  {
+    int t = -1;//当前访问点的编号初始为-1
+
+    for (int j = 1; j &lt;= n; j++) //从点1到点n开始计算dist
+      if (!st[j] &amp;&amp; (t == -1 || dist[t] &gt; dist[j]))
+        t = j;// 更新点t，直到找到dist最小的点
+
+    st[t]= true;//标记此点确定
+
+    for (int j = 1; j &lt;=n; j++)//每个点都要遍历所有点一遍
+       dist[j] = min( dist[j], dist[t]+ g[t][j]);//遍历所有的点，求从点t到点j的最小值
+   }
+
+
+   if (dist[n] == INF) return -1;
+   return dist[n];//返回第n个点的最短距离
+}
+
+int main()
+{
+  cin&gt;&gt;n&gt;&gt;m;
+
+  memset(g, 0x3f, sizeof g);
+
+  while (m--)
+  {
+    int x,y,z;
+    cin&gt;&gt;x&gt;&gt;y&gt;&gt;z;
+    g[x][y] = min( g[x][y],z);//取重边和自环的最小值，保留一条边
+  }
+  cout&lt;&lt;Dijkstra()&lt;&lt;endl;
+
+  return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"># Dijkstra I (朴素版)
+n, m = map(int, input().split())
+g = [[0x3f3f3f3f] * (n + 1) for _ in range(n + 1)]
+for _ in range(m):
+    x, y, z = map(int, input().split())
+    g[x][y] = min(g[x][y], z)
+dist = [0x3f3f3f3f] * (n + 1)
+dist[1] = 0
+st = [False] * (n + 1)
+for _ in range(n):
+    t = -1
+    for i in range(1, n + 1):
+        if not st[i] and (t == -1 or dist[i] &lt; dist[t]):
+            t = i
+    st[t] = True
+    for v in range(1, n + 1):
+        if dist[v] &gt; dist[t] + g[t][v]:
+            dist[v] = dist[t] + g[t][v]
+print(dist[n] if dist[n] != 0x3f3f3f3f else -1)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD149">
+        <div class="problem-title">JD149：堆中取近</div>
+        <div class="problem-meta">AcWing 850 | JD149</div>
+
+        <div class="description">
+            <p>"点很多，边很少。用堆优化Dijkstra——用小根堆代替遍历找最近点。"赵晴儿说，"每次从堆顶取最近的未访问点。"</p>
+<p>给定一个带权有向图和起点，求到每个点的最短距离。边数远小于点数的平方。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数n和m。接下来m行每行三个整数a b w。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，到点1的最短距离。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3 3
+1 2 2
+2 3 1
+1 3 4
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+0 2 3
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>堆优化Dijkstra：O(mlogn)。用小根堆取最近点。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;iostream&gt;
+#include &lt;queue&gt;
+
+using namespace std;
+
+/**
+ * NQ14-03: Dijkstra求最短路(2)
+ * 图论 | AcWing 850
+ * 时间: O((V+E)logV) | 空间: O(V)
+ */
+
+typedef pair&lt;int, int&gt; PII;
+
+const int N = 1e6 + 10;
+
+int n, m;                          //行，列
+int h[N], w[N], e[N], ne[N], idx;  //数组模拟链表
+int dist[N];                       //距离矩阵
+bool st[N];                        //状态矩阵
+
+//建边函数（数组模拟链表)
+void add(int a, int b, int c) {
+  e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx++;
+}
+
+//改进版，使用小根堆
+int dijkstra() {
+  //初始化距离矩阵
+  memset(dist, 0x3f, sizeof dist);
+  dist[1] = 0;
+  //调用优先队列，以及greater算子，创建小根堆
+  priority_queue&lt;PII, vector&lt;PII&gt;, greater&lt;PII&gt;&gt; heap;
+
+  //按照距离排序，因此第一个元素是距离，第二个元素是顶点编号
+  heap.push({0, 1});
+
+  // BFS计算最短距离
+  while (heap.size()) {
+    //取堆头元素
+    auto t = heap.top();
+    heap.pop();
+
+    // 取顶点编号、顶点距离
+    int ver = t.second, distance = t.first;
+
+    // 顶点遍历过就跳过，不展开改顶点
+    if (st[ver]) continue;
+    st[ver] = true;
+
+    //遍历所有相邻顶点
+    for (int i = h[ver]; i != -1; i = ne[i]) {
+      int j = e[i];
+      //判断dist[ver]+w[i]是否比原来顶点j的距离大
+      if (dist[j] &gt; dist[ver] + w[i]) {
+        dist[j] = dist[ver] + w[i];  //更新顶点j的距离值
+        heap.push({dist[j], j});     //把更小的距离值入堆
+      }
+    }
+  }
+  //如果第n点距离值没被更新，表明不可达
+  if (dist[n] == 0x3f3f3f3f) return -1;
+  //返回点n的距离值
+  return dist[n];
+}
+
+int main() {
+  //读入行n，列m
+  scanf("%d%d", &amp;n, &amp;m);
+  //把邻接链表的头指针化为-1，表明当前为空，不指向任何链表
+  memset(h, -1, sizeof h);
+  //处理m条边
+  while (m--) {
+    int a, b, c;
+    scanf("%d%d%d", &amp;a, &amp;b, &amp;c);
+    add(a, b, c);//调用add建图
+  }
+  //调用改进版的dijkstra()
+  cout &lt;&lt; dijkstra() &lt;&lt; endl;
+
+  return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+import heapq
+data = sys.stdin.read().split()
+n, m = int(data[0]), int(data[1])
+adj = [[] for _ in range(n+1)]
+idx = 2
+for _ in range(m):
+    x, y, z = int(data[idx]), int(data[idx+1]), int(data[idx+2])
+    idx += 3
+    adj[x].append((y, z))
+INF = 10**15
+dist = [INF]*(n+1)
+dist[1] = 0
+st = [False]*(n+1)
+heap = [(0, 1)]
+while heap:
+    d, u = heapq.heappop(heap)
+    if st[u]: continue
+    st[u] = True
+    for v, w in adj[u]:
+        if dist[v] &gt; d + w:
+            dist[v] = d + w
+            heapq.heappush(heap, (dist[v], v))
+print(dist[n] if dist[n] != INF else -1)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD150">
+        <div class="problem-title">JD150：队中松弛</div>
+        <div class="problem-meta">AcWing 851 | JD150</div>
+
+        <div class="description">
+            <p>赵晴儿指着图上的负权边："Dijkstra处理不了负权边。用SPFA——BFS+松弛。把待更新的点放入队列，每次取一个点，用它更新邻居。邻居变短了就入队。"</p>
+<p>给定一个可能有负权边的图，求最短距离。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数n和m。接下来m行每行三个整数a b w（w可为负）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，到点1的最短距离。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3 3
+1 2 -1
+2 3 2
+1 3 3
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+0 -1 1
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>SPFA：队列优化Bellman-Ford。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;queue&gt;
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+/**
+ * NQ14-04: spfa求最短路
+ * 图论 | AcWing 851
+ * 时间: O(VE) | 空间: O(V)
+ */
+
+const int N = 100007;
+
+int n,m;
+int h[N], e[N], w[N], ne[N], idx;
+int q[N], dist[N];
+bool st[N];
+
+void add(int a, int b, int c)  // 添加一条边a-&gt;b，边权为c
+{
+    e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx ++ ;
+}
+
+int spfa()  // 求1号点到n号点的最短路距离，如果从1号点无法走到n号点则返回-1
+{
+    int hh = 0, tt = 0;
+    memset(dist, 0x3f, sizeof dist);
+    dist[1] = 0;
+    q[tt ++ ] = 1;
+    st[1] = true;
+
+    while (hh != tt)
+    {
+        int t = q[hh ++ ];
+        if (hh == N) hh = 0;
+        st[t] = false;
+
+        for (int i = h[t]; i != -1; i = ne[i])
+        {
+            int j = e[i];
+            if (dist[j] &gt; dist[t] + w[i])
+            {
+                dist[j] = dist[t] + w[i];
+                if (!st[j])     // 如果队列中已存在j，则不需要将j重复插入
+                {
+                    q[tt ++ ] = j;
+                    if (tt == N) tt = 0;
+                    st[j] = true;
+                }
+            }
+        }
+    }
+
+    if (dist[n] == 0x3f3f3f3f) return -1;
+    return dist[n];
+}
+
+int main()
+{
+    scanf("%d%d", &amp;n, &amp;m);
+    memset(h, -1, sizeof h);
+    while (m -- )
+    {
+      int a, b, c;
+      scanf("%d%d%d", &amp;a, &amp;b, &amp;c);
+      add(a, b, c);
+    }
+
+    int t = spfa();
+
+    if (t == -1) puts("impossible");
+    else printf("%d\n",t);
+
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+from collections import deque
+data = sys.stdin.read().split()
+n, m = int(data[0]), int(data[1])
+adj = [[] for _ in range(n+1)]
+idx = 2
+for _ in range(m):
+    x, y, z = int(data[idx]), int(data[idx+1]), int(data[idx+2])
+    idx += 3
+    adj[x].append((y, z))
+INF = 10**15
+dist = [INF]*(n+1)
+dist[1] = 0
+st = [False]*(n+1)
+q = deque([1])
+st[1] = True
+while q:
+    u = q.popleft()
+    st[u] = False
+    for v, w in adj[u]:
+        if dist[v] &gt; dist[u] + w:
+            dist[v] = dist[u] + w
+            if not st[v]:
+                q.append(v); st[v] = True
+print(dist[n] if dist[n] != INF else 'impossible')</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD151">
+        <div class="problem-title">JD151：万径归一</div>
+        <div class="problem-meta">AcWing 854 | JD151</div>
+
+        <div class="description">
+            <p>梁嘉峰铺开全图："多源最短路——任意两点之间的最短距离。Floyd算法：三重循环，dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j])。"</p>
+<p>给定一个带权图，求任意两点之间的最短距离。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行三个整数n、m和q。接下来m行每行三个整数a b w。接下来q行每行两个整数a b。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>q行，每行一个整数。不可达输出impossible。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3 3 2
+1 2 2
+2 3 1
+1 3 4
+1 3
+2 1
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+3
+3
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>Floyd：O(n³)。三重循环枚举中间点。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+const int N = 207,INF = 0x3f3f3f3f;
+
+int n,m,k;//k组询问
+int d[N][N];
+
+void floyd()
+{
+  //用动态规划分析得出这个递推公式，使用三重循环
+  for (int k = 1; k &lt;=n; k++)
+   for (int i = 1; i &lt;=n; i++)
+    for (int j = 1; j &lt;= n; j ++ )
+      d[i][j] = min(d[i][j], d[i][k]+d[k][j]);
+}
+
+int main()
+{
+    scanf("%d%d%d", &amp;n, &amp;m, &amp;k);
+
+    for (int i = 1; i &lt;= n; i ++ )
+     for (int j = 1; j &lt;= n; j ++ )
+       if (i==j) d[i][j] = 0;
+       else d[i][j] = INF;
+
+    //处理每条边，去掉重边和自环
+    while (m -- )
+    {
+      int a,b,c;
+      scanf("%d%d%d", &amp;a, &amp;b, &amp;c);
+      d[a][b] = min(d[a][b],c);
+    }
+
+    floyd();
+
+    //k组查询
+    while(k--)
+    {
+      int a,b;
+      scanf("%d%d", &amp;a, &amp;b);
+      int t = d[a][b];
+      if (t &gt; INF /2) puts("impossible");
+      else printf("%d\n",t);
+    }
+
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+data = sys.stdin.read().split()
+idx = 0
+n, m, q = int(data[idx]), int(data[idx+1]), int(data[idx+2])
+idx += 3
+INF = 0x3f3f3f3f
+d = [[INF] * (n + 1) for _ in range(n + 1)]
+for i in range(1, n + 1):
+    d[i][i] = 0
+for _ in range(m):
+    x, y, z = int(data[idx]), int(data[idx+1]), int(data[idx+2])
+    idx += 3
+    if z &lt; d[x][y]:
+        d[x][y] = z
+for k in range(1, n + 1):
+    for i in range(1, n + 1):
+        if d[i][k] == INF:
+            continue
+        for j in range(1, n + 1):
+            if d[k][j] != INF and d[i][j] &gt; d[i][k] + d[k][j]:
+                d[i][j] = d[i][k] + d[k][j]
+out = []
+for _ in range(q):
+    a, b = int(data[idx]), int(data[idx+1])
+    idx += 2
+    out.append(str(d[a][b]) if d[a][b] &lt; INF // 2 else 'impossible')
+sys.stdout.write('\n'.join(out) + '\n')</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD152">
+        <div class="problem-title">JD152：蔓延成网</div>
+        <div class="problem-meta">AcWing 858 | JD152</div>
+
+        <div class="description">
+            <p>赵晴儿指着散落的城池："用最少的路把所有城池连起来，总路长最短。"</p>
+<p>梁嘉峰说："Prim算法——类似Dijkstra，每次选离已连通部分最近的未加入点，把那条边加入生成树。"</p>
+<p>给定一个带权无向图，求最小生成树的总权值。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数n和m。接下来m行每行三个整数a b w。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最小生成树的总权值。不连通输出impossible。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+4 5
+1 2 1
+1 3 2
+2 3 3
+2 4 4
+3 4 5
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+7
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>Prim：O(n²)。每次选最近未加入点。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+const int N = 507,INF = 0x3f3f3f3f;
+
+int n,m;
+int g[N][N];
+int dist[N];
+bool st[N];
+
+int prim()
+{
+  memset(dist,0x3f,sizeof dist);
+
+  int res = 0;
+  for (int i = 0; i &lt; n; i++)
+  {
+    //第一个点
+   int t = -1;
+    for (int j = 1; j &lt;= n; j ++ )
+        if(!st[j] &amp;&amp; (t == -1 || dist[t] &gt; dist[j]))
+        t = j;
+
+    if (i &amp;&amp; dist[t] == INF) return INF;//没有最小生成树，不连通
+
+    if (i) res += dist[t];
+    st[t] = true;
+
+    for (int j = 1; j &lt;= n; j ++ ) dist[j] = min(dist[j], g[t][j]);
+  }
+   return res;
+
+}
+int main()
+{
+    scanf("%d%d", &amp;n, &amp;m);
+
+    memset(g, 0x3f, sizeof g);
+
+    while (m -- )
+    {
+      int a,b,c;
+      scanf("%d%d%d", &amp;a, &amp;b, &amp;c);
+      g[a][b] = g[b][a] = min(g[a][b],c);//无向图，去重
+    }
+
+    int t = prim();
+    if (t== INF) puts("impossible");
+    else printf("%d\n",t);
+
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+data = sys.stdin.read().split()
+n, m = int(data[0]), int(data[1])
+g = [[10**15]*(n+1) for _ in range(n+1)]
+idx = 2
+for _ in range(m):
+    u, v, w = int(data[idx]), int(data[idx+1]), int(data[idx+2])
+    idx += 3
+    g[u][v] = g[v][u] = min(g[u][v], w)
+INF = 10**15
+dist = [INF]*(n+1)
+st = [False]*(n+1)
+ans = 0
+for _ in range(n):
+    t = -1
+    for i in range(1, n+1):
+        if not st[i] and (t == -1 or dist[i] &lt; dist[t]): t = i
+    if _ &gt; 0 and dist[t] == INF: print('impossible'); sys.exit(0)
+    if _ &gt; 0: ans += dist[t]
+    st[t] = True
+    for v in range(1, n+1):
+        if dist[v] &gt; g[t][v]: dist[v] = g[t][v]
+print(ans)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD153">
+        <div class="problem-title">JD153：逐边成林</div>
+        <div class="problem-meta">AcWing 859 | JD153</div>
+
+        <div class="description">
+            <p>梁嘉峰说："Kruskal——按边权从小到大排序，逐条加入。如果这条边的两个端点已经在同一连通块里（用并查集判断），就跳过；否则加入。"</p>
+<p>给定一个带权无向图，求最小生成树的总权值。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数n和m。接下来m行每行三个整数a b w。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最小生成树的总权值。不连通输出impossible。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+4 5
+1 2 1
+1 3 2
+2 3 3
+2 4 4
+3 4 5
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+7
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>Kruskal：O(mlogm)。按边权排序，并查集判环。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+const int N = 100007, M = 2000007, INF = 0x3f3f3f3f;
+
+int n,m;
+int p[N];//并查集
+
+struct Edge
+{
+  int a, b, w;
+  bool operator&lt; (const Edge &amp;a) const
+  {
+    return w &lt; a.w;
+  }
+} edges[M];//重载&lt;,安装权重w比大小
+
+int find(int x)  // 并查集
+{
+    if (p[x] != x) p[x] = find(p[x]);
+    return p[x];
+}
+
+int kruskal()
+{
+  //1.排序
+  sort(edges, edges+m);
+  //并查集初始化
+  for (int i = 1; i&lt;=n; i++) p[i] = i;
+
+  int res = 0, cnt = 0;
+  for (int i = 0; i&lt;m; i++)
+  {
+    int a = edges[i].a, b = edges[i].b, w=edges[i].w;
+    a = find(a), b = find(b);
+    if (a != b)
+    {
+      p[a] = b;
+      res += w;
+      cnt ++;
+    }
+  }
+  if (cnt &lt; n-1) return INF;
+  return res;
+}
+int main()
+{
+     scanf("%d%d", &amp;n, &amp;m);
+
+    for (int i = 0; i &lt; m; i ++ )
+    {
+        int a, b, w;
+        scanf("%d%d%d", &amp;a, &amp;b, &amp;w);
+        edges[i] = {a, b, w};
+    }
+
+    int t = kruskal();
+
+    if (t == INF) puts("impossible");
+    else printf("%d\n", t);
+
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"># Kruskal
+n, m = map(int, input().split())
+edges = []
+for _ in range(m):
+    u, v, w = map(int, input().split())
+    edges.append((w, u, v))
+edges.sort()
+p = list(range(n + 1))
+
+def find(x):
+    if p[x] != x:
+        p[x] = find(p[x])
+    return p[x]
+
+ans = 0
+cnt = 0
+for w, u, v in edges:
+    ru, rv = find(u), find(v)
+    if ru != rv:
+        p[ru] = rv
+        ans += w
+        cnt += 1
+print(ans if cnt == n - 1 else 'impossible')</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD154">
+        <div class="problem-title">JD154：二色分界</div>
+        <div class="problem-meta">AcWing 860 | JD154</div>
+
+        <div class="description">
+            <p>赵晴儿指着一个图："能不能把所有点分成两组，同组之间没有直接相连的边？"</p>
+<p>梁嘉峰说："染色法——从任意点开始，染红色；它的邻居染蓝色；邻居的邻居染红色……如果某个点需要同时染两种颜色，就不是二分图。"</p>
+<p>给定一个无向图，判断是否是二分图。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数n和m。接下来m行每行两个整数a b。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，Yes或No。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+4 4
+1 2
+2 3
+3 4
+4 1
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+Yes
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>BFS/DFS染色，冲突则不是二分图。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+using namespace std;
+//无向图
+const int N=100007,M=200007;//两倍的边
+int n,m;
+int h[N],e[M],ne[M],idx;
+int color[N];//0表示未访问，1表示颜色1，2表示颜色2.
+
+void add(int a, int b){
+  e[idx]=b, ne[idx]=h[a], h[a]=idx++; //数组模拟链表add操作
+}
+
+bool dfs(int u, int c){
+  color[u]=c;
+
+  for (int i=h[u]; i!=-1; i=ne[i])
+  {
+    int j=e[i]; //取i对应的另外一个顶点编号
+    if (!color[j]) {
+       if (!dfs(j,3-c)) return false;//颜色是1或者2切换，所以用3-color可以交换两种颜色
+    }
+    else if (color[j]==c) return false;//端点颜色相同
+  }
+  return true;  
+}
+int main(){
+
+  scanf("%d%d",&amp;n,&amp;m);
+  memset(h,-1,sizeof h);//初始化头结点
+  //建图
+  while (m--)
+  {
+     int a,b;
+     scanf("%d%d",&amp;a,&amp;b);
+     add(a,b); add(b,a);
+  }
+  bool flag = true;//表示染色有矛盾
+  for (int i=1; i&lt;=n; i++)
+    if (!color[i]) {
+      if (!dfs(i,1))
+      {
+        flag = false;
+        break;
+      }
+    } 
+  if (flag) puts("Yes"); else puts ("No");
+
+  return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+sys.setrecursionlimit(200000)
+# 染色法判定二分图
+n, m = map(int, input().split())
+adj = [[] for _ in range(n + 1)]
+for _ in range(m):
+    u, v = map(int, input().split())
+    adj[u].append(v)
+    adj[v].append(u)
+color = [0] * (n + 1)
+
+def dfs(u, c):
+    color[u] = c
+    for v in adj[u]:
+        if color[v] == 0:
+            if not dfs(v, 3 - c):
+                return False
+        elif color[v] == c:
+            return False
+    return True
+
+ok = True
+for i in range(1, n + 1):
+    if color[i] == 0:
+        if not dfs(i, 1):
+            ok = False
+            break
+print('Yes' if ok else 'No')</code></pre>
+            </details>
+        </div>
+    </div>
+
+</body>
+</html>

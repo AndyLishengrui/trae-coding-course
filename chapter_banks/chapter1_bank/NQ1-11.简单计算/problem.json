@@ -1,0 +1,88 @@
+{
+  "display_id": "NQ1-11",
+  "title": "简单计算",
+  "description": {
+    "format": "html",
+    "value": "<p>根据产品编号、数量和单价，计算总价。</p>"
+  },
+  "tags": [],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行两个整数（编号和数量），第二行一个浮点数（单价）。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>\"VALOR A PAGAR: R$ XX.XX\"。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/611/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "12 1\n5.30",
+      "output": "VALOR A PAGAR: R$ 5.30"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 611 | NQ1-11 | 第1章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

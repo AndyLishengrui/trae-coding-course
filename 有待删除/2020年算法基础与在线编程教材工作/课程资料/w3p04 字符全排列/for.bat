@@ -1,0 +1,1 @@
+for /L %%i in (1,1,10) do (w3p04.exe <%%i.in >%%i.out)

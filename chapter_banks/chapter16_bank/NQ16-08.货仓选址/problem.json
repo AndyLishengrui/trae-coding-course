@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ16-08",
+  "title": "货仓选址",
+  "description": {
+    "format": "html",
+    "value": "<p>在一条数轴上有N家商店，它们的坐标分别为A1~AN。<br/>现在需要在数轴上建立一家货仓，每天清晨，从货仓到每家商店都要运送一车商品。<br/>为了提高效率，求把货仓建在何处，可以使得货仓到每家商店的距离之和最小。<br/>数据范围<br/>1≤N≤100000</p>"
+  },
+  "tags": [
+    "绝对不等式",
+    "贪心"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行输入整数N。<br/>第二行N个整数A1~AN。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出一个整数，表示距离之和的最小值。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/104/\" target=\"_blank\">原题链接\n\nacwing讲解</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "4\n6 2 9 1",
+      "output": "12"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 104 | NQ16-08 | 第16章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

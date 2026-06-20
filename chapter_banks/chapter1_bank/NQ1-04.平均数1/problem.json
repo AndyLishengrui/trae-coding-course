@@ -1,0 +1,88 @@
+{
+  "display_id": "NQ1-04",
+  "title": "平均数1",
+  "description": {
+    "format": "html",
+    "value": "<p>读取两个浮点数 A 和 B 的值，对应于两个学生的成绩。<br/>请你计算学生的平均分，其中 A 的成绩的权重为 3.5，B 的成绩的权重为 7.5。<br/>成绩的取值范围在 0 到 10 之间，且均保留一位小数。</p>"
+  },
+  "tags": [],
+  "input_description": {
+    "format": "html",
+    "value": "<p>输入占两行，每行包含一个浮点数，第一行表示 A，第二行表示 B。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出格式为MEDIA = X，其中 X 为平均分，结果保留五位小数。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/606/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5.0\n7.1",
+      "output": "MEDIA = 6.43182"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 606 | NQ1-04 | 第1章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

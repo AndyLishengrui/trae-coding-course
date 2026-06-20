@@ -1,0 +1,95 @@
+{
+  "display_id": "NQ11-04",
+  "title": "高精度乘法",
+  "description": {
+    "format": "html",
+    "value": "<p>给定两个正整数A和B，请你计算A * B的值。</p><p>1≤A的长度≤100000,0≤B≤10000</p>"
+  },
+  "tags": [
+    "基础算法",
+    "高精度"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>共两行，第一行包含整数A，第二行包含整数B。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>共一行，包含A * B的值。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/793/\" target=\"_blank\">原题链接\nY总讲解\n参考题解\nY总代码</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "2\n3",
+      "output": "6"
+    },
+    {
+      "input": "08352085677450204155636710762260330623833158471225602700668031327073320332683473000086311012160645060307261278166280016332301677033082046266010400150080180514033603083104070364362761072360423621610605601030800043433030054672006638014105806167002112042770007001330658043774303440187260112476067402308645712\n8110",
+      "output": "67735414844121155702213724281931281359286915201639637902417734062564627898062966030699982308622831439091888965928530932454966600738295395217344345217150263968812521003974010654981992296843035571262011424359788352241873743389973834294398088014387128666864756780791636735009600899918679512180906632723116724320"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 793 | NQ11-04 | 第11章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

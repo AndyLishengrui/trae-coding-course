@@ -1,0 +1,88 @@
+{
+  "display_id": "NQ4-10",
+  "title": "数字序列和它的和",
+  "description": {
+    "format": "html",
+    "value": "<p>对于每一对输入的正整数M和N（M</p>"
+  },
+  "tags": [],
+  "input_description": {
+    "format": "html",
+    "value": "<p>多行，每行两个整数M和N。以M≤0或N≤0结束。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>对每对M,N，输出一行所有整数（空格隔开）和\"Sum=X\"。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/722/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5 10\n2 3\n0 0",
+      "output": "5 6 7 8 9 10 Sum=45\n2 3 Sum=5"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 722 | NQ4-10 | 第4章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

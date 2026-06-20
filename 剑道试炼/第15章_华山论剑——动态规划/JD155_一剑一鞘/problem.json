@@ -1,0 +1,90 @@
+{
+  "display_id": "JD155",
+  "title": "一剑一鞘",
+  "description": {
+    "format": "html",
+    "value": "<p>华山脚下，试剑台前。西域刀客赫连铁拔出背上唯一的刀鞘，鞘中却藏着N柄短刀，每柄有重量和锋芒。刀鞘容量有限——选哪些刀，才能让锋芒之和最大？</p><p>李少白拔剑上前。梁嘉峰低声道：\"每柄刀只能选一次——01背包。逆序遍历容量，dp[j] = max(dp[j], dp[j-v]+w)。\"</p><p>李少白深吸一口气，提笔写下。赫连铁看了答案，缓缓点头：\"第一关，过了。\"</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行两个整数N和V。接下来N行每行两个整数v和w。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，最大价值。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>01背包：dp[j] = max(dp[j], dp[j-v[i]]+w[i])，逆序遍历j。</p><p><a href='https://www.acwing.com/problem/content/0/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "4 5\n1 2\n2 4\n3 4\n4 5",
+      "output": "8"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 2 | JD155",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

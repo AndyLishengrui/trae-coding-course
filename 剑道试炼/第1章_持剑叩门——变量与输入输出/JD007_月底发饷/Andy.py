@@ -1,0 +1,5 @@
+# 月底发饷：工号(第一行)，天数和工钱(第二行)
+id_num = int(input())
+days, rate = map(float, input().split())
+print(f"NUMBER = {id_num}")
+print(f"SALARY = U$ {days * rate:.2f}")

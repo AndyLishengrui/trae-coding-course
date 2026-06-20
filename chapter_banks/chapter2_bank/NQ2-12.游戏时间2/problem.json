@@ -1,0 +1,96 @@
+{
+  "display_id": "NQ2-12",
+  "title": "游戏时间2",
+  "description": {
+    "format": "html",
+    "value": "<p>读取四个整数 A, B, C, D，用来表示游戏的开始时间和结束时间。<br/>其中 A 和 B 为开始时刻的小时和分钟数，C 和 D 为结束时刻的小时和分钟数。<br/>请你计算游戏的持续时间。游戏最短持续 1 分钟，最长持续 24 小时。</p>"
+  },
+  "tags": [],
+  "input_description": {
+    "format": "html",
+    "value": "<p>共一行，包含四个整数 A, B, C, D。<br/>数据范围<br/>0≤A,C≤23,0≤B,D≤59</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出格式为O JOGO DUROU X HORA(S) E Y MINUTO(S)，表示游戏共持续了 X 小时 Y 分钟。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/668/\" target=\"_blank\">注意时间的跨天情况。</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "7 8 9 10",
+      "output": "O JOGO DUROU 2 HORA(S) E 2 MINUTO(S)"
+    },
+    {
+      "input": "7 7 7 7",
+      "output": "O JOGO DUROU 24 HORA(S) E 0 MINUTO(S)"
+    },
+    {
+      "input": "7 8 8 9",
+      "output": "O JOGO DUROU 1 HORA(S) E 1 MINUTO(S)"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 668 | NQ2-12 | 第2章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

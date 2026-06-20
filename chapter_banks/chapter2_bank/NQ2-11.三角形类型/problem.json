@@ -1,0 +1,88 @@
+{
+  "display_id": "NQ2-11",
+  "title": "三角形类型",
+  "description": {
+    "format": "html",
+    "value": "<p>给定三个浮点数，先判断能否构成三角形，如果能，再进一步判断是直角三角形、钝角三角形、锐角三角形、等边三角形还是等腰三角形。</p>"
+  },
+  "tags": [],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一行，三个浮点数A、B、C。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>按顺序输出满足的类型，可能多行。先输出\"NAO FORMA TRIANGULO\"（不能构成），否则依次检查直/钝/锐/等边/等腰。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/666/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "7.0 5.0 7.0",
+      "output": "TRIANGULO ACUTANGULO\nTRIANGULO ISOSCELES"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 666 | NQ2-11 | 第2章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

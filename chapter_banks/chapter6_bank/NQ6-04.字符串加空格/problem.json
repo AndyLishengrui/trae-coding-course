@@ -1,0 +1,90 @@
+{
+  "display_id": "NQ6-04",
+  "title": "字符串加空格",
+  "description": {
+    "format": "html",
+    "value": "<p>给定一个字符串，在字符串的每个字符之间都加一个空格。输出修改后的新字符串。</p>"
+  },
+  "tags": [
+    "字符串"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>共一行，包含一个字符串。注意字符串中可能包含空格。<br/>数据范围：1 ≤ 字符串长度 ≤ 100</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出增加空格后的字符串。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/765/\" target=\"_blank\">注意输出格式。\n来源：剑指Offer、语法题</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "test case\n",
+      "output": "t e s t   c a s e\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 765 | NQ6-04 | 第6章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

@@ -1,0 +1,90 @@
+{
+  "display_id": "JD111",
+  "title": "削铁如泥",
+  "description": {
+    "format": "html",
+    "value": "<p>梁嘉峰递给李少白两块铁牌：\"这次是减法。大数减大数，注意借位。\"</p><p>李少白接过一看，两个数都很长。他先比较了大小——如果被减数比减数小，结果就是负数，先交换再算。</p><p>\"像竖式减法一样，从最低位开始，不够减就向高位借1。\"梁嘉峰说，\"削铁如泥，一刃一刃来。\"</p><p>给定两个正整数，计算它们的差（结果可能为负数）。每个数不超过 100000 位。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>两行，每行一个正整数（不超过100000位）。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，两数之差。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>先判断大小，大减小，从低位逐位减，处理借位。如果被减数小则结果加负号。</p><p><a href='https://www.acwing.com/problem/content/792/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "9876543210\n1234567890",
+      "output": "8641975320"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 792 | JD111 | 第10章 千锤百炼",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

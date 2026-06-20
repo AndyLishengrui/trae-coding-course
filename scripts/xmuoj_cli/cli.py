@@ -79,7 +79,7 @@ DEFAULT_PROBLEM = {
     "memory_limit": 256,
     "languages": ["C", "C++", "Python3"],
     "template": {},
-    "rule_type": "ACM",
+    "rule_type": "OI",
     "io_mode": {"io_mode": "Standard IO", "input": "input.txt", "output": "output.txt"},
     "spj": False,
     "spj_language": None,
@@ -513,80 +513,38 @@ def cmd_contest_reorder(args):
 
 def cmd_sync(args):
     """同步书稿题目到XMUOJ"""
-    import json
+    from constants import V2_PLAN, normalize_pid
     from sync_engine import SyncEngine
 
-    dry_run = args.dry_run
-    if dry_run:
-        engine = SyncEngine(None, dry_run=True)
+    base_url = "http://localhost" if _USE_LOCAL else "http://xmuoj.com"
+
+    if args.dry_run:
+        engine = SyncEngine(None, dry_run=True, base_url=base_url)
         chapters = [args.chapter] if args.chapter else range(1, 17)
         for ch in chapters:
-            if isinstance(ch, str): ch = int(ch)
+            if isinstance(ch, str):
+                ch = int(ch)
             engine.sync_chapter(ch)
         engine.print_summary()
         return
 
     client = get_client()
-
-    # V2 plan from COURSE_PLAN_V2.md
-    v2_plan = {
-        1: [1,608,604,606,609,615,616,653,654,605,611,612,613,614],
-        2: [665,660,659,664,667,669,670,657,671,662,666,668,672,663],
-        3: [708,709,712,714,716,721,720,724,723,710,711,718,715,713],
-        4: [737,738,739,743,740,741,742,744,717,722,725,726],
-        5: [745,747,749,751,753,748,746,750,752,754,755,756],
-        6: [760,761,763,765,769,773,772,762,767,764,770,774],
-        7: [804,805,808,811,812,813,819,820,821,822,823,818],
-        8: [16,17,20,21,35,36,862,810,814,816],
-        9: [785,786,787,788,789,790,727],
-        10: [795,796,797,798,799,800,2816],
-        11: [791,792,801,793,794,802,803],
-        12: [826,828,829,3302,830,154,831,839],
-        13: [842,843,844,845,846,847,777,778],
-        14: [848,849,850,851,854,858,859,860],
-        15: [2,3,898,895,897,282,902,901],
-        16: [905,148,836,837,240,875,868,104],
-    }
+    engine = SyncEngine(client, dry_run=False, base_url=base_url)
 
     chapters = [args.chapter] if args.chapter else range(1, 17)
-    dry_run = args.dry_run
-    created = 0
-
     for ch in chapters:
-        if isinstance(ch, str): ch = int(ch)
-        pids = v2_plan[ch]
-        print(f"\n📖 第{ch}章 ({len(pids)}题):")
-        for pid in pids:
-            display_id = f"ACW{pid}"
-            if dry_run:
-                print(f"  [DRY RUN] 创建/更新 {display_id}")
-                created += 1
-            else:
-                try:
-                    # Check if exists
-                    existing = None
-                    try:
-                        existing = client.get_problem(display_id=display_id)
-                    except:
-                        pass
-
-                    if existing and isinstance(existing, dict) and existing.get("id"):
-                        print(f"  ⏭️  跳过 {display_id} (已存在, id={existing['id']})")
-                    else:
-                        # TODO: Build problem from textbook data
-                        print(f"  ⚠️  待创建 {display_id} (需要完整题面数据)")
-                except Exception as e:
-                    print(f"  ❌ {display_id}: {e}")
-
-    print(f"\n{'[DRY RUN] ' if dry_run else ''}共 {created} 题待同步")
-    if dry_run:
-        print("使用 --no-dry-run 执行实际同步")
+        if isinstance(ch, str):
+            ch = int(ch)
+        engine.sync_chapter(ch)
+    engine.print_summary()
 
 
 # ====== Validate ======
 
 def cmd_validate(args):
     """自动验证 AC 代码"""
+    from constants import V2_PLAN, normalize_pid
+
     client = get_client()
     chapters = [args.chapter] if args.chapter else range(1, 17)
     lang = args.lang or "cpp"
@@ -596,30 +554,28 @@ def cmd_validate(args):
     results = {"AC": 0, "WA": 0, "TLE": 0, "ERR": 0, "PEND": 0}
     total = 0
 
-    v2_plan = {
-        1: [1,608,604,606,609,615,616,653,654,605,611,612,613,614],
-        2: [665,660,659,664,667,669,670,657,671,662,666,668,672,663],
-    }
-
     for ch in chapters:
         if isinstance(ch, str): ch = int(ch)
-        pids = v2_plan.get(ch, [])
+        pids = V2_PLAN.get(ch, [])
         print(f"\n📖 第{ch}章验证 ({len(pids)}题, {lang}):")
 
         for pid in pids:
             total += 1
-            display_id = f"ACW{pid}"
+            display_id, source_type, _ = normalize_pid(pid)
+            if source_type != "acw":
+                print(f"  ⏭️  {display_id}: 非AcWing题目，跳过自动验证")
+                continue
 
             # Get problem from OJ
             try:
                 prob = client.get_problem(display_id=display_id)
                 if not prob or not isinstance(prob, dict):
-                    print(f"  ⚠️  ACW{pid}: 题目不存在于 OJ")
+                    print(f"  ⚠️  {display_id}: 题目不存在于 OJ")
                     results["ERR"] += 1
                     continue
                 pid_int = prob.get("id")
             except:
-                print(f"  ⚠️  ACW{pid}: 查询失败")
+                print(f"  ⚠️  {display_id}: 查询失败")
                 results["ERR"] += 1
                 continue
 
@@ -627,7 +583,7 @@ def cmd_validate(args):
             ext = ".cpp" if lang == "cpp" else ".py"
             code_file = find_code_file(pid, ext)
             if not code_file:
-                print(f"  ⚠️  ACW{pid}: 本地无{lang}代码")
+                print(f"  ⚠️  {display_id}: 本地无{lang}代码")
                 results["ERR"] += 1
                 continue
 
@@ -636,7 +592,7 @@ def cmd_validate(args):
             try:
                 sub_result = client.submit(pid_int, code, oj_lang)
                 sub_id = sub_result.get("submission_id", sub_result.get("id", ""))
-                print(f"  📤 ACW{pid}: 已提交 ({sub_id})...", end=" ")
+                print(f"  📤 {display_id}: 已提交 ({sub_id})...", end=" ")
 
                 # Wait for result
                 for _ in range(20):  # max 60 seconds

@@ -1,0 +1,90 @@
+{
+  "display_id": "NQ6-02",
+  "title": "字符串中的数字个数",
+  "description": {
+    "format": "html",
+    "value": "<p>输入一行字符（长度不超过 100），请你统计一下其中的数字字符的个数。</p>"
+  },
+  "tags": [
+    "字符串"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>输入一行字符。字符中可能包含空格。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出一个整数，表示该行字符中数字字符的个数。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/761/\" target=\"_blank\">注意读取整行字符，并统计每个数字字符。\n来源：语法题</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "I am 18 years old this year.\n",
+      "output": "2\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 761 | NQ6-02 | 第6章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

@@ -1,0 +1,88 @@
+{
+  "display_id": "NQ3-12",
+  "title": "实验",
+  "description": {
+    "format": "html",
+    "value": "<p>小鲁在上生物实验课。记录了N次观察，每次观察有一种动物类型（C=兔子、R=老鼠、F=青蛙）和数量。请统计总数及每种动物的数量和百分比。</p>"
+  },
+  "tags": [],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行N。接下来N行，每行一个整数和一个字符（数量和类型）。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>按格式输出总计和各类统计及百分比。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/718/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "10\n10 C\n6 R\n15 F\n5 C\n14 R\n9 C\n6 R\n8 F\n5 C\n14 R",
+      "output": "Total: 92 animals\nTotal coneys: 29\nTotal rats: 40\nTotal frogs: 23\nPercentage of coneys: 31.52 %\nPercentage of rats: 43.48 %\nPercentage of frogs: 25.00 %"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 718 | NQ3-12 | 第3章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

@@ -1,0 +1,90 @@
+{
+  "display_id": "JD109",
+  "title": "铁壁识痕",
+  "description": {
+    "format": "html",
+    "value": "<p>精铸阁的墙壁上嵌着一排铁板，每块铁板上用二进制刻着一个数——有凹痕的地方是1，平整的地方是0。</p><p>赵晴儿递给李少白一串数字：\"每块铁板上有几道凹痕？数出来。\"</p><p>李少白想逐位检查。赵晴儿教他一个窍门：\"用位运算——n &amp; 1 看最低位是不是1，然后 n &gt;&gt;= 1 右移一位，继续看下一位。数完所有位，就知道有几道凹痕了。\"</p><p>给定 n 个整数，输出每个数的二进制表示中有多少个1。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行一个整数n。第二行n个整数（1≤n≤100000）。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，每个数对应的1的个数，空格隔开。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>位运算：while(n > 0) { count += n & 1; n >>= 1; }。或用 n & (n-1) 消去最低位的1，计数更快。</p><p><a href='https://www.acwing.com/problem/content/801/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5\n1 2 3 4 5",
+      "output": "1 1 2 1 2"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 801 | JD109 | 第10章 千锤百炼",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

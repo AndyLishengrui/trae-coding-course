@@ -1,0 +1,1 @@
+for /L %%i in (1,1,20) do (w4p01.exe <%%i.in >%%i.out)

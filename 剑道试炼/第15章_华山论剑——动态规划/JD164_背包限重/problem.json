@@ -1,0 +1,140 @@
+{
+  "display_id": "JD164",
+  "title": "背包限重",
+  "description": {
+    "format": "html",
+    "value": "<p>第二轮铠甲战。数据更大——N和V都到了极限。\"同样的方法还管用吗？\"对手冷笑。</p><p>梁嘉峰在台下喊道：\"方法不变，多重背包的经典解法！\"</p><p>李少白再次出手，代码如剑，一气呵成。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行两个整数N和V。接下来N行每行三个整数v、w和s。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，最大价值。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 5,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 5,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 5,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 5,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 5,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 5,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 5,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 5,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 5,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 5,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    },
+    {
+      "score": 5,
+      "input_name": "11.in",
+      "output_name": "11.out"
+    },
+    {
+      "score": 5,
+      "input_name": "12.in",
+      "output_name": "12.out"
+    },
+    {
+      "score": 5,
+      "input_name": "13.in",
+      "output_name": "13.out"
+    },
+    {
+      "score": 5,
+      "input_name": "14.in",
+      "output_name": "14.out"
+    },
+    {
+      "score": 5,
+      "input_name": "15.in",
+      "output_name": "15.out"
+    },
+    {
+      "score": 5,
+      "input_name": "16.in",
+      "output_name": "16.out"
+    },
+    {
+      "score": 5,
+      "input_name": "17.in",
+      "output_name": "17.out"
+    },
+    {
+      "score": 5,
+      "input_name": "18.in",
+      "output_name": "18.out"
+    },
+    {
+      "score": 5,
+      "input_name": "19.in",
+      "output_name": "19.out"
+    },
+    {
+      "score": 5,
+      "input_name": "20.in",
+      "output_name": "20.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>多重背包二进制优化。与JD163相同思路，数据范围更大。</p><p><a href='https://www.acwing.com/problem/content/0/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "680 1562\n866 815 599\n1355 680 202",
+      "output": "742560"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 5 | JD164",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

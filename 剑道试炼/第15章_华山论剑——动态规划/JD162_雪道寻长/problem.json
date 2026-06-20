@@ -1,0 +1,90 @@
+{
+  "display_id": "JD162",
+  "title": "雪道寻长",
+  "description": {
+    "format": "html",
+    "value": "<p>华山后山，白雪皑皑。一个R×C的滑雪场，从任意高处滑向相邻的低处。\"最长能滑多远？\"</p><p>赵晴儿踏雪而行：\"记忆化搜索——DFS+缓存。每个格子只算一次，取四个方向中最长的路径加一。\"</p><p>她的身影在雪道上飞驰，划出一道完美的弧线。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行两个整数R和C。接下来R行每行C个整数表示高度。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，最长递减路径的长度。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>记忆化搜索：DFS+缓存。每个格子只算一次，取四个方向中最长路径+1。</p><p><a href='https://www.acwing.com/problem/content/0/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5 5\n1 2 3 4 5\n16 17 18 19 6\n15 24 25 20 7\n14 23 22 21 8\n13 12 11 10 9",
+      "output": "25"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 901 | JD162",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

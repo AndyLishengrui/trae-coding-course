@@ -1,0 +1,50 @@
+{
+  "display_id": "JD167",
+  "title": "整分剑法",
+  "description": {
+    "format": "html",
+    "value": "<p>对手是一位数学大师，他写下数字n：\"把它拆成若干正整数之和，有多少种拆法？\"</p><p>赵晴儿上前：\"完全背包——从1到n，每个数可以用无限次。dp[j] += dp[j-i]，模1e9+7。\"</p><p>大师推了推眼镜：\"你用背包来解整数划分？有意思。\"</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一个整数n（1≤n≤1000）。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，划分方案数模1e9+7。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 50,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 50,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>完全背包DP：dp[j] += dp[j-i]，i从1到n。模1e9+7。</p><p><a href='https://www.acwing.com/problem/content/0/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5",
+      "output": "7"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 900 | JD167",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

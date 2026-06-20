@@ -1,0 +1,1058 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - list [ref=e4]:
+      - generic [ref=e38]: 5DG在线编程
+      - listitem [ref=e5] [cursor=pointer]:
+        - generic [ref=e6]: 
+        - text: 首页
+      - listitem [ref=e7] [cursor=pointer]:
+        - generic [ref=e8]: 
+        - text: 问题
+      - listitem [ref=e9] [cursor=pointer]:
+        - generic [ref=e10]: 
+        - text: 课程
+      - listitem [ref=e11] [cursor=pointer]:
+        - generic [ref=e12]: 
+        - text: 实验
+      - listitem [ref=e13] [cursor=pointer]:
+        - generic [ref=e14]: 
+        - text: 状态
+      - listitem [ref=e15] [cursor=pointer]:
+        - generic [ref=e16]:
+          - generic [ref=e17]: 
+          - text: 排名
+          - generic [ref=e18]: 
+      - listitem [ref=e19] [cursor=pointer]:
+        - generic [ref=e20]:
+          - generic [ref=e21]: 
+          - text: 关于
+          - generic [ref=e22]: 
+      - button "李胜睿 " [ref=e41] [cursor=pointer]:
+        - generic [ref=e42]:
+          - text: 李胜睿
+          - generic [ref=e43]: 
+    - generic [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - generic [ref=e30]:
+            - generic [ref=e44]: 基于Trae的编程兴趣班入门百练
+            - generic [ref=e31]: 16 章节 · 162 题
+          - paragraph [ref=e47]: 32学时，零基础到基础算法，C++与Python双语言，16章161题
+        - generic [ref=e48]:
+          - generic [ref=e49]:
+            - generic [ref=e52] [cursor=pointer]:
+              - generic [ref=e53]: 
+              - generic [ref=e54]: 第1章 程序设计的第一个脚印——变量、输入输出与顺序结构
+              - generic [ref=e55]: 14 题
+              - generic [ref=e56]: (14/14 AC)
+            - generic [ref=e59]:
+              - generic [ref=e60]:
+                - heading "例题" [level=4] [ref=e61]
+                - generic [ref=e63]:
+                  - table [ref=e65]:
+                    - rowgroup [ref=e72]:
+                      - row "#   题目 难度 通过率" [ref=e73]:
+                        - columnheader [ref=e74]
+                        - columnheader "#  " [ref=e75]:
+                          - generic [ref=e76]:
+                            - text: "#"
+                            - generic [ref=e77] [cursor=pointer]:
+                              - generic [ref=e78]: 
+                              - generic [ref=e79]: 
+                        - columnheader "题目" [ref=e80]:
+                          - generic [ref=e81]: 题目
+                        - columnheader "难度" [ref=e82]:
+                          - generic [ref=e83]: 难度
+                        - columnheader "通过率" [ref=e84]:
+                          - generic [ref=e85]: 通过率
+                  - table [ref=e87]:
+                    - rowgroup [ref=e94]:
+                      - row " NQ1-01 A + B Low 0%" [ref=e95]:
+                        - cell "" [ref=e96]:
+                          - generic [ref=e98]: 
+                        - cell "NQ1-01" [ref=e99]:
+                          - generic [ref=e100]: NQ1-01
+                        - cell "A + B" [ref=e101]:
+                          - generic [ref=e102]: A + B
+                        - cell "Low" [ref=e103]:
+                          - generic [ref=e105] [cursor=pointer]: Low
+                        - cell "0%" [ref=e106]:
+                          - generic [ref=e107]: 0%
+                      - row " NQ1-02 差 Low 0%" [ref=e108]:
+                        - cell "" [ref=e109]:
+                          - generic [ref=e111]: 
+                        - cell "NQ1-02" [ref=e112]:
+                          - generic [ref=e113]: NQ1-02
+                        - cell "差" [ref=e114]:
+                          - generic [ref=e115]: 差
+                        - cell "Low" [ref=e116]:
+                          - generic [ref=e118] [cursor=pointer]: Low
+                        - cell "0%" [ref=e119]:
+                          - generic [ref=e120]: 0%
+                      - row " NQ1-03 圆的面积 Low 0%" [ref=e121]:
+                        - cell "" [ref=e122]:
+                          - generic [ref=e124]: 
+                        - cell "NQ1-03" [ref=e125]:
+                          - generic [ref=e126]: NQ1-03
+                        - cell "圆的面积" [ref=e127]:
+                          - generic [ref=e128]: 圆的面积
+                        - cell "Low" [ref=e129]:
+                          - generic [ref=e131] [cursor=pointer]: Low
+                        - cell "0%" [ref=e132]:
+                          - generic [ref=e133]: 0%
+                      - row " NQ1-04 平均数1 Low 0%" [ref=e134]:
+                        - cell "" [ref=e135]:
+                          - generic [ref=e137]: 
+                        - cell "NQ1-04" [ref=e138]:
+                          - generic [ref=e139]: NQ1-04
+                        - cell "平均数1" [ref=e140]:
+                          - generic [ref=e141]: 平均数1
+                        - cell "Low" [ref=e142]:
+                          - generic [ref=e144] [cursor=pointer]: Low
+                        - cell "0%" [ref=e145]:
+                          - generic [ref=e146]: 0%
+                      - row " NQ1-05 工资 Low 0%" [ref=e147]:
+                        - cell "" [ref=e148]:
+                          - generic [ref=e150]: 
+                        - cell "NQ1-05" [ref=e151]:
+                          - generic [ref=e152]: NQ1-05
+                        - cell "工资" [ref=e153]:
+                          - generic [ref=e154]: 工资
+                        - cell "Low" [ref=e155]:
+                          - generic [ref=e157] [cursor=pointer]: Low
+                        - cell "0%" [ref=e158]:
+                          - generic [ref=e159]: 0%
+                      - row " NQ1-06 油耗 Low 0%" [ref=e160]:
+                        - cell "" [ref=e161]:
+                          - generic [ref=e163]: 
+                        - cell "NQ1-06" [ref=e164]:
+                          - generic [ref=e165]: NQ1-06
+                        - cell "油耗" [ref=e166]:
+                          - generic [ref=e167]: 油耗
+                        - cell "Low" [ref=e168]:
+                          - generic [ref=e170] [cursor=pointer]: Low
+                        - cell "0%" [ref=e171]:
+                          - generic [ref=e172]: 0%
+                      - row " NQ1-07 两点间的距离 Low 0%" [ref=e173]:
+                        - cell "" [ref=e174]:
+                          - generic [ref=e176]: 
+                        - cell "NQ1-07" [ref=e177]:
+                          - generic [ref=e178]: NQ1-07
+                        - cell "两点间的距离" [ref=e179]:
+                          - generic [ref=e180]: 两点间的距离
+                        - cell "Low" [ref=e181]:
+                          - generic [ref=e183] [cursor=pointer]: Low
+                        - cell "0%" [ref=e184]:
+                          - generic [ref=e185]: 0%
+              - generic [ref=e186]:
+                - heading "习题" [level=4] [ref=e187]
+                - generic [ref=e189]:
+                  - table [ref=e191]:
+                    - rowgroup [ref=e198]:
+                      - row "#   题目 难度 通过率" [ref=e199]:
+                        - columnheader [ref=e200]
+                        - columnheader "#  " [ref=e201]:
+                          - generic [ref=e202]:
+                            - text: "#"
+                            - generic [ref=e203] [cursor=pointer]:
+                              - generic [ref=e204]: 
+                              - generic [ref=e205]: 
+                        - columnheader "题目" [ref=e206]:
+                          - generic [ref=e207]: 题目
+                        - columnheader "难度" [ref=e208]:
+                          - generic [ref=e209]: 难度
+                        - columnheader "通过率" [ref=e210]:
+                          - generic [ref=e211]: 通过率
+                  - table [ref=e213]:
+                    - rowgroup [ref=e220]:
+                      - row " NQ1-08 钞票 Low 0%" [ref=e221]:
+                        - cell "" [ref=e222]:
+                          - generic [ref=e224]: 
+                        - cell "NQ1-08" [ref=e225]:
+                          - generic [ref=e226]: NQ1-08
+                        - cell "钞票" [ref=e227]:
+                          - generic [ref=e228]: 钞票
+                        - cell "Low" [ref=e229]:
+                          - generic [ref=e231] [cursor=pointer]: Low
+                        - cell "0%" [ref=e232]:
+                          - generic [ref=e233]: 0%
+                      - row " NQ1-09 时间转换 Low 0%" [ref=e234]:
+                        - cell "" [ref=e235]:
+                          - generic [ref=e237]: 
+                        - cell "NQ1-09" [ref=e238]:
+                          - generic [ref=e239]: NQ1-09
+                        - cell "时间转换" [ref=e240]:
+                          - generic [ref=e241]: 时间转换
+                        - cell "Low" [ref=e242]:
+                          - generic [ref=e244] [cursor=pointer]: Low
+                        - cell "0%" [ref=e245]:
+                          - generic [ref=e246]: 0%
+                      - row " NQ1-10 简单乘积 Low 0%" [ref=e247]:
+                        - cell "" [ref=e248]:
+                          - generic [ref=e250]: 
+                        - cell "NQ1-10" [ref=e251]:
+                          - generic [ref=e252]: NQ1-10
+                        - cell "简单乘积" [ref=e253]:
+                          - generic [ref=e254]: 简单乘积
+                        - cell "Low" [ref=e255]:
+                          - generic [ref=e257] [cursor=pointer]: Low
+                        - cell "0%" [ref=e258]:
+                          - generic [ref=e259]: 0%
+                      - row " NQ1-11 简单计算 Low 0%" [ref=e260]:
+                        - cell "" [ref=e261]:
+                          - generic [ref=e263]: 
+                        - cell "NQ1-11" [ref=e264]:
+                          - generic [ref=e265]: NQ1-11
+                        - cell "简单计算" [ref=e266]:
+                          - generic [ref=e267]: 简单计算
+                        - cell "Low" [ref=e268]:
+                          - generic [ref=e270] [cursor=pointer]: Low
+                        - cell "0%" [ref=e271]:
+                          - generic [ref=e272]: 0%
+                      - row " NQ1-12 球的体积 Low 0%" [ref=e273]:
+                        - cell "" [ref=e274]:
+                          - generic [ref=e276]: 
+                        - cell "NQ1-12" [ref=e277]:
+                          - generic [ref=e278]: NQ1-12
+                        - cell "球的体积" [ref=e279]:
+                          - generic [ref=e280]: 球的体积
+                        - cell "Low" [ref=e281]:
+                          - generic [ref=e283] [cursor=pointer]: Low
+                        - cell "0%" [ref=e284]:
+                          - generic [ref=e285]: 0%
+                      - row " NQ1-13 面积 Low 0%" [ref=e286]:
+                        - cell "" [ref=e287]:
+                          - generic [ref=e289]: 
+                        - cell "NQ1-13" [ref=e290]:
+                          - generic [ref=e291]: NQ1-13
+                        - cell "面积" [ref=e292]:
+                          - generic [ref=e293]: 面积
+                        - cell "Low" [ref=e294]:
+                          - generic [ref=e296] [cursor=pointer]: Low
+                        - cell "0%" [ref=e297]:
+                          - generic [ref=e298]: 0%
+                      - row " NQ1-14 最大值 Low 0%" [ref=e299]:
+                        - cell "" [ref=e300]:
+                          - generic [ref=e302]: 
+                        - cell "NQ1-14" [ref=e303]:
+                          - generic [ref=e304]: NQ1-14
+                        - cell "最大值" [ref=e305]:
+                          - generic [ref=e306]: 最大值
+                        - cell "Low" [ref=e307]:
+                          - generic [ref=e309] [cursor=pointer]: Low
+                        - cell "0%" [ref=e310]:
+                          - generic [ref=e311]: 0%
+          - generic [ref=e312]:
+            - generic [ref=e315] [cursor=pointer]:
+              - generic [ref=e316]: 
+              - generic [ref=e317]: 第2章 选择的艺术——条件判断与分支结构
+              - generic [ref=e318]: 15 题
+              - generic [ref=e319]: (15/15 AC)
+            - generic [ref=e322]:
+              - generic [ref=e323]:
+                - heading "例题" [level=4] [ref=e324]
+                - generic [ref=e326]:
+                  - table [ref=e328]:
+                    - rowgroup [ref=e335]:
+                      - row "#   题目 难度 通过率" [ref=e336]:
+                        - columnheader [ref=e337]
+                        - columnheader "#  " [ref=e338]:
+                          - generic [ref=e339]:
+                            - text: "#"
+                            - generic [ref=e340] [cursor=pointer]:
+                              - generic [ref=e341]: 
+                              - generic [ref=e342]: 
+                        - columnheader "题目" [ref=e343]:
+                          - generic [ref=e344]: 题目
+                        - columnheader "难度" [ref=e345]:
+                          - generic [ref=e346]: 难度
+                        - columnheader "通过率" [ref=e347]:
+                          - generic [ref=e348]: 通过率
+                  - table [ref=e350]:
+                    - rowgroup [ref=e357]:
+                      - row " NQ2-01 倍数 Low 0%" [ref=e358]:
+                        - cell "" [ref=e359]:
+                          - generic [ref=e361]: 
+                        - cell "NQ2-01" [ref=e362]:
+                          - generic [ref=e363]: NQ2-01
+                        - cell "倍数" [ref=e364]:
+                          - generic [ref=e365]: 倍数
+                        - cell "Low" [ref=e366]:
+                          - generic [ref=e368] [cursor=pointer]: Low
+                        - cell "0%" [ref=e369]:
+                          - generic [ref=e370]: 0%
+                      - row " NQ2-02 零食 Low 0%" [ref=e371]:
+                        - cell "" [ref=e372]:
+                          - generic [ref=e374]: 
+                        - cell "NQ2-02" [ref=e375]:
+                          - generic [ref=e376]: NQ2-02
+                        - cell "零食" [ref=e377]:
+                          - generic [ref=e378]: 零食
+                        - cell "Low" [ref=e379]:
+                          - generic [ref=e381] [cursor=pointer]: Low
+                        - cell "0%" [ref=e382]:
+                          - generic [ref=e383]: 0%
+                      - row " NQ2-03 区间 Low 0%" [ref=e384]:
+                        - cell "" [ref=e385]:
+                          - generic [ref=e387]: 
+                        - cell "NQ2-03" [ref=e388]:
+                          - generic [ref=e389]: NQ2-03
+                        - cell "区间" [ref=e390]:
+                          - generic [ref=e391]: 区间
+                        - cell "Low" [ref=e392]:
+                          - generic [ref=e394] [cursor=pointer]: Low
+                        - cell "0%" [ref=e395]:
+                          - generic [ref=e396]: 0%
+                      - row " NQ2-04 三角形 Low 0%" [ref=e397]:
+                        - cell "" [ref=e398]:
+                          - generic [ref=e400]: 
+                        - cell "NQ2-04" [ref=e401]:
+                          - generic [ref=e402]: NQ2-04
+                        - cell "三角形" [ref=e403]:
+                          - generic [ref=e404]: 三角形
+                        - cell "Low" [ref=e405]:
+                          - generic [ref=e407] [cursor=pointer]: Low
+                        - cell "0%" [ref=e408]:
+                          - generic [ref=e409]: 0%
+                      - row " NQ2-05 游戏时间 Low 0%" [ref=e410]:
+                        - cell "" [ref=e411]:
+                          - generic [ref=e413]: 
+                        - cell "NQ2-05" [ref=e414]:
+                          - generic [ref=e415]: NQ2-05
+                        - cell "游戏时间" [ref=e416]:
+                          - generic [ref=e417]: 游戏时间
+                        - cell "Low" [ref=e418]:
+                          - generic [ref=e420] [cursor=pointer]: Low
+                        - cell "0%" [ref=e421]:
+                          - generic [ref=e422]: 0%
+                      - row " NQ2-06 加薪 Low 0%" [ref=e423]:
+                        - cell "" [ref=e424]:
+                          - generic [ref=e426]: 
+                        - cell "NQ2-06" [ref=e427]:
+                          - generic [ref=e428]: NQ2-06
+                        - cell "加薪" [ref=e429]:
+                          - generic [ref=e430]: 加薪
+                        - cell "Low" [ref=e431]:
+                          - generic [ref=e433] [cursor=pointer]: Low
+                        - cell "0%" [ref=e434]:
+                          - generic [ref=e435]: 0%
+                      - row " NQ2-07 动物 Low 0%" [ref=e436]:
+                        - cell "" [ref=e437]:
+                          - generic [ref=e439]: 
+                        - cell "NQ2-07" [ref=e440]:
+                          - generic [ref=e441]: NQ2-07
+                        - cell "动物" [ref=e442]:
+                          - generic [ref=e443]: 动物
+                        - cell "Low" [ref=e444]:
+                          - generic [ref=e446] [cursor=pointer]: Low
+                        - cell "0%" [ref=e447]:
+                          - generic [ref=e448]: 0%
+              - generic [ref=e449]:
+                - heading "习题" [level=4] [ref=e450]
+                - generic [ref=e452]:
+                  - table [ref=e454]:
+                    - rowgroup [ref=e461]:
+                      - row "#   题目 难度 通过率" [ref=e462]:
+                        - columnheader [ref=e463]
+                        - columnheader "#  " [ref=e464]:
+                          - generic [ref=e465]:
+                            - text: "#"
+                            - generic [ref=e466] [cursor=pointer]:
+                              - generic [ref=e467]: 
+                              - generic [ref=e468]: 
+                        - columnheader "题目" [ref=e469]:
+                          - generic [ref=e470]: 题目
+                        - columnheader "难度" [ref=e471]:
+                          - generic [ref=e472]: 难度
+                        - columnheader "通过率" [ref=e473]:
+                          - generic [ref=e474]: 通过率
+                  - table [ref=e476]:
+                    - rowgroup [ref=e483]:
+                      - row " NQ2-08 选择练习1 Low 0%" [ref=e484]:
+                        - cell "" [ref=e485]:
+                          - generic [ref=e487]: 
+                        - cell "NQ2-08" [ref=e488]:
+                          - generic [ref=e489]: NQ2-08
+                        - cell "选择练习1" [ref=e490]:
+                          - generic [ref=e491]: 选择练习1
+                        - cell "Low" [ref=e492]:
+                          - generic [ref=e494] [cursor=pointer]: Low
+                        - cell "0%" [ref=e495]:
+                          - generic [ref=e496]: 0%
+                      - row " NQ2-09 DDD Low 0%" [ref=e497]:
+                        - cell "" [ref=e498]:
+                          - generic [ref=e500]: 
+                        - cell "NQ2-09" [ref=e501]:
+                          - generic [ref=e502]: NQ2-09
+                        - cell "DDD" [ref=e503]:
+                          - generic [ref=e504]: DDD
+                        - cell "Low" [ref=e505]:
+                          - generic [ref=e507] [cursor=pointer]: Low
+                        - cell "0%" [ref=e508]:
+                          - generic [ref=e509]: 0%
+                      - row " NQ2-10 点的坐标 Low 0%" [ref=e510]:
+                        - cell "" [ref=e511]:
+                          - generic [ref=e513]: 
+                        - cell "NQ2-10" [ref=e514]:
+                          - generic [ref=e515]: NQ2-10
+                        - cell "点的坐标" [ref=e516]:
+                          - generic [ref=e517]: 点的坐标
+                        - cell "Low" [ref=e518]:
+                          - generic [ref=e520] [cursor=pointer]: Low
+                        - cell "0%" [ref=e521]:
+                          - generic [ref=e522]: 0%
+                      - row " NQ2-11 三角形类型 Low 0%" [ref=e523]:
+                        - cell "" [ref=e524]:
+                          - generic [ref=e526]: 
+                        - cell "NQ2-11" [ref=e527]:
+                          - generic [ref=e528]: NQ2-11
+                        - cell "三角形类型" [ref=e529]:
+                          - generic [ref=e530]: 三角形类型
+                        - cell "Low" [ref=e531]:
+                          - generic [ref=e533] [cursor=pointer]: Low
+                        - cell "0%" [ref=e534]:
+                          - generic [ref=e535]: 0%
+                      - row " NQ2-12 游戏时间2 Low 0%" [ref=e536]:
+                        - cell "" [ref=e537]:
+                          - generic [ref=e539]: 
+                        - cell "NQ2-12" [ref=e540]:
+                          - generic [ref=e541]: NQ2-12
+                        - cell "游戏时间2" [ref=e542]:
+                          - generic [ref=e543]: 游戏时间2
+                        - cell "Low" [ref=e544]:
+                          - generic [ref=e546] [cursor=pointer]: Low
+                        - cell "0%" [ref=e547]:
+                          - generic [ref=e548]: 0%
+                      - row " NQ2-13 税 Low 0%" [ref=e549]:
+                        - cell "" [ref=e550]:
+                          - generic [ref=e552]: 
+                        - cell "NQ2-13" [ref=e553]:
+                          - generic [ref=e554]: NQ2-13
+                        - cell "税" [ref=e555]:
+                          - generic [ref=e556]: 税
+                        - cell "Low" [ref=e557]:
+                          - generic [ref=e559] [cursor=pointer]: Low
+                        - cell "0%" [ref=e560]:
+                          - generic [ref=e561]: 0%
+                      - row " NQ2-14 简单排序 Low 0%" [ref=e562]:
+                        - cell "" [ref=e563]:
+                          - generic [ref=e565]: 
+                        - cell "NQ2-14" [ref=e566]:
+                          - generic [ref=e567]: NQ2-14
+                        - cell "简单排序" [ref=e568]:
+                          - generic [ref=e569]: 简单排序
+                        - cell "Low" [ref=e570]:
+                          - generic [ref=e572] [cursor=pointer]: Low
+                        - cell "0%" [ref=e573]:
+                          - generic [ref=e574]: 0%
+                      - row " NQ16-08 货仓选址 Mid 0%" [ref=e575]:
+                        - cell "" [ref=e576]:
+                          - generic [ref=e578]: 
+                        - cell "NQ16-08" [ref=e579]:
+                          - generic [ref=e580]: NQ16-08
+                        - cell "货仓选址" [ref=e581]:
+                          - generic [ref=e582]: 货仓选址
+                        - cell "Mid" [ref=e583]:
+                          - generic [ref=e585] [cursor=pointer]: Mid
+                        - cell "0%" [ref=e586]:
+                          - generic [ref=e587]: 0%
+          - generic [ref=e588]:
+            - generic [ref=e591] [cursor=pointer]:
+              - generic [ref=e592]: 
+              - generic [ref=e593]: 第3章 循环的魔力——for/while与嵌套循环
+              - generic [ref=e594]: 14 题
+              - generic [ref=e595]: (14/14 AC)
+            - generic:
+              - generic:                  
+          - generic [ref=e596]:
+            - generic [ref=e599] [cursor=pointer]:
+              - generic [ref=e600]: 
+              - generic [ref=e601]: 第4章 数据的容器——数组与线性存储
+              - generic [ref=e602]: 12 题
+              - generic [ref=e603]: (12/12 AC)
+            - generic:
+              - generic:                
+          - generic [ref=e604]:
+            - generic [ref=e607] [cursor=pointer]:
+              - generic [ref=e608]: 
+              - generic [ref=e609]: 第5章 矩阵的舞蹈——多维数组与矩阵模式
+              - generic [ref=e610]: 12 题
+              - generic [ref=e611]: (12/12 AC)
+            - generic:
+              - generic:                
+          - generic [ref=e612]:
+            - generic [ref=e615] [cursor=pointer]:
+              - generic [ref=e616]: 
+              - generic [ref=e617]: 第6章 字符的世界——字符串处理
+              - generic [ref=e618]: 12 题
+              - generic [ref=e619]: (12/12 AC)
+            - generic [ref=e622]:
+              - generic [ref=e623]:
+                - heading "例题" [level=4] [ref=e624]
+                - generic [ref=e626]:
+                  - table [ref=e628]:
+                    - rowgroup [ref=e635]:
+                      - row "#   题目 难度 通过率" [ref=e636]:
+                        - columnheader [ref=e637]
+                        - columnheader "#  " [ref=e638]:
+                          - generic [ref=e639]:
+                            - text: "#"
+                            - generic [ref=e640] [cursor=pointer]:
+                              - generic [ref=e641]: 
+                              - generic [ref=e642]: 
+                        - columnheader "题目" [ref=e643]:
+                          - generic [ref=e644]: 题目
+                        - columnheader "难度" [ref=e645]:
+                          - generic [ref=e646]: 难度
+                        - columnheader "通过率" [ref=e647]:
+                          - generic [ref=e648]: 通过率
+                  - table [ref=e650]:
+                    - rowgroup [ref=e657]:
+                      - row " NQ6-01 字符串长度 Low 0%" [ref=e658]:
+                        - cell "" [ref=e659]:
+                          - generic [ref=e661]: 
+                        - cell "NQ6-01" [ref=e662]:
+                          - generic [ref=e663]: NQ6-01
+                        - cell "字符串长度" [ref=e664]:
+                          - generic [ref=e665]: 字符串长度
+                        - cell "Low" [ref=e666]:
+                          - generic [ref=e668] [cursor=pointer]: Low
+                        - cell "0%" [ref=e669]:
+                          - generic [ref=e670]: 0%
+                      - row " NQ6-02 字符串中的数字个数 Low 0%" [ref=e671]:
+                        - cell "" [ref=e672]:
+                          - generic [ref=e674]: 
+                        - cell "NQ6-02" [ref=e675]:
+                          - generic [ref=e676]: NQ6-02
+                        - cell "字符串中的数字个数" [ref=e677]:
+                          - generic [ref=e678]: 字符串中的数字个数
+                        - cell "Low" [ref=e679]:
+                          - generic [ref=e681] [cursor=pointer]: Low
+                        - cell "0%" [ref=e682]:
+                          - generic [ref=e683]: 0%
+                      - row " NQ6-03 循环相克令 Low 0%" [ref=e684]:
+                        - cell "" [ref=e685]:
+                          - generic [ref=e687]: 
+                        - cell "NQ6-03" [ref=e688]:
+                          - generic [ref=e689]: NQ6-03
+                        - cell "循环相克令" [ref=e690]:
+                          - generic [ref=e691]: 循环相克令
+                        - cell "Low" [ref=e692]:
+                          - generic [ref=e694] [cursor=pointer]: Low
+                        - cell "0%" [ref=e695]:
+                          - generic [ref=e696]: 0%
+                      - row " NQ6-04 字符串加空格 Low 0%" [ref=e697]:
+                        - cell "" [ref=e698]:
+                          - generic [ref=e700]: 
+                        - cell "NQ6-04" [ref=e701]:
+                          - generic [ref=e702]: NQ6-04
+                        - cell "字符串加空格" [ref=e703]:
+                          - generic [ref=e704]: 字符串加空格
+                        - cell "Low" [ref=e705]:
+                          - generic [ref=e707] [cursor=pointer]: Low
+                        - cell "0%" [ref=e708]:
+                          - generic [ref=e709]: 0%
+                      - row " NQ6-05 替换字符 Low 0%" [ref=e710]:
+                        - cell "" [ref=e711]:
+                          - generic [ref=e713]: 
+                        - cell "NQ6-05" [ref=e714]:
+                          - generic [ref=e715]: NQ6-05
+                        - cell "替换字符" [ref=e716]:
+                          - generic [ref=e717]: 替换字符
+                        - cell "Low" [ref=e718]:
+                          - generic [ref=e720] [cursor=pointer]: Low
+                        - cell "0%" [ref=e721]:
+                          - generic [ref=e722]: 0%
+                      - row " NQ6-06 字符串插入 Low 0%" [ref=e723]:
+                        - cell "" [ref=e724]:
+                          - generic [ref=e726]: 
+                        - cell "NQ6-06" [ref=e727]:
+                          - generic [ref=e728]: NQ6-06
+                        - cell "字符串插入" [ref=e729]:
+                          - generic [ref=e730]: 字符串插入
+                        - cell "Low" [ref=e731]:
+                          - generic [ref=e733] [cursor=pointer]: Low
+                        - cell "0%" [ref=e734]:
+                          - generic [ref=e735]: 0%
+              - generic [ref=e736]:
+                - heading "习题" [level=4] [ref=e737]
+                - generic [ref=e739]:
+                  - table [ref=e741]:
+                    - rowgroup [ref=e748]:
+                      - row "#   题目 难度 通过率" [ref=e749]:
+                        - columnheader [ref=e750]
+                        - columnheader "#  " [ref=e751]:
+                          - generic [ref=e752]:
+                            - text: "#"
+                            - generic [ref=e753] [cursor=pointer]:
+                              - generic [ref=e754]: 
+                              - generic [ref=e755]: 
+                        - columnheader "题目" [ref=e756]:
+                          - generic [ref=e757]: 题目
+                        - columnheader "难度" [ref=e758]:
+                          - generic [ref=e759]: 难度
+                        - columnheader "通过率" [ref=e760]:
+                          - generic [ref=e761]: 通过率
+                  - table [ref=e763]:
+                    - rowgroup [ref=e770]:
+                      - row " NQ6-07 只出现一次的字符 Low 0%" [ref=e771]:
+                        - cell "" [ref=e772]:
+                          - generic [ref=e774]: 
+                        - cell "NQ6-07" [ref=e775]:
+                          - generic [ref=e776]: NQ6-07
+                        - cell "只出现一次的字符" [ref=e777]:
+                          - generic [ref=e778]: 只出现一次的字符
+                        - cell "Low" [ref=e779]:
+                          - generic [ref=e781] [cursor=pointer]: Low
+                        - cell "0%" [ref=e782]:
+                          - generic [ref=e783]: 0%
+                      - row " NQ6-08 字符串匹配 Low 0%" [ref=e784]:
+                        - cell "" [ref=e785]:
+                          - generic [ref=e787]: 
+                        - cell "NQ6-08" [ref=e788]:
+                          - generic [ref=e789]: NQ6-08
+                        - cell "字符串匹配" [ref=e790]:
+                          - generic [ref=e791]: 字符串匹配
+                        - cell "Low" [ref=e792]:
+                          - generic [ref=e794] [cursor=pointer]: Low
+                        - cell "0%" [ref=e795]:
+                          - generic [ref=e796]: 0%
+                      - row " NQ6-09 信息加密 Low 0%" [ref=e797]:
+                        - cell "" [ref=e798]:
+                          - generic [ref=e800]: 
+                        - cell "NQ6-09" [ref=e801]:
+                          - generic [ref=e802]: NQ6-09
+                        - cell "信息加密" [ref=e803]:
+                          - generic [ref=e804]: 信息加密
+                        - cell "Low" [ref=e805]:
+                          - generic [ref=e807] [cursor=pointer]: Low
+                        - cell "0%" [ref=e808]:
+                          - generic [ref=e809]: 0%
+                      - row " NQ6-10 输出字符串 Low 0%" [ref=e810]:
+                        - cell "" [ref=e811]:
+                          - generic [ref=e813]: 
+                        - cell "NQ6-10" [ref=e814]:
+                          - generic [ref=e815]: NQ6-10
+                        - cell "输出字符串" [ref=e816]:
+                          - generic [ref=e817]: 输出字符串
+                        - cell "Low" [ref=e818]:
+                          - generic [ref=e820] [cursor=pointer]: Low
+                        - cell "0%" [ref=e821]:
+                          - generic [ref=e822]: 0%
+                      - row " NQ6-11 单词替换 Low 0%" [ref=e823]:
+                        - cell "" [ref=e824]:
+                          - generic [ref=e826]: 
+                        - cell "NQ6-11" [ref=e827]:
+                          - generic [ref=e828]: NQ6-11
+                        - cell "单词替换" [ref=e829]:
+                          - generic [ref=e830]: 单词替换
+                        - cell "Low" [ref=e831]:
+                          - generic [ref=e833] [cursor=pointer]: Low
+                        - cell "0%" [ref=e834]:
+                          - generic [ref=e835]: 0%
+                      - row " NQ6-12 最长单词 Low 0%" [ref=e836]:
+                        - cell "" [ref=e837]:
+                          - generic [ref=e839]: 
+                        - cell "NQ6-12" [ref=e840]:
+                          - generic [ref=e841]: NQ6-12
+                        - cell "最长单词" [ref=e842]:
+                          - generic [ref=e843]: 最长单词
+                        - cell "Low" [ref=e844]:
+                          - generic [ref=e846] [cursor=pointer]: Low
+                        - cell "0%" [ref=e847]:
+                          - generic [ref=e848]: 0%
+          - generic [ref=e849]:
+            - generic [ref=e852] [cursor=pointer]:
+              - generic [ref=e853]: 
+              - generic [ref=e854]: 第7章 模块化的力量——函数、递归与库的威力
+              - generic [ref=e855]: 12 题
+              - generic [ref=e856]: (12/12 AC)
+            - generic [ref=e859]:
+              - generic [ref=e860]:
+                - heading "例题" [level=4] [ref=e861]
+                - generic [ref=e863]:
+                  - table [ref=e865]:
+                    - rowgroup [ref=e872]:
+                      - row "#   题目 难度 通过率" [ref=e873]:
+                        - columnheader [ref=e874]
+                        - columnheader "#  " [ref=e875]:
+                          - generic [ref=e876]:
+                            - text: "#"
+                            - generic [ref=e877] [cursor=pointer]:
+                              - generic [ref=e878]: 
+                              - generic [ref=e879]: 
+                        - columnheader "题目" [ref=e880]:
+                          - generic [ref=e881]: 题目
+                        - columnheader "难度" [ref=e882]:
+                          - generic [ref=e883]: 难度
+                        - columnheader "通过率" [ref=e884]:
+                          - generic [ref=e885]: 通过率
+                  - table [ref=e887]:
+                    - rowgroup [ref=e894]:
+                      - row " NQ7-01 n的阶乘 Low 0%" [ref=e895]:
+                        - cell "" [ref=e896]:
+                          - generic [ref=e898]: 
+                        - cell "NQ7-01" [ref=e899]:
+                          - generic [ref=e900]: NQ7-01
+                        - cell "n的阶乘" [ref=e901]:
+                          - generic [ref=e902]: n的阶乘
+                        - cell "Low" [ref=e903]:
+                          - generic [ref=e905] [cursor=pointer]: Low
+                        - cell "0%" [ref=e906]:
+                          - generic [ref=e907]: 0%
+                      - row " NQ7-02 x和y的最大值 Low 0%" [ref=e908]:
+                        - cell "" [ref=e909]:
+                          - generic [ref=e911]: 
+                        - cell "NQ7-02" [ref=e912]:
+                          - generic [ref=e913]: NQ7-02
+                        - cell "x和y的最大值" [ref=e914]:
+                          - generic [ref=e915]: x和y的最大值
+                        - cell "Low" [ref=e916]:
+                          - generic [ref=e918] [cursor=pointer]: Low
+                        - cell "0%" [ref=e919]:
+                          - generic [ref=e920]: 0%
+                      - row " NQ7-03 最大公约数 Low 0%" [ref=e921]:
+                        - cell "" [ref=e922]:
+                          - generic [ref=e924]: 
+                        - cell "NQ7-03" [ref=e925]:
+                          - generic [ref=e926]: NQ7-03
+                        - cell "最大公约数" [ref=e927]:
+                          - generic [ref=e928]: 最大公约数
+                        - cell "Low" [ref=e929]:
+                          - generic [ref=e931] [cursor=pointer]: Low
+                        - cell "0%" [ref=e932]:
+                          - generic [ref=e933]: 0%
+                      - row " NQ7-04 交换数值 Low 0%" [ref=e934]:
+                        - cell "" [ref=e935]:
+                          - generic [ref=e937]: 
+                        - cell "NQ7-04" [ref=e938]:
+                          - generic [ref=e939]: NQ7-04
+                        - cell "交换数值" [ref=e940]:
+                          - generic [ref=e941]: 交换数值
+                        - cell "Low" [ref=e942]:
+                          - generic [ref=e944] [cursor=pointer]: Low
+                        - cell "0%" [ref=e945]:
+                          - generic [ref=e946]: 0%
+                      - row " NQ7-05 打印数字 Low 0%" [ref=e947]:
+                        - cell "" [ref=e948]:
+                          - generic [ref=e950]: 
+                        - cell "NQ7-05" [ref=e951]:
+                          - generic [ref=e952]: NQ7-05
+                        - cell "打印数字" [ref=e953]:
+                          - generic [ref=e954]: 打印数字
+                        - cell "Low" [ref=e955]:
+                          - generic [ref=e957] [cursor=pointer]: Low
+                        - cell "0%" [ref=e958]:
+                          - generic [ref=e959]: 0%
+                      - row " NQ7-06 打印矩阵 Low 0%" [ref=e960]:
+                        - cell "" [ref=e961]:
+                          - generic [ref=e963]: 
+                        - cell "NQ7-06" [ref=e964]:
+                          - generic [ref=e965]: NQ7-06
+                        - cell "打印矩阵" [ref=e966]:
+                          - generic [ref=e967]: 打印矩阵
+                        - cell "Low" [ref=e968]:
+                          - generic [ref=e970] [cursor=pointer]: Low
+                        - cell "0%" [ref=e971]:
+                          - generic [ref=e972]: 0%
+              - generic [ref=e973]:
+                - heading "习题" [level=4] [ref=e974]
+                - generic [ref=e976]:
+                  - table [ref=e978]:
+                    - rowgroup [ref=e985]:
+                      - row "#   题目 难度 通过率" [ref=e986]:
+                        - columnheader [ref=e987]
+                        - columnheader "#  " [ref=e988]:
+                          - generic [ref=e989]:
+                            - text: "#"
+                            - generic [ref=e990] [cursor=pointer]:
+                              - generic [ref=e991]: 
+                              - generic [ref=e992]: 
+                        - columnheader "题目" [ref=e993]:
+                          - generic [ref=e994]: 题目
+                        - columnheader "难度" [ref=e995]:
+                          - generic [ref=e996]: 难度
+                        - columnheader "通过率" [ref=e997]:
+                          - generic [ref=e998]: 通过率
+                  - table [ref=e1000]:
+                    - rowgroup [ref=e1007]:
+                      - row " NQ7-07 递归求阶乘 Low 0%" [ref=e1008]:
+                        - cell "" [ref=e1009]:
+                          - generic [ref=e1011]: 
+                        - cell "NQ7-07" [ref=e1012]:
+                          - generic [ref=e1013]: NQ7-07
+                        - cell "递归求阶乘" [ref=e1014]:
+                          - generic [ref=e1015]: 递归求阶乘
+                        - cell "Low" [ref=e1016]:
+                          - generic [ref=e1018] [cursor=pointer]: Low
+                        - cell "0%" [ref=e1019]:
+                          - generic [ref=e1020]: 0%
+                      - row " NQ7-08 递归求斐波那契数列 Low 0%" [ref=e1021]:
+                        - cell "" [ref=e1022]:
+                          - generic [ref=e1024]: 
+                        - cell "NQ7-08" [ref=e1025]:
+                          - generic [ref=e1026]: NQ7-08
+                        - cell "递归求斐波那契数列" [ref=e1027]:
+                          - generic [ref=e1028]: 递归求斐波那契数列
+                        - cell "Low" [ref=e1029]:
+                          - generic [ref=e1031] [cursor=pointer]: Low
+                        - cell "0%" [ref=e1032]:
+                          - generic [ref=e1033]: 0%
+                      - row " NQ7-09 跳台阶 Mid 0%" [ref=e1034]:
+                        - cell "" [ref=e1035]:
+                          - generic [ref=e1037]: 
+                        - cell "NQ7-09" [ref=e1038]:
+                          - generic [ref=e1039]: NQ7-09
+                        - cell "跳台阶" [ref=e1040]:
+                          - generic [ref=e1041]: 跳台阶
+                        - cell "Mid" [ref=e1042]:
+                          - generic [ref=e1044] [cursor=pointer]: Mid
+                        - cell "0%" [ref=e1045]:
+                          - generic [ref=e1046]: 0%
+                      - row " NQ7-10 走方格 Mid 0%" [ref=e1047]:
+                        - cell "" [ref=e1048]:
+                          - generic [ref=e1050]: 
+                        - cell "NQ7-10" [ref=e1051]:
+                          - generic [ref=e1052]: NQ7-10
+                        - cell "走方格" [ref=e1053]:
+                          - generic [ref=e1054]: 走方格
+                        - cell "Mid" [ref=e1055]:
+                          - generic [ref=e1057] [cursor=pointer]: Mid
+                        - cell "0%" [ref=e1058]:
+                          - generic [ref=e1059]: 0%
+                      - row " NQ7-11 排列 Mid 0%" [ref=e1060]:
+                        - cell "" [ref=e1061]:
+                          - generic [ref=e1063]: 
+                        - cell "NQ7-11" [ref=e1064]:
+                          - generic [ref=e1065]: NQ7-11
+                        - cell "排列" [ref=e1066]:
+                          - generic [ref=e1067]: 排列
+                        - cell "Mid" [ref=e1068]:
+                          - generic [ref=e1070] [cursor=pointer]: Mid
+                        - cell "0%" [ref=e1071]:
+                          - generic [ref=e1072]: 0%
+                      - row " NQ7-12 数组排序 Low 0%" [ref=e1073]:
+                        - cell "" [ref=e1074]:
+                          - generic [ref=e1076]: 
+                        - cell "NQ7-12" [ref=e1077]:
+                          - generic [ref=e1078]: NQ7-12
+                        - cell "数组排序" [ref=e1079]:
+                          - generic [ref=e1080]: 数组排序
+                        - cell "Low" [ref=e1081]:
+                          - generic [ref=e1083] [cursor=pointer]: Low
+                        - cell "0%" [ref=e1084]:
+                          - generic [ref=e1085]: 0%
+          - generic [ref=e1086]:
+            - generic [ref=e1089] [cursor=pointer]:
+              - generic [ref=e1090]: 
+              - generic [ref=e1091]: 第8章 指针与抽象——结构体、指针与STL容器
+              - generic [ref=e1092]: 10 题
+              - generic [ref=e1093]: (10/10 AC)
+            - generic:
+              - generic:              
+          - generic [ref=e1094]:
+            - generic [ref=e1097] [cursor=pointer]:
+              - generic [ref=e1098]: 
+              - generic [ref=e1099]: 第9章 分治之美——排序与二分
+              - generic [ref=e1100]: 7 题
+              - generic [ref=e1101]: (7/7 AC)
+            - generic:
+              - generic:           
+          - generic [ref=e1102]:
+            - generic [ref=e1105] [cursor=pointer]:
+              - generic [ref=e1106]: 
+              - generic [ref=e1107]: 第10章 预处理的艺术——前缀和、差分与双指针
+              - generic [ref=e1108]: 7 题
+              - generic [ref=e1109]: (7/7 AC)
+            - generic:
+              - generic:           
+          - generic [ref=e1110]:
+            - generic [ref=e1113] [cursor=pointer]:
+              - generic [ref=e1114]: 
+              - generic [ref=e1115]: 第11章 数字的奥秘——高精度、位运算与离散化
+              - generic [ref=e1116]: 7 题
+              - generic [ref=e1117]: (7/7 AC)
+            - generic:
+              - generic:           
+          - generic [ref=e1118]:
+            - generic [ref=e1121] [cursor=pointer]:
+              - generic [ref=e1122]: 
+              - generic [ref=e1123]: 第12章 结构的根基——基础数据结构
+              - generic [ref=e1124]: 8 题
+              - generic [ref=e1125]: (8/8 AC)
+            - generic:
+              - generic:            
+          - generic [ref=e1126]:
+            - generic [ref=e1129] [cursor=pointer]:
+              - generic [ref=e1130]: 
+              - generic [ref=e1131]: 第13章 搜索的疆域——搜索与回溯
+              - generic [ref=e1132]: 8 题
+              - generic [ref=e1133]: (8/8 AC)
+            - generic [ref=e1136]:
+              - generic [ref=e1137]:
+                - heading "例题" [level=4] [ref=e1138]
+                - generic [ref=e1140]:
+                  - table [ref=e1142]:
+                    - rowgroup [ref=e1149]:
+                      - row "#   题目 难度 通过率" [ref=e1150]:
+                        - columnheader [ref=e1151]
+                        - columnheader "#  " [ref=e1152]:
+                          - generic [ref=e1153]:
+                            - text: "#"
+                            - generic [ref=e1154] [cursor=pointer]:
+                              - generic [ref=e1155]: 
+                              - generic [ref=e1156]: 
+                        - columnheader "题目" [ref=e1157]:
+                          - generic [ref=e1158]: 题目
+                        - columnheader "难度" [ref=e1159]:
+                          - generic [ref=e1160]: 难度
+                        - columnheader "通过率" [ref=e1161]:
+                          - generic [ref=e1162]: 通过率
+                  - table [ref=e1164]:
+                    - rowgroup [ref=e1171]:
+                      - row " NQ13-01 DFS试炼之排列数字 Mid 0%" [ref=e1172]:
+                        - cell "" [ref=e1173]:
+                          - generic [ref=e1175]: 
+                        - cell "NQ13-01" [ref=e1176]:
+                          - generic [ref=e1177]: NQ13-01
+                        - cell "DFS试炼之排列数字" [ref=e1178]:
+                          - generic [ref=e1179]: DFS试炼之排列数字
+                        - cell "Mid" [ref=e1180]:
+                          - generic [ref=e1182] [cursor=pointer]: Mid
+                        - cell "0%" [ref=e1183]:
+                          - generic [ref=e1184]: 0%
+                      - row " NQ13-02 DFS试炼之n皇后问题 Mid 0%" [ref=e1185]:
+                        - cell "" [ref=e1186]:
+                          - generic [ref=e1188]: 
+                        - cell "NQ13-02" [ref=e1189]:
+                          - generic [ref=e1190]: NQ13-02
+                        - cell "DFS试炼之n皇后问题" [ref=e1191]:
+                          - generic [ref=e1192]: DFS试炼之n皇后问题
+                        - cell "Mid" [ref=e1193]:
+                          - generic [ref=e1195] [cursor=pointer]: Mid
+                        - cell "0%" [ref=e1196]:
+                          - generic [ref=e1197]: 0%
+                      - row " NQ13-03 BFS试炼之走迷宫 Mid 0%" [ref=e1198]:
+                        - cell "" [ref=e1199]:
+                          - generic [ref=e1201]: 
+                        - cell "NQ13-03" [ref=e1202]:
+                          - generic [ref=e1203]: NQ13-03
+                        - cell "BFS试炼之走迷宫" [ref=e1204]:
+                          - generic [ref=e1205]: BFS试炼之走迷宫
+                        - cell "Mid" [ref=e1206]:
+                          - generic [ref=e1208] [cursor=pointer]: Mid
+                        - cell "0%" [ref=e1209]:
+                          - generic [ref=e1210]: 0%
+                      - row " NQ13-04 BFS试炼之八数码 Mid 0%" [ref=e1211]:
+                        - cell "" [ref=e1212]:
+                          - generic [ref=e1214]: 
+                        - cell "NQ13-04" [ref=e1215]:
+                          - generic [ref=e1216]: NQ13-04
+                        - cell "BFS试炼之八数码" [ref=e1217]:
+                          - generic [ref=e1218]: BFS试炼之八数码
+                        - cell "Mid" [ref=e1219]:
+                          - generic [ref=e1221] [cursor=pointer]: Mid
+                        - cell "0%" [ref=e1222]:
+                          - generic [ref=e1223]: 0%
+              - generic [ref=e1224]:
+                - heading "习题" [level=4] [ref=e1225]
+                - generic [ref=e1227]:
+                  - table [ref=e1229]:
+                    - rowgroup [ref=e1236]:
+                      - row "#   题目 难度 通过率" [ref=e1237]:
+                        - columnheader [ref=e1238]
+                        - columnheader "#  " [ref=e1239]:
+                          - generic [ref=e1240]:
+                            - text: "#"
+                            - generic [ref=e1241] [cursor=pointer]:
+                              - generic [ref=e1242]: 
+                              - generic [ref=e1243]: 
+                        - columnheader "题目" [ref=e1244]:
+                          - generic [ref=e1245]: 题目
+                        - columnheader "难度" [ref=e1246]:
+                          - generic [ref=e1247]: 难度
+                        - columnheader "通过率" [ref=e1248]:
+                          - generic [ref=e1249]: 通过率
+                  - table [ref=e1251]:
+                    - rowgroup [ref=e1258]:
+                      - row " NQ13-05 树的重心 Mid 0%" [ref=e1259]:
+                        - cell "" [ref=e1260]:
+                          - generic [ref=e1262]: 
+                        - cell "NQ13-05" [ref=e1263]:
+                          - generic [ref=e1264]: NQ13-05
+                        - cell "树的重心" [ref=e1265]:
+                          - generic [ref=e1266]: 树的重心
+                        - cell "Mid" [ref=e1267]:
+                          - generic [ref=e1269] [cursor=pointer]: Mid
+                        - cell "0%" [ref=e1270]:
+                          - generic [ref=e1271]: 0%
+                      - row " NQ13-06 图中点的层次 Mid 0%" [ref=e1272]:
+                        - cell "" [ref=e1273]:
+                          - generic [ref=e1275]: 
+                        - cell "NQ13-06" [ref=e1276]:
+                          - generic [ref=e1277]: NQ13-06
+                        - cell "图中点的层次" [ref=e1278]:
+                          - generic [ref=e1279]: 图中点的层次
+                        - cell "Mid" [ref=e1280]:
+                          - generic [ref=e1282] [cursor=pointer]: Mid
+                        - cell "0%" [ref=e1283]:
+                          - generic [ref=e1284]: 0%
+                      - row " NQ13-07 字符串乘方 Low 0%" [ref=e1285]:
+                        - cell "" [ref=e1286]:
+                          - generic [ref=e1288]: 
+                        - cell "NQ13-07" [ref=e1289]:
+                          - generic [ref=e1290]: NQ13-07
+                        - cell "字符串乘方" [ref=e1291]:
+                          - generic [ref=e1292]: 字符串乘方
+                        - cell "Low" [ref=e1293]:
+                          - generic [ref=e1295] [cursor=pointer]: Low
+                        - cell "0%" [ref=e1296]:
+                          - generic [ref=e1297]: 0%
+                      - row " NQ13-08 字符串最大跨距 Low 0%" [ref=e1298]:
+                        - cell "" [ref=e1299]:
+                          - generic [ref=e1301]: 
+                        - cell "NQ13-08" [ref=e1302]:
+                          - generic [ref=e1303]: NQ13-08
+                        - cell "字符串最大跨距" [ref=e1304]:
+                          - generic [ref=e1305]: 字符串最大跨距
+                        - cell "Low" [ref=e1306]:
+                          - generic [ref=e1308] [cursor=pointer]: Low
+                        - cell "0%" [ref=e1309]:
+                          - generic [ref=e1310]: 0%
+          - generic [ref=e1311]:
+            - generic [ref=e1314] [cursor=pointer]:
+              - generic [ref=e1315]: 
+              - generic [ref=e1316]: 第14章 图的世界——图论入门
+              - generic [ref=e1317]: 8 题
+              - generic [ref=e1318]: (8/8 AC)
+            - generic:
+              - generic:            
+          - generic [ref=e1319]:
+            - generic [ref=e1322] [cursor=pointer]:
+              - generic [ref=e1323]: 
+              - generic [ref=e1324]: 第15章 最优子结构——动态规划
+              - generic [ref=e1325]: 8 题
+              - generic [ref=e1326]: (8/8 AC)
+            - generic:
+              - generic:            
+          - generic [ref=e1327]:
+            - generic [ref=e1330] [cursor=pointer]:
+              - generic [ref=e1331]: 
+              - generic [ref=e1332]: 第16章 智慧的策略——贪心、并查集与数学
+              - generic [ref=e1333]: 8 题
+              - generic [ref=e1334]: (8/8 AC)
+            - generic:
+              - generic:            
+      - generic [ref=e34]:
+        - paragraph [ref=e1335]:
+          - text: 骄傲在败坏以先，狂心在跌倒之前
+          - paragraph [ref=e1336]:
+            - link "(闽ICP备19024476号-1)" [ref=e1337] [cursor=pointer]:
+              - /url: https://beian.miit.gov.cn/
+        - paragraph [ref=e35]:
+          - text: Powered by
+          - link "OnlineJudge" [ref=e36] [cursor=pointer]:
+            - /url: https://github.com/QingdaoU/OnlineJudge
+          - text: "Version: 20260601-d810f"
+    - text: 
+  - generic: 

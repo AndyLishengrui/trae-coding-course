@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ7-10",
+  "title": "走方格",
+  "description": {
+    "format": "html",
+    "value": "<p>给定 n x m 的方格阵，从左上角 (0, 0) 开始，每次只能往右或往下走一个单位距离，求走到右下角 (n, m) 的走法数量。</p>"
+  },
+  "tags": [
+    "函数",
+    "递归"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一行两个整数 n 和 m。<br/>数据范围：1 ≤ n, m ≤ 10</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一个整数表示走法数量。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/822/\" target=\"_blank\">注意输出格式。\n来源：语法题</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "2 3\n",
+      "output": "10\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 822 | NQ7-10 | 第7章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

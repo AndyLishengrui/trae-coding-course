@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ12-01",
+  "title": "单链表",
+  "description": {
+    "format": "html",
+    "value": "<p>实现一个单链表，链表初始为空，支持三种操作：<br/>(1) 向链表头插入一个数；<br/>(2) 删除第k个插入的数后面的数；<br/>(3) 在第k个插入的数后插入一个数<br/>现在要对该链表进行M次操作，进行完所有操作后，从头到尾输出整个链表。<br/>1≤M≤100000</p><p>所有操作保证合法。<br/>注意:题目中第k个插入的数并不是指当前链表的第k个数。例如操作过程中一共插入了n个数，则按照插入的时间顺序，这n个数依次为：第1个插入的数，第2个插入的数，…第n个插入的数。</p>"
+  },
+  "tags": [
+    "单链表",
+    "数据结构"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行包含整数M，表示操作次数。<br/>接下来M行，每行包含一个操作命令，操作命令可能为以下几种：<br/>(1) “H x”，表示向链表头插入一个数x。<br/>(2) “D k”，表示删除第k个输入的数后面的数（当k为0时，表示删除头结点）。<br/>(3) “I k x”，表示在第k个输入的数后面插入一个数x（此操作中k均大于0）。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>共一行，将整个链表从头到尾输出。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/826/\" target=\"_blank\">原题链接\nY总讲解\n参考题解\nY总代码</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "10\nH 9\nI 1 1\nD 1\nD 0\nH 6\nI 3 6\nI 4 5\nI 4 5\nI 3 4\nD 6",
+      "output": "6 4 6 5"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 826 | NQ12-01 | 第12章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

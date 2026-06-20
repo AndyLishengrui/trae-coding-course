@@ -1,0 +1,90 @@
+{
+  "display_id": "NQ6-07",
+  "title": "只出现一次的字符",
+  "description": {
+    "format": "html",
+    "value": "<p>给你一个只包含小写字母的字符串。请你判断是否存在只在字符串中出现过一次的字符。如果存在，输出满足条件的字符中位置最靠前的那个。如果没有，输出 no。</p>"
+  },
+  "tags": [
+    "字符串"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>共一行，包含一个由小写字母构成的字符串。数据保证字符串的长度不超过 100000。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出满足条件的第一个字符。如果没有，则输出 no。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/772/\" target=\"_blank\">注意输出格式。\n来源：语法题</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "abcabcd\n",
+      "output": "d\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 772 | NQ6-07 | 第6章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

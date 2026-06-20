@@ -1,0 +1,88 @@
+{
+  "display_id": "NQ2-03",
+  "title": "区间",
+  "description": {
+    "format": "html",
+    "value": "<p>给定一个浮点数，请你判断该数字属于以下哪个区间：[0, 25], (25, 50], (50, 75], (75, 100]。<br/>如果给定的数值小于 0 或大于 100，则程序输出Fora de intervalo，表示超出范围。<br/>开区间 (a, b)：在实数 a 和实数 b 之间的所有实数，但不包含 a 和 b。<br/>闭区间 [a, b]：在实数 a 和实数 b 之间的所有实数，包含 a 和 b。</p>"
+  },
+  "tags": [],
+  "input_description": {
+    "format": "html",
+    "value": "<p>输入一个浮点数。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>判断输入数值位于哪个区间，按格式Intervalo x输出，其中 x 为区间范围 [0, 25], (25, 50], (50, 75], (75, 100] 中的一个。<br/>如果数值位于所有区间之外，则输出Fora de intervalo。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/659/\" target=\"_blank\">注意区间的开闭情况。</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "25.01",
+      "output": "Intervalo (25, 50]"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 659 | NQ2-03 | 第2章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

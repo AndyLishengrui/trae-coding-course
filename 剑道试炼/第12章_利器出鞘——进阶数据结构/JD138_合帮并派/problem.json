@@ -1,0 +1,90 @@
+{
+  "display_id": "JD138",
+  "title": "合帮并派",
+  "description": {
+    "format": "html",
+    "value": "<p>江湖上有N个门派，每个弟子属于一个门派。赵晴儿问：\"两个弟子是不是同门？\"梁嘉峰说：\"用并查集——合并两个门派用union，查询两个人是否同门用find。路径压缩后几乎O(1)。\"</p><p>给定N个元素和M个操作：合并两个集合，或查询两个元素是否在同一集合。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行两个整数N和M。接下来M行，每行M 1 a b（合并a和b所在集合）或Q a b（查询a和b是否同属一个集合）。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>对每个Q操作输出一行Yes或No。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>并查集：find时路径压缩，union时合并两棵树。</p><p><a href='https://www.acwing.com/problem/content/836/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "4 5\nM 1 2\nQ 1 2\nM 2 3\nQ 1 3\nQ 1 4",
+      "output": "Yes\nYes\nNo"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 836 | JD138",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

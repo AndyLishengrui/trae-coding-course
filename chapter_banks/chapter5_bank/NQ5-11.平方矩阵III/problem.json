@@ -1,0 +1,90 @@
+{
+  "display_id": "NQ5-11",
+  "title": "平方矩阵 III",
+  "description": {
+    "format": "html",
+    "value": "<p>输入整数 N，输出一个 N 阶的二维数组 M，这个 N 阶二维数组满足 M[i][j] = 2^(i+j)。<br/>具体形式可参考样例。</p>"
+  },
+  "tags": [
+    "数组"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>输入包含多行，每行包含一个整数 N。当输入行为 N = 0 时，表示输入结束，且该行无需作任何处理。<br/>数据范围0≤N≤15</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>对于每个输入整数 N，输出一个满足要求的 N 阶二维数组。每个数组占 N 行，每行包含 N 个用空格隔开的整数，输出完毕后需再输出一个空行。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/755/\" target=\"_blank\">注意输出格式。</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "1\n2\n3\n4\n5\n0",
+      "output": "1\n\n1 2\n2 4\n\n1 2 4\n2 4 8\n4 8 16\n\n1 2 4 8\n2 4 8 16\n4 8 16 32\n8 16 32 64\n\n1 2 4 8 16\n2 4 8 16 32\n4 8 16 32 64\n8 16 32 64 128\n16 32 64 128 256\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 755 | NQ5-11 | 第5章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

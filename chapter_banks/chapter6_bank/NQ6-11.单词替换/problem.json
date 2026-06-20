@@ -1,0 +1,90 @@
+{
+  "display_id": "NQ6-11",
+  "title": "单词替换",
+  "description": {
+    "format": "html",
+    "value": "<p>输入一个字符串，以回车结束（字符串长度不超过100）。该字符串由若干个单词组成，单词之间用一个空格隔开，所有单词区分大小写。现在需要将其中的某个单词替换成另一个单词，并输出替换之后的字符串。</p>"
+  },
+  "tags": [
+    "字符串"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>共3行。<br/>第1行是包含多个单词的字符串 s；<br/>第2行是待替换单词 a；<br/>第3行是替换成的单词 b。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出一行，将 s 中所有单词 a 替换为 b 后的字符串。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/770/\" target=\"_blank\">注意替换时只替换整词（单词之间以空格分隔）。\n来源：语法题</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "You want someone to help you\nYou\nI\n",
+      "output": "I want someone to help you\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 770 | NQ6-11 | 第6章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

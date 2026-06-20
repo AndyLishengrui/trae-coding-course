@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ12-08",
+  "title": "模拟堆",
+  "description": {
+    "format": "html",
+    "value": "<p>维护一个集合，初始时集合为空，支持如下几种操作：<br/>“I x”，插入一个数x；“PM”，输出当前集合中的最小值；“DM”，删除当前集合中的最小值（数据保证此时的最小值唯一）；“D k”，删除第k个插入的数；“C k x”，修改第k个插入的数，将其变为x；现在要进行N次操作，对于所有第2个操作，输出当前集合的最小值。<br/>1≤N≤10^5<br/>−109≤x≤10^9<br/>数据保证合法。</p>"
+  },
+  "tags": [
+    "堆",
+    "数据结构"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行包含整数N。<br/>接下来N行，每行包含一个操作指令，操作指令为”I x”，”PM”，”DM”，”D k”或”C k x”中的一种。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>对于每个输出指令“PM”，输出一个结果，表示当前集合中的最小值。<br/>每个结果占一行。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/839/\" target=\"_blank\">原题链接\nY总讲解</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "8\nI -10\nPM\nI -10\nD 1\nC 2 8\nI 6\nPM\nDM",
+      "output": "-10\n6"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 839 | NQ12-08 | 第12章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

@@ -1,0 +1,90 @@
+{
+  "display_id": "JD123",
+  "title": "差分之术",
+  "description": {
+    "format": "html",
+    "value": "<p>赵晴儿指着一排石块：\"我要把第3块到第7块每块都加上5。如果一块块改，太慢了。\"</p><p>梁嘉峰说：\"差分——前缀和的逆运算。你在第3块的位置加5，在第8块的位置减5。最后对整排求一次前缀和，第3到第7块就都加了5，其余不变。\"</p><p>\"就像往水面扔两块石头，\"李少白恍然大悟，\"波纹叠加后就是最终结果。\"</p><p>给定一个长度为 n 的整数序列和 m 个操作，每个操作将 [l, r] 的每个数加 c。输出所有操作后的序列。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行两个整数n和m。第二行n个整数。接下来m行每行两个整数l和r。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>m行，每行一个整数。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>差分：b[l] += c, b[r+1] -= c。所有操作完成后，对 b 求前缀和得到最终序列。</p><p><a href='https://www.acwing.com/problem/content/797/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5 3\n1 2 3 4 5\n1 3 2\n2 4 1\n3 5 3",
+      "output": "3 5 8 8 8"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 797 | JD125",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ14-07",
+  "title": "Kruskal算法求最小生成树",
+  "description": {
+    "format": "html",
+    "value": "<p>给定一个n个点m条边的无向图，图中可能存在重边和自环，边权可能为负数。<br/>求最小生成树的树边权重之和，如果最小生成树不存在则输出impossible。<br/>给定一张边带权的无向图G=(V, E)，其中V表示图中点的集合，E表示图中边的集合，n = |V|，m = |E|。<br/>由V中的全部n个顶点和E中n - 1条边构成的无向连通子图被称为G的一棵生成树，其中边的权值之和最小的生成树被称为无向图G的最小生成树。<br/>数据范围<br/>1≤n≤10^51≤m≤2*10^5<br/>图中涉及边的边权的绝对值均不超过1000</p>"
+  },
+  "tags": [
+    "Kruskal",
+    "搜索与图论"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行包含两个整数n和m。<br/>接下来m行，每行包含三个整数u、v、w，表示点u和点v之间存在一条权值为w的边。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>共一行，若存在最小生成树，则输出一个整数，表示最小生成树的树边权重之和，如果最小生成树不存在则输出impossible。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/859/\" target=\"_blank\">原题链接\nY总讲解\n参考题解\nY总代码</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "4 5\n1 2 1\n1 3 2\n1 4 3\n2 3 2\n3 4 4",
+      "output": "6"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 859 | NQ14-07 | 第14章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

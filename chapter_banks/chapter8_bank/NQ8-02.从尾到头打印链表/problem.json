@@ -1,0 +1,19 @@
+{
+  "title": "从尾到头打印链表",
+  "description": {
+    "format": "html",
+    "value": "<p>输入一个链表的头结点，按照从尾到头的顺序返回节点的值。</p>"
+  },
+  "input_desc": "输入一行整数，以-1结尾，表示链表中的元素。",
+  "output_desc": "倒序输出链表中的整数，每个整数占一行。",
+  "samples": [
+    {
+      "input": "1 2 3 -1",
+      "output": "3\n2\n1\n"
+    }
+  ],
+  "hint": "",
+  "source": "AcWing 17",
+  "time_limit": 1000,
+  "memory_limit": 256
+}

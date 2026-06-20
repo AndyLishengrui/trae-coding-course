@@ -1,0 +1,90 @@
+{
+  "display_id": "JD033",
+  "title": "正数清点",
+  "description": {
+    "format": "html",
+    "value": "<p>赵晴儿递给李少白6个测量数据，有的是正数有的是负数。她问：「这里面有几个正数？」</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>6行，每行一个浮点数。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出正数的个数，格式为 `X valores positivos`。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>循环读入6个数，用if判断是否>0，计数器累加。</p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "7\n-5\n6\n-3.4\n4.6\n12",
+      "output": "4 positive numbers"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing ??? | JD033 | 第3章 千回百转",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

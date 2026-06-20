@@ -1,0 +1,90 @@
+{
+  "display_id": "JD021",
+  "title": "沙盘点位",
+  "description": {
+    "format": "html",
+    "value": "<p>赵晴儿在沙盘上标了一个点P(x, y)，让李少白判断它落在第几象限，还是在坐标轴上，还是在原点。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一行，两个浮点数x和y。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出 `Primeiro`（第一象限）、`Segundo`（第二）、`Terceiro`（第三）、`Quarto`（第四）、`Eixo X`（X轴上）、`Eixo Y`（Y轴上）或 `Origem`（原点）。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>先判断是否在原点或坐标轴上（x==0 或 y==0），再判断象限。</p><p><a href='https://www.acwing.com/problem/content/662/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "4.5 -2.2",
+      "output": "Q4"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 662 | JD021 | 第2章 歧路逢生",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

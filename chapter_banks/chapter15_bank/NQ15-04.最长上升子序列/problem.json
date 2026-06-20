@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ15-04",
+  "title": "最长上升子序列",
+  "description": {
+    "format": "html",
+    "value": "<p>给定一个长度为N的数列，求数值严格单调递增的子序列的长度最长是多少。</p>"
+  },
+  "tags": [
+    "动态规划",
+    "线性DP"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行包含整数N。<br/>第二行包含N个整数，表示完整序列。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出一个整数，表示最大长度。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/895/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "7\n3 1 2 1 8 5 6",
+      "output": "4"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 895 | NQ15-04 | 第15章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

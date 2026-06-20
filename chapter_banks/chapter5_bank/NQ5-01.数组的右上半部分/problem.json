@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ5-01",
+  "title": "数组的右上半部分",
+  "description": {
+    "format": "html",
+    "value": "<p>输入一个二维数组 M[12][12]，根据输入的要求，求出二维数组的右上半部分元素的平均值或元素的和。<br/>右上半部分是指主对角线（如下图中黄色部分）上方的部分（绿色部分）。</p>"
+  },
+  "tags": [
+    "数学",
+    "数组"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行输入一个大写字母，若为S，则表示需要求出右上半部分的元素的和，若为M，则表示需要求出右上半部分的元素的平均值。接下来 12 行，每行包含 12 个用空格隔开的浮点数，表示这个二维数组，其中第i + 1行的第j + 1个数表示数组元素 M[i][j]。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出一个数，表示所求的平均数或元素的和的值，保留一位小数。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/745/\" target=\"_blank\">注意输出格式。</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "M\n-6.5 8.2 0.7 9.0 8.4 -8.3 0.9 -0.7 -7.9 7.1 -1.6 4.6\n-9.4 -9.0 1.5 -9.0 -5.1 -0.5 -2.8 -9.1 8.0 -6.9 -5.5 -6.6\n-6.8 0.3 3.8 6.1 -9.9 -9.3 8.5 8.6 5.0 6.9 -3.6 -3.0\n5.4 -5.2 5.0 -5.3 -7.9 -9.7 7.7 -8.2 0.0 -4.7 -8.2 -9.2\n-0.8 -6.0 -5.4 -5.1 -7.9 -0.5 -5.3 -5.7 -4.6 9.6 -8.2 -9.2\n7.8 -5.8 -5.8 -5.8 7.2 0.5 -7.9 1.2 -6.8 -9.1 0.3 -1.4\n4.3 -7.2 3.5 -6.4 -9.1 -6.0 3.5 -5.1 -5.6 -6.9 -9.1 -2.1\n-3.4 -3.8 -9.4 -7.1 -8.4 -9.9 -5.7 -8.3 -5.3 -7.4 -8.5 -4.8\n-0.2 0.3 -4.2 8.4 0.7 -6.4 -3.7 3.5 -0.9 3.7 0.9 -2.7\n7.1 0.1 -8.4 -0.1 -7.9 -4.4 -7.6 -2.7 5.5 -0.9 -7.0 -2.0\n9.6 -9.8 3.3 -9.9 -6.8 6.7 3.1 1.2 -9.5 -4.3 -1.7 -9.7\n1.8 5.5 -0.7 -0.9 3.2 2.5 0.5 7.3 8.3 0.3 0.9",
+      "output": "-1.2"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 745 | NQ5-01 | 第5章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

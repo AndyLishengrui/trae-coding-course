@@ -1,0 +1,145 @@
+{
+    "spj": false,
+    "test_cases": {
+        "2": {
+            "stripped_output_md5": "cdc0d6e63aa8e41c89689f54970bb35f",
+            "input_size": 1080814,
+            "output_size": 4,
+            "input_name": "2.in",
+            "output_name": "2.out"
+        },
+        "6": {
+            "stripped_output_md5": "03c6b06952c750899bb03d998e631860",
+            "input_size": 188058,
+            "output_size": 4,
+            "input_name": "6.in",
+            "output_name": "6.out"
+        },
+        "7": {
+            "stripped_output_md5": "e8c0653fea13f91bf3c48159f7c24f78",
+            "input_size": 744638,
+            "output_size": 4,
+            "input_name": "7.in",
+            "output_name": "7.out"
+        },
+        "3": {
+            "stripped_output_md5": "069059b7ef840f0c74a814ec9237b6ec",
+            "input_size": 51016,
+            "output_size": 4,
+            "input_name": "3.in",
+            "output_name": "3.out"
+        },
+        "8": {
+            "stripped_output_md5": "cbcb58ac2e496207586df2854b17995f",
+            "input_size": 886287,
+            "output_size": 4,
+            "input_name": "8.in",
+            "output_name": "8.out"
+        },
+        "11": {
+            "stripped_output_md5": "cd00692c3bfe59267d5ecfac5310286c",
+            "input_size": 289091,
+            "output_size": 4,
+            "input_name": "11.in",
+            "output_name": "11.out"
+        },
+        "15": {
+            "stripped_output_md5": "7f39f8317fbdb1988ef4c628eba02591",
+            "input_size": 12766,
+            "output_size": 3,
+            "input_name": "15.in",
+            "output_name": "15.out"
+        },
+        "20": {
+            "stripped_output_md5": "32bb90e8976aab5298d5da10fe66f21d",
+            "input_size": 17311,
+            "output_size": 3,
+            "input_name": "20.in",
+            "output_name": "20.out"
+        },
+        "14": {
+            "stripped_output_md5": "44c4c17332cace2124a1a836d9fc4b6f",
+            "input_size": 1020808,
+            "output_size": 4,
+            "input_name": "14.in",
+            "output_name": "14.out"
+        },
+        "9": {
+            "stripped_output_md5": "1ff8a7b5dc7a7d1f0ed65aaa29c04b1e",
+            "input_size": 82584,
+            "output_size": 4,
+            "input_name": "9.in",
+            "output_name": "9.out"
+        },
+        "10": {
+            "stripped_output_md5": "dd458505749b2941217ddd59394240e8",
+            "input_size": 920708,
+            "output_size": 4,
+            "input_name": "10.in",
+            "output_name": "10.out"
+        },
+        "17": {
+            "stripped_output_md5": "298f95e1bf9136124592c8d4825a06fc",
+            "input_size": 796324,
+            "output_size": 4,
+            "input_name": "17.in",
+            "output_name": "17.out"
+        },
+        "13": {
+            "stripped_output_md5": "cd00692c3bfe59267d5ecfac5310286c",
+            "input_size": 323285,
+            "output_size": 4,
+            "input_name": "13.in",
+            "output_name": "13.out"
+        },
+        "12": {
+            "stripped_output_md5": "310dcbbf4cce62f762a2aaa148d556bd",
+            "input_size": 329321,
+            "output_size": 4,
+            "input_name": "12.in",
+            "output_name": "12.out"
+        },
+        "16": {
+            "stripped_output_md5": "2d6cc4b2d139a53512fb8cbb3086ae2e",
+            "input_size": 728140,
+            "output_size": 4,
+            "input_name": "16.in",
+            "output_name": "16.out"
+        },
+        "4": {
+            "stripped_output_md5": "ec5decca5ed3d6b8079e2e7e7bacc9f2",
+            "input_size": 50362,
+            "output_size": 4,
+            "input_name": "4.in",
+            "output_name": "4.out"
+        },
+        "19": {
+            "stripped_output_md5": "0c74b7f78409a4022a2c4c5a5ca3ee19",
+            "input_size": 402624,
+            "output_size": 4,
+            "input_name": "19.in",
+            "output_name": "19.out"
+        },
+        "1": {
+            "stripped_output_md5": "f770b62bc8f42a0b66751fe636fc6eb0",
+            "input_size": 679943,
+            "output_size": 4,
+            "input_name": "1.in",
+            "output_name": "1.out"
+        },
+        "18": {
+            "stripped_output_md5": "70c639df5e30bdee440e4cdf599fec2b",
+            "input_size": 443102,
+            "output_size": 4,
+            "input_name": "18.in",
+            "output_name": "18.out"
+        },
+        "5": {
+            "stripped_output_md5": "091d584fced301b442654dd8c23b3fc9",
+            "input_size": 122726,
+            "output_size": 4,
+            "input_name": "5.in",
+            "output_name": "5.out"
+        }
+    }
+}

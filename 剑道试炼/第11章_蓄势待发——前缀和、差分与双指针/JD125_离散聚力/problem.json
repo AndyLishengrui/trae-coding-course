@@ -1,0 +1,90 @@
+{
+  "display_id": "JD125",
+  "title": "离散聚力",
+  "description": {
+    "format": "html",
+    "value": "<p>赵晴儿指着一条无限长的数轴：\"坐标从负无穷到正无穷，但真正有值的位置只有几个。如果开一个那么大的数组，太浪费了。\"</p><p>\"所以要把这些稀疏的大坐标映射到连续的小下标上——这就是离散化。\"梁嘉峰接话，\"映射之后再用前缀和，就能 O(1) 回答区间求和的查询。\"</p><p>\"先聚力于有用之处，再一击命中。\"</p><p>假定有一个无限长的数轴，初始每个坐标上都是0。先进行 n 次操作，每次将位置 x 上的数加 c。然后进行 m 次查询，每次求区间 [l, r] 的和。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行两个整数n和m。第二行n个整数。接下来m行每行三个整数l、r和c。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，操作后的序列，空格隔开。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>离散化：排序去重后映射到连续下标。用前缀和回答区间查询。</p><p><a href='https://www.acwing.com/problem/content/802/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "3 3\n1 2\n3 6\n7 5\n1 3\n4 6\n7 8",
+      "output": "8\n0\n5"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 802 | JD121",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

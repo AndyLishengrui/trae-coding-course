@@ -1,0 +1,90 @@
+{
+  "display_id": "JD158",
+  "title": "递增剑意",
+  "description": {
+    "format": "html",
+    "value": "<p>擂台上，青城派弟子摆出一排剑，每把刻着一个数字。\"选出最长的递增序列——数字必须递增，不必相邻。\"</p><p>李少白用O(n²)的DP接下第一招。梁嘉峰却摇头：\"后面数据更大。贪心+二分——维护最小末尾数组，O(nlogn)。\"</p><p>李少白重写代码，青城弟子面色一变：\"好快的剑！\"</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行一个整数n。第二行n个整数。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，最长递增子序列的长度。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>贪心+二分：维护最小末尾数组q[]，二分查找替换。O(nlogn)。</p><p><a href='https://www.acwing.com/problem/content/0/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "7\n3 1 2 1 8 5 6",
+      "output": "4"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 895 | JD158",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

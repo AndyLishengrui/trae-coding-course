@@ -1,0 +1,7 @@
+push 100000
+push 99999
+pop
+push 1
+pop
+pop
+empty

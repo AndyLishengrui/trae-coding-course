@@ -1,0 +1,90 @@
+{
+  "display_id": "NQ13-08",
+  "title": "字符串最大跨距",
+  "description": {
+    "format": "html",
+    "value": "<p>有三个字符串S、S1、S2。其中，S长度不超过 300，S1和S2的长度不超过 10。<br/>现在，我们想要检测S1和S2是否同时在S中出现，且S1位于S2的左边，并在S中不交叉（即，S1的右边界点在S2的左边界点的左侧）。<br/>计算满足上述条件的最大跨距（即，最大间隔距离：最右边的S2的起始点与最左边的S1的终止点之间的字符数目）。<br/>如果没有满足条件的S1、S2存在，则输出-1。<br/>例如，S = abcd123dABdefghjsdef76ki，S1 = ab，S2 = ef。其中，S1在S中出现了若干次，S2也在S中出现了若干次，最大跨距为18。</p>"
+  },
+  "tags": [
+    "字符串"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>输入共一行，包含三个字符串S、S1、S2，字符串之间用逗号隔开。数据保证三个字符串中不含空格和逗号。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出一个整数，表示最大跨距。如果没有满足条件的S1和S2存在，则输出-1。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/778/\" target=\"_blank\">注意输出格式。</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "abcd123dABdefghjsdef76ki,ab,ef\n",
+      "output": "18\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 778 | NQ13-08 | 第13章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

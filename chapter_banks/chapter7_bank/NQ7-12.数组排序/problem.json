@@ -1,0 +1,90 @@
+{
+  "display_id": "NQ7-12",
+  "title": "数组排序",
+  "description": {
+    "format": "html",
+    "value": "<p>编写函数 void sort(int a[], int l, int r) 将 a[l] ~ a[r] 从小到大排序并输出排序后的数组 a。</p>"
+  },
+  "tags": [
+    "函数"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行 n, l, r 分别表示数组长度、排序起始和结束位置；<br/>第二行 n 个整数为数组 a。<br/>数据范围：0 ≤ l ≤ r &lt; n ≤ 1000</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行 n 个整数表示排序后的数组 a。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/818/\" target=\"_blank\">注意输出格式。\n来源：语法题</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5 2 4\n4 5 1 3 2\n",
+      "output": "4 5 1 2 3\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 818 | NQ7-12 | 第7章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

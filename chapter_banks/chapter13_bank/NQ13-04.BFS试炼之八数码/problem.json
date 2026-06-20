@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ13-04",
+  "title": "BFS试炼之八数码",
+  "description": {
+    "format": "html",
+    "value": "<p>在一个3×3的网格中，1~8这8个数字和一个“x”恰好不重不漏地分布在这3×3的网格中。<br/>例如：<br/>1 2 3<br/>x 4 6<br/>7 5 8<br/>在游戏过程中，可以把“x”与其上、下、左、右四个方向之一的数字交换（如果存在）。<br/>我们的目的是通过交换，使得网格变为如下排列（称为正确排列）：<br/>1 2 3<br/>4 5 6<br/>7 8 x<br/>例如，示例中图形就可以通过让“x”先后与右、下、右三个方向的数字交换成功得到正确排列。<br/>交换过程如下：<br/>1 2 3   1 2 3   1 2 3   1 2 3<br/>x 4 6   4 x 6   4 5 6   4 5 6<br/>7 5 8   7 5 8   7 x 8   7 8 x<br/>现在，给你一个初始网格，请你求出得到正确排列至少需要进行多少次交换。</p>"
+  },
+  "tags": [
+    "BFS",
+    "搜索与图论"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>输入占一行，将3×3的初始网格描绘出来。<br/>例如，如果初始网格如下所示：<br/>1 2 3<br/>x 4 6<br/>7 5 8<br/>则输入为：1 2 3 x 4 6 7 5 8</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出占一行，包含一个整数，表示最少交换次数。<br/>如果不存在解决方案，则输出”-1”。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/845/\" target=\"_blank\">原题链接\nY总讲解\n参考代码</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "2  3  4  1  5  x  7  6  8 ",
+      "output": "19"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 845 | NQ13-04 | 第13章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

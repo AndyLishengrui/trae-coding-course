@@ -1,0 +1,90 @@
+{
+  "display_id": "JD154",
+  "title": "二色分界",
+  "description": {
+    "format": "html",
+    "value": "<p>赵晴儿指着一个图：\"能不能把所有点分成两组，同组之间没有直接相连的边？\"</p><p>梁嘉峰说：\"染色法——从任意点开始，染红色；它的邻居染蓝色；邻居的邻居染红色……如果某个点需要同时染两种颜色，就不是二分图。\"</p><p>给定一个无向图，判断是否是二分图。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行两个整数n和m。接下来m行每行两个整数a b。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，Yes或No。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>BFS/DFS染色，冲突则不是二分图。</p><p><a href='https://www.acwing.com/problem/content/860/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "4 4\n1 2\n2 3\n3 4\n4 1",
+      "output": "Yes"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 860 | JD154",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

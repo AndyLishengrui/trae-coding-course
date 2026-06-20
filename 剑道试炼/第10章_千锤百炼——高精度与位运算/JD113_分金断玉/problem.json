@@ -1,0 +1,90 @@
+{
+  "display_id": "JD113",
+  "title": "分金断玉",
+  "description": {
+    "format": "html",
+    "value": "<p>梁嘉峰拿起一把锉刀：\"大数除以小数——分金断玉，从高位一刀一刀切。\"</p><p>\"从最高位开始，\"赵晴儿解释，\"当前余数乘10加上当前位，除以除数得到商的一位，剩下的余数带到下一位。和竖式除法一模一样。\"</p><p>给定一个大非负整数 A 和一个小正整数 B，计算 A ÷ B 的商和余数。A 不超过 100000 位，B 不超过 10000。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>两行，第一行非负整数A（不超过100000位），第二行正整数B（B≠0）。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>两行，第一行商，第二行余数。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>高精度÷低精度：从高位到低位，当前余数×10+当前位，除以B得商的一位，更新余数。</p><p><a href='https://www.acwing.com/problem/content/794/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "9876543210\n123",
+      "output": "80297099\n33"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 794 | JD113 | 第10章 千锤百炼",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

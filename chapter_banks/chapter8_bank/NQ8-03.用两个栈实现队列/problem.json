@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ8-03",
+  "title": "用两个栈实现队列",
+  "description": {
+    "format": "html",
+    "value": "<p>请用栈实现一个队列，支持如下四种操作：<br/>push(x) - 将元素 x 插到队尾；<br/>pop() - 将队首的元素弹出，并返回该元素；<br/>peek() - 返回队首元素；<br/>empty() - 返回队列是否为空。</p>"
+  },
+  "tags": [
+    "栈",
+    "队列"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>输入数据保证合法，例如，在队列为空时，不会进行 pop 或者 peek 等操作。<br/>数据范围：每组数据操作命令数量[0, 100]。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出每个操作的结果。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/20/\" target=\"_blank\">注意：\n你只能使用栈的标准操作：push to top，peek/pop from top,size和is empty；如果你选择的编程语言没有栈的标准库，你可以使用list或者deque等模拟栈的操作；输入数据保证合法，例如，在队列为空时，不会进行pop或者peek等操作；</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "MyQueue queue = new MyQueue();\nqueue.push(1);\nqueue.push(2);\nqueue.peek();\nqueue.pop();\nqueue.empty();\n",
+      "output": "1\n1\nfalse\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 20 | NQ8-03 | 第8章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

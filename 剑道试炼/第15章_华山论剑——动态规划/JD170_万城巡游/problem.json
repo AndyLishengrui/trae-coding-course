@@ -1,0 +1,90 @@
+{
+  "display_id": "JD170",
+  "title": "万城巡游",
+  "description": {
+    "format": "html",
+    "value": "<p>第二位绝顶高手——游侠。他铺开一张城池图：\"从城0出发，每座城恰好走一次，到城n-1。最短路径？\"</p><p>李少白眼中精光一闪：\"状压DP——dp[mask][i]表示访问集合mask、当前在城i的最小代价。枚举所有状态和转移。O(2^n × n²)。\"</p><p>游侠击节赞叹：\"好！这一剑，我甘拜下风！\"</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行一个整数n。接下来n行每行n个整数，表示邻接矩阵。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，最短Hamilton路径长度。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>状压DP：dp[mask][i]表示访问集合mask、当前在城i的最小代价。O(2^n * n²)。</p><p><a href='https://www.acwing.com/problem/content/0/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5\n0 2 4 5 1\n2 0 6 5 3\n4 6 0 8 3\n5 5 8 0 5\n1 3 3 5 0",
+      "output": "19"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 91 | JD170",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

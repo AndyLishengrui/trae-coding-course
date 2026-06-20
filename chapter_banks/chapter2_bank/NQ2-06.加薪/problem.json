@@ -1,0 +1,88 @@
+{
+  "display_id": "NQ2-06",
+  "title": "加薪",
+  "description": {
+    "format": "html",
+    "value": "<p>公司年终调薪，小鲁想知道自己的新工资。根据当前工资所在的区间，涨幅不同：0-400涨15%，400.01-800涨12%，800.01-1200涨10%，1200.01-2000涨7%，2000以上涨4%。</p>"
+  },
+  "tags": [],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一个浮点数，表示当前工资。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>三行：新工资、涨薪金额、涨幅百分比（整数%）。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/669/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "400.00",
+      "output": "Novo salario: 460.00\nReajuste ganho: 60.00\nEm percentual: 15 %"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 669 | NQ2-06 | 第2章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

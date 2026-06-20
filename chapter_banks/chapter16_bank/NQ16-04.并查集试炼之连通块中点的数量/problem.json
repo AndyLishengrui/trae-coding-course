@@ -1,0 +1,92 @@
+{
+  "display_id": "NQ16-04",
+  "title": "并查集试炼之连通块中点的数量",
+  "description": {
+    "format": "html",
+    "value": "<p>给定一个包含n个点（编号为1~n）的无向图，初始时图中没有边。<br/>现在要进行m个操作，操作共有三种：<br/>“C a b”，在点a和点b之间连一条边，a和b可能相等；“Q1 a b”，询问点a和点b是否在同一个连通块中，a和b可能相等；“Q2 a”，询问点a所在连通块中点的数量；数据范围:1≤n,m≤10^5</p>"
+  },
+  "tags": [
+    "并查集",
+    "并查集试炼",
+    "数据结构"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行输入整数n和m。<br/>接下来m行，每行包含一个操作指令，指令为“C a b”，“Q1 a b”或“Q2 a”中的一种。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>对于每个询问指令”Q1 a b”，如果a和b在同一个连通块中，则输出“Yes”，否则输出“No”。<br/>对于每个询问指令“Q2 a”，输出一个整数表示点a所在连通块中点的数量<br/>每个结果占一行。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/837/\" target=\"_blank\">原题\nY总代码\nY总讲解</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5 5\nC 1 2\nQ1 1 2\nQ2 1\nC 2 5\nQ2 5",
+      "output": "Yes\n2\n3"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 837 | NQ16-04 | 第16章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

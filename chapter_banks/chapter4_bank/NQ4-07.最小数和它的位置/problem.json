@@ -1,0 +1,88 @@
+{
+  "display_id": "NQ4-07",
+  "title": "最小数和它的位置",
+  "description": {
+    "format": "html",
+    "value": "<p>输入一个整数 N 和一个长度为 N 的整数数组 X。请你找到数组中最小的元素，并输出它的值和下标。<br/>注意，如果有多个最小值，则返回下标最小的那个。</p>"
+  },
+  "tags": [],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行包含整数 N。<br/>第二行包含 N 个用空格隔开的整数 X[i]。<br/>数据范围：1 &lt; N ≤ 1000，-1000 &lt; X[i] ≤ 1000</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>第一行输出Minimum value: x，其中 x 为数组元素最小值。第二行输出Position: y，其中 y 为最小值元素的下标（下标从 0 开始计数）。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/742/\" target=\"_blank\">遍历数组找到最小值及其下标。\n来源：语法题</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "10\n1 2 3 4 -5 6 7 8 9 10\n",
+      "output": "Minimum value: -5\nPosition: 4\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 742 | NQ4-07 | 第4章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

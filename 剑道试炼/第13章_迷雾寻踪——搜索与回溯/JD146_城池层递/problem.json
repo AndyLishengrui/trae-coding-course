@@ -1,0 +1,90 @@
+{
+  "display_id": "JD146",
+  "title": "城池层递",
+  "description": {
+    "format": "html",
+    "value": "<p>城际连横。赵晴儿铺开城池图：\"城池之间有道路相连。从城1出发，到每个城池的最短距离是多少？\"</p><p>梁嘉峰说：\"BFS——从城1开始，每层扩展一步。第一次到达的城池，层数就是最短距离。\"</p><p>给定一个有向图和起点1，求每个点到起点的最短距离。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行两个整数n和m。接下来m行每行两个整数a b表示一条有向边。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，n个整数表示每个点到点1的最短距离，不可达输出-1。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>BFS层序遍历，每层距离+1。</p><p><a href='https://www.acwing.com/problem/content/847/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "4 4\n1 2\n2 3\n1 3\n3 4",
+      "output": "0 1 1 2"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 847 | JD146",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

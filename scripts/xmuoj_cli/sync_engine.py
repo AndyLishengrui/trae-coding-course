@@ -3,54 +3,96 @@
 Sync Engine — 将本地书稿同步到 XMUOJ 云端题库
 
 功能：
-1. 从 COURSE_PLAN_V2.md 读取章节-题目映射
-2. 从 lessons_v2/ 读取 C++/Python 代码
-3. 从 textbook/ 读取题面 markdown，转换为 HTML
+1. 从 V2_PLAN 读取章节-题目映射
+2. 从 all_problems_data.json 读取题面数据
+3. 从 lessons_v2/ 和 chapter banks 读取 C++/Python 代码
 4. 创建/更新 XMUOJ 题目
-5. 管理题目在实验(Contest)中的排列顺序
-6. 生成测试数据（基于题面样例）
 """
 import json
 import os
 import re
 import sys
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 
-from .constants import V2_PLAN, CHAPTER_TITLES
+from constants import V2_PLAN, CHAPTER_TITLES, normalize_pid, get_nq_sequential_num
 
 BOOK_ROOT = Path(__file__).parent.parent.parent
 
 
-def find_code(pid: int, ext: str) -> Optional[str]:
-    """在 lessons_v2 中查找代码"""
+def load_problems_data() -> Dict:
+    """从 all_problems_data.json 加载161题的基线数据"""
+    path = BOOK_ROOT / "scripts" / "all_problems_data.json"
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def find_code_file(pid: int, ext: str) -> Optional[str]:
+    """在项目中查找题目的代码文件
+
+    搜索优先级：chapter banks > lessons_v2 > acwing_codes > algorithm_basic_codes
+    """
+    search_dirs = []
+    # 1. Chapter banks (best quality - has Andy.cpp/py with test cases)
+    for ch in range(1, 17):
+        chapter_bank = BOOK_ROOT / f"chapter{ch}_bank"
+        if chapter_bank.exists():
+            search_dirs.append(chapter_bank)
+    # 2. Other source dirs
     for d in ["lessons_v2", "acwing_codes", "algorithm_basic_codes"]:
         base = BOOK_ROOT / d
-        if not base.exists():
-            continue
-        for root, dirs, files in os.walk(str(base)):
+        if base.exists():
+            search_dirs.append(base)
+
+    for d in search_dirs:
+        for root, dirs, files in os.walk(str(d)):
             for f in files:
                 if f.endswith(ext) and f"acw{pid}" in f.lower():
-                    path = os.path.join(root, f)
-                    return Path(path).read_text(encoding="utf-8")
+                    return os.path.join(root, f)
     return None
 
 
 def find_textbook_problem(nq_num: int, chapter: int) -> Optional[Dict]:
-    """从 textbook/ 读取题面数据"""
-    ch_file = BOOK_ROOT / "textbook" / f"chapter{chapter:02d}_*.md"
-    # Simplified: read from problems/ directory
-    for d in ["problems/语法基础课", "problems/算法基础课"]:
-        base = BOOK_ROOT / d
-        if not base.exists():
-            continue
-        for root, dirs, files in os.walk(str(base)):
-            for f in files:
-                if f.endswith(".md"):
-                    path = os.path.join(root, f)
-                    content = Path(path).read_text(encoding="utf-8")
-                    if "## 题目描述" in content:
-                        return parse_problem_md(content)
+    """从 all_problems_data.json 读取题面数据
+
+    参数 nq_num 和 chapter 用于定位 V2_PLAN 中的具体题目位置
+    """
+    data = load_problems_data()
+    if not data:
+        return None
+
+    # 通过 V2_PLAN + nq_num_in_chapter 定位具体题目
+    pids = V2_PLAN.get(chapter, [])
+    if not pids:
+        return None
+
+    ch_str = str(chapter)
+    chapter_data = data.get(ch_str, {})
+    if not chapter_data:
+        return None
+
+    # 遍历章节中的题目，找到匹配的 nq_num
+    for idx, entry in enumerate(pids, 1):
+        global_seq = get_nq_sequential_num(chapter, idx)
+        if global_seq == nq_num:
+            display_id, source_type, original = normalize_pid(entry)
+            if source_type == "acw":
+                acw_id = str(original)
+                prob = chapter_data.get(acw_id, {})
+                if prob:
+                    return {
+                        "title": prob.get("title", f"AcWing {acw_id}"),
+                        "description": prob.get("description", ""),
+                        "input_description": prob.get("input_description", ""),
+                        "output_description": prob.get("output_description", ""),
+                        "samples": prob.get("samples", []),
+                        "hint": prob.get("hint", ""),
+                        "difficulty": prob.get("difficulty", "Low"),
+                        "tags": prob.get("tags", []),
+                    }
+            break
+
     return None
 
 
@@ -58,35 +100,31 @@ def parse_problem_md(content: str) -> Dict:
     """解析 markdown 题面，提取结构化数据"""
     result = {}
 
-    # Title
     title_match = re.search(r"^# (.+)$", content, re.MULTILINE)
     if title_match:
         result["title"] = title_match.group(1).strip()
 
-    # Description
     desc_match = re.search(r"## 题目描述\s*\n(.*?)(?=###|\n##)", content, re.DOTALL)
     if desc_match:
         result["description"] = desc_match.group(1).strip()
 
-    # Input format
     in_match = re.search(r"### 输入格式\s*\n(.*?)(?=###|\n##)", content, re.DOTALL)
     if in_match:
         result["input_description"] = in_match.group(1).strip()
 
-    # Output format
     out_match = re.search(r"### 输出格式\s*\n(.*?)(?=###|\n##)", content, re.DOTALL)
     if out_match:
         result["output_description"] = out_match.group(1).strip()
 
-    # Samples
     samples = []
-    sample_blocks = re.findall(r"\*\*输入[：:]\*\*\s*\n```\s*\n(.*?)```\s*\n\s*\*\*输出[：:]\*\*\s*\n```\s*\n(.*?)```", content, re.DOTALL)
+    sample_blocks = re.findall(
+        r"\*\*输入[：:]\*\*\s*\n```\s*\n(.*?)```\s*\n\s*\*\*输出[：:]\*\*\s*\n```\s*\n(.*?)```",
+        content, re.DOTALL)
     for inp, out in sample_blocks:
         samples.append({"input": inp.strip(), "output": out.strip()})
     if samples:
         result["samples"] = samples
 
-    # Difficulty
     diff_match = re.search(r"\*\*难度[：:]\*\*\s*(\S+)", content)
     if diff_match:
         diff_map = {"简单": "Low", "中等": "Mid", "困难": "High"}
@@ -98,29 +136,23 @@ def parse_problem_md(content: str) -> Dict:
 def md_to_html(text: str) -> str:
     """简单 Markdown → HTML 转换（用于题面）"""
     if not text:
-        return "<p></p>"
-    # Basic conversions
+        return ""
     text = text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-    # Code blocks
     text = re.sub(r"```(\w*)\n(.*?)```", r"<pre><code>\2</code></pre>", text, flags=re.DOTALL)
-    # Inline code
     text = re.sub(r"`([^`]+)`", r"<code>\1</code>", text)
-    # Bold
     text = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", text)
-    # Paragraphs
     paragraphs = text.strip().split("\n\n")
     return "".join(f"<p>{p.replace(chr(10), '<br/>')}</p>" for p in paragraphs if p.strip())
 
 
-def generate_test_case_zip(pid: int, output_dir: str) -> Optional[str]:
+def generate_test_case_zip(pid: int, chapter: int, output_dir: str) -> Optional[str]:
     """为题面中的样例生成测试数据 ZIP 文件"""
-    # Find problem description
-    prob_data = find_textbook_problem(0, 0)  # TODO: fix lookup
+    prob_data = find_textbook_problem(pid, chapter)
     if not prob_data or "samples" not in prob_data:
         return None
 
     import zipfile
-    zip_name = os.path.join(output_dir, f"ACW{pid}_testcases.zip")
+    zip_name = os.path.join(output_dir, f"testcases_ch{chapter}_nq{pid}.zip")
     with zipfile.ZipFile(zip_name, "w") as zf:
         for i, sample in enumerate(prob_data["samples"], 1):
             zf.writestr(f"{i}.in", sample["input"].encode("utf-8"))
@@ -132,36 +164,40 @@ def generate_test_case_zip(pid: int, output_dir: str) -> Optional[str]:
 class SyncEngine:
     """同步引擎：本地书稿 → XMUOJ 云端"""
 
-    def __init__(self, client, dry_run: bool = False):
+    def __init__(self, client, dry_run: bool = False, base_url: str = "http://xmuoj.com"):
         self.client = client
         self.dry_run = dry_run
+        self.base_url = base_url
         self.stats = {"created": 0, "updated": 0, "skipped": 0, "errors": 0}
+        # 预加载基线数据
+        self._problems_data = load_problems_data()
 
     def sync_chapter(self, chapter: int, contest_id: Optional[int] = None):
         """同步一个章节的所有题目"""
-        pids = V2_PLAN.get(chapter, [])
-        if not pids:
+        entries = V2_PLAN.get(chapter, [])
+        if not entries:
             print(f"第{chapter}章：无题目定义")
             return
 
         title = CHAPTER_TITLES.get(chapter, f"第{chapter}章")
         print(f"\n{'='*60}")
-        print(f"📖 第{chapter}章: {title} ({len(pids)}题)")
+        print(f"📖 第{chapter}章: {title} ({len(entries)}题)")
         print(f"{'='*60}")
 
-        for i, pid in enumerate(pids, 1):
-            display_id = f"ACW{pid}"
-            print(f"\n  [{i}/{len(pids)}] {display_id}")
+        for i, entry in enumerate(entries, 1):
+            display_id, source_type, _ = normalize_pid(entry)
+            global_seq = get_nq_sequential_num(chapter, i)
+            print(f"\n  [{i}/{len(entries)}] {display_id} (NQ{global_seq:03d})")
 
             # Check existing
             existing = self._get_problem_by_display_id(display_id)
 
             # Build problem data
-            prob_data = self._build_problem(pid, chapter, i)
+            prob_data = self._build_problem(entry, chapter, i)
 
             if existing:
                 if self.dry_run:
-                    print(f"    [DRY RUN] 将更新 id={existing['id']}")
+                    print(f"    [DRY RUN] 将更新 id={existing.get('id', '?')}")
                     self.stats["updated"] += 1
                 else:
                     try:
@@ -189,58 +225,107 @@ class SyncEngine:
     def _get_problem_by_display_id(self, display_id: str) -> Optional[Dict]:
         """通过 display_id 查找已存在的题目"""
         try:
-            # Use public API
             import requests
-            resp = requests.get(f"http://xmuoj.com/api/problem", params={"problem_id": display_id}, timeout=10)
+            resp = requests.get(
+                f"{self.base_url}/api/problem",
+                params={"problem_id": display_id},
+                timeout=10
+            )
             data = resp.json()
             if data.get("error") is None and data.get("data"):
                 return data["data"]
-        except:
+        except Exception:
             pass
         return None
 
-    def _build_problem(self, pid: int, chapter: int, order: int) -> Dict:
-        """构建完整的题目数据"""
-        nq_num = self._get_nq_num(pid, chapter)
+    def _build_problem(self, entry, chapter: int, order: int) -> Dict:
+        """构建完整的题目数据
 
-        # Try to get description from XMUOJ first
-        import requests
-        title = f"AcWing {pid}"
-        desc = f"<p>AcWing {pid}</p>"
-        input_desc = "<p></p>"
-        output_desc = "<p></p>"
-        samples = [{"input": "", "output": ""}]
+        Args:
+            entry: V2_PLAN条目（int或dict）
+            chapter: 章节编号
+            order: 章节内序号（1-based）
+
+        Returns:
+            与 problem_builder.py PROBLEM_TEMPLATE 一致的嵌套格式
+        """
+        display_id, source_type, original = normalize_pid(entry)
+        global_seq = get_nq_sequential_num(chapter, order)
+
+        # 默认值
+        title = display_id
+        desc = f"<p>{display_id}</p>"
+        input_desc = ""
+        output_desc = ""
+        samples = []
         difficulty = "Low"
         tags = []
+        hint = ""
 
-        try:
-            resp = requests.get(f"http://xmuoj.com/api/problem?problem_id=ACW{pid}", timeout=5)
-            data = resp.json()
-            if data.get("error") is None and data.get("data"):
-                prob = data["data"]
+        # 1. 从 all_problems_data.json 加载描述（最可靠）
+        if source_type == "acw" and self._problems_data:
+            ch_str = str(chapter)
+            acw_id = str(original)
+            ch_data = self._problems_data.get(ch_str, {})
+            prob = ch_data.get(acw_id, {})
+            if prob:
                 title = prob.get("title", title)
-                desc = prob.get("description", desc)
-                input_desc = prob.get("input_description", input_desc)
-                output_desc = prob.get("output_description", output_desc)
-                samples = prob.get("samples", samples)
-                difficulty = prob.get("difficulty", difficulty)
-                tags = prob.get("tags", tags)
-        except:
-            pass
+                desc = md_to_html(prob.get("description", "")) or desc
+                input_desc = md_to_html(prob.get("input_description", "")) or ""
+                output_desc = md_to_html(prob.get("output_description", "")) or ""
+                samples = prob.get("samples", [])
+                hint = md_to_html(prob.get("hint", "")) or ""
+                raw_diff = prob.get("difficulty", "Low")
+                difficulty = raw_diff if raw_diff in ("Low", "Mid", "High") else "Low"
+                raw_tags = prob.get("tags", [])
+                tags = raw_tags if isinstance(raw_tags, list) else []
 
+        # 2. 对于 NQ 自定义题，从 dict 获取标题
+        if source_type == "nq":
+            title = original.get("title", display_id)
+
+        # 3. 尝试从 xmuoj.com 获取现成数据作为补充（仅 online 模式）
+        if self.base_url != "http://localhost":
+            try:
+                import requests
+                resp = requests.get(
+                    f"{self.base_url}/api/problem",
+                    params={"problem_id": display_id},
+                    timeout=5
+                )
+                data = resp.json()
+                if data.get("error") is None and data.get("data"):
+                    prob = data["data"]
+                    # 只有本地数据为空时才用远程数据填充
+                    if title == display_id:
+                        title = prob.get("title", title)
+                    if desc == f"<p>{display_id}</p>":
+                        desc = prob.get("description", desc)
+                    if not input_desc:
+                        input_desc = prob.get("input_description", "")
+                    if not output_desc:
+                        output_desc = prob.get("output_description", "")
+                    if not samples:
+                        samples = prob.get("samples", [])
+                    if not tags:
+                        tags = prob.get("tags", [])
+            except Exception:
+                pass
+
+        # 使用嵌套 HTML 格式（与 problem_builder.py 一致）
         return {
-            "_id": f"ACW{pid}",
+            "_id": display_id,
             "title": title,
-            "description": desc,
-            "input_description": input_desc,
-            "output_description": output_desc,
-            "samples": samples,
+            "description": {"format": "html", "value": desc if desc else f"<p>{display_id}</p>"},
+            "input_description": {"format": "html", "value": input_desc or "<p></p>"},
+            "output_description": {"format": "html", "value": output_desc or "<p></p>"},
+            "samples": samples if samples else [{"input": "", "output": ""}],
             "test_case_id": "",
             "time_limit": 1000,
             "memory_limit": 256,
             "languages": ["C", "C++", "Python3"],
             "template": {},
-            "rule_type": "ACM",
+            "rule_type": "OI",
             "io_mode": {"io_mode": "Standard IO", "input": "input.txt", "output": "output.txt"},
             "spj": False,
             "spj_language": None,
@@ -249,18 +334,10 @@ class SyncEngine:
             "visible": True,
             "difficulty": difficulty,
             "tags": tags,
-            "hint": "",
-            "source": f"AcWing {pid} | NQ{nq_num:03d} | 第{chapter}章",
+            "hint": {"format": "html", "value": hint or ""},
+            "source": f"NQ{global_seq:03d} | 第{chapter}章",
             "share_submission": False,
         }
-
-    def _get_nq_num(self, pid: int, chapter: int) -> int:
-        """计算全局 NQ 编号"""
-        nq = 0
-        for ch in range(1, chapter):
-            nq += len(V2_PLAN.get(ch, []))
-        pids = V2_PLAN.get(chapter, [])
-        return nq + pids.index(pid) + 1
 
     def print_summary(self):
         print(f"\n{'='*60}")
@@ -284,7 +361,6 @@ if __name__ == "__main__":
 
     engine = SyncEngine(client, dry_run="--dry-run" in sys.argv)
 
-    # Parse chapter argument
     chapter = None
     for arg in sys.argv[1:]:
         if arg.startswith("--chapter="):

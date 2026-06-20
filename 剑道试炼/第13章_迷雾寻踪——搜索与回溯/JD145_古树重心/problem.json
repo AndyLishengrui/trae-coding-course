@@ -1,0 +1,90 @@
+{
+  "display_id": "JD145",
+  "title": "古树重心",
+  "description": {
+    "format": "html",
+    "value": "<p>迷踪林深处有一棵大树。梁嘉峰说：\"找到它的重心——删除后最大子树最小的那个节点。\"</p><p>赵晴儿说：\"DFS遍历树，对每个节点计算：删掉它后，最大子树有多少个节点。取最小的那个。\"</p><p>给定一棵树，求其重心和最大子树的最小大小。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行一个整数n。接下来n-1行每行两个整数表示一条边。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，最大子树的最小大小。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>DFS遍历树，计算每个节点的最大子树大小。重心=max(n-subSize, 各子树size)最小的节点。</p><p><a href='https://www.acwing.com/problem/content/846/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "9\n1 2\n1 7\n1 4\n2 8\n2 5\n4 3\n4 6\n6 9",
+      "output": "4"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 846 | JD145",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

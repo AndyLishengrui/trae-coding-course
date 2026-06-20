@@ -1,0 +1,90 @@
+{
+  "display_id": "JD168",
+  "title": "数码计数",
+  "description": {
+    "format": "html",
+    "value": "<p>华山石壁上刻着从a到b的所有数字。\"0到9每个数字各出现了几次？\"对手出了一道算术题。</p><p>李少白没有一个个数。\"数位统计——对每个数字和位置，用数学公式算出现次数。f(b)-f(a-1)。\"</p><p>对手目瞪口呆：\"你……你怎么算得这么快？\"</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一行两个整数a和b。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，10个整数，分别表示数字0~9在[a,b]中出现的次数，空格隔开。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>数位统计：对每个数字和位置用数学公式计算出现次数。f(b)-f(a-1)。</p><p><a href='https://www.acwing.com/problem/content/0/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "1 10",
+      "output": "1 2 1 1 1 1 1 1 1 1"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 338 | JD168",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

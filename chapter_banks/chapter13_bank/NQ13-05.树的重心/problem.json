@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ13-05",
+  "title": "树的重心",
+  "description": {
+    "format": "html",
+    "value": "<p>给定一颗树，树中包含n个结点（编号1~n）和n-1条无向边。<br/>请你找到树的重心，并输出将重心删除后，剩余各个连通块中点数的最大值。<br/>重心定义：重心是指树中的一个结点，如果将这个点删除后，剩余各个连通块中点数的最大值最小，那么这个节点被称为树的重心。<br/>数据范围：1≤n≤10^5</p>"
+  },
+  "tags": [
+    "DFS",
+    "搜索与图论"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行包含整数n，表示树的结点数。<br/>接下来n-1行，每行包含两个整数a和b，表示点a和点b之间存在一条边。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出一个整数m，表示重心的所有的子树中最大的子树的结点数目。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/846/\" target=\"_blank\">原题链接\nY总讲解\nY总代码</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "9\n1 2\n1 7\n1 4\n2 8\n2 5\n4 3\n3 9\n4 6",
+      "output": "4"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 846 | NQ13-05 | 第13章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

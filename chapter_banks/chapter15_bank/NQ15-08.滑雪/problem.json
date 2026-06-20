@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ15-08",
+  "title": "滑雪",
+  "description": {
+    "format": "html",
+    "value": "<p>给定一个R行C列的矩阵，表示一个矩形网格滑雪场。<br/>矩阵中第 i 行第 j 列的点表示滑雪场的第 i 行第 j 列区域的高度。<br/>一个人从滑雪场中的某个区域内出发，每次可以向上下左右任意一个方向滑动一个单位距离。<br/>当然，一个人能够滑动到某相邻区域的前提是该区域的高度低于自己目前所在区域的高度。<br/>下面给出一个矩阵作为例子：<br/> 1  2  3  4 5</p><p>16 17 18 19 6</p><p>15 24 25 20 7</p><p>14 23 22 21 8</p><p>13 12 11 10 9<br/>在给定矩阵中，一条可行的滑行轨迹为24-17-2-1。<br/>在给定矩阵中，最长的滑行轨迹为25-24-23-…-3-2-1，沿途共经过25个区域。<br/>现在给定你一个二维矩阵表示滑雪场各区域的高度，请你找出在该滑雪场中能够完成的最长滑雪轨迹，并输出其长度(可经过最大区域数)。</p>"
+  },
+  "tags": [
+    "动态规划",
+    "记忆化搜索"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行包含两个整数R和C。<br/>接下来R行，每行包含C个整数，表示完整的二维矩阵。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出一个整数，表示可完成的最长滑雪长度。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/901/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5 5\n1 2 3 4 5\n16 17 18 19 6\n15 24 25 20 7\n14 23 22 21 8\n13 12 11 10 9",
+      "output": "25"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 901 | NQ15-08 | 第15章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

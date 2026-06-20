@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ12-07",
+  "title": "KMP字符串",
+  "description": {
+    "format": "html",
+    "value": "<p>给定一个模式串S，以及一个模板串P，所有字符串中只包含大小写英文字母以及阿拉伯数字。<br/>模板串P在模式串S中多次作为子串出现。<br/>求出模板串P在模式串S中所有出现的位置的起始下标。<br/>数据范围：<br/>1≤N≤10^5<br/>1≤M≤10^6</p>"
+  },
+  "tags": [
+    "KMP",
+    "数据结构"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行输入整数N，表示字符串P的长度。<br/>第二行输入字符串P。<br/>第三行输入整数M，表示字符串S的长度。<br/>第四行输入字符串S。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>共一行，输出所有出现位置的起始下标（下标从0开始计数），整数之间用空格隔开。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/831/\" target=\"_blank\">原题链接\nY总讲解\n参考题解\nY总代码\nB站KMP讲解\n董晓讲解</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "3\naba\n5\nababa",
+      "output": "0 2"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 831 | NQ12-07 | 第12章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

@@ -1,0 +1,45 @@
+{
+  "display_id": "JD171",
+  "title": "群经改字",
+  "description": {
+    "format": "html",
+    "value": "<p>第三位——藏经阁阁主。他取出一本字典和一段经文：\"字典里有多少个词，和这段经文的编辑距离不超过k？\"</p><p>赵晴儿沉吟片刻：\"对字典里每个词，算它和经文的编辑距离。标准编辑距离DP——dp[i][j] = min(三种操作)。\"</p><p>阁主长叹：\"当年我花了十年才悟出此法，你竟片刻之间……\"</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行两个整数N和M。接下来N行每行一个字符串（字典）。接下来M行每行一个字符串和一个整数k。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>M行，每行一个整数（字典中编辑距离≤k的字符串个数）。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 100,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>编辑距离DP：dp[i][j] = min(dp[i-1][j]+1, dp[i][j-1]+1, dp[i-1][j-1]+cost)。</p><p><a href='https://www.acwing.com/problem/content/0/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "3 2\nabc\ndef\n1 abc adc",
+      "output": "1"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 899 | JD172",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

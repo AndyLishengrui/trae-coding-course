@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>第13章 迷雾寻踪——搜索与回溯</title>
+    <style>
+        body { font-family: "Noto Serif SC", "Source Han Serif CN", serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.8; color: #333; }
+        h1 { text-align: center; color: #8B0000; border-bottom: 2px solid #8B0000; padding-bottom: 10px; }
+        h2 { color: #4A0080; margin-top: 2em; }
+        h3 { color: #2E5090; }
+        .chapter-subtitle { text-align: center; color: #666; font-size: 1.1em; margin-bottom: 2em; }
+        .problem { border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin: 20px 0; background: #fafafa; }
+        .problem-title { color: #8B0000; font-size: 1.3em; font-weight: bold; margin-bottom: 10px; }
+        .problem-meta { color: #666; font-size: 0.9em; margin-bottom: 15px; }
+        .description { margin: 15px 0; }
+        .description p { margin: 8px 0; }
+        .io-section { background: #f0f0f0; padding: 12px; border-radius: 4px; margin: 10px 0; }
+        .io-section h4 { margin: 0 0 8px 0; color: #555; font-size: 0.95em; }
+        .sample { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; margin: 10px 0; font-family: "Consolas", "Courier New", monospace; white-space: pre-wrap; }
+        .sample-label { color: #569cd6; font-weight: bold; margin-bottom: 5px; }
+        .hint { background: #fff8e1; border-left: 4px solid #ffc107; padding: 12px; margin: 15px 0; }
+        .code-section { margin: 15px 0; }
+        .code-section summary { cursor: pointer; color: #2E5090; font-weight: bold; }
+        pre { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; overflow-x: auto; font-size: 0.9em; }
+        code { font-family: "Consolas", "Courier New", monospace; }
+        .lang-tabs { display: flex; gap: 10px; margin: 10px 0; }
+        .lang-tab { padding: 5px 15px; cursor: pointer; border: 1px solid #ddd; border-radius: 4px 4px 0 0; }
+        .lang-tab.active { background: #1e1e1e; color: #d4d4d4; border-color: #1e1e1e; }
+    </style>
+</head>
+<body>
+    <h1>第13章 迷雾寻踪</h1>
+    <div class="chapter-subtitle">搜索与回溯</div>
+
+    <div class="problem" id="JD141">
+        <div class="problem-title">JD141：雾中排阵</div>
+        <div class="problem-meta">AcWing 842 | JD141</div>
+
+        <div class="description">
+            <p>迷雾弥漫的林间小径上，梁嘉峰递给李少白n枚令牌："按字典序列出1到n的所有排列。每步选一个没用过的令牌，选完所有就回头换一个——这就是DFS回溯。"</p>
+<p>给定整数n，按字典序输出1到n的所有全排列。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个整数n（1≤n≤9）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>每行一个排列，数字之间空格隔开，按字典序输出。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 2 3
+1 3 2
+2 1 3
+2 3 1
+3 1 2
+3 2 1
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>DFS+回溯：选→递归→撤销。用used[]标记。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+const int N = 10;  //最大值
+int n;             //读入的n
+int path[N];       //记录路径每个位的值
+bool used[N];      //记录第i个数是否被用过
+
+void dfs(int u) {
+  if (u == n) {
+    //输出排列
+    for (int i = 0; i &lt; n; i++) cout &lt;&lt; path[i] &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    return;
+  }
+  //枚举数字1--n
+  for (int i = 1; i &lt;= n; i++) {
+    if (!used[i]) {
+      path[u] = i;      //记录当前位path[u]的数字为i
+      used[i] = true;   //标记数字i为已经使用郭
+      dfs(u + 1);       //递归处理下一个位
+      used[i] = false;  //恢复现场
+    }
+  }
+}
+
+int main() {
+  cin &gt;&gt; n;
+  dfs(0);
+  return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+sys.setrecursionlimit(200000)
+# 排列数字
+n = int(input())
+path = []
+used = [False] * (n + 1)
+
+def dfs():
+    if len(path) == n:
+        print(' '.join(map(str, path)) + ' ')
+        return
+    for i in range(1, n + 1):
+        if not used[i]:
+            used[i] = True
+            path.append(i)
+            dfs()
+            path.pop()
+            used[i] = False
+
+dfs()</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD142">
+        <div class="problem-title">JD142：棋盘布后</div>
+        <div class="problem-meta">AcWing 843 | JD142</div>
+
+        <div class="description">
+            <p>赵晴儿指着一个n×n的棋盘："放n个皇后，不能同行、同列、同对角线。有多少种放法？"</p>
+<p>李少白逐行放置，用三个布尔数组标记列和对角线。"每行选一个安全的位置放皇后，递归下一行。冲突就回退。"</p>
+<p>给定n，求n皇后的所有解。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个整数n。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>所有解，每个解n行（Q表示皇后，.表示空），解之间空行。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+4
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+.Q..
+...Q
+Q...
+..Q.
+
+..Q.
+Q...
+...Q
+.Q..
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>DFS+回溯：逐行放置，标记列和两条对角线。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+const int N = 20;  //最大值
+int n;             //输入的n
+char g[N][N];      //棋盘
+//三个指示器列、对角线、反对角线,对角线以截距为编号
+bool col[N], dg[N], udg[N];
+
+void dfs(int u) {
+  if (u == n) {
+    //输出排列
+    for (int i = 0; i &lt; n; i++) puts(g[i]);
+    puts("");
+    return;
+  }
+  //枚举列0--n
+  for (int i = 0; i &lt; n; i++) {
+    if (!col[i] &amp;&amp; !dg[i + u] &amp;&amp; !udg[i - u + n]) {
+      g[u][i] = 'Q';  //当前位置设置为Q字符
+      col[i] = dg[i + u] = udg[i - u + n] = true;  //标记数字i为已经使用郭
+      dfs(u + 1);                                  //递归处理下一个位
+      g[u][i] = '.';                               //恢复现场
+      col[i] = dg[i + u] = udg[i - u + n] = false;  //恢复现场
+    }
+  }
+}
+
+int main() {
+  cin &gt;&gt; n;
+  //初始化图
+  for (int i = 0; i &lt; n; i++)
+    for (int j = 0; j &lt; n; j++) g[i][j] = '.';
+  dfs(0);
+  return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+sys.setrecursionlimit(200000)
+# n-皇后问题
+n = int(input())
+g = [['.'] * n for _ in range(n)]
+col = [False] * n
+dg = [False] * (2 * n)
+udg = [False] * (2 * n)
+
+def dfs(r):
+    if r == n:
+        for row in g:
+            print(''.join(row))
+        print()
+        return
+    for c in range(n):
+        if not col[c] and not dg[r + c] and not udg[r - c + n]:
+            col[c] = dg[r + c] = udg[r - c + n] = True
+            g[r][c] = 'Q'
+            dfs(r + 1)
+            g[r][c] = '.'
+            col[c] = dg[r + c] = udg[r - c + n] = False
+
+dfs(0)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD143">
+        <div class="problem-title">JD143：迷宫寻路</div>
+        <div class="problem-meta">AcWing 844 | JD143</div>
+
+        <div class="description">
+            <p>石墙围成的迷宫，入口在左上角，出口在右下角。赵晴儿问："最短路径有多长？"</p>
+<p>梁嘉峰说："BFS——从入口开始，一层一层向外扩展。第一次到达出口时，层数就是最短路径。"</p>
+<p>给定一个n×m的迷宫（0可走，1是墙），求最短路径长度。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数n和m。接下来n行每行m个整数（0可走，1是墙）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最短路径长度。不可达输出-1。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5 5
+0 1 0 0 0
+0 1 0 1 0
+0 0 0 0 0
+0 1 1 1 0
+0 0 0 1 0
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+8
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>BFS层序遍历，第一次到达终点就是最短路径。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;queue&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+typedef pair&lt;int, int&gt; PII;  // Y总风格pair&lt;int,int&gt;声明
+
+const int N = 107;
+
+int n, m;
+int g[N][N],d[N][N];  
+
+//广搜
+int bfs() {
+
+  queue&lt;PII&gt; q;      //队列
+
+  memset(d,-1,sizeof d);
+  d[0][0]=0;
+  q.push({0,0});
+
+  // 四个方向向量
+  int dx[] = {-1, 0, 1, 0}, dy[] = {0, 1, 0, -1};
+
+  while (q.size()) 
+  { //队列为空的时候退出广搜
+    auto t = q.front();  //取队头
+    q.pop();             //弹出队头
+
+    //搜索四个方向
+    for (int i = 0; i &lt; 4; i++)
+    {
+      int x = t.first + dx[i], y = t.second + dy[i];  //待搜索的新坐标点
+
+      if (x &lt; 0 || x &gt;= n || y &lt; 0 || y &gt;= m || g[x][y] != 0 || d[x][y]!=-1) continue;
+
+      d[x][y] = d[t.first][t.second]+1;
+
+      q.push({x, y});//入队
+
+
+    }
+  }
+
+  return d[n-1][m-1];
+}
+
+int main() {
+
+    cin &gt;&gt; n &gt;&gt; m;
+
+    for (int i = 0; i &lt; n; i++) 
+      for (int j = 0; j &lt;m; j++)
+        cin &gt;&gt; g[i][j];
+
+    cout &lt;&lt; bfs() &lt;&lt; endl;
+
+  return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+from collections import deque
+data = sys.stdin.read().split()
+n, m = int(data[0]), int(data[1])
+g = []
+idx = 2
+for _ in range(n):
+    g.append([int(data[idx+j]) for j in range(m)])
+    idx += m
+dist = [[-1] * m for _ in range(n)]
+dx = [-1, 0, 1, 0]
+dy = [0, 1, 0, -1]
+q = deque()
+q.append((0, 0))
+dist[0][0] = 0
+while q:
+    x, y = q.popleft()
+    for d in range(4):
+        nx, ny = x + dx[d], y + dy[d]
+        if 0 &lt;= nx &lt; n and 0 &lt;= ny &lt; m and g[nx][ny] == 0 and dist[nx][ny] == -1:
+            dist[nx][ny] = dist[x][y] + 1
+            q.append((nx, ny))
+print(dist[n - 1][m - 1])</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD144">
+        <div class="problem-title">JD144：八码迷局</div>
+        <div class="problem-meta">AcWing 845 | JD144</div>
+
+        <div class="description">
+            <p>迷雾中出现一个3×3数字拼盘，有一个空格。赵晴儿说："从初始状态移到目标状态，最少几步？每次只能把空格和相邻数字交换。"</p>
+<p>梁嘉峰说："BFS+状态压缩——把整个拼盘编码成一个字符串，每次移动生成新状态，用哈希表判重。"</p>
+<p>给定初始状态和目标状态，求最少移动步数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>两行，每行9个字符（3×3拼盘，x表示空格）。第一行初始状态，第二行目标状态。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最少移动步数。无解输出-1。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+1 2 3
+x 4 6
+7 5 8
+
+1 2 3
+4 5 6
+7 8 x
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+2
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>BFS+状态编码为字符串，哈希表判重。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;unordered_map&gt;
+#include &lt;queue&gt;
+
+using namespace std;
+
+/**
+ * NQ13-04: BFS试炼之八数码
+ * 搜索与回溯 | AcWing 845
+ * 时间: O(n!) | 空间: O(n)
+ */
+
+int bfs(string start)
+{
+  string end = "12345678x";
+
+  queue&lt;string&gt; q;
+  unordered_map&lt;string,int&gt; d;//字符串映射到整数
+
+  q.push(start);
+  d[start] = 0;//map的用法
+
+  //方向向量
+  int dx[4] = {1,-1,0,0},dy[4]={0,0,1,-1};
+
+  //广搜
+  while(q.size())
+  {
+    auto t = q.front();
+    q.pop();
+
+    int distance = d[t];
+    if (t==end) return distance;//找到目标
+
+    //查询x在字符串中的下标
+    int k = t.find('x');
+    int x = k / 3, y = k % 3;//转换为宫格坐标
+
+    for (int i = 0; i &lt; 4; i ++ )
+    {
+      int a = x + dx[i], b = y + dy[i];
+
+      if (a &gt;= 0 &amp;&amp; a &lt; 3 &amp;&amp; b &gt;= 0 &amp;&amp; b &lt; 3)
+      {
+        swap(t[k], t[a*3+b]);//移动x的位置
+        if (!d.count(t))
+        {
+          d[t] = distance + 1;
+          q.push(t);//压入队列
+        }
+        swap(t[k],t[a*3+b]);//还原现场
+      }
+    }
+  }
+  return -1;
+
+}
+
+int main()
+{
+    string c, start;
+    //去掉空格
+    for (int i = 0; i &lt; 9; i ++ )
+    {
+      cin&gt;&gt;c;
+      start += c;
+    }
+
+    cout&lt;&lt;bfs(start)&lt;&lt;endl;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+from collections import deque
+start = ''.join(sys.stdin.read().split())
+target = '12345678x'
+if start == target: print(0); sys.exit(0)
+dx, dy = [-1,0,1,0], [0,1,0,-1]
+q = deque([start])
+dist = {start: 0}
+while q:
+    s = q.popleft()
+    k = s.index('x')
+    x, y = k//3, k%3
+    for d in range(4):
+        nx, ny = x+dx[d], y+dy[d]
+        if 0&lt;=nx&lt;3 and 0&lt;=ny&lt;3:
+            nk = nx*3 + ny
+            lst = list(s)
+            lst[k], lst[nk] = lst[nk], lst[k]
+            ns = ''.join(lst)
+            if ns not in dist:
+                dist[ns] = dist[s] + 1
+                if ns == target: print(dist[ns]); sys.exit(0)
+                q.append(ns)
+print(-1)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD145">
+        <div class="problem-title">JD145：古树重心</div>
+        <div class="problem-meta">AcWing 846 | JD145</div>
+
+        <div class="description">
+            <p>迷踪林深处有一棵大树。梁嘉峰说："找到它的重心——删除后最大子树最小的那个节点。"</p>
+<p>赵晴儿说："DFS遍历树，对每个节点计算：删掉它后，最大子树有多少个节点。取最小的那个。"</p>
+<p>给定一棵树，求其重心和最大子树的最小大小。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数n。接下来n-1行每行两个整数表示一条边。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最大子树的最小大小。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+9
+1 2
+1 7
+1 4
+2 8
+2 5
+4 3
+4 6
+6 9
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+4
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>DFS遍历树，计算每个节点的最大子树大小。重心=max(n-subSize, 各子树size)最小的节点。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+const int N = 100007, M= N*2;//无向图
+
+int n;
+int h[N], e[M], ne[M], idx;
+int ans = N;
+bool st[N];//顶点n是否访问
+
+void add(int a, int b)  // 添加一条边a-&gt;b
+{
+    e[idx] = b, ne[idx] = h[a], h[a] = idx ++ ;
+}
+
+int dfs(int u)
+{
+  st[u] = true;
+
+  int size = 0;//去掉i节点后，i子树的最大子树节点数
+  int sum = 0;//i子树的节点总数
+  for (int i = h[u]; i!=-1; i=ne[i])
+  {
+    int j = e[i];
+    if (st[j]) continue;
+
+    int s = dfs(j);//返回j子树的大小
+    size = max(size,s);
+    sum += s;//计算所有子树和
+  }
+
+  size = max(size, n - sum - 1);//i子树和与 非i子树部分的和，取最大值
+  ans = min(ans,size);
+
+  return sum+1;//加上i节点本身
+}
+
+int main()
+{
+    cin&gt;&gt;n;
+    memset(h, -1, sizeof h);
+    for (int i = 0; i &lt; n-1; i ++ )
+    {
+      int a,b;
+      cin&gt;&gt;a&gt;&gt;b;
+      add(a, b),add(b,a);//无向边
+    }
+    dfs(1);
+    cout&lt;&lt;ans&lt;&lt;endl;
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"># 树的重心
+import sys
+sys.setrecursionlimit(200000)
+n = int(input())
+adj = [[] for _ in range(n + 1)]
+for _ in range(n - 1):
+    a, b = map(int, input().split())
+    adj[a].append(b)
+    adj[b].append(a)
+
+ans = n
+def dfs(u, fa):
+    global ans
+    sz = 1
+    max_part = 0
+    for v in adj[u]:
+        if v != fa:
+            sv = dfs(v, u)
+            sz += sv
+            max_part = max(max_part, sv)
+    max_part = max(max_part, n - sz)
+    ans = min(ans, max_part)
+    return sz
+
+dfs(1, -1)
+print(ans)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD146">
+        <div class="problem-title">JD146：城池层递</div>
+        <div class="problem-meta">AcWing 847 | JD146</div>
+
+        <div class="description">
+            <p>城际连横。赵晴儿铺开城池图："城池之间有道路相连。从城1出发，到每个城池的最短距离是多少？"</p>
+<p>梁嘉峰说："BFS——从城1开始，每层扩展一步。第一次到达的城池，层数就是最短距离。"</p>
+<p>给定一个有向图和起点1，求每个点到起点的最短距离。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数n和m。接下来m行每行两个整数a b表示一条有向边。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，n个整数表示每个点到点1的最短距离，不可达输出-1。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+4 4
+1 2
+2 3
+1 3
+3 4
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+0 1 1 2
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>BFS层序遍历，每层距离+1。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+
+using namespace std;
+
+/**
+ * NQ13-06: 图中点的层次
+ * 搜索与回溯 | AcWing 847
+ * 时间: O(n) | 空间: O(n)
+ */
+
+const int N = 100007;//有向图
+
+int n,m;
+int h[N], e[N], ne[N], idx;
+int d[N];
+
+void add(int a, int b)  // 添加一条边a-&gt;b
+{
+    e[idx] = b, ne[idx] = h[a], h[a] = idx ++ ;
+}
+
+int bfs()
+{
+  memset(d,-1,sizeof d);
+  queue&lt;int&gt; q;
+  d[1] = 0;//起始点
+  q.push(1);
+
+  while (q.size())
+  {
+    auto t = q.front();
+    q.pop();
+
+    for (int i = h[t]; i!=-1; i = ne[i])
+    {
+      int j = e[i];
+      if (d[j]==-1)
+      {
+        d[j] = d[t]+1; //层次加1
+        q.push(j);
+      }
+    }
+  }
+  return d[n];
+}
+
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;m;
+    memset(h, -1, sizeof h);
+
+    for (int i = 0; i &lt; m; i++)
+    {
+      int a, b;
+      cin&gt;&gt;a&gt;&gt;b;
+      add(a,b);
+    }
+
+    cout&lt;&lt;bfs()&lt;&lt;endl;
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"># 图中点的层次
+from collections import deque
+n, m = map(int, input().split())
+adj = [[] for _ in range(n + 1)]
+for _ in range(m):
+    a, b = map(int, input().split())
+    adj[a].append(b)
+dist = [-1] * (n + 1)
+dist[1] = 0
+q = deque([1])
+while q:
+    u = q.popleft()
+    for v in adj[u]:
+        if dist[v] == -1:
+            dist[v] = dist[u] + 1
+            q.append(v)
+print(dist[n])</code></pre>
+            </details>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+{
+  "display_id": "NQ6-05",
+  "title": "替换字符",
+  "description": {
+    "format": "html",
+    "value": "<p>给定一个由大小写字母构成的字符串。把该字符串中特定的字符全部用字符 # 替换。请你输出替换后的字符串。</p>"
+  },
+  "tags": [
+    "字符串"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>输入共两行。<br/>第一行包含一个长度不超过 30 的字符串。<br/>第二行包含一个字符，表示要替换的特定字符。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出共一行，为替换后的字符串。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/769/\" target=\"_blank\">注意输出格式。\n来源：语法题</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "hello\nl\n",
+      "output": "he##o\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 769 | NQ6-05 | 第6章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

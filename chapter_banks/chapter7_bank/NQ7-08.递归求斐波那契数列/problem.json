@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ7-08",
+  "title": "递归求斐波那契数列",
+  "description": {
+    "format": "html",
+    "value": "<p>请使用递归的方式求斐波那契数列的第 n 项，下标从 1 开始。<br/>斐波那契数列：1, 1, 2, 3, 5 ...，这个数列从第 3 项开始，每一项都等于前两项之和。</p>"
+  },
+  "tags": [
+    "函数",
+    "递归"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>共一行，包含整数 n。<br/>数据范围：1 ≤ n ≤ 30</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>共一行，包含一个整数，表示斐波那契数列的第 n 项。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/820/\" target=\"_blank\">注意输出格式。\n来源：语法题</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "4\n",
+      "output": "3\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 820 | NQ7-08 | 第7章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

@@ -1,0 +1,88 @@
+{
+  "display_id": "NQ4-06",
+  "title": "斐波那契数列",
+  "description": {
+    "format": "html",
+    "value": "<p>输入整数 T 表示共有 T 个测试数据。接下来 T 行，每行输入一个整数 N（0 ≤ N ≤ 60）。<br/>斐波那契数列定义为：Fib(0)=0, Fib(1)=1，从 Fib(2) 开始，Fib(N)=Fib(N-1)+Fib(N-2)。<br/>对于每个 N，输出格式为Fib(N) = x，其中 x 为第 N 项的值。</p>"
+  },
+  "tags": [],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行输入 T；接下来 T 行，每行包含一个整数 N，数据范围：0 ≤ N ≤ 60</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>对于每组测试数据，输出一行结果，格式为Fib(N) = x</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/741/\" target=\"_blank\">可以利用迭代或动态规划的方法求解斐波那契数列。</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "3\n0\n4\n2\n",
+      "output": "Fib(0) = 0\nFib(4) = 3\nFib(2) = 1\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 741 | NQ4-06 | 第4章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

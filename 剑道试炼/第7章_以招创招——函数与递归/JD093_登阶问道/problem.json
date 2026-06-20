@@ -1,0 +1,90 @@
+{
+  "display_id": "JD093",
+  "title": "登阶问道",
+  "description": {
+    "format": "html",
+    "value": "<p>试炼场尽头，一座石阶直通山顶。石阶共有n级，每次只能跨1级或2级。</p><p>赵晴儿站在山脚问：\"从第一级走到第n级，一共有多少种不同的走法？\"</p><p>李少白想了想：\"如果我最后一步跨1级，那之前有f(n-1)种走法；如果最后一步跨2级，那之前有f(n-2)种走法……\"</p><p>\"没错，\"赵晴儿点头，\"这就是递归。\"</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一个整数n（1 ≤ n ≤ 20）。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出跳法总数。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>f(n) = f(n-1) + f(n-2)。最后一步跳1级或2级，两种情况之和。</p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5",
+      "output": "8"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "JD | JD093 | 第7章 以招创招",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

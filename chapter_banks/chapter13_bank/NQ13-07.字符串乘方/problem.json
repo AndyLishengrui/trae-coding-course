@@ -1,0 +1,90 @@
+{
+  "display_id": "NQ13-07",
+  "title": "字符串乘方",
+  "description": {
+    "format": "html",
+    "value": "<p>给定两个字符串a和b，定义a × b为它们的连接。例如，如果a = \"abc\"而b = \"def\"，则a × b = \"abcdef\"。如果将连接考虑成乘法，一个非负整数的乘方将用一种通常的方式定义：a^0 = \"\"（空字符串），a^(n+1) = a × (a^n)。</p>"
+  },
+  "tags": [
+    "字符串"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>输入包含不超过 10 组测试样例，每组测试样例占一行。<br/>每组样例包含一个由小写字母构成的字符串s，s的长度不超过 100，且不包含空格。<br/>最后的测试样例后面将是一个点号作为一行。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>对于每一个s，需要输出最大的n，使得存在一个字符串a，让s = a^n。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/777/\" target=\"_blank\">注意输出格式。</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "abcd\naaaa\nababab\n.\n",
+      "output": "1\n4\n3\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 777 | NQ13-07 | 第13章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

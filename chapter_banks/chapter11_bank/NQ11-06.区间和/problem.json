@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ11-06",
+  "title": "区间和",
+  "description": {
+    "format": "html",
+    "value": "<p>假定有一个无限长的数轴，数轴上每个坐标上的数都是0。<br/>现在，我们首先进行 n 次操作，每次操作将某一位置x上的数加c。<br/>接下来，进行 m 次询问，每个询问包含两个整数l和r，你需要求出在区间[l, r]之间的所有数的和。</p>"
+  },
+  "tags": [
+    "基础算法",
+    "离散化"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行包含两个整数n和m。<br/>接下来 n 行，每行包含两个整数x和c。<br/>再接下里 m 行，每行包含两个整数l和r。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>共m行，每行输出一个询问中所求的区间内数字和。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/802/\" target=\"_blank\">原题</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "3 3\n1 2\n3 6\n7 5\n1 3\n4 6\n7 8",
+      "output": "8\n0\n5"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 802 | NQ11-06 | 第11章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

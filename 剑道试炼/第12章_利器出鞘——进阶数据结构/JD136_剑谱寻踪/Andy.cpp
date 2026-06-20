@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+const int N = 100007, M = 1000007;
+int n, m;        //n为待匹配字符串长度
+char p[N], s[M]; //p为模板,s搜索范围
+int ne[N];       // next数组,初始值为0
+
+int main()
+{
+    // 第一行输入整数N，表示字符串P的长度。
+    // 第二行输入字符串P。
+    // 第三行输入整数M，表示字符串S的长度。
+    // 第四行输入字符串S。
+    cin >> n >> p + 1 >> m >> s + 1; //字符串从1开始存储，cin会在末尾加上\0
+
+    // 求next的过程 next[1]=0;从第二个字符开始计算next
+    for (int i = 2, j = 0; i <= n; i++) //预处理p串计算前缀后缀的值
+    {
+        //双指针操纵与匹配过程一致
+        while (j && p[i] != p[j + 1])
+            j = ne[j];
+        if (p[i] == p[j + 1])
+            j++;
+        ne[i] = j;//找到i的回退点j
+    }
+
+    // KMP 匹配过程
+    for (int si = 1, pj = 0; si <= m; si++) //si,pj为字符串指针，从1开始算
+    {
+        while (pj && s[si] != p[pj + 1]) // 用p字串pj+1字符与s串的si比较（提前看一个字符）
+            pj = ne[pj];                 //遇到不匹配，回退pj指针
+        if (s[si] == p[pj + 1])
+            pj++; //pj进一位
+        //  p串匹配成功
+        if (pj == n)
+        { //抵达p串的最后一个字符
+            cout << si - n << " "; //输出出现位置的下标
+            pj = ne[pj];           //回退,预备下一次的查找
+        }
+    }
+    return 0;
+}

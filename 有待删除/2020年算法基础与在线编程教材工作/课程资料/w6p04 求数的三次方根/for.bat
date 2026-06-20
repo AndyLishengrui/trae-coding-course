@@ -1,0 +1,1 @@
+for /L %%i in (1,1,20) do (Andy790biSearchDouble.exe <%%i.in >%%i.out)

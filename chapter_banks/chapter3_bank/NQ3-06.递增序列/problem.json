@@ -1,0 +1,88 @@
+{
+  "display_id": "NQ3-06",
+  "title": "递增序列",
+  "description": {
+    "format": "html",
+    "value": "<p>小鲁发现数学中有很多有趣的数列。请写一个程序：读入整数X，如果X不是0，则输出从1到X的所有整数。重复这个过程直到读入0为止。</p>"
+  },
+  "tags": [],
+  "input_description": {
+    "format": "html",
+    "value": "<p>多行，每行一个整数X。以0结束。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>对每个非0的X，输出一行从1到X的整数（空格隔开）。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/721/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5\n10\n3\n0",
+      "output": "1 2 3 4 5\n1 2 3 4 5 6 7 8 9 10\n1 2 3"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 721 | NQ3-06 | 第3章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

@@ -1,0 +1,90 @@
+{
+  "display_id": "JD084",
+  "title": "双剑互易",
+  "description": {
+    "format": "html",
+    "value": "<p>梁嘉峰在教李少白一套双剑术。左右手各持一剑，攻守之间需要不断交换位置。</p><p>\"实战中你不能把剑放到地上再捡起来，\"梁嘉峰说，\"直接交换。写一个函数，传入两个变量的引用，在函数内部交换它们的值。\"</p><p>李少白提笔写下函数签名，却犯了难——C++里普通参数只传值，改不了外面的变量。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一行，两个整数x和y。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>交换后的x和y。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>C++用引用参数 `void swap(int &x, int &y)`。Python中 a, b = b, a。</p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "6 26",
+      "output": "26 6"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "JD | JD084 | 第7章 以招创招",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

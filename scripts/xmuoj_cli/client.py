@@ -96,9 +96,11 @@ class XmuojClient:
         with open(zip_path, "rb") as f:
             files = {"file": (os.path.basename(zip_path), f, "application/zip")}
             data = {"spj": "true" if spj else "false"}
-            # Need to use multipart for file upload
-            resp = requests.post(url, data=data, files=files,
-                                headers={"Authorization": self.session.headers.get("Authorization", "")})
+            # Use self.session for auth consistency, remove Content-Type for multipart
+            saved_ct = self.session.headers.pop("Content-Type", None)
+            resp = self.session.post(url, data=data, files=files)
+            if saved_ct:
+                self.session.headers["Content-Type"] = saved_ct
         return self._parse(resp)
 
     def download_test_cases(self, problem_id: int, output_dir: str) -> str:

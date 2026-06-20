@@ -1,0 +1,90 @@
+{
+  "display_id": "JD126",
+  "title": "合围归阵",
+  "description": {
+    "format": "html",
+    "value": "<p>梁嘉峰在地上画了一堆区间，有些重叠，有些相邻。\"把这些区间合并——有交集的归为一组，最后数一数有几组。\"</p><p>赵晴儿蹲下来看了一会儿：\"先按左端点从小到大排。然后从左往右扫——如果当前区间的左端点在前一个区间内，说明它们重叠，合并；否则新开一组。\"</p><p>\"合围之势，聚散有序。\"</p><p>给定 n 个区间，合并所有有交集的区间（端点相交也算），输出合并后的区间个数。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行三个整数n、m和q。接下来n行每行m个整数。接下来q行每行五个整数x1、y1、x2、y2和c。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>n行，每行m个整数，空格隔开。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>按左端点排序，遍历合并：当前区间左端点 ≤ 前一个右端点则合并，否则新开。</p><p><a href='https://www.acwing.com/problem/content/803/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5\n1 2\n2 4\n5 6\n7 8\n7 10",
+      "output": "3"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 803 | JD122",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

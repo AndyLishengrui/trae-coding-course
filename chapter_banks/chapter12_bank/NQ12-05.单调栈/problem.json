@@ -1,0 +1,92 @@
+{
+  "display_id": "NQ12-05",
+  "title": "单调栈",
+  "description": {
+    "format": "html",
+    "value": "<p>给定一个长度为N的整数数列，输出每个数左边第一个比它小的数，如果不存在则输出-1。</p><p>1≤N≤10^5<br/>1≤数列中元素≤10^9</p>"
+  },
+  "tags": [
+    "单调栈",
+    "单调栈试炼",
+    "数据结构"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行包含整数N，表示数列长度。<br/>第二行包含N个整数，表示整数数列。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>共一行，包含N个整数，其中第i个数表示第i个数的左边第一个比它小的数，如果不存在则输出-1。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/830/\" target=\"_blank\">原题链接\n参考题解\nY总讲解\nY总代码</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5\n3 4 2 7 5",
+      "output": "-1 3 -1 2 2"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 830 | NQ12-05 | 第12章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

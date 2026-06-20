@@ -1,0 +1,92 @@
+{
+  "display_id": "NQ10-02",
+  "title": "前缀和试炼之子矩阵的和",
+  "description": {
+    "format": "html",
+    "value": "<p>输入一个n行m列的整数矩阵，再输入q个询问，每个询问包含四个整数x1, y1, x2, y2，表示一个子矩阵的左上角坐标和右下角坐标。<br/>对于每个询问输出子矩阵中所有数的和。<br/>数据范围：<br/>1≤n,m≤1000,1≤q≤200000,<br/>1≤x1≤x2≤n,1≤y1≤y2≤m,<br/>−1000≤矩阵内元素的值≤1000</p>"
+  },
+  "tags": [
+    "二维前缀和",
+    "前缀和与差分",
+    "基础算法"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行包含三个整数n，m，q。<br/>接下来n行，每行包含m个整数，表示整数矩阵。<br/>接下来q行，每行包含四个整数x1, y1, x2, y2，表示一组询问。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>共q行，每行输出一个询问的结果。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/796/\" target=\"_blank\">Y总讲解\n参考题解\n\nY总代码</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "3 4 3\n1 7 2 4\n3 6 2 8\n2 1 2 3\n1 1 2 2\n2 1 3 4\n1 3 3 4",
+      "output": "17\n27\n21"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 796 | NQ10-02 | 第10章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

@@ -1,0 +1,90 @@
+{
+  "display_id": "JD124",
+  "title": "方阵差分",
+  "description": {
+    "format": "html",
+    "value": "<p>赵晴儿在沙盘上画了一个 n 行 m 列的矩阵：\"我要把左上角 (x1,y1) 到右下角 (x2,y2) 这个子矩阵里每个数都加上 c。\"</p><p>梁嘉峰说：\"和一维差分一样的思路——在差分矩阵的四个角加减，最后对整个矩阵求一次二维前缀和，就还原出最终结果了。\"</p><p>\"蓄势蓄到二维，差分也能覆盖任意子矩阵。\"</p><p>给定一个 n×m 的整数矩阵和 q 个操作，每个操作将子矩阵的每个元素加 c。输出所有操作后的矩阵。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行三个整数n、m和q。接下来n行每行m个整数。接下来q行每行四个整数x1、y1、x2、y2。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>q行，每行一个整数。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>二维差分：在四个角加减，最后求二维前缀和。</p><p><a href='https://www.acwing.com/problem/content/798/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "3 4 2\n1 2 3 4\n5 6 7 8\n9 10 11 12\n1 1 2 2 1\n2 2 3 3 2",
+      "output": "2 3 3 4\n6 10 10 8\n9 12 14 12"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 798 | JD126",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

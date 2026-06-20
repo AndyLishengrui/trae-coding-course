@@ -1,0 +1,90 @@
+{
+  "display_id": "JD108",
+  "title": "剑指方根",
+  "description": {
+    "format": "html",
+    "value": "<p>赵晴儿在沙盘上写下一个数 n：\"求它的三次方根。\"</p><p>李少白试了几个整数，立方后不是太大就是太小。赵晴儿说：\"别猜了。三次方根一定在 -10000 到 10000 之间。你取中间值试试——如果中间值的立方比 n 大，说明真正的答案在左半边；比 n 小，就在右半边。范围不断缩小，直到精度足够。\"</p><p>\"和整数二分一样的思路，\"李少白说，\"只不过这次找的不是一个确切的位置，而是一个足够精确的浮点数。\"</p><p>\"对。整数二分停在某个整数上，浮点二分停在精度达标时。\"</p><p>给定一个浮点数 n，求它的三次方根。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一个浮点数n（-10000≤n≤10000）。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>n的三次方根，保留6位小数。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>浮点二分：left=-10000, right=10000，while(right-left>1e-8)，mid=(left+right)/2。若 mid³≥n，right=mid；否则 left=mid。</p><p><a href='https://www.acwing.com/problem/content/790/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "1000.000000",
+      "output": "10.000000"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 790 | JD108 | 第9章 快剑如风",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

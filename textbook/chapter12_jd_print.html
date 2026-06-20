@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>第12章 利器出鞘——进阶数据结构</title>
+    <style>
+        body { font-family: "Noto Serif SC", "Source Han Serif CN", serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.8; color: #333; }
+        h1 { text-align: center; color: #8B0000; border-bottom: 2px solid #8B0000; padding-bottom: 10px; }
+        h2 { color: #4A0080; margin-top: 2em; }
+        h3 { color: #2E5090; }
+        .chapter-subtitle { text-align: center; color: #666; font-size: 1.1em; margin-bottom: 2em; }
+        .problem { border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin: 20px 0; background: #fafafa; }
+        .problem-title { color: #8B0000; font-size: 1.3em; font-weight: bold; margin-bottom: 10px; }
+        .problem-meta { color: #666; font-size: 0.9em; margin-bottom: 15px; }
+        .description { margin: 15px 0; }
+        .description p { margin: 8px 0; }
+        .io-section { background: #f0f0f0; padding: 12px; border-radius: 4px; margin: 10px 0; }
+        .io-section h4 { margin: 0 0 8px 0; color: #555; font-size: 0.95em; }
+        .sample { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; margin: 10px 0; font-family: "Consolas", "Courier New", monospace; white-space: pre-wrap; }
+        .sample-label { color: #569cd6; font-weight: bold; margin-bottom: 5px; }
+        .hint { background: #fff8e1; border-left: 4px solid #ffc107; padding: 12px; margin: 15px 0; }
+        .code-section { margin: 15px 0; }
+        .code-section summary { cursor: pointer; color: #2E5090; font-weight: bold; }
+        pre { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; overflow-x: auto; font-size: 0.9em; }
+        code { font-family: "Consolas", "Courier New", monospace; }
+        .lang-tabs { display: flex; gap: 10px; margin: 10px 0; }
+        .lang-tab { padding: 5px 15px; cursor: pointer; border: 1px solid #ddd; border-radius: 4px 4px 0 0; }
+        .lang-tab.active { background: #1e1e1e; color: #d4d4d4; border-color: #1e1e1e; }
+    </style>
+</head>
+<body>
+    <h1>第12章 利器出鞘</h1>
+    <div class="chapter-subtitle">进阶数据结构</div>
+
+    <div class="problem" id="JD130">
+        <div class="problem-title">JD130：铁链串珠</div>
+        <div class="problem-meta">AcWing 826 | JD130</div>
+
+        <div class="description">
+            <p>兵器阁的深处，梁嘉峰指着一条铁链："这条链上每颗珠子存着一个值，每颗珠子还指着下一颗——这就是链表。"</p>
+<p>"用数组模拟链表：head指向第一颗珠子，val[]存每颗珠子的值，ne[]存下一颗珠子的下标。插入、删除都只需要改指针，O(1)。"</p>
+<p>赵晴儿说："链表的好处是插入删除快，代价是不能随机访问。"</p>
+<p>实现一个单链表，支持在头部插入、在第k个插入的元素后面插入、删除第k个插入的元素前面的元素。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>若干行操作命令：H x（头部插入x）、I k x（在第k个插入的元素后插入x）、D k（删除第k个插入的元素前面的元素）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出最终链表，从头到尾空格隔开。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+10
+H 9
+I 1 1
+D 1
+H 6
+I 3 6
+I 4 7
+D 3
+D 4
+I 2 2
+D 2
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+6
+7
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>数组模拟链表：head, val[], ne[]。插入：新节点的ne指向原next，前驱的ne指向新节点。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+const int N = 100010;
+
+// head 表示头节点的下标， e[N]表示节点i的值
+// ne[N]表示节点i的next指针是多少，idx存储当前已经用到了哪个节点
+int head, e[N], ne[N], idx;
+
+void init()
+{
+    head = -1;//一开始设置为-1
+    idx = 0;//当前用到了0个节点
+}
+
+//将x插入到头节点
+void add_to_head(int x)
+{
+  e[idx]=x, ne[idx] = head, head = idx, idx ++;
+}
+//将x插到下标是k的点后面
+void add(int k, int x)
+{
+  e[idx]=x, ne[idx]=ne[k], ne[k] = idx, idx ++;
+}
+//将下标是k的点后面的点删掉
+void remove(int k)
+{
+  ne[k] = ne[ne[k]];
+  //idx--;
+}
+int main()
+{
+  int m; cin&gt;&gt;m;
+
+  init();//初始化
+
+  while (m --)
+  {
+   int k, x;
+   char op;//操作字符
+
+   cin&gt;&gt;op;
+   if (op == 'H') 
+   {
+     cin &gt;&gt; x;
+     add_to_head(x);
+   }
+   else if (op == 'D')
+   {
+     cin &gt;&gt; k;
+     if (!k) head = ne[head];//删除头节点
+     else remove(k-1);
+   }
+   else 
+   {
+     cin &gt;&gt; k &gt;&gt; x;
+     add(k-1, x);
+   }
+  }
+  //打印单链表
+  for (int i = head; i!=-1; i = ne[i]) cout &lt;&lt; e[i] &lt;&lt; ' ';
+  cout &lt;&lt; endl;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+
+data = sys.stdin.read().split()
+m = int(data[0])
+idx_ptr = 1
+
+# Initialize
+N = 100010
+e = [0] * N
+ne = [0] * N
+head = -1
+idx = 0
+
+for _ in range(m):
+    op = data[idx_ptr]
+    idx_ptr += 1
+    if op == 'H':
+        x = int(data[idx_ptr])
+        idx_ptr += 1
+        e[idx] = x
+        ne[idx] = head
+        head = idx
+        idx += 1
+    elif op == 'D':
+        k = int(data[idx_ptr])
+        idx_ptr += 1
+        if k == 0:
+            head = ne[head]
+        else:
+            ne[k - 1] = ne[ne[k - 1]]
+    elif op == 'I':
+        k = int(data[idx_ptr])
+        x = int(data[idx_ptr + 1])
+        idx_ptr += 2
+        e[idx] = x
+        ne[idx] = ne[k - 1]
+        ne[k - 1] = idx
+        idx += 1
+
+# Output
+out = []
+i = head
+while i != -1:
+    out.append(str(e[i]))
+    i = ne[i]
+print(' '.join(out))</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD131">
+        <div class="problem-title">JD131：叠石成塔</div>
+        <div class="problem-meta">AcWing 828 | JD131</div>
+
+        <div class="description">
+            <p>梁嘉峰在墙角堆了一摞石块："栈——后进先出。只能从顶部放石块，也只能从顶部取。"</p>
+<p>赵晴儿指着石块："push是放石块到顶部，pop是取走顶部的石块，query是看看顶部那块刻着什么数。"</p>
+<p>"生活中到处是栈——叠盘子、摞书、函数调用。"</p>
+<p>实现一个栈，支持push、pop、query操作。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>若干行操作命令：push x（入栈）、pop（出栈）、query（查询栈顶）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>对每个query和pop操作输出一行结果。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+10
+push 5
+query
+push 6
+pop
+query
+pop
+push 3
+query
+push 4
+query
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+5
+5
+3
+4
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>数组模拟栈：tt指向栈顶。push: st[++tt]=x。pop: tt--。query: st[tt]。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+const int N = 100010;
+
+int m;
+int stk[N], tt;//数组模拟栈
+
+int main()
+{
+  cin&gt;&gt;m;
+  while (m --)
+  {
+    string op;
+    int x;
+
+    cin&gt;&gt;op;
+    if (op == "push")//栈顶指针+1，把数压入数组
+    {
+      cin &gt;&gt; x;
+      stk[++tt] = x;//压入一个元素
+    }
+    else if (op == "pop") tt --;//修改栈顶指针即可
+    else if (op == "empty") cout &lt;&lt; (tt? "NO":"YES") &lt;&lt;endl;//tt&gt;0表示非空
+    else cout&lt;&lt;stk[tt]&lt;&lt;endl;//返回栈顶
+  }
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"># 模拟栈
+m = int(input())
+stk = []
+for _ in range(m):
+    parts = input().split()
+    op = parts[0]
+    if op == 'push':
+        stk.append(int(parts[1]))
+    elif op == 'pop':
+        stk.pop()
+    elif op == 'query':
+        print(stk[-1])
+    else:
+        print('YES' if not stk else 'NO')</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD132">
+        <div class="problem-title">JD132：列阵待命</div>
+        <div class="problem-meta">AcWing 829 | JD132</div>
+
+        <div class="description">
+            <p>赵晴儿指着一排队列："队列——先进先出。新来的站队尾，走的从队头走。"</p>
+<p>梁嘉峰说："push是从队尾加入，pop是从队头弹出，query是看队头是谁。"</p>
+<p>"排队买饭、消息队列、BFS——都是队列。"</p>
+<p>实现一个队列，支持push、pop、query操作。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>若干行操作命令：push x（入队）、pop（出队）、query（查询队头）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>对每个query和pop操作输出一行结果。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+10
+push 5
+query
+push 3
+pop
+query
+push 7
+push 8
+pop
+query
+pop
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+5
+3
+7
+7
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>数组模拟队列：hh队头，tt队尾。push: q[++tt]=x。pop: hh++。query: q[hh]。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+const int N = 1000007;
+int q[N], hh, tt=-1;
+
+int main(){
+  int m;
+  cin&gt;&gt;m;
+  while (m--)
+  {
+    int x;
+
+    string op;
+    cin&gt;&gt;op;
+
+    if (op == "push") {
+      //(1) “push x” – 向队尾插入一个数x；
+      cin&gt;&gt;x;
+      q[++tt] =x;
+    } else if (op == "pop")// (2) “pop” – 从队头弹出一个数；
+      hh++;
+      else if (op == "empty") // (3) “empty” – 判断队列是否为空；
+      cout&lt;&lt;(hh&lt;=tt?"NO":"YES")&lt;&lt;endl;
+      else cout&lt;&lt;q[tt]&lt;&lt;endl;// (4) “query” – 查询队头元素。
+  }
+
+  return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"># 模拟队列
+from collections import deque
+m = int(input())
+q = deque()
+for _ in range(m):
+    parts = input().split()
+    op = parts[0]
+    if op == 'push':
+        q.append(int(parts[1]))
+    elif op == 'pop':
+        q.popleft()
+    elif op == 'query':
+        print(q[0])
+    else:
+        print('YES' if not q else 'NO')</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD133">
+        <div class="problem-title">JD133：算筹求值</div>
+        <div class="problem-meta">AcWing 3302 | JD133</div>
+
+        <div class="description">
+            <p>赵晴儿递来一个算式："3 + 4 * 2 - ( 1 + 5 )。算出结果。"</p>
+<p>梁嘉峰拿出两个盒子："数字盒和符号盒。遇到数字放数字盒。遇到符号——如果比栈顶符号优先级低，就把栈顶符号和两个数字算掉。遇到左括号直接放，遇到右括号一直算到左括号。"</p>
+<p>"用两个栈——数字栈和运算符栈，按优先级处理。"</p>
+<p>给定一个包含 +、-、*、/、(、) 的表达式，求值。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行包含+、-、*、/、(、)和整数的表达式。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，表达式的值。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+2+3*4
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+14
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>双栈法：数字栈+运算符栈。比较优先级决定是否先算栈顶。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;stack&gt;
+#include &lt;unordered_map&gt;
+
+using namespace std;
+
+/**
+ * NQ12-04: 表达式求值
+ * 基础数据结构 | AcWing 3302
+ * 时间: O(n) | 空间: O(n)
+ */
+
+stack&lt;int&gt; num; //存储计算过程中的数字
+stack&lt;char&gt; op; //存储操作符
+
+void eval()
+{
+  auto b = num.top(); num.pop();//第二个数
+  auto a = num.top(); num.pop();//第一个数
+  auto c = op.top(); op.pop();
+
+  int x;
+  if (c == '+') x = a + b; 
+  else if (c == '-') x = a - b;
+  else if (c == '*') x = a * b;
+  else x = a / b;
+  num.push(x);
+}
+
+int main()
+{
+  //优先级，可扩展为其他符号的优先级
+  unordered_map&lt;char,int&gt; pr{{'+',1}, {'-', 1}, {'*',2},{'/',2}};
+  string str; //输入都存储在字符串内
+  cin &gt;&gt; str; 
+  for (int i = 0; i &lt; str.size(); i ++)
+  {
+    auto c = str[i]; //读入每个char
+    if (isdigit(c))  //判断是否是数字
+    {
+      int x = 0, j = i;
+      while (j &lt; str.size() &amp;&amp; isdigit(str[j]))
+        x = x * 10 + str[j ++] - '0';
+      i = j  - 1; // 调整i的位置
+      num.push(x); //压栈
+    }
+    else if (c == '(') op.push(c);
+    else if (c == ')') 
+    {
+      //把前面所有的表达式都出栈运算
+      while (op.top() != '(') eval();
+      op.pop();
+    }
+    else 
+    {//根据操作符的优先级执行运算
+      while (op.size() &amp;&amp; op.top() != '(' &amp;&amp; pr[op.top()] &gt;= pr[c]) 
+      eval();
+      op.push(c);
+    }
+  }
+  //处理剩余的操作符
+  while(op.size()) eval();
+  cout&lt;&lt;num.top() &lt;&lt;endl;
+  return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"># 表达式求值
+s = input().strip()
+num = []
+op = []
+pri = {'+': 1, '-': 1, '*': 2, '/': 2}
+
+def eval_op():
+    b = num.pop()
+    a = num.pop()
+    c = op.pop()
+    if c == '+':
+        num.append(a + b)
+    elif c == '-':
+        num.append(a - b)
+    elif c == '*':
+        num.append(a * b)
+    else:
+        num.append(int(a / b))
+
+i = 0
+while i &lt; len(s):
+    c = s[i]
+    if c == ' ':
+        i += 1
+        continue
+    if c.isdigit():
+        j = i
+        while j &lt; len(s) and s[j].isdigit():
+            j += 1
+        num.append(int(s[i:j]))
+        i = j
+        continue
+    if c == '(':
+        op.append(c)
+    elif c == ')':
+        while op[-1] != '(':
+            eval_op()
+        op.pop()
+    else:
+        while op and op[-1] != '(' and pri.get(op[-1], 0) &gt;= pri.get(c, 0):
+            eval_op()
+        op.append(c)
+    i += 1
+while op:
+    eval_op()
+print(num[-1])</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD134">
+        <div class="problem-title">JD134：一山更比</div>
+        <div class="problem-meta">AcWing 830 | JD134</div>
+
+        <div class="description">
+            <p>梁嘉峰指着一排山峰："每座山往左看，找到第一座比自己高的山。"</p>
+<p>赵晴儿说："用一个栈维护'还没找到更高山'的山峰——从左往右扫，遇到更高的山，栈里比它矮的全部弹出，它们的答案就是这座山。"</p>
+<p>"栈里永远是单调递减的——所以叫单调栈。"</p>
+<p>给定一个整数序列，对每个元素找到它左边第一个比它大的数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数n。第二行n个整数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，每个元素左边第一个比它大的数，不存在输出-1。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5
+3 2 5 1 4
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+-1 3 -1 5 5
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>单调栈：遍历时弹出比当前小的元素，栈顶就是答案。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+const int N=100007;
+int n;
+int stk[N],tt;//数组模拟栈实现单调栈
+int main ()
+{
+    cin&gt;&gt; n;
+    for (int i=0; i&lt; n; i++){
+        int x; cin&gt;&gt;x;
+        while (tt &amp;&amp; stk[tt]&gt;= x)//tt为空，并且单调栈顶元素比x大
+          tt--;//出栈，这些数永远不会用到
+          if (tt) cout&lt;&lt;stk[tt]&lt;&lt;' '; //栈顶就是比x小的元素，直接输出
+           else cout&lt;&lt;-1&lt;&lt;' '; //x左边没有任何数比它小
+           //入栈
+           stk[++tt] = x;
+    }
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"># 单调栈
+n = int(input())
+a = list(map(int, input().split()))
+stk = []
+res = []
+for x in a:
+    while stk and stk[-1] &gt;= x:
+        stk.pop()
+    res.append(str(stk[-1]) if stk else '-1')
+    stk.append(x)
+print(' '.join(res))</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD135">
+        <div class="problem-title">JD135：窗移镜照</div>
+        <div class="problem-meta">AcWing 154 | JD135</div>
+
+        <div class="description">
+            <p>赵晴儿在沙盘上画了一排数字，用一个框框住其中k个："这个框每往右移一格，告诉我框里的最小值。"</p>
+<p>梁嘉峰说："用单调队列——维护一个单调递增的队列。窗口移动时，队头如果过期就弹出；新元素入队时，把队尾比它大的全部弹出。队头永远是当前窗口的最小值。"</p>
+<p>"一扇窗户移过整排数字，镜中始终映出最小值。"</p>
+<p>给定一个长度为 n 的整数序列和窗口大小 k，求每个窗口内的最小值。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数n和k（窗口大小）。第二行n个整数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>每个窗口的最小值，空格隔开。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+8 3
+1 3 -1 -3 5 3 6 7
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+-1 -3 -3 -3 3 3
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>单调队列：维护递增队列。窗口滑动时弹出过期元素和比新元素大的元素。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+const int N=10000007;
+
+int n,k;
+int a[N],q[N];//数组模拟队列
+int hh=0,tt=-1;//hh队头,tt对尾
+
+void initQueue(){
+    hh=0; tt=-1;
+}
+
+int main()
+{
+    scanf("%d%d",&amp;n,&amp;k);
+    for (int i=0; i&lt;n; i++) scanf("%d",&amp;a[i]);//读入数字
+
+    //求滑动窗口内的最小值
+    initQueue();//初始化队列,队列存储的是数组下标
+    for (int i=0; i&lt;n; i++)
+    {
+        //判断队头是否已经滑出窗口
+        if (hh&lt;=tt &amp;&amp; i-k+1&gt; q[hh]) hh++;//pop front删除队头
+        //!单调队列，去掉所有降序的队尾点
+        while (hh&lt;=tt&amp;&amp; a[q[tt]]&gt;= a[i]) tt--;//pop back删除队尾
+        q[++tt] =i;//把当前i值入队列
+        if (i&gt;=k-1) //i在窗口内
+          printf("%d ",a[q[hh]]);//队头就是最小值
+    }
+    puts("");
+
+    //求滑动窗口内的最大值    
+    initQueue();//初始化队列,队列存储的是数组下标
+    for (int i=0; i&lt;n; i++)
+    {
+        //判断队头是否已经滑出窗口
+        if (hh&lt;=tt &amp;&amp; i-k+1&gt; q[hh]) hh++;//pop front删除队头
+        //!单调队列，去掉所有降序的队尾点
+        while (hh&lt;=tt&amp;&amp; a[q[tt]]&lt;=a[i]) tt--;//pop back删除队尾
+        q[++tt] =i;//把当前i值入队列
+        if (i&gt;=k-1) //i在窗口内
+          printf("%d ",a[q[hh]]);//队头就是最大值
+    }
+    puts("");
+
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+from collections import deque
+data = sys.stdin.read().split()
+n, k = int(data[0]), int(data[1])
+a = [int(x) for x in data[2:2+n]]
+q = deque()
+mins = []
+for i in range(n):
+    while q and a[q[-1]] &gt;= a[i]: q.pop()
+    q.append(i)
+    if q[0] &lt;= i - k: q.popleft()
+    if i &gt;= k - 1: mins.append(str(a[q[0]]))
+q.clear()
+maxs = []
+for i in range(n):
+    while q and a[q[-1]] &lt;= a[i]: q.pop()
+    q.append(i)
+    if q[0] &lt;= i - k: q.popleft()
+    if i &gt;= k - 1: maxs.append(str(a[q[0]]))
+# Match C++ printf("%d ", ...) format with trailing spaces
+sys.stdout.write(' '.join(mins) + ' \n')
+sys.stdout.write(' '.join(maxs) + ' \n')</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD136">
+        <div class="problem-title">JD136：剑谱寻踪</div>
+        <div class="problem-meta">AcWing 831 | JD136</div>
+
+        <div class="description">
+            <p>赵晴儿拿着一本剑谱："在这本厚厚的剑谱里找一段特定的剑招序列——模式串在文本串中出现了几次？分别在哪里？"</p>
+<p>李少白想一个个比对，但剑谱有十万字。梁嘉峰说："KMP算法——先预处理模式串，算出每个位置的next数组（最长相等前后缀）。匹配时利用next跳转，不用回退文本指针。O(n+m)。"</p>
+<p>在文本串中查找模式串的所有出现位置。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数n（模式串长度）。第二行模式串。第三行一个整数m（文本串长度）。第四行文本串。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，模式串在文本串中所有出现的起始位置（从0开始），空格隔开。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3
+aba
+5
+ababa
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+0 2
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>KMP：预处理next数组（最长相等前后缀），匹配时利用next跳转。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+const int N = 100007, M = 1000007;
+int n, m;        //n为待匹配字符串长度
+char p[N], s[M]; //p为模板,s搜索范围
+int ne[N];       // next数组,初始值为0
+
+int main()
+{
+    // 第一行输入整数N，表示字符串P的长度。
+    // 第二行输入字符串P。
+    // 第三行输入整数M，表示字符串S的长度。
+    // 第四行输入字符串S。
+    cin &gt;&gt; n &gt;&gt; p + 1 &gt;&gt; m &gt;&gt; s + 1; //字符串从1开始存储，cin会在末尾加上\0
+
+    // 求next的过程 next[1]=0;从第二个字符开始计算next
+    for (int i = 2, j = 0; i &lt;= n; i++) //预处理p串计算前缀后缀的值
+    {
+        //双指针操纵与匹配过程一致
+        while (j &amp;&amp; p[i] != p[j + 1])
+            j = ne[j];
+        if (p[i] == p[j + 1])
+            j++;
+        ne[i] = j;//找到i的回退点j
+    }
+
+    // KMP 匹配过程
+    for (int si = 1, pj = 0; si &lt;= m; si++) //si,pj为字符串指针，从1开始算
+    {
+        while (pj &amp;&amp; s[si] != p[pj + 1]) // 用p字串pj+1字符与s串的si比较（提前看一个字符）
+            pj = ne[pj];                 //遇到不匹配，回退pj指针
+        if (s[si] == p[pj + 1])
+            pj++; //pj进一位
+        //  p串匹配成功
+        if (pj == n)
+        { //抵达p串的最后一个字符
+            cout &lt;&lt; si - n &lt;&lt; " "; //输出出现位置的下标
+            pj = ne[pj];           //回退,预备下一次的查找
+        }
+    }
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"># KMP字符串
+n = int(input())
+p = input().strip()
+m = int(input())
+s = input().strip()
+ne = [0] * n
+j = 0
+for i in range(1, n):
+    while j &gt; 0 and p[i] != p[j]:
+        j = ne[j - 1]
+    if p[i] == p[j]:
+        j += 1
+    ne[i] = j
+j = 0
+res = []
+for i in range(m):
+    while j &gt; 0 and s[i] != p[j]:
+        j = ne[j - 1]
+    if s[i] == p[j]:
+        j += 1
+    if j == n:
+        res.append(str(i - n + 1))
+        j = ne[j - 1]
+print(' '.join(res))</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD137">
+        <div class="problem-title">JD137：堆石成丘</div>
+        <div class="problem-meta">AcWing 839 | JD137</div>
+
+        <div class="description">
+            <p>梁嘉峰在地上堆了一座小丘："堆——一种特殊的完全二叉树。父节点的值永远比子节点小（小根堆）。"</p>
+<p>赵晴儿说："用数组存——父节点i的子节点是2i和2i+1。插入时上浮，删除时下沉。支持插入、取最小值、删除任意元素。"</p>
+<p>实现一个小根堆，支持插入、删除第k个插入的元素、查询最小值。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>若干行操作命令：I x（插入x）、PM（查询最小值）、D k（删除第k个插入的元素）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>对每个PM操作输出一行最小值。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5
+I 3
+I 1
+I 4
+PM
+D 1
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>数组模拟堆：上浮和下沉操作。父节点i的子节点是2i和2i+1。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;string.h&gt;
+
+using namespace std;
+
+const int N = 100007;
+
+// hp是heap pointer的缩写，表示堆数组中下标到第k个插入的映射
+// ph是pointer heap的缩写，表示第k个插入到堆数组中的下标的映射
+// hp和ph数组是互为反函数的
+int h[N],ph[N],hp[N],cnt;
+
+void heap_swap(int a, int b)
+{
+  swap(ph[hp[a]],ph[hp[b]]);//堆数组的下标
+  swap(hp[a],hp[b]);//下标与第几个插入元素的映射
+  swap(h[a],h[b]);//堆元素
+}
+
+void down(int u)
+{
+  int t = u;
+  if (u*2&lt;=cnt &amp;&amp; h[u*2]&lt;h[t]) t = u*2;//u*2左儿子
+  if (u*2+1 &lt;= cnt &amp;&amp; h[u*2+1]&lt;h[t]) t = u*2+1;// u*2+1右儿子
+  if (u != t)
+  {
+    heap_swap(u,t);
+    down(t);
+  }
+}
+
+void up(int u)
+{
+  while (u/2 &amp;&amp; h[u] &lt; h[u/2])
+  {
+    heap_swap(u,u/2);
+    u &gt;&gt;= 1;
+  }
+}
+
+int main()
+{
+  int n,m=0;
+  scanf("%d",&amp;n);
+  while(n --) 
+  {
+    char op[5];
+    int k,x;
+    scanf("%s",op);
+    //在堆最后一个元素插入元素
+    if (!strcmp(op,"I"))
+    {
+      scanf("%d",&amp;x);
+      cnt ++;
+      m++;
+      ph[m] = cnt, hp[cnt] = m;
+      h[cnt] = x;
+      up(cnt); //插入后执行up(cnt)
+    }
+    else if (!strcmp(op,"PM")) printf("%d\n",h[1]);//堆顶是最小值
+    else if (!strcmp(op,"DM"))
+    {
+      heap_swap(1,cnt);
+      cnt --;
+      down(1); //删除最小值后执行down(1)
+    }
+    else if (!strcmp(op,"D"))
+    {
+      scanf("%d",&amp;k);//删除第k个元素
+      k = ph[k];//取第k个元素下标
+      heap_swap(k,cnt);//与最后一个元素交换
+      cnt--;
+      up(k);
+      down(k);
+    }
+    else {
+      scanf("%d%d",&amp;k,&amp;x);//修改第k个数
+      k = ph[k];
+      h[k] = x;
+      up(k);
+      down(k);
+    }
+  }
+  return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"># 模拟堆
+import sys
+n = int(input())
+h = [0] * 100010
+hp = [0] * 100010
+ph = [0] * 100010
+sz = 0
+idx = 0
+
+def heap_swap(a, b):
+    ph[hp[a]], ph[hp[b]] = b, a
+    hp[a], hp[b] = hp[b], hp[a]
+    h[a], h[b] = h[b], h[a]
+
+def down(u):
+    t = u
+    if u * 2 &lt;= sz and h[u * 2] &lt; h[t]:
+        t = u * 2
+    if u * 2 + 1 &lt;= sz and h[u * 2 + 1] &lt; h[t]:
+        t = u * 2 + 1
+    if u != t:
+        heap_swap(u, t)
+        down(t)
+
+def up(u):
+    while u // 2 &gt; 0 and h[u] &lt; h[u // 2]:
+        heap_swap(u, u // 2)
+        u //= 2
+
+for _ in range(n):
+    parts = sys.stdin.readline().split()
+    op = parts[0]
+    if op == 'I':
+        x = int(parts[1])
+        sz += 1
+        idx += 1
+        ph[idx] = sz
+        hp[sz] = idx
+        h[sz] = x
+        up(sz)
+    elif op == 'PM':
+        print(h[1])
+    elif op == 'DM':
+        heap_swap(1, sz)
+        sz -= 1
+        down(1)
+    elif op == 'D':
+        k = int(parts[1])
+        u = ph[k]
+        heap_swap(u, sz)
+        sz -= 1
+        down(u)
+        up(u)
+    else:
+        k, x = int(parts[1]), int(parts[2])
+        u = ph[k]
+        h[u] = x
+        down(u)
+        up(u)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD138">
+        <div class="problem-title">JD138：合帮并派</div>
+        <div class="problem-meta">AcWing 836 | JD138</div>
+
+        <div class="description">
+            <p>江湖上有N个门派，每个弟子属于一个门派。赵晴儿问："两个弟子是不是同门？"梁嘉峰说："用并查集——合并两个门派用union，查询两个人是否同门用find。路径压缩后几乎O(1)。"</p>
+<p>给定N个元素和M个操作：合并两个集合，或查询两个元素是否在同一集合。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数N和M。接下来M行，每行M 1 a b（合并a和b所在集合）或Q a b（查询a和b是否同属一个集合）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>对每个Q操作输出一行Yes或No。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+4 5
+M 1 2
+Q 1 2
+M 2 3
+Q 1 3
+Q 1 4
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+Yes
+Yes
+No
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>并查集：find时路径压缩，union时合并两棵树。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;cstdio&gt;
+const int N = 100007;
+int p[N];
+int n;
+
+int find(int x)
+{
+  while (p[x] != x) {
+    p[x] = p[p[x]];
+    x = p[x];
+  }
+  return x;
+}
+
+int main()
+{
+  int m;
+  scanf("%d%d", &amp;n, &amp;m);
+  for (int i = 1; i &lt;= n; i++) p[i] = i;
+  while (m--) {
+    char op;
+    int a, b;
+    scanf(" %c%d%d", &amp;op, &amp;a, &amp;b);
+    if (op == 'M') p[find(a)] = find(b);
+    else puts(find(a) == find(b) ? "Yes" : "No");
+  }
+  return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+sys.setrecursionlimit(200000)
+data = sys.stdin.read().split()
+n, m = int(data[0]), int(data[1])
+p = list(range(n+1))
+def find(x):
+    while p[x] != x:
+        p[x] = p[p[x]]
+        x = p[x]
+    return x
+idx = 2
+out = []
+for _ in range(m):
+    op, a, b = data[idx], int(data[idx+1]), int(data[idx+2])
+    idx += 3
+    if op == 'M': p[find(a)] = find(b)
+    else: out.append('Yes' if find(a) == find(b) else 'No')
+print('\n'.join(out))</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD139">
+        <div class="problem-title">JD139：门派计数</div>
+        <div class="problem-meta">AcWing 837 | JD139</div>
+
+        <div class="description">
+            <p>赵晴儿在并查集的基础上问："每个门派有多少人？"</p>
+<p>梁嘉峰说："在合并时，把一个门派的人数加到另一个上。查询时直接读人数。"</p>
+<p>给定N个元素和M个操作：合并两个集合，或查询某个元素所在集合的大小。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数N和M。接下来M行，每行M a b（合并）或C a（查询a所在集合大小）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>对每个C操作输出一行集合大小。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+4 5
+M 1 2
+C 1
+M 2 3
+C 1
+C 4
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+2
+3
+1
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>维护size[]数组，合并时更新size。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;cstdio&gt;
+const int N = 100007;
+int p[N], sz[N];
+int n;
+
+int find(int x)
+{
+  while (p[x] != x) {
+    p[x] = p[p[x]];
+    x = p[x];
+  }
+  return x;
+}
+
+int main()
+{
+  int m;
+  scanf("%d%d", &amp;n, &amp;m);
+  for (int i = 1; i &lt;= n; i++) { p[i] = i; sz[i] = 1; }
+  while (m--) {
+    char op[4];
+    scanf("%s", op);
+    if (op[0] == 'C') {
+      int a, b;
+      scanf("%d%d", &amp;a, &amp;b);
+      int ra = find(a), rb = find(b);
+      if (ra != rb) { p[ra] = rb; sz[rb] += sz[ra]; }
+    } else if (op[1] == '1') {
+      int a, b;
+      scanf("%d%d", &amp;a, &amp;b);
+      puts(find(a) == find(b) ? "Yes" : "No");
+    } else {
+      int a;
+      scanf("%d", &amp;a);
+      printf("%d\n", sz[find(a)]);
+    }
+  }
+  return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+sys.setrecursionlimit(200000)
+data = sys.stdin.read().split()
+n, m = int(data[0]), int(data[1])
+p = list(range(n+1))
+sz = [1]*(n+1)
+def find(x):
+    while p[x] != x:
+        p[x] = p[p[x]]
+        x = p[x]
+    return x
+idx = 2
+out = []
+for _ in range(m):
+    op = data[idx]
+    if op == 'C':
+        a, b = int(data[idx+1]), int(data[idx+2])
+        idx += 3
+        ra, rb = find(a), find(b)
+        if ra != rb: p[ra] = rb; sz[rb] += sz[ra]
+    elif op == 'Q1':
+        a, b = int(data[idx+1]), int(data[idx+2])
+        idx += 3
+        out.append('Yes' if find(a)==find(b) else 'No')
+    else:
+        a = int(data[idx+1])
+        idx += 2
+        out.append(str(sz[find(a)]))
+print('\n'.join(out))</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD140">
+        <div class="problem-title">JD140：三界相克</div>
+        <div class="problem-meta">AcWing 240 | JD140</div>
+
+        <div class="description">
+            <p>梁嘉峰说："A吃B，B吃C，C吃A——三种动物形成环形食物链。给你N个动物和K句话，判断哪些话是假的。"</p>
+<p>赵晴儿解释："扩展并查集——每个动物拆成三个节点，分别表示'A是A'、'A是B的食物'、'A是C的食物'。用模3的关系判断真假。"</p>
+<p>给定N个动物和K句话，判断假话数量。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数N和K。接下来K行，每行两个整数x y z（x=1表示y和z同类，x=2表示y吃z）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，假话的数量。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+100 7
+1 101 1
+2 1 2
+2 2 3
+2 3 3
+1 1 3
+2 3 1
+1 5 5
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+3
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>扩展并查集：每个点拆成3个，模3判断关系。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+const int N = 50007;//Andy风格
+
+int n,m;
+int p[N], d[N];//p集合 d距离初始化为0
+
+int find(int x)
+{
+  if (p[x]!=x)
+  {
+    int t = find(p[x]);
+    d[x] += d[p[x]];
+    p[x] = t;
+  }
+  return p[x];
+}
+
+int main()
+{
+  scanf("%d%d", &amp;n, &amp;m);
+
+  for (int i = 1; i &lt;=n; i++) p[i]=i;//初始化p集合
+
+  int res=0;
+  while(m --)
+  {
+    int t , x, y;
+    scanf("%d%d%d",&amp;t,&amp;x,&amp;y);
+
+    if (x &gt; n || y &gt; n) res ++;
+    else 
+    {
+      int px = find(x), py=find(y);//两个集合的父节点
+      if (t == 1)
+      {
+        if (px == py &amp;&amp; (d[x] - d[y])% 3) res ++;
+        else if (px != py)
+        {
+          p[px] = py;
+          d[px] = d[y] - d[x];
+        }
+      }
+      else
+      {
+        if (px == py &amp;&amp; (d[x] - d[y] -1) % 3) res ++;
+        else if (px != py)
+        {
+          p[px] = py;
+          d[px] = d[y] + 1 - d[x];
+        }
+      }
+    }
+
+  }
+
+  printf("%d\n",res);
+  return 0;
+
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+sys.setrecursionlimit(200000)
+data = sys.stdin.read().split()
+n, k = int(data[0]), int(data[1])
+p = list(range(n + 1))
+d = [0] * (n + 1)
+
+def find(x):
+    if p[x] != x:
+        root = find(p[x])
+        d[x] += d[p[x]]
+        p[x] = root
+    return p[x]
+
+ans = 0
+idx = 2
+for _ in range(k):
+    t = int(data[idx]); x = int(data[idx+1]); y = int(data[idx+2])
+    idx += 3
+    if x &gt; n or y &gt; n:
+        ans += 1; continue
+    rx, ry = find(x), find(y)
+    if t == 1:
+        if rx == ry and (d[x] - d[y]) % 3 != 0: ans += 1
+        elif rx != ry:
+            p[rx] = ry
+            d[rx] = d[y] - d[x]
+    else:
+        if rx == ry and (d[x] - d[y] - 1) % 3 != 0: ans += 1
+        elif rx != ry:
+            p[rx] = ry
+            d[rx] = d[y] - d[x] + 1
+print(ans)</code></pre>
+            </details>
+        </div>
+    </div>
+
+</body>
+</html>

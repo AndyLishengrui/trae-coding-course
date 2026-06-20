@@ -1,0 +1,90 @@
+{
+  "display_id": "JD137",
+  "title": "堆石成丘",
+  "description": {
+    "format": "html",
+    "value": "<p>梁嘉峰在地上堆了一座小丘：\"堆——一种特殊的完全二叉树。父节点的值永远比子节点小（小根堆）。\"</p><p>赵晴儿说：\"用数组存——父节点i的子节点是2i和2i+1。插入时上浮，删除时下沉。支持插入、取最小值、删除任意元素。\"</p><p>实现一个小根堆，支持插入、删除第k个插入的元素、查询最小值。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>若干行操作命令：I x（插入x）、PM（查询最小值）、D k（删除第k个插入的元素）。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>对每个PM操作输出一行最小值。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>数组模拟堆：上浮和下沉操作。父节点i的子节点是2i和2i+1。</p><p><a href='https://www.acwing.com/problem/content/839/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5\nI 3\nI 1\nI 4\nPM\nD 1",
+      "output": "1"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 839 | JD137",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

@@ -1,0 +1,90 @@
+{
+  "display_id": "JD133",
+  "title": "算筹求值",
+  "description": {
+    "format": "html",
+    "value": "<p>赵晴儿递来一个算式：\"3 + 4 * 2 - ( 1 + 5 )。算出结果。\"</p><p>梁嘉峰拿出两个盒子：\"数字盒和符号盒。遇到数字放数字盒。遇到符号——如果比栈顶符号优先级低，就把栈顶符号和两个数字算掉。遇到左括号直接放，遇到右括号一直算到左括号。\"</p><p>\"用两个栈——数字栈和运算符栈，按优先级处理。\"</p><p>给定一个包含 +、-、*、/、(、) 的表达式，求值。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一行包含+、-、*、/、(、)和整数的表达式。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，表达式的值。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>双栈法：数字栈+运算符栈。比较优先级决定是否先算栈顶。</p><p><a href='https://www.acwing.com/problem/content/3302/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "2+3*4",
+      "output": "14"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 3302 | JD133",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

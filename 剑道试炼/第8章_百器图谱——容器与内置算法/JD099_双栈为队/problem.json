@@ -1,0 +1,90 @@
+{
+  "display_id": "JD099",
+  "title": "双栈为队",
+  "description": {
+    "format": "html",
+    "value": "<p>赵晴儿在兵器阁里找到两个铁盒，每个盒子只能从顶部放入和取出——这就是\"栈\"，后进先出。</p><p>梁嘉峰说：\"现在我需要一个'队列'——先进先出。但手边只有这两个栈，没有队列。你能用这两个栈模拟一个队列吗？\"</p><p>赵晴儿思索片刻：\"入队的时候都放进盒子1。出队的时候，如果盒子2是空的，就把盒子1的东西全部倒进盒子2——这样顺序就反过来了，最先进来的变成了盒子2的顶部，直接取就行。\"</p><p>请帮赵晴儿实现这个\"双栈模拟队列\"的操作。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>若干操作命令：`push x`（入队）、`pop`（出队并输出）、`empty`（判空）。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>对pop操作输出队首值，empty操作输出`yes`或`no`。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>栈1入队，栈2出队。出队时栈2空就把栈1全部倒入栈2。</p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "push 1\npush 2\npop\npush 3\npop\npop\nempty",
+      "output": "1\n2\n3\nyes"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "JD | JD099 | 第8章 百器图谱",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

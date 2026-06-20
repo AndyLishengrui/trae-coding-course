@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>第8章 百器图谱——容器与内置算法</title>
+    <style>
+        body { font-family: "Noto Serif SC", "Source Han Serif CN", serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.8; color: #333; }
+        h1 { text-align: center; color: #8B0000; border-bottom: 2px solid #8B0000; padding-bottom: 10px; }
+        h2 { color: #4A0080; margin-top: 2em; }
+        h3 { color: #2E5090; }
+        .chapter-subtitle { text-align: center; color: #666; font-size: 1.1em; margin-bottom: 2em; }
+        .problem { border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin: 20px 0; background: #fafafa; }
+        .problem-title { color: #8B0000; font-size: 1.3em; font-weight: bold; margin-bottom: 10px; }
+        .problem-meta { color: #666; font-size: 0.9em; margin-bottom: 15px; }
+        .description { margin: 15px 0; }
+        .description p { margin: 8px 0; }
+        .io-section { background: #f0f0f0; padding: 12px; border-radius: 4px; margin: 10px 0; }
+        .io-section h4 { margin: 0 0 8px 0; color: #555; font-size: 0.95em; }
+        .sample { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; margin: 10px 0; font-family: "Consolas", "Courier New", monospace; white-space: pre-wrap; }
+        .sample-label { color: #569cd6; font-weight: bold; margin-bottom: 5px; }
+        .hint { background: #fff8e1; border-left: 4px solid #ffc107; padding: 12px; margin: 15px 0; }
+        .code-section { margin: 15px 0; }
+        .code-section summary { cursor: pointer; color: #2E5090; font-weight: bold; }
+        pre { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; overflow-x: auto; font-size: 0.9em; }
+        code { font-family: "Consolas", "Courier New", monospace; }
+        .lang-tabs { display: flex; gap: 10px; margin: 10px 0; }
+        .lang-tab { padding: 5px 15px; cursor: pointer; border: 1px solid #ddd; border-radius: 4px 4px 0 0; }
+        .lang-tab.active { background: #1e1e1e; color: #d4d4d4; border-color: #1e1e1e; }
+    </style>
+</head>
+<body>
+    <h1>第8章 百器图谱</h1>
+    <div class="chapter-subtitle">容器与内置算法</div>
+
+    <div class="problem" id="JD096">
+        <div class="problem-title">JD096：空格替换</div>
+        <div class="problem-meta">AcWing JD | JD096</div>
+
+        <div class="description">
+            <p>兵器阁的大门上刻着一行古文，但年代久远，字迹模糊，空格处尤其难以辨认。赵晴儿凑近看了看："这行字里夹了太多空格，密密麻麻的，根本看不清。"</p>
+<p>梁嘉峰说："古卷传输时，空格容易丢失。古人想了个办法——把每个空格替换成 <code>%20</code>，这样既保留了间隔，又不会和真正的空白混淆。"</p>
+<p>"你写一段程序，把这行古文里的所有空格替换成 <code>%20</code>。"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行字符串（长度不超过100），可能包含空格。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>替换空格为 <code>%20</code> 后的字符串。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+Hello World
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+Hello%20World
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>遍历字符串，遇到空格输出 <code>%20</code>，否则输出原字符。可用 <code>string</code> 的 <code>getline</code> 读入含空格的整行。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
+    string s;
+    getline(cin, s);
+    for (char c : s) {
+        if (c == ' ') cout &lt;&lt; "%20";
+        else cout &lt;&lt; c;
+    }
+    cout &lt;&lt; endl;
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">s = input()
+print(s.replace(' ', '%20'))</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD097">
+        <div class="problem-title">JD097：再算斐波</div>
+        <div class="problem-meta">AcWing JD | JD097</div>
+
+        <div class="description">
+            <p>赵晴儿在兵器阁的账本上翻到一串奇怪的数字：1, 1, 2, 3, 5, 8, 13, 21……</p>
+<p>"这是前辈铸剑师留下的排列规律，"梁嘉峰说，"每一柄新剑的重量都是前两柄之和。第1柄和第2柄都是1斤，第3柄就是1+1=2斤，第4柄是1+2=3斤……"</p>
+<p>"上一章你用递归算过这个数列，但递归太慢了。这次用容器来存——把每一项都推进一个序列里，只保留最近两项，循环推进。"</p>
+<p>请帮赵晴儿算出第n柄剑的重量。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个整数n（0 ≤ n ≤ 90）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出斐波那契数列第n项。约定第0项为0，第1项为1。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+10
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+55
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>迭代法：用两个变量 <code>a</code> 和 <code>b</code> 滚动，每次 <code>c = a + b</code>，然后 <code>a = b, b = c</code>。循环 n 次。也可以用 <code>vector</code> 存储每一项。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+// 用 vector 存储斐波那契数列，迭代计算
+int main() {
+    int n;
+    cin &gt;&gt; n;
+    if (n == 0) { cout &lt;&lt; 0 &lt;&lt; endl; return 0; }
+
+    vector&lt;long long&gt; fib;
+    fib.push_back(0);  // fib[0] = 0
+    fib.push_back(1);  // fib[1] = 1
+    for (int i = 2; i &lt;= n; i++) {
+        fib.push_back(fib[i - 1] + fib[i - 2]);
+    }
+    cout &lt;&lt; fib[n] &lt;&lt; endl;
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">n = int(input())
+if n == 0: print(0)
+else:
+    a, b = 0, 1
+    for _ in range(n - 1): a, b = b, a + b
+    print(b)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD098">
+        <div class="problem-title">JD098：倒转铁链</div>
+        <div class="problem-meta">AcWing JD | JD098</div>
+
+        <div class="description">
+            <p>兵器阁的架子上挂着一串铁环，每个环上刻着一个数字，从头到尾依次是 1、2、3……最后一个环上刻着 -1，表示链条结束。</p>
+<p>梁嘉峰指着铁链说："我要从最后一个环开始，把数字一个个报出来。但这串铁环只能从前往后读，不能直接跳到末尾。"</p>
+<p>赵晴儿想了想："用一个容器——先把所有数字存进去，再从后往前取出来。这就像把铁环一个个摘下来放到盒子里，最后从盒子里倒着取。"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行整数，以 -1 结尾，表示铁链上每个环的数字（-1 不算节点）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>从尾到头输出每个数字，每行一个。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+1 2 3 -1
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+3
+2
+1
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>用 <code>vector</code> 依次存入所有数字，然后从后往前遍历输出。也可以用 <code>stack</code>：读入时压栈，读完后依次弹出。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main() {
+    vector&lt;int&gt; nums;
+    int x;
+    while (cin &gt;&gt; x &amp;&amp; x != -1) {
+        nums.push_back(x);
+    }
+    for (int i = nums.size() - 1; i &gt;= 0; i--) {
+        cout &lt;&lt; nums[i] &lt;&lt; endl;
+    }
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+for line in sys.stdin:
+    line = line.strip()
+    if not line:
+        continue
+    nums = list(map(int, line.split()))
+    nums.pop()  # remove -1
+    for x in reversed(nums):
+        print(x)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD099">
+        <div class="problem-title">JD099：双栈为队</div>
+        <div class="problem-meta">AcWing JD | JD099</div>
+
+        <div class="description">
+            <p>赵晴儿在兵器阁里找到两个铁盒，每个盒子只能从顶部放入和取出——这就是"栈"，后进先出。</p>
+<p>梁嘉峰说："现在我需要一个'队列'——先进先出。但手边只有这两个栈，没有队列。你能用这两个栈模拟一个队列吗？"</p>
+<p>赵晴儿思索片刻："入队的时候都放进盒子1。出队的时候，如果盒子2是空的，就把盒子1的东西全部倒进盒子2——这样顺序就反过来了，最先进来的变成了盒子2的顶部，直接取就行。"</p>
+<p>请帮赵晴儿实现这个"双栈模拟队列"的操作。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>若干行操作命令：</p>
+<ul>
+  <li><code>push x</code>：将 x 入队</li>
+  <li><code>pop</code>：出队并输出队首值</li>
+  <li><code>empty</code>：判空，输出 <code>yes</code> 或 <code>no</code></li>
+</ul>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>对每个 <code>pop</code> 操作输出一行队首值，对每个 <code>empty</code> 操作输出一行 <code>yes</code> 或 <code>no</code>。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+push 1
+push 2
+pop
+push 3
+pop
+pop
+empty
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1
+2
+3
+yes
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>用两个 <code>stack<int></code>：栈1负责入队，栈2负责出队。出队时若栈2为空，把栈1全部倒入栈2（<code>push</code> 栈1的 <code>top</code> 到栈2，再 <code>pop</code> 栈1）。这样栈2的顶部就是最早入队的元素。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;stack&gt;
+#include &lt;string&gt;
+using namespace std;
+
+// 用两个栈模拟队列
+// 栈1负责入队，栈2负责出队
+// 出队时若栈2空，把栈1全部倒入栈2
+stack&lt;int&gt; s1, s2;
+
+void transfer() {
+    while (s1.size()) {
+        s2.push(s1.top());
+        s1.pop();
+    }
+}
+
+int main() {
+    string cmd;
+    while (cin &gt;&gt; cmd) {
+        if (cmd == "push") {
+            int x; cin &gt;&gt; x;
+            s1.push(x);
+        } else if (cmd == "pop") {
+            if (s2.empty()) transfer();
+            cout &lt;&lt; s2.top() &lt;&lt; endl;
+            s2.pop();
+        } else if (cmd == "empty") {
+            cout &lt;&lt; (s1.empty() &amp;&amp; s2.empty() ? "yes" : "no") &lt;&lt; endl;
+        }
+    }
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+
+stack1 = []
+stack2 = []
+
+for line in sys.stdin:
+    line = line.strip()
+    if not line:
+        continue
+    parts = line.split()
+    if parts[0] == 'push':
+        stack1.append(int(parts[1]))
+    elif parts[0] == 'pop':
+        if not stack2:
+            while stack1:
+                stack2.append(stack1.pop())
+        if stack2:
+            print(stack2.pop())
+    elif parts[0] == 'peek':
+        if not stack2:
+            while stack1:
+                stack2.append(stack1.pop())
+        if stack2:
+            print(stack2[-1])
+    elif parts[0] == 'empty':
+        print('true' if (not stack1 and not stack2) else 'false')</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD100">
+        <div class="problem-title">JD100：铁链翻转</div>
+        <div class="problem-meta">AcWing JD | JD100</div>
+
+        <div class="description">
+            <p>梁嘉峰从架子上取下一条铁链，每个环上刻着一个数字。他把铁链平铺在桌上，从头到尾是 1、2、3、4、5……最后一个环上刻着 -1，表示结束。</p>
+<p>"我要把这条铁链反过来，"梁嘉峰说，"第一个变最后一个，最后一个变第一个。但不能断开重接，只能用容器来辅助。"</p>
+<p>赵晴儿拿起一个铁盒："把铁环一个个摘下来放进盒子里——先进去的沉到底部。等全部摘完，再从盒子里取出来，顺序就反了。"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行整数，以 -1 结尾，表示铁链上每个环的数字（-1 不算节点）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>反转后的铁链，数字用空格隔开。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+1 2 3 4 5 -1
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+5 4 3 2 1
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>用 <code>vector</code> 读入所有数字，然后从后往前输出。或者用 <code>stack</code>：读入时压栈，读完后依次弹出。栈的后进先出特性天然实现了反转。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;stack&gt;
+using namespace std;
+
+// 用栈实现链表反转：读入时压栈，输出时弹栈（后进先出 = 反转）
+int main() {
+    stack&lt;int&gt; stk;
+    int x;
+    while (cin &gt;&gt; x &amp;&amp; x != -1) {
+        stk.push(x);
+    }
+    while (!stk.empty()) {
+        cout &lt;&lt; stk.top();
+        stk.pop();
+        if (!stk.empty()) cout &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+text = sys.stdin.read().strip()
+parts = text.split("-&gt;")
+values = [p for p in parts if p != "NULL"]
+values.reverse()
+print("-&gt;".join(values) + "-&gt;NULL")</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD101">
+        <div class="problem-title">JD101：双链归并</div>
+        <div class="problem-meta">AcWing JD | JD101</div>
+
+        <div class="description">
+            <p>赵晴儿从兵器阁的两个抽屉里各取出一条铁链，每条链上的数字都从小到大排好了。她需要把两条链合并成一条，仍然保持从小到大的顺序。</p>
+<p>"不能拆开重排，"梁嘉峰说，"两条链都是有序的，你要利用这个特点——从两条链的头部同时开始比较，每次取较小的那个接到结果链的末尾。"</p>
+<p>赵晴儿拿起两个容器："用一个容器存结果。两个指针分别指向两条链的头部，谁小就取谁，直到一条链取完，再把另一条的剩余全部接上。"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>两行，每行若干整数（以 -1 结尾），分别表示两条有序铁链上的数字（-1 不算节点）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>合并后的有序铁链，数字用空格隔开。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+1 3 5 -1
+2 4 6 -1
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 2 3 4 5 6
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>用 <code>vector</code> 分别读入两条链，然后双指针合并：比较两个 <code>vector</code> 当前元素，取较小的放入结果 <code>vector</code>。一个遍历完后，把另一个的剩余部分直接追加。最后用 <code>sort</code> 也可，但双指针更高效。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+// 合并两条有序链表
+// 读入两行，每行以-1结尾，输出合并后的有序序列
+int main() {
+    vector&lt;int&gt; a;
+    int x;
+    // 读入第一条链表
+    while (cin &gt;&gt; x &amp;&amp; x != -1) a.push_back(x);
+    // 读入第二条链表
+    while (cin &gt;&gt; x &amp;&amp; x != -1) a.push_back(x);
+    sort(a.begin(), a.end());
+    for (size_t i = 0; i &lt; a.size(); i++) {
+        cout &lt;&lt; a[i];
+        if (i + 1 &lt; a.size()) cout &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">import sys
+lines = sys.stdin.read().strip().split('\n')
+a = [int(x) for x in lines[0].split("-&gt;") if x != "NULL"]
+b = [int(x) for x in lines[1].split("-&gt;") if x != "NULL"]
+i = j = 0
+res = []
+while i &lt; len(a) and j &lt; len(b):
+    if a[i] &lt;= b[j]:
+        res.append(str(a[i]))
+        i += 1
+    else:
+        res.append(str(b[j]))
+        j += 1
+res.extend(str(x) for x in a[i:])
+res.extend(str(x) for x in b[j:])
+print("-&gt;".join(res))</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD102">
+        <div class="problem-title">JD102：三元归序</div>
+        <div class="problem-meta">AcWing JD | JD102</div>
+
+        <div class="description">
+            <p>兵器阁的账房先生有一本厚厚的兵器账本，每条记录记着三样东西：兵器编号 x、重量 y（带两位小数）、兵器名称 z。</p>
+<p>"这本账太乱了，"赵晴儿翻了几页就头疼，"编号不按顺序，同编号的重量也乱排。"</p>
+<p>梁嘉峰说："先按编号从小到大排，编号相同的再按重量从小到大排。你可以用结构体存每条记录，放进容器里，再自定义排序规则。"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数 N（记录条数）。</p>
+<p>接下来 N 行，每行两个整数和一个字符串，分别为编号 x、重量 y、名称 z。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>排序后的 N 条记录，每行一条。编号输出整数，重量保留两位小数，名称原样输出，空格隔开。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3
+1 2 abc
+3 4 def
+2 1 ghi
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 2.00 abc
+2 1.00 ghi
+3 4.00 def
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>用 <code>struct</code> 定义三元组（编号、重量、名称），存入 <code>vector</code>。自定义比较函数：先比编号，编号相同再比重量。用 <code>sort(a.begin(), a.end(), cmp)</code> 排序。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+// 用 vector + struct 存储三元组，自定义排序
+struct Record {
+    int x;      // 编号
+    double y;   // 重量
+    string z;   // 名称
+};
+
+bool cmp(const Record &amp;a, const Record &amp;b) {
+    if (a.x != b.x) return a.x &lt; b.x;
+    return a.y &lt; b.y;
+}
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+
+    vector&lt;Record&gt; records;
+    for (int i = 0; i &lt; n; i++) {
+        Record r;
+        cin &gt;&gt; r.x &gt;&gt; r.y &gt;&gt; r.z;
+        records.push_back(r);
+    }
+
+    sort(records.begin(), records.end(), cmp);
+
+    for (int i = 0; i &lt; n; i++) {
+        printf("%d %.2lf %s\n", records[i].x, records[i].y, records[i].z.c_str());
+    }
+    return 0;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">n = int(input())
+data = []
+for _ in range(n):
+    parts = input().split()
+    x = int(parts[0])
+    y = float(parts[1])
+    z = parts[2]
+    data.append((x, y, z))
+data.sort(key=lambda t: t[0])
+for x, y, z in data:
+    print(f'{x} {y:.2f} {z}')</code></pre>
+            </details>
+        </div>
+    </div>
+
+</body>
+</html>

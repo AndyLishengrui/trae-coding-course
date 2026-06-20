@@ -1,0 +1,90 @@
+{
+  "display_id": "JD121",
+  "title": "蓄势之术",
+  "description": {
+    "format": "html",
+    "value": "<p>蓄势阁中，赵晴儿盘膝而坐，面前摆着一排石块，每块上刻着一个数字。</p><p>\"如果我问你第3块到第7块的总和，你怎么算？\"赵晴儿问。</p><p>李少白：\"从第3块加到第7块，五次加法。\"</p><p>\"如果问一千次呢？\"赵晴儿摇头，\"每次从头算太浪费了。提前算好从第1块到每一块的累积和——第1块到第7块的和减去第1块到第2块的和，就是第3块到第7块的和。一次减法就够了。\"</p><p>\"这就是前缀和——蓄势于前，取用于后。\"</p><p>给定一个长度为 n 的整数序列和 m 个查询，每个查询求 [l, r] 的区间和。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行两个整数n和m。接下来n行每行两个整数x和c。接下来m行每行两个整数l和r。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>m行，每行一个整数。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>前缀和：s[i] = a[1] + ... + a[i]。区间和 = s[r] - s[l-1]。</p><p><a href='https://www.acwing.com/problem/content/795/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5 3\n2 1 3 6 4\n1 3\n2 4\n1 5",
+      "output": "6\n10\n16"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 795 | JD123",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

@@ -1,0 +1,90 @@
+{
+  "display_id": "JD069",
+  "title": "墨迹遮字",
+  "description": {
+    "format": "html",
+    "value": "<p>古卷上有些字被墨迹遮住了，需要替换成'#'，露出可辨认的文字。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>一行字符串（长度不超过100，全大写）。第二行一个字符，表示要替换的字符。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>替换后的字符串。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>遍历字符串，遇到目标字符输出'#'，否则输出原字符。</p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "hello\no\nworld\nl\nabc\nx\ntest\ne\nhello\na\nh\ne",
+      "output": "hell#"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "JD | JD069 | 第6章 古卷密文",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

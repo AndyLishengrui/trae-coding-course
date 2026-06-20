@@ -1,0 +1,90 @@
+{
+  "display_id": "JD116",
+  "title": "无重之最",
+  "description": {
+    "format": "html",
+    "value": "<p>梁嘉峰在沙盘上摆了一排石块，每块上刻着一个数字。他问：\"从这排石块中，找出最长的一段——这段里每个数字都不重复。\"</p><p>李少白想从头遍历每一段，但石块有十万块。赵晴儿教他：\"用两个指针，一左一右，框住一段区间。右指针往右扩展，遇到重复数字就收缩左指针，直到区间内没有重复。每一步都更新最大长度。\"</p><p>\"两个指针各走各的，总共只走一遍——O(n)。\"</p><p>给定一个长度为 n 的整数序列，找出最长的不含重复数字的连续子序列，输出其长度。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行一个整数n。第二行n个整数（1≤n≤100000）。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，最长连续不重复子序列的长度。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>滑动窗口：右指针扩展，用哈希表判断是否重复，重复则左指针收缩。O(n)。</p><p><a href='https://www.acwing.com/problem/content/799/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5\n1 2 2 3 5",
+      "output": "3"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 799 | JD114",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

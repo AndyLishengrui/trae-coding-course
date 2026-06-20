@@ -1,0 +1,90 @@
+{
+  "display_id": "JD106",
+  "title": "逆流之数",
+  "description": {
+    "format": "html",
+    "value": "<p>弟子们排成一列，每人身上有一个编号。赵晴儿发现，有些排在前面的人编号反而比后面的大——这就是\"逆序对\"，说明队伍很乱。</p><p>\"逆序对越多，队伍越乱。\"赵晴儿说，\"但要一个个比太慢了。有没有 O(nlogn) 的方法？\"</p><p>李少白盯着归并排序看了一会儿，突然开窍：\"归并的时候，左右两队都是从小到大排好的。从两队的排头开始比较——如果右边的先出列，说明右边这个人比左边队里剩下的所有人都小，那些都是逆序对！\"</p><p>\"没错。\"赵晴儿笑了，\"排完序，逆序对也数完了。\"</p><p>给定一个长度为 n 的整数数列，求逆序对的数量。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行包含整数n。第二行包含n个整数（1≤n≤100000）。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，逆序对的数量。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>归并排序过程中，当右边元素先被选中时，左边剩余元素个数就是新增的逆序对数。用 long long 存结果。</p><p><a href='https://www.acwing.com/problem/content/788/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5\n2 3 1 5 4",
+      "output": "3"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 788 | JD106 | 第9章 快剑如风",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

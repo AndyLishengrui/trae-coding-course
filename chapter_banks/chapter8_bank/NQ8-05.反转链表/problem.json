@@ -1,0 +1,94 @@
+{
+  "display_id": "NQ8-05",
+  "title": "反转链表",
+  "description": {
+    "format": "html",
+    "value": "<p>定义一个函数，输入一个链表的头结点，反转该链表并输出反转后链表的头结点。</p>"
+  },
+  "tags": [
+    "链表"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>输入一个链表的头结点。<br/>数据范围：链表长度[0, 30]。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出反转后的链表的头结点。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/35/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "1->2->3->4->5->NULL\n",
+      "output": "5->4->3->2->1->NULL\n"
+    },
+    {
+      "input": "10->74->87->19->NULL\n",
+      "output": "19->87->74->10->NULL\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 35 | NQ8-05 | 第8章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

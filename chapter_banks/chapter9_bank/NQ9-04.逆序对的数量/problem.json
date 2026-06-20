@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ9-04",
+  "title": "逆序对的数量",
+  "description": {
+    "format": "html",
+    "value": "<p>给定一个长度为n的整数数列，请你计算数列中的逆序对的数量。<br/>逆序对的定义如下：对于数列的第 i 个和第 j 个元素，如果满足 i &lt; j 且 a[i] &gt; a[j]，则其为一个逆序对；否则不是。<br/>数据范围：1≤n≤100000</p>"
+  },
+  "tags": [
+    "基础算法",
+    "归并排序"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行包含整数n，表示数列的长度。<br/>第二行包含 n 个整数，表示整个数列。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出一个整数，表示逆序对的个数。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/788/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "6\n2 3 4 5 6 1",
+      "output": "5"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 788 | NQ9-04 | 第9章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

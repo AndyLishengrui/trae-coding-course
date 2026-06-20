@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ14-08",
+  "title": "染色法判定二分图",
+  "description": {
+    "format": "html",
+    "value": "<p>给定一个n个点m条边的无向图，图中可能存在重边和自环。<br/>请你判断这个图是否是二分图。</p>"
+  },
+  "tags": [
+    "搜索与图论",
+    "染色法"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行包含两个整数n和m。<br/>接下来m行，每行包含两个整数u和v，表示点u和点v之间存在一条边。<br/>数据范围<br/>1≤n,m≤10^5</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>如果给定图是二分图，则输出Yes，否则输出No。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/860/\" target=\"_blank\">原题链接\n视频讲解\n参考题解\nY总代码</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "4 4\n1 3\n1 4\n2 3\n2 4",
+      "output": "Yes"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 860 | NQ14-08 | 第14章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

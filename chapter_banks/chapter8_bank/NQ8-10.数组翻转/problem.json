@@ -1,0 +1,90 @@
+{
+  "display_id": "NQ8-10",
+  "title": "数组翻转",
+  "description": {
+    "format": "html",
+    "value": "<p>编写函数 void reverse(int a[], int size) 实现将数组 a 中的前 size 个数翻转并输出翻转后的数组 a。</p>"
+  },
+  "tags": [
+    "函数"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行 n 和 size 分别表示数组长度和要翻转的个数；<br/>第二行 n 个整数为数组 a。<br/>数据范围：1 ≤ size ≤ n ≤ 1000，1 ≤ a[i] ≤ 1000</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行 n 个整数表示翻转后的数组 a。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/816/\" target=\"_blank\">注意输出格式。\n来源：语法题</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5 3\n1 2 3 4 5\n",
+      "output": "3 2 1 4 5\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 816 | NQ8-10 | 第8章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

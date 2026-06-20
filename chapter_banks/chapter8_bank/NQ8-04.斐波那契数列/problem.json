@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ8-04",
+  "title": "斐波那契数列",
+  "description": {
+    "format": "html",
+    "value": "<p>输入一个整数n，要求斐波那契数列的第n项。<br/>假定从0开始，第0项为0。</p>"
+  },
+  "tags": [
+    "递归",
+    "递推"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>输入一个整数n。<br/>数据范围：0 ≤ n ≤ 39</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>返回斐波那契数列的第n项。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/21/\" target=\"_blank\">注意输出格式。</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5\n",
+      "output": "5\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 21 | NQ8-04 | 第8章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

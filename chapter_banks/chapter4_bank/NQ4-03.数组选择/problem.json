@@ -1,0 +1,88 @@
+{
+  "display_id": "NQ4-03",
+  "title": "数组选择",
+  "description": {
+    "format": "html",
+    "value": "<p>输入一个长度为 100 的数组 A，请你按顺序输出其中不大于 10 的所有元素。</p>"
+  },
+  "tags": [],
+  "input_description": {
+    "format": "html",
+    "value": "<p>输入 100 个数，每个数占一行，可能为整数或浮点数。数据范围：-100 ≤ A[i] ≤ 100</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>按顺序输出数组中所有不大于 10 的元素，每个元素占一行，格式为 A[i] = x，其中 i 为原数组中对应元素的下标，x 保留一位小数。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/739/\" target=\"_blank\">注意保留一位小数的输出格式，且仅输出不大于10的元素。\n来源：语法题</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "0\n-5\n63\n-8.5\n... (共100个数)\n",
+      "output": "A[0] = 0.0\nA[1] = -5.0\nA[3] = -8.5\n... (仅输出不大于10的元素)\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 739 | NQ4-03 | 第4章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

@@ -1,0 +1,90 @@
+{
+  "display_id": "NQ5-12",
+  "title": "蛇形矩阵",
+  "description": {
+    "format": "html",
+    "value": "<p>输入两个整数 n 和 m，输出一个 n 行 m 列的矩阵，将数字 1 到 n×m 按照回字蛇形填充至矩阵中。<br/>具体蛇形形式可参考样例。</p>"
+  },
+  "tags": [
+    "数组"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>输入共一行，包含两个整数 n 和 m。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>输出满足要求的矩阵。矩阵占 n 行，每行包含 m 个用空格隔开的整数，输出完毕后需再输出一个空行。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/756/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "3 3",
+      "output": "1 2 3\n8 9 4\n7 6 5\n\n"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 756 | NQ5-12 | 第5章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

@@ -1,0 +1,90 @@
+{
+  "display_id": "JD157",
+  "title": "三角登峰",
+  "description": {
+    "format": "html",
+    "value": "<p>华山云梯，台阶排成三角形，每级刻着一个数字。从顶到底，每步只能向左下或右下。\"找出一条路径，使数字之和最大。\"裁判宣布。</p><p>李少白仰望云梯，忽然笑了：\"从底向上——每级取下方两个方向中较大的，加上自己。一层层往上推，山顶就是答案。\"</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行一个整数n。接下来n行第i行有i个整数。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，最大路径和。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>从底向上DP。dp[i][j] = max(dp[i+1][j], dp[i+1][j+1]) + a[i][j]。</p><p><a href='https://www.acwing.com/problem/content/0/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5\n7\n3 8\n8 1 0\n2 7 4 4\n4 5 2 6 5",
+      "output": "30"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 898 | JD157",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

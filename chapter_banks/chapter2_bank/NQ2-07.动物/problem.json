@@ -1,0 +1,88 @@
+{
+  "display_id": "NQ2-07",
+  "title": "动物",
+  "description": {
+    "format": "html",
+    "value": "<p>小鲁在生物课上学了动物分类。根据三个特征（脊椎/无脊椎、哺乳/鸟/爬虫/昆虫、食性），判断动物的种类名称。这是一个嵌套条件判断的经典题。</p>"
+  },
+  "tags": [],
+  "input_description": {
+    "format": "html",
+    "value": "<p>三行：第一行\"vertebrado\"或\"invertebrado\"；第二、三行根据第一行不同。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>动物名称（如aguia, pomba, homem, vaca, pulga, lagarta, sanguessuga, minhoca）。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/670/\" target=\"_blank\">原题链接</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "vertebrado\nmamifero\nonivoro",
+      "output": "homem"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 670 | NQ2-07 | 第2章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

@@ -1,0 +1,88 @@
+{
+  "display_id": "NQ2-08",
+  "title": "选择练习1",
+  "description": {
+    "format": "html",
+    "value": "<p>读取 4 个整数 A，B，C 和 D。如果四个整数同时满足以下条件：<br/>B 大于 A。D 大于 A。C 和 D 的总和大于 A 和 B 的总和。C 是正数。A 是偶数。则输出Valores aceitos，否则，输出Valores nao aceitos。</p>"
+  },
+  "tags": [],
+  "input_description": {
+    "format": "html",
+    "value": "<p>输入占一行，包含四个整数 A, B, C, D。<br/>数据范围<br/>−100≤A,B,C,D≤100</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>如果输入数值满足题目条件则输出Valores aceitos，否则输出Valores nao aceitos。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/657/\" target=\"_blank\">注意条件的顺序和逻辑关系。</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "5 6 7 8",
+      "output": "Valores nao aceitos"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 657 | NQ2-08 | 第2章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

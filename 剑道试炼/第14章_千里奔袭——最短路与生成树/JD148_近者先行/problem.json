@@ -1,0 +1,90 @@
+{
+  "display_id": "JD148",
+  "title": "近者先行",
+  "description": {
+    "format": "html",
+    "value": "<p>赵晴儿在城池图上标了距离：\"从城1出发，到每个城池的最短距离是多少？边权都是正数。\"</p><p>梁嘉峰说：\"朴素Dijkstra——每次选未访问的最近点，用它更新邻居的距离。选过的点不再更新。\"</p><p>给定一个带权有向图和起点，求到每个点的最短距离。</p>"
+  },
+  "tags": [
+    "剑道录"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>第一行两个整数n和m。接下来m行每行三个整数a b w表示一条从a到b的权为w的有向边。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>一行，n个整数表示到点1的最短距离。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<p>Dijkstra：O(n²)。每次选最近未访问点，更新邻居。</p><p><a href='https://www.acwing.com/problem/content/849/'>原题链接</a></p>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "3 3\n1 2 2\n2 3 1\n1 3 4",
+      "output": "0 2 3"
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Low",
+  "source": "AcWing 849 | JD148",
+  "allow_public_test_case_download": false,
+  "answers": []
+}

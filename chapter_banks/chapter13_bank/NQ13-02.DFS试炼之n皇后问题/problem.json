@@ -1,0 +1,91 @@
+{
+  "display_id": "NQ13-02",
+  "title": "DFS试炼之n皇后问题",
+  "description": {
+    "format": "html",
+    "value": "<p>n-皇后问题是指将 n 个皇后放在 n∗n 的国际象棋棋盘上，使得皇后不能相互攻击到，即任意两个皇后都不能处于同一行、同一列或同一斜线上。</p><p>数据范围:1&lt;=n&lt;=12</p>"
+  },
+  "tags": [
+    "DFS",
+    "DFS试炼"
+  ],
+  "input_description": {
+    "format": "html",
+    "value": "<p>共一行，包含整数n。</p>"
+  },
+  "output_description": {
+    "format": "html",
+    "value": "<p>每个解决方案占n行，每行输出一个长度为n的字符串，用来表示完整的棋盘状态。<br/>其中”.”表示某一个位置的方格状态为空，”Q”表示某一个位置的方格上摆着皇后。<br/>每个方案输出完成后，输出一个空行。<br/>输出方案的顺序请根据样例，按照次序从小到大，从左到右输出。</p>"
+  },
+  "test_case_score": [
+    {
+      "score": 10,
+      "input_name": "1.in",
+      "output_name": "1.out"
+    },
+    {
+      "score": 10,
+      "input_name": "2.in",
+      "output_name": "2.out"
+    },
+    {
+      "score": 10,
+      "input_name": "3.in",
+      "output_name": "3.out"
+    },
+    {
+      "score": 10,
+      "input_name": "4.in",
+      "output_name": "4.out"
+    },
+    {
+      "score": 10,
+      "input_name": "5.in",
+      "output_name": "5.out"
+    },
+    {
+      "score": 10,
+      "input_name": "6.in",
+      "output_name": "6.out"
+    },
+    {
+      "score": 10,
+      "input_name": "7.in",
+      "output_name": "7.out"
+    },
+    {
+      "score": 10,
+      "input_name": "8.in",
+      "output_name": "8.out"
+    },
+    {
+      "score": 10,
+      "input_name": "9.in",
+      "output_name": "9.out"
+    },
+    {
+      "score": 10,
+      "input_name": "10.in",
+      "output_name": "10.out"
+    }
+  ],
+  "hint": {
+    "format": "html",
+    "value": "<a href=\"https://www.acwing.com/problem/content/843/\" target=\"_blank\">原题链接\nY总讲解</a>"
+  },
+  "time_limit": 1000,
+  "memory_limit": 256,
+  "samples": [
+    {
+      "input": "4",
+      "output": ".Q..\n...Q\nQ...\n..Q.\n..Q.\nQ...\n...Q\n.Q.."
+    }
+  ],
+  "template": {},
+  "spj": null,
+  "rule_type": "OI",
+  "difficulty": "Mid",
+  "source": "AcWing 843 | NQ13-02 | 第13章",
+  "allow_public_test_case_download": false,
+  "answers": []
+}
