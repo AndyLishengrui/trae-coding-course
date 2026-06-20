@@ -27,7 +27,7 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
 .chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
 .chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
-.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">预处理的智慧</div>
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}.chapter-summary h4{font-size:10pt;color:#1e40af;margin:1.2em 0 .4em 0;border-bottom:1px solid #e5e7eb;padding-bottom:.2em}.chapter-summary h4:first-of-type{margin-top:.5em}.concept-table{width:100%;border-collapse:collapse;margin:.5em 0;font-size:8.5pt}.concept-table th{background:#2563eb;color:#fff;padding:.4em .6em;text-align:left;font-size:8pt}.concept-table td{padding:.35em .6em;border-bottom:1px solid #e5e7eb;vertical-align:top}.concept-table tr:nth-child(even){background:#f0f4ff}.mistake-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.mistake-list li{margin:.3em 0;line-height:1.5}.skill-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.skill-list li{margin:.3em 0;line-height:1.5}.next-preview{margin:.5em 0;font-size:9pt;color:#444;padding:.5em .8em;background:#f0fdf4;border-left:3px solid #22c55e;border-radius:2px}</style></head><body><div class="chapter-title">预处理的智慧</div>
 <div class="chapter-subtitle">前缀和、差分与双指针 · 7题 · C++ &amp; Python 双语对照</div>
 <div class="preface">
 <p>小鲁上节课学会了排序——把混乱变有序。这节课要学的是：<strong>有了有序性或预处理之后，如何以光速回答问题</strong>。小华说："排序之后数组有序了，二分查找O(log n)；但如果你经常要查区间和呢？每次都要O(n)累加还是太慢——所以有了前缀和，O(1)回答。有了前缀和就有差分——修改一个区间只需两次操作。有了滑动窗口就有双指针——两个指针各走一遍解决O(n²)的问题。这些技巧的核心思想都是：<strong>预处理</strong>和<strong>挖掘有序结构</strong>。"</p>
@@ -521,10 +521,35 @@ i = 0
 print(<span style="color: #a31515">&#39;Yes&#39;</span> <span style="color: #0000ff">if</span> i == n <span style="color: #0000ff">else</span> <span style="color: #a31515">&#39;No&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
-<div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>
-<li><strong>前缀和（1D/2D）：</strong>O(n)预处理→O(1)查询。"重复查询→预处理"思维的典型应用</li>
-<li><strong>差分（1D/2D）：</strong>O(1)区间修改→O(n)还原。"修改操作远多于查询"场景的最优方案</li>
-<li><strong>双指针三模式：</strong>滑动窗口、对撞指针、匹配指针——核心是不回溯，O(n)解决O(n²)问题</li>
-<li><strong>厦大精神：</strong>自强不息。这些预处理技巧，在真实工程中（大数据、图像处理）同样大放异彩</li>
-</ul></div>
+<div class="chapter-summary"><h3>📋 本章小结</h3>
+<h4>一、核心概念表</h4>
+<table class="concept-table">
+<thead><tr><th>概念</th><th>C++</th><th>Python</th></tr></thead>
+<tbody>
+<tr><td>一维前缀和</td><td>s[i]=s[i-1]+a[i]</td><td>s[i]=s[i-1]+a[i]</td></tr>
+<tr><td>区间查询</td><td>s[r]-s[l-1]</td><td>s[r]-s[l-1]</td></tr>
+<tr><td>一维差分</td><td>b[l]++;b[r+1]--;</td><td>b[l]+=1;b[r+1]-=1</td></tr>
+<tr><td>二维前缀和</td><td>容斥原理4项</td><td>容斥原理4项</td></tr>
+<tr><td>滑动窗口</td><td>双指针l,r维护窗口</td><td>双指针l,r维护窗口</td></tr>
+</tbody></table>
+<h4>二、常见错误清单</h4>
+<ol class="mistake-list">
+<li><strong>前缀和下标从1开始：</strong>s[0]=0，a从下标1开始存储，否则区间查询公式要变</li>
+<li><strong>差分还原时累加错误：</strong>b[i]+=b[i-1]才是还原，不是b[i]=b[i-1]</li>
+<li><strong>滑动窗口左右指针：</strong>右指针扩展窗口，左指针收缩窗口，移动条件要区分</li>
+<li><strong>二维前缀和容斥公式：</strong>s[x2][y2]-s[x1-1][y2]-s[x2][y1-1]+s[x1-1][y1-1]，漏一项就错</li>
+<li><strong>差分数组初始化：</strong>不是直接复制原数组，而是对每个位置做a[i]-a[i-1]</li>
+<li><strong>查询区间边界：</strong>闭区间[l,r]对应s[r]-s[l-1]，不是s[r]-s[l]</li>
+</ol>
+<h4>三、技能掌握</h4>
+<ul class="skill-list">
+<li>前缀和模板：O(n)预处理→O(1)区间求和查询</li>
+<li>差分模板：O(1)区间修改→O(n)还原数组</li>
+<li>二维前缀和/差分的容斥原理应用</li>
+<li>双指针三模式：滑动窗口、对撞指针、匹配指针</li>
+<li>"重复查询→预处理"的思维模式</li>
+</ul>
+<h4>四、下章预告</h4>
+<p class="next-preview">第11章《计算的边界》——当数字大到超出long long的范围怎么办？当坐标稀疏到无法开数组怎么办？高精度运算、位运算、离散化、区间合并将帮你突破计算的极限。</p>
+</div>
 <div class="chapter-end">— 第10章完 · 共7题 · 自强不息 —</div></body></html>

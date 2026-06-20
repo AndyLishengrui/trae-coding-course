@@ -27,7 +27,7 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
 .chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
 .chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
-.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">结构的魔力</div>
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}.chapter-summary h4{font-size:10pt;color:#1e40af;margin:1.2em 0 .4em 0;border-bottom:1px solid #e5e7eb;padding-bottom:.2em}.chapter-summary h4:first-of-type{margin-top:.5em}.concept-table{width:100%;border-collapse:collapse;margin:.5em 0;font-size:8.5pt}.concept-table th{background:#2563eb;color:#fff;padding:.4em .6em;text-align:left;font-size:8pt}.concept-table td{padding:.35em .6em;border-bottom:1px solid #e5e7eb;vertical-align:top}.concept-table tr:nth-child(even){background:#f0f4ff}.mistake-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.mistake-list li{margin:.3em 0;line-height:1.5}.skill-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.skill-list li{margin:.3em 0;line-height:1.5}.next-preview{margin:.5em 0;font-size:9pt;color:#444;padding:.5em .8em;background:#f0fdf4;border-left:3px solid #22c55e;border-radius:2px}</style></head><body><div class="chapter-title">结构的魔力</div>
 <div class="chapter-subtitle">基础数据结构 · 8题 · C++ &amp; Python 双语对照</div>
 <div class="preface">
 <p>小鲁已经学会了不少算法技巧——排序、二分、前缀和、双指针。但小华告诉他："真正的程序性能瓶颈往往不在算法，而在<strong>数据结构</strong>。选对数据结构——你的代码可以快100倍。栈来处理后进先出，队列来处理先进先出，单调栈来找下一个更大元素，滑动窗口用单调队列，字符串匹配用KMP，优先队列用堆……本章8道题，每一题都是一个数据结构选择的经典案例。</p>
@@ -839,10 +839,36 @@ idx = 0
         up(u)
 </pre></div>
 </div></div><hr class="section-divider">
-<div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>
-<li><strong>数组模拟数据结构：</strong>链表/栈/队列/堆都可以用数组+下标模拟——O(1)操作且更缓存友好</li>
-<li><strong>单调栈/单调队列：</strong>利用单调性排除无用元素——O(n²)→O(n)的关键技术</li>
-<li><strong>KMP：</strong>利用自身前后缀重复——字符串匹配O(n+m)。理解失配跳转的智慧</li>
-<li><strong>堆：</strong>完全二叉树+up/down——优先队列O(log n)。是Dijkstra/Huffman/堆排序的基础</li>
-</ul></div>
+<div class="chapter-summary"><h3>📋 本章小结</h3>
+<h4>一、核心概念表</h4>
+<table class="concept-table">
+<thead><tr><th>概念</th><th>C++</th><th>Python</th></tr></thead>
+<tbody>
+<tr><td>栈</td><td>int stk[N]; int top=0;</td><td>list + append/pop</td></tr>
+<tr><td>队列</td><td>int q[N]; int hh=0,tt=-1;</td><td>collections.deque</td></tr>
+<tr><td>堆（优先队列）</td><td>priority_queue&lt;int&gt;</td><td>import heapq</td></tr>
+<tr><td>单调栈</td><td>维护栈内单调递增/递减</td><td>维护栈内单调递增/递减</td></tr>
+<tr><td>KMP</td><td>next数组+匹配</td><td>next数组+匹配</td></tr>
+</tbody></table>
+<h4>二、常见错误清单</h4>
+<ol class="mistake-list">
+<li><strong>栈空时pop：</strong>必须先检查top&gt;0再pop，否则数组越界</li>
+<li><strong>队列front/rear指针：</strong>hh&gt;tt表示队列空，初始hh=0,tt=-1</li>
+<li><strong>堆的up/down方向错误：</strong>插入时up（向上调整），删除时down（向下调整）</li>
+<li><strong>KMP next数组计算：</strong>j=next[j]的回退逻辑容易写错，要理解"最长相同前后缀"</li>
+<li><strong>单调栈维护条件：</strong>弹出条件是"栈顶不满足单调性"，不是"栈顶等于当前值"</li>
+<li><strong>Python heapq是最小堆：</strong>取最大值需要取负数存入</li>
+<li><strong>优先队列自定义比较：</strong>C++的greater&lt;&gt;{}是最小堆，默认是最大堆</li>
+</ol>
+<h4>三、技能掌握</h4>
+<ul class="skill-list">
+<li>用数组模拟栈、队列、堆（理解底层实现）</li>
+<li>单调栈/单调队列：利用单调性排除无用元素，O(n²)→O(n)</li>
+<li>KMP算法：next数组的构建和字符串匹配</li>
+<li>堆操作：插入(up)、删除(down)、建堆(O(n))</li>
+<li>理解"数组模拟比STL/库更快"的原因（缓存友好）</li>
+</ul>
+<h4>四、下章预告</h4>
+<p class="next-preview">第13章《搜索的艺术》——DFS和BFS是解决"找路径、找方案"问题的两大利器。回溯、状态搜索、树形遍历将带你领略搜索算法的魅力。</p>
+</div>
 <div class="chapter-end">— 第12章完 · 共8题 · 自强不息 —</div></body></html>

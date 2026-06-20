@@ -27,7 +27,7 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
 .chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
 .chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
-.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">计算的边界</div>
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}.chapter-summary h4{font-size:10pt;color:#1e40af;margin:1.2em 0 .4em 0;border-bottom:1px solid #e5e7eb;padding-bottom:.2em}.chapter-summary h4:first-of-type{margin-top:.5em}.concept-table{width:100%;border-collapse:collapse;margin:.5em 0;font-size:8.5pt}.concept-table th{background:#2563eb;color:#fff;padding:.4em .6em;text-align:left;font-size:8pt}.concept-table td{padding:.35em .6em;border-bottom:1px solid #e5e7eb;vertical-align:top}.concept-table tr:nth-child(even){background:#f0f4ff}.mistake-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.mistake-list li{margin:.3em 0;line-height:1.5}.skill-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.skill-list li{margin:.3em 0;line-height:1.5}.next-preview{margin:.5em 0;font-size:9pt;color:#444;padding:.5em .8em;background:#f0fdf4;border-left:3px solid #22c55e;border-radius:2px}</style></head><body><div class="chapter-title">计算的边界</div>
 <div class="chapter-subtitle">高精度、位运算与离散化 · 7题 · C++ &amp; Python 双语对照</div>
 <div class="preface">
 <p>小鲁在上个月的语法训练中，抱怨过"C++的int不够大"。小华说："今天你终于遇到了C++的短板——高精度计算。但先别急——这也正是Python最闪耀的时刻：int无精度上限，四则运算零负担。"本章的位运算部分教二进制思维——取最低位、计数、快速幂——底层优化与竞赛高频考点。离散化和区间合并则是空间压缩和贪心的经典案例。</p>
@@ -591,10 +591,36 @@ print(len(merged))
 <span style="color: #0000ff">for</span> l, r <span style="color: #0000ff">in</span> merged: print(l, r)
 </pre></div>
 </div></div><hr class="section-divider">
-<div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>
-<li><strong>高精度四则运算：</strong>C++手写理解底层（进位/借位/试商），Python直接用——选对语言事半功倍</li>
-<li><strong>位运算核心：</strong>lowbit=x&-x, bit_count, 左移右移——底层优化的利器</li>
-<li><strong>离散化：</strong>稀疏空间→压缩→常规操作——大数据+稀疏坐标的标准处理流程</li>
-<li><strong>区间合并：</strong>排序+贪心遍历——O(n log n)解决最小区间覆盖问题</li>
-</ul></div>
+<div class="chapter-summary"><h3>📋 本章小结</h3>
+<h4>一、核心概念表</h4>
+<table class="concept-table">
+<thead><tr><th>概念</th><th>C++</th><th>Python</th></tr></thead>
+<tbody>
+<tr><td>高精度加法</td><td>手写数组逐位相加+进位</td><td>直接用int（任意精度）</td></tr>
+<tr><td>高精度乘法</td><td>手写数组逐位相乘+进位</td><td>直接用int</td></tr>
+<tr><td>lowbit</td><td>x &amp; (-x)</td><td>x &amp; (-x)</td></tr>
+<tr><td>位计数</td><td>__builtin_popcount(x)</td><td>x.bit_count()</td></tr>
+<tr><td>离散化</td><td>排序+去重+二分映射</td><td>排序+去重+二分映射</td></tr>
+<tr><td>区间合并</td><td>排序+贪心遍历</td><td>排序+贪心遍历</td></tr>
+</tbody></table>
+<h4>二、常见错误清单</h4>
+<ol class="mistake-list">
+<li><strong>高精度借位处理：</strong>减法时忘记处理借位，或借位后忘记恢复</li>
+<li><strong>位运算优先级：</strong>&amp;的优先级低于==和比较运算符，必须加括号</li>
+<li><strong>离散化去重后映射：</strong>lower_bound返回的是迭代器，要减去起始位置才是下标</li>
+<li><strong>区间合并排序条件：</strong>必须按左端点排序，否则贪心策略不成立</li>
+<li><strong>lowbit负数处理：</strong>负数的补码表示下lowbit仍然正确，但要理解原理</li>
+<li><strong>高精度前导零：</strong>乘法结果可能有前导零，输出时需要跳过</li>
+</ol>
+<h4>三、技能掌握</h4>
+<ul class="skill-list">
+<li>高精度四则运算的数组模拟方法（C++手写理解底层）</li>
+<li>位运算核心操作：lowbit、位计数、左移右移</li>
+<li>离散化：稀疏坐标→压缩映射→常规数组操作</li>
+<li>区间合并：排序+贪心，O(n log n)解决区间覆盖问题</li>
+<li>理解"Python天然支持大整数"这一语言优势</li>
+</ul>
+<h4>四、下章预告</h4>
+<p class="next-preview">第12章《结构的魔力》——栈、队列、堆，这些经典数据结构是算法的基石。单调栈/单调队列能将O(n²)优化到O(n)，KMP让你的字符串匹配快如闪电。</p>
+</div>
 <div class="chapter-end">— 第11章完 · 共7题 · 自强不息 —</div></body></html>

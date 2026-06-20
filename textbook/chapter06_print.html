@@ -28,7 +28,7 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
 .chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
 .chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
-.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">字符的世界</div>
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}.chapter-summary h4{font-size:10pt;color:#1e40af;margin:1.2em 0 .4em 0;border-bottom:1px solid #e5e7eb;padding-bottom:.2em}.chapter-summary h4:first-of-type{margin-top:.5em}.concept-table{width:100%;border-collapse:collapse;margin:.5em 0;font-size:8.5pt}.concept-table th{background:#2563eb;color:#fff;padding:.4em .6em;text-align:left;font-size:8pt}.concept-table td{padding:.35em .6em;border-bottom:1px solid #e5e7eb;vertical-align:top}.concept-table tr:nth-child(even){background:#f0f4ff}.mistake-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.mistake-list li{margin:.3em 0;line-height:1.5}.skill-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.skill-list li{margin:.3em 0;line-height:1.5}.next-preview{margin:.5em 0;font-size:9pt;color:#444;padding:.5em .8em;background:#f0fdf4;border-left:3px solid #22c55e;border-radius:2px}</style></head><body><div class="chapter-title">字符的世界</div>
 <div class="chapter-subtitle">字符串处理 · 12题 · C++ &amp; Python 双语对照</div>
 <div class="preface">
 <p>小鲁已经学会了数字的处理——整数、浮点数、数组。但真实世界的程序处理得最多的不是数字，而是<strong>文字</strong>。从搜索引擎到聊天软件，从代码编辑器到语音助手——字符串处理是每个程序员的基本功。而Python在字符串处理上的优势几乎是碾压级别的：切片、join、split、replace……C++需要好几行的操作，Python往往一行解决。</p>
@@ -545,12 +545,37 @@ print(result)
 print(max(words,key=len))
 </pre></div>
 </div></div><hr class="section-divider">
-<div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>
-<li><strong>字符串六大操作：</strong>长度遍历、字符分类、修改替换、切片拼接、频次统计、分词重构</li>
-<li><strong>Python四大法宝：</strong>切片s[a:b]、split+join、find+replace、isdigit+isalpha——一行代码等于C++五行的力量</li>
-<li><strong>字符串不可变：</strong>Python字符串修改操作全部返回新对象。理解这点才能正确使用replace/upper/lower等</li>
-<li><strong>暴力匹配：</strong>理解O(n×m)的朴素算法才能理解KMP的O(n+m)有多快。先学走再学跑</li>
-<li><strong>编码知识：</strong>ASCII码中字母连续排列，这是字符偏移加密的数学基础</li>
-<li><strong>厦大精神：</strong>自强不息，止于至善。从整数到字符串，你在成为更全面的程序员</li>
-</ul></div>
+<div class="chapter-summary"><h3>📋 本章小结</h3>
+<h4>一、核心概念表</h4>
+<table class="concept-table">
+<thead><tr><th>概念</th><th>C++</th><th>Python</th></tr></thead>
+<tbody>
+<tr><td>字符串类型</td><td>string s;</td><td>s = ""</td></tr>
+<tr><td>子串截取</td><td>s.substr(pos, len)</td><td>s[start:end]</td></tr>
+<tr><td>查找字符</td><td>s.find(c)</td><td>s.find(c) 或 c in s</td></tr>
+<tr><td>分割</td><td>手写循环+getline</td><td>s.split()</td></tr>
+<tr><td>拼接</td><td>s1+s2</td><td>s1+s2 或 "".join(list)</td></tr>
+<tr><td>字符分类</td><td>isalpha()等</td><td>s.isalpha()等</td></tr>
+<tr><td>大小写转换</td><td>toupper/tolower</td><td>s.upper() / s.lower()</td></tr>
+</tbody></table>
+<h4>二、常见错误清单</h4>
+<ol class="mistake-list">
+<li><strong>Python字符串不可变：</strong>s[0]='A'会报错！必须用s='A'+s[1:]创建新字符串</li>
+<li><strong>C++字符串末尾' '：</strong>char数组要多留一位给结束符，string则不需要</li>
+<li><strong>切片边界错误：</strong>Python切片s[a:b]不包含b，且负索引从-1开始</li>
+<li><strong>ASCII码偏移计算：</strong>'a'到'A'的偏移是32而非26，字母连续但大小写分开</li>
+<li><strong>忘记处理空字符串：</strong>split()对空字符串返回['']而非[]</li>
+<li><strong>字符串比较用==：</strong>C++中string可以直接用==，但char*要用strcmp</li>
+</ol>
+<h4>三、技能掌握</h4>
+<ul class="skill-list">
+<li>字符串六大操作：长度遍历、字符分类、修改替换、切片拼接、频次统计、分词重构</li>
+<li>Python四大法宝：切片、split+join、find+replace、isdigit+isalpha</li>
+<li>理解字符串不可变性对编程方式的影响</li>
+<li>ASCII编码知识：字符与数字的映射关系</li>
+<li>暴力匹配算法O(n×m)的实现，为后续KMP打基础</li>
+</ul>
+<h4>四、下章预告</h4>
+<p class="next-preview">第7章《模块化的力量》——代码越写越长，是时候学会"打包"了。函数将让你把重复代码封装成可复用的模块，递归则会带你领略"自己调用自己"的神奇力量。</p>
+</div>
 <div class="chapter-end">— 第6章完 · 共12题 · 自强不息 —</div></body></html>

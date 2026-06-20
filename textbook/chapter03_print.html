@@ -28,7 +28,7 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
 .chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
 .chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
-.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">循环的魔力</div>
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}.chapter-summary h4{font-size:10pt;color:#1e40af;margin:1.2em 0 .4em 0;border-bottom:1px solid #e5e7eb;padding-bottom:.2em}.chapter-summary h4:first-of-type{margin-top:.5em}.concept-table{width:100%;border-collapse:collapse;margin:.5em 0;font-size:8.5pt}.concept-table th{background:#2563eb;color:#fff;padding:.4em .6em;text-align:left;font-size:8pt}.concept-table td{padding:.35em .6em;border-bottom:1px solid #e5e7eb;vertical-align:top}.concept-table tr:nth-child(even){background:#f0f4ff}.mistake-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.mistake-list li{margin:.3em 0;line-height:1.5}.skill-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.skill-list li{margin:.3em 0;line-height:1.5}.next-preview{margin:.5em 0;font-size:9pt;color:#444;padding:.5em .8em;background:#f0fdf4;border-left:3px solid #22c55e;border-radius:2px}</style></head><body><div class="chapter-title">循环的魔力</div>
 <div class="chapter-subtitle">for/while与嵌套循环 · 14题 · C++ &amp; Python 双语对照</div>
 <div class="preface">
 <p>第三周，小鲁发现了一个令他震惊的事实："一个for循环能替我做100行重复代码？！"小华笑了："这就是<strong>循环</strong>的威力——编程从手动执行进化到自动重复的时刻，就像从步行变成了骑车。能识别出重复模式并用循环解决，才是真正学会了编程思维。"</p>
@@ -587,12 +587,36 @@ print(<span style="color: #a31515">f&quot;{</span>in_cnt<span style="color: #a31
 print(<span style="color: #a31515">f&quot;{</span>n - in_cnt<span style="color: #a31515">} out&quot;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
-<div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>
-<li><strong>for循环：</strong>确定次数的循环首选。Python的range(start,end,step)注意end不包含</li>
-<li><strong>while循环：</strong>不确定次数的循环首选。while+break处理不定长输入</li>
-<li><strong>嵌套循环：</strong>外层行内层列，复杂度O(N²)。理解两次for的执行顺序</li>
-<li><strong>条件循环：</strong>循环中嵌入if判断——计数、筛选、分类，90%的算法代码都是这个模式</li>
-<li><strong>累加器模式：</strong>sum/cnt初始化为0，循环中逐次更新。这是所有统计/求和的基础</li>
-<li><strong>先思考再编码：</strong>约数的√N优化、等差数列求和公式——数学知识直接减少循环次数</li>
-</ul></div>
+<div class="chapter-summary"><h3>📋 本章小结</h3>
+<h4>一、核心概念表</h4>
+<table class="concept-table">
+<thead><tr><th>概念</th><th>C++</th><th>Python</th></tr></thead>
+<tbody>
+<tr><td>for循环</td><td>for(int i=0;i&lt;N;i++){...}</td><td>for i in range(N):</td></tr>
+<tr><td>步长循环</td><td>for(int i=0;i&lt;N;i+=2)</td><td>range(0, N, 2)</td></tr>
+<tr><td>while循环</td><td>while(cond){...}</td><td>while cond:</td></tr>
+<tr><td>不定长输入</td><td>while(cin&gt;&gt;x){...}</td><td>for line in sys.stdin:</td></tr>
+<tr><td>累加器</td><td>int sum=0; sum+=x;</td><td>s=0; s+=x</td></tr>
+<tr><td>嵌套循环</td><td>for+for，复杂度O(N²)</td><td>for+for，复杂度O(N²)</td></tr>
+</tbody></table>
+<h4>二、常见错误清单</h4>
+<ol class="mistake-list">
+<li><strong>Python range终点不包含：</strong>range(1,10)只到9，不是10。这是新手第一大坑</li>
+<li><strong>C++整数除法截断：</strong>4/3=1而非1.33，需要强制转换(double)4/3</li>
+<li><strong>忘记初始化累加器：</strong>sum/cnt必须在循环前初始化为0，否则结果不确定</li>
+<li><strong>无限循环：</strong>while条件永远为真，忘记更新循环变量</li>
+<li><strong>嵌套循环变量名冲突：</strong>内外层都用i导致逻辑错误</li>
+<li><strong>循环变量在循环外使用：</strong>C++中for(int i=0;...)的i在循环外不可见</li>
+</ol>
+<h4>三、技能掌握</h4>
+<ul class="skill-list">
+<li>使用for循环处理确定次数的重复任务（计数、求和、筛选）</li>
+<li>使用while循环处理不确定次数的输入和条件终止</li>
+<li>嵌套循环解决二维问题（矩阵遍历、排列组合）</li>
+<li>累加器模式：统计、求和、求最值的标准写法</li>
+<li>数学优化思维：等差数列公式替代循环、约数的√N优化</li>
+</ul>
+<h4>四、下章预告</h4>
+<p class="next-preview">第4章《数据的容器》——当数据量变大，一个个变量已经不够用了。数组和列表将让你学会如何高效地存储和操作批量数据，斐波那契数列和质数筛将带你体验递推思想的魅力。</p>
+</div>
 <div class="chapter-end">— 第3章完 · 共14题 · 自强不息 —</div></body></html>

@@ -28,7 +28,7 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
 .chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
 .chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
-.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">矩阵的舞蹈</div>
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}.chapter-summary h4{font-size:10pt;color:#1e40af;margin:1.2em 0 .4em 0;border-bottom:1px solid #e5e7eb;padding-bottom:.2em}.chapter-summary h4:first-of-type{margin-top:.5em}.concept-table{width:100%;border-collapse:collapse;margin:.5em 0;font-size:8.5pt}.concept-table th{background:#2563eb;color:#fff;padding:.4em .6em;text-align:left;font-size:8pt}.concept-table td{padding:.35em .6em;border-bottom:1px solid #e5e7eb;vertical-align:top}.concept-table tr:nth-child(even){background:#f0f4ff}.mistake-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.mistake-list li{margin:.3em 0;line-height:1.5}.skill-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.skill-list li{margin:.3em 0;line-height:1.5}.next-preview{margin:.5em 0;font-size:9pt;color:#444;padding:.5em .8em;background:#f0fdf4;border-left:3px solid #22c55e;border-radius:2px}</style></head><body><div class="chapter-title">矩阵的舞蹈</div>
 <div class="chapter-subtitle">多维数组与矩阵模式 · 12题 · C++ &amp; Python 双语对照</div>
 <div class="preface">
 <p>第四周结束，小鲁已经能熟练地操作一维数组了。但小华告诉他："一维数组只是第一步——真实世界的数据很少是一条线。想想电子表格、数码照片、游戏棋盘……这些都是<strong>二维</strong>的。"小鲁若有所思："所以……我需要学会在行列之间跳舞？"</p>
@@ -721,12 +721,34 @@ d = x = y = 0
     print(<span style="color: #a31515">&#39; &#39;</span>.join(map(str, r)) + <span style="color: #a31515">&#39; &#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
-<div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>
-<li><strong>8种矩阵区域：</strong>4个三角（各66元素）+ 4个"口"字边（各30元素）= 精确遍历矩阵任意形状</li>
-<li><strong>3种填充模式：</strong>四边距离min公式、对角线距离abs公式、2的指数幂模式——用数学替代模拟</li>
-<li><strong>方向数组：</strong>dx=[0,1,0,-1], dy=[1,0,-1,0] → 控制四个方向旋转，蛇形/螺旋/遍历通用模板</li>
-<li><strong>对称思维：</strong>上下、左右区域只是i和j角色的互换。找规律>逐题应付——从学生到工程师的思维跃迁</li>
-<li><strong>关键技巧：</strong>Python二维列表[[0]*m for _ in range(n)]（不能用*操作符——那是浅拷贝陷阱！）</li>
-<li><strong>厦大精神：</strong>自强不息，止于至善。12道矩阵题过后，你的多维数组能力已经达到面试水平。</li>
-</ul></div>
+<div class="chapter-summary"><h3>📋 本章小结</h3>
+<h4>一、核心概念表</h4>
+<table class="concept-table">
+<thead><tr><th>概念</th><th>C++</th><th>Python</th></tr></thead>
+<tbody>
+<tr><td>二维数组声明</td><td>int a[N][M];</td><td>a=[[0]*m for _ in range(n)]</td></tr>
+<tr><td>方向数组</td><td>int dx[]={0,1,0,-1};</td><td>dx=[0,1,0,-1]</td></tr>
+<tr><td>上三角区域</td><td>if(j&gt;=i) ...</td><td>if j&gt;=i: ...</td></tr>
+<tr><td>对角线距离</td><td>abs(i-j)==k</td><td>abs(i-j)==k</td></tr>
+<tr><td>四边距离</td><td>min(i,j,n-1-i,m-1-j)</td><td>min(i,j,n-1-i,m-1-j)</td></tr>
+</tbody></table>
+<h4>二、常见错误清单</h4>
+<ol class="mistake-list">
+<li><strong>Python浅拷贝陷阱（最经典）：</strong>[[0]*m]*n导致所有行指向同一列表，改一行全变</li>
+<li><strong>矩阵下标越界：</strong>遍历时忘记n-1或m-1的边界</li>
+<li><strong>方向数组顺序错误：</strong>dx和dy必须一一对应，顺序错导致方向混乱</li>
+<li><strong>对称区域判断条件错误：</strong>上三角j&gt;=i和下三角i&gt;=j容易写反</li>
+<li><strong>填充模式数学公式错误：</strong>四边距离的min参数顺序必须是"上、左、下、右"</li>
+<li><strong>蛇形/螺旋遍历方向切换：</strong>碰壁条件判断不准确导致越界或遗漏</li>
+</ol>
+<h4>三、技能掌握</h4>
+<ul class="skill-list">
+<li>矩阵8种区域的精确遍历（4个三角 + 4个边框）</li>
+<li>3种填充模式的数学公式（四边距离min、对角线距离abs、2的指数幂）</li>
+<li>方向数组控制四方向旋转，解决蛇形/螺旋遍历</li>
+<li>对称思维：通过i/j角色互换简化代码</li>
+</ul>
+<h4>四、下章预告</h4>
+<p class="next-preview">第6章《字符的世界》——从数字到字符，数据的形态变了。字符串的切片、查找、分割操作将让你感受到Python的简洁之美，而ASCII编码则揭示了字符背后的数字本质。</p>
+</div>
 <div class="chapter-end">— 第5章完 · 共12题 · 自强不息 —</div></body></html>

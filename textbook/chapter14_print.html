@@ -27,7 +27,7 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
 .chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
 .chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
-.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">图的疆域</div>
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}.chapter-summary h4{font-size:10pt;color:#1e40af;margin:1.2em 0 .4em 0;border-bottom:1px solid #e5e7eb;padding-bottom:.2em}.chapter-summary h4:first-of-type{margin-top:.5em}.concept-table{width:100%;border-collapse:collapse;margin:.5em 0;font-size:8.5pt}.concept-table th{background:#2563eb;color:#fff;padding:.4em .6em;text-align:left;font-size:8pt}.concept-table td{padding:.35em .6em;border-bottom:1px solid #e5e7eb;vertical-align:top}.concept-table tr:nth-child(even){background:#f0f4ff}.mistake-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.mistake-list li{margin:.3em 0;line-height:1.5}.skill-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.skill-list li{margin:.3em 0;line-height:1.5}.next-preview{margin:.5em 0;font-size:9pt;color:#444;padding:.5em .8em;background:#f0fdf4;border-left:3px solid #22c55e;border-radius:2px}</style></head><body><div class="chapter-title">图的疆域</div>
 <div class="chapter-subtitle">图论入门 · 8题 · C++ &amp; Python 双语对照</div>
 <div class="preface">
 <p>小鲁终于进入了算法竞赛中最大的领域——<strong>图论</strong>。"图可以描述世间万物——交通网络、社交关系、课程依赖、电路连接……理解图论算法就像获得了一个新的视角。"本章8道题覆盖图论四大基石：拓扑排序(DAG)、最短路(Dijkstra/SPFA/Floyd)、最小生成树(Prim/Kruskal)、二分图判定。"这些算法是竞赛和面试的高频考点——背下来、理解透。"</p>
@@ -896,9 +896,37 @@ ok = <span style="color: #0000ff">True</span>
 print(<span style="color: #a31515">&#39;Yes&#39;</span> <span style="color: #0000ff">if</span> ok <span style="color: #0000ff">else</span> <span style="color: #a31515">&#39;No&#39;</span>)
 </pre></div>
 </div></div><hr class="section-divider">
-<div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>
-<li><strong>图论四大基石：</strong>拓扑排序、最短路、最小生成树、二分图——背下模板终身受用</li>
-<li><strong>Dijkstra vs SPFA vs Floyd：</strong>正权选Dijkstra(堆)，负权选SPFA(慎用)，多源n≤200选Floyd</li>
-<li><strong>Prim vs Kruskal：</strong>Prim=改一行Dijkstra，稠密O(n²)。Kruskal=排序+并查集，稀疏O(m log m)</li>
-</ul></div>
+<div class="chapter-summary"><h3>📋 本章小结</h3>
+<h4>一、核心概念表</h4>
+<table class="concept-table">
+<thead><tr><th>概念</th><th>C++</th><th>Python</th></tr></thead>
+<tbody>
+<tr><td>邻接表</td><td>vector&lt;pair&lt;int,int&gt;&gt; g[N]</td><td>g = [[] for _ in range(n)]</td></tr>
+<tr><td>Dijkstra</td><td>堆优化O(m log m)</td><td>heapq实现O(m log m)</td></tr>
+<tr><td>SPFA</td><td>队列+松弛O(km)</td><td>deque+松弛O(km)</td></tr>
+<tr><td>Floyd</td><td>三重循环O(n³)</td><td>三重循环O(n³)</td></tr>
+<tr><td>Kruskal</td><td>排序+并查集O(m log m)</td><td>排序+并查集O(m log m)</td></tr>
+<tr><td>拓扑排序</td><td>BFS+入度</td><td>deque+入度</td></tr>
+</tbody></table>
+<h4>二、常见错误清单</h4>
+<ol class="mistake-list">
+<li><strong>Dijkstra用于负权图：</strong>Dijkstra要求边权非负，负权必须用SPFA或Bellman-Ford</li>
+<li><strong>SPFA判负环：</strong>某个节点入队次数≥n则有负环，不是"松弛次数"</li>
+<li><strong>Floyd三重循环顺序：</strong>必须是k-i-j（中转点在最外层），顺序错结果错</li>
+<li><strong>并查集路径压缩：</strong>find时必须压缩路径，否则退化为O(n)</li>
+<li><strong>拓扑排序入度计算：</strong>建图时统计入度，不是遍历时统计</li>
+<li><strong>二分图染色冲突：</strong>BFS染色时相邻节点颜色必须不同，冲突则不是二分图</li>
+<li><strong>Dijkstra堆优化判重：</strong>同一个节点可能多次入堆，出堆时检查是否已访问</li>
+</ol>
+<h4>三、技能掌握</h4>
+<ul class="skill-list">
+<li>图的存储：邻接表（稀疏图）和邻接矩阵（稠密图）</li>
+<li>最短路算法选择：正权Dijkstra、负权SPFA、多源Floyd</li>
+<li>最小生成树：Prim（改一行Dijkstra）和Kruskal（排序+并查集）</li>
+<li>拓扑排序：BFS+入度，判断DAG和求解依赖顺序</li>
+<li>二分图判定：BFS/DFS染色法</li>
+</ul>
+<h4>四、下章预告</h4>
+<p class="next-preview">第15章《状态的艺术》——动态规划是算法面试的重中之重。背包问题、最长公共子序列、编辑距离、区间DP，这些经典问题都将被你一一攻克。</p>
+</div>
 <div class="chapter-end">— 第14章完 · 共8题 · 自强不息 —</div></body></html>

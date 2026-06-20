@@ -28,7 +28,7 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
 .chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
 .chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
-.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">数据的容器</div>
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}.chapter-summary h4{font-size:10pt;color:#1e40af;margin:1.2em 0 .4em 0;border-bottom:1px solid #e5e7eb;padding-bottom:.2em}.chapter-summary h4:first-of-type{margin-top:.5em}.concept-table{width:100%;border-collapse:collapse;margin:.5em 0;font-size:8.5pt}.concept-table th{background:#2563eb;color:#fff;padding:.4em .6em;text-align:left;font-size:8pt}.concept-table td{padding:.35em .6em;border-bottom:1px solid #e5e7eb;vertical-align:top}.concept-table tr:nth-child(even){background:#f0f4ff}.mistake-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.mistake-list li{margin:.3em 0;line-height:1.5}.skill-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.skill-list li{margin:.3em 0;line-height:1.5}.next-preview{margin:.5em 0;font-size:9pt;color:#444;padding:.5em .8em;background:#f0fdf4;border-left:3px solid #22c55e;border-radius:2px}</style></head><body><div class="chapter-title">数据的容器</div>
 <div class="chapter-subtitle">数组与线性存储 · 12题 · C++ &amp; Python 双语对照</div>
 <div class="preface">
 <p>小鲁最近发现一个难题：他想统计全班50个同学的成绩，难不成要写50个变量？"这也太麻烦了吧！"他抱怨道。小华走了过来："你需要的是<strong>数组</strong>——编程中最基本的数据容器。"</p>
@@ -527,11 +527,35 @@ n = int(input())
         print(i)
 </pre></div>
 </div></div><hr class="section-divider">
-<div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>
-<li><strong>数组五大操作：</strong>遍历(iterate)、筛选(filter)、变换(transform)、翻转(reverse)、查找(search)</li>
-<li><strong>C++ vs Python：</strong>定长栈数组 vs 动态堆列表。C++更快，Python更灵活</li>
-<li><strong>递推思想：</strong>斐波那契——每个新值由前两个已知值计算，是DP的萌芽</li>
-<li><strong>算法优化第一课：</strong>质数判定的√N优化——用数学将复杂度从O(n²)降到O(n√n)</li>
-<li><strong>厦大校训：</strong>自强不息，止于至善。编程之路漫长，但每一步都在进步</li>
-</ul></div>
+<div class="chapter-summary"><h3>📋 本章小结</h3>
+<h4>一、核心概念表</h4>
+<table class="concept-table">
+<thead><tr><th>概念</th><th>C++</th><th>Python</th></tr></thead>
+<tbody>
+<tr><td>数组声明</td><td>int a[100];（栈上定长）</td><td>a = [0]*100（动态）</td></tr>
+<tr><td>动态数组</td><td>vector&lt;int&gt; a;</td><td>a = []</td></tr>
+<tr><td>追加元素</td><td>a.push_back(x)</td><td>a.append(x)</td></tr>
+<tr><td>排序</td><td>sort(a, a+n)</td><td>a.sort()</td></tr>
+<tr><td>遍历</td><td>for(int i=0;i&lt;n;i++)</td><td>for x in a:</td></tr>
+<tr><td>递推存储</td><td>f[i]=f[i-1]+f[i-2]</td><td>f[i]=f[i-1]+f[i-2]</td></tr>
+</tbody></table>
+<h4>二、常见错误清单</h4>
+<ol class="mistake-list">
+<li><strong>C++数组越界：</strong>访问a[100]但数组大小只有100（下标0~99），不会报错但结果未定义</li>
+<li><strong>Python浅拷贝陷阱：</strong>[[0]*3]*2创建的两行共享同一列表！必须用[[0]*3 for _ in range(2)]</li>
+<li><strong>忘记初始化数组：</strong>C++局部数组值不确定，必须手动memset或循环初始化</li>
+<li><strong>质数判定效率低：</strong>逐个检查到n太慢，只需检查到√n</li>
+<li><strong>递推顺序错误：</strong>斐波那契必须从前往后计算，不能从后往前</li>
+<li><strong>vector下标越界：</strong>vector不会自动扩容下标访问，只对push_back自动扩容</li>
+</ol>
+<h4>三、技能掌握</h4>
+<ul class="skill-list">
+<li>数组/列表的声明、初始化、遍历、排序五大基本操作</li>
+<li>递推思想：用已知值逐步计算未知值（斐波那契、阶乘）</li>
+<li>算法优化第一课：质数判定的√N优化，理解数学对效率的提升</li>
+<li>理解C++定长栈数组与Python动态堆列表的本质区别</li>
+</ul>
+<h4>四、下章预告</h4>
+<p class="next-preview">第5章《矩阵的舞蹈》——从一维到二维，数组的维度升级了。你将学习矩阵的遍历技巧、方向数组、对称操作，用数学公式精确控制矩阵的每个区域。</p>
+</div>
 <div class="chapter-end">— 第4章完 · 共12题 · 自强不息 —</div></body></html>

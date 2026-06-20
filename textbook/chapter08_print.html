@@ -28,7 +28,7 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
 .chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
 .chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
-.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">指针与抽象</div>
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}.chapter-summary h4{font-size:10pt;color:#1e40af;margin:1.2em 0 .4em 0;border-bottom:1px solid #e5e7eb;padding-bottom:.2em}.chapter-summary h4:first-of-type{margin-top:.5em}.concept-table{width:100%;border-collapse:collapse;margin:.5em 0;font-size:8.5pt}.concept-table th{background:#2563eb;color:#fff;padding:.4em .6em;text-align:left;font-size:8pt}.concept-table td{padding:.35em .6em;border-bottom:1px solid #e5e7eb;vertical-align:top}.concept-table tr:nth-child(even){background:#f0f4ff}.mistake-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.mistake-list li{margin:.3em 0;line-height:1.5}.skill-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.skill-list li{margin:.3em 0;line-height:1.5}.next-preview{margin:.5em 0;font-size:9pt;color:#444;padding:.5em .8em;background:#f0fdf4;border-left:3px solid #22c55e;border-radius:2px}</style></head><body><div class="chapter-title">指针与抽象</div>
 <div class="chapter-subtitle">结构体、指针与STL容器 · 10题 · C++ &amp; Python 双语对照</div>
 <div class="preface">
 <p>小鲁已经掌握了函数和递归。但小华告诉他："真正的工程代码很少只有简单的int和数组——你需要<strong>结构体</strong>把多个数据捆在一起，需要<strong>指针</strong>让数据之间产生链接，需要<strong>标准容器</strong>处理复杂的数据组织需求。"小鲁深吸一口气："所以……编程世界才刚刚开始展开？"</p>
@@ -583,12 +583,35 @@ a[:size] = reversed(a[:size])
 print(<span style="color: #a31515">&#39; &#39;</span>.join(map(str, a)))
 </pre></div>
 </div></div><hr class="section-divider">
-<div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>
-<li><strong>链表五操作：</strong>遍历、反向输出、反转、合并、两栈模拟队列——每个都是面试高频题</li>
-<li><strong>三指针法：</strong>prev/curr/next——反转链表的标准模板，一步顺序都不能乱</li>
-<li><strong>dummy头节点：</strong>合并链表时用虚拟头简化边界——链表题的通用技巧</li>
-<li><strong>结构体排序：</strong>C++ struct+sort+cmp vs Python tuple+lambda——一行lambda替代十几行C++</li>
-<li><strong>函数重载vs鸭子类型：</strong>C++编译期多态 vs Python运行期多态——两种语言哲学的核心差异</li>
-<li><strong>厦大精神：</strong>自强不息。指针和链表是CS专业的标志——突破这道坎，你就真正进入了计算机科学的世界</li>
-</ul></div>
+<div class="chapter-summary"><h3>📋 本章小结</h3>
+<h4>一、核心概念表</h4>
+<table class="concept-table">
+<thead><tr><th>概念</th><th>C++</th><th>Python</th></tr></thead>
+<tbody>
+<tr><td>链表节点</td><td>struct ListNode{int val; ListNode* next;};</td><td>class ListNode: def __init__(self,val)</td></tr>
+<tr><td>链表反转</td><td>三指针prev/curr/next</td><td>三指针prev/curr/next</td></tr>
+<tr><td>结构体排序</td><td>sort(a,a+n,cmp)</td><td>sorted(a, key=lambda x: x[0])</td></tr>
+<tr><td>多态</td><td>函数重载（编译期）</td><td>鸭子类型（运行期）</td></tr>
+<tr><td>内存管理</td><td>new/delete手动管理</td><td>GC自动回收</td></tr>
+</tbody></table>
+<h4>二、常见错误清单</h4>
+<ol class="mistake-list">
+<li><strong>链表指针操作顺序错误：</strong>反转时必须先保存next，再修改curr-&gt;next</li>
+<li><strong>忘记处理空链表：</strong>head==nullptr的边界情况必须单独处理</li>
+<li><strong>dummy头节点遗漏：</strong>合并链表时不用dummy会导致头节点处理复杂</li>
+<li><strong>结构体比较函数返回值错误：</strong>C++的cmp返回true表示a排在b前面</li>
+<li><strong>C++内存泄漏：</strong>new了忘记delete，链表题中尤其常见</li>
+<li><strong>Python引用混淆：</strong>a=b后修改b也会修改a（同一对象）</li>
+</ol>
+<h4>三、技能掌握</h4>
+<ul class="skill-list">
+<li>链表五操作：遍历、反向输出、反转、合并、两栈模拟队列</li>
+<li>三指针法反转链表：prev/curr/next的标准模板</li>
+<li>dummy头节点技巧：简化链表操作的边界处理</li>
+<li>结构体排序：C++的struct+sort+cmp vs Python的tuple+lambda</li>
+<li>理解C++编译期多态（重载）与Python运行期多态（鸭子类型）的区别</li>
+</ul>
+<h4>四、下章预告</h4>
+<p class="next-preview">第9章《分治之美》——"分而治之"是算法的核心思想。快速排序、归并排序、二分查找，这些经典算法都建立在分治的基础上，掌握它们将让你的代码效率产生质的飞跃。</p>
+</div>
 <div class="chapter-end">— 第8章完 · 共10题 · 自强不息</div></body></html>

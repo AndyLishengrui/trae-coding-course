@@ -27,7 +27,7 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
 .chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
 .chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
-.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">状态的艺术</div>
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}.chapter-summary h4{font-size:10pt;color:#1e40af;margin:1.2em 0 .4em 0;border-bottom:1px solid #e5e7eb;padding-bottom:.2em}.chapter-summary h4:first-of-type{margin-top:.5em}.concept-table{width:100%;border-collapse:collapse;margin:.5em 0;font-size:8.5pt}.concept-table th{background:#2563eb;color:#fff;padding:.4em .6em;text-align:left;font-size:8pt}.concept-table td{padding:.35em .6em;border-bottom:1px solid #e5e7eb;vertical-align:top}.concept-table tr:nth-child(even){background:#f0f4ff}.mistake-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.mistake-list li{margin:.3em 0;line-height:1.5}.skill-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.skill-list li{margin:.3em 0;line-height:1.5}.next-preview{margin:.5em 0;font-size:9pt;color:#444;padding:.5em .8em;background:#f0fdf4;border-left:3px solid #22c55e;border-radius:2px}</style></head><body><div class="chapter-title">状态的艺术</div>
 <div class="chapter-subtitle">动态规划 · 8题 · C++ &amp; Python 双语对照</div>
 <div class="preface">
 <p>小鲁进入了算法竞赛的核心——<strong>动态规划(DP)</strong>。DP不是一种算法，而是一种思想——将大问题拆成小问题，用小问题的解构造大问题的解。DP的精髓在于<strong>状态定义</strong>和<strong>转移方程</strong>。本章8题覆盖DP的四大类型：背包DP、线性DP、区间DP、记忆化搜索。学完本章，你才是一个真正的算法选手。</p>
@@ -587,11 +587,39 @@ ans = 0
 print(ans)
 </pre></div>
 </div></div><hr class="section-divider">
-<div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>
-<li><strong>DP五步法：</strong>定义状态→初始化→转移方程→遍历顺序→答案位置。模板先于变种</li>
-<li><strong>背包进化：</strong>01倒序、完全正序——遍历顺序决定是否可以重复选</li>
-<li><strong>字符串DP三连：</strong>LIS(一维+二分优化)、LCS(二维+状态转移)、编辑距离(三维min)</li>
-<li><strong>区间DP：</strong>len从小到大、l枚举起点、k枚举分割。前缀和加速区间和查询</li>
-<li><strong>记忆化搜索：</strong>DFS+备忘录=优雅的Top-down。滑雪、树形DP的标准写法</li>
-</ul></div>
+<div class="chapter-summary"><h3>📋 本章小结</h3>
+<h4>一、核心概念表</h4>
+<table class="concept-table">
+<thead><tr><th>概念</th><th>C++</th><th>Python</th></tr></thead>
+<tbody>
+<tr><td>01背包</td><td>dp[j]=max(dp[j],dp[j-w]+v) 倒序</td><td>dp[j]=max(dp[j],dp[j-w]+v) 倒序</td></tr>
+<tr><td>完全背包</td><td>同上，正序遍历</td><td>同上，正序遍历</td></tr>
+<tr><td>LIS</td><td>O(n²)DP 或 O(n log n)贪心+二分</td><td>O(n²)DP 或 O(n log n)贪心+二分</td></tr>
+<tr><td>LCS</td><td>dp[i][j]二维状态转移</td><td>dp[i][j]二维状态转移</td></tr>
+<tr><td>编辑距离</td><td>dp[i][j]=min(增,删,改)</td><td>dp[i][j]=min(增,删,改)</td></tr>
+<tr><td>区间DP</td><td>len→l→k三重循环</td><td>len→l→k三重循环</td></tr>
+<tr><td>记忆化搜索</td><td>手写备忘录</td><td>@lru_cache一行搞定</td></tr>
+</tbody></table>
+<h4>二、常见错误清单</h4>
+<ol class="mistake-list">
+<li><strong>01背包和完全背包遍历顺序混淆：</strong>01倒序（防止重复选），完全正序（允许重复选）</li>
+<li><strong>DP数组初始化错误：</strong>求最大值初始化为-INF，求最小值初始化为+INF</li>
+<li><strong>状态转移方程遗漏情况：</strong>编辑距离有三种操作（增/删/改），漏一种就错</li>
+<li><strong>区间DP遍历顺序：</strong>必须先枚举长度len，再枚举起点l，最后枚举分割点k</li>
+<li><strong>记忆化搜索忘记缓存：</strong>没有备忘录的递归就是暴力搜索，指数级复杂度</li>
+<li><strong>空间优化后覆盖：</strong>滚动数组优化空间时，内层必须倒序遍历避免覆盖未处理值</li>
+<li><strong>LIS二分优化理解：</strong>维护的是"长度为i的最小末尾"，不是"最长递增子序列本身"</li>
+</ol>
+<h4>三、技能掌握</h4>
+<ul class="skill-list">
+<li>DP五步法：定义状态→初始化→转移方程→遍历顺序→答案位置</li>
+<li>背包问题：01背包（倒序）和完全背包（正序）的模板</li>
+<li>字符串DP：LIS、LCS、编辑距离三大经典问题</li>
+<li>区间DP：len→l→k的遍历框架，前缀和加速区间和查询</li>
+<li>记忆化搜索：DFS+备忘录=优雅的Top-down DP</li>
+<li>理解"DP本质是带记忆的递归"这一核心思想</li>
+</ul>
+<h4>四、下章预告</h4>
+<p class="next-preview">恭喜你完成了全部15章的学习！从第1章的"Hello World"到现在的动态规划和图论，你已经掌握了编程和算法的核心基础。接下来，继续刷题巩固，挑战更高难度的题目，在算法之路上自强不息！</p>
+</div>
 <div class="chapter-end">— 第15章完 · 共8题 · 自强不息 —</div></body></html>

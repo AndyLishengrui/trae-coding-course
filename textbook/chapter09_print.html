@@ -27,7 +27,7 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
 .chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
 .chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
-.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">分治之美</div>
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}.chapter-summary h4{font-size:10pt;color:#1e40af;margin:1.2em 0 .4em 0;border-bottom:1px solid #e5e7eb;padding-bottom:.2em}.chapter-summary h4:first-of-type{margin-top:.5em}.concept-table{width:100%;border-collapse:collapse;margin:.5em 0;font-size:8.5pt}.concept-table th{background:#2563eb;color:#fff;padding:.4em .6em;text-align:left;font-size:8pt}.concept-table td{padding:.35em .6em;border-bottom:1px solid #e5e7eb;vertical-align:top}.concept-table tr:nth-child(even){background:#f0f4ff}.mistake-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.mistake-list li{margin:.3em 0;line-height:1.5}.skill-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.skill-list li{margin:.3em 0;line-height:1.5}.next-preview{margin:.5em 0;font-size:9pt;color:#444;padding:.5em .8em;background:#f0fdf4;border-left:3px solid #22c55e;border-radius:2px}</style></head><body><div class="chapter-title">分治之美</div>
 <div class="chapter-subtitle">排序与二分 · 7题 · C++ &amp; Python 双语对照</div>
 <div class="preface">
 <p>从本章开始，小鲁正式进入<strong>算法</strong>的世界。前面的语法和数据结构是工具，算法才是让程序"聪明"起来的灵魂。"排序——把混乱变成有序——是计算机科学中最基础也最深刻的主题。快排、归并、二分……这些经典算法经过几十年的打磨，至今仍是每个程序员的基本功。"小华严肃地说。</p>
@@ -609,12 +609,35 @@ cx = cy = n // 2
     print(<span style="color: #a31515">&#39;&#39;</span>.join(row))
 </pre></div>
 </div></div><hr class="section-divider">
-<div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>
-<li><strong>快排模板：</strong>O(n log n)平均。do-while+双指针+分治递归。非稳定排序</li>
-<li><strong>归并模板：</strong>O(n log n)保证。稳定排序。额外O(n)空间。可在合并过程统计逆序对</li>
-<li><strong>快速选择：</strong>基于快排划分，O(n)平均找第k小。只递归一边——"不需要的信息就不处理"</li>
-<li><strong>整数二分：</strong>左边界和右边界模板不同——注意mid是否需要+1避免死循环</li>
-<li><strong>实数二分：</strong>无需处理+1/-1边界。迭代到目标精度+2位即可</li>
-<li><strong>厦大精神：</strong>自强不息。把这些模板练成肌肉记忆——它们是你算法之路的基石</li>
-</ul></div>
+<div class="chapter-summary"><h3>📋 本章小结</h3>
+<h4>一、核心概念表</h4>
+<table class="concept-table">
+<thead><tr><th>概念</th><th>C++</th><th>Python</th></tr></thead>
+<tbody>
+<tr><td>快速排序</td><td>do-while双指针划分</td><td>双指针划分+递归</td></tr>
+<tr><td>归并排序</td><td>分治+合并临时数组</td><td>分治+合并临时数组</td></tr>
+<tr><td>整数二分</td><td>while(l&lt;r) mid=(l+r)/2</td><td>while l&lt;r: mid=(l+r)//2</td></tr>
+<tr><td>实数二分</td><td>while(r-l&gt;1e-8)</td><td>while r-l&gt;1e-8:</td></tr>
+<tr><td>快速选择</td><td>O(n)平均找第k小</td><td>O(n)平均找第k小</td></tr>
+</tbody></table>
+<h4>二、常见错误清单</h4>
+<ol class="mistake-list">
+<li><strong>整数二分mid+1/-1：</strong>不加会导致死循环！当l=r-1时mid=l，l=mid不移动</li>
+<li><strong>快排划分条件错误：</strong>do-while的终止条件必须是a[i]&lt;=x和a[j]&gt;=x（含等号）</li>
+<li><strong>归并排序额外空间：</strong>每次合并需要O(n)临时空间，总计O(n log n)</li>
+<li><strong>二分边界初始值：</strong>左边界模板l=0,r=n-1 vs 右边界模板l=0,r=n，容易混淆</li>
+<li><strong>快排最坏情况：</strong>已排序数组+选第一个为基准→O(n²)，需随机选基准</li>
+<li><strong>实数二分精度：</strong>迭代到目标精度+2位即可，过多位数浪费时间</li>
+</ol>
+<h4>三、技能掌握</h4>
+<ul class="skill-list">
+<li>快排模板：do-while+双指针+分治递归，O(n log n)平均</li>
+<li>归并模板：分治+合并，O(n log n)保证，稳定排序，可统计逆序对</li>
+<li>整数二分的左边界和右边界两种模板</li>
+<li>实数二分的精度控制方法</li>
+<li>快速选择：基于快排划分，O(n)平均找第k小元素</li>
+</ul>
+<h4>四、下章预告</h4>
+<p class="next-preview">第10章《预处理的智慧》——有些问题查询次数远多于修改次数，提前"预处理"数据能让查询飞快。前缀和、差分、双指针将教你"用空间换时间"的艺术。</p>
+</div>
 <div class="chapter-end">— 第9章完 · 共7题 · 自强不息 —</div></body></html>

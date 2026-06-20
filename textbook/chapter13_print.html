@@ -27,7 +27,7 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
 .chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
 .chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
-.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">搜索的艺术</div>
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}.chapter-summary h4{font-size:10pt;color:#1e40af;margin:1.2em 0 .4em 0;border-bottom:1px solid #e5e7eb;padding-bottom:.2em}.chapter-summary h4:first-of-type{margin-top:.5em}.concept-table{width:100%;border-collapse:collapse;margin:.5em 0;font-size:8.5pt}.concept-table th{background:#2563eb;color:#fff;padding:.4em .6em;text-align:left;font-size:8pt}.concept-table td{padding:.35em .6em;border-bottom:1px solid #e5e7eb;vertical-align:top}.concept-table tr:nth-child(even){background:#f0f4ff}.mistake-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.mistake-list li{margin:.3em 0;line-height:1.5}.skill-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.skill-list li{margin:.3em 0;line-height:1.5}.next-preview{margin:.5em 0;font-size:9pt;color:#444;padding:.5em .8em;background:#f0fdf4;border-left:3px solid #22c55e;border-radius:2px}</style></head><body><div class="chapter-title">搜索的艺术</div>
 <div class="chapter-subtitle">搜索与回溯 · 8题 · C++ &amp; Python 双语对照</div>
 <div class="preface">
 <p>小鲁开始学习人工智能最基础的算法——<strong>搜索</strong>。"搜索就是穷举所有可能性——但穷举不等于蛮力。DFS回溯像走迷宫一条路走到黑，BFS像水的波纹层层扩散。加上剪枝——提前砍掉不可能的分支——搜索可以从指数级变成多项式级。理解搜索，是理解所有AI和优化算法的基石。"</p>
@@ -760,10 +760,36 @@ r = s.rfind(s2)
     print(r - l - len(s1))
 </pre></div>
 </div></div><hr class="section-divider">
-<div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>
-<li><strong>DFS回溯：</strong>路径+选择列表+结束条件。回溯撤销操作是理解搜索的关键</li>
-<li><strong>BFS：</strong>队列+距离数组。层层扩展保证最短路径（边权相同）</li>
-<li><strong>状态搜索：</strong>八数码——将棋盘编码为字符串做状态BFS</li>
-<li><strong>树形DFS：</strong>重心问题——理解树遍历+子树统计的DP模式</li>
-</ul></div>
+<div class="chapter-summary"><h3>📋 本章小结</h3>
+<h4>一、核心概念表</h4>
+<table class="concept-table">
+<thead><tr><th>概念</th><th>C++</th><th>Python</th></tr></thead>
+<tbody>
+<tr><td>DFS</td><td>递归+visited数组</td><td>递归+visited集合</td></tr>
+<tr><td>BFS</td><td>queue+距离数组</td><td>deque+距离字典</td></tr>
+<tr><td>回溯</td><td>选→递归→撤销</td><td>选→递归→撤销</td></tr>
+<tr><td>状态编码</td><td>整数编码棋盘</td><td>字符串编码棋盘</td></tr>
+<tr><td>树形DFS</td><td>递归遍历子树</td><td>递归遍历子树</td></tr>
+</tbody></table>
+<h4>二、常见错误清单</h4>
+<ol class="mistake-list">
+<li><strong>DFS忘记回溯：</strong>选择后必须在递归返回时撤销，否则后续分支状态错误</li>
+<li><strong>BFS忘记标记已访问：</strong>入队时就要标记visited，不是出队时才标记</li>
+<li><strong>状态编码重复：</strong>八数码等状态搜索中，不同路径可能到达同一状态</li>
+<li><strong>递归深度过大：</strong>Python默认递归限制约1000，深图/树需要增加限制</li>
+<li><strong>树形DFS子树大小计算：</strong>子树大小=1+所有子节点的子树大小之和</li>
+<li><strong>BFS最短路径条件：</strong>只在边权相同时保证最短，边权不同需要Dijkstra</li>
+<li><strong>DFS路径记录：</strong>必须在递归调用前记录、返回后撤销</li>
+</ol>
+<h4>三、技能掌握</h4>
+<ul class="skill-list">
+<li>DFS回溯框架：路径+选择列表+结束条件</li>
+<li>BFS最短路径：队列+距离数组，层层扩展</li>
+<li>状态搜索：将复杂状态编码为字符串/整数做BFS</li>
+<li>树形DFS：递归遍历+子树统计的DP模式</li>
+<li>理解DFS适合"找所有方案"、BFS适合"找最短路径"</li>
+</ul>
+<h4>四、下章预告</h4>
+<p class="next-preview">第14章《图的疆域》——现实世界充满了"网络"：社交网络、交通网络、依赖关系……图论算法将教你如何在这些网络中找到最短路、最小生成树、二分匹配。</p>
+</div>
 <div class="chapter-end">— 第13章完 · 共8题 · 自强不息 —</div></body></html>

@@ -28,7 +28,7 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Noto Serif CJK SC","STSong",s
 .section-divider{border:none;border-top:.3pt solid #e0e0e0;margin:1em 0 0 0}
 .chapter-summary{background:#f8fafc;border:1pt solid #ddd;border-radius:4px;padding:1em 1.5em;margin:2em 0;font-size:9pt}
 .chapter-summary h3{font-size:11pt;color:#2563eb;margin:0 0 .5em 0}.chapter-summary ul{margin:.3em 0;padding-left:1.5em}
-.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}</style></head><body><div class="chapter-title">模块化的力量</div>
+.chapter-end{text-align:center;margin-top:3em;font-size:8pt;color:#999}.chapter-summary h4{font-size:10pt;color:#1e40af;margin:1.2em 0 .4em 0;border-bottom:1px solid #e5e7eb;padding-bottom:.2em}.chapter-summary h4:first-of-type{margin-top:.5em}.concept-table{width:100%;border-collapse:collapse;margin:.5em 0;font-size:8.5pt}.concept-table th{background:#2563eb;color:#fff;padding:.4em .6em;text-align:left;font-size:8pt}.concept-table td{padding:.35em .6em;border-bottom:1px solid #e5e7eb;vertical-align:top}.concept-table tr:nth-child(even){background:#f0f4ff}.mistake-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.mistake-list li{margin:.3em 0;line-height:1.5}.skill-list{margin:.3em 0;padding-left:1.5em;font-size:9pt}.skill-list li{margin:.3em 0;line-height:1.5}.next-preview{margin:.5em 0;font-size:9pt;color:#444;padding:.5em .8em;background:#f0fdf4;border-left:3px solid #22c55e;border-radius:2px}</style></head><body><div class="chapter-title">模块化的力量</div>
 <div class="chapter-subtitle">函数、递归与库的威力 · 12题 · C++ &amp; Python 双语对照</div>
 <div class="preface">
 <p>小鲁已经写了上百行代码了。但他发现一个问题："同样的逻辑我写了好几遍——求最大值、算阶乘、交换变量……能不能写一次，到处用？"小华笑道："你终于感受到<strong>函数</strong>的需求了！函数是编程中最基本、最重要的抽象手段——把一段逻辑打包装箱，贴个标签，以后直接叫名字就能用。"</p>
@@ -590,12 +590,37 @@ a[l:r+1] = sorted(a[l:r+1])
 print(<span style="color: #a31515">&#39; &#39;</span>.join(map(str, a)))
 </pre></div>
 </div></div><hr class="section-divider">
-<div class="chapter-summary"><h3>📋 本章知识点总结</h3><ul>
-<li><strong>函数三价值：</strong>封装（隐藏细节）、复用（一次编写多次调用）、抽象（更高层次的思考）</li>
-<li><strong>参数传递差异：</strong>C++值vs引用(&)，Python"传对象引用"——理解这个差异是写出正确函数的前提</li>
-<li><strong>递归三板斧：</strong>基条件→递归调用→组合结果。注意栈溢出风险和重复计算问题</li>
-<li><strong>@lru_cache：</strong>一行注解将指数级递归变成多项式级——Python动态规划的核武器</li>
-<li><strong>回溯框架：</strong>选→递归→撤销。排列问题是搜索算法的入门课，这个框架贯穿整个算法学习</li>
-<li><strong>标准库优先：</strong>math.gcd/factorial/comb, itertools.permutations, functools.lru_cache——先查库再动手</li>
-</ul></div>
+<div class="chapter-summary"><h3>📋 本章小结</h3>
+<h4>一、核心概念表</h4>
+<table class="concept-table">
+<thead><tr><th>概念</th><th>C++</th><th>Python</th></tr></thead>
+<tbody>
+<tr><td>函数定义</td><td>int f(int x){...}</td><td>def f(x):</td></tr>
+<tr><td>值传递</td><td>void f(int x)</td><td>不可变对象自动值传递</td></tr>
+<tr><td>引用传递</td><td>void f(int &amp;x)</td><td>可变对象自动引用传递</td></tr>
+<tr><td>递归</td><td>直接递归调用</td><td>直接递归调用</td></tr>
+<tr><td>记忆化</td><td>手写DP数组</td><td>@functools.lru_cache</td></tr>
+<tr><td>排列组合</td><td>手写next_permutation</td><td>itertools.permutations</td></tr>
+</tbody></table>
+<h4>二、常见错误清单</h4>
+<ol class="mistake-list">
+<li><strong>C++引用参数忘记&：</strong>void f(int x)是值传递，修改x不影响原变量</li>
+<li><strong>递归无基条件：</strong>缺少终止条件导致无限递归→栈溢出(Stack Overflow)</li>
+<li><strong>递归重复计算：</strong>朴素斐波那契O(2ⁿ)，必须用记忆化或DP优化</li>
+<li><strong>Python默认参数陷阱：</strong>def f(a=[])会导致所有调用共享同一个列表！应用None</li>
+<li><strong>回溯忘记撤销：</strong>选→递归→撤销，漏掉撤销步骤导致状态污染</li>
+<li><strong>lru_cache参数不可哈希：</strong>列表参数需转为元组才能缓存</li>
+<li><strong>递归深度限制：</strong>Python默认递归深度约1000，sys.setrecursionlimit可调</li>
+</ol>
+<h4>三、技能掌握</h4>
+<ul class="skill-list">
+<li>函数封装：把重复代码抽象为可复用的函数模块</li>
+<li>递归三板斧：基条件→递归调用→组合结果</li>
+<li>回溯框架：选→递归→撤销，解决排列/组合/子集问题</li>
+<li>@lru_cache一行注解实现记忆化搜索</li>
+<li>标准库优先原则：math、itertools、functools先查再写</li>
+</ul>
+<h4>四、下章预告</h4>
+<p class="next-preview">第8章《指针与抽象》——C++的指针是很多初学者的噩梦，但它也是理解底层内存的关键。链表、结构体排序、函数重载将带你进入真正的数据结构世界。</p>
+</div>
 <div class="chapter-end">— 第7章完 · 共12题 · 自强不息 —</div></body></html>
