@@ -407,7 +407,7 @@ hello2024world
 
         <div class="sample">
             <div class="sample-label">输入样例</div>
-Hunter Bear
+scissors rock
         </div>
         <div class="sample">
             <div class="sample-label">输出样例</div>
@@ -433,7 +433,7 @@ Player2
   <span class="keyword">char</span> a[<span class="number">20</span>],b[<span class="number">20</span>];
   <span class="keyword">while</span>(scanf(<span class="string">&quot;%s%s&quot;</span>,a,b)==<span class="number">2</span>) {
     <span class="keyword">if</span>(!strcmp(a,b)) printf(<span class="string">&quot;Tie\n&quot;</span>);
-    <span class="keyword">else</span> <span class="keyword">if</span>((!strcmp(a,<span class="string">&quot;Hunter&quot;</span>)&&!strcmp(b,<span class="string">&quot;Gun&quot;</span>))||(!strcmp(a,<span class="string">&quot;Gun&quot;</span>)&&!strcmp(b,<span class="string">&quot;Bear&quot;</span>))||(!strcmp(a,<span class="string">&quot;Bear&quot;</span>)&&!strcmp(b,<span class="string">&quot;Hunter&quot;</span>))) printf(<span class="string">&quot;Player1\n&quot;</span>);
+    <span class="keyword">else</span> <span class="keyword">if</span>((!strcmp(a,<span class="string">&quot;scissors&quot;</span>)&&!strcmp(b,<span class="string">&quot;cloth&quot;</span>))||(!strcmp(a,<span class="string">&quot;cloth&quot;</span>)&&!strcmp(b,<span class="string">&quot;rock&quot;</span>))||(!strcmp(a,<span class="string">&quot;rock&quot;</span>)&&!strcmp(b,<span class="string">&quot;scissors&quot;</span>))) printf(<span class="string">&quot;Player1\n&quot;</span>);
     <span class="keyword">else</span> printf(<span class="string">&quot;Player2\n&quot;</span>);
   }
   <span class="keyword">return</span> <span class="number">0</span>;
@@ -443,7 +443,7 @@ Player2
 data = sys.stdin.read().split()
 p1, p2 = data[<span class="number">0</span>], data[<span class="number">1</span>]
 <span class="keyword">if</span> p1 == p2: <span class="keyword">print</span>(<span class="string">'Tie'</span>)
-<span class="keyword">elif</span> (p1==<span class="string">'Hunter'</span> <span class="keyword">and</span> p2==<span class="string">'Gun'</span>) <span class="keyword">or</span> (p1==<span class="string">'Bear'</span> <span class="keyword">and</span> p2==<span class="string">'Hunter'</span>) <span class="keyword">or</span> (p1==<span class="string">'Gun'</span> <span class="keyword">and</span> p2==<span class="string">'Bear'</span>):
+<span class="keyword">elif</span> (p1==<span class="string">'scissors'</span> <span class="keyword">and</span> p2==<span class="string">'cloth'</span>) <span class="keyword">or</span> (p1==<span class="string">'rock'</span> <span class="keyword">and</span> p2==<span class="string">'scissors'</span>) <span class="keyword">or</span> (p1==<span class="string">'cloth'</span> <span class="keyword">and</span> p2==<span class="string">'rock'</span>):
     <span class="keyword">print</span>(<span class="string">'Player1'</span>)
 <span class="keyword">else</span>:
     <span class="keyword">print</span>(<span class="string">'Player2'</span>)</code></pre>
