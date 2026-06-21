@@ -749,6 +749,65 @@ dist = {start: <span class="number">0</span>}
             <strong>解题思路：</strong><p>DFS遍历树，计算每个节点的最大子树大小。重心=max(n-subSize, 各子树size)最小的节点。</p>
 
         </div>
+
+<div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 8px 8px 0">
+<strong style="color:#1a237e;font-size:1.1em">算法图解：DFS求树的重心</strong>
+<p>以样例为例：9个节点的树</p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+树结构:
+              1
+            / | \
+           2  7  4
+          /|     |\
+         8  5    3  6
+                   |
+                   9
+</pre>
+<p><strong>重心的定义：</strong>删除某个节点后，剩余各连通块中节点数的最大值最小的那个节点。</p>
+<p>对于节点u，删除后有两部分：(1)各子树  (2)上方的"父方向"部分（大小为 n - 子树总大小 - 1）</p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+DFS后序遍历过程（从叶子往根计算子树大小）:
+
+═══ 叶子节点 ═══
+  节点8: size=1,  max_part = max(0, 9-1) = 8    ans=min(ans,8)=8
+  节点5: size=1,  max_part = max(0, 9-1) = 8    ans=8
+  节点3: size=1,  max_part = max(0, 9-1) = 8    ans=8
+  节点9: size=1,  max_part = max(0, 9-1) = 8    ans=8
+
+═══ 内部节点 ═══
+  节点2: 子树{8,5} → size=3
+    max_part = max(size[8], size[5], 9-3) = max(1,1,6) = 6
+    ans = min(8, 6) = 6
+
+  节点6: 子树{9} → size=2
+    max_part = max(size[9], 9-2) = max(1,7) = 7
+    ans = min(6, 7) = 6
+
+  节点4: 子树{3,6} → size=3
+    max_part = max(size[3], size[6], 9-3) = max(1,2,6) = 6
+    ans = min(6, 6) = 6
+
+  节点7: 叶子 → size=1
+    max_part = max(0, 9-1) = 8
+    ans = 6
+
+═══ 根节点 ═══
+  节点1: 子树{2,7,4} → size=9
+    max_part = max(size[2], size[7], size[4], 9-9)
+             = max(3, 1, 3, 0) = 3
+    ans = min(6, 3) = 3
+
+═══ 最终答案 ═══
+  重心是节点1，最大子树大小为3
+  含义：删除节点1后，最大连通块只有3个节点
+</pre>
+<p><strong>关键理解：</strong></p>
+<p>1. DFS后序遍历保证了处理父节点时，所有子树大小已知</p>
+<p>2. 每个节点的max_part取两部分最大值：各子树size vs 上方部分(n-sum-1)</p>
+<p>3. 全局取最小的max_part，就是重心</p>
+<p><strong>为什么DFS只跑一次？</strong>因为后序遍历天然保证了自底向上计算，每个子树大小通过递归返回值获得，无需重复遍历。</p>
+</div>
+
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(V + E) — DFS遍历，每个节点和边访问一次<br>
@@ -883,6 +942,53 @@ dfs(<span class="number">1</span>, -<span class="number">1</span>)
             <strong>解题思路：</strong><p>BFS层序遍历，每层距离+1。</p>
 
         </div>
+
+<div style="background:#e8f5e9;border-left:4px solid #2e7d32;padding:16px;margin:15px 0;border-radius:0 8px 8px 0">
+<strong style="color:#1b5e20;font-size:1.1em">算法图解：BFS逐层扩展求最短距离</strong>
+<p>以样例为例：4个点，4条有向边 1→2, 2→3, 1→3, 3→4</p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+图结构（邻接表）:
+  1: → 2, 3
+  2: → 3
+  3: → 4
+  4: (无出边)
+</pre>
+<p><strong>BFS逐层扩展过程：</strong></p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+初始: dist = [-1, 0, -1, -1, -1]    队列: [1]
+
+═══ 第0层: 距离=0 ═══
+  弹出 1 → 遍历邻接表: 2, 3
+    → 2未访问: dist[2]=dist[1]+1=1, 入队
+    → 3未访问: dist[3]=dist[1]+1=1, 入队
+  队列: [2, 3]
+  dist = [-1, 0, 1, 1, -1]
+
+═══ 第1层: 距离=1 ═══
+  弹出 2 → 遍历邻接表: 3
+    → 3已访问(dist[3]=1): 跳过!
+  队列: [3]
+
+  弹出 3 → 遍历邻接表: 4
+    → 4未访问: dist[4]=dist[3]+1=2, 入队
+  队列: [4]
+  dist = [-1, 0, 1, 1, 2]
+
+═══ 第2层: 距离=2 ═══
+  弹出 4 → 无出边
+  队列: []
+
+队列空，BFS结束!
+最终结果: dist[1]=0, dist[2]=1, dist[3]=1, dist[4]=2
+输出: 0 1 1 2
+</pre>
+<p><strong>关键理解：</strong></p>
+<p>1. 队列保证了"先到先服务"——距离近的点一定比距离远的点先出队</p>
+<p>2. 第一次访问某点时，一定是通过最短路径到达的（因为BFS逐层扩展）</p>
+<p>3. 已访问的点不会被重复更新——这就是为什么3从2出发时被跳过</p>
+<p><strong>有向图vs无向图：</strong>本题是有向图（边有方向），邻接表只存出边。如果是无向图，需要add(a,b)和add(b,a)各存一次。</p>
+</div>
+
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(V + E) — BFS遍历，每个节点和边访问一次<br>

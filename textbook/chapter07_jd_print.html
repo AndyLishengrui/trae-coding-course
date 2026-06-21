@@ -595,6 +595,44 @@ first, second = second, first  <span class="comment"># 交换</span>
             <strong>解题思路：</strong><p>函数内循环，b[i] = a[i]，复制前size个元素。</p>
 
         </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>函数调用与数组参数追踪（输入 n=3, m=5, size=2, a=[1,2,3], b=[4,5,6,7,8]）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+重要区别：数组参数 vs 普通变量参数
+═══════════════════════════════════════
+
+C++ 中，普通变量是值传递（复制一份给函数），
+但数组是特殊的——传递的是数组的起始地址（指针），
+函数内直接操作原数组！
+
+void swap(int x, int y)   → 值传递，改不了外面的变量
+void copy(int a[], ...)   → 数组传递，直接改原数组！
+
+Step 1: main() 中的数组状态
+        a: [1, 2, 3]
+        b: [4, 5, 6, 7, 8]
+
+Step 2: 调用 copy(a, b, 2)
+        参数传递：a[] 和 b[] 传递的是地址（不是复制！）
+        size = 2
+        ┌──────────────────────────────────┐
+        │  copy() 栈帧                     │
+        │  a[] → 指向 main 中的 a 数组     │
+        │  b[] → 指向 main 中的 b 数组     │
+        │  size = 2                        │
+        └──────────────────────────────────┘
+
+Step 3: 循环执行
+        i=0: b[0] = a[0]  →  b[0] = 1  →  b: [1, 5, 6, 7, 8]
+        i=1: b[1] = a[1]  →  b[1] = 2  →  b: [1, 2, 6, 7, 8]
+        循环结束
+
+Step 4: 函数返回，main() 中 b 已被修改
+        a: [1, 2, 3]      （未变）
+        b: [1, 2, 6, 7, 8]（前2个被覆盖，后3个不变）
+        输出: 1 2 6 7 8</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>C++ 中数组作为函数参数时，传递的是<strong>地址（指针）</strong>，函数内对数组元素的修改会直接影响原数组。这与普通变量的<strong>值传递</strong>不同——普通变量传入函数的是副本，修改副本不影响原变量。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(n) — 单层循环遍历<br>
@@ -678,6 +716,31 @@ b[:size] = a[:size]
             <strong>解题思路：</strong><p>双指针从两端向中间交换，只交换前size个。</p>
 
         </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>函数调用与双指针翻转追踪（输入 n=5, size=3, a=[1,2,3,4,5]）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+reverse(a, 3)：翻转前3个元素
+═══════════════════════════════════════
+
+原始数组: [1, 2, 3, 4, 5]
+           ↑        ↑
+           i=0      j=2    （双指针从两端向中间靠拢）
+
+Step 1: i=0, j=2, i &lt; j → swap(a[0], a[2])
+        [1, 2, 3, 4, 5]  →  [3, 2, 1, 4, 5]
+         ↑        ↑              ↑     ↑
+         i        j              i     j
+        i++ → i=1, j-- → j=1
+
+Step 2: i=1, j=1, i &gt;= j → 停止！（相遇了，不需要再交换）
+
+最终结果: [3, 2, 1, 4, 5]
+          前3个翻转了，后2个不变 ✓
+
+注意：数组传递给函数后，reverse() 直接修改原数组，
+函数返回后 main() 中的 a 已经是翻转后的结果。</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>双指针翻转：一个指针从头，一个从尾，同时向中间移动，每次交换两个指针所指的元素。当两指针相遇时停止。时间复杂度 O(size/2) = O(size)，空间复杂度 O(1)（原地操作）。数组作为参数传递时，函数内的修改直接影响原数组。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(size) — 双指针遍历前size个元素<br>
@@ -757,6 +820,37 @@ a[:size] = <span class="keyword">reversed</span>(a[:size])
         <div class="hint">
             <strong>解题思路：</strong><p>函数内遍历数组前size个元素，空格隔开输出。</p>
 
+        </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>函数调用追踪（输入 n=5, size=3, a=[1,2,3,4,5]）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+print(a, 3)：打印前3个元素
+═══════════════════════════════════════
+
+Step 1: main() 读入数据
+        a = [1, 2, 3, 4, 5], size = 3
+
+Step 2: 调用 print(a, 3)
+        a[] 传递数组地址，size = 3
+        ┌──────────────────────────────────┐
+        │  print() 栈帧                    │
+        │  a[] → 指向 main 中的 a 数组     │
+        │  size = 3                        │
+        └──────────────────────────────────┘
+
+Step 3: 循环输出
+        i=0: cout &lt;&lt; a[0] → 输出 "1 "
+        i=1: cout &lt;&lt; a[1] → 输出 "2 "
+        i=2: cout &lt;&lt; a[2] → 输出 "3 "
+        循环结束，输出 endl（换行）
+
+最终输出: 1 2 3
+
+函数类型对比：
+  void print(...)   → 不返回值，只做"副作用"（输出）
+  int  fact(...)    → 返回一个值，调用者需要接收
+  void swap(...)    → 不返回值，但通过引用参数修改外部变量</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>函数可以对数组进行只读操作（不修改），也可以进行读写操作。print() 函数只读取数组元素并输出，不修改数组内容。void 函数不返回值，适合执行"副作用"操作（如输出、修改引用参数等）。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -844,6 +938,46 @@ arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span c
             <strong>解题思路：</strong><p>嵌套循环遍历行列，注意行末空格处理。</p>
 
         </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>二维数组函数调用追踪（输入 row=3, col=4）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+print2D(a, 3, 4)：逐行打印矩阵
+═══════════════════════════════════════
+
+矩阵 a:
+  行0: [1, 3, 4, 5]
+  行1: [2, 6, 9, 4]
+  行2: [1, 4, 7, 5]
+
+嵌套循环执行过程：
+┌───────┬───────┬────────────┬────────────────────────┐
+│  行i  │  列j  │  a[i][j]   │  输出                  │
+├───────┼───────┼────────────┼────────────────────────┤
+│   0   │   0   │    1       │  "1"  (j=0,不加空格)   │
+│   0   │   1   │    3       │  " 3" (j≠0,先空格再数字)│
+│   0   │   2   │    4       │  " 4"                  │
+│   0   │   3   │    5       │  " 5" → 换行           │
+│   1   │   0   │    2       │  "2"                   │
+│   1   │   1   │    6       │  " 6"                  │
+│   1   │   2   │    9       │  " 9"                  │
+│   1   │   3   │    4       │  " 4" → 换行           │
+│   2   │   0   │    1       │  "1"                   │
+│   2   │   1   │    4       │  " 4"                  │
+│   2   │   2   │    7       │  " 7"                  │
+│   2   │   3   │    5       │  " 5" → 换行           │
+└───────┴───────┴────────────┴────────────────────────┘
+
+行末空格技巧：if (j) cout &lt;&lt; ' ';
+  j=0 时：if(0) 为 false → 不输出空格
+  j=1 时：if(1) 为 true  → 先输出空格再输出数字
+  这样每行第一个数字前面没有空格，行末也不会多余空格！
+
+最终输出:
+1 3 4 5
+2 6 9 4
+1 4 7 5</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>二维数组作为函数参数时，必须指定第二维的大小（如 <code>int a[][100]</code>），因为编译器需要知道每行有多少列才能正确计算内存地址。嵌套循环的外层遍历行，内层遍历列。<code>if (j)</code> 技巧是避免行末多余空格的常用方法。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(n<sup>2</sup>) — 嵌套循环<br>
@@ -930,6 +1064,41 @@ rows, cols = <span class="keyword">map</span>(<span class="keyword">int</span>, 
         <div class="hint">
             <strong>解题思路：</strong><p>对a[l]到a[r]排序，其余元素不变。可用冒泡、选择或库函数。</p>
 
+        </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>区间排序函数调用追踪（输入 n=5, l=1, r=3, a=[5,3,1,4,2]）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+sort(a, 1, 3)：只排 a[1] 到 a[3]
+═══════════════════════════════════════
+
+原始数组: [5, 3, 1, 4, 2]
+              ↑  ↑  ↑
+             a[1] a[2] a[3]   ← 只排这一段
+
+选择排序过程（每轮找最小值放到前面）：
+
+第1轮 (i=1)：从 a[1..3] 中找最小值
+  比较: a[1]=3, a[2]=1, a[3]=4  → 最小值是 a[2]=1
+  swap(a[1], a[2])
+  数组: [5, 1, 3, 4, 2]
+           ↑  已排好
+
+第2轮 (i=2)：从 a[2..3] 中找最小值
+  比较: a[2]=3, a[3]=4  → 最小值是 a[2]=3（已在正确位置）
+  不需要交换
+  数组: [5, 1, 3, 4, 2]
+              ↑  已排好
+
+第3轮 (i=3)：只剩 a[3]，无需比较
+  数组: [5, 1, 3, 4, 2]
+                 ↑  已排好
+
+最终结果: [5, 1, 3, 4, 2]
+           ↑     ↑  ↑
+          不变  排好了  不变
+
+注意：只有 a[1] 到 a[3] 被排序，a[0]=5 和 a[4]=2 保持原位！</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>函数可以接受数组的<strong>子区间</strong>作为参数（通过传入左右端点 l 和 r）。排序函数只处理指定区间，不影响区间外的元素。这种"部分操作"的设计让函数更加通用和灵活。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -1411,6 +1580,51 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
         <div class="hint">
             <strong>解题思路：</strong><p>从(0,0)到(n,m)的网格路径数。f(n,m) = f(n-1,m) + f(n,m-1)。边界：f(0,m)=1, f(n,0)=1。等价于组合数C(n+m, n)。</p>
 
+        </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>网格路径递归追踪（输入 n=2, m=2，答案=6）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+从 (0,0) 走到 (2,2)，每次只能向右或向下
+═══════════════════════════════════════
+
+手动枚举所有路径：
+  路径1: (0,0)→(0,1)→(0,2)→(1,2)→(2,2)  右右下下
+  路径2: (0,0)→(0,1)→(1,1)→(1,2)→(2,2)  右下右下
+  路径3: (0,0)→(0,1)→(1,1)→(2,1)→(2,2)  右下下右
+  路径4: (0,0)→(1,0)→(1,1)→(1,2)→(2,2)  下右右下
+  路径5: (0,0)→(1,0)→(1,1)→(2,1)→(2,2)  下右下右
+  路径6: (0,0)→(1,0)→(2,0)→(2,1)→(2,2)  下下右右
+  共 6 种 ✓
+
+递归调用树（部分展开）：
+
+                        dfs(0,0)
+                      /          \
+               右→dfs(0,1)     下→dfs(1,0)
+               /        \       /        \
+          右→dfs(0,2) 下→dfs(1,1)  右→dfs(1,1) 下→dfs(2,0)
+            |        /    \          /    \         |
+            ↓   右→dfs(1,2) 下→dfs(2,1)  右→dfs(2,1) 下→dfs(2,0)
+          dfs(2,2)   |          |          |          |
+          终点!ans+1 ↓          ↓          ↓          ↓
+                  终点!       终点!      终点!      终点!
+                  ans+1       ans+1      ans+1      ans+1
+
+递归调用栈变化（追踪路径1: 右右下下）：
+┌──────────────┐
+│  dfs(2,2)    │  ← 到达终点(x==n && y==m)，ans++
+├──────────────┤
+│  dfs(1,2)    │  ← y==m，只能向下
+├──────────────┤
+│  dfs(0,2)    │  ← y==m，只能向下
+├──────────────┤
+│  dfs(0,1)    │  ← y&lt;m，可以向右
+├──────────────┤
+│  dfs(0,0)    │  ← 起点
+└──────────────┘
+
+数学公式验证：C(n+m, n) = C(4,2) = 4!/(2!×2!) = 6 ✓</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>网格路径问题的递归关系：<code>f(x,y) = f(x+1,y) + f(x,y+1)</code>。到达终点时计数+1，超出边界时返回。这就是<strong>深度优先搜索（DFS）</strong>的基本模式——沿着一条路走到底，不行就回退换路。路径数等于组合数 C(n+m, n)。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>

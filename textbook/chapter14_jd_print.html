@@ -417,6 +417,50 @@ st = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
             <strong>解题思路：</strong><p>堆优化Dijkstra：O(mlogn)。用小根堆取最近点。</p>
 
         </div>
+
+<div style="background:#e8eaf6;border-left:4px solid #283593;padding:16px;margin:15px 0;border-radius:0 8px 8px 0">
+<strong style="color:#1a237e;font-size:1.1em">算法图解：堆优化Dijkstra执行过程</strong>
+<p>以样例为例：3个点，边 1→2(权2), 2→3(权1), 1→3(权4)</p>
+<p><strong>核心思想：</strong>朴素Dijkstra每次O(V)扫描找最近点，堆优化后用小根堆O(logV)取最近点。边少时快得多。</p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+初始: dist=[INF, 0, INF, INF]   heap=[(0,1)]   st=[F,F,F]
+
+═══ 第1轮 ═══
+  取堆顶: (0, 1) → 点1，dist=0
+  st[1]=true
+  遍历1的邻边:
+    1→2(权2): dist[2]=INF > 0+2=2 → 更新dist[2]=2, push(2,2)
+    1→3(权4): dist[3]=INF > 0+4=4 → 更新dist[3]=4, push(4,3)
+  堆: [(2,2), (4,3)]
+  dist=[INF, 0, 2, 4]
+
+═══ 第2轮 ═══
+  取堆顶: (2, 2) → 点2，dist=2
+  st[2]=true
+  遍历2的邻边:
+    2→3(权1): dist[3]=4 > 2+1=3 → 更新dist[3]=3, push(3,3)
+  堆: [(3,3), (4,3)]  ← 注意：(4,3)还在堆里！
+  dist=[INF, 0, 2, 3]
+
+═══ 第3轮 ═══
+  取堆顶: (3, 3) → 点3，dist=3
+  st[3]=true
+  无邻边
+  堆: [(4,3)]
+
+═══ 第4轮 ═══
+  取堆顶: (4, 3) → 点3，但st[3]=true → 跳过！（关键！）
+  堆: []  空了，结束
+
+最终: dist=[INF, 0, 2, 3]  → 输出 0 2 3
+</pre>
+<p><strong>为什么会有"过期"的堆元素？</strong></p>
+<p>因为同一个点可能被多次push进堆（每次松弛时都会push）。当点3第一次以dist=4入堆后，又以dist=3再次入堆。取堆顶时先取出(3,3)，后来(4,3)也会被取出，但此时点3已标记为"已确定"，直接跳过。</p>
+<p><strong>复杂度分析：</strong></p>
+<p>每个点最多入堆O(E)次（每条边松弛一次），每次堆操作O(logE)。总复杂度O(ElogE) = O(ElogV)。</p>
+<p><strong>对比朴素版：</strong>朴素版O(V²)，适合稠密图（E接近V²）；堆优化版O(ElogV)，适合稀疏图（E远小于V²）。</p>
+</div>
+
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O((V + E) log V) — Dijkstra最短路，优先队列优化<br>
@@ -575,6 +619,50 @@ heap = [(<span class="number">0</span>, <span class="number">1</span>)]
             <strong>解题思路：</strong><p>SPFA：队列优化Bellman-Ford。</p>
 
         </div>
+
+<div style="background:#fff3e0;border-left:4px solid #e65100;padding:16px;margin:15px 0;border-radius:0 8px 8px 0">
+<strong style="color:#bf360c;font-size:1.1em">算法图解：SPFA松弛过程</strong>
+<p>以样例为例：3个点，边 1→2(权-1), 2→3(权2), 1→3(权3)</p>
+<p><strong>SPFA的核心思想：</strong>只有被松弛成功的点才需要入队去更新别人。不需要像Bellman-Ford那样每轮遍历所有边。</p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+初始: dist=[INF, 0, INF, INF]   队列: [1]   st[1]=true
+
+═══ 第1轮 ═══
+  弹出 1, st[1]=false
+  遍历1的邻边:
+    1→2(权-1): dist[2]=INF > 0+(-1)=-1 → 松弛成功! dist[2]=-1
+               st[2]=false → 入队! 队列: [2], st[2]=true
+    1→3(权3):  dist[3]=INF > 0+3=3 → 松弛成功! dist[3]=3
+               st[3]=false → 入队! 队列: [2, 3], st[3]=true
+  dist=[INF, 0, -1, 3]
+
+═══ 第2轮 ═══
+  弹出 2, st[2]=false
+  遍历2的邻边:
+    2→3(权2): dist[3]=3 > -1+2=1 → 松弛成功! dist[3]=1
+               st[3]=false → 入队! 队列: [3], st[3]=true
+  dist=[INF, 0, -1, 1]
+
+═══ 第3轮 ═══
+  弹出 3, st[3]=false
+  无邻边
+  队列: []  空了，结束
+
+最终: dist=[INF, 0, -1, 1]  → 输出 0 -1 1
+</pre>
+<p><strong>SPFA vs Dijkstra：</strong></p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+Dijkstra: 每次取"距离最小的未确定点"，标记为确定 → 贪心
+           → 不能处理负权边（已确定的点可能被负权边更新）
+
+SPFA:     把"被松弛成功的点"放入队列 → BFS思想
+           → 能处理负权边（没有"确定"的概念，可以反复更新）
+           → 最坏O(VE)，但实际通常很快
+</pre>
+<p><strong>SPFA判负环：</strong>如果某个点入队次数超过n次，说明图中有负环（绕一圈距离越来越小）。</p>
+<p><strong>st数组的作用：</strong>防止同一个点同时在队列中出现多次。入队时st=true，出队时st=false。松弛成功但st=true说明已在队列中，不重复入队。</p>
+</div>
+
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(k × E) — SPFA最短路，k为平均入队次数<br>
@@ -733,6 +821,53 @@ st[<span class="number">1</span>] = <span class="keyword">True</span>
             <strong>解题思路：</strong><p>Floyd：O(n³)。三重循环枚举中间点。</p>
 
         </div>
+
+<div style="background:#e8eaf6;border-left:4px solid #283593;padding:16px;margin:15px 0;border-radius:0 8px 8px 0">
+<strong style="color:#1a237e;font-size:1.1em">算法图解：Floyd矩阵更新过程</strong>
+<p>以样例为例：3个点，边 1→2(权2), 2→3(权1), 1→3(权4)</p>
+<p><strong>Floyd的核心思想：</strong>dp[i][j]表示i到j的最短距离。外层枚举中间点k，如果经过k能缩短i到j的距离，就更新。</p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+初始距离矩阵（INF表示不可达，对角线为0）:
+       1     2     3
+  1  [ 0     2     4 ]
+  2  [ INF   0     1 ]
+  3  [ INF   INF   0 ]
+
+═══ k=1: 允许经过点1中转 ═══
+  枚举所有(i,j)对:
+  (2,3): d[2][3]=1 vs d[2][1]+d[1][3]=INF+4=INF → 不更新
+  (3,2): d[3][2]=INF vs d[3][1]+d[1][2]=INF+2=INF → 不更新
+  ...（其他对也无法通过点1改善）
+  矩阵不变
+
+═══ k=2: 允许经过点2中转 ═══
+  枚举所有(i,j)对:
+  (1,3): d[1][3]=4 vs d[1][2]+d[2][3]=2+1=3 → 更新! d[1][3]=3 ← 发现更短路径!
+  (3,1): d[3][1]=INF vs d[3][2]+d[2][1]=INF → 不更新
+  ...（其他对也无法改善）
+
+  更新后的矩阵:
+       1     2     3
+  1  [ 0     2     3 ]  ← d[1][3]从4变成了3！
+  2  [ INF   0     1 ]
+  3  [ INF   INF   0 ]
+
+═══ k=3: 允许经过点3中转 ═══
+  枚举所有(i,j)对:
+  没有任何改善（点3没有出边到其他点）
+  矩阵不变
+
+最终结果:
+  d[1][3] = 3 （1→2→3，而不是直接1→3）
+  d[2][1] = INF （不可达，注意有向图不对称）
+</pre>
+<p><strong>为什么k必须在最外层？</strong></p>
+<p>Floyd的本质是动态规划：dp[k][i][j]表示"只经过1~k号中间点"时i到j的最短路。k在外层保证了：当计算dp[k][i][j]时，dp[k-1][i][k]和dp[k-1][k][j]已经算好了（即i→k和k→j的最短路已经确定）。</p>
+<p><strong>为什么用INF/2判断不可达？</strong></p>
+<p>因为两个INF相加可能溢出（变成负数），所以用INF/2作为阈值：如果d[a][b] > INF/2，就认为不可达。</p>
+<p><strong>记忆口诀：</strong>"中转点k放最外，i和j在内层排。松弛公式三行码，全源最短自然来。"</p>
+</div>
+
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(V<sup>3</sup>) — Floyd全源最短路，三重循环<br>
@@ -1058,6 +1193,66 @@ ans = <span class="number">0</span>
             <strong>解题思路：</strong><p>Kruskal：O(mlogm)。按边权排序，并查集判环。</p>
 
         </div>
+
+<div style="background:#e8f5e9;border-left:4px solid #2e7d32;padding:16px;margin:15px 0;border-radius:0 8px 8px 0">
+<strong style="color:#1b5e20;font-size:1.1em">算法图解：Kruskal逐边选择过程</strong>
+<p>以样例为例：4个点，5条边</p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+图结构:
+  边 1-2 (w=1)    边 1-3 (w=2)    边 2-3 (w=3)
+  边 2-4 (w=4)    边 3-4 (w=5)
+</pre>
+<p><strong>Kruskal核心思想：</strong>按边权从小到大排序，逐条加入。用并查集判断两个端点是否在同一连通块——如果已连通，加边会形成环，跳过。</p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+排序后的边列表:
+  ① 1-2 (w=1)
+  ② 1-3 (w=2)
+  ③ 2-3 (w=3)
+  ④ 2-4 (w=4)
+  ⑤ 3-4 (w=5)
+
+初始并查集: {1}, {2}, {3}, {4}   cnt=0, res=0
+
+═══ 第1步: 取边① 1-2 (w=1) ═══
+  find(1)=1, find(2)=2 → 不同集合!
+  合并: union(1,2) → {1,2}, {3}, {4}
+  cnt=1, res=1
+  选中!   (1)──1──(2)    (3)    (4)
+
+═══ 第2步: 取边② 1-3 (w=2) ═══
+  find(1)=2, find(3)=3 → 不同集合!
+  合并: union(2,3) → {1,2,3}, {4}
+  cnt=2, res=3
+  选中!   (1)──1──(2)     (4)
+            \             /
+             2           /
+              \         /
+               (3)
+
+═══ 第3步: 取边③ 2-3 (w=3) ═══
+  find(2)=3, find(3)=3 → 同一集合! 跳过!
+  （加了会形成环 1-2-3-1）
+
+═══ 第4步: 取边④ 2-4 (w=4) ═══
+  find(2)=3, find(4)=4 → 不同集合!
+  合并: union(3,4) → {1,2,3,4}
+  cnt=3, res=7
+  选中!   (1)──1──(2)
+            \      |
+             2    4|
+              \    |
+               (3)(4)
+
+═══ 结束 ═══
+  cnt=3 = n-1=3 ✓ 全部连通!
+  最小生成树总权值 = 7
+</pre>
+<p><strong>并查集的路径压缩：</strong>find(x)中 p[x] = find(p[x]) 把沿途所有点直接指向根，让后续查询几乎O(1)。</p>
+<p><strong>Kruskal vs Prim：</strong></p>
+<p>Kruskal：按边排序，适合稀疏图（边少），复杂度O(ElogE)</p>
+<p>Prim：从点出发，适合稠密图（边多），复杂度O(V²)</p>
+</div>
+
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(E log E) — 最小生成树，排序边后并查集<br>
@@ -1201,6 +1396,57 @@ Yes
             <strong>解题思路：</strong><p>BFS/DFS染色，冲突则不是二分图。</p>
 
         </div>
+
+<div style="background:#fce4ec;border-left:4px solid #c62828;padding:16px;margin:15px 0;border-radius:0 8px 8px 0">
+<strong style="color:#b71c1c;font-size:1.1em">算法图解：染色法判定二分图</strong>
+<p>以样例为例：4个点，4条边 1-2, 2-3, 3-4, 4-1（形成一个环）</p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+图结构:   1 ─── 2
+          |     |
+          4 ─── 3
+（偶数环，是二分图！）
+</pre>
+<p><strong>DFS染色过程：</strong></p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+初始: color = [0, 0, 0, 0, 0]  （0=未染色, 1=红色, 2=蓝色）
+
+═══ 从点1开始DFS(1, 红色) ═══
+  染色: color[1] = 1(红)
+  遍历1的邻居: 2, 4
+
+  → DFS(2, 蓝色):  color[2] = 2(蓝)
+    遍历2的邻居: 1, 3
+    → 1已染色，颜色=红 ≠ 蓝 → 不冲突!
+    → DFS(3, 红色):  color[3] = 1(红)
+      遍历3的邻居: 2, 4
+      → 2已染色，颜色=蓝 ≠ 红 → 不冲突!
+      → DFS(4, 蓝色):  color[4] = 2(蓝)
+        遍历4的邻居: 3, 1
+        → 3已染色，颜色=红 ≠ 蓝 → 不冲突!
+        → 1已染色，颜色=红 ≠ 蓝 → 不冲突!
+        → 返回true
+
+最终染色结果:
+  红色组: {1, 3}
+  蓝色组: {2, 4}
+  同组之间无边 → 是二分图! → 输出Yes
+</pre>
+<p><strong>冲突示例（三角形，不是二分图）：</strong></p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+图: 1-2, 2-3, 1-3  （三角形）
+
+DFS(1, 红): color[1]=红
+  DFS(2, 蓝): color[2]=蓝
+    DFS(3, 红): color[3]=红
+      遍历3的邻居: 1
+      → 1已染色，颜色=红 == 红 → 冲突! 返回false
+
+结论: 有奇数环(三角形) → 不是二分图
+</pre>
+<p><strong>核心定理：</strong>一个图是二分图 当且仅当 它不含奇数长度的环。</p>
+<p><strong>3-c的妙用：</strong>代码中用 3-c 切换颜色：3-1=2（红→蓝），3-2=1（蓝→红）。这是一个巧妙的技巧，避免了if-else判断。</p>
+</div>
+
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(V + E) — BFS遍历，每个节点和边访问一次<br>

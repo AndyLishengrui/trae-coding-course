@@ -96,6 +96,68 @@
 <strong>最终结果：</strong><code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">[1, 1, 3, 4, 5]</code><br>
 <em>关键观察：每轮 partition 保证一个元素（基准）到达最终位置，然后递归处理两侧子数组。</em>
 </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>partition 过程详解：双指针 i, j 的移动轨迹</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+以 [3, 1, 4, 1, 5] 为例，target = arr[0] = 3
+═══════════════════════════════════════
+
+初始: i = left-1 = -1（还没开始），j = right+1 = 5（还没开始）
+
+循环开始前的数组:
+  索引:    0    1    2    3    4
+  值:    [<u>3</u>,   1,   4,   1,   5]
+          target
+
+第1轮扫描:
+  do i++ → i=0: arr[0]=3, 3≥3 停下
+  do j-- → j=4: arr[4]=5, 5&gt;3 继续
+       j-- → j=3: arr[3]=1, 1≤3 停下
+  i=0 &lt; j=3 → swap(arr[0], arr[3])
+  数组: [1, 1, 4, 3, 5]
+         ↑           ↑
+         i=0         j=3
+
+第2轮扫描:
+  do i++ → i=1: arr[1]=1, 1&lt;3 继续
+       i++ → i=2: arr[2]=4, 4≥3 停下
+  do j-- → j=2: arr[2]=4, 4&gt;3 继续
+       j-- → j=1: arr[1]=1, 1≤3 停下
+  i=2 &lt; j=1?  NO! i≥j → 停止！
+
+分区点 j=1，但等等——我们再看:
+  实际上 i=2, j=1, i&gt;j 循环结束
+  分区结果: left..j = [0,1] → [1,1]（≤3）
+            j+1..right = [2,4] → [4,5]（&gt;3）
+
+  但注意代码中是 quicksort(nums, left, j) 和 quicksort(nums, j+1, right)
+  所以分区点是 j=1:
+  [1, 1] | [4, 3, 5]
+  ≤target   &gt;target
+
+  等等，让我们重新看代码的实际执行：
+  代码用的是 do-while，i 从 left-1 开始，j 从 right+1 开始
+  target = nums[left] = nums[0] = 3
+
+  第1轮: i++→i=0, nums[0]=3≥3 停; j--→j=4, 5&gt;3; j--→j=3, 1≤3 停
+         i&lt;j → swap(0,3) → [1,1,4,3,5]
+  第2轮: i++→i=1, 1&lt;3; i++→i=2, 4≥3 停; j--→j=2, 4&gt;3; j--→j=1, 1≤3 停
+         i=2, j=1, i≥j → 停止
+
+  最终: [1, 1] | 3 | [4, 5]  → 排序后 [1, 1, 3, 4, 5] ✓
+
+partition 的核心不变量:
+─────────────────────────────
+  循环中任意时刻:
+  [left, i) 范围内所有元素 &lt; target
+  (j, right] 范围内所有元素 &gt; target
+  i 和 j 还没相遇的区域待处理
+
+  循环结束时:
+  [left, j] 都 ≤ target
+  [j+1, right] 都 &gt; target
+  j 就是分区点！</pre>
+        </div>
 
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -400,6 +462,53 @@ arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span c
 <strong>最终结果：</strong><code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">[1, 2, 3, 4, 5]</code><br>
 <em>核心技巧：合并时双指针分别指向两个有序子数组的开头，每次取较小的元素放入临时数组。因为两边都是有序的，只需 O(1) 比较一次就能决定下一个元素。</em>
 </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>合并过程详解：tmp[] 数组状态追踪</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+以合并 [1, 2, 3] 和 [4, 5] 为例（left=0, mid=2, right=4）
+═══════════════════════════════════════
+
+原始数组: [3, 1, 2, 4, 5]  （经过前面的递归拆分和合并后）
+合并前:   [1, 2, 3, 4, 5]  （左半[1,2,3]和右半[4,5]各自有序）
+            ↑        ↑  ↑
+            i=left   j  right
+            i=0      j=mid+1=3
+
+临时数组 tmp[] 用于存放合并结果：
+
+Step 1: i=0, j=3, nums[0]=1 ≤ nums[3]=4 → tmp[0]=1, i++
+        tmp: [1, _, _, _, _]
+        原数组: [1, 2, 3, 4, 5]
+                 ↑        ↑
+                 i=1      j=3
+
+Step 2: i=1, j=3, nums[1]=2 ≤ nums[3]=4 → tmp[1]=2, i++
+        tmp: [1, 2, _, _, _]
+        原数组: [1, 2, 3, 4, 5]
+                    ↑     ↑
+                    i=2   j=3
+
+Step 3: i=2, j=3, nums[2]=3 ≤ nums[3]=4 → tmp[2]=3, i++
+        tmp: [1, 2, 3, _, _]
+        原数组: [1, 2, 3, 4, 5]
+                       ↑  ↑
+                       i=3(越过mid!) j=3
+
+Step 4: i &gt; mid，左半耗尽！把右半剩余全部复制到 tmp
+        tmp: [1, 2, 3, 4, 5]
+        j=3 → tmp[3]=4, j=4 → tmp[4]=5
+
+Step 5: 把 tmp[] 复制回原数组 nums[left..right]
+        nums[0..4] = tmp[0..4] = [1, 2, 3, 4, 5]
+
+为什么需要 tmp[] 临时数组？
+─────────────────────────────
+因为合并时要同时读取 nums[left..mid] 和 nums[mid+1..right]，
+如果直接写回 nums，会覆盖还未读取的数据！
+tmp[] 提供了一个安全的"暂存区"，合并完成后再复制回去。
+
+空间复杂度 O(n) 的来源：这个 tmp[] 数组。</pre>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(n log n) — 归并排序，分治递归深度O(log n)，每层合并O(n)<br>
@@ -714,6 +823,95 @@ _, ans = merge_sort_count(arr)
 
 <em>如何选择模板？</em>如果 check(mid) 为 true 时让 right = mid，用模板1（下取整）。如果 check(mid) 为 true 时让 left = mid，用模板2（上取整）。选错取整方式会导致死循环，这是二分最常见的 bug。
 </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>逐步追踪：在 [1, 2, 2, 3, 3, 4] 中查找 x=3 的边界</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+数组:  [1, 2, 2, 3, 3, 4]
+索引:   0  1  2  3  4  5
+
+═══════════════════════════════════════
+第一次二分：找左边界（第一个 ≥ 3 的位置）
+模板1：mid = (left+right)/2 下取整
+═══════════════════════════════════════
+
+初始: left=0, right=5
+      [1, 2, 2, 3, 3, 4]
+       ↑              ↑
+       L              R
+
+第1轮: mid = (0+5)/2 = 2
+       nums[2] = 2 &lt; 3 → 不满足 ≥3
+       left = mid + 1 = 3
+       [1, 2, 2, 3, 3, 4]
+                   ↑     ↑
+                   L     R
+
+第2轮: mid = (3+5)/2 = 4
+       nums[4] = 3 ≥ 3 → 满足！
+       right = mid = 4（mid可能是答案，保留）
+       [1, 2, 2, 3, 3, 4]
+                   ↑  ↑
+                   L  R
+
+第3轮: mid = (3+4)/2 = 3
+       nums[3] = 3 ≥ 3 → 满足！
+       right = mid = 3
+       [1, 2, 2, 3, 3, 4]
+                   ↑
+                 L=R=3
+
+循环结束！left == right == 3
+左边界 = 3 ✓
+
+═══════════════════════════════════════
+第二次二分：找右边界（最后一个 ≤ 3 的位置）
+模板2：mid = (left+right+1)/2 上取整
+═══════════════════════════════════════
+
+初始: left=0, right=5
+      [1, 2, 2, 3, 3, 4]
+       ↑              ↑
+       L              R
+
+第1轮: mid = (0+5+1)/2 = 3
+       nums[3] = 3 ≤ 3 → 满足！
+       left = mid = 3（mid可能是答案，保留）
+       [1, 2, 2, 3, 3, 4]
+                   ↑     ↑
+                   L     R
+
+第2轮: mid = (3+5+1)/2 = 4
+       nums[4] = 3 ≤ 3 → 满足！
+       left = mid = 4
+       [1, 2, 2, 3, 3, 4]
+                      ↑  ↑
+                      L  R
+
+第3轮: mid = (4+5+1)/2 = 5
+       nums[5] = 4 &gt; 3 → 不满足 ≤3
+       right = mid - 1 = 4
+       [1, 2, 2, 3, 3, 4]
+                      ↑
+                    L=R=4
+
+循环结束！left == right == 4
+右边界 = 4 ✓
+
+最终结果: [3, 4]（位置3到位置4）
+
+为什么模板2必须上取整？
+─────────────────────────────
+假设 left=3, right=4，用下取整：
+  mid = (3+4)/2 = 3
+  如果 check(3) 为 true → left = 3
+  区间仍是 [3,4]，没有缩小！→ 死循环！
+
+用上取整：
+  mid = (3+4+1)/2 = 4
+  如果 check(4) 为 true → left = 4 → [4,4] → 结束
+  如果 check(4) 为 false → right = 3 → [3,3] → 结束
+  区间一定缩小！</pre>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(log n) — 二分查找<br>

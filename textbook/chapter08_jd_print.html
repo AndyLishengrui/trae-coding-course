@@ -341,6 +341,44 @@ a=0, b=1（只保留最近两项）
 栈的后进先出（LIFO）特性天然实现了反转！</pre>
         <p style="margin:8px 0;color:#555"><strong>关键概念：</strong><code>vector</code> 的 <code>push_back()</code> 在末尾追加元素，<code>size()</code> 返回元素个数。<code>stack</code> 的 <code>push()</code> 压栈，<code>top()</code> 查看栈顶，<code>pop()</code> 弹出栈顶。栈的 LIFO 特性使其天然适合反转操作。</p>
         </div>
+        <div style="background:#f0f0ff;border-left:4px solid #7c4dff;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>拓展知识：链表——铁链的数据结构版本</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+本题的"铁链"就是链表（Linked List）的形象比喻！
+═══════════════════════════════════════
+
+链表由"节点"组成，每个节点存两样东西：
+  1. 数据（铁环上的数字）
+  2. 指针（指向下一个节点的"铁链扣"）
+
+链表 [1, 2, 3] 的结构：
+  ┌────┬────┐    ┌────┬────┐    ┌────┬────┐
+  │ 1  │  ──┼──→ │ 2  │  ──┼──→ │ 3  │NULL│
+  └────┴────┘    └────┴────┘    └────┴────┘
+   数据  next      数据  next      数据  next
+
+vs vector [1, 2, 3] 的结构：
+  ┌───┬───┬───┐
+  │ 1 │ 2 │ 3 │   ← 连续内存，按下标访问
+  └───┴───┴───┘
+
+┌───────────────┬─────────────────┬─────────────────┐
+│   操作        │   vector        │   链表           │
+├───────────────┼─────────────────┼─────────────────┤
+│ 访问第i个元素 │ O(1) 直接下标   │ O(n) 从头遍历   │
+│ 头部插入      │ O(n) 全部后移   │ O(1) 改指针     │
+│ 尾部追加      │ O(1) amortized  │ O(1) 改指针     │
+│ 中间插入      │ O(n) 全部后移   │ O(1) 改指针*    │
+│ 反转          │ O(n)            │ O(n)            │
+└───────────────┴─────────────────┴─────────────────┘
+* 前提是已经定位到插入位置
+
+链表的"反转"操作（改变指针方向）：
+  原始: 1 → 2 → 3 → NULL
+  反转: NULL ← 1 ← 2 ← 3
+  只需要逐个改变每个节点的 next 指针方向！</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>链表和 vector/数组是两种最基本的线性数据结构。vector 用连续内存存储，支持随机访问；链表用指针串联节点，适合频繁插入删除。本题用栈实现反转，本质上利用了栈的 LIFO 特性——这和链表反转"改变指针方向"的效果相同。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(n) — 栈操作，每个元素最多入栈出栈各一次<br>
@@ -762,6 +800,58 @@ numbers.reverse()       <span class="comment"># 反转序列</span>
 总共比较次数 = len(a) + len(b) = O(n+m)。
 如果用 sort 合并，复杂度是 O((n+m)log(n+m))，更慢。</pre>
         <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>归并操作是<strong>双指针</strong>的经典应用。两个指针分别指向两个有序序列的头部，每次取较小的元素追加到结果中。当一个序列耗尽后，直接追加另一个的剩余部分。这是<strong>归并排序</strong>的核心子操作。</p>
+        </div>
+        <div style="background:#f0f0ff;border-left:4px solid #7c4dff;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>拓展知识：链表归并 vs 数组归并</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+本题用 vector + 双指针合并。如果用链表怎么做？
+═══════════════════════════════════════
+
+链表 A: 1 → 3 → 5 → NULL
+链表 B: 2 → 4 → 6 → NULL
+
+链表归并过程（只改指针，不复制数据！）：
+
+Step 1: 比较 A.head=1 和 B.head=2
+        1 &lt; 2 → 结果链表头指向节点1
+        A 前进到 3
+        结果: 1
+
+Step 2: 比较 A.head=3 和 B.head=2
+        3 &gt; 2 → 节点2接到结果末尾
+        B 前进到 4
+        结果: 1 → 2
+
+Step 3: 比较 A.head=3 和 B.head=4
+        3 &lt; 4 → 节点3接到结果末尾
+        A 前进到 5
+        结果: 1 → 2 → 3
+
+Step 4: 比较 A.head=5 和 B.head=4
+        5 &gt; 4 → 节点4接到结果末尾
+        B 前进到 6
+        结果: 1 → 2 → 3 → 4
+
+Step 5: 比较 A.head=5 和 B.head=6
+        5 &lt; 6 → 节点5接到结果末尾
+        A 耗尽！
+        结果: 1 → 2 → 3 → 4 → 5
+
+Step 6: A 耗尽，把 B 剩余全部接上
+        结果: 1 → 2 → 3 → 4 → 5 → 6 → NULL
+
+┌─────────────────┬─────────────────┬─────────────────┐
+│   对比项        │  数组(vector)   │  链表(list)     │
+├─────────────────┼─────────────────┼─────────────────┤
+│ 合并方式        │ 复制元素到新数组│ 改变指针指向    │
+│ 额外空间        │ O(n+m)          │ O(1) 不需要复制 │
+│ 访问方式        │ 下标 i, j       │ 指针 pA, pB     │
+│ 追加到结果      │ tmp[k++]=...    │ tail->next=...  │
+└─────────────────┴─────────────────┴─────────────────┘
+
+链表归并的优势：不需要额外空间（只是改指针），
+但需要已经掌握链表的指针操作。</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>归并操作的核心思想——双指针比较、取较小者——在数组和链表上完全相同。区别在于：数组需要复制元素到临时空间，链表只需改变指针指向。这就是为什么链表归并是 O(1) 额外空间，而数组归并需要 O(n+m)。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
