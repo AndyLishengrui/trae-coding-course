@@ -127,7 +127,7 @@
   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {
     <span class="keyword">if</span> (!used[i]) {
       path[u] = i;      <span class="comment">//记录当前位path[u]的数字为i</span>
-      used[i] = <span class="keyword">true</span>;   <span class="comment">//标记数字i为已经使用郭</span>
+      used[i] = <span class="keyword">true</span>;   <span class="comment">//标记数字i为已经使用过</span>
       dfs(u + <span class="number">1</span>);       <span class="comment">//递归处理下一个位</span>
       used[i] = <span class="keyword">false</span>;  <span class="comment">//恢复现场</span>
     }
@@ -287,7 +287,7 @@ Q...
   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++) {
     <span class="keyword">if</span> (!col[i] && !dg[i + u] && !udg[i - u + n]) {
       g[u][i] = 'Q';  <span class="comment">//当前位置设置为Q字符</span>
-      col[i] = dg[i + u] = udg[i - u + n] = <span class="keyword">true</span>;  <span class="comment">//标记数字i为已经使用郭</span>
+      col[i] = dg[i + u] = udg[i - u + n] = <span class="keyword">true</span>;  <span class="comment">//标记数字i为已经使用过</span>
       dfs(u + <span class="number">1</span>);                                  <span class="comment">//递归处理下一个位</span>
       g[u][i] = '.';                               <span class="comment">//恢复现场</span>
       col[i] = dg[i + u] = udg[i - u + n] = <span class="keyword">false</span>;  <span class="comment">//恢复现场</span>
