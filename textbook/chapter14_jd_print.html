@@ -222,7 +222,7 @@ res = []
 
 <span class="keyword">int</span> n,m;
 
-<span class="keyword">int</span> Dijkstra()
+<span class="keyword">void</span> Dijkstra()
 {
   memset(dist,0x3f, <span class="keyword">sizeof</span> dist);<span class="comment">//初始化距离  0x3f代表无限大</span>
 
@@ -244,8 +244,6 @@ res = []
    }
 
 
-   <span class="keyword">if</span> (dist[n] == INF) <span class="keyword">return</span> -<span class="number">1</span>;
-   <span class="keyword">return</span> dist[n];<span class="comment">//返回第n个点的最短距离</span>
 }
 
 <span class="keyword">int</span> main()
@@ -260,7 +258,9 @@ res = []
     cin&gt;&gt;x&gt;&gt;y&gt;&gt;z;
     g[x][y] = min( g[x][y],z);<span class="comment">//取重边和自环的最小值，保留一条边</span>
   }
-  cout&lt;&lt;Dijkstra()&lt;&lt;endl;
+  Dijkstra();
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cout &lt;&lt; (dist[i] == INF ? -<span class="number">1</span> : dist[i]) &lt;&lt; &quot; &quot;;
+  cout &lt;&lt; endl;
 
   <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -283,7 +283,7 @@ st = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
     <span class="keyword">for</span> v <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
         <span class="keyword">if</span> dist[v] &gt; dist[t] + g[t][v]:
             dist[v] = dist[t] + g[t][v]
-<span class="keyword">print</span>(dist[n] <span class="keyword">if</span> dist[n] != 0x3f3f3f3f <span class="keyword">else</span> -<span class="number">1</span>)</code></pre>
+<span class="keyword">print</span>(&quot; &quot;.join(<span class="keyword">str</span>(dist[i] <span class="keyword">if</span> dist[i] != 0x3f3f3f3f <span class="keyword">else</span> -<span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>)))</code></pre>
             </details>
         </div>
     </div>
@@ -357,7 +357,7 @@ st = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
 }
 
 <span class="comment">//改进版，使用小根堆</span>
-<span class="keyword">int</span> dijkstra() {
+<span class="keyword">void</span> dijkstra() {
   <span class="comment">//初始化距离矩阵</span>
   memset(dist, 0x3f, <span class="keyword">sizeof</span> dist);
   dist[<span class="number">1</span>] = <span class="number">0</span>;
@@ -390,10 +390,6 @@ st = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
       }
     }
   }
-  <span class="comment">//如果第n点距离值没被更新，表明不可达</span>
-  <span class="keyword">if</span> (dist[n] == 0x3f3f3f3f) <span class="keyword">return</span> -<span class="number">1</span>;
-  <span class="comment">//返回点n的距离值</span>
-  <span class="keyword">return</span> dist[n];
 }
 
 <span class="keyword">int</span> main() {
@@ -408,7 +404,9 @@ st = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
     add(a, b, c);<span class="comment">//调用add建图</span>
   }
   <span class="comment">//调用改进版的dijkstra()</span>
-  cout &lt;&lt; dijkstra() &lt;&lt; endl;
+  dijkstra();
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cout &lt;&lt; (dist[i] == 0x3f3f3f3f ? -<span class="number">1</span> : dist[i]) &lt;&lt; &quot; &quot;;
+  cout &lt;&lt; endl;
 
   <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -436,7 +434,7 @@ heap = [(<span class="number">0</span>, <span class="number">1</span>)]
         <span class="keyword">if</span> dist[v] &gt; d + w:
             dist[v] = d + w
             heapq.heappush(heap, (dist[v], v))
-<span class="keyword">print</span>(dist[n] <span class="keyword">if</span> dist[n] != INF <span class="keyword">else</span> -<span class="number">1</span>)</code></pre>
+<span class="keyword">print</span>(&quot; &quot;.join(<span class="keyword">str</span>(dist[i] <span class="keyword">if</span> dist[i] != INF <span class="keyword">else</span> -<span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>)))</code></pre>
             </details>
         </div>
     </div>
@@ -507,7 +505,7 @@ heap = [(<span class="number">0</span>, <span class="number">1</span>)]
     e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx ++ ;
 }
 
-<span class="keyword">int</span> spfa()  <span class="comment">// 求1号点到n号点的最短路距离，如果从1号点无法走到n号点则返回-1</span>
+<span class="keyword">void</span> spfa()  <span class="comment">// 求1号点到所有点的最短路距离</span>
 {
     <span class="keyword">int</span> hh = <span class="number">0</span>, tt = <span class="number">0</span>;
     memset(dist, 0x3f, <span class="keyword">sizeof</span> dist);
@@ -537,8 +535,6 @@ heap = [(<span class="number">0</span>, <span class="number">1</span>)]
         }
     }
 
-    <span class="keyword">if</span> (dist[n] == 0x3f3f3f3f) <span class="keyword">return</span> -<span class="number">1</span>;
-    <span class="keyword">return</span> dist[n];
 }
 
 <span class="keyword">int</span> main()
@@ -552,10 +548,9 @@ heap = [(<span class="number">0</span>, <span class="number">1</span>)]
       add(a, b, c);
     }
 
-    <span class="keyword">int</span> t = spfa();
-
-    <span class="keyword">if</span> (t == -<span class="number">1</span>) puts(&quot;impossible&quot;);
-    <span class="keyword">else</span> printf(&quot;%d\n&quot;,t);
+    spfa();
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cout &lt;&lt; (dist[i] == 0x3f3f3f3f ? -<span class="number">1</span> : dist[i]) &lt;&lt; &quot; &quot;;
+    cout &lt;&lt; endl;
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -584,7 +579,7 @@ st[<span class="number">1</span>] = <span class="keyword">True</span>
             dist[v] = dist[u] + w
             <span class="keyword">if</span> <span class="keyword">not</span> st[v]:
                 q.append(v); st[v] = <span class="keyword">True</span>
-<span class="keyword">print</span>(dist[n] <span class="keyword">if</span> dist[n] != INF <span class="keyword">else</span> &<span class="comment">#x27;impossible&#x27;)</span></code></pre>
+<span class="keyword">print</span>(&quot; &quot;.join(<span class="keyword">str</span>(dist[i] <span class="keyword">if</span> dist[i] != INF <span class="keyword">else</span> -<span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>)))</code></pre>
             </details>
         </div>
     </div>

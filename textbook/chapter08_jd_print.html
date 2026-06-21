@@ -345,7 +345,7 @@ stack2 = []
         <span class="keyword">if</span> stack2:
             <span class="keyword">print</span>(stack2[-<span class="number">1</span>])
     <span class="keyword">elif</span> parts[<span class="number">0</span>] == &<span class="comment">#x27;empty&#x27;:</span>
-        <span class="keyword">print</span>(&<span class="comment">#x27;true&#x27; if (not stack1 and not stack2) else &#x27;false&#x27;)</span></code></pre>
+        <span class="keyword">print</span>(&<span class="comment">#x27;yes&#x27; if (not stack1 and not stack2) else &#x27;no&#x27;)</span></code></pre>
             </details>
         </div>
     </div>
@@ -410,11 +410,15 @@ stack2 = []
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
-text = sys.stdin.read().strip()
-parts = text.split(&quot;-&gt;&quot;)
-values = [p <span class="keyword">for</span> p <span class="keyword">in</span> parts <span class="keyword">if</span> p != &quot;NULL&quot;]
+data = sys.stdin.read().split()
+values = []
+<span class="keyword">for</span> x <span class="keyword">in</span> data:
+    num = <span class="keyword">int</span>(x)
+    <span class="keyword">if</span> num == -<span class="number">1</span>:
+        <span class="keyword">break</span>
+    values.append(num)
 values.reverse()
-<span class="keyword">print</span>(&quot;-&gt;&quot;.join(values) + &quot;-&gt;NULL&quot;)</code></pre>
+<span class="keyword">print</span>(&quot; &quot;.join(<span class="keyword">str</span>(v) <span class="keyword">for</span> v <span class="keyword">in</span> values))</code></pre>
             </details>
         </div>
     </div>
@@ -483,9 +487,18 @@ values.reverse()
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
-lines = sys.stdin.read().strip().split(&<span class="comment">#x27;\n&#x27;)</span>
-a = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> lines[<span class="number">0</span>].split(&quot;-&gt;&quot;) <span class="keyword">if</span> x != &quot;NULL&quot;]
-b = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> lines[<span class="number">1</span>].split(&quot;-&gt;&quot;) <span class="keyword">if</span> x != &quot;NULL&quot;]
+data = sys.stdin.read().split()
+idx = <span class="number">0</span>
+a = []
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    num = <span class="keyword">int</span>(data[idx]); idx += <span class="number">1</span>
+    <span class="keyword">if</span> num == -<span class="number">1</span>: <span class="keyword">break</span>
+    a.append(num)
+b = []
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    num = <span class="keyword">int</span>(data[idx]); idx += <span class="number">1</span>
+    <span class="keyword">if</span> num == -<span class="number">1</span>: <span class="keyword">break</span>
+    b.append(num)
 i = j = <span class="number">0</span>
 res = []
 <span class="keyword">while</span> i &lt; <span class="keyword">len</span>(a) <span class="keyword">and</span> j &lt; <span class="keyword">len</span>(b):
@@ -497,7 +510,7 @@ res = []
         j += <span class="number">1</span>
 res.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> a[i:])
 res.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> b[j:])
-<span class="keyword">print</span>(&quot;-&gt;&quot;.join(res))</code></pre>
+<span class="keyword">print</span>(&quot; &quot;.join(res))</code></pre>
             </details>
         </div>
     </div>

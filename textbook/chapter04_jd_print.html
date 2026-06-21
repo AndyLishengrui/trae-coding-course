@@ -497,8 +497,8 @@ arr.reverse()
         </div>
         <div class="sample">
             <div class="sample-label">输出样例</div>
-Menor valor: -5
-Posicao: 4
+最小值: -5
+位置: 4
         </div>
 
         <div class="hint">
@@ -517,8 +517,8 @@ Posicao: 4
         cin &gt;&gt; x;
         <span class="keyword">if</span> (i == <span class="number">0</span> || x &lt; mn) { mn = x; pos = i; }
     }
-    cout &lt;&lt; &quot;Menor valor: &quot; &lt;&lt; mn &lt;&lt; endl;
-    cout &lt;&lt; &quot;Posicao: &quot; &lt;&lt; pos &lt;&lt; endl;
+    cout &lt;&lt; &quot;最小值: &quot; &lt;&lt; mn &lt;&lt; endl;
+    cout &lt;&lt; &quot;位置: &quot; &lt;&lt; pos &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -528,8 +528,8 @@ n = <span class="keyword">int</span>(data[<span class="number">0</span>])
 a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span class="number">1</span>:<span class="number">1</span>+n]))
 mn = <span class="keyword">min</span>(a)
 pos = a.index(mn)
-<span class="keyword">print</span>(f&quot;Menor valor: {mn}&quot;)
-<span class="keyword">print</span>(f&quot;Posicao: {pos}&quot;)</code></pre>
+<span class="keyword">print</span>(f&quot;最小值: {mn}&quot;)
+<span class="keyword">print</span>(f&quot;位置: {pos}&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -551,7 +551,7 @@ pos = a.index(mn)
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>输出F(0)到F(N)的所有值，空格隔开。</p>
+            <p>输出第N个斐波那契数F(N)（从F(0)=0开始）。</p>
 
         </div>
 
@@ -599,19 +599,19 @@ a, b = <span class="number">0</span>, <span class="number">1</span>
         <div class="problem-meta">AcWing JD | JD049</div>
 
         <div class="description">
-            <p>赵晴儿展开一卷古剑谱，上面记载着斐波那契剑诀：0, 1, 1, 2, 3, 5, 8, 13……「每一式都是前两式的融合。T次问询，每次报出第N式。」</p>
+            <p>赵晴儿展开一卷古剑谱，上面记载着斐波那契剑诀：0, 1, 1, 2, 3, 5, 8, 13……「每一式都是前两式的融合。给我前N式。」</p>
 
         </div>
 
         <div class="io-section">
             <h4>输入格式</h4>
-            <p>第一行一个整数T。接下来T行，每行一个整数N。</p>
+            <p>一个整数N。</p>
 
         </div>
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>每行输出对应的F(N)。</p>
+            <p>一行，输出前N个斐波那契数（从F(0)开始），空格隔开。</p>
 
         </div>
 
@@ -701,7 +701,7 @@ a, b = <span class="number">0</span>, <span class="number">1</span>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> m, n;
-    <span class="keyword">while</span> (cin &gt;&gt; m &gt;&gt; n, m &gt; <span class="number">0</span> &amp;&amp; n &gt; <span class="number">0</span>) {
+    <span class="keyword">while</span> (cin &gt;&gt; m &gt;&gt; n &amp;&amp; m &gt; <span class="number">0</span> &amp;&amp; n &gt; <span class="number">0</span>) {
         <span class="keyword">if</span> (m &gt; n) swap(m, n);
         <span class="keyword">int</span> sum = <span class="number">0</span>;
         <span class="keyword">for</span> (<span class="keyword">int</span> i = m; i &lt;= n; i++) {
@@ -882,7 +882,7 @@ idx = <span class="number">2</span>
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>每行一个完全数，格式为 <code>X = f1 + f2 + f3 + fk</code>，所有真因子从小到大用加号连接。</p>
+            <p>每行一个完全数（不超过N），从小到大输出。</p>
 
         </div>
 

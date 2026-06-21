@@ -580,7 +580,7 @@ _, ans = merge_sort_count(arr)
       <span class="keyword">int</span> left = <span class="number">0</span>, right = n-<span class="number">1</span>;<span class="comment">//初始化left和right</span>
       <span class="keyword">while</span> (left &lt; right) <span class="comment">//模板2</span>
       {
-          <span class="keyword">int</span> mid = left + right&gt;&gt;<span class="number">1</span>;
+          <span class="keyword">int</span> mid = (left + right) &gt;&gt; <span class="number">1</span>;
           <span class="keyword">if</span> (nums[mid]&gt;=k) right = mid;<span class="comment">//模板1,</span>
           <span class="keyword">else</span> left = mid +<span class="number">1</span>;
       }
@@ -594,7 +594,7 @@ _, ans = merge_sort_count(arr)
           left=<span class="number">0</span>, right=n-<span class="number">1</span>;<span class="comment">//重新初始化left,riight,进行第二次二分搜索</span>
           <span class="keyword">while</span> (left &lt; right)
           {
-              <span class="keyword">int</span> mid = left+right+<span class="number">1</span>&gt;&gt;<span class="number">1</span>;
+              <span class="keyword">int</span> mid = (left + right + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>;
               <span class="keyword">if</span> (nums[mid]&lt;=k) left=mid;
               <span class="keyword">else</span> right = mid -<span class="number">1</span>;              
           }

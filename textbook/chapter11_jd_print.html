@@ -515,7 +515,7 @@ vector&lt;PII&gt; add, query; <span class="comment">//输入操作的坐标，�
     <span class="keyword">int</span> left = <span class="number">0</span>, right = alls.size() - <span class="number">1</span>; <span class="comment">//vector从0开始计数</span>
     <span class="keyword">while</span> (left &lt; right)
     {
-        <span class="keyword">int</span> mid = left + right &gt;&gt; <span class="number">1</span>; <span class="comment">//取中值</span>
+        <span class="keyword">int</span> mid = (left + right) &gt;&gt; <span class="number">1</span>; <span class="comment">//取中值</span>
         <span class="keyword">if</span> (alls[mid] &gt;= x)
             right = mid;
         <span class="keyword">else</span>
