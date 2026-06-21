@@ -81,29 +81,29 @@ S
 <span class="keyword">int</span> main() {
     <span class="keyword">char</span> op;
     cin &gt;&gt; op;
-    <span class="keyword">double</span> sum = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">int</span> cnt = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; <span <span class="keyword">class</span>="number">12</span>; i++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt; <span <span class="keyword">class</span>="number">12</span>; j++) {
+    <span class="keyword">double</span> sum = <span class="number">0</span>;
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
             cin &gt;&gt; x;
-            <span class="keyword">if</span> (i&lt;j&amp;&amp;i+j&lt;<span <span class="keyword">class</span>="number">11</span>) {
+            <span class="keyword">if</span> (i&lt;j&amp;&amp;i+j&lt;<span class="number">11</span>) {
                 sum += x;
                 cnt++;
             }
         }
     }
-    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span <span class="keyword">class</span>="number">1f</span>\n&quot;, sum);
-    <span class="keyword">else</span> printf(&quot;%.<span <span class="keyword">class</span>="number">1f</span>\n&quot;, sum / cnt);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
+    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">t=<span class="keyword">input</span>().strip();s=c=<span <span class="keyword">class</span>="number">0</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">12</span>):
- <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">12</span>):
+            <pre><code class="language-python">t=<span class="keyword">input</span>().strip();s=c=<span class="number">0</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+ <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
   x=<span class="keyword">float</span>(<span class="keyword">input</span>())
-  <span class="keyword">if</span> i&lt;j <span class="keyword">and</span> i+j&lt;<span <span class="keyword">class</span>="number">11</span>:s+=x;c+=<span <span class="keyword">class</span>="number">1</span>
-<span class="keyword">print</span>(f&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;{s <span class="keyword">if</span> t==&quot;S&quot; <span class="keyword">else</span> s/c:.1f}&#x27;)</span></code></pre>
+  <span class="keyword">if</span> i&lt;j <span class="keyword">and</span> i+j&lt;<span class="number">11</span>:s+=x;c+=<span class="number">1</span>
+<span class="keyword">print</span>(f&<span class="comment">#x27;{s if t==&quot;S&quot; else s/c:.1f}&#x27;)</span></code></pre>
             </details>
         </div>
     </div>
@@ -158,33 +158,33 @@ S
 <span class="keyword">int</span> main() {
     <span class="keyword">char</span> op;
     cin &gt;&gt; op;
-    <span class="keyword">double</span> sum = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">int</span> cnt = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; <span <span class="keyword">class</span>="number">12</span>; i++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt; <span <span class="keyword">class</span>="number">12</span>; j++) {
+    <span class="keyword">double</span> sum = <span class="number">0</span>;
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
             cin &gt;&gt; x;
-            <span class="keyword">if</span> (i&gt;j&amp;&amp;i+j&gt;<span <span class="keyword">class</span>="number">11</span>) {
+            <span class="keyword">if</span> (i&gt;j&amp;&amp;i+j&gt;<span class="number">11</span>) {
                 sum += x;
                 cnt++;
             }
         }
     }
-    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span <span class="keyword">class</span>="number">1f</span>\n&quot;, sum);
-    <span class="keyword">else</span> printf(&quot;%.<span <span class="keyword">class</span>="number">1f</span>\n&quot;, sum / cnt);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
+    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
-t = data[<span <span class="keyword">class</span>="number">0</span>]
-s = <span <span class="keyword">class</span>="number">0.0</span>
-idx = <span <span class="keyword">class</span>="number">1</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">12</span>):
-    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">12</span>):
-        x = <span class="keyword">float</span>(data[idx]); idx += <span <span class="keyword">class</span>="number">1</span>
-        <span class="keyword">if</span> i &gt; j <span class="keyword">and</span> i + j &gt; <span <span class="keyword">class</span>="number">11</span>: s += x
-<span class="keyword">print</span>(f&quot;{s:.1f}&quot; <span class="keyword">if</span> t == &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;S&#x27; <span class="keyword">else</span> f&quot;{s/<span <span class="keyword">class</span>="number">30</span>:.1f}&quot;)</span></code></pre>
+t = data[<span class="number">0</span>]
+s = <span class="number">0.0</span>
+idx = <span class="number">1</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+        x = <span class="keyword">float</span>(data[idx]); idx += <span class="number">1</span>
+        <span class="keyword">if</span> i &gt; j <span class="keyword">and</span> i + j &gt; <span class="number">11</span>: s += x
+<span class="keyword">print</span>(f&quot;{s:.1f}&quot; <span class="keyword">if</span> t == &<span class="comment">#x27;S&#x27; else f&quot;{s/30:.1f}&quot;)</span></code></pre>
             </details>
         </div>
     </div>
@@ -239,29 +239,29 @@ S
 <span class="keyword">int</span> main() {
     <span class="keyword">char</span> op;
     cin &gt;&gt; op;
-    <span class="keyword">double</span> sum = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">int</span> cnt = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; <span <span class="keyword">class</span>="number">12</span>; i++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt; <span <span class="keyword">class</span>="number">12</span>; j++) {
+    <span class="keyword">double</span> sum = <span class="number">0</span>;
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
             cin &gt;&gt; x;
-            <span class="keyword">if</span> (j&lt;i&amp;&amp;i+j&lt;<span <span class="keyword">class</span>="number">11</span>) {
+            <span class="keyword">if</span> (j&lt;i&amp;&amp;i+j&lt;<span class="number">11</span>) {
                 sum += x;
                 cnt++;
             }
         }
     }
-    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span <span class="keyword">class</span>="number">1f</span>\n&quot;, sum);
-    <span class="keyword">else</span> printf(&quot;%.<span <span class="keyword">class</span>="number">1f</span>\n&quot;, sum / cnt);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
+    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">t=<span class="keyword">input</span>().strip();s=c=<span <span class="keyword">class</span>="number">0</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">12</span>):
- <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">12</span>):
+            <pre><code class="language-python">t=<span class="keyword">input</span>().strip();s=c=<span class="number">0</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+ <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
   x=<span class="keyword">float</span>(<span class="keyword">input</span>())
-  <span class="keyword">if</span> j&lt;i <span class="keyword">and</span> i+j&lt;<span <span class="keyword">class</span>="number">11</span>:s+=x;c+=<span <span class="keyword">class</span>="number">1</span>
-<span class="keyword">print</span>(f&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;{s <span class="keyword">if</span> t==&quot;S&quot; <span class="keyword">else</span> s/c:.1f}&#x27;)</span></code></pre>
+  <span class="keyword">if</span> j&lt;i <span class="keyword">and</span> i+j&lt;<span class="number">11</span>:s+=x;c+=<span class="number">1</span>
+<span class="keyword">print</span>(f&<span class="comment">#x27;{s if t==&quot;S&quot; else s/c:.1f}&#x27;)</span></code></pre>
             </details>
         </div>
     </div>
@@ -316,33 +316,33 @@ S
 <span class="keyword">int</span> main() {
     <span class="keyword">char</span> op;
     cin &gt;&gt; op;
-    <span class="keyword">double</span> sum = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">int</span> cnt = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; <span <span class="keyword">class</span>="number">12</span>; i++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt; <span <span class="keyword">class</span>="number">12</span>; j++) {
+    <span class="keyword">double</span> sum = <span class="number">0</span>;
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
             cin &gt;&gt; x;
-            <span class="keyword">if</span> (j&gt;i&amp;&amp;i+j&gt;<span <span class="keyword">class</span>="number">11</span>) {
+            <span class="keyword">if</span> (j&gt;i&amp;&amp;i+j&gt;<span class="number">11</span>) {
                 sum += x;
                 cnt++;
             }
         }
     }
-    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span <span class="keyword">class</span>="number">1f</span>\n&quot;, sum);
-    <span class="keyword">else</span> printf(&quot;%.<span <span class="keyword">class</span>="number">1f</span>\n&quot;, sum / cnt);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
+    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
-t = data[<span <span class="keyword">class</span>="number">0</span>]
-s = <span <span class="keyword">class</span>="number">0.0</span>
-idx = <span <span class="keyword">class</span>="number">1</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">12</span>):
-    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">12</span>):
-        x = <span class="keyword">float</span>(data[idx]); idx += <span <span class="keyword">class</span>="number">1</span>
-        <span class="keyword">if</span> j &gt; i <span class="keyword">and</span> i + j &gt; <span <span class="keyword">class</span>="number">11</span>: s += x
-<span class="keyword">print</span>(f&quot;{s:.1f}&quot; <span class="keyword">if</span> t == &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;S&#x27; <span class="keyword">else</span> f&quot;{s/<span <span class="keyword">class</span>="number">30</span>:.1f}&quot;)</span></code></pre>
+t = data[<span class="number">0</span>]
+s = <span class="number">0.0</span>
+idx = <span class="number">1</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+        x = <span class="keyword">float</span>(data[idx]); idx += <span class="number">1</span>
+        <span class="keyword">if</span> j &gt; i <span class="keyword">and</span> i + j &gt; <span class="number">11</span>: s += x
+<span class="keyword">print</span>(f&quot;{s:.1f}&quot; <span class="keyword">if</span> t == &<span class="comment">#x27;S&#x27; else f&quot;{s/30:.1f}&quot;)</span></code></pre>
             </details>
         </div>
     </div>
@@ -397,10 +397,10 @@ S
 <span class="keyword">int</span> main() {
     <span class="keyword">char</span> op;
     cin &gt;&gt; op;
-    <span class="keyword">double</span> sum = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">int</span> cnt = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; <span <span class="keyword">class</span>="number">12</span>; i++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt; <span <span class="keyword">class</span>="number">12</span>; j++) {
+    <span class="keyword">double</span> sum = <span class="number">0</span>;
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
             cin &gt;&gt; x;
             <span class="keyword">if</span> (j&gt;i) {
@@ -409,23 +409,23 @@ S
             }
         }
     }
-    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span <span class="keyword">class</span>="number">1f</span>\n&quot;, sum);
-    <span class="keyword">else</span> printf(&quot;%.<span <span class="keyword">class</span>="number">1f</span>\n&quot;, sum / cnt);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
+    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
-t = data[<span <span class="keyword">class</span>="number">0</span>]
-s = <span <span class="keyword">class</span>="number">0.0</span>
-idx = <span <span class="keyword">class</span>="number">1</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">12</span>):
-    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">12</span>):
+t = data[<span class="number">0</span>]
+s = <span class="number">0.0</span>
+idx = <span class="number">1</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
         x = <span class="keyword">float</span>(data[idx])
-        idx += <span <span class="keyword">class</span>="number">1</span>
+        idx += <span class="number">1</span>
         <span class="keyword">if</span> j &gt; i:
             s += x
-<span class="keyword">print</span>(f&quot;{s <span class="keyword">if</span> t == &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;S&#x27; <span class="keyword">else</span> s / <span <span class="keyword">class</span>="number">66</span>:.1f}&quot;)</span></code></pre>
+<span class="keyword">print</span>(f&quot;{s <span class="keyword">if</span> t == &<span class="comment">#x27;S&#x27; else s / 66:.1f}&quot;)</span></code></pre>
             </details>
         </div>
     </div>
@@ -478,29 +478,29 @@ S
 <span class="keyword">int</span> main() {
     <span class="keyword">char</span> op;
     cin &gt;&gt; op;
-    <span class="keyword">double</span> sum = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">int</span> cnt = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; <span <span class="keyword">class</span>="number">12</span>; i++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt; <span <span class="keyword">class</span>="number">12</span>; j++) {
+    <span class="keyword">double</span> sum = <span class="number">0</span>;
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
             cin &gt;&gt; x;
-            <span class="keyword">if</span> (i+j&lt;<span <span class="keyword">class</span>="number">11</span>) {
+            <span class="keyword">if</span> (i+j&lt;<span class="number">11</span>) {
                 sum += x;
                 cnt++;
             }
         }
     }
-    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span <span class="keyword">class</span>="number">1f</span>\n&quot;, sum);
-    <span class="keyword">else</span> printf(&quot;%.<span <span class="keyword">class</span>="number">1f</span>\n&quot;, sum / cnt);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
+    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">t=<span class="keyword">input</span>().strip();s=<span <span class="keyword">class</span>="number">0</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">12</span>):
- <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">12</span>):
+            <pre><code class="language-python">t=<span class="keyword">input</span>().strip();s=<span class="number">0</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+ <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
   x=<span class="keyword">float</span>(<span class="keyword">input</span>())
-  <span class="keyword">if</span> j&lt;<span <span class="keyword">class</span>="number">11</span>-i:s+=x
-<span class="keyword">print</span>(f&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;{s <span class="keyword">if</span> t==&quot;S&quot; <span class="keyword">else</span> s/<span <span class="keyword">class</span>="number">66</span>:.1f}&#x27;)</span></code></pre>
+  <span class="keyword">if</span> j&lt;<span class="number">11</span>-i:s+=x
+<span class="keyword">print</span>(f&<span class="comment">#x27;{s if t==&quot;S&quot; else s/66:.1f}&#x27;)</span></code></pre>
             </details>
         </div>
     </div>
@@ -553,33 +553,33 @@ S
 <span class="keyword">int</span> main() {
     <span class="keyword">char</span> op;
     cin &gt;&gt; op;
-    <span class="keyword">double</span> sum = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">int</span> cnt = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; <span <span class="keyword">class</span>="number">12</span>; i++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt; <span <span class="keyword">class</span>="number">12</span>; j++) {
+    <span class="keyword">double</span> sum = <span class="number">0</span>;
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
             cin &gt;&gt; x;
-            <span class="keyword">if</span> (i+j&gt;<span <span class="keyword">class</span>="number">11</span>) {
+            <span class="keyword">if</span> (i+j&gt;<span class="number">11</span>) {
                 sum += x;
                 cnt++;
             }
         }
     }
-    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span <span class="keyword">class</span>="number">1f</span>\n&quot;, sum);
-    <span class="keyword">else</span> printf(&quot;%.<span <span class="keyword">class</span>="number">1f</span>\n&quot;, sum / cnt);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
+    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
-t = data[<span <span class="keyword">class</span>="number">0</span>]
-s = <span <span class="keyword">class</span>="number">0.0</span>
-idx = <span <span class="keyword">class</span>="number">1</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">12</span>):
-    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">12</span>):
-        x = <span class="keyword">float</span>(data[idx]); idx += <span <span class="keyword">class</span>="number">1</span>
-        <span class="keyword">if</span> i + j &gt; <span <span class="keyword">class</span>="number">11</span>: s += x
-<span class="keyword">print</span>(f&quot;{s:.1f}&quot; <span class="keyword">if</span> t == &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;S&#x27; <span class="keyword">else</span> f&quot;{s/<span <span class="keyword">class</span>="number">66</span>:.1f}&quot;)</span></code></pre>
+t = data[<span class="number">0</span>]
+s = <span class="number">0.0</span>
+idx = <span class="number">1</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+        x = <span class="keyword">float</span>(data[idx]); idx += <span class="number">1</span>
+        <span class="keyword">if</span> i + j &gt; <span class="number">11</span>: s += x
+<span class="keyword">print</span>(f&quot;{s:.1f}&quot; <span class="keyword">if</span> t == &<span class="comment">#x27;S&#x27; else f&quot;{s/66:.1f}&quot;)</span></code></pre>
             </details>
         </div>
     </div>
@@ -632,10 +632,10 @@ S
 <span class="keyword">int</span> main() {
     <span class="keyword">char</span> op;
     cin &gt;&gt; op;
-    <span class="keyword">double</span> sum = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">int</span> cnt = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; <span <span class="keyword">class</span>="number">12</span>; i++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt; <span <span class="keyword">class</span>="number">12</span>; j++) {
+    <span class="keyword">double</span> sum = <span class="number">0</span>;
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
             cin &gt;&gt; x;
             <span class="keyword">if</span> (j&lt;i) {
@@ -644,17 +644,17 @@ S
             }
         }
     }
-    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span <span class="keyword">class</span>="number">1f</span>\n&quot;, sum);
-    <span class="keyword">else</span> printf(&quot;%.<span <span class="keyword">class</span>="number">1f</span>\n&quot;, sum / cnt);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
+    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">t=<span class="keyword">input</span>().strip();s=<span <span class="keyword">class</span>="number">0</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">12</span>):
- <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">12</span>):
+            <pre><code class="language-python">t=<span class="keyword">input</span>().strip();s=<span class="number">0</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+ <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
   x=<span class="keyword">float</span>(<span class="keyword">input</span>())
   <span class="keyword">if</span> j&lt;i:s+=x
-<span class="keyword">print</span>(f&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;{s <span class="keyword">if</span> t==&quot;S&quot; <span class="keyword">else</span> s/<span <span class="keyword">class</span>="number">66</span>:.1f}&#x27;)</span></code></pre>
+<span class="keyword">print</span>(f&<span class="comment">#x27;{s if t==&quot;S&quot; else s/66:.1f}&#x27;)</span></code></pre>
             </details>
         </div>
     </div>
@@ -705,30 +705,30 @@ S
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n;
-    <span class="keyword">while</span> (scanf(&quot;%d&quot;, &amp;n) == <span <span class="keyword">class</span>="number">1</span> &amp;&amp; n) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++) {
-            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt; n; j++) {
-                <span class="keyword">int</span> v = min(min(i, j), min(n - <span <span class="keyword">class</span>="number">1</span> - i, n - <span <span class="keyword">class</span>="number">1</span> - j));
-                printf(&quot;%3d&quot;, v + <span <span class="keyword">class</span>="number">1</span>);
+    <span class="keyword">while</span> (scanf(&quot;%d&quot;, &amp;n) == <span class="number">1</span> &amp;&amp; n) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) {
+                <span class="keyword">int</span> v = min(min(i, j), min(n - <span class="number">1</span> - i, n - <span class="number">1</span> - j));
+                printf(&quot;%3d&quot;, v + <span class="number">1</span>);
             }
             printf(&quot;\n&quot;);
         }
         printf(&quot;\n&quot;);
     }
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
 <span class="keyword">for</span> val <span class="keyword">in</span> data:
     n = <span class="keyword">int</span>(val)
-    <span class="keyword">if</span> n == <span <span class="keyword">class</span>="number">0</span>: <span class="keyword">break</span>
+    <span class="keyword">if</span> n == <span class="number">0</span>: <span class="keyword">break</span>
     <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n):
         row = []
         <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(n):
-            v = <span class="keyword">min</span>(i, j, n-<span <span class="keyword">class</span>="number">1</span>-i, n-<span <span class="keyword">class</span>="number">1</span>-j) + <span <span class="keyword">class</span>="number">1</span>
-            row.append(f&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;{v:3d}&#x27;)</span>
-        <span class="keyword">print</span>(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;&#x27;.join(row))</span>
+            v = <span class="keyword">min</span>(i, j, n-<span class="number">1</span>-i, n-<span class="number">1</span>-j) + <span class="number">1</span>
+            row.append(f&<span class="comment">#x27;{v:3d}&#x27;)</span>
+        <span class="keyword">print</span>(&<span class="comment">#x27;&#x27;.join(row))</span>
     <span class="keyword">print</span>()</code></pre>
             </details>
         </div>
@@ -779,22 +779,22 @@ data = sys.stdin.read().split()
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n;
-    <span class="keyword">while</span> (scanf(&quot;%d&quot;, &amp;n) == <span <span class="keyword">class</span>="number">1</span> &amp;&amp; n) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++) {
-            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt; n; j++)
-                printf(&quot;%3d&quot;, abs(i - j) + <span <span class="keyword">class</span>="number">1</span>);
+    <span class="keyword">while</span> (scanf(&quot;%d&quot;, &amp;n) == <span class="number">1</span> &amp;&amp; n) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)
+                printf(&quot;%3d&quot;, abs(i - j) + <span class="number">1</span>);
             printf(&quot;\n&quot;);
         }
         printf(&quot;\n&quot;);
     }
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">while</span> <span class="keyword">True</span>:
  n=<span class="keyword">int</span>(<span class="keyword">input</span>())
- <span class="keyword">if</span> n==<span <span class="keyword">class</span>="number">0</span>:<span class="keyword">break</span>
+ <span class="keyword">if</span> n==<span class="number">0</span>:<span class="keyword">break</span>
  <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n):
-  <span class="keyword">print</span>(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;&#x27;.join(f&#x27;{<span class="keyword">abs</span>(i-j)+<span <span class="keyword">class</span>="number">1</span>:3d}&#x27;<span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(n)))</span>
+  <span class="keyword">print</span>(&<span class="comment">#x27;&#x27;.join(f&#x27;{abs(i-j)+1:3d}&#x27;for j in range(n)))</span>
  <span class="keyword">print</span>()</code></pre>
             </details>
         </div>
@@ -845,30 +845,30 @@ data = sys.stdin.read().split()
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n;
-    <span class="keyword">while</span> (scanf(&quot;%d&quot;, &amp;n) == <span <span class="keyword">class</span>="number">1</span> &amp;&amp; n) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++) {
-            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt; n; j++)
-                printf(&quot;%lld &quot;, <span <span class="keyword">class</span>="number">1LL</span> &lt;&lt; (i + j));
+    <span class="keyword">while</span> (scanf(&quot;%d&quot;, &amp;n) == <span class="number">1</span> &amp;&amp; n) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)
+                printf(&quot;%lld &quot;, <span class="number">1LL</span> &lt;&lt; (i + j));
             printf(&quot;\n&quot;);
         }
         printf(&quot;\n&quot;);
     }
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
 <span class="keyword">for</span> val <span class="keyword">in</span> data:
     n = <span class="keyword">int</span>(val)
-    <span class="keyword">if</span> n == <span <span class="keyword">class</span>="number">0</span>: <span class="keyword">break</span>
+    <span class="keyword">if</span> n == <span class="number">0</span>: <span class="keyword">break</span>
     <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n):
         row = []
         <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(n):
-            v = <span <span class="keyword">class</span>="number">1</span>
+            v = <span class="number">1</span>
             <span class="keyword">for</span> k <span class="keyword">in</span> <span class="keyword">range</span>(i + j):
-                v *= <span <span class="keyword">class</span>="number">2</span>
+                v *= <span class="number">2</span>
             row.append(<span class="keyword">str</span>(v))
-        <span class="keyword">print</span>(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27; &#x27;.join(row) + &#x27; &#x27;)</span>
+        <span class="keyword">print</span>(&<span class="comment">#x27; &#x27;.join(row) + &#x27; &#x27;)</span>
     <span class="keyword">print</span>()</code></pre>
             </details>
         </div>
@@ -917,47 +917,47 @@ data = sys.stdin.read().split()
             <h4>C++</h4>
             <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
-<span class="keyword">int</span> res[<span <span class="keyword">class</span>="number">110</span>][<span <span class="keyword">class</span>="number">110</span>];
+<span class="keyword">int</span> res[<span class="number">110</span>][<span class="number">110</span>];
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n, m;
     scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
 
-    <span class="keyword">int</span> dx[] = {<span <span class="keyword">class</span>="number">0</span>, <span <span class="keyword">class</span>="number">1</span>, <span <span class="keyword">class</span>="number">0</span>, -<span <span class="keyword">class</span>="number">1</span>}, dy[] = {<span <span class="keyword">class</span>="number">1</span>, <span <span class="keyword">class</span>="number">0</span>, -<span <span class="keyword">class</span>="number">1</span>, <span <span class="keyword">class</span>="number">0</span>};
-    <span class="keyword">for</span> (<span class="keyword">int</span> x = <span <span class="keyword">class</span>="number">0</span>, y = <span <span class="keyword">class</span>="number">0</span>, d = <span <span class="keyword">class</span>="number">0</span>, k = <span <span class="keyword">class</span>="number">1</span>; k &lt;= n * m; k++) {
+    <span class="keyword">int</span> dx[] = {<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>}, dy[] = {<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>};
+    <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>, y = <span class="number">0</span>, d = <span class="number">0</span>, k = <span class="number">1</span>; k &lt;= n * m; k++) {
         res[x][y] = k;
         <span class="keyword">int</span> a = x + dx[d], b = y + dy[d];
-        <span class="keyword">if</span> (a &lt; <span <span class="keyword">class</span>="number">0</span> || a &gt;= n || b &lt; <span <span class="keyword">class</span>="number">0</span> || b &gt;= m || res[a][b]) {
-            d = (d + <span <span class="keyword">class</span>="number">1</span>) % <span <span class="keyword">class</span>="number">4</span>;
+        <span class="keyword">if</span> (a &lt; <span class="number">0</span> || a &gt;= n || b &lt; <span class="number">0</span> || b &gt;= m || res[a][b]) {
+            d = (d + <span class="number">1</span>) % <span class="number">4</span>;
             a = x + dx[d], b = y + dy[d];
         }
         x = a, y = b;
     }
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt; m; j++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++)
             printf(&quot;%d &quot;, res[i][j]);
         printf(&quot;\n&quot;);
     }
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
-n, m = <span class="keyword">int</span>(data[<span <span class="keyword">class</span>="number">0</span>]), <span class="keyword">int</span>(data[<span <span class="keyword">class</span>="number">1</span>])
-a = [[<span <span class="keyword">class</span>="number">0</span>] * m <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n)]
-dx = [<span <span class="keyword">class</span>="number">0</span>, <span <span class="keyword">class</span>="number">1</span>, <span <span class="keyword">class</span>="number">0</span>, -<span <span class="keyword">class</span>="number">1</span>]
-dy = [<span <span class="keyword">class</span>="number">1</span>, <span <span class="keyword">class</span>="number">0</span>, -<span <span class="keyword">class</span>="number">1</span>, <span <span class="keyword">class</span>="number">0</span>]
-d = x = y = <span <span class="keyword">class</span>="number">0</span>
-<span class="keyword">for</span> v <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, n * m + <span <span class="keyword">class</span>="number">1</span>):
+n, m = <span class="keyword">int</span>(data[<span class="number">0</span>]), <span class="keyword">int</span>(data[<span class="number">1</span>])
+a = [[<span class="number">0</span>] * m <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n)]
+dx = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>]
+dy = [<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>]
+d = x = y = <span class="number">0</span>
+<span class="keyword">for</span> v <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n * m + <span class="number">1</span>):
     a[x][y] = v
     nx, ny = x + dx[d], y + dy[d]
-    <span class="keyword">if</span> nx &lt; <span <span class="keyword">class</span>="number">0</span> <span class="keyword">or</span> nx &gt;= n <span class="keyword">or</span> ny &lt; <span <span class="keyword">class</span>="number">0</span> <span class="keyword">or</span> ny &gt;= m <span class="keyword">or</span> a[nx][ny]:
-        d = (d + <span <span class="keyword">class</span>="number">1</span>) % <span <span class="keyword">class</span>="number">4</span>
+    <span class="keyword">if</span> nx &lt; <span class="number">0</span> <span class="keyword">or</span> nx &gt;= n <span class="keyword">or</span> ny &lt; <span class="number">0</span> <span class="keyword">or</span> ny &gt;= m <span class="keyword">or</span> a[nx][ny]:
+        d = (d + <span class="number">1</span>) % <span class="number">4</span>
         nx, ny = x + dx[d], y + dy[d]
     x, y = nx, ny
 <span class="keyword">for</span> r <span class="keyword">in</span> a:
-    <span class="keyword">print</span>(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27; &#x27;.join(<span class="keyword">map</span>(<span class="keyword">str</span>, r)) + &#x27; &#x27;)</span></code></pre>
+    <span class="keyword">print</span>(&<span class="comment">#x27; &#x27;.join(map(str, r)) + &#x27; &#x27;)</span></code></pre>
             </details>
         </div>
     </div>

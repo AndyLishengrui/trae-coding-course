@@ -66,16 +66,16 @@
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> a, b;
     cin &gt;&gt; a &gt;&gt; b;
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 判断是否互为倍数</span>
-    <span class="keyword">if</span> (a % b == <span <span class="keyword">class</span>="number">0</span> || b % a == <span <span class="keyword">class</span>="number">0</span>)
+    <span class="comment">// 判断是否互为倍数</span>
+    <span class="keyword">if</span> (a % b == <span class="number">0</span> || b % a == <span class="number">0</span>)
         cout &lt;&lt; &quot;Yes&quot; &lt;&lt; endl;
     <span class="keyword">else</span>
         cout &lt;&lt; &quot;No&quot; &lt;&lt; endl;
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-<span class="keyword">if</span> a % b == <span <span class="keyword">class</span>="number">0</span> <span class="keyword">or</span> b % a == <span <span class="keyword">class</span>="number">0</span>:
+<span class="keyword">if</span> a % b == <span class="number">0</span> <span class="keyword">or</span> b % a == <span class="number">0</span>:
     <span class="keyword">print</span>(&quot;Sao Multiplos&quot;)
 <span class="keyword">else</span>:
     <span class="keyword">print</span>(&quot;Nao sao Multiplos&quot;)</code></pre>
@@ -127,17 +127,17 @@ Area = 10.0
     <span class="keyword">double</span> a, b, c;
     cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
     <span class="keyword">if</span> (a + b &gt; c &amp;&amp; a + c &gt; b &amp;&amp; b + c &gt; a)
-        printf(&quot;Perimeter = %.<span <span class="keyword">class</span>="number">1lf</span>\n&quot;, a + b + c);
+        printf(&quot;Perimeter = %.<span class="number">1lf</span>\n&quot;, a + b + c);
     <span class="keyword">else</span>
-        printf(&quot;Area = %.<span <span class="keyword">class</span>="number">1lf</span>\n&quot;, (a + b) * c / <span <span class="keyword">class</span>="number">2</span>);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+        printf(&quot;Area = %.<span class="number">1lf</span>\n&quot;, (a + b) * c / <span class="number">2</span>);
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">a, b, c = <span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split())
 <span class="keyword">if</span> a + b &gt; c <span class="keyword">and</span> a + c &gt; b <span class="keyword">and</span> b + c &gt; a:
     <span class="keyword">print</span>(f&quot;Perimeter = {a + b + c:.1f}&quot;)
 <span class="keyword">else</span>:
-    <span class="keyword">print</span>(f&quot;Area = {(a + b) * c / <span <span class="keyword">class</span>="number">2</span>:.1f}&quot;)</code></pre>
+    <span class="keyword">print</span>(f&quot;Area = {(a + b) * c / <span class="number">2</span>:.1f}&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -174,20 +174,20 @@ Area = 10.0
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> a, b;
     scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 计算比武持续小时数</span>
+    <span class="comment">// 计算比武持续小时数</span>
     <span class="keyword">int</span> res;
     <span class="keyword">if</span> (a &lt; b) res = b - a;
-    <span class="keyword">else</span> <span class="keyword">if</span> (a == b) res = <span <span class="keyword">class</span>="number">24</span>;
-    <span class="keyword">else</span> res = <span <span class="keyword">class</span>="number">24</span> - a + b;
+    <span class="keyword">else</span> <span class="keyword">if</span> (a == b) res = <span class="number">24</span>;
+    <span class="keyword">else</span> res = <span class="number">24</span> - a + b;
     printf(&quot;%d\n&quot;, res);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
 <span class="keyword">if</span> a &lt; b:
     horas = b - a
 <span class="keyword">else</span>:
-    horas = <span <span class="keyword">class</span>="number">24</span> - a + b
+    horas = <span class="number">24</span> - a + b
 <span class="keyword">print</span>(f&quot;O JOGO DUROU {horas} HORA(S)&quot;)</code></pre>
             </details>
         </div>
@@ -239,7 +239,7 @@ Area = 10.0
     <span class="keyword">if</span> (a &gt; c) swap(a, c);
     <span class="keyword">if</span> (b &gt; c) swap(b, c);
     cout &lt;&lt; a &lt;&lt; &quot; &quot; &lt;&lt; b &lt;&lt; &quot; &quot; &lt;&lt; c &lt;&lt; endl;
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">a, b, c = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
@@ -293,16 +293,16 @@ Total: R$ 10.00
     <span class="keyword">int</span> x, y;
     scanf(&quot;%d%d&quot;, &amp;x, &amp;y);
     <span class="keyword">double</span> p;
-    <span class="keyword">if</span> (x == <span <span class="keyword">class</span>="number">1</span>) p = <span <span class="keyword">class</span>="number">4.0</span>;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span <span class="keyword">class</span>="number">2</span>) p = <span <span class="keyword">class</span>="number">4.5</span>;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span <span class="keyword">class</span>="number">3</span>) p = <span <span class="keyword">class</span>="number">5.0</span>;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span <span class="keyword">class</span>="number">4</span>) p = <span <span class="keyword">class</span>="number">2.0</span>;
-    <span class="keyword">else</span> p = <span <span class="keyword">class</span>="number">1.5</span>;
-    printf(&quot;Total: R$ %.<span <span class="keyword">class</span>="number">2lf</span>\n&quot;, p * y);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">if</span> (x == <span class="number">1</span>) p = <span class="number">4.0</span>;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">2</span>) p = <span class="number">4.5</span>;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">3</span>) p = <span class="number">5.0</span>;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">4</span>) p = <span class="number">2.0</span>;
+    <span class="keyword">else</span> p = <span class="number">1.5</span>;
+    printf(&quot;Total: R$ %.<span class="number">2lf</span>\n&quot;, p * y);
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">prices = {<span <span class="keyword">class</span>="number">1</span>: <span <span class="keyword">class</span>="number">4.0</span>, <span <span class="keyword">class</span>="number">2</span>: <span <span class="keyword">class</span>="number">4.5</span>, <span <span class="keyword">class</span>="number">3</span>: <span <span class="keyword">class</span>="number">5.0</span>, <span <span class="keyword">class</span>="number">4</span>: <span <span class="keyword">class</span>="number">2.0</span>, <span <span class="keyword">class</span>="number">5</span>: <span <span class="keyword">class</span>="number">1.5</span>}
+            <pre><code class="language-python">prices = {<span class="number">1</span>: <span class="number">4.0</span>, <span class="number">2</span>: <span class="number">4.5</span>, <span class="number">3</span>: <span class="number">5.0</span>, <span class="number">4</span>: <span class="number">2.0</span>, <span class="number">5</span>: <span class="number">1.5</span>}
 x, y = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
 <span class="keyword">print</span>(f&quot;Total: R$ {prices[x] * y:.2f}&quot;)</code></pre>
             </details>
@@ -351,23 +351,23 @@ Interval (75,100]
 <span class="keyword">int</span> main() {
     <span class="keyword">double</span> x;
     cin &gt;&gt; x;
-    <span class="keyword">if</span> (x &gt;= <span <span class="keyword">class</span>="number">0</span> &amp;&amp; x &lt;= <span <span class="keyword">class</span>="number">25</span>) cout &lt;&lt; &quot;Interval [<span <span class="keyword">class</span>="number">0</span>,<span <span class="keyword">class</span>="number">25</span>]&quot; &lt;&lt; endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; <span <span class="keyword">class</span>="number">25</span> &amp;&amp; x &lt;= <span <span class="keyword">class</span>="number">50</span>) cout &lt;&lt; &quot;Interval (<span <span class="keyword">class</span>="number">25</span>,<span <span class="keyword">class</span>="number">50</span>]&quot; &lt;&lt; endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; <span <span class="keyword">class</span>="number">50</span> &amp;&amp; x &lt;= <span <span class="keyword">class</span>="number">75</span>) cout &lt;&lt; &quot;Interval (<span <span class="keyword">class</span>="number">50</span>,<span <span class="keyword">class</span>="number">75</span>]&quot; &lt;&lt; endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; <span <span class="keyword">class</span>="number">75</span> &amp;&amp; x &lt;= <span <span class="keyword">class</span>="number">100</span>) cout &lt;&lt; &quot;Interval (<span <span class="keyword">class</span>="number">75</span>,<span <span class="keyword">class</span>="number">100</span>]&quot; &lt;&lt; endl;
+    <span class="keyword">if</span> (x &gt;= <span class="number">0</span> &amp;&amp; x &lt;= <span class="number">25</span>) cout &lt;&lt; &quot;Interval [<span class="number">0</span>,<span class="number">25</span>]&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; <span class="number">25</span> &amp;&amp; x &lt;= <span class="number">50</span>) cout &lt;&lt; &quot;Interval (<span class="number">25</span>,<span class="number">50</span>]&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; <span class="number">50</span> &amp;&amp; x &lt;= <span class="number">75</span>) cout &lt;&lt; &quot;Interval (<span class="number">50</span>,<span class="number">75</span>]&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; <span class="number">75</span> &amp;&amp; x &lt;= <span class="number">100</span>) cout &lt;&lt; &quot;Interval (<span class="number">75</span>,<span class="number">100</span>]&quot; &lt;&lt; endl;
     <span class="keyword">else</span> cout &lt;&lt; &quot;Out of interval&quot; &lt;&lt; endl;
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">x = <span class="keyword">float</span>(<span class="keyword">input</span>())
-<span class="keyword">if</span> <span <span class="keyword">class</span>="number">0</span> &lt;= x &lt;= <span <span class="keyword">class</span>="number">25</span>:
-    <span class="keyword">print</span>(&quot;Interval [<span <span class="keyword">class</span>="number">0</span>,<span <span class="keyword">class</span>="number">25</span>]&quot;)
-<span class="keyword">elif</span> <span <span class="keyword">class</span>="number">25</span> &lt; x &lt;= <span <span class="keyword">class</span>="number">50</span>:
-    <span class="keyword">print</span>(&quot;Interval (<span <span class="keyword">class</span>="number">25</span>,<span <span class="keyword">class</span>="number">50</span>]&quot;)
-<span class="keyword">elif</span> <span <span class="keyword">class</span>="number">50</span> &lt; x &lt;= <span <span class="keyword">class</span>="number">75</span>:
-    <span class="keyword">print</span>(&quot;Interval (<span <span class="keyword">class</span>="number">50</span>,<span <span class="keyword">class</span>="number">75</span>]&quot;)
-<span class="keyword">elif</span> <span <span class="keyword">class</span>="number">75</span> &lt; x &lt;= <span <span class="keyword">class</span>="number">100</span>:
-    <span class="keyword">print</span>(&quot;Interval (<span <span class="keyword">class</span>="number">75</span>,<span <span class="keyword">class</span>="number">100</span>]&quot;)
+<span class="keyword">if</span> <span class="number">0</span> &lt;= x &lt;= <span class="number">25</span>:
+    <span class="keyword">print</span>(&quot;Interval [<span class="number">0</span>,<span class="number">25</span>]&quot;)
+<span class="keyword">elif</span> <span class="number">25</span> &lt; x &lt;= <span class="number">50</span>:
+    <span class="keyword">print</span>(&quot;Interval (<span class="number">25</span>,<span class="number">50</span>]&quot;)
+<span class="keyword">elif</span> <span class="number">50</span> &lt; x &lt;= <span class="number">75</span>:
+    <span class="keyword">print</span>(&quot;Interval (<span class="number">50</span>,<span class="number">75</span>]&quot;)
+<span class="keyword">elif</span> <span class="number">75</span> &lt; x &lt;= <span class="number">100</span>:
+    <span class="keyword">print</span>(&quot;Interval (<span class="number">75</span>,<span class="number">100</span>]&quot;)
 <span class="keyword">else</span>:
     <span class="keyword">print</span>(&quot;Out of interval&quot;)</code></pre>
             </details>
@@ -416,23 +416,23 @@ Q4
 <span class="keyword">int</span> main() {
     <span class="keyword">double</span> x, y;
     cin &gt;&gt; x &gt;&gt; y;
-    <span class="keyword">if</span> (x &gt; <span <span class="keyword">class</span>="number">0</span> &amp;&amp; y &gt; <span <span class="keyword">class</span>="number">0</span>) cout &lt;&lt; &quot;Q1&quot; &lt;&lt; endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x &lt; <span <span class="keyword">class</span>="number">0</span> &amp;&amp; y &gt; <span <span class="keyword">class</span>="number">0</span>) cout &lt;&lt; &quot;Q2&quot; &lt;&lt; endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x &lt; <span <span class="keyword">class</span>="number">0</span> &amp;&amp; y &lt; <span <span class="keyword">class</span>="number">0</span>) cout &lt;&lt; &quot;Q3&quot; &lt;&lt; endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; <span <span class="keyword">class</span>="number">0</span> &amp;&amp; y &lt; <span <span class="keyword">class</span>="number">0</span>) cout &lt;&lt; &quot;Q4&quot; &lt;&lt; endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span <span class="keyword">class</span>="number">0</span> &amp;&amp; y == <span <span class="keyword">class</span>="number">0</span>) cout &lt;&lt; &quot;Origem&quot; &lt;&lt; endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span <span class="keyword">class</span>="number">0</span>) cout &lt;&lt; &quot;Eixo Y&quot; &lt;&lt; endl;
+    <span class="keyword">if</span> (x &gt; <span class="number">0</span> &amp;&amp; y &gt; <span class="number">0</span>) cout &lt;&lt; &quot;Q1&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x &lt; <span class="number">0</span> &amp;&amp; y &gt; <span class="number">0</span>) cout &lt;&lt; &quot;Q2&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x &lt; <span class="number">0</span> &amp;&amp; y &lt; <span class="number">0</span>) cout &lt;&lt; &quot;Q3&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; <span class="number">0</span> &amp;&amp; y &lt; <span class="number">0</span>) cout &lt;&lt; &quot;Q4&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">0</span> &amp;&amp; y == <span class="number">0</span>) cout &lt;&lt; &quot;Origem&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">0</span>) cout &lt;&lt; &quot;Eixo Y&quot; &lt;&lt; endl;
     <span class="keyword">else</span> cout &lt;&lt; &quot;Eixo X&quot; &lt;&lt; endl;
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">x, y = <span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split())
-<span class="keyword">if</span> x &gt; <span <span class="keyword">class</span>="number">0</span> <span class="keyword">and</span> y &gt; <span <span class="keyword">class</span>="number">0</span>: <span class="keyword">print</span>(&quot;Q1&quot;)
-<span class="keyword">elif</span> x &lt; <span <span class="keyword">class</span>="number">0</span> <span class="keyword">and</span> y &gt; <span <span class="keyword">class</span>="number">0</span>: <span class="keyword">print</span>(&quot;Q2&quot;)
-<span class="keyword">elif</span> x &lt; <span <span class="keyword">class</span>="number">0</span> <span class="keyword">and</span> y &lt; <span <span class="keyword">class</span>="number">0</span>: <span class="keyword">print</span>(&quot;Q3&quot;)
-<span class="keyword">elif</span> x &gt; <span <span class="keyword">class</span>="number">0</span> <span class="keyword">and</span> y &lt; <span <span class="keyword">class</span>="number">0</span>: <span class="keyword">print</span>(&quot;Q4&quot;)
-<span class="keyword">elif</span> x == <span <span class="keyword">class</span>="number">0</span> <span class="keyword">and</span> y == <span <span class="keyword">class</span>="number">0</span>: <span class="keyword">print</span>(&quot;Origem&quot;)
-<span class="keyword">elif</span> x == <span <span class="keyword">class</span>="number">0</span>: <span class="keyword">print</span>(&quot;Eixo Y&quot;)
+<span class="keyword">if</span> x &gt; <span class="number">0</span> <span class="keyword">and</span> y &gt; <span class="number">0</span>: <span class="keyword">print</span>(&quot;Q1&quot;)
+<span class="keyword">elif</span> x &lt; <span class="number">0</span> <span class="keyword">and</span> y &gt; <span class="number">0</span>: <span class="keyword">print</span>(&quot;Q2&quot;)
+<span class="keyword">elif</span> x &lt; <span class="number">0</span> <span class="keyword">and</span> y &lt; <span class="number">0</span>: <span class="keyword">print</span>(&quot;Q3&quot;)
+<span class="keyword">elif</span> x &gt; <span class="number">0</span> <span class="keyword">and</span> y &lt; <span class="number">0</span>: <span class="keyword">print</span>(&quot;Q4&quot;)
+<span class="keyword">elif</span> x == <span class="number">0</span> <span class="keyword">and</span> y == <span class="number">0</span>: <span class="keyword">print</span>(&quot;Origem&quot;)
+<span class="keyword">elif</span> x == <span class="number">0</span>: <span class="keyword">print</span>(&quot;Eixo Y&quot;)
 <span class="keyword">else</span>: <span class="keyword">print</span>(&quot;Eixo X&quot;)</code></pre>
             </details>
         </div>
@@ -479,19 +479,19 @@ Q4
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> a, b, c, d;
     scanf(&quot;%d%d%d%d&quot;, &amp;a, &amp;b, &amp;c, &amp;d);
-    <span class="keyword">int</span> start = a * <span <span class="keyword">class</span>="number">60</span> + b, end = c * <span <span class="keyword">class</span>="number">60</span> + d;
-    <span class="keyword">if</span> (end &lt;= start) end += <span <span class="keyword">class</span>="number">24</span> * <span <span class="keyword">class</span>="number">60</span>;
+    <span class="keyword">int</span> start = a * <span class="number">60</span> + b, end = c * <span class="number">60</span> + d;
+    <span class="keyword">if</span> (end &lt;= start) end += <span class="number">24</span> * <span class="number">60</span>;
     <span class="keyword">int</span> diff = end - start;
-    printf(&quot;%d:%d\n&quot;, diff / <span <span class="keyword">class</span>="number">60</span>, diff % <span <span class="keyword">class</span>="number">60</span>);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    printf(&quot;%d:%d\n&quot;, diff / <span class="number">60</span>, diff % <span class="number">60</span>);
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">a, b, c, d = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-s = a * <span <span class="keyword">class</span>="number">60</span> + b
-e = c * <span <span class="keyword">class</span>="number">60</span> + d
-<span class="keyword">if</span> e &lt;= s: e += <span <span class="keyword">class</span>="number">24</span> * <span <span class="keyword">class</span>="number">60</span>
+s = a * <span class="number">60</span> + b
+e = c * <span class="number">60</span> + d
+<span class="keyword">if</span> e &lt;= s: e += <span class="number">24</span> * <span class="number">60</span>
 d = e - s
-<span class="keyword">print</span>(f&quot;{d // <span <span class="keyword">class</span>="number">60</span>}:{d % <span <span class="keyword">class</span>="number">60</span>}&quot;)</code></pre>
+<span class="keyword">print</span>(f&quot;{d // <span class="number">60</span>}:{d % <span class="number">60</span>}&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -541,23 +541,23 @@ Percentage: 15 %
     <span class="keyword">double</span> s;
     scanf(&quot;%lf&quot;, &amp;s);
     <span class="keyword">int</span> p;
-    <span class="keyword">if</span> (s &lt;= <span <span class="keyword">class</span>="number">400</span>) p = <span <span class="keyword">class</span>="number">15</span>;
-    <span class="keyword">else</span> <span class="keyword">if</span> (s &lt;= <span <span class="keyword">class</span>="number">800</span>) p = <span <span class="keyword">class</span>="number">12</span>;
-    <span class="keyword">else</span> <span class="keyword">if</span> (s &lt;= <span <span class="keyword">class</span>="number">1200</span>) p = <span <span class="keyword">class</span>="number">10</span>;
-    <span class="keyword">else</span> <span class="keyword">if</span> (s &lt;= <span <span class="keyword">class</span>="number">2000</span>) p = <span <span class="keyword">class</span>="number">7</span>;
-    <span class="keyword">else</span> p = <span <span class="keyword">class</span>="number">4</span>;
-    <span class="keyword">double</span> r = s * p / <span <span class="keyword">class</span>="number">100</span>;
-    printf(&quot;New salary: %.<span <span class="keyword">class</span>="number">2lf</span>\nIncrease: %.<span <span class="keyword">class</span>="number">2lf</span>\nPercentage: %d %%\n&quot;, s + r, r, p);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">if</span> (s &lt;= <span class="number">400</span>) p = <span class="number">15</span>;
+    <span class="keyword">else</span> <span class="keyword">if</span> (s &lt;= <span class="number">800</span>) p = <span class="number">12</span>;
+    <span class="keyword">else</span> <span class="keyword">if</span> (s &lt;= <span class="number">1200</span>) p = <span class="number">10</span>;
+    <span class="keyword">else</span> <span class="keyword">if</span> (s &lt;= <span class="number">2000</span>) p = <span class="number">7</span>;
+    <span class="keyword">else</span> p = <span class="number">4</span>;
+    <span class="keyword">double</span> r = s * p / <span class="number">100</span>;
+    printf(&quot;New salary: %.<span class="number">2lf</span>\nIncrease: %.<span class="number">2lf</span>\nPercentage: %d %%\n&quot;, s + r, r, p);
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">s = <span class="keyword">float</span>(<span class="keyword">input</span>())
-<span class="keyword">if</span> s &lt;= <span <span class="keyword">class</span>="number">400</span>: p = <span <span class="keyword">class</span>="number">15</span>
-<span class="keyword">elif</span> s &lt;= <span <span class="keyword">class</span>="number">800</span>: p = <span <span class="keyword">class</span>="number">12</span>
-<span class="keyword">elif</span> s &lt;= <span <span class="keyword">class</span>="number">1200</span>: p = <span <span class="keyword">class</span>="number">10</span>
-<span class="keyword">elif</span> s &lt;= <span <span class="keyword">class</span>="number">2000</span>: p = <span <span class="keyword">class</span>="number">7</span>
-<span class="keyword">else</span>: p = <span <span class="keyword">class</span>="number">4</span>
-r = s * p / <span <span class="keyword">class</span>="number">100</span>
+<span class="keyword">if</span> s &lt;= <span class="number">400</span>: p = <span class="number">15</span>
+<span class="keyword">elif</span> s &lt;= <span class="number">800</span>: p = <span class="number">12</span>
+<span class="keyword">elif</span> s &lt;= <span class="number">1200</span>: p = <span class="number">10</span>
+<span class="keyword">elif</span> s &lt;= <span class="number">2000</span>: p = <span class="number">7</span>
+<span class="keyword">else</span>: p = <span class="number">4</span>
+r = s * p / <span class="number">100</span>
 <span class="keyword">print</span>(f&quot;New salary: {s + r:.2f}&quot;)
 <span class="keyword">print</span>(f&quot;Increase: {r:.2f}&quot;)
 <span class="keyword">print</span>(f&quot;Percentage: {p} %&quot;)</code></pre>
@@ -607,15 +607,15 @@ Not accepted
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> a, b, c, d;
     cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;
-    <span class="keyword">if</span> (b &gt; c &amp;&amp; d &gt; a &amp;&amp; c + d &gt; a + b &amp;&amp; c &gt; <span <span class="keyword">class</span>="number">0</span> &amp;&amp; d &gt; <span <span class="keyword">class</span>="number">0</span> &amp;&amp; a % <span <span class="keyword">class</span>="number">2</span> == <span <span class="keyword">class</span>="number">0</span>)
+    <span class="keyword">if</span> (b &gt; c &amp;&amp; d &gt; a &amp;&amp; c + d &gt; a + b &amp;&amp; c &gt; <span class="number">0</span> &amp;&amp; d &gt; <span class="number">0</span> &amp;&amp; a % <span class="number">2</span> == <span class="number">0</span>)
         cout &lt;&lt; &quot;Accepted&quot; &lt;&lt; endl;
     <span class="keyword">else</span>
         cout &lt;&lt; &quot;Not accepted&quot; &lt;&lt; endl;
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">a, b, c, d = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-<span class="keyword">if</span> b &gt; c <span class="keyword">and</span> d &gt; a <span class="keyword">and</span> c + d &gt; a + b <span class="keyword">and</span> c &gt; <span <span class="keyword">class</span>="number">0</span> <span class="keyword">and</span> d &gt; <span <span class="keyword">class</span>="number">0</span> <span class="keyword">and</span> a % <span <span class="keyword">class</span>="number">2</span> == <span <span class="keyword">class</span>="number">0</span>:
+<span class="keyword">if</span> b &gt; c <span class="keyword">and</span> d &gt; a <span class="keyword">and</span> c + d &gt; a + b <span class="keyword">and</span> c &gt; <span class="number">0</span> <span class="keyword">and</span> d &gt; <span class="number">0</span> <span class="keyword">and</span> a % <span class="number">2</span> == <span class="number">0</span>:
     <span class="keyword">print</span>(&quot;Accepted&quot;)
 <span class="keyword">else</span>:
     <span class="keyword">print</span>(&quot;Not accepted&quot;)</code></pre>
@@ -666,19 +666,19 @@ Sao Paulo
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> x;
     cin &gt;&gt; x;
-    <span class="keyword">if</span> (x == <span <span class="keyword">class</span>="number">61</span>) cout &lt;&lt; &quot;Brasilia&quot; &lt;&lt; endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span <span class="keyword">class</span>="number">71</span>) cout &lt;&lt; &quot;Salvador&quot; &lt;&lt; endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span <span class="keyword">class</span>="number">11</span>) cout &lt;&lt; &quot;Sao Paulo&quot; &lt;&lt; endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span <span class="keyword">class</span>="number">21</span>) cout &lt;&lt; &quot;Rio de Janeiro&quot; &lt;&lt; endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span <span class="keyword">class</span>="number">32</span>) cout &lt;&lt; &quot;Juiz de Fora&quot; &lt;&lt; endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span <span class="keyword">class</span>="number">19</span>) cout &lt;&lt; &quot;Campinas&quot; &lt;&lt; endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span <span class="keyword">class</span>="number">27</span>) cout &lt;&lt; &quot;Vitoria&quot; &lt;&lt; endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span <span class="keyword">class</span>="number">31</span>) cout &lt;&lt; &quot;Belo Horizonte&quot; &lt;&lt; endl;
+    <span class="keyword">if</span> (x == <span class="number">61</span>) cout &lt;&lt; &quot;Brasilia&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">71</span>) cout &lt;&lt; &quot;Salvador&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">11</span>) cout &lt;&lt; &quot;Sao Paulo&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">21</span>) cout &lt;&lt; &quot;Rio de Janeiro&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">32</span>) cout &lt;&lt; &quot;Juiz de Fora&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">19</span>) cout &lt;&lt; &quot;Campinas&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">27</span>) cout &lt;&lt; &quot;Vitoria&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">31</span>) cout &lt;&lt; &quot;Belo Horizonte&quot; &lt;&lt; endl;
     <span class="keyword">else</span> cout &lt;&lt; &quot;DDD nao cadastrado&quot; &lt;&lt; endl;
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">ddd = {<span <span class="keyword">class</span>="number">61</span>:&quot;Brasilia&quot;,<span <span class="keyword">class</span>="number">71</span>:&quot;Salvador&quot;,<span <span class="keyword">class</span>="number">11</span>:&quot;Sao Paulo&quot;,<span <span class="keyword">class</span>="number">21</span>:&quot;Rio de Janeiro&quot;,<span <span class="keyword">class</span>="number">32</span>:&quot;Juiz de Fora&quot;,<span <span class="keyword">class</span>="number">19</span>:&quot;Campinas&quot;,<span <span class="keyword">class</span>="number">27</span>:&quot;Vitoria&quot;,<span <span class="keyword">class</span>="number">31</span>:&quot;Belo Horizonte&quot;}
+            <pre><code class="language-python">ddd = {<span class="number">61</span>:&quot;Brasilia&quot;,<span class="number">71</span>:&quot;Salvador&quot;,<span class="number">11</span>:&quot;Sao Paulo&quot;,<span class="number">21</span>:&quot;Rio de Janeiro&quot;,<span class="number">32</span>:&quot;Juiz de Fora&quot;,<span class="number">19</span>:&quot;Campinas&quot;,<span class="number">27</span>:&quot;Vitoria&quot;,<span class="number">31</span>:&quot;Belo Horizonte&quot;}
 x = <span class="keyword">int</span>(<span class="keyword">input</span>())
 <span class="keyword">print</span>(ddd.get(x, &quot;DDD nao cadastrado&quot;))</code></pre>
             </details>
@@ -739,7 +739,7 @@ Not a triangle
         <span class="keyword">if</span> (a == b &amp;&amp; b == c) cout &lt;&lt; &quot;Equilateral&quot; &lt;&lt; endl;
         <span class="keyword">else</span> <span class="keyword">if</span> (a == b || a == c || b == c) cout &lt;&lt; &quot;Isosceles&quot; &lt;&lt; endl;
     }
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">a, b, c = <span class="keyword">sorted</span>(<span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split()), reverse=<span class="keyword">True</span>)
@@ -816,7 +816,7 @@ homem
             <span class="keyword">else</span> cout &lt;&lt; &quot;minhoca&quot; &lt;&lt; endl;
         }
     }
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
@@ -876,32 +876,32 @@ R$ 80.36
 <span class="keyword">int</span> main() {
     <span class="keyword">double</span> x;
     scanf(&quot;%lf&quot;, &amp;x);
-    <span class="keyword">if</span> (x &lt;= <span <span class="keyword">class</span>="number">2000</span>) { printf(&quot;Isento\n&quot;); <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>; }
-    x -= <span <span class="keyword">class</span>="number">2000</span>;
-    <span class="keyword">double</span> t = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">if</span> (x &gt; <span <span class="keyword">class</span>="number">0</span>) { <span class="keyword">double</span> v = x &lt; <span <span class="keyword">class</span>="number">1000</span> ? x : <span <span class="keyword">class</span>="number">1000</span>; t += v * <span <span class="keyword">class</span>="number">0.08</span>; x -= v; }
-    <span class="keyword">if</span> (x &gt; <span <span class="keyword">class</span>="number">0</span>) { <span class="keyword">double</span> v = x &lt; <span <span class="keyword">class</span>="number">1500</span> ? x : <span <span class="keyword">class</span>="number">1500</span>; t += v * <span <span class="keyword">class</span>="number">0.18</span>; x -= v; }
-    <span class="keyword">if</span> (x &gt; <span <span class="keyword">class</span>="number">0</span>) t += x * <span <span class="keyword">class</span>="number">0.28</span>;
-    printf(&quot;R$ %.<span <span class="keyword">class</span>="number">2lf</span>\n&quot;, t);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">if</span> (x &lt;= <span class="number">2000</span>) { printf(&quot;Isento\n&quot;); <span class="keyword">return</span> <span class="number">0</span>; }
+    x -= <span class="number">2000</span>;
+    <span class="keyword">double</span> t = <span class="number">0</span>;
+    <span class="keyword">if</span> (x &gt; <span class="number">0</span>) { <span class="keyword">double</span> v = x &lt; <span class="number">1000</span> ? x : <span class="number">1000</span>; t += v * <span class="number">0.08</span>; x -= v; }
+    <span class="keyword">if</span> (x &gt; <span class="number">0</span>) { <span class="keyword">double</span> v = x &lt; <span class="number">1500</span> ? x : <span class="number">1500</span>; t += v * <span class="number">0.18</span>; x -= v; }
+    <span class="keyword">if</span> (x &gt; <span class="number">0</span>) t += x * <span class="number">0.28</span>;
+    printf(&quot;R$ %.<span class="number">2lf</span>\n&quot;, t);
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">x = <span class="keyword">float</span>(<span class="keyword">input</span>())
-<span class="keyword">if</span> x &lt;= <span <span class="keyword">class</span>="number">2000</span>:
+<span class="keyword">if</span> x &lt;= <span class="number">2000</span>:
     <span class="keyword">print</span>(&quot;Isento&quot;)
 <span class="keyword">else</span>:
-    x -= <span <span class="keyword">class</span>="number">2000</span>
-    t = <span <span class="keyword">class</span>="number">0</span>
-    <span class="keyword">if</span> x &gt; <span <span class="keyword">class</span>="number">0</span>:
-        v = <span class="keyword">min</span>(x, <span <span class="keyword">class</span>="number">1000</span>)
-        t += v * <span <span class="keyword">class</span>="number">0.08</span>
+    x -= <span class="number">2000</span>
+    t = <span class="number">0</span>
+    <span class="keyword">if</span> x &gt; <span class="number">0</span>:
+        v = <span class="keyword">min</span>(x, <span class="number">1000</span>)
+        t += v * <span class="number">0.08</span>
         x -= v
-    <span class="keyword">if</span> x &gt; <span <span class="keyword">class</span>="number">0</span>:
-        v = <span class="keyword">min</span>(x, <span <span class="keyword">class</span>="number">1500</span>)
-        t += v * <span <span class="keyword">class</span>="number">0.18</span>
+    <span class="keyword">if</span> x &gt; <span class="number">0</span>:
+        v = <span class="keyword">min</span>(x, <span class="number">1500</span>)
+        t += v * <span class="number">0.18</span>
         x -= v
-    <span class="keyword">if</span> x &gt; <span <span class="keyword">class</span>="number">0</span>:
-        t += x * <span <span class="keyword">class</span>="number">0.28</span>
+    <span class="keyword">if</span> x &gt; <span class="number">0</span>:
+        t += x * <span class="number">0.28</span>
     <span class="keyword">print</span>(f&quot;R$ {t:.2f}&quot;)</code></pre>
             </details>
         </div>

@@ -117,33 +117,48 @@ def md_to_html(text):
 
 
 def syntax_highlight(code, lang='cpp'):
-    """Regex-based syntax highlighting for code blocks."""
+    """Token-based syntax highlighting — no nested span corruption."""
     code = html_mod.escape(code)
+    placeholders = []
+
+    def placeholder(html_span):
+        """Replace a span with a numbered placeholder to prevent re-matching."""
+        idx = len(placeholders)
+        token = f'\x00PH{idx}\x00'
+        placeholders.append(html_span)
+        return token
+
+    def restore(text):
+        for i, html in enumerate(placeholders):
+            text = text.replace(f'\x00PH{i}\x00', html)
+        return text
 
     if lang in ('cpp', 'c'):
-        # C++ keywords
-        keywords = r'\b(int|long|float|double|char|void|bool|string|auto|const|static|return|if|else|for|while|do|switch|case|break|continue|default|class|struct|public|private|protected|virtual|new|delete|this|true|false|nullptr|include|using|namespace|std|template|typename|sizeof|typedef|enum|union|extern|register|volatile|inline|constexpr|NULL)\b'
-        # Comments: // and /* */
-        code = re.sub(r'(//[^\n]*)', r'<span class="comment">\1</span>', code)
-        # Strings
-        code = re.sub(r'("(?:[^"\\]|\\.)*")', r'<span class="string">\1</span>', code)
-        # Numbers
-        code = re.sub(r'\b(\d+\.?\d*[fFlLuU]*)\b', r'<span class="number">\1</span>', code)
-        # Keywords
-        code = re.sub(keywords, r'<span class="keyword">\1</span>', code)
-    elif lang == 'python':
-        # Python keywords
-        keywords = r'\b(def|class|return|if|elif|else|for|while|break|continue|pass|import|from|as|try|except|finally|raise|with|yield|lambda|and|or|not|in|is|True|False|None|print|range|len|int|float|str|list|dict|set|tuple|input|map|sorted|enumerate|zip|reversed|sum|min|max|abs|all|any|open|super|self)\b'
-        # Comments
-        code = re.sub(r'(#[^\n]*)', r'<span class="comment">\1</span>', code)
-        # Strings (triple-quoted and single/double)
-        code = re.sub(r'(""".*?"""|\'\'\'.*?\'\'\')', r'<span class="string">\1</span>', code, flags=re.DOTALL)
-        code = re.sub(r'("(?:[^"\\]|\\.)*"|\'(?:[^\'\\]|\\.)*\')', r'<span class="string">\1</span>', code)
-        # Numbers
-        code = re.sub(r'\b(\d+\.?\d*)\b', r'<span class="number">\1</span>', code)
-        # Keywords
-        code = re.sub(keywords, r'<span class="keyword">\1</span>', code)
+        # Order matters: comments first, strings, numbers, keywords
+        # 1. Comments (// to end of line)
+        code = re.sub(r'(//[^\n]*)', lambda m: placeholder(f'<span class="comment">{m.group(1)}</span>'), code)
+        # 2. Strings
+        code = re.sub(r'("(?:[^"\\]|\\.)*")', lambda m: placeholder(f'<span class="string">{m.group(1)}</span>'), code)
+        # 3. Numbers
+        code = re.sub(r'\b(\d+\.?\d*[fFlLuU]*)\b', lambda m: placeholder(f'<span class="number">{m.group(1)}</span>'), code)
+        # 4. Keywords
+        kw = r'\b(int|long|float|double|char|void|bool|string|auto|const|static|return|if|else|for|while|do|switch|case|break|continue|default|class|struct|public|private|protected|virtual|new|delete|this|true|false|nullptr|include|using|namespace|std|template|typename|sizeof|typedef|enum|union|extern|register|volatile|inline|constexpr|NULL)\b'
+        code = re.sub(kw, lambda m: placeholder(f'<span class="keyword">{m.group(1)}</span>'), code)
 
+    elif lang == 'python':
+        # 1. Comments
+        code = re.sub(r'(#[^\n]*)', lambda m: placeholder(f'<span class="comment">{m.group(1)}</span>'), code)
+        # 2. Triple-quoted strings
+        code = re.sub(r'(""".*?"""|\'\'\'.*?\'\'\')', lambda m: placeholder(f'<span class="string">{m.group(1)}</span>'), code, flags=re.DOTALL)
+        # 3. Single/double quoted strings
+        code = re.sub(r'("(?:[^"\\]|\\.)*"|\'(?:[^\'\\]|\\.)*\')', lambda m: placeholder(f'<span class="string">{m.group(1)}</span>'), code)
+        # 4. Numbers
+        code = re.sub(r'\b(\d+\.?\d*)\b', lambda m: placeholder(f'<span class="number">{m.group(1)}</span>'), code)
+        # 5. Keywords
+        kw = r'\b(def|class|return|if|elif|else|for|while|break|continue|pass|import|from|as|try|except|finally|raise|with|yield|lambda|and|or|not|in|is|True|False|None|print|range|len|int|float|str|list|dict|set|tuple|input|map|sorted|enumerate|zip|reversed|sum|min|max|abs|all|any|open|super|self)\b'
+        code = re.sub(kw, lambda m: placeholder(f'<span class="keyword">{m.group(1)}</span>'), code)
+
+    code = restore(code)
     return f'<pre><code class="language-{lang}">{code}</code></pre>'
 
 

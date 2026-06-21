@@ -78,15 +78,15 @@ Hello%20World
     <span class="keyword">string</span> s;
     getline(cin, s);
     <span class="keyword">for</span> (<span class="keyword">char</span> c : s) {
-        <span class="keyword">if</span> (c == &#x27; &#x27;) cout &lt;&lt; &quot;%<span <span class="keyword">class</span>="number">20</span>&quot;;
+        <span class="keyword">if</span> (c == &#x27; &#x27;) cout &lt;&lt; &quot;%<span class="number">20</span>&quot;;
         <span class="keyword">else</span> cout &lt;&lt; c;
     }
     cout &lt;&lt; endl;
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">s = <span class="keyword">input</span>()
-<span class="keyword">print</span>(s.replace(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27; &#x27;, &#x27;%<span <span class="keyword">class</span>="number">20</span>&#x27;))</span></code></pre>
+<span class="keyword">print</span>(s.replace(&<span class="comment">#x27; &#x27;, &#x27;%20&#x27;))</span></code></pre>
             </details>
         </div>
     </div>
@@ -135,27 +135,27 @@ Hello%20World
 #<span class="keyword">include</span> &lt;vector&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 用 vector 存储斐波那契数列，迭代计算</span>
+<span class="comment">// 用 vector 存储斐波那契数列，迭代计算</span>
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n;
     cin &gt;&gt; n;
-    <span class="keyword">if</span> (n == <span <span class="keyword">class</span>="number">0</span>) { cout &lt;&lt; <span <span class="keyword">class</span>="number">0</span> &lt;&lt; endl; <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>; }
+    <span class="keyword">if</span> (n == <span class="number">0</span>) { cout &lt;&lt; <span class="number">0</span> &lt;&lt; endl; <span class="keyword">return</span> <span class="number">0</span>; }
 
     vector&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; fib;
-    fib.push_back(<span <span class="keyword">class</span>="number">0</span>);  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// fib[<span <span class="keyword">class</span>="number">0</span>] = <span <span class="keyword">class</span>="number">0</span></span>
-    fib.push_back(<span <span class="keyword">class</span>="number">1</span>);  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// fib[<span <span class="keyword">class</span>="number">1</span>] = <span <span class="keyword">class</span>="number">1</span></span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">2</span>; i &lt;= n; i++) {
-        fib.push_back(fib[i - <span <span class="keyword">class</span>="number">1</span>] + fib[i - <span <span class="keyword">class</span>="number">2</span>]);
+    fib.push_back(<span class="number">0</span>);  <span class="comment">// fib[0] = 0</span>
+    fib.push_back(<span class="number">1</span>);  <span class="comment">// fib[1] = 1</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) {
+        fib.push_back(fib[i - <span class="number">1</span>] + fib[i - <span class="number">2</span>]);
     }
     cout &lt;&lt; fib[n] &lt;&lt; endl;
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">n = <span class="keyword">int</span>(<span class="keyword">input</span>())
-<span class="keyword">if</span> n == <span <span class="keyword">class</span>="number">0</span>: <span class="keyword">print</span>(<span <span class="keyword">class</span>="number">0</span>)
+<span class="keyword">if</span> n == <span class="number">0</span>: <span class="keyword">print</span>(<span class="number">0</span>)
 <span class="keyword">else</span>:
-    a, b = <span <span class="keyword">class</span>="number">0</span>, <span <span class="keyword">class</span>="number">1</span>
-    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n - <span <span class="keyword">class</span>="number">1</span>): a, b = b, a + b
+    a, b = <span class="number">0</span>, <span class="number">1</span>
+    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n - <span class="number">1</span>): a, b = b, a + b
     <span class="keyword">print</span>(b)</code></pre>
             </details>
         </div>
@@ -210,13 +210,13 @@ Hello%20World
 <span class="keyword">int</span> main() {
     vector&lt;<span class="keyword">int</span>&gt; nums;
     <span class="keyword">int</span> x;
-    <span class="keyword">while</span> (cin &gt;&gt; x &amp;&amp; x != -<span <span class="keyword">class</span>="number">1</span>) {
+    <span class="keyword">while</span> (cin &gt;&gt; x &amp;&amp; x != -<span class="number">1</span>) {
         nums.push_back(x);
     }
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = nums.size() - <span <span class="keyword">class</span>="number">1</span>; i &gt;= <span <span class="keyword">class</span>="number">0</span>; i--) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = nums.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) {
         cout &lt;&lt; nums[i] &lt;&lt; endl;
     }
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
@@ -225,7 +225,7 @@ Hello%20World
     <span class="keyword">if</span> <span class="keyword">not</span> line:
         <span class="keyword">continue</span>
     nums = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, line.split()))
-    nums.pop()  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># remove -<span <span class="keyword">class</span>="number">1</span></span>
+    nums.pop()  <span class="comment"># remove -1</span>
     <span class="keyword">for</span> x <span class="keyword">in</span> <span class="keyword">reversed</span>(nums):
         <span class="keyword">print</span>(x)</code></pre>
             </details>
@@ -291,9 +291,9 @@ yes
 #<span class="keyword">include</span> &lt;<span class="keyword">string</span>&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 用两个栈模拟队列</span>
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 栈1负责入队，栈2负责出队</span>
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 出队时若栈2空，把栈1全部倒入栈2</span>
+<span class="comment">// 用两个栈模拟队列</span>
+<span class="comment">// 栈1负责入队，栈2负责出队</span>
+<span class="comment">// 出队时若栈2空，把栈1全部倒入栈2</span>
 stack&lt;<span class="keyword">int</span>&gt; s1, s2;
 
 <span class="keyword">void</span> transfer() {
@@ -317,7 +317,7 @@ stack&lt;<span class="keyword">int</span>&gt; s1, s2;
             cout &lt;&lt; (s1.empty() &amp;&amp; s2.empty() ? &quot;yes&quot; : &quot;no&quot;) &lt;&lt; endl;
         }
     }
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
@@ -330,22 +330,22 @@ stack2 = []
     <span class="keyword">if</span> <span class="keyword">not</span> line:
         <span class="keyword">continue</span>
     parts = line.split()
-    <span class="keyword">if</span> parts[<span <span class="keyword">class</span>="number">0</span>] == &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;push&#x27;:</span>
-        stack1.append(<span class="keyword">int</span>(parts[<span <span class="keyword">class</span>="number">1</span>]))
-    <span class="keyword">elif</span> parts[<span <span class="keyword">class</span>="number">0</span>] == &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;pop&#x27;:</span>
+    <span class="keyword">if</span> parts[<span class="number">0</span>] == &<span class="comment">#x27;push&#x27;:</span>
+        stack1.append(<span class="keyword">int</span>(parts[<span class="number">1</span>]))
+    <span class="keyword">elif</span> parts[<span class="number">0</span>] == &<span class="comment">#x27;pop&#x27;:</span>
         <span class="keyword">if</span> <span class="keyword">not</span> stack2:
             <span class="keyword">while</span> stack1:
                 stack2.append(stack1.pop())
         <span class="keyword">if</span> stack2:
             <span class="keyword">print</span>(stack2.pop())
-    <span class="keyword">elif</span> parts[<span <span class="keyword">class</span>="number">0</span>] == &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;peek&#x27;:</span>
+    <span class="keyword">elif</span> parts[<span class="number">0</span>] == &<span class="comment">#x27;peek&#x27;:</span>
         <span class="keyword">if</span> <span class="keyword">not</span> stack2:
             <span class="keyword">while</span> stack1:
                 stack2.append(stack1.pop())
         <span class="keyword">if</span> stack2:
-            <span class="keyword">print</span>(stack2[-<span <span class="keyword">class</span>="number">1</span>])
-    <span class="keyword">elif</span> parts[<span <span class="keyword">class</span>="number">0</span>] == &<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;empty&#x27;:</span>
-        <span class="keyword">print</span>(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;true&#x27; <span class="keyword">if</span> (<span class="keyword">not</span> stack1 <span class="keyword">and</span> <span class="keyword">not</span> stack2) <span class="keyword">else</span> &#x27;false&#x27;)</span></code></pre>
+            <span class="keyword">print</span>(stack2[-<span class="number">1</span>])
+    <span class="keyword">elif</span> parts[<span class="number">0</span>] == &<span class="comment">#x27;empty&#x27;:</span>
+        <span class="keyword">print</span>(&<span class="comment">#x27;true&#x27; if (not stack1 and not stack2) else &#x27;false&#x27;)</span></code></pre>
             </details>
         </div>
     </div>
@@ -393,11 +393,11 @@ stack2 = []
 #<span class="keyword">include</span> &lt;stack&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 用栈实现链表反转：读入时压栈，输出时弹栈（后进先出 = 反转）</span>
+<span class="comment">// 用栈实现链表反转：读入时压栈，输出时弹栈（后进先出 = 反转）</span>
 <span class="keyword">int</span> main() {
     stack&lt;<span class="keyword">int</span>&gt; stk;
     <span class="keyword">int</span> x;
-    <span class="keyword">while</span> (cin &gt;&gt; x &amp;&amp; x != -<span <span class="keyword">class</span>="number">1</span>) {
+    <span class="keyword">while</span> (cin &gt;&gt; x &amp;&amp; x != -<span class="number">1</span>) {
         stk.push(x);
     }
     <span class="keyword">while</span> (!stk.empty()) {
@@ -406,7 +406,7 @@ stack2 = []
         <span class="keyword">if</span> (!stk.empty()) cout &lt;&lt; &quot; &quot;;
     }
     cout &lt;&lt; endl;
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
@@ -464,37 +464,37 @@ values.reverse()
 #<span class="keyword">include</span> &lt;algorithm&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 合并两条有序链表</span>
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 读入两行，每行以-1结尾，输出合并后的有序序列</span>
+<span class="comment">// 合并两条有序链表</span>
+<span class="comment">// 读入两行，每行以-1结尾，输出合并后的有序序列</span>
 <span class="keyword">int</span> main() {
     vector&lt;<span class="keyword">int</span>&gt; a;
     <span class="keyword">int</span> x;
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 读入第一条链表</span>
-    <span class="keyword">while</span> (cin &gt;&gt; x &amp;&amp; x != -<span <span class="keyword">class</span>="number">1</span>) a.push_back(x);
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 读入第二条链表</span>
-    <span class="keyword">while</span> (cin &gt;&gt; x &amp;&amp; x != -<span <span class="keyword">class</span>="number">1</span>) a.push_back(x);
+    <span class="comment">// 读入第一条链表</span>
+    <span class="keyword">while</span> (cin &gt;&gt; x &amp;&amp; x != -<span class="number">1</span>) a.push_back(x);
+    <span class="comment">// 读入第二条链表</span>
+    <span class="keyword">while</span> (cin &gt;&gt; x &amp;&amp; x != -<span class="number">1</span>) a.push_back(x);
     sort(a.begin(), a.end());
-    <span class="keyword">for</span> (size_t i = <span <span class="keyword">class</span>="number">0</span>; i &lt; a.size(); i++) {
+    <span class="keyword">for</span> (size_t i = <span class="number">0</span>; i &lt; a.size(); i++) {
         cout &lt;&lt; a[i];
-        <span class="keyword">if</span> (i + <span <span class="keyword">class</span>="number">1</span> &lt; a.size()) cout &lt;&lt; &quot; &quot;;
+        <span class="keyword">if</span> (i + <span class="number">1</span> &lt; a.size()) cout &lt;&lt; &quot; &quot;;
     }
     cout &lt;&lt; endl;
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
-lines = sys.stdin.read().strip().split(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;\n&#x27;)</span>
-a = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> lines[<span <span class="keyword">class</span>="number">0</span>].split(&quot;-&gt;&quot;) <span class="keyword">if</span> x != &quot;NULL&quot;]
-b = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> lines[<span <span class="keyword">class</span>="number">1</span>].split(&quot;-&gt;&quot;) <span class="keyword">if</span> x != &quot;NULL&quot;]
-i = j = <span <span class="keyword">class</span>="number">0</span>
+lines = sys.stdin.read().strip().split(&<span class="comment">#x27;\n&#x27;)</span>
+a = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> lines[<span class="number">0</span>].split(&quot;-&gt;&quot;) <span class="keyword">if</span> x != &quot;NULL&quot;]
+b = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> lines[<span class="number">1</span>].split(&quot;-&gt;&quot;) <span class="keyword">if</span> x != &quot;NULL&quot;]
+i = j = <span class="number">0</span>
 res = []
 <span class="keyword">while</span> i &lt; <span class="keyword">len</span>(a) <span class="keyword">and</span> j &lt; <span class="keyword">len</span>(b):
     <span class="keyword">if</span> a[i] &lt;= b[j]:
         res.append(<span class="keyword">str</span>(a[i]))
-        i += <span <span class="keyword">class</span>="number">1</span>
+        i += <span class="number">1</span>
     <span class="keyword">else</span>:
         res.append(<span class="keyword">str</span>(b[j]))
-        j += <span <span class="keyword">class</span>="number">1</span>
+        j += <span class="number">1</span>
 res.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> a[i:])
 res.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> b[j:])
 <span class="keyword">print</span>(&quot;-&gt;&quot;.join(res))</code></pre>
@@ -552,11 +552,11 @@ res.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> 
 #<span class="keyword">include</span> &lt;algorithm&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 用 vector + <span class="keyword">struct</span> 存储三元组，自定义排序</span>
+<span class="comment">// 用 vector + struct 存储三元组，自定义排序</span>
 <span class="keyword">struct</span> Record {
-    <span class="keyword">int</span> x;      <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 编号</span>
-    <span class="keyword">double</span> y;   <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 重量</span>
-    <span class="keyword">string</span> z;   <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 名称</span>
+    <span class="keyword">int</span> x;      <span class="comment">// 编号</span>
+    <span class="keyword">double</span> y;   <span class="comment">// 重量</span>
+    <span class="keyword">string</span> z;   <span class="comment">// 名称</span>
 };
 
 <span class="keyword">bool</span> cmp(<span class="keyword">const</span> Record &amp;a, <span class="keyword">const</span> Record &amp;b) {
@@ -569,7 +569,7 @@ res.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> 
     cin &gt;&gt; n;
 
     vector&lt;Record&gt; records;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
         Record r;
         cin &gt;&gt; r.x &gt;&gt; r.y &gt;&gt; r.z;
         records.push_back(r);
@@ -577,23 +577,23 @@ res.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> 
 
     sort(records.begin(), records.end(), cmp);
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++) {
-        printf(&quot;%d %.<span <span class="keyword">class</span>="number">2lf</span> %s\n&quot;, records[i].x, records[i].y, records[i].z.c_str());
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+        printf(&quot;%d %.<span class="number">2lf</span> %s\n&quot;, records[i].x, records[i].y, records[i].z.c_str());
     }
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">n = <span class="keyword">int</span>(<span class="keyword">input</span>())
 data = []
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n):
     parts = <span class="keyword">input</span>().split()
-    x = <span class="keyword">int</span>(parts[<span <span class="keyword">class</span>="number">0</span>])
-    y = <span class="keyword">float</span>(parts[<span <span class="keyword">class</span>="number">1</span>])
-    z = parts[<span <span class="keyword">class</span>="number">2</span>]
+    x = <span class="keyword">int</span>(parts[<span class="number">0</span>])
+    y = <span class="keyword">float</span>(parts[<span class="number">1</span>])
+    z = parts[<span class="number">2</span>]
     data.append((x, y, z))
-data.sort(key=<span class="keyword">lambda</span> t: t[<span <span class="keyword">class</span>="number">0</span>])
+data.sort(key=<span class="keyword">lambda</span> t: t[<span class="number">0</span>])
 <span class="keyword">for</span> x, y, z <span class="keyword">in</span> data:
-    <span class="keyword">print</span>(f&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;{x} {y:.2f} {z}&#x27;)</span></code></pre>
+    <span class="keyword">print</span>(f&<span class="comment">#x27;{x} {y:.2f} {z}&#x27;)</span></code></pre>
             </details>
         </div>
     </div>

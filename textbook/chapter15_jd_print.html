@@ -81,35 +81,35 @@
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span class="keyword">const</span> <span class="keyword">int</span> N= <span <span class="keyword">class</span>="number">1007</span>;
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 2维的解法</span>
+<span class="keyword">const</span> <span class="keyword">int</span> N= <span class="number">1007</span>;
+<span class="comment">// 2维的解法</span>
 <span class="keyword">int</span> n,m;
 <span class="keyword">int</span> f[N][N];
 <span class="keyword">int</span> v[N],w[N];
 
 <span class="keyword">int</span> main()
 {
-  cin&gt;&gt;n&gt;&gt;m;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//读入N,V</span>
-  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//读入v,w</span>
-  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++) cin&gt;&gt;v[i]&gt;&gt;w[i];
-  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//朴素的二维dp</span>
-  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
-    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt;=m; j++)
+  cin&gt;&gt;n&gt;&gt;m;<span class="comment">//读入N,V</span>
+  <span class="comment">//读入v,w</span>
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cin&gt;&gt;v[i]&gt;&gt;w[i];
+  <span class="comment">//朴素的二维dp</span>
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;=m; j++)
     {
-      f[i][j]=f[i-<span <span class="keyword">class</span>="number">1</span>][j];
-      <span class="keyword">if</span> ( j &gt;= v[i]) <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//剩余体积大于第i项的体积</span>
-      f[i][j] = max(f[i][j],f[i-<span <span class="keyword">class</span>="number">1</span>][j-v[i]]+w[i]);
+      f[i][j]=f[i-<span class="number">1</span>][j];
+      <span class="keyword">if</span> ( j &gt;= v[i]) <span class="comment">//剩余体积大于第i项的体积</span>
+      f[i][j] = max(f[i][j],f[i-<span class="number">1</span>][j-v[i]]+w[i]);
     }
-  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//根据定义，从前n个物品中，选取总体积不超过m的选法集合f[n][m]就是答案</span>
+  <span class="comment">//根据定义，从前n个物品中，选取总体积不超过m的选法集合f[n][m]就是答案</span>
   cout&lt;&lt;f[n][m]&lt;&lt;endl;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 01背包问题</span>
+            <pre><code class="language-python"><span class="comment"># 01背包问题</span>
 N, V = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-f = [<span <span class="keyword">class</span>="number">0</span>] * (V + <span <span class="keyword">class</span>="number">1</span>)
+f = [<span class="number">0</span>] * (V + <span class="number">1</span>)
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(N):
     v, w = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(V, v - <span <span class="keyword">class</span>="number">1</span>, -<span <span class="keyword">class</span>="number">1</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(V, v - <span class="number">1</span>, -<span class="number">1</span>):
         f[j] = <span class="keyword">max</span>(f[j], f[j - v] + w)
 <span class="keyword">print</span>(f[V])</code></pre>
             </details>
@@ -164,7 +164,7 @@ f = [<span <span class="keyword">class</span>="number">0</span>] * (V + <span <s
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">1007</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1007</span>;
 
 <span class="keyword">int</span> n,m;
 <span class="keyword">int</span> f[N][N];
@@ -173,30 +173,30 @@ f = [<span <span class="keyword">class</span>="number">0</span>] * (V + <span <s
 <span class="keyword">int</span> main()
 {
     cin &gt;&gt;n &gt;&gt;m;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++) cin&gt;&gt;v[i]&gt;&gt;w[i];
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cin&gt;&gt;v[i]&gt;&gt;w[i];
 
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//完全背包</span>
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// <span <span class="keyword">class</span>="number">1.f</span>[i][j] = f[i-<span <span class="keyword">class</span>="number">1</span>][j];(不选物品i)</span>
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// <span <span class="keyword">class</span>="number">2.f</span>[i][j]= max(f[i-<span <span class="keyword">class</span>="number">1</span>][j], f[i][j-v]+w)(选若干个物品i)</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
-      <span class="keyword">for</span> (<span class="keyword">int</span> j=<span <span class="keyword">class</span>="number">0</span>; j &lt;= m; j ++)
+    <span class="comment">//完全背包</span>
+    <span class="comment">// 1.f[i][j] = f[i-1][j];(不选物品i)</span>
+    <span class="comment">// 2.f[i][j]= max(f[i-1][j], f[i][j-v]+w)(选若干个物品i)</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+      <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>; j &lt;= m; j ++)
       {
-        f[i][j]=f[i-<span <span class="keyword">class</span>="number">1</span>][j];
+        f[i][j]=f[i-<span class="number">1</span>][j];
         <span class="keyword">if</span> (j &gt;= v[i])
-          f[i][j] = max(f[i-<span <span class="keyword">class</span>="number">1</span>][j], f[i][j-v[i]]+w[i]);
+          f[i][j] = max(f[i-<span class="number">1</span>][j], f[i][j-v[i]]+w[i]);
       }
 
 
     cout&lt;&lt;f[n][m]&lt;&lt;endl;
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 完全背包问题</span>
+            <pre><code class="language-python"><span class="comment"># 完全背包问题</span>
 N, V = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-f = [<span <span class="keyword">class</span>="number">0</span>] * (V + <span <span class="keyword">class</span>="number">1</span>)
+f = [<span class="number">0</span>] * (V + <span class="number">1</span>)
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(N):
     v, w = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(v, V + <span <span class="keyword">class</span>="number">1</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(v, V + <span class="number">1</span>):
         f[j] = <span class="keyword">max</span>(f[j], f[j - v] + w)
 <span class="keyword">print</span>(f[V])</code></pre>
             </details>
@@ -252,44 +252,44 @@ f = [<span <span class="keyword">class</span>="number">0</span>] * (V + <span <s
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">507</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">507</span>;
 
 <span class="keyword">int</span> n;
-<span class="keyword">int</span> w[N][N], f[N][N];<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//三角矩阵依旧用2纬存储</span>
+<span class="keyword">int</span> w[N][N], f[N][N];<span class="comment">//三角矩阵依旧用2纬存储</span>
 
 <span class="keyword">int</span> main()
 {
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//读入n，w</span>
+    <span class="comment">//读入n，w</span>
     cin&gt;&gt;n;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;=n; i++)
-      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">1</span>; j &lt;= i; j++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;=n; i++)
+      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++)
         cin &gt;&gt; w[i][j];
 
-   <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//初始化最底层的f[n][j]</span>
-   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++) f[n][i] = w[n][i];
+   <span class="comment">//初始化最底层的f[n][j]</span>
+   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) f[n][i] = w[n][i];
 
-   <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//用dp从底层往上计算每个f[i][j]的值</span>
-   <span class="keyword">for</span> (<span class="keyword">int</span> i = n-<span <span class="keyword">class</span>="number">1</span>; i; i--)
-     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">1</span>; j &lt; n; j++)
-        f[i][j] = max(f[i+<span <span class="keyword">class</span>="number">1</span>][j]+w[i][j], f[i+<span <span class="keyword">class</span>="number">1</span>][j+<span <span class="keyword">class</span>="number">1</span>] + w[i][j]);
+   <span class="comment">//用dp从底层往上计算每个f[i][j]的值</span>
+   <span class="keyword">for</span> (<span class="keyword">int</span> i = n-<span class="number">1</span>; i; i--)
+     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n; j++)
+        f[i][j] = max(f[i+<span class="number">1</span>][j]+w[i][j], f[i+<span class="number">1</span>][j+<span class="number">1</span>] + w[i][j]);
 
-  cout&lt;&lt;f[<span <span class="keyword">class</span>="number">1</span>][<span <span class="keyword">class</span>="number">1</span>]&lt;&lt;endl;
-  <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+  cout&lt;&lt;f[<span class="number">1</span>][<span class="number">1</span>]&lt;&lt;endl;
+  <span class="keyword">return</span> <span class="number">0</span>;
 
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
-n = <span class="keyword">int</span>(data[<span <span class="keyword">class</span>="number">0</span>])
-idx = <span <span class="keyword">class</span>="number">1</span>
+n = <span class="keyword">int</span>(data[<span class="number">0</span>])
+idx = <span class="number">1</span>
 a = []
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n):
-    a.append([<span class="keyword">int</span>(data[idx+j]) <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(i+<span <span class="keyword">class</span>="number">1</span>)])
-    idx += i + <span <span class="keyword">class</span>="number">1</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n-<span <span class="keyword">class</span>="number">2</span>, -<span <span class="keyword">class</span>="number">1</span>, -<span <span class="keyword">class</span>="number">1</span>):
-    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(i+<span <span class="keyword">class</span>="number">1</span>):
-        a[i][j] += <span class="keyword">max</span>(a[i+<span <span class="keyword">class</span>="number">1</span>][j], a[i+<span <span class="keyword">class</span>="number">1</span>][j+<span <span class="keyword">class</span>="number">1</span>])
-<span class="keyword">print</span>(a[<span <span class="keyword">class</span>="number">0</span>][<span <span class="keyword">class</span>="number">0</span>])</code></pre>
+    a.append([<span class="keyword">int</span>(data[idx+j]) <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(i+<span class="number">1</span>)])
+    idx += i + <span class="number">1</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n-<span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(i+<span class="number">1</span>):
+        a[i][j] += <span class="keyword">max</span>(a[i+<span class="number">1</span>][j], a[i+<span class="number">1</span>][j+<span class="number">1</span>])
+<span class="keyword">print</span>(a[<span class="number">0</span>][<span class="number">0</span>])</code></pre>
             </details>
         </div>
     </div>
@@ -338,49 +338,49 @@ a = []
 #<span class="keyword">include</span> &lt;algorithm&gt;
 #<span class="keyword">include</span> &lt;cstring&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// f[i]定义为以s[i]结尾的最长的子序列</span>
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 集合：所有以第i个数结尾的上升子序列集合</span>
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 属性: Max 上升子序列长度的最大值</span>
-<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">10007</span>;
+<span class="comment">// f[i]定义为以s[i]结尾的最长的子序列</span>
+<span class="comment">// 集合：所有以第i个数结尾的上升子序列集合</span>
+<span class="comment">// 属性: Max 上升子序列长度的最大值</span>
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">10007</span>;
 <span class="keyword">int</span> n;
 <span class="keyword">int</span> a[N], f[N];
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//状态计算</span>
+<span class="comment">//状态计算</span>
 <span class="keyword">int</span> main()
 {
     cin &gt;&gt; n;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
-        cin &gt;&gt; a[i]; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//从1开始初始化</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        cin &gt;&gt; a[i]; <span class="comment">//从1开始初始化</span>
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
     {
 
-        f[i] = <span <span class="keyword">class</span>="number">1</span>;                   <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// a[i]只有一个元素，所以f[i]=<span <span class="keyword">class</span>="number">1</span>;</span>
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">1</span>; j &lt; i; j++) <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//求i之前的f[j]</span>
+        f[i] = <span class="number">1</span>;                   <span class="comment">// a[i]只有一个元素，所以f[i]=1;</span>
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; j++) <span class="comment">//求i之前的f[j]</span>
             <span class="keyword">if</span> (a[j] &lt; a[i])
-                f[i] = max(f[i], f[j] + <span <span class="keyword">class</span>="number">1</span>);
+                f[i] = max(f[i], f[j] + <span class="number">1</span>);
     }
 
-    <span class="keyword">int</span> res = <span <span class="keyword">class</span>="number">1</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
+    <span class="keyword">int</span> res = <span class="number">1</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
         res = max(res, f[i]);
     cout &lt;&lt; res &lt;&lt; endl;
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
-sys.setrecursionlimit(<span <span class="keyword">class</span>="number">200000</span>)
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 最长上升子序列</span>
+sys.setrecursionlimit(<span class="number">200000</span>)
+<span class="comment"># 最长上升子序列</span>
 n = <span class="keyword">int</span>(<span class="keyword">input</span>())
 a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
 tails = []
 <span class="keyword">for</span> x <span class="keyword">in</span> a:
-    l, r = <span <span class="keyword">class</span>="number">0</span>, <span class="keyword">len</span>(tails)
+    l, r = <span class="number">0</span>, <span class="keyword">len</span>(tails)
     <span class="keyword">while</span> l &lt; r:
-        mid = (l + r) // <span <span class="keyword">class</span>="number">2</span>
+        mid = (l + r) // <span class="number">2</span>
         <span class="keyword">if</span> tails[mid] &gt;= x:
             r = mid
         <span class="keyword">else</span>:
-            l = mid + <span <span class="keyword">class</span>="number">1</span>
+            l = mid + <span class="number">1</span>
     <span class="keyword">if</span> l == <span class="keyword">len</span>(tails):
         tails.append(x)
     <span class="keyword">else</span>:
@@ -436,7 +436,7 @@ acebd
 #<span class="keyword">include</span> &lt;algorithm&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">1010</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1010</span>;
 <span class="keyword">int</span> f[N][N];
 
 <span class="keyword">int</span> main()
@@ -446,26 +446,26 @@ acebd
     cin &gt;&gt; n &gt;&gt; m;
     cin &gt;&gt; a &gt;&gt; b;
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">1</span>; j &lt;= m; j++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
         {
-            f[i][j] = max(f[i-<span <span class="keyword">class</span>="number">1</span>][j], f[i][j-<span <span class="keyword">class</span>="number">1</span>]);
-            <span class="keyword">if</span> (a[i-<span <span class="keyword">class</span>="number">1</span>] == b[j-<span <span class="keyword">class</span>="number">1</span>]) f[i][j] = max(f[i][j], f[i-<span <span class="keyword">class</span>="number">1</span>][j-<span <span class="keyword">class</span>="number">1</span>] + <span <span class="keyword">class</span>="number">1</span>);
+            f[i][j] = max(f[i-<span class="number">1</span>][j], f[i][j-<span class="number">1</span>]);
+            <span class="keyword">if</span> (a[i-<span class="number">1</span>] == b[j-<span class="number">1</span>]) f[i][j] = max(f[i][j], f[i-<span class="number">1</span>][j-<span class="number">1</span>] + <span class="number">1</span>);
         }
 
     cout &lt;&lt; f[n][m] &lt;&lt; endl;
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
-n, m = <span class="keyword">int</span>(data[<span <span class="keyword">class</span>="number">0</span>]), <span class="keyword">int</span>(data[<span <span class="keyword">class</span>="number">1</span>])
-a, b = data[<span <span class="keyword">class</span>="number">2</span>], data[<span <span class="keyword">class</span>="number">3</span>]
-dp = [[<span <span class="keyword">class</span>="number">0</span>]*(m+<span <span class="keyword">class</span>="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n+<span <span class="keyword">class</span>="number">1</span>)]
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, n+<span <span class="keyword">class</span>="number">1</span>):
-    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, m+<span <span class="keyword">class</span>="number">1</span>):
-        <span class="keyword">if</span> a[i-<span <span class="keyword">class</span>="number">1</span>] == b[j-<span <span class="keyword">class</span>="number">1</span>]: dp[i][j] = dp[i-<span <span class="keyword">class</span>="number">1</span>][j-<span <span class="keyword">class</span>="number">1</span>] + <span <span class="keyword">class</span>="number">1</span>
-        <span class="keyword">else</span>: dp[i][j] = <span class="keyword">max</span>(dp[i-<span <span class="keyword">class</span>="number">1</span>][j], dp[i][j-<span <span class="keyword">class</span>="number">1</span>])
+n, m = <span class="keyword">int</span>(data[<span class="number">0</span>]), <span class="keyword">int</span>(data[<span class="number">1</span>])
+a, b = data[<span class="number">2</span>], data[<span class="number">3</span>]
+dp = [[<span class="number">0</span>]*(m+<span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n+<span class="number">1</span>)]
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, m+<span class="number">1</span>):
+        <span class="keyword">if</span> a[i-<span class="number">1</span>] == b[j-<span class="number">1</span>]: dp[i][j] = dp[i-<span class="number">1</span>][j-<span class="number">1</span>] + <span class="number">1</span>
+        <span class="keyword">else</span>: dp[i][j] = <span class="keyword">max</span>(dp[i-<span class="number">1</span>][j], dp[i][j-<span class="number">1</span>])
 <span class="keyword">print</span>(dp[n][m])</code></pre>
             </details>
         </div>
@@ -517,47 +517,47 @@ dp = [[<span <span class="keyword">class</span>="number">0</span>]*(m+<span <spa
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">307</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">307</span>;
 
 <span class="keyword">int</span> n;
-<span class="keyword">int</span> s[N]; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//前缀和</span>
-<span class="keyword">int</span> f[N][N]; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//所有将[i,j]合并成一堆的方案数</span>
+<span class="keyword">int</span> s[N]; <span class="comment">//前缀和</span>
+<span class="keyword">int</span> f[N][N]; <span class="comment">//所有将[i,j]合并成一堆的方案数</span>
 
 <span class="keyword">int</span> main()
 {
     cin&gt;&gt;n;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;=n; i ++) cin&gt;&gt;s[i], s[i] += s[i-<span <span class="keyword">class</span>="number">1</span>];<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//计算前缀和</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;=n; i ++) cin&gt;&gt;s[i], s[i] += s[i-<span class="number">1</span>];<span class="comment">//计算前缀和</span>
 
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//区间DP，先枚举长度，后枚举端点</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> len = <span <span class="keyword">class</span>="number">2</span>; len &lt;= n; len ++)
-     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i+len-<span <span class="keyword">class</span>="number">1</span> &lt;= n; i++)<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//区间左端点</span>
+    <span class="comment">//区间DP，先枚举长度，后枚举端点</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> len = <span class="number">2</span>; len &lt;= n; len ++)
+     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i+len-<span class="number">1</span> &lt;= n; i++)<span class="comment">//区间左端点</span>
      {
-       <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//区间右端点</span>
-       <span class="keyword">int</span> j = i + len -<span <span class="keyword">class</span>="number">1</span>;
-       f[i][j] = 1e9;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//初始化为无穷大</span>
-       <span class="keyword">for</span> (<span class="keyword">int</span> k = i ; k &lt; j; k++)<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//区间dp，枚举分隔点</span>
-         f[i][j] = min(f[i][j], f[i][k]+f[k+<span <span class="keyword">class</span>="number">1</span>][j]+s[j]-s[i-<span <span class="keyword">class</span>="number">1</span>]);
+       <span class="comment">//区间右端点</span>
+       <span class="keyword">int</span> j = i + len -<span class="number">1</span>;
+       f[i][j] = 1e9;<span class="comment">//初始化为无穷大</span>
+       <span class="keyword">for</span> (<span class="keyword">int</span> k = i ; k &lt; j; k++)<span class="comment">//区间dp，枚举分隔点</span>
+         f[i][j] = min(f[i][j], f[i][k]+f[k+<span class="number">1</span>][j]+s[j]-s[i-<span class="number">1</span>]);
      }
 
-     cout&lt;&lt;f[<span <span class="keyword">class</span>="number">1</span>][n]&lt;&lt;endl;
-     <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+     cout&lt;&lt;f[<span class="number">1</span>][n]&lt;&lt;endl;
+     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
-n = <span class="keyword">int</span>(data[<span <span class="keyword">class</span>="number">0</span>])
-a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span <span class="keyword">class</span>="number">1</span>:<span <span class="keyword">class</span>="number">1</span>+n]))
-s = [<span <span class="keyword">class</span>="number">0</span>] * (n + <span <span class="keyword">class</span>="number">1</span>)
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, n+<span <span class="keyword">class</span>="number">1</span>): s[i] = s[i-<span <span class="keyword">class</span>="number">1</span>] + a[i-<span <span class="keyword">class</span>="number">1</span>]
-INF = <span <span class="keyword">class</span>="number">10</span>**<span <span class="keyword">class</span>="number">9</span>
-f = [[<span <span class="keyword">class</span>="number">0</span>]*n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n)]
-<span class="keyword">for</span> length <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">2</span>, n+<span <span class="keyword">class</span>="number">1</span>):
-    <span class="keyword">for</span> l <span class="keyword">in</span> <span class="keyword">range</span>(n-length+<span <span class="keyword">class</span>="number">1</span>):
-        r = l + length - <span <span class="keyword">class</span>="number">1</span>
+n = <span class="keyword">int</span>(data[<span class="number">0</span>])
+a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span class="number">1</span>:<span class="number">1</span>+n]))
+s = [<span class="number">0</span>] * (n + <span class="number">1</span>)
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n+<span class="number">1</span>): s[i] = s[i-<span class="number">1</span>] + a[i-<span class="number">1</span>]
+INF = <span class="number">10</span>**<span class="number">9</span>
+f = [[<span class="number">0</span>]*n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n)]
+<span class="keyword">for</span> length <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">2</span>, n+<span class="number">1</span>):
+    <span class="keyword">for</span> l <span class="keyword">in</span> <span class="keyword">range</span>(n-length+<span class="number">1</span>):
+        r = l + length - <span class="number">1</span>
         f[l][r] = INF
         <span class="keyword">for</span> k <span class="keyword">in</span> <span class="keyword">range</span>(l, r):
-            f[l][r] = <span class="keyword">min</span>(f[l][r], f[l][k] + f[k+<span <span class="keyword">class</span>="number">1</span>][r] + s[r+<span <span class="keyword">class</span>="number">1</span>] - s[l])
-<span class="keyword">print</span>(f[<span <span class="keyword">class</span>="number">0</span>][n-<span <span class="keyword">class</span>="number">1</span>])</code></pre>
+            f[l][r] = <span class="keyword">min</span>(f[l][r], f[l][k] + f[k+<span class="number">1</span>][r] + s[r+<span class="number">1</span>] - s[l])
+<span class="keyword">print</span>(f[<span class="number">0</span>][n-<span class="number">1</span>])</code></pre>
             </details>
         </div>
     </div>
@@ -608,54 +608,54 @@ adc
 #<span class="keyword">include</span> &lt;algorithm&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
-<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">1007</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1007</span>;
 
 <span class="keyword">int</span> n,m;
 <span class="keyword">char</span> a[N],b[N];
-<span class="keyword">int</span> f[N][N];<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//所有將a[i]變爲b[i]的操作步驟</span>
+<span class="keyword">int</span> f[N][N];<span class="comment">//所有將a[i]變爲b[i]的操作步驟</span>
 
 <span class="keyword">int</span> main()
 {
-    cin&gt;&gt;n&gt;&gt;a+<span <span class="keyword">class</span>="number">1</span>;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//下標從1開始</span>
-    cin&gt;&gt;m&gt;&gt;b+<span <span class="keyword">class</span>="number">1</span>;
+    cin&gt;&gt;n&gt;&gt;a+<span class="number">1</span>;<span class="comment">//下標從1開始</span>
+    cin&gt;&gt;m&gt;&gt;b+<span class="number">1</span>;
 
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//初始化</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; N; i ++ ) f[i][<span <span class="keyword">class</span>="number">0</span>] = i;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//把a[i]變爲空串</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; N; i ++ ) f[<span <span class="keyword">class</span>="number">0</span>][i] = i;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//把空串變爲b[i]</span>
+    <span class="comment">//初始化</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i ++ ) f[i][<span class="number">0</span>] = i;<span class="comment">//把a[i]變爲空串</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i ++ ) f[<span class="number">0</span>][i] = i;<span class="comment">//把空串變爲b[i]</span>
 
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// DP</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;=n; i++)
-      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">1</span>; j &lt;= m; j++)
+    <span class="comment">// DP</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;=n; i++)
+      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
       {
-        f[i][j] = min(f[i-<span <span class="keyword">class</span>="number">1</span>][j] +<span <span class="keyword">class</span>="number">1</span>, f[i][j-<span <span class="keyword">class</span>="number">1</span>]+<span <span class="keyword">class</span>="number">1</span>);
-        <span class="keyword">if</span> (a[i]==b[j]) f[i][j] = min(f[i][j], f[i-<span <span class="keyword">class</span>="number">1</span>][j-<span <span class="keyword">class</span>="number">1</span>]);
-        <span class="keyword">else</span> f[i][j] = min(f[i][j], f[i-<span <span class="keyword">class</span>="number">1</span>][j-<span <span class="keyword">class</span>="number">1</span>]+ <span <span class="keyword">class</span>="number">1</span>);
+        f[i][j] = min(f[i-<span class="number">1</span>][j] +<span class="number">1</span>, f[i][j-<span class="number">1</span>]+<span class="number">1</span>);
+        <span class="keyword">if</span> (a[i]==b[j]) f[i][j] = min(f[i][j], f[i-<span class="number">1</span>][j-<span class="number">1</span>]);
+        <span class="keyword">else</span> f[i][j] = min(f[i][j], f[i-<span class="number">1</span>][j-<span class="number">1</span>]+ <span class="number">1</span>);
       }
 
     cout&lt;&lt;f[n][m]&lt;&lt;endl;
 
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
-sys.setrecursionlimit(<span <span class="keyword">class</span>="number">200000</span>)
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 最短编辑距离</span>
+sys.setrecursionlimit(<span class="number">200000</span>)
+<span class="comment"># 最短编辑距离</span>
 n = <span class="keyword">int</span>(<span class="keyword">input</span>())
 a = <span class="keyword">input</span>().strip()
 m = <span class="keyword">int</span>(<span class="keyword">input</span>())
 b = <span class="keyword">input</span>().strip()
-f = [[<span <span class="keyword">class</span>="number">0</span>] * (m + <span <span class="keyword">class</span>="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n + <span <span class="keyword">class</span>="number">1</span>)]
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n + <span <span class="keyword">class</span>="number">1</span>):
-    f[i][<span <span class="keyword">class</span>="number">0</span>] = i
-<span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(m + <span <span class="keyword">class</span>="number">1</span>):
-    f[<span <span class="keyword">class</span>="number">0</span>][j] = j
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, n + <span <span class="keyword">class</span>="number">1</span>):
-    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, m + <span <span class="keyword">class</span>="number">1</span>):
-        <span class="keyword">if</span> a[i - <span <span class="keyword">class</span>="number">1</span>] == b[j - <span <span class="keyword">class</span>="number">1</span>]:
-            f[i][j] = f[i - <span <span class="keyword">class</span>="number">1</span>][j - <span <span class="keyword">class</span>="number">1</span>]
+f = [[<span class="number">0</span>] * (m + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n + <span class="number">1</span>)]
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n + <span class="number">1</span>):
+    f[i][<span class="number">0</span>] = i
+<span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(m + <span class="number">1</span>):
+    f[<span class="number">0</span>][j] = j
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, m + <span class="number">1</span>):
+        <span class="keyword">if</span> a[i - <span class="number">1</span>] == b[j - <span class="number">1</span>]:
+            f[i][j] = f[i - <span class="number">1</span>][j - <span class="number">1</span>]
         <span class="keyword">else</span>:
-            f[i][j] = <span class="keyword">min</span>(f[i - <span <span class="keyword">class</span>="number">1</span>][j], f[i][j - <span <span class="keyword">class</span>="number">1</span>], f[i - <span <span class="keyword">class</span>="number">1</span>][j - <span <span class="keyword">class</span>="number">1</span>]) + <span <span class="keyword">class</span>="number">1</span>
+            f[i][j] = <span class="keyword">min</span>(f[i - <span class="number">1</span>][j], f[i][j - <span class="number">1</span>], f[i - <span class="number">1</span>][j - <span class="number">1</span>]) + <span class="number">1</span>
 <span class="keyword">print</span>(f[n][m])</code></pre>
             </details>
         </div>
@@ -711,74 +711,74 @@ f = [[<span <span class="keyword">class</span>="number">0</span>] * (m + <span <
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">307</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">307</span>;
 
-<span class="keyword">int</span> g[N][N];<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//地图高度</span>
-<span class="keyword">int</span> f[N][N];<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//从[i,j]开始滑的最长的轨迹</span>
+<span class="keyword">int</span> g[N][N];<span class="comment">//地图高度</span>
+<span class="keyword">int</span> f[N][N];<span class="comment">//从[i,j]开始滑的最长的轨迹</span>
 
-<span class="keyword">int</span> n,m;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//宽高</span>
+<span class="keyword">int</span> n,m;<span class="comment">//宽高</span>
 
-<span class="keyword">int</span> dx[<span <span class="keyword">class</span>="number">4</span>] = {-<span <span class="keyword">class</span>="number">1</span>, <span <span class="keyword">class</span>="number">0</span>, <span <span class="keyword">class</span>="number">1</span>, <span <span class="keyword">class</span>="number">0</span>}, dy[<span <span class="keyword">class</span>="number">4</span>] = {<span <span class="keyword">class</span>="number">0</span>, <span <span class="keyword">class</span>="number">1</span>, <span <span class="keyword">class</span>="number">0</span>, -<span <span class="keyword">class</span>="number">1</span>};
+<span class="keyword">int</span> dx[<span class="number">4</span>] = {-<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>}, dy[<span class="number">4</span>] = {<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>};
 
 <span class="keyword">int</span> dp(<span class="keyword">int</span> x, <span class="keyword">int</span> y)
 {
-  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//记忆化搜索</span>
-  <span class="keyword">if</span> (f[x][y] != -<span <span class="keyword">class</span>="number">1</span>) <span class="keyword">return</span> f[x][y];
-  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//否则，从x,y开始滑</span>
-  f[x][y] = <span <span class="keyword">class</span>="number">1</span>;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//当前位置至少是1格</span>
-  <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//分上下左右四个方向滑雪</span>
-  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; <span <span class="keyword">class</span>="number">4</span>; i++)
+  <span class="comment">//记忆化搜索</span>
+  <span class="keyword">if</span> (f[x][y] != -<span class="number">1</span>) <span class="keyword">return</span> f[x][y];
+  <span class="comment">//否则，从x,y开始滑</span>
+  f[x][y] = <span class="number">1</span>;<span class="comment">//当前位置至少是1格</span>
+  <span class="comment">//分上下左右四个方向滑雪</span>
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)
   {
     <span class="keyword">int</span> a = x + dx[i], b = y + dy[i];
-    <span class="keyword">if</span> (a&lt;<span <span class="keyword">class</span>="number">1</span> || a &gt;n || b &lt;<span <span class="keyword">class</span>="number">1</span> || b &gt; m) <span class="keyword">continue</span>;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//越界</span>
-    <span class="keyword">if</span> (g[a][b] &gt;= g[x][y]) <span class="keyword">continue</span>;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//不能走</span>
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//四个方向深搜，更新f[a][b],取最大值</span>
-    f[x][y] = max(f[x][y], dp(a,b) + <span <span class="keyword">class</span>="number">1</span>);
+    <span class="keyword">if</span> (a&lt;<span class="number">1</span> || a &gt;n || b &lt;<span class="number">1</span> || b &gt; m) <span class="keyword">continue</span>;<span class="comment">//越界</span>
+    <span class="keyword">if</span> (g[a][b] &gt;= g[x][y]) <span class="keyword">continue</span>;<span class="comment">//不能走</span>
+    <span class="comment">//四个方向深搜，更新f[a][b],取最大值</span>
+    f[x][y] = max(f[x][y], dp(a,b) + <span class="number">1</span>);
   }
 
-  <span class="keyword">return</span> f[x][y];<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//返回f[x][y]</span>
+  <span class="keyword">return</span> f[x][y];<span class="comment">//返回f[x][y]</span>
 }
 
 <span class="keyword">int</span> main()
 {
     cin&gt;&gt;n&gt;&gt;m;
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//读入高度图</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i ++ )
-     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">1</span>; j &lt;= m; j ++ )
+    <span class="comment">//读入高度图</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )
+     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j ++ )
        cin&gt;&gt;g[i][j];
 
-    memset(f,-<span <span class="keyword">class</span>="number">1</span>,<span class="keyword">sizeof</span> f);<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//初始化为-<span <span class="keyword">class</span>="number">1</span>，表示该点未被访问</span>
+    memset(f,-<span class="number">1</span>,<span class="keyword">sizeof</span> f);<span class="comment">//初始化为-1，表示该点未被访问</span>
 
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//把每个点作为起点深搜</span>
-    <span class="keyword">int</span> res = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i ++ )
-     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">1</span>; j &lt;= m; j ++ )
+    <span class="comment">//把每个点作为起点深搜</span>
+    <span class="keyword">int</span> res = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )
+     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j ++ )
        res = max(res,dp(i,j));
 
     cout &lt;&lt;res &lt;&lt;endl;
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 滑雪</span>
+            <pre><code class="language-python"><span class="comment"># 滑雪</span>
 <span class="keyword">import</span> sys
-sys.setrecursionlimit(<span <span class="keyword">class</span>="number">1000000</span>)
+sys.setrecursionlimit(<span class="number">1000000</span>)
 R, C = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
 h = [<span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(R)]
-dp = [[-<span <span class="keyword">class</span>="number">1</span>] * C <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(R)]
-dx = [-<span <span class="keyword">class</span>="number">1</span>, <span <span class="keyword">class</span>="number">0</span>, <span <span class="keyword">class</span>="number">1</span>, <span <span class="keyword">class</span>="number">0</span>]
-dy = [<span <span class="keyword">class</span>="number">0</span>, <span <span class="keyword">class</span>="number">1</span>, <span <span class="keyword">class</span>="number">0</span>, -<span <span class="keyword">class</span>="number">1</span>]
+dp = [[-<span class="number">1</span>] * C <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(R)]
+dx = [-<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>]
+dy = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>]
 
 <span class="keyword">def</span> dfs(x, y):
-    <span class="keyword">if</span> dp[x][y] != -<span <span class="keyword">class</span>="number">1</span>:
+    <span class="keyword">if</span> dp[x][y] != -<span class="number">1</span>:
         <span class="keyword">return</span> dp[x][y]
-    dp[x][y] = <span <span class="keyword">class</span>="number">1</span>
-    <span class="keyword">for</span> d <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">4</span>):
+    dp[x][y] = <span class="number">1</span>
+    <span class="keyword">for</span> d <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">4</span>):
         nx, ny = x + dx[d], y + dy[d]
-        <span class="keyword">if</span> <span <span class="keyword">class</span>="number">0</span> &lt;= nx &lt; R <span class="keyword">and</span> <span <span class="keyword">class</span>="number">0</span> &lt;= ny &lt; C <span class="keyword">and</span> h[nx][ny] &lt; h[x][y]:
-            dp[x][y] = <span class="keyword">max</span>(dp[x][y], dfs(nx, ny) + <span <span class="keyword">class</span>="number">1</span>)
+        <span class="keyword">if</span> <span class="number">0</span> &lt;= nx &lt; R <span class="keyword">and</span> <span class="number">0</span> &lt;= ny &lt; C <span class="keyword">and</span> h[nx][ny] &lt; h[x][y]:
+            dp[x][y] = <span class="keyword">max</span>(dp[x][y], dfs(nx, ny) + <span class="number">1</span>)
     <span class="keyword">return</span> dp[x][y]
 
-ans = <span <span class="keyword">class</span>="number">0</span>
+ans = <span class="number">0</span>
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(R):
     <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(C):
         ans = <span class="keyword">max</span>(ans, dfs(i, j))
@@ -832,40 +832,40 @@ ans = <span <span class="keyword">class</span>="number">0</span>
 #<span class="keyword">include</span> &lt;algorithm&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span class="keyword">const</span> <span class="keyword">int</span> MAXV = <span <span class="keyword">class</span>="number">2010</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> MAXV = <span class="number">2010</span>;
 <span class="keyword">int</span> dp[MAXV];
-<span class="keyword">int</span> vbuf[<span <span class="keyword">class</span>="number">20010</span>], wbuf[<span <span class="keyword">class</span>="number">20010</span>];
+<span class="keyword">int</span> vbuf[<span class="number">20010</span>], wbuf[<span class="number">20010</span>];
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> N, V;
     scanf(&quot;%d%d&quot;, &amp;N, &amp;V);
-    <span class="keyword">int</span> cnt = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; N; i++) {
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) {
         <span class="keyword">int</span> v, w, s;
         scanf(&quot;%d%d%d&quot;, &amp;v, &amp;w, &amp;s);
-        <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// Binary split: decompose s into powers of <span <span class="keyword">class</span>="number">2</span></span>
-        <span class="keyword">int</span> k = <span <span class="keyword">class</span>="number">1</span>;
+        <span class="comment">// Binary split: decompose s into powers of 2</span>
+        <span class="keyword">int</span> k = <span class="number">1</span>;
         <span class="keyword">while</span> (k &lt;= s) {
             vbuf[cnt] = k * v;
             wbuf[cnt] = k * w;
             cnt++;
             s -= k;
-            k *= <span <span class="keyword">class</span>="number">2</span>;
+            k *= <span class="number">2</span>;
         }
-        <span class="keyword">if</span> (s &gt; <span <span class="keyword">class</span>="number">0</span>) {
+        <span class="keyword">if</span> (s &gt; <span class="number">0</span>) {
             vbuf[cnt] = s * v;
             wbuf[cnt] = s * w;
             cnt++;
         }
     }
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// <span <span class="keyword">class</span>="number">0</span>-<span <span class="keyword">class</span>="number">1</span> knapsack over decomposed items</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; cnt; i++) {
+    <span class="comment">// 0-1 knapsack over decomposed items</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cnt; i++) {
         <span class="keyword">for</span> (<span class="keyword">int</span> j = V; j &gt;= vbuf[i]; j--) {
             dp[j] = max(dp[j], dp[j - vbuf[i]] + wbuf[i]);
         }
     }
     printf(&quot;%d\n&quot;, dp[V]);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             </details>
         </div>
@@ -916,39 +916,39 @@ ans = <span <span class="keyword">class</span>="number">0</span>
 #<span class="keyword">include</span> &lt;algorithm&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span class="keyword">const</span> <span class="keyword">int</span> MAXV = <span <span class="keyword">class</span>="number">2010</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> MAXV = <span class="number">2010</span>;
 <span class="keyword">int</span> dp[MAXV];
-<span class="keyword">int</span> vbuf[<span <span class="keyword">class</span>="number">20010</span>], wbuf[<span <span class="keyword">class</span>="number">20010</span>];
+<span class="keyword">int</span> vbuf[<span class="number">20010</span>], wbuf[<span class="number">20010</span>];
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> N, V;
     scanf(&quot;%d%d&quot;, &amp;N, &amp;V);
-    <span class="keyword">int</span> cnt = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; N; i++) {
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) {
         <span class="keyword">int</span> v, w, s;
         scanf(&quot;%d%d%d&quot;, &amp;v, &amp;w, &amp;s);
-        <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// Binary split</span>
-        <span class="keyword">int</span> k = <span <span class="keyword">class</span>="number">1</span>;
+        <span class="comment">// Binary split</span>
+        <span class="keyword">int</span> k = <span class="number">1</span>;
         <span class="keyword">while</span> (k &lt;= s) {
             vbuf[cnt] = k * v;
             wbuf[cnt] = k * w;
             cnt++;
             s -= k;
-            k *= <span <span class="keyword">class</span>="number">2</span>;
+            k *= <span class="number">2</span>;
         }
-        <span class="keyword">if</span> (s &gt; <span <span class="keyword">class</span>="number">0</span>) {
+        <span class="keyword">if</span> (s &gt; <span class="number">0</span>) {
             vbuf[cnt] = s * v;
             wbuf[cnt] = s * w;
             cnt++;
         }
     }
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; cnt; i++) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cnt; i++) {
         <span class="keyword">for</span> (<span class="keyword">int</span> j = V; j &gt;= vbuf[i]; j--) {
             dp[j] = max(dp[j], dp[j - vbuf[i]] + wbuf[i]);
         }
     }
     printf(&quot;%d\n&quot;, dp[V]);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             </details>
         </div>
@@ -999,22 +999,22 @@ ans = <span <span class="keyword">class</span>="number">0</span>
 #<span class="keyword">include</span> &lt;algorithm&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span class="keyword">const</span> <span class="keyword">int</span> MAXV = <span <span class="keyword">class</span>="number">1010</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> MAXV = <span class="number">1010</span>;
 <span class="keyword">int</span> dp[MAXV];
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> N, V;
     scanf(&quot;%d%d&quot;, &amp;N, &amp;V);
-    <span class="keyword">for</span> (<span class="keyword">int</span> g = <span <span class="keyword">class</span>="number">0</span>; g &lt; N; g++) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> g = <span class="number">0</span>; g &lt; N; g++) {
         <span class="keyword">int</span> S;
         scanf(&quot;%d&quot;, &amp;S);
-        <span class="keyword">int</span> gv[<span <span class="keyword">class</span>="number">1010</span>], gw[<span <span class="keyword">class</span>="number">1010</span>];
-        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; S; i++) {
+        <span class="keyword">int</span> gv[<span class="number">1010</span>], gw[<span class="number">1010</span>];
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; S; i++) {
             scanf(&quot;%d%d&quot;, &amp;gv[i], &amp;gw[i]);
         }
-        <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// For each group, try each item (at most one per group)</span>
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = V; j &gt;= <span <span class="keyword">class</span>="number">0</span>; j--) {
-            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; S; i++) {
+        <span class="comment">// For each group, try each item (at most one per group)</span>
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = V; j &gt;= <span class="number">0</span>; j--) {
+            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; S; i++) {
                 <span class="keyword">if</span> (j &gt;= gv[i]) {
                     dp[j] = max(dp[j], dp[j - gv[i]] + gw[i]);
                 }
@@ -1022,7 +1022,7 @@ ans = <span <span class="keyword">class</span>="number">0</span>
         }
     }
     printf(&quot;%d\n&quot;, dp[V]);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             </details>
         </div>
@@ -1072,28 +1072,28 @@ ans = <span <span class="keyword">class</span>="number">0</span>
 #<span class="keyword">include</span> &lt;algorithm&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span <span class="keyword">class</span>="number">100010</span>;
-<span class="keyword">int</span> q[MAXN]; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// q[len] = minimum tail value <span class="keyword">for</span> LIS of length len</span>
+<span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">100010</span>;
+<span class="keyword">int</span> q[MAXN]; <span class="comment">// q[len] = minimum tail value for LIS of length len</span>
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> N;
     scanf(&quot;%d&quot;, &amp;N);
-    <span class="keyword">int</span> len = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; N; i++) {
+    <span class="keyword">int</span> len = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) {
         <span class="keyword">int</span> a;
         scanf(&quot;%d&quot;, &amp;a);
-        <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// Find first q[k] &gt;= a <span class="keyword">using</span> binary search</span>
-        <span class="keyword">int</span> lo = <span <span class="keyword">class</span>="number">0</span>, hi = len;
+        <span class="comment">// Find first q[k] &gt;= a using binary search</span>
+        <span class="keyword">int</span> lo = <span class="number">0</span>, hi = len;
         <span class="keyword">while</span> (lo &lt; hi) {
-            <span class="keyword">int</span> mid = (lo + hi) / <span <span class="keyword">class</span>="number">2</span>;
+            <span class="keyword">int</span> mid = (lo + hi) / <span class="number">2</span>;
             <span class="keyword">if</span> (q[mid] &gt;= a) hi = mid;
-            <span class="keyword">else</span> lo = mid + <span <span class="keyword">class</span>="number">1</span>;
+            <span class="keyword">else</span> lo = mid + <span class="number">1</span>;
         }
         q[lo] = a;
         <span class="keyword">if</span> (lo == len) len++;
     }
     printf(&quot;%d\n&quot;, len);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             </details>
         </div>
@@ -1141,22 +1141,22 @@ ans = <span <span class="keyword">class</span>="number">0</span>
             <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span class="keyword">const</span> <span class="keyword">int</span> MOD = <span <span class="keyword">class</span>="number">1000000007</span>;
-<span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span <span class="keyword">class</span>="number">1010</span>;
-<span class="keyword">int</span> dp[MAXN]; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// dp[j] = number of ways to partition j</span>
+<span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">1000000007</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1010</span>;
+<span class="keyword">int</span> dp[MAXN]; <span class="comment">// dp[j] = number of ways to partition j</span>
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n;
     scanf(&quot;%d&quot;, &amp;n);
-    dp[<span <span class="keyword">class</span>="number">0</span>] = <span <span class="keyword">class</span>="number">1</span>;
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// For each value i from <span <span class="keyword">class</span>="number">1</span> to n, treat as complete knapsack</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++) {
+    dp[<span class="number">0</span>] = <span class="number">1</span>;
+    <span class="comment">// For each value i from 1 to n, treat as complete knapsack</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) {
         <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt;= n; j++) {
             dp[j] = (dp[j] + dp[j - i]) % MOD;
         }
     }
     printf(&quot;%d\n&quot;, dp[n]);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             </details>
         </div>
@@ -1205,26 +1205,26 @@ ans = <span <span class="keyword">class</span>="number">0</span>
 #<span class="keyword">include</span> &lt;algorithm&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// Count occurrences of digit d in all numbers from <span <span class="keyword">class</span>="number">1</span> to n</span>
+<span class="comment">// Count occurrences of digit d in all numbers from 1 to n</span>
 <span class="keyword">long</span> <span class="keyword">long</span> countDigit(<span class="keyword">long</span> <span class="keyword">long</span> n, <span class="keyword">int</span> d) {
-    <span class="keyword">if</span> (n &lt;= <span <span class="keyword">class</span>="number">0</span>) <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">long</span> <span class="keyword">long</span> res = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">long</span> <span class="keyword">long</span> p = <span <span class="keyword">class</span>="number">1</span>; p &lt;= n; p *= <span <span class="keyword">class</span>="number">10</span>) {
-        <span class="keyword">long</span> <span class="keyword">long</span> high = n / (p * <span <span class="keyword">class</span>="number">10</span>);
-        <span class="keyword">int</span> cur = (n / p) % <span <span class="keyword">class</span>="number">10</span>;
+    <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;
+    <span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">long</span> <span class="keyword">long</span> p = <span class="number">1</span>; p &lt;= n; p *= <span class="number">10</span>) {
+        <span class="keyword">long</span> <span class="keyword">long</span> high = n / (p * <span class="number">10</span>);
+        <span class="keyword">int</span> cur = (n / p) % <span class="number">10</span>;
         <span class="keyword">long</span> <span class="keyword">long</span> low = n % p;
-        <span class="keyword">if</span> (d == <span <span class="keyword">class</span>="number">0</span>) {
-            <span class="keyword">if</span> (high &gt; <span <span class="keyword">class</span>="number">0</span>) {
-                res += (high - <span <span class="keyword">class</span>="number">1</span>) * p;
-                <span class="keyword">if</span> (cur == <span <span class="keyword">class</span>="number">0</span>)
-                    res += low + <span <span class="keyword">class</span>="number">1</span>;
+        <span class="keyword">if</span> (d == <span class="number">0</span>) {
+            <span class="keyword">if</span> (high &gt; <span class="number">0</span>) {
+                res += (high - <span class="number">1</span>) * p;
+                <span class="keyword">if</span> (cur == <span class="number">0</span>)
+                    res += low + <span class="number">1</span>;
                 <span class="keyword">else</span>
                     res += p;
             }
         } <span class="keyword">else</span> {
             res += high * p;
             <span class="keyword">if</span> (cur == d)
-                res += low + <span <span class="keyword">class</span>="number">1</span>;
+                res += low + <span class="number">1</span>;
             <span class="keyword">else</span> <span class="keyword">if</span> (cur &gt; d)
                 res += p;
         }
@@ -1234,17 +1234,17 @@ ans = <span <span class="keyword">class</span>="number">0</span>
 
 <span class="keyword">int</span> main() {
     <span class="keyword">long</span> <span class="keyword">long</span> a, b;
-    <span class="keyword">while</span> (scanf(&quot;%lld %lld&quot;, &amp;a, &amp;b) == <span <span class="keyword">class</span>="number">2</span>) {
-        <span class="keyword">if</span> (a == <span <span class="keyword">class</span>="number">0</span> &amp;&amp; b == <span <span class="keyword">class</span>="number">0</span>) <span class="keyword">break</span>;
+    <span class="keyword">while</span> (scanf(&quot;%lld %lld&quot;, &amp;a, &amp;b) == <span class="number">2</span>) {
+        <span class="keyword">if</span> (a == <span class="number">0</span> &amp;&amp; b == <span class="number">0</span>) <span class="keyword">break</span>;
         <span class="keyword">long</span> <span class="keyword">long</span> lo = min(a, b);
         <span class="keyword">long</span> <span class="keyword">long</span> hi = max(a, b);
-        <span class="keyword">for</span> (<span class="keyword">int</span> d = <span <span class="keyword">class</span>="number">0</span>; d &lt;= <span <span class="keyword">class</span>="number">9</span>; d++) {
-            <span class="keyword">long</span> <span class="keyword">long</span> ans = countDigit(hi, d) - countDigit(lo - <span <span class="keyword">class</span>="number">1</span>, d);
+        <span class="keyword">for</span> (<span class="keyword">int</span> d = <span class="number">0</span>; d &lt;= <span class="number">9</span>; d++) {
+            <span class="keyword">long</span> <span class="keyword">long</span> ans = countDigit(hi, d) - countDigit(lo - <span class="number">1</span>, d);
             printf(&quot;%lld &quot;, ans);
         }
         printf(&quot;\n&quot;);
     }
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             </details>
         </div>
@@ -1296,55 +1296,55 @@ ans = <span <span class="keyword">class</span>="number">0</span>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">int</span> n, m;
-<span class="keyword">long</span> <span class="keyword">long</span> dp[<span <span class="keyword">class</span>="number">12</span>][<span <span class="keyword">class</span>="number">1</span> &lt;&lt; <span <span class="keyword">class</span>="number">11</span>];
-vector&lt;<span class="keyword">int</span>&gt; valid[<span <span class="keyword">class</span>="number">1</span> &lt;&lt; <span <span class="keyword">class</span>="number">11</span>];
+<span class="keyword">long</span> <span class="keyword">long</span> dp[<span class="number">12</span>][<span class="number">1</span> &lt;&lt; <span class="number">11</span>];
+vector&lt;<span class="keyword">int</span>&gt; valid[<span class="number">1</span> &lt;&lt; <span class="number">11</span>];
 
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// Check <span class="keyword">if</span> mask has all consecutive runs of <span <span class="keyword">class</span>="number">1</span>-bits with even length</span>
+<span class="comment">// Check if mask has all consecutive runs of 1-bits with even length</span>
 <span class="keyword">bool</span> checkEven(<span class="keyword">int</span> mask) {
-    <span class="keyword">int</span> cnt = <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
     <span class="keyword">while</span> (mask) {
-        <span class="keyword">if</span> (mask &amp; <span <span class="keyword">class</span>="number">1</span>) {
+        <span class="keyword">if</span> (mask &amp; <span class="number">1</span>) {
             cnt++;
         } <span class="keyword">else</span> {
-            <span class="keyword">if</span> (cnt &amp; <span <span class="keyword">class</span>="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;
-            cnt = <span <span class="keyword">class</span>="number">0</span>;
+            <span class="keyword">if</span> (cnt &amp; <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;
+            cnt = <span class="number">0</span>;
         }
-        mask &gt;&gt;= <span <span class="keyword">class</span>="number">1</span>;
+        mask &gt;&gt;= <span class="number">1</span>;
     }
-    <span class="keyword">return</span> (cnt &amp; <span <span class="keyword">class</span>="number">1</span>) == <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> (cnt &amp; <span class="number">1</span>) == <span class="number">0</span>;
 }
 
 <span class="keyword">void</span> solve() {
-    <span class="keyword">int</span> fullMask = (<span <span class="keyword">class</span>="number">1</span> &lt;&lt; n) - <span <span class="keyword">class</span>="number">1</span>;
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// Precompute valid transitions: from state j, which states k are valid</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt;= fullMask; j++) {
+    <span class="keyword">int</span> fullMask = (<span class="number">1</span> &lt;&lt; n) - <span class="number">1</span>;
+    <span class="comment">// Precompute valid transitions: from state j, which states k are valid</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= fullMask; j++) {
         valid[j].clear();
-        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span <span class="keyword">class</span>="number">0</span>; k &lt;= fullMask; k++) {
-            <span class="keyword">if</span> (j &amp; k) <span class="keyword">continue</span>; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// horizontal domino on filled cell</span>
-            <span class="keyword">if</span> (!checkEven(fullMask ^ (j | k))) <span class="keyword">continue</span>; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// remaining cells must be vertically tileable</span>
+        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= fullMask; k++) {
+            <span class="keyword">if</span> (j &amp; k) <span class="keyword">continue</span>; <span class="comment">// horizontal domino on filled cell</span>
+            <span class="keyword">if</span> (!checkEven(fullMask ^ (j | k))) <span class="keyword">continue</span>; <span class="comment">// remaining cells must be vertically tileable</span>
             valid[j].push_back(k);
         }
     }
 
-    memset(dp, <span <span class="keyword">class</span>="number">0</span>, <span class="keyword">sizeof</span>(dp));
-    dp[<span <span class="keyword">class</span>="number">0</span>][<span <span class="keyword">class</span>="number">0</span>] = <span <span class="keyword">class</span>="number">1</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> col = <span <span class="keyword">class</span>="number">0</span>; col &lt; m; col++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt;= fullMask; j++) {
-            <span class="keyword">if</span> (dp[col][j] == <span <span class="keyword">class</span>="number">0</span>) <span class="keyword">continue</span>;
+    memset(dp, <span class="number">0</span>, <span class="keyword">sizeof</span>(dp));
+    dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> col = <span class="number">0</span>; col &lt; m; col++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= fullMask; j++) {
+            <span class="keyword">if</span> (dp[col][j] == <span class="number">0</span>) <span class="keyword">continue</span>;
             <span class="keyword">for</span> (<span class="keyword">int</span> k : valid[j]) {
-                dp[col + <span <span class="keyword">class</span>="number">1</span>][k] += dp[col][j];
+                dp[col + <span class="number">1</span>][k] += dp[col][j];
             }
         }
     }
-    printf(&quot;%lld\n&quot;, dp[m][<span <span class="keyword">class</span>="number">0</span>]);
+    printf(&quot;%lld\n&quot;, dp[m][<span class="number">0</span>]);
 }
 
 <span class="keyword">int</span> main() {
-    <span class="keyword">while</span> (scanf(&quot;%d %d&quot;, &amp;n, &amp;m) == <span <span class="keyword">class</span>="number">2</span>) {
-        <span class="keyword">if</span> (n == <span <span class="keyword">class</span>="number">0</span> &amp;&amp; m == <span <span class="keyword">class</span>="number">0</span>) <span class="keyword">break</span>;
+    <span class="keyword">while</span> (scanf(&quot;%d %d&quot;, &amp;n, &amp;m) == <span class="number">2</span>) {
+        <span class="keyword">if</span> (n == <span class="number">0</span> &amp;&amp; m == <span class="number">0</span>) <span class="keyword">break</span>;
         solve();
     }
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             </details>
         </div>
@@ -1400,32 +1400,32 @@ vector&lt;<span class="keyword">int</span>&gt; valid[<span <span class="keyword"
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">int</span> n;
-<span class="keyword">int</span> w[<span <span class="keyword">class</span>="number">20</span>][<span <span class="keyword">class</span>="number">20</span>];
-<span class="keyword">long</span> <span class="keyword">long</span> dp[<span <span class="keyword">class</span>="number">1</span> &lt;&lt; <span <span class="keyword">class</span>="number">16</span>][<span <span class="keyword">class</span>="number">16</span>];
+<span class="keyword">int</span> w[<span class="number">20</span>][<span class="number">20</span>];
+<span class="keyword">long</span> <span class="keyword">long</span> dp[<span class="number">1</span> &lt;&lt; <span class="number">16</span>][<span class="number">16</span>];
 
 <span class="keyword">int</span> main() {
     scanf(&quot;%d&quot;, &amp;n);
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++)
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt; n; j++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)
             scanf(&quot;%d&quot;, &amp;w[i][j]);
 
-    <span class="keyword">int</span> full = (<span <span class="keyword">class</span>="number">1</span> &lt;&lt; n) - <span <span class="keyword">class</span>="number">1</span>;
+    <span class="keyword">int</span> full = (<span class="number">1</span> &lt;&lt; n) - <span class="number">1</span>;
     memset(dp, 0x3f, <span class="keyword">sizeof</span>(dp));
-    dp[<span <span class="keyword">class</span>="number">1</span>][<span <span class="keyword">class</span>="number">0</span>] = <span <span class="keyword">class</span>="number">0</span>; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// start at vertex <span <span class="keyword">class</span>="number">0</span></span>
+    dp[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">0</span>; <span class="comment">// start at vertex 0</span>
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> mask = <span <span class="keyword">class</span>="number">0</span>; mask &lt;= full; mask++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++) {
-            <span class="keyword">if</span> (!(mask &amp; (<span <span class="keyword">class</span>="number">1</span> &lt;&lt; i))) <span class="keyword">continue</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> mask = <span class="number">0</span>; mask &lt;= full; mask++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+            <span class="keyword">if</span> (!(mask &amp; (<span class="number">1</span> &lt;&lt; i))) <span class="keyword">continue</span>;
             <span class="keyword">if</span> (dp[mask][i] &gt;= 0x3f3f3f3f3f3f3f3fLL) <span class="keyword">continue</span>;
-            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt; n; j++) {
-                <span class="keyword">if</span> (mask &amp; (<span <span class="keyword">class</span>="number">1</span> &lt;&lt; j)) <span class="keyword">continue</span>;
-                <span class="keyword">int</span> nmask = mask | (<span <span class="keyword">class</span>="number">1</span> &lt;&lt; j);
+            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) {
+                <span class="keyword">if</span> (mask &amp; (<span class="number">1</span> &lt;&lt; j)) <span class="keyword">continue</span>;
+                <span class="keyword">int</span> nmask = mask | (<span class="number">1</span> &lt;&lt; j);
                 dp[nmask][j] = min(dp[nmask][j], dp[mask][i] + w[i][j]);
             }
         }
     }
-    printf(&quot;%lld\n&quot;, dp[full][n - <span <span class="keyword">class</span>="number">1</span>]);
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    printf(&quot;%lld\n&quot;, dp[full][n - <span class="number">1</span>]);
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             </details>
         </div>
@@ -1479,43 +1479,43 @@ def
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">int</span> n, m;
-<span class="keyword">char</span> dict[<span <span class="keyword">class</span>="number">1010</span>][<span <span class="keyword">class</span>="number">22</span>];
-<span class="keyword">int</span> dlen[<span <span class="keyword">class</span>="number">1010</span>];
+<span class="keyword">char</span> dict[<span class="number">1010</span>][<span class="number">22</span>];
+<span class="keyword">int</span> dlen[<span class="number">1010</span>];
 
 <span class="keyword">int</span> editDist(<span class="keyword">const</span> <span class="keyword">char</span> *a, <span class="keyword">int</span> alen, <span class="keyword">const</span> <span class="keyword">char</span> *b, <span class="keyword">int</span> blen) {
-    <span class="keyword">static</span> <span class="keyword">int</span> f[<span <span class="keyword">class</span>="number">22</span>][<span <span class="keyword">class</span>="number">22</span>];
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt;= alen; i++) f[i][<span <span class="keyword">class</span>="number">0</span>] = i;
-    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">0</span>; j &lt;= blen; j++) f[<span <span class="keyword">class</span>="number">0</span>][j] = j;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= alen; i++)
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">1</span>; j &lt;= blen; j++) {
-            f[i][j] = min(f[i - <span <span class="keyword">class</span>="number">1</span>][j] + <span <span class="keyword">class</span>="number">1</span>, f[i][j - <span <span class="keyword">class</span>="number">1</span>] + <span <span class="keyword">class</span>="number">1</span>);
-            <span class="keyword">if</span> (a[i - <span <span class="keyword">class</span>="number">1</span>] == b[j - <span <span class="keyword">class</span>="number">1</span>])
-                f[i][j] = min(f[i][j], f[i - <span <span class="keyword">class</span>="number">1</span>][j - <span <span class="keyword">class</span>="number">1</span>]);
+    <span class="keyword">static</span> <span class="keyword">int</span> f[<span class="number">22</span>][<span class="number">22</span>];
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= alen; i++) f[i][<span class="number">0</span>] = i;
+    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= blen; j++) f[<span class="number">0</span>][j] = j;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= alen; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= blen; j++) {
+            f[i][j] = min(f[i - <span class="number">1</span>][j] + <span class="number">1</span>, f[i][j - <span class="number">1</span>] + <span class="number">1</span>);
+            <span class="keyword">if</span> (a[i - <span class="number">1</span>] == b[j - <span class="number">1</span>])
+                f[i][j] = min(f[i][j], f[i - <span class="number">1</span>][j - <span class="number">1</span>]);
             <span class="keyword">else</span>
-                f[i][j] = min(f[i][j], f[i - <span <span class="keyword">class</span>="number">1</span>][j - <span <span class="keyword">class</span>="number">1</span>] + <span <span class="keyword">class</span>="number">1</span>);
+                f[i][j] = min(f[i][j], f[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>);
         }
     <span class="keyword">return</span> f[alen][blen];
 }
 
 <span class="keyword">int</span> main() {
     scanf(&quot;%d %d&quot;, &amp;n, &amp;m);
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
         scanf(&quot;%s&quot;, dict[i]);
         dlen[i] = strlen(dict[i]);
     }
-    <span class="keyword">for</span> (<span class="keyword">int</span> q = <span <span class="keyword">class</span>="number">0</span>; q &lt; m; q++) {
-        <span class="keyword">char</span> query[<span <span class="keyword">class</span>="number">22</span>];
+    <span class="keyword">for</span> (<span class="keyword">int</span> q = <span class="number">0</span>; q &lt; m; q++) {
+        <span class="keyword">char</span> query[<span class="number">22</span>];
         <span class="keyword">int</span> limit;
         scanf(&quot;%s %d&quot;, query, &amp;limit);
         <span class="keyword">int</span> qlen = strlen(query);
-        <span class="keyword">int</span> cnt = <span <span class="keyword">class</span>="number">0</span>;
-        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++) {
+        <span class="keyword">int</span> cnt = <span class="number">0</span>;
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
             <span class="keyword">if</span> (editDist(query, qlen, dict[i], dlen[i]) &lt;= limit)
                 cnt++;
         }
         printf(&quot;%d\n&quot;, cnt);
     }
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             </details>
         </div>
@@ -1576,43 +1576,43 @@ def
 #<span class="keyword">include</span> &lt;algorithm&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span <span class="keyword">class</span>="number">6010</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">6010</span>;
 vector&lt;<span class="keyword">int</span>&gt; children[MAXN];
 <span class="keyword">int</span> h[MAXN];
-<span class="keyword">long</span> <span class="keyword">long</span> dp[MAXN][<span <span class="keyword">class</span>="number">2</span>]; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// dp[u][<span <span class="keyword">class</span>="number">0</span>]: u doesn&#x27;t attend, dp[u][<span <span class="keyword">class</span>="number">1</span>]: u attends</span>
+<span class="keyword">long</span> <span class="keyword">long</span> dp[MAXN][<span class="number">2</span>]; <span class="comment">// dp[u][0]: u doesn&#x27;t attend, dp[u][1]: u attends</span>
 <span class="keyword">bool</span> hasBoss[MAXN];
 
 <span class="keyword">void</span> dfs(<span class="keyword">int</span> u) {
-    dp[u][<span <span class="keyword">class</span>="number">0</span>] = <span <span class="keyword">class</span>="number">0</span>;
-    dp[u][<span <span class="keyword">class</span>="number">1</span>] = h[u];
+    dp[u][<span class="number">0</span>] = <span class="number">0</span>;
+    dp[u][<span class="number">1</span>] = h[u];
     <span class="keyword">for</span> (<span class="keyword">int</span> v : children[u]) {
         dfs(v);
-        dp[u][<span <span class="keyword">class</span>="number">0</span>] += max(dp[v][<span <span class="keyword">class</span>="number">0</span>], dp[v][<span <span class="keyword">class</span>="number">1</span>]);
-        dp[u][<span <span class="keyword">class</span>="number">1</span>] += dp[v][<span <span class="keyword">class</span>="number">0</span>];
+        dp[u][<span class="number">0</span>] += max(dp[v][<span class="number">0</span>], dp[v][<span class="number">1</span>]);
+        dp[u][<span class="number">1</span>] += dp[v][<span class="number">0</span>];
     }
 }
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n;
     scanf(&quot;%d&quot;, &amp;n);
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
         scanf(&quot;%d&quot;, &amp;h[i]);
 
-    memset(hasBoss, <span <span class="keyword">class</span>="number">0</span>, <span class="keyword">sizeof</span>(hasBoss));
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n - <span <span class="keyword">class</span>="number">1</span>; i++) {
+    memset(hasBoss, <span class="number">0</span>, <span class="keyword">sizeof</span>(hasBoss));
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) {
         <span class="keyword">int</span> l, k;
         scanf(&quot;%d %d&quot;, &amp;l, &amp;k);
         children[k].push_back(l);
         hasBoss[l] = <span class="keyword">true</span>;
     }
 
-    <span class="keyword">int</span> root = -<span <span class="keyword">class</span>="number">1</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
+    <span class="keyword">int</span> root = -<span class="number">1</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
         <span class="keyword">if</span> (!hasBoss[i]) { root = i; <span class="keyword">break</span>; }
 
     dfs(root);
-    printf(&quot;%lld\n&quot;, max(dp[root][<span <span class="keyword">class</span>="number">0</span>], dp[root][<span <span class="keyword">class</span>="number">1</span>]));
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    printf(&quot;%lld\n&quot;, max(dp[root][<span class="number">0</span>], dp[root][<span class="number">1</span>]));
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             </details>
         </div>

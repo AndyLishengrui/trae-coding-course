@@ -83,7 +83,7 @@
             <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
-<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">1000007</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000007</span>;
 <span class="keyword">int</span> n, m;
 
 <span class="keyword">int</span> a[N], s[N];
@@ -91,31 +91,31 @@
 <span class="keyword">int</span> main()
 {
     scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
         scanf(&quot;%d&quot;, &amp;a[i]);
-    s[<span <span class="keyword">class</span>="number">0</span>] = <span <span class="keyword">class</span>="number">0</span>; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//刻意初始化s[<span <span class="keyword">class</span>="number">0</span>]为0 ，此句可以不写，写也无妨</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
-        s[i] = s[i - <span <span class="keyword">class</span>="number">1</span>] + a[i]; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//打表法</span>
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//m次询问</span>
+    s[<span class="number">0</span>] = <span class="number">0</span>; <span class="comment">//刻意初始化s[0]为0 ，此句可以不写，写也无妨</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        s[i] = s[i - <span class="number">1</span>] + a[i]; <span class="comment">//打表法</span>
+    <span class="comment">//m次询问</span>
     <span class="keyword">while</span> (m--)
     {
         <span class="keyword">int</span> l, r;
         scanf(&quot;%d%d&quot;, &amp;l, &amp;r);
-        printf(&quot;%d\n&quot;, s[r] - s[l - <span <span class="keyword">class</span>="number">1</span>]); <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//求区间和，直接从s中读取数值</span>
+        printf(&quot;%d\n&quot;, s[r] - s[l - <span class="number">1</span>]); <span class="comment">//求区间和，直接从s中读取数值</span>
     }
 
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 前缀和</span>
+            <pre><code class="language-python"><span class="comment"># 前缀和</span>
 n, m = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
 a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
-s = [<span <span class="keyword">class</span>="number">0</span>] * (n + <span <span class="keyword">class</span>="number">1</span>)
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, n + <span <span class="keyword">class</span>="number">1</span>):
-    s[i] = s[i - <span <span class="keyword">class</span>="number">1</span>] + a[i - <span <span class="keyword">class</span>="number">1</span>]
+s = [<span class="number">0</span>] * (n + <span class="number">1</span>)
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+    s[i] = s[i - <span class="number">1</span>] + a[i - <span class="number">1</span>]
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(m):
     l, r = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-    <span class="keyword">print</span>(s[r] - s[l - <span <span class="keyword">class</span>="number">1</span>])</code></pre>
+    <span class="keyword">print</span>(s[r] - s[l - <span class="number">1</span>])</code></pre>
             </details>
         </div>
     </div>
@@ -168,57 +168,57 @@ s = [<span <span class="keyword">class</span>="number">0</span>] * (n + <span <s
             <h4>C++</h4>
             <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
-<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">1007</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1007</span>;
 <span class="keyword">int</span> n, m, q;
-<span class="keyword">int</span> a[N][N], s[N][N]; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//子矩阵</span>
+<span class="keyword">int</span> a[N][N], s[N][N]; <span class="comment">//子矩阵</span>
 
 <span class="keyword">int</span> main()
 {
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//读入矩阵</span>
+    <span class="comment">//读入矩阵</span>
     scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;q);
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">1</span>; j &lt;= m; j++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
             scanf(&quot;%d&quot;, &amp;a[i][j]);
 
-    s[<span <span class="keyword">class</span>="number">0</span>][<span <span class="keyword">class</span>="number">0</span>] = <span <span class="keyword">class</span>="number">0</span>; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//刻意初始化s[<span <span class="keyword">class</span>="number">0</span>]为0 ，此句可以不写，写也无妨</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">1</span>; j &lt;= m; j++)
-            s[i][j] = s[i - <span <span class="keyword">class</span>="number">1</span>][j] + s[i][j - <span <span class="keyword">class</span>="number">1</span>] - s[i - <span <span class="keyword">class</span>="number">1</span>][j - <span <span class="keyword">class</span>="number">1</span>] + a[i][j]; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//打表法</span>
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//q次询问</span>
+    s[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>; <span class="comment">//刻意初始化s[0]为0 ，此句可以不写，写也无妨</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
+            s[i][j] = s[i - <span class="number">1</span>][j] + s[i][j - <span class="number">1</span>] - s[i - <span class="number">1</span>][j - <span class="number">1</span>] + a[i][j]; <span class="comment">//打表法</span>
+    <span class="comment">//q次询问</span>
     <span class="keyword">while</span> (q--)
     {
         <span class="keyword">int</span> x1, x2, y1, y2;
         scanf(&quot;%d%d%d%d&quot;, &amp;x1, &amp;y1, &amp;x2, &amp;y2);
-        <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//求子矩阵和，直接从s中读取数值</span>
-        printf(&quot;%d\n&quot;, s[x2][y2] - s[x2][y1 - <span <span class="keyword">class</span>="number">1</span>] - s[x1 - <span <span class="keyword">class</span>="number">1</span>][y2] + s[x1 - <span <span class="keyword">class</span>="number">1</span>][y1 - <span <span class="keyword">class</span>="number">1</span>]); 
+        <span class="comment">//求子矩阵和，直接从s中读取数值</span>
+        printf(&quot;%d\n&quot;, s[x2][y2] - s[x2][y1 - <span class="number">1</span>] - s[x1 - <span class="number">1</span>][y2] + s[x1 - <span class="number">1</span>][y1 - <span class="number">1</span>]); 
     }
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
 
 data = sys.stdin.buffer.read().split()
-n, m, q = <span class="keyword">int</span>(data[<span <span class="keyword">class</span>="number">0</span>]), <span class="keyword">int</span>(data[<span <span class="keyword">class</span>="number">1</span>]), <span class="keyword">int</span>(data[<span <span class="keyword">class</span>="number">2</span>])
-idx = <span <span class="keyword">class</span>="number">3</span>
+n, m, q = <span class="keyword">int</span>(data[<span class="number">0</span>]), <span class="keyword">int</span>(data[<span class="number">1</span>]), <span class="keyword">int</span>(data[<span class="number">2</span>])
+idx = <span class="number">3</span>
 
-a = [[<span <span class="keyword">class</span>="number">0</span>] * (m + <span <span class="keyword">class</span>="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n + <span <span class="keyword">class</span>="number">1</span>)]
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, n + <span <span class="keyword">class</span>="number">1</span>):
-    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, m + <span <span class="keyword">class</span>="number">1</span>):
+a = [[<span class="number">0</span>] * (m + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n + <span class="number">1</span>)]
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, m + <span class="number">1</span>):
         a[i][j] = <span class="keyword">int</span>(data[idx])
-        idx += <span <span class="keyword">class</span>="number">1</span>
+        idx += <span class="number">1</span>
 
-s = [[<span <span class="keyword">class</span>="number">0</span>] * (m + <span <span class="keyword">class</span>="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n + <span <span class="keyword">class</span>="number">1</span>)]
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, n + <span <span class="keyword">class</span>="number">1</span>):
-    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, m + <span <span class="keyword">class</span>="number">1</span>):
-        s[i][j] = s[i - <span <span class="keyword">class</span>="number">1</span>][j] + s[i][j - <span <span class="keyword">class</span>="number">1</span>] - s[i - <span <span class="keyword">class</span>="number">1</span>][j - <span <span class="keyword">class</span>="number">1</span>] + a[i][j]
+s = [[<span class="number">0</span>] * (m + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n + <span class="number">1</span>)]
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, m + <span class="number">1</span>):
+        s[i][j] = s[i - <span class="number">1</span>][j] + s[i][j - <span class="number">1</span>] - s[i - <span class="number">1</span>][j - <span class="number">1</span>] + a[i][j]
 
 out = []
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(q):
-    x1, y1, x2, y2 = <span class="keyword">int</span>(data[idx]), <span class="keyword">int</span>(data[idx + <span <span class="keyword">class</span>="number">1</span>]), <span class="keyword">int</span>(data[idx + <span <span class="keyword">class</span>="number">2</span>]), <span class="keyword">int</span>(data[idx + <span <span class="keyword">class</span>="number">3</span>])
-    idx += <span <span class="keyword">class</span>="number">4</span>
-    ans = s[x2][y2] - s[x1 - <span <span class="keyword">class</span>="number">1</span>][y2] - s[x2][y1 - <span <span class="keyword">class</span>="number">1</span>] + s[x1 - <span <span class="keyword">class</span>="number">1</span>][y1 - <span <span class="keyword">class</span>="number">1</span>]
+    x1, y1, x2, y2 = <span class="keyword">int</span>(data[idx]), <span class="keyword">int</span>(data[idx + <span class="number">1</span>]), <span class="keyword">int</span>(data[idx + <span class="number">2</span>]), <span class="keyword">int</span>(data[idx + <span class="number">3</span>])
+    idx += <span class="number">4</span>
+    ans = s[x2][y2] - s[x1 - <span class="number">1</span>][y2] - s[x2][y1 - <span class="number">1</span>] + s[x1 - <span class="number">1</span>][y1 - <span class="number">1</span>]
     out.append(<span class="keyword">str</span>(ans))
-sys.stdout.write(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27;\n&#x27;.join(out))</span></code></pre>
+sys.stdout.write(&<span class="comment">#x27;\n&#x27;.join(out))</span></code></pre>
             </details>
         </div>
     </div>
@@ -269,59 +269,59 @@ sys.stdout.write(&<span <span class="keyword">class</span>=<span <span class="ke
             <h4>C++</h4>
             <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
-<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">1000007</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000007</span>;
 <span class="keyword">int</span> n, m;
 <span class="keyword">int</span> a[N], b[N];
 
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//差分的插入公式</span>
+<span class="comment">//差分的插入公式</span>
 <span class="keyword">void</span> insert(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> c)
 {
     b[l] += c;
-    b[r + <span <span class="keyword">class</span>="number">1</span>] -= c;
+    b[r + <span class="number">1</span>] -= c;
 }
 
 <span class="keyword">int</span> main()
 {
     cin &gt;&gt; n &gt;&gt; m;
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//读入数组</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
+    <span class="comment">//读入数组</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
         cin &gt;&gt; a[i];
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//构造差分数组b</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
+    <span class="comment">//构造差分数组b</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
         insert(i, i, a[i]);
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//输出查询结果</span>
+    <span class="comment">//输出查询结果</span>
     <span class="keyword">while</span> (m--)
     {
         <span class="keyword">int</span> l, r, c;
         cin &gt;&gt; l &gt;&gt; r &gt;&gt; c;
         insert(l, r, c);
     }
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//重新复原a数组(前缀和)</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
-        a[i] = a[i - <span <span class="keyword">class</span>="number">1</span>] + b[i];
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//输出a</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
+    <span class="comment">//重新复原a数组(前缀和)</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        a[i] = a[i - <span class="number">1</span>] + b[i];
+    <span class="comment">//输出a</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
         cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;;
     cout &lt;&lt; endl;
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 差分</span>
+            <pre><code class="language-python"><span class="comment"># 差分</span>
 n, m = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-a = [<span <span class="keyword">class</span>="number">0</span>] + <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
-b = [<span <span class="keyword">class</span>="number">0</span>] * (n + <span <span class="keyword">class</span>="number">2</span>)
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, n + <span <span class="keyword">class</span>="number">1</span>):
-    b[i] = a[i] - a[i - <span <span class="keyword">class</span>="number">1</span>]
+a = [<span class="number">0</span>] + <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
+b = [<span class="number">0</span>] * (n + <span class="number">2</span>)
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+    b[i] = a[i] - a[i - <span class="number">1</span>]
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(m):
     l, r, c = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
     b[l] += c
-    b[r + <span <span class="keyword">class</span>="number">1</span>] -= c
+    b[r + <span class="number">1</span>] -= c
 res = []
-cur = <span <span class="keyword">class</span>="number">0</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, n + <span <span class="keyword">class</span>="number">1</span>):
+cur = <span class="number">0</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
     cur += b[i]
     res.append(<span class="keyword">str</span>(cur))
-<span class="keyword">print</span>(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27; &#x27;.join(res))</span></code></pre>
+<span class="keyword">print</span>(&<span class="comment">#x27; &#x27;.join(res))</span></code></pre>
             </details>
         </div>
     </div>
@@ -375,73 +375,73 @@ cur = <span <span class="keyword">class</span>="number">0</span>
             <h4>C++</h4>
             <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
-<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">1007</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1007</span>;
 <span class="keyword">int</span> n, m, q;
-<span class="keyword">int</span> a[N][N], b[N][N]; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//子矩阵</span>
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//二维差分核心操作</span>
+<span class="keyword">int</span> a[N][N], b[N][N]; <span class="comment">//子矩阵</span>
+<span class="comment">//二维差分核心操作</span>
 <span class="keyword">void</span> insert(<span class="keyword">int</span> x1, <span class="keyword">int</span> y1, <span class="keyword">int</span> x2, <span class="keyword">int</span> y2, <span class="keyword">int</span> c)
 {
     b[x1][y1] += c;
-    b[x1][y2 + <span <span class="keyword">class</span>="number">1</span>] -= c;
-    b[x2 + <span <span class="keyword">class</span>="number">1</span>][y1] -= c;
-    b[x2 + <span <span class="keyword">class</span>="number">1</span>][y2 + <span <span class="keyword">class</span>="number">1</span>] += c;
+    b[x1][y2 + <span class="number">1</span>] -= c;
+    b[x2 + <span class="number">1</span>][y1] -= c;
+    b[x2 + <span class="number">1</span>][y2 + <span class="number">1</span>] += c;
 }
 <span class="keyword">int</span> main()
 {
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//读入矩阵</span>
+    <span class="comment">//读入矩阵</span>
     scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;q);
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">1</span>; j &lt;= m; j++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
             scanf(&quot;%d&quot;, &amp;a[i][j]);
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">1</span>; j &lt;= m; j++)
-            insert(i, j, i, j, a[i][j]); <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//构造二维差分矩阵</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
+            insert(i, j, i, j, a[i][j]); <span class="comment">//构造二维差分矩阵</span>
 
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//q次询问</span>
+    <span class="comment">//q次询问</span>
     <span class="keyword">while</span> (q--)
     {
         <span class="keyword">int</span> x1, x2, y1, y2, c;
         scanf(&quot;%d%d%d%d%d&quot;, &amp;x1, &amp;y1, &amp;x2, &amp;y2, &amp;c);
-        <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//差分核心操作</span>
+        <span class="comment">//差分核心操作</span>
         insert(x1, y1, x2, y2, c);
     }
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//重建a[][],即求二维前缀和</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">1</span>; j &lt;= m; j++)
-            a[i][j] = a[i - <span <span class="keyword">class</span>="number">1</span>][j] + a[i][j - <span <span class="keyword">class</span>="number">1</span>] - a[i - <span <span class="keyword">class</span>="number">1</span>][j - <span <span class="keyword">class</span>="number">1</span>] + b[i][j];
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//输出a[][]</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= n; i++)
+    <span class="comment">//重建a[][],即求二维前缀和</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
+            a[i][j] = a[i - <span class="number">1</span>][j] + a[i][j - <span class="number">1</span>] - a[i - <span class="number">1</span>][j - <span class="number">1</span>] + b[i][j];
+    <span class="comment">//输出a[][]</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
     {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span <span class="keyword">class</span>="number">1</span>; j &lt;= m; j++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
             cout &lt;&lt; a[i][j] &lt;&lt; &quot; &quot;;
         cout &lt;&lt; endl;
     }
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 差分矩阵</span>
+            <pre><code class="language-python"><span class="comment"># 差分矩阵</span>
 n, m, q = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-a = [[<span <span class="keyword">class</span>="number">0</span>] * (m + <span <span class="keyword">class</span>="number">1</span>)]
+a = [[<span class="number">0</span>] * (m + <span class="number">1</span>)]
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n):
-    a.append([<span <span class="keyword">class</span>="number">0</span>] + <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())))
-b = [[<span <span class="keyword">class</span>="number">0</span>] * (m + <span <span class="keyword">class</span>="number">2</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n + <span <span class="keyword">class</span>="number">2</span>)]
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, n + <span <span class="keyword">class</span>="number">1</span>):
-    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, m + <span <span class="keyword">class</span>="number">1</span>):
-        b[i][j] = a[i][j] - a[i - <span <span class="keyword">class</span>="number">1</span>][j] - a[i][j - <span <span class="keyword">class</span>="number">1</span>] + a[i - <span <span class="keyword">class</span>="number">1</span>][j - <span <span class="keyword">class</span>="number">1</span>]
+    a.append([<span class="number">0</span>] + <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())))
+b = [[<span class="number">0</span>] * (m + <span class="number">2</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n + <span class="number">2</span>)]
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, m + <span class="number">1</span>):
+        b[i][j] = a[i][j] - a[i - <span class="number">1</span>][j] - a[i][j - <span class="number">1</span>] + a[i - <span class="number">1</span>][j - <span class="number">1</span>]
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(q):
     x1, y1, x2, y2, c = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
     b[x1][y1] += c
-    b[x2 + <span <span class="keyword">class</span>="number">1</span>][y1] -= c
-    b[x1][y2 + <span <span class="keyword">class</span>="number">1</span>] -= c
-    b[x2 + <span <span class="keyword">class</span>="number">1</span>][y2 + <span <span class="keyword">class</span>="number">1</span>] += c
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, n + <span <span class="keyword">class</span>="number">1</span>):
+    b[x2 + <span class="number">1</span>][y1] -= c
+    b[x1][y2 + <span class="number">1</span>] -= c
+    b[x2 + <span class="number">1</span>][y2 + <span class="number">1</span>] += c
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
     row = []
-    cur = <span <span class="keyword">class</span>="number">0</span>
-    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, m + <span <span class="keyword">class</span>="number">1</span>):
-        b[i][j] += b[i - <span <span class="keyword">class</span>="number">1</span>][j] + b[i][j - <span <span class="keyword">class</span>="number">1</span>] - b[i - <span <span class="keyword">class</span>="number">1</span>][j - <span <span class="keyword">class</span>="number">1</span>]
+    cur = <span class="number">0</span>
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, m + <span class="number">1</span>):
+        b[i][j] += b[i - <span class="number">1</span>][j] + b[i][j - <span class="number">1</span>] - b[i - <span class="number">1</span>][j - <span class="number">1</span>]
         row.append(<span class="keyword">str</span>(b[i][j]))
-    <span class="keyword">print</span>(&<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>>#x27; &#x27;.join(row))</span></code></pre>
+    <span class="keyword">print</span>(&<span class="comment">#x27; &#x27;.join(row))</span></code></pre>
             </details>
         </div>
     </div>
@@ -501,79 +501,79 @@ b = [[<span <span class="keyword">class</span>="number">0</span>] * (m + <span <
 #<span class="keyword">include</span> &lt;algorithm&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
-<span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//自定义类型PII，表示容器类型是&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;的pair</span>
+<span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII; <span class="comment">//自定义类型PII，表示容器类型是&lt;int,int&gt;的pair</span>
 
-<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">300007</span>; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//需要记录n个坐标值，以及m个区间的坐标，所以是100000*(<span <span class="keyword">class</span>="number">1</span>+<span <span class="keyword">class</span>="number">2</span>)</span>
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">300007</span>; <span class="comment">//需要记录n个坐标值，以及m个区间的坐标，所以是100000*(1+2)</span>
 <span class="keyword">int</span> n, m;
 <span class="keyword">int</span> a[N], s[N];
 
-vector&lt;<span class="keyword">int</span>&gt; alls;       <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//存储所有的点坐标，包括询问点坐标</span>
-vector&lt;PII&gt; add, query; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//输入操作的坐标，查询的区间坐标</span>
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//在alls之中，查找值是x的元素值的下标，并且映射到[<span <span class="keyword">class</span>="number">1</span>...n]</span>
+vector&lt;<span class="keyword">int</span>&gt; alls;       <span class="comment">//存储所有的点坐标，包括询问点坐标</span>
+vector&lt;PII&gt; add, query; <span class="comment">//输入操作的坐标，查询的区间坐标</span>
+<span class="comment">//在alls之中，查找值是x的元素值的下标，并且映射到[1...n]</span>
 <span class="keyword">int</span> find(<span class="keyword">int</span> x)
 {
-    <span class="keyword">int</span> left = <span <span class="keyword">class</span>="number">0</span>, right = alls.size() - <span <span class="keyword">class</span>="number">1</span>; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//vector从0开始计数</span>
+    <span class="keyword">int</span> left = <span class="number">0</span>, right = alls.size() - <span class="number">1</span>; <span class="comment">//vector从0开始计数</span>
     <span class="keyword">while</span> (left &lt; right)
     {
-        <span class="keyword">int</span> mid = left + right &gt;&gt; <span <span class="keyword">class</span>="number">1</span>; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//取中值</span>
+        <span class="keyword">int</span> mid = left + right &gt;&gt; <span class="number">1</span>; <span class="comment">//取中值</span>
         <span class="keyword">if</span> (alls[mid] &gt;= x)
             right = mid;
         <span class="keyword">else</span>
-            left = mid + <span <span class="keyword">class</span>="number">1</span>;
+            left = mid + <span class="number">1</span>;
     }
-    <span class="keyword">return</span> right + <span <span class="keyword">class</span>="number">1</span>; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//把坐标值映射到1，<span <span class="keyword">class</span>="number">2</span>，<span <span class="keyword">class</span>="number">3</span>...而不是从0开始</span>
+    <span class="keyword">return</span> right + <span class="number">1</span>; <span class="comment">//把坐标值映射到1，2，3...而不是从0开始</span>
 }
 
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//? 使用离散化的方式来预处理输入数据</span>
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//? 把输入的数字映射成{下标，数字}的pair，然后再用差分的方法计算区间和</span>
-<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//? 本题目可以参考797.差分的模板写成</span>
+<span class="comment">//? 使用离散化的方式来预处理输入数据</span>
+<span class="comment">//? 把输入的数字映射成{下标，数字}的pair，然后再用差分的方法计算区间和</span>
+<span class="comment">//? 本题目可以参考797.差分的模板写成</span>
 <span class="keyword">int</span> main()
 {
     cin &gt;&gt; n &gt;&gt; m;
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//!离散化：构造映射表</span>
+    <span class="comment">//!离散化：构造映射表</span>
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)
     {
-        <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//todo 不直接把数存入a[i],乃是存入add容器内</span>
+        <span class="comment">//todo 不直接把数存入a[i],乃是存入add容器内</span>
         <span class="keyword">int</span> x, c;
         cin &gt;&gt; x &gt;&gt; c;
-        add.push_back({x, c}); <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//?将某一位置x上的数加c</span>
-        alls.push_back(x);     <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//把x位置加入alls</span>
+        add.push_back({x, c}); <span class="comment">//?将某一位置x上的数加c</span>
+        alls.push_back(x);     <span class="comment">//把x位置加入alls</span>
     }
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 读入query</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; m; i++)
+    <span class="comment">// 读入query</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)
     {
-        <span class="keyword">int</span> l, r; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//区间l和r</span>
+        <span class="keyword">int</span> l, r; <span class="comment">//区间l和r</span>
         cin &gt;&gt; l &gt;&gt; r;
         query.push_back({l, r});
-        alls.push_back(l); <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//坐标与alls的下标做映射</span>
+        alls.push_back(l); <span class="comment">//坐标与alls的下标做映射</span>
         alls.push_back(r);
     }
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//alls是下标映射表，需要去重</span>
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//使用STL算法库的sort和unique</span>
+    <span class="comment">//alls是下标映射表，需要去重</span>
+    <span class="comment">//使用STL算法库的sort和unique</span>
     sort(alls.begin(), alls.end());
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//unique返回不重复区间的下一个元素位置，用erase去掉尾部</span>
+    <span class="comment">//unique返回不重复区间的下一个元素位置，用erase去掉尾部</span>
     alls.erase(unique(alls.begin(), alls.end()), alls.end());
 
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//针对离散化的数据，计算区间和</span>
-    <span class="keyword">for</span> (<span class="keyword">auto</span> it : add) <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//用c++11语法遍历add vector</span>
-    {                   <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//初始化a[i],用离散化后的坐标</span>
+    <span class="comment">//针对离散化的数据，计算区间和</span>
+    <span class="keyword">for</span> (<span class="keyword">auto</span> it : add) <span class="comment">//用c++11语法遍历add vector</span>
+    {                   <span class="comment">//初始化a[i],用离散化后的坐标</span>
         <span class="keyword">int</span> index = find(it.first);
-        a[index] += it.second; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//将index位置上的数加c</span>
+        a[index] += it.second; <span class="comment">//将index位置上的数加c</span>
     }
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//预处理前缀和</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">1</span>; i &lt;= alls.size(); i++)
-        s[i] = s[i - <span <span class="keyword">class</span>="number">1</span>] + a[i];
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//处理询问，并且输出</span>
+    <span class="comment">//预处理前缀和</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= alls.size(); i++)
+        s[i] = s[i - <span class="number">1</span>] + a[i];
+    <span class="comment">//处理询问，并且输出</span>
     <span class="keyword">for</span> (<span class="keyword">auto</span> item : query)
     {
         <span class="keyword">int</span> l = find(item.first), r = find(item.second);
-        cout &lt;&lt; s[r] - s[l - <span <span class="keyword">class</span>="number">1</span>] &lt;&lt; endl; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//前缀和计算公式</span>
+        cout &lt;&lt; s[r] - s[l - <span class="number">1</span>] &lt;&lt; endl; <span class="comment">//前缀和计算公式</span>
     }
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 区间和</span>
+            <pre><code class="language-python"><span class="comment"># 区间和</span>
 n, m = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
 adds = []
 queries = []
@@ -588,15 +588,15 @@ all_x = []
     all_x.append(l)
     all_x.append(r)
 all_x = <span class="keyword">sorted</span>(<span class="keyword">set</span>(all_x))
-idx = {v: i + <span <span class="keyword">class</span>="number">1</span> <span class="keyword">for</span> i, v <span class="keyword">in</span> <span class="keyword">enumerate</span>(all_x)}
-a = [<span <span class="keyword">class</span>="number">0</span>] * (<span class="keyword">len</span>(all_x) + <span <span class="keyword">class</span>="number">1</span>)
-s = [<span <span class="keyword">class</span>="number">0</span>] * (<span class="keyword">len</span>(all_x) + <span <span class="keyword">class</span>="number">1</span>)
+idx = {v: i + <span class="number">1</span> <span class="keyword">for</span> i, v <span class="keyword">in</span> <span class="keyword">enumerate</span>(all_x)}
+a = [<span class="number">0</span>] * (<span class="keyword">len</span>(all_x) + <span class="number">1</span>)
+s = [<span class="number">0</span>] * (<span class="keyword">len</span>(all_x) + <span class="number">1</span>)
 <span class="keyword">for</span> x, c <span class="keyword">in</span> adds:
     a[idx[x]] += c
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span <span class="keyword">class</span>="number">1</span>, <span class="keyword">len</span>(all_x) + <span <span class="keyword">class</span>="number">1</span>):
-    s[i] = s[i - <span <span class="keyword">class</span>="number">1</span>] + a[i]
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, <span class="keyword">len</span>(all_x) + <span class="number">1</span>):
+    s[i] = s[i - <span class="number">1</span>] + a[i]
 <span class="keyword">for</span> l, r <span class="keyword">in</span> queries:
-    <span class="keyword">print</span>(s[idx[r]] - s[idx[l] - <span <span class="keyword">class</span>="number">1</span>])</code></pre>
+    <span class="keyword">print</span>(s[idx[r]] - s[idx[l] - <span class="number">1</span>])</code></pre>
             </details>
         </div>
     </div>
@@ -652,67 +652,67 @@ s = [<span <span class="keyword">class</span>="number">0</span>] * (<span class=
 #<span class="keyword">include</span> &lt;algorithm&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
-<span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//自定义类型PII，表示容器类型是&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;的pair</span>
+<span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII; <span class="comment">//自定义类型PII，表示容器类型是&lt;int,int&gt;的pair</span>
 
-<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">100007</span>; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//<span <span class="keyword">class</span>="number">1</span>&lt;=n&lt;=<span <span class="keyword">class</span>="number">100000</span></span>
-<span class="keyword">int</span> n;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//n个区间</span>
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100007</span>; <span class="comment">//1&lt;=n&lt;=100000</span>
+<span class="keyword">int</span> n;<span class="comment">//n个区间</span>
 
-vector&lt;PII&gt; segments; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//区间坐标</span>
+vector&lt;PII&gt; segments; <span class="comment">//区间坐标</span>
 
 <span class="keyword">void</span> merge(vector&lt;PII&gt; &amp;segs)
 {
     vector&lt;PII&gt; res;
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//pair排序先按左端点，后右端点</span>
+    <span class="comment">//pair排序先按左端点，后右端点</span>
     sort(segs.begin(), segs.end());
 
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//数字范围是-<span <span class="keyword">class</span>="number">10</span>^<span <span class="keyword">class</span>="number">9</span>&lt;num&lt;<span <span class="keyword">class</span>="number">10</span>^<span <span class="keyword">class</span>="number">9</span>,因此负无穷大初始化为-2e9</span>
-    <span class="keyword">int</span> left = -2e9, right = -2e9;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//当前操作的区间[left,right]</span>
-    <span class="keyword">for</span> (<span class="keyword">auto</span> seg : segs)<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//遍历segs</span>
-        <span class="keyword">if</span> (right &lt; seg.first)<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//区间没有交集，更新当前区间</span>
+    <span class="comment">//数字范围是-10^9&lt;num&lt;10^9,因此负无穷大初始化为-2e9</span>
+    <span class="keyword">int</span> left = -2e9, right = -2e9;<span class="comment">//当前操作的区间[left,right]</span>
+    <span class="keyword">for</span> (<span class="keyword">auto</span> seg : segs)<span class="comment">//遍历segs</span>
+        <span class="keyword">if</span> (right &lt; seg.first)<span class="comment">//区间没有交集，更新当前区间</span>
         {
-            <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//存储合并完毕的区间[left,right]</span>
+            <span class="comment">//存储合并完毕的区间[left,right]</span>
             <span class="keyword">if</span> (left != -2e9) res.push_back({left, right});
-            <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//更新当前操作区间</span>
+            <span class="comment">//更新当前操作区间</span>
             left = seg.first, right = seg.second;
         }
-        <span class="keyword">else</span> right = max(right, seg.second);<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//更新右端点，扩展区间</span>
+        <span class="keyword">else</span> right = max(right, seg.second);<span class="comment">//更新右端点，扩展区间</span>
 
-    <span class="keyword">if</span> (left != -2e9) res.push_back({left, right});<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//把最后一个区间入栈</span>
+    <span class="keyword">if</span> (left != -2e9) res.push_back({left, right});<span class="comment">//把最后一个区间入栈</span>
 
-    segs = res;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//更新segs</span>
+    segs = res;<span class="comment">//更新segs</span>
 }
 
 <span class="keyword">int</span> main()
 {
     cin &gt;&gt; n;
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>// 读入n组区间</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i++)
+    <span class="comment">// 读入n组区间</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)
     {
-        <span class="keyword">int</span> l, r; <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//区间l和r</span>
+        <span class="keyword">int</span> l, r; <span class="comment">//区间l和r</span>
         cin &gt;&gt; l &gt;&gt; r;
         segments.push_back({l, r});
     }
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//合并区间segment</span>
+    <span class="comment">//合并区间segment</span>
     merge(segments);
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//输出合并后的区间个数</span>
-    cout&lt;&lt;segments.size()&lt;&lt;endl;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//输出合并后的区间元素个数</span>
+    <span class="comment">//输出合并后的区间个数</span>
+    cout&lt;&lt;segments.size()&lt;&lt;endl;<span class="comment">//输出合并后的区间元素个数</span>
 
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
-n = <span class="keyword">int</span>(data[<span <span class="keyword">class</span>="number">0</span>])
+n = <span class="keyword">int</span>(data[<span class="number">0</span>])
 segs = []
-idx = <span <span class="keyword">class</span>="number">1</span>
+idx = <span class="number">1</span>
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n):
-    l, r = <span class="keyword">int</span>(data[idx]), <span class="keyword">int</span>(data[idx+<span <span class="keyword">class</span>="number">1</span>])
-    idx += <span <span class="keyword">class</span>="number">2</span>
+    l, r = <span class="keyword">int</span>(data[idx]), <span class="keyword">int</span>(data[idx+<span class="number">1</span>])
+    idx += <span class="number">2</span>
     segs.append((l, r))
 segs.sort()
 merged = []
-st, ed = segs[<span <span class="keyword">class</span>="number">0</span>]
-<span class="keyword">for</span> l, r <span class="keyword">in</span> segs[<span <span class="keyword">class</span>="number">1</span>:]:
+st, ed = segs[<span class="number">0</span>]
+<span class="keyword">for</span> l, r <span class="keyword">in</span> segs[<span class="number">1</span>:]:
     <span class="keyword">if</span> l &lt;= ed: ed = <span class="keyword">max</span>(ed, r)
     <span class="keyword">else</span>: merged.append((st, ed)); st, ed = l, r
 merged.append((st, ed))
@@ -770,14 +770,14 @@ merged.append((st, ed))
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">100007</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100007</span>;
 
 <span class="keyword">struct</span> Range
 {
   <span class="keyword">int</span> l , r;
   <span class="keyword">bool</span> operator&lt; (<span class="keyword">const</span> Range &amp; R) <span class="keyword">const</span>
   {
-    <span class="keyword">return</span> r &lt; R.r;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//重载比较符，根据r排序</span>
+    <span class="keyword">return</span> r &lt; R.r;<span class="comment">//重载比较符，根据r排序</span>
   }
 } range[N];
 
@@ -785,18 +785,18 @@ merged.append((st, ed))
 {
     <span class="keyword">int</span> n;
     scanf(&quot;%d&quot;, &amp;n);
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//读入区间</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt;n; i++)
+    <span class="comment">//读入区间</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;n; i++)
     {
       <span class="keyword">int</span> l,r;
       scanf(&quot;%d%d&quot;, &amp;l, &amp;r);
       range[i] = {l,r};
     }
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//按照右端点排序</span>
+    <span class="comment">//按照右端点排序</span>
     sort(range,range+n);
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//根据右端点计算覆盖的区间个数</span>
-    <span class="keyword">int</span> res = <span <span class="keyword">class</span>="number">0</span>, ed = -2e9;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//已统计区间的右端点</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i ++ )
+    <span class="comment">//根据右端点计算覆盖的区间个数</span>
+    <span class="keyword">int</span> res = <span class="number">0</span>, ed = -2e9;<span class="comment">//已统计区间的右端点</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )
      <span class="keyword">if</span> (range[i].l &gt; ed)
      {
        res ++;
@@ -804,21 +804,21 @@ merged.append((st, ed))
      }
      printf(&quot;%d\n&quot;, res);
 
-     <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span <span class="keyword">class</span>=<span <span class="keyword">class</span>="string">"comment"</span>># 区间选点</span>
+            <pre><code class="language-python"><span class="comment"># 区间选点</span>
 n = <span class="keyword">int</span>(<span class="keyword">input</span>())
 segs = []
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n):
     l, r = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
     segs.append((l, r))
-segs.sort(key=<span class="keyword">lambda</span> x: x[<span <span class="keyword">class</span>="number">1</span>])
-ans = <span <span class="keyword">class</span>="number">0</span>
-last = -<span <span class="keyword">class</span>="number">2</span> * <span <span class="keyword">class</span>="number">10</span>**<span <span class="keyword">class</span>="number">9</span>
+segs.sort(key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>])
+ans = <span class="number">0</span>
+last = -<span class="number">2</span> * <span class="number">10</span>**<span class="number">9</span>
 <span class="keyword">for</span> l, r <span class="keyword">in</span> segs:
     <span class="keyword">if</span> l &gt; last:
-        ans += <span <span class="keyword">class</span>="number">1</span>
+        ans += <span class="number">1</span>
         last = r
 <span class="keyword">print</span>(ans)</code></pre>
             </details>
@@ -875,36 +875,36 @@ last = -<span <span class="keyword">class</span>="number">2</span> * <span <span
 <span class="keyword">int</span> main()
 {
     <span class="keyword">int</span> n; cin&gt;&gt;n;
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//优先队列，使用greater作比较函数,把默认的大根堆变为小根堆</span>
+    <span class="comment">//优先队列，使用greater作比较函数,把默认的大根堆变为小根堆</span>
     priority_queue&lt;<span class="keyword">int</span>, vector&lt;<span class="keyword">int</span>&gt;,greater&lt;<span class="keyword">int</span>&gt;&gt; heap;
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//把读入数据压入堆</span>
+    <span class="comment">//把读入数据压入堆</span>
     <span class="keyword">while</span> (n--)
     {
         <span class="keyword">int</span> x; cin&gt;&gt;x;
         heap.push(x);
     }
 
-    <span class="keyword">int</span> res = <span <span class="keyword">class</span>="number">0</span>;
-    <span class="keyword">while</span>(heap.size() &gt; <span <span class="keyword">class</span>="number">1</span>)
+    <span class="keyword">int</span> res = <span class="number">0</span>;
+    <span class="keyword">while</span>(heap.size() &gt; <span class="number">1</span>)
     {
         <span class="keyword">int</span> x = heap.top(); heap.pop();
         <span class="keyword">int</span> y = heap.top(); heap.pop();
-        res += x + y;<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//累计合并值</span>
-        heap.push(x+y);<span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//把当前合并的值压入堆</span>
+        res += x + y;<span class="comment">//累计合并值</span>
+        heap.push(x+y);<span class="comment">//把当前合并的值压入堆</span>
     }
 
     cout&lt;&lt;res&lt;&lt;endl;
 
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys, heapq
 data = sys.stdin.read().split()
-n = <span class="keyword">int</span>(data[<span <span class="keyword">class</span>="number">0</span>])
-a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span <span class="keyword">class</span>="number">1</span>:<span <span class="keyword">class</span>="number">1</span>+n]))
+n = <span class="keyword">int</span>(data[<span class="number">0</span>])
+a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span class="number">1</span>:<span class="number">1</span>+n]))
 heapq.heapify(a)
-ans = <span <span class="keyword">class</span>="number">0</span>
-<span class="keyword">while</span> <span class="keyword">len</span>(a) &gt; <span <span class="keyword">class</span>="number">1</span>:
+ans = <span class="number">0</span>
+<span class="keyword">while</span> <span class="keyword">len</span>(a) &gt; <span class="number">1</span>:
     x = heapq.heappop(a)
     y = heapq.heappop(a)
     ans += x + y
@@ -961,7 +961,7 @@ ans = <span <span class="keyword">class</span>="number">0</span>
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span class="keyword">const</span> <span class="keyword">int</span> N = <span <span class="keyword">class</span>="number">100007</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100007</span>;
 
 <span class="keyword">int</span> n;
 <span class="keyword">int</span> a[N];
@@ -969,21 +969,21 @@ ans = <span <span class="keyword">class</span>="number">0</span>
 <span class="keyword">int</span> main()
 {
     cin &gt;&gt; n;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i ++) cin &gt;&gt; a[i];
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++) cin &gt;&gt; a[i];
     sort(a, a+n);
-    <span class="keyword">int</span> res = <span <span class="keyword">class</span>="number">0</span>;
-    <span <span class="keyword">class</span>=<span <span class="keyword">class</span>="<span class="keyword">string</span>">"comment"</span>>//中位数a[n/<span <span class="keyword">class</span>="number">2</span>],求距离之和的最小值</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span <span class="keyword">class</span>="number">0</span>; i &lt; n; i ++ ) res += abs(a[i]- a[n/<span <span class="keyword">class</span>="number">2</span>]);
+    <span class="keyword">int</span> res = <span class="number">0</span>;
+    <span class="comment">//中位数a[n/2],求距离之和的最小值</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ ) res += abs(a[i]- a[n/<span class="number">2</span>]);
     cout &lt;&lt; res &lt;&lt;endl;
-    <span class="keyword">return</span> <span <span class="keyword">class</span>="number">0</span>;
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
-n = <span class="keyword">int</span>(data[<span <span class="keyword">class</span>="number">0</span>])
-a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span <span class="keyword">class</span>="number">1</span>:<span <span class="keyword">class</span>="number">1</span>+n]))
+n = <span class="keyword">int</span>(data[<span class="number">0</span>])
+a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span class="number">1</span>:<span class="number">1</span>+n]))
 a.sort()
-mid = a[n // <span <span class="keyword">class</span>="number">2</span>]
+mid = a[n // <span class="number">2</span>]
 ans = <span class="keyword">sum</span>(<span class="keyword">abs</span>(x - mid) <span class="keyword">for</span> x <span class="keyword">in</span> a)
 <span class="keyword">print</span>(ans)</code></pre>
             </details>
