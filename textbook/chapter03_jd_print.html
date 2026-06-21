@@ -35,6 +35,19 @@
         <p>千层塔中，梁嘉峰指着重复的石阶："循环——让代码自动重复执行。掌握它，你就能用一行代码完成一百次操作。"</p><p>本章学习 for 循环和 while 循环——让程序自动重复执行任务。嵌套循环处理更复杂的问题。</p>
     </div>
 
+    <div style="background:#fff3cd;border-left:4px solid #ffc107;padding:16px;margin:20px 0;border-radius:0 8px 8px 0">
+    <strong>⚠ 循环三大常见错误：</strong><br><br>
+    <strong>1. 差一错误（Off-by-one）</strong><br>
+    <code>for (int i = 0; i < 10; i++)</code> → 循环10次（0~9）<br>
+    <code>for (int i = 1; i <= 10; i++)</code> → 也是循环10次（1~10）<br>
+    <code>for (int i = 0; i <= 10; i++)</code> → 循环11次（0~10）← 注意！<br><br>
+    <strong>2. 死循环（Infinite loop）</strong><br>
+    <code>while (n > 0) { ... }</code> 如果忘了在循环里改变 n，就永远停不下来！<br><br>
+    <strong>3. break 和 continue 搞混</strong><br>
+    <code>break</code> → 跳出整个循环（终止）<br>
+    <code>continue</code> → 跳过本次，继续下一次（跳过）
+    </div>
+
     <div class="problem" id="JD029">
         <div class="problem-title">JD029：石砖偶数</div>
         <div class="problem-meta"><span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:12px;font-size:0.8em;margin-right:8px">简单</span>AcWing ??? | JD029</div>
@@ -126,13 +139,46 @@
             <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
+    <span class="comment">// for 循环格式：for (初始化; 条件; 更新)</span>
+    <span class="comment">// 从 i=2 开始，每次 i += 2（加2），直到 i > 100 停止</span>
+
+    <span class="comment">// 执行过程：</span>
+    <span class="comment">// 第1次：i=2,   2<=100 ✓, 输出 2,   然后 i=4</span>
+    <span class="comment">// 第2次：i=4,   4<=100 ✓, 输出 4,   然后 i=6</span>
+    <span class="comment">// 第3次：i=6,   6<=100 ✓, 输出 6,   然后 i=8</span>
+    <span class="comment">// ...</span>
+    <span class="comment">// 第50次：i=100, 100<=100 ✓, 输出 100, 然后 i=102</span>
+    <span class="comment">// 第51次：i=102, 102<=100 ✗, 循环结束</span>
+
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i <= <span class="number">100</span>; i += <span class="number">2</span>)
         cout << i << endl;
     <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
+}
+
+<span class="comment">// 【for 循环三要素】</span>
+<span class="comment">// 1. 初始化：int i = 2      → 从哪里开始</span>
+<span class="comment">// 2. 条件：   i <= 100       → 什么时候继续</span>
+<span class="comment">// 3. 更新：   i += 2         → 每次怎么变化</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">2</span>, <span class="number">101</span>, <span class="number">2</span>):
-    <span class="keyword">print</span>(i)</code></pre>
+            <pre><code class="language-python"><span class="comment"># range(start, stop, step) 生成数列</span>
+<span class="comment"># range(2, 101, 2) → 从2开始，到101之前，每次加2</span>
+<span class="comment"># 注意：stop 是"不包含"的！所以写 101 不是 100</span>
+
+<span class="comment"># 执行过程：</span>
+<span class="comment"># i=2  → 输出 2</span>
+<span class="comment"># i=4  → 输出 4</span>
+<span class="comment"># i=6  → 输出 6</span>
+<span class="comment"># ...</span>
+<span class="comment"># i=100 → 输出 100</span>
+<span class="comment"># (101 不包含，循环结束)</span>
+
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">2</span>, <span class="number">101</span>, <span class="number">2</span>):
+    <span class="keyword">print</span>(i)
+
+<span class="comment"># 【range 函数对照 C++ for 循环】</span>
+<span class="comment"># range(2, 101, 2) ≈ for (int i = 2; i <= 100; i += 2)</span>
+<span class="comment"># range(10)        ≈ for (int i = 0; i < 10; i++)</span>
+<span class="comment"># range(1, n+1)    ≈ for (int i = 1; i <= n; i++)</span></code></pre>
             </details>
         </div>
     </div>
@@ -250,20 +296,53 @@
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> x;
+
+    <span class="comment">// while 循环：只要条件为真就一直执行</span>
+    <span class="comment">// cin >> x 读入一个数，读成功返回 true</span>
+    <span class="comment">// , x 是逗号表达式，取最后一个值 x</span>
+    <span class="comment">// 所以 while(cin >> x, x) 意思是：读入x，如果x不为0就继续</span>
+
+    <span class="comment">// 执行过程（输入 5, 10, 3, 0）：</span>
+    <span class="comment">// 第1轮：读入 x=5, x≠0 ✓ → 内层循环输出 1 2 3 4 5</span>
+    <span class="comment">// 第2轮：读入 x=10, x≠0 ✓ → 内层循环输出 1 2 3 4 5 6 7 8 9 10</span>
+    <span class="comment">// 第3轮：读入 x=3, x≠0 ✓ → 内层循环输出 1 2 3</span>
+    <span class="comment">// 第4轮：读入 x=0, x=0 ✗ → 循环结束</span>
+
     <span class="keyword">while</span> (cin >> x, x) {
+        <span class="comment">// 内层 for 循环：从 1 数到 x</span>
         <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= x; i++) {
-            <span class="keyword">if</span> (i > <span class="number">1</span>) cout << <span class="string">&quot; &quot;</span>;
+            <span class="keyword">if</span> (i > <span class="number">1</span>) cout << <span class="string">&quot; "</span>;  <span class="comment">// 第2个数开始先输出空格</span>
             cout << i;
         }
         cout << endl;
     }
     <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
+}
+
+<span class="comment">// 【while vs for】</span>
+<span class="comment">// for：已知循环次数时用（比如循环10次）</span>
+<span class="comment">// while：未知循环次数，靠条件结束时用（比如读到0才停）</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">while</span> <span class="keyword">True</span>:
+            <pre><code class="language-python"><span class="comment"># while True: 表示无限循环（永远为真）</span>
+<span class="comment"># 必须用 break 跳出！</span>
+
+<span class="comment"># 执行过程（输入 5, 10, 3, 0）：</span>
+<span class="comment"># 第1轮：读入 x=5, x≠0 → 输出 "1 2 3 4 5"</span>
+<span class="comment"># 第2轮：读入 x=10, x≠0 → 输出 "1 2 3 4 5 6 7 8 9 10"</span>
+<span class="comment"># 第3轮：读入 x=3, x≠0 → 输出 "1 2 3"</span>
+<span class="comment"># 第4轮：读入 x=0, x=0 → break 跳出循环！</span>
+
+<span class="keyword">while</span> <span class="keyword">True</span>:
     x = <span class="keyword">int</span>(<span class="keyword">input</span>())
-    <span class="keyword">if</span> x == <span class="number">0</span>: <span class="keyword">break</span>
-    <span class="keyword">print</span>(<span class="string">' '</span>.join(<span class="keyword">str</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, x + <span class="number">1</span>)))</code></pre>
+    <span class="keyword">if</span> x == <span class="number">0</span>: <span class="keyword">break</span>   <span class="comment"># break：跳出整个 while 循环</span>
+
+    <span class="comment"># 生成 1 到 x 的字符串列表，用空格连接</span>
+    <span class="keyword">print</span>(<span class="string">' '</span>.join(<span class="keyword">str</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, x + <span class="number">1</span>)))
+
+<span class="comment"># 【break 的作用】</span>
+<span class="comment"># break 立即跳出当前所在的最内层循环</span>
+<span class="comment"># 遇到 break 后，循环不再执行，直接往下走</span>
+<span class="comment"># 这里用 break 来实现"遇到0就停止"</span></code></pre>
             </details>
         </div>
     </div>
@@ -386,19 +465,50 @@
             <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
+    <span class="comment">// cnt 是计数器，初始为 0</span>
     <span class="keyword">int</span> cnt = <span class="number">0</span>;
+
+    <span class="comment">// 循环6次，每次读入一个数</span>
+    <span class="comment">// 执行过程（输入 7, -5, 6, -3.4, 4.6, 12）：</span>
+    <span class="comment">// 第1次：x=7,    7>0 ✓, cnt=0→1</span>
+    <span class="comment">// 第2次：x=-5,  -5>0 ✗, cnt=1（不变）</span>
+    <span class="comment">// 第3次：x=6,    6>0 ✓, cnt=1→2</span>
+    <span class="comment">// 第4次：x=-3.4, -3.4>0 ✗, cnt=2（不变）</span>
+    <span class="comment">// 第5次：x=4.6,  4.6>0 ✓, cnt=2→3</span>
+    <span class="comment">// 第6次：x=12,   12>0 ✓, cnt=3→4</span>
+
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">6</span>; i++) {
         <span class="keyword">double</span> x; cin >> x;
-        <span class="keyword">if</span> (x > <span class="number">0</span>) cnt++;
+        <span class="keyword">if</span> (x > <span class="number">0</span>) cnt++;  <span class="comment">// cnt++ 是 cnt += 1 的简写</span>
     }
-    cout << cnt << <span class="string">&quot; positive numbers&quot;</span> << endl;
+    cout << cnt << <span class="string">&quot; positive numbers"</span> << endl;
     <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
+}
+
+<span class="comment">// 【计数器模式】</span>
+<span class="comment">// 这是循环最常用的模式之一：</span>
+<span class="comment">// 1. 初始化计数器为 0</span>
+<span class="comment">// 2. 循环遍历每个元素</span>
+<span class="comment">// 3. 满足条件就 +1</span>
+<span class="comment">// 4. 循环结束后，计数器就是满足条件的个数</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">import</span> sys
-nums = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">float</span>, sys.stdin.read().split()))
-cnt = <span class="keyword">sum</span>(<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> nums <span class="keyword">if</span> x > <span class="number">0</span>)
-<span class="keyword">print</span>(f<span class="string">&quot;{cnt} positive numbers&quot;</span>)</code></pre>
+            <pre><code class="language-python"><span class="comment"># 方法一：逐行读入（最直观）</span>
+cnt = <span class="number">0</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">6</span>):
+    x = <span class="keyword">float</span>(<span class="keyword">input</span>())
+    <span class="keyword">if</span> x > <span class="number">0</span>:
+        cnt += <span class="number">1</span>   <span class="comment"># 等价于 cnt = cnt + 1</span>
+<span class="keyword">print</span>(f<span class="string">&quot;{cnt} positive numbers"</span>)
+
+<span class="comment"># 方法二：一次性读入所有数据（更快，适合大数据量）</span>
+<span class="comment"># import sys</span>
+<span class="comment"># nums = list(map(float, sys.stdin.read().split()))</span>
+<span class="comment"># cnt = sum(1 for x in nums if x > 0)</span>
+<span class="comment"># print(f"{cnt} positive numbers")</span>
+
+<span class="comment"># 【Python 的 += 运算符】</span>
+<span class="comment"># cnt += 1  等价于  cnt = cnt + 1</span>
+<span class="comment"># cnt += 5  等价于  cnt = cnt + 5</span></code></pre>
             </details>
         </div>
     </div>
@@ -779,16 +889,48 @@ pos = vals.index(mx) + <span class="number">1</span>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n;
-    cin >> n;
+    cin >> n;  <span class="comment">// 输入 "6"</span>
+
+    <span class="comment">// 约数：能整除 n 的数</span>
+    <span class="comment">// 从 1 试到 n，逐个检查</span>
+
+    <span class="comment">// 执行过程（n=6）：</span>
+    <span class="comment">// i=1: 6%1=0 ✓ 输出 1</span>
+    <span class="comment">// i=2: 6%2=0 ✓ 输出 2</span>
+    <span class="comment">// i=3: 6%3=0 ✓ 输出 3</span>
+    <span class="comment">// i=4: 6%4=2 ✗ 跳过</span>
+    <span class="comment">// i=5: 6%5=1 ✗ 跳过</span>
+    <span class="comment">// i=6: 6%6=0 ✓ 输出 6</span>
+
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++)
         <span class="keyword">if</span> (n % i == <span class="number">0</span>) cout << i << endl;
     <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
+}
+
+<span class="comment">// 【优化提示】其实只需试到 √n 就够了</span>
+<span class="comment">// 因为约数是成对出现的：6 = 1×6 = 2×3</span>
+<span class="comment">// 找到小的那个约数，大的那个也就知道了</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+            <pre><code class="language-python"><span class="comment"># 读入正整数</span>
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="comment"># 输入 "6"</span>
+
+<span class="comment"># 从 1 到 n 逐个检查</span>
+<span class="comment"># 执行过程（n=6）：</span>
+<span class="comment"># i=1: 6%1=0 ✓ 输出 1</span>
+<span class="comment"># i=2: 6%2=0 ✓ 输出 2</span>
+<span class="comment"># i=3: 6%3=0 ✓ 输出 3</span>
+<span class="comment"># i=4: 6%4=2 ✗ 跳过</span>
+<span class="comment"># i=5: 6%5=1 ✗ 跳过</span>
+<span class="comment"># i=6: 6%6=0 ✓ 输出 6</span>
+
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
     <span class="keyword">if</span> n % i == <span class="number">0</span>:
-        <span class="keyword">print</span>(i)</code></pre>
+        <span class="keyword">print</span>(i)
+
+<span class="comment"># 【range(1, n+1) 的含义】</span>
+<span class="comment"># 从 1 开始，到 n 结束（n+1 不包含）</span>
+<span class="comment"># range(1, 7) → 1, 2, 3, 4, 5, 6</span></code></pre>
             </details>
         </div>
     </div>
@@ -847,16 +989,44 @@ pos = vals.index(mx) + <span class="number">1</span>
             <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n;
-    scanf(<span class="string">&quot;%d&quot;</span>, &n);
+    scanf(<span class="string">&quot;%d"</span>, &n);  <span class="comment">// 输入 "140"</span>
+
+    <span class="comment">// 乘法表：从 1 乘到 10</span>
+    <span class="comment">// 执行过程（n=140）：</span>
+    <span class="comment">// i=1: printf("1 x 140 = 140")</span>
+    <span class="comment">// i=2: printf("2 x 140 = 280")</span>
+    <span class="comment">// i=3: printf("3 x 140 = 420")</span>
+    <span class="comment">// ...</span>
+    <span class="comment">// i=10: printf("10 x 140 = 1400")</span>
+
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= <span class="number">10</span>; i++)
-        printf(<span class="string">&quot;%d x %d = %d\n&quot;</span>, i, n, i * n);
+        printf(<span class="string">&quot;%d x %d = %d\n"</span>, i, n, i * n);
     <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
+}
+
+<span class="comment">// 【printf 格式化输出】</span>
+<span class="comment">// %d → 整数占位符</span>
+<span class="comment">// %f → 浮点数占位符</span>
+<span class="comment">// %s → 字符串占位符</span>
+<span class="comment">// \n → 换行</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">import</span> sys
-n = <span class="keyword">int</span>(sys.stdin.read().strip())
+            <pre><code class="language-python"><span class="comment"># 读入一个整数</span>
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="comment"># 输入 "140"</span>
+
+<span class="comment"># 乘法表：从 1 乘到 10</span>
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, <span class="number">11</span>):
-    <span class="keyword">print</span>(f<span class="string">&quot;{i} x {n} = {i * n}&quot;</span>)</code></pre>
+    <span class="keyword">print</span>(f<span class="string">&quot;{i} x {n} = {i * n}"</span>)
+
+<span class="comment"># 输出：</span>
+<span class="comment"># 1 x 140 = 140</span>
+<span class="comment"># 2 x 140 = 280</span>
+<span class="comment"># ...</span>
+<span class="comment"># 10 x 140 = 1400</span>
+
+<span class="comment"># 【f-string 格式化】</span>
+<span class="comment"># f"文字{变量}文字" → 把变量的值嵌入文字中</span>
+<span class="comment"># f"{i * n}" → 先计算 i*n，再转成字符串</span></code></pre>
             </details>
         </div>
     </div>
@@ -913,20 +1083,57 @@ n = <span class="keyword">int</span>(sys.stdin.read().strip())
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n, m;
-    cin >> n >> m;
+    cin >> n >> m;  <span class="comment">// 输入 "7 4"（7行4列）</span>
+
+    <span class="comment">// 方法：用一个循环遍历所有位置</span>
+    <span class="comment">// i 从 1 到 n*m = 28</span>
+    <span class="comment">// i % m == 0 表示"每行最后一个位置"</span>
+
+    <span class="comment">// 执行过程（n=7, m=4）：</span>
+    <span class="comment">// i=1:  1%4=1≠0 → 输出 "1 "</span>
+    <span class="comment">// i=2:  2%4=2≠0 → 输出 "2 "</span>
+    <span class="comment">// i=3:  3%4=3≠0 → 输出 "3 "</span>
+    <span class="comment">// i=4:  4%4=0 ✓ → 输出 "SWORD" 并换行</span>
+    <span class="comment">// i=5:  5%4=1≠0 → 输出 "5 "</span>
+    <span class="comment">// ...</span>
+    <span class="comment">// i=28: 28%4=0 ✓ → 输出 "SWORD" 并换行</span>
+
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n * m; i++) {
-        <span class="keyword">if</span> (i % m == <span class="number">0</span>) cout << <span class="string">&quot;SWORD&quot;</span> << endl;
-        <span class="keyword">else</span> cout << i << <span class="string">&quot; &quot;</span>;
+        <span class="keyword">if</span> (i % m == <span class="number">0</span>)
+            cout << <span class="string">&quot;SWORD&quot;</span> << endl;  <span class="comment">// 每行最后一个：SWORD + 换行</span>
+        <span class="keyword">else</span>
+            cout << i << <span class="string">&quot; "</span>;          <span class="comment">// 其他位置：数字 + 空格</span>
     }
     <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
+}
+
+<span class="comment">// 【嵌套循环的另一种写法】</span>
+<span class="comment">// for (int r = 0; r < n; r++) {      // 外层：行</span>
+<span class="comment">//     for (int c = 0; c < m; c++) {  // 内层：列</span>
+<span class="comment">//         int val = r * m + c + 1;</span>
+<span class="comment">//         if (c == m-1) cout << "SWORD" << endl;</span>
+<span class="comment">//         else cout << val << " ";</span>
+<span class="comment">//     }</span>
+<span class="comment">// }</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">n, m = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+            <pre><code class="language-python"><span class="comment"># 读入行数和列数</span>
+n, m = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="comment"># 输入 "7 4"</span>
+
+<span class="comment"># 用一个循环遍历所有位置</span>
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n * m + <span class="number">1</span>):
     <span class="keyword">if</span> i % m == <span class="number">0</span>:
-        <span class="keyword">print</span>(<span class="string">&quot;SWORD&quot;</span>)
+        <span class="comment"># 每行最后一个：输出 SWORD 并换行</span>
+        <span class="keyword">print</span>(<span class="string">&quot;SWORD"</span>)
     <span class="keyword">else</span>:
-        <span class="keyword">print</span>(i, end=<span class="string">' '</span>)</code></pre>
+        <span class="comment"># 其他位置：输出数字，不换行</span>
+        <span class="comment"># end=' ' 表示用空格结尾（默认是换行）</span>
+        <span class="keyword">print</span>(i, end=<span class="string">' '</span>)
+
+<span class="comment"># 【print 的 end 参数】</span>
+<span class="comment"># print("hello")       → 输出 "hello" 然后换行</span>
+<span class="comment"># print("hello", end=' ') → 输出 "hello" 然后空格（不换行）</span>
+<span class="comment"># print("hello", end='')  → 输出 "hello" 什么都不加</span></code></pre>
             </details>
         </div>
     </div>

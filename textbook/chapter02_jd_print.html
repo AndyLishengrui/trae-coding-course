@@ -35,6 +35,15 @@
         <p>山道分岔，石碑指路。赵晴儿说："条件判断让程序学会了选择——根据不同的条件，走不同的路。"</p><p>本章学习 if/else 条件判断——让程序根据不同的输入做出不同的反应。这是编程从"计算"走向"决策"的关键一步。</p>
     </div>
 
+    <div style="background:#fff3cd;border-left:4px solid #ffc107;padding:16px;margin:20px 0;border-radius:0 8px 8px 0">
+    <strong>⚠ C++ 初学者最容易犯的错：= 和 == 搞混！</strong><br><br>
+    <code>=</code> 是<strong>赋值</strong>（把右边的值存到左边的变量里）<br>
+    <code>==</code> 是<strong>比较</strong>（判断两边是否相等，返回 true 或 false）<br><br>
+    <strong>正确：</strong><code>if (a == 5)</code> — 判断 a 是否等于 5<br>
+    <strong>错误：</strong><code>if (a = 5)</code> — 把 5 赋给 a，条件永远为真！<br><br>
+    Python 没有这个坑：赋值用 <code>=</code>，比较用 <code>==</code>，不会搞混。
+    </div>
+
     <div class="problem" id="JD015">
         <div class="problem-title">JD015：石碑之谜</div>
         <div class="problem-meta"><span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:12px;font-size:0.8em;margin-right:8px">简单</span>AcWing 665 | JD015</div>
@@ -84,8 +93,15 @@ Sao Multiplos
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> a, b;
-    cin >> a >> b;
-    <span class="comment">// 判断是否互为倍数</span>
+    cin >> a >> b;  <span class="comment">// 输入 "6 24" → a=6, b=24</span>
+
+    <span class="comment">// % 是取余运算符：24 % 6 = 0（能整除）</span>
+    <span class="comment">// || 是"或者"（逻辑或）：只要有一个条件成立就为真</span>
+    <span class="comment">// == 是比较（注意不是 =，= 是赋值！）</span>
+
+    <span class="comment">// 判断逻辑：a能被b整除，或者b能被a整除</span>
+    <span class="comment">// 24 % 6 == 0 → true（24÷6=4 余0）</span>
+    <span class="comment">// 短路求值：第一个条件已为真，不再检查第二个</span>
     <span class="keyword">if</span> (a % b == <span class="number">0</span> || b % a == <span class="number">0</span>)
         cout << <span class="string">&quot;Yes&quot;</span> << endl;
     <span class="keyword">else</span>
@@ -93,11 +109,25 @@ Sao Multiplos
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+            <pre><code class="language-python"><span class="comment"># 读入两个整数</span>
+a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="comment"># 输入 "6 24" → a=6, b=24</span>
+
+<span class="comment"># % 是取余运算符</span>
+<span class="comment"># or 是"或者"（逻辑或）</span>
+<span class="comment"># == 是比较（不是赋值 =）</span>
+
+<span class="comment"># 判断逻辑：a能被b整除，或者b能被a整除</span>
 <span class="keyword">if</span> a % b == <span class="number">0</span> <span class="keyword">or</span> b % a == <span class="number">0</span>:
-    <span class="keyword">print</span>(<span class="string">&quot;Sao Multiplos&quot;</span>)
+    <span class="keyword">print</span>(<span class="string">&quot;Sao Multiplos"</span>)
 <span class="keyword">else</span>:
-    <span class="keyword">print</span>(<span class="string">&quot;Nao sao Multiplos&quot;</span>)</code></pre>
+    <span class="keyword">print</span>(<span class="string">&quot;Nao sao Multiplos"</span>)
+
+<span class="comment"># 【逻辑运算符对照】</span>
+<span class="comment"># C++     Python    含义</span>
+<span class="comment"># &&      and       并且（都为真才为真）</span>
+<span class="comment"># ||      or        或者（一个为真就为真）</span>
+<span class="comment"># !       not       取反（真变假，假变真）</span></code></pre>
             </details>
         </div>
     </div>
@@ -149,19 +179,34 @@ Area = 10.0
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">double</span> a, b, c;
-    cin >> a >> b >> c;
+    cin >> a >> b >> c;  <span class="comment">// 输入 "6.0 4.0 2.0"</span>
+
+    <span class="comment">// 三角形成立条件：任意两边之和 > 第三边</span>
+    <span class="comment">// && 是"并且"（逻辑与）：三个条件都满足才为真</span>
+    <span class="comment">// 6+4>2 ✓, 6+2>4 ✓, 4+2=6 不>6 ✗ → 不能构成三角形</span>
     <span class="keyword">if</span> (a + b > c && a + c > b && b + c > a)
-        printf(<span class="string">&quot;Perimeter = %.1lf\n&quot;</span>, a + b + c);
+        printf(<span class="string">&quot;Perimeter = %.1lf\n"</span>, a + b + c);
     <span class="keyword">else</span>
-        printf(<span class="string">&quot;Area = %.1lf\n&quot;</span>, (a + b) * c / <span class="number">2</span>);
+        printf(<span class="string">&quot;Area = %.1lf\n"</span>, (a + b) * c / <span class="number">2</span>);
     <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
+}
+
+<span class="comment">// 【逻辑运算符 && || ! 优先级】</span>
+<span class="comment">// ! (非) > && (与) > || (或)</span>
+<span class="comment">// 如果不确定优先级，加括号最安全！</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">a, b, c = <span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split())
+            <pre><code class="language-python"><span class="comment"># 读入三边长度</span>
+a, b, c = <span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split())
+<span class="comment"># 输入 "6.0 4.0 2.0"</span>
+
+<span class="comment"># 三角形成立条件：任意两边之和 > 第三边</span>
+<span class="comment"># 6+4>2 ✓, 6+2>4 ✓, 4+2=6 不>6 ✗</span>
 <span class="keyword">if</span> a + b > c <span class="keyword">and</span> a + c > b <span class="keyword">and</span> b + c > a:
-    <span class="keyword">print</span>(f<span class="string">&quot;Perimeter = {a + b + c:.1f}&quot;</span>)
+    <span class="comment"># 能构成三角形 → 输出周长</span>
+    <span class="keyword">print</span>(f<span class="string">&quot;Perimeter = {a + b + c:.1f}"</span>)
 <span class="keyword">else</span>:
-    <span class="keyword">print</span>(f<span class="string">&quot;Area = {(a + b) * c / 2:.1f}&quot;</span>)</code></pre>
+    <span class="comment"># 不能构成三角形 → 输出梯形面积</span>
+    <span class="keyword">print</span>(f<span class="string">&quot;Area = {(a + b) * c / 2:.1f}"</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -213,22 +258,45 @@ O JOGO DUROU 8 HORA(S)
             <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> a, b;
-    scanf(<span class="string">&quot;%d%d&quot;</span>, &a, &b);
-    <span class="comment">// 计算比武持续小时数</span>
+    scanf(<span class="string">&quot;%d%d"</span>, &a, &b);  <span class="comment">// 输入 "16 2" → a=16, b=2</span>
+
+    <span class="comment">// 三种情况的逻辑：</span>
+    <span class="comment">// 情况1：B > A → 没过零点，直接 B - A</span>
+    <span class="comment">// 情况2：B == A → 刚好24小时（整整一天）</span>
+    <span class="comment">// 情况3：B < A → 过了零点，24 - A + B</span>
+
     <span class="keyword">int</span> res;
-    <span class="keyword">if</span> (a < b) res = b - a;
-    <span class="keyword">else</span> <span class="keyword">if</span> (a == b) res = <span class="number">24</span>;
-    <span class="keyword">else</span> res = <span class="number">24</span> - a + b;
-    printf(<span class="string">&quot;%d\n&quot;</span>, res);
+    <span class="keyword">if</span> (a < b)        res = b - a;      <span class="comment">// 16 < 2? 否</span>
+    <span class="keyword">else</span> <span class="keyword">if</span> (a == b)  res = <span class="number">24</span>;          <span class="comment">// 16 == 2? 否</span>
+    <span class="keyword">else</span>               res = <span class="number">24</span> - a + b;  <span class="comment">// 24 - 16 + 2 = 10</span>
+
+    printf(<span class="string">&quot;%d\n"</span>, res);
     <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
+}
+
+<span class="comment">// 【if-else if-else 链的执行流程】</span>
+<span class="comment">// 从上到下依次检查条件，一旦某个条件成立就执行对应代码</span>
+<span class="comment">// 然后跳过后面所有 else，直接往下走</span>
+<span class="comment">// 最多只会执行一个分支！</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+            <pre><code class="language-python"><span class="comment"># 读入开始时间和结束时间</span>
+a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="comment"># 输入 "16 2" → a=16, b=2</span>
+
+<span class="comment"># 三种情况：</span>
+<span class="comment"># B > A：没过零点，直接 B - A</span>
+<span class="comment"># B == A：刚好24小时</span>
+<span class="comment"># B < A：过了零点，24 - A + B</span>
 <span class="keyword">if</span> a < b:
     horas = b - a
 <span class="keyword">else</span>:
-    horas = <span class="number">24</span> - a + b
-<span class="keyword">print</span>(f<span class="string">&quot;O JOGO DUROU {horas} HORA(S)&quot;</span>)</code></pre>
+    horas = <span class="number">24</span> - a + b  <span class="comment"># 包含了 B<=A 的两种情况</span>
+
+<span class="keyword">print</span>(f<span class="string">&quot;O JOGO DUROU {horas} HORA(S)"</span>)
+<span class="comment"># 输出: O JOGO DUROU 10 HORA(S)</span>
+
+<span class="comment"># 【注意】Python 的 if-elif-else 和 C++ 的 if-else if-else 一样</span>
+<span class="comment"># 但 Python 用缩进（Tab）表示代码块，不用花括号 {}</span></code></pre>
             </details>
         </div>
     </div>
@@ -279,19 +347,49 @@ O JOGO DUROU 8 HORA(S)
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> a, b, c;
-    cin >> a >> b >> c;
-    <span class="keyword">if</span> (a > b) swap(a, b);
-    <span class="keyword">if</span> (a > c) swap(a, c);
-    <span class="keyword">if</span> (b > c) swap(b, c);
-    cout << a << <span class="string">&quot; &quot;</span> << b << <span class="string">&quot; &quot;</span> << c << endl;
+    cin >> a >> b >> c;  <span class="comment">// 输入 "7 21 -14"</span>
+
+    <span class="comment">// 冒泡排序的思路：两两比较，把大的往后换</span>
+    <span class="comment">// swap(a, b) 交换两个变量的值</span>
+
+    <span class="comment">// 第一轮：比较前两个</span>
+    <span class="keyword">if</span> (a > b) swap(a, b);  <span class="comment">// 7 > 21? 否 → 不交换</span>
+
+    <span class="comment">// 第二轮：比较第一和第三</span>
+    <span class="keyword">if</span> (a > c) swap(a, c);  <span class="comment">// 7 > -14? 是 → 交换 → a=-14, c=7</span>
+
+    <span class="comment">// 第三轮：比较第二和第三</span>
+    <span class="keyword">if</span> (b > c) swap(b, c);  <span class="comment">// 21 > 7? 是 → 交换 → b=7, c=21</span>
+
+    <span class="comment">// 结果：a=-14, b=7, c=21 ✓ 从小到大！</span>
+    cout << a << <span class="string">&quot; "</span> << b << <span class="string">&quot; "</span> << c << endl;
     <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
+}
+
+<span class="comment">// 【swap 函数】交换两个变量的值</span>
+<span class="comment">// int x = 5, y = 10;</span>
+<span class="comment">// swap(x, y); 之后 x=10, y=5</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">a, b, c = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-<span class="keyword">if</span> a > b: a, b = b, a
-<span class="keyword">if</span> a > c: a, c = c, a
-<span class="keyword">if</span> b > c: b, c = c, b
-<span class="keyword">print</span>(a, b, c)</code></pre>
+            <pre><code class="language-python"><span class="comment"># 读入三个整数</span>
+a, b, c = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="comment"># 输入 "7 21 -14"</span>
+
+<span class="comment"># Python 交换两个变量：a, b = b, a（不需要临时变量！）</span>
+
+<span class="comment"># 第一轮：比较前两个</span>
+<span class="keyword">if</span> a > b: a, b = b, a   <span class="comment"># 7 > 21? 否</span>
+
+<span class="comment"># 第二轮：比较第一和第三</span>
+<span class="keyword">if</span> a > c: a, c = c, a   <span class="comment"># 7 > -14? 是 → a=-14, c=7</span>
+
+<span class="comment"># 第三轮：比较第二和第三</span>
+<span class="keyword">if</span> b > c: b, c = c, b   <span class="comment"># 21 > 7? 是 → b=7, c=21</span>
+
+<span class="keyword">print</span>(a, b, c)
+<span class="comment"># 输出: -14 7 21</span>
+
+<span class="comment"># 【更简洁的写法】</span>
+<span class="comment"># a, b, c = sorted(map(int, input().split()))</span></code></pre>
             </details>
         </div>
     </div>
@@ -405,26 +503,51 @@ Interval (75,100]
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">double</span> x;
-    cin >> x;
-    <span class="keyword">if</span> (x >= <span class="number">0</span> && x <= <span class="number">25</span>) cout << <span class="string">&quot;Interval [0,25]&quot;</span> << endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x > <span class="number">25</span> && x <= <span class="number">50</span>) cout << <span class="string">&quot;Interval (25,50]&quot;</span> << endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x > <span class="number">50</span> && x <= <span class="number">75</span>) cout << <span class="string">&quot;Interval (50,75]&quot;</span> << endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x > <span class="number">75</span> && x <= <span class="number">100</span>) cout << <span class="string">&quot;Interval (75,100]&quot;</span> << endl;
-    <span class="keyword">else</span> cout << <span class="string">&quot;Out of interval&quot;</span> << endl;
+    cin >> x;  <span class="comment">// 输入 "95.29"</span>
+
+    <span class="comment">// 多分支判断：用 else if 链逐一检查区间</span>
+    <span class="comment">// [0,25] 用 >= 表示包含0</span>
+    <span class="comment">// (25,50] 用 > 表示不包含25</span>
+
+    <span class="keyword">if</span> (x >= <span class="number">0</span> && x <= <span class="number">25</span>)          <span class="comment">// 95.29 >= 0 && 95.29 <= 25? 否</span>
+        cout << <span class="string">&quot;Interval [0,25]&quot;</span> << endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x > <span class="number">25</span> && x <= <span class="number">50</span>)   <span class="comment">// 95.29 > 25 && 95.29 <= 50? 否</span>
+        cout << <span class="string">&quot;Interval (25,50]&quot;</span> << endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x > <span class="number">50</span> && x <= <span class="number">75</span>)   <span class="comment">// 95.29 > 50 && 95.29 <= 75? 否</span>
+        cout << <span class="string">&quot;Interval (50,75]&quot;</span> << endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x > <span class="number">75</span> && x <= <span class="number">100</span>)  <span class="comment">// 95.29 > 75 && 95.29 <= 100? 是！</span>
+        cout << <span class="string">&quot;Interval (75,100]&quot;</span> << endl;
+    <span class="keyword">else</span>
+        cout << <span class="string">&quot;Out of interval&quot;</span> << endl;
     <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
+}
+
+<span class="comment">// 【区间表示法】</span>
+<span class="comment">// [0,25] → 包含0和25（闭区间）</span>
+<span class="comment">// (25,50] → 不包含25，包含50（左开右闭）</span>
+<span class="comment">// 这是数学中的标准记法</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">x = <span class="keyword">float</span>(<span class="keyword">input</span>())
+            <pre><code class="language-python"><span class="comment"># 读入内力值</span>
+x = <span class="keyword">float</span>(<span class="keyword">input</span>())
+<span class="comment"># 输入 "95.29"</span>
+
+<span class="comment"># Python 特有写法：0 <= x <= 25（链式比较）</span>
+<span class="comment"># 等价于 0 <= x and x <= 25</span>
+
 <span class="keyword">if</span> <span class="number">0</span> <= x <= <span class="number">25</span>:
-    <span class="keyword">print</span>(<span class="string">&quot;Interval [0,25]&quot;</span>)
+    <span class="keyword">print</span>(<span class="string">&quot;Interval [0,25]"</span>)      <span class="comment"># 入门</span>
 <span class="keyword">elif</span> <span class="number">25</span> < x <= <span class="number">50</span>:
-    <span class="keyword">print</span>(<span class="string">&quot;Interval (25,50]&quot;</span>)
+    <span class="keyword">print</span>(<span class="string">&quot;Interval (25,50]"</span>)     <span class="comment"># 初级</span>
 <span class="keyword">elif</span> <span class="number">50</span> < x <= <span class="number">75</span>:
-    <span class="keyword">print</span>(<span class="string">&quot;Interval (50,75]&quot;</span>)
+    <span class="keyword">print</span>(<span class="string">&quot;Interval (50,75]"</span>)     <span class="comment"># 中级</span>
 <span class="keyword">elif</span> <span class="number">75</span> < x <= <span class="number">100</span>:
-    <span class="keyword">print</span>(<span class="string">&quot;Interval (75,100]&quot;</span>)
+    <span class="keyword">print</span>(<span class="string">&quot;Interval (75,100]"</span>)    <span class="comment"># 高级 ← 95.29 落在这里</span>
 <span class="keyword">else</span>:
-    <span class="keyword">print</span>(<span class="string">&quot;Out of interval&quot;</span>)</code></pre>
+    <span class="keyword">print</span>(<span class="string">&quot;Out of interval"</span>)       <span class="comment"># 超出范围</span>
+
+<span class="comment"># 【elif 是 else if 的缩写】</span>
+<span class="comment"># C++: else if</span>
+<span class="comment"># Python: elif（更简洁）</span></code></pre>
             </details>
         </div>
     </div>

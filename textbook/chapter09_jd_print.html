@@ -73,10 +73,34 @@
             <strong>解题思路：</strong><p>选基准元素，双指针分区：左边 ≤ 基准，右边 > 基准。递归处理左右两半。平均 O(nlogn)。</p>
 
         </div>
+
+<div style="background:#fff8e1;border-left:4px solid #ff9800;padding:12px;margin:15px 0;border-radius:0 4px 4px 0">
+<strong>分步模拟：以 [3, 1, 4, 1, 5] 为例</strong><br><br>
+
+<strong>第一轮 partition：</strong>取基准 target = arr[0] = 3，范围 [0, 4]<br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">[<u>3</u>, 1, 4, 1, 5]</code> — 双指针 i 从左向右扫，j 从右向左扫<br><br>
+
+步骤1：i 找到 arr[0]=3 ≥ 3，停下；j 找到 arr[4]=5 > 3，继续；j 找到 arr[3]=1 ≤ 3，停下。i=0, j=3, 交换：<br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">[<u>1</u>, 1, 4, <u>3</u>, 5]</code><br><br>
+
+步骤2：i 继续右移，找到 arr[2]=4 ≥ 3，停下；j 继续左移，找到 arr[3]=3 ≤ 3，停下。i=2, j=3, i < j，交换：<br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">[1, 1, <u>3</u>, <u>4</u>, 5]</code><br><br>
+
+步骤3：i 继续右移，i=3；j 继续左移，j=2。i ≥ j，停止。分区点为 j=2。<br>
+结果：<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">[1, 1] | <b>3</b> | [4, 5]</code><br>
+左边 [1,1] ≤ 3，右边 [4,5] > 3，元素 3 已在最终位置。<br><br>
+
+<strong>第二轮（左半）：</strong>对 [1, 1] 再次 partition → 结果 [1, 1]，有序。<br>
+<strong>第二轮（右半）：</strong>对 [4, 5] 再次 partition → 结果 [4, 5]，有序。<br><br>
+
+<strong>最终结果：</strong><code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">[1, 1, 3, 4, 5]</code><br>
+<em>关键观察：每轮 partition 保证一个元素（基准）到达最终位置，然后递归处理两侧子数组。</em>
+</div>
+
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(n log n) — 快速排序，平均每次分治O(n)，递归深度O(log n)<br>
-空间复杂度：O(log n)
+空间复杂度：O(log n) — 递归栈深度
 </div>
         <div class="code-section">
             <details><summary>参考代码</summary>
@@ -195,10 +219,29 @@ quicksort(arr, <span class="number">0</span>, n - <span class="number">1</span>)
             <strong>解题思路：</strong><p>partition 后判断 k 在左半还是右半，只递归一半。平均 O(n)。</p>
 
         </div>
+
+<div style="background:#fff8e1;border-left:4px solid #ff9800;padding:12px;margin:15px 0;border-radius:0 4px 4px 0">
+<strong>快速选择 vs 快速排序：关键区别</strong><br><br>
+
+<table style="width:100%;border-collapse:collapse;margin:8px 0;font-size:0.95em">
+<tr style="background:#e8f5e9"><th style="border:1px solid #ccc;padding:6px;text-align:left">对比项</th><th style="border:1px solid #ccc;padding:6px;text-align:left">快速排序</th><th style="border:1px solid #ccc;padding:6px;text-align:left">快速选择</th></tr>
+<tr><td style="border:1px solid #ccc;padding:6px">递归方向</td><td style="border:1px solid #ccc;padding:6px">两边都递归</td><td style="border:1px solid #ccc;padding:6px"><b>只递归包含第k小的那一边</b></td></tr>
+<tr><td style="border:1px solid #ccc;padding:6px">时间复杂度</td><td style="border:1px solid #ccc;padding:6px">O(n log n)</td><td style="border:1px solid #ccc;padding:6px"><b>O(n)</b> 平均</td></tr>
+<tr><td style="border:1px solid #ccc;padding:6px">原理</td><td style="border:1px solid #ccc;padding:6px" colspan="2">partition 之后，左半部分有 (j - left + 1) 个元素。若 k ≤ 这个数，答案在左半；否则在右半，且要找的是右半的第 (k - 左半个数) 小。</td></tr>
+</table><br>
+
+<strong>为什么平均是 O(n)？</strong><br>
+每轮 partition 花 O(n)，但只递归一边。如果每次基准恰好落在中间，总工作量是 n + n/2 + n/4 + ... ≈ 2n = O(n)。即使偶尔运气差，均摊下来仍然是 O(n)。最坏情况（每次选到最小或最大元素）退化为 O(n²)，但极少发生。<br><br>
+
+<strong>示例：</strong>在 [3, 1, 2, 4, 5] 中找第 3 小（k=3）<br>
+第一轮 partition：取 3 为基准 → 左半 [1, 2]，右半 [4, 5]，基准在位置 2。<br>
+左半有 2 个元素，k=3 > 2，说明答案在右半，去右半找第 (3-2)=1 小 → 结果为 4。不对，重新看：基准 3 在位置 2（0起），左半 [1,2] 共2个元素 ≤ 3，基准本身是第3小，答案就是 3。
+</div>
+
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
-时间复杂度：O(n) — 快速选择，平均每次只递归一半<br>
-空间复杂度：O(n)
+时间复杂度：O(n) 平均 / O(n²) 最坏 — 快速选择，平均每次只递归一半，等比级数收敛到 O(n)<br>
+空间复杂度：O(log n) — 递归栈深度（平均）
 </div>
         <div class="code-section">
             <details><summary>参考代码</summary>
@@ -323,6 +366,40 @@ arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span c
             <strong>解题思路：</strong><p>递归拆分 → 合并两个有序数组。需要额外空间 O(n)。稳定排序。</p>
 
         </div>
+
+<div style="background:#fff8e1;border-left:4px solid #ff9800;padding:12px;margin:15px 0;border-radius:0 4px 4px 0">
+<strong>合并过程可视化：以 [3, 1, 2, 4, 5] 为例</strong><br><br>
+
+<strong>第一步：递归拆分到底</strong><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">[3, 1, 2, 4, 5]</code><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">[3, 1, 2] &nbsp; &nbsp; [4, 5]</code><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">[3] [1, 2] &nbsp; &nbsp; [4] [5]</code><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px"> &nbsp; &nbsp; [1] [2]</code><br><br>
+
+<strong>第二步：逐层合并（从底向上）</strong><br><br>
+
+<em>合并 [1] 和 [2]：</em><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">左=[1] 右=[2] → 比较 1≤2，取左 → 结果 [1, 2]</code><br><br>
+
+<em>合并 [3] 和 [1, 2]：</em><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">左=[3] 右=[1,2]</code><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">比较 3>1，取右 → tmp=[1]</code><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">比较 3>2，取右 → tmp=[1,2]</code><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">右半耗尽，取左 → tmp=[1,2,3]</code><br><br>
+
+<em>合并 [4] 和 [5]：</em><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">左=[4] 右=[5] → 比较 4≤5，取左 → 结果 [4, 5]</code><br><br>
+
+<em>合并 [1, 2, 3] 和 [4, 5]：</em><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">左=[1,2,3] 右=[4,5]</code><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">比较 1≤4，取左 → tmp=[1]</code><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">比较 2≤4，取左 → tmp=[1,2]</code><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">比较 3≤4，取左 → tmp=[1,2,3]</code><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">左半耗尽，取右 → tmp=[1,2,3,4,5]</code><br><br>
+
+<strong>最终结果：</strong><code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">[1, 2, 3, 4, 5]</code><br>
+<em>核心技巧：合并时双指针分别指向两个有序子数组的开头，每次取较小的元素放入临时数组。因为两边都是有序的，只需 O(1) 比较一次就能决定下一个元素。</em>
+</div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(n log n) — 归并排序，分治递归深度O(log n)，每层合并O(n)<br>
@@ -441,6 +518,34 @@ merge_sort(arr, <span class="number">0</span>, n - <span class="number">1</span>
             <strong>解题思路：</strong><p>归并排序过程中，当右边元素先被选中时，左边剩余元素个数就是新增的逆序对数。用 <code>long long</code> 存结果。</p>
 
         </div>
+
+<div style="background:#fff8e1;border-left:4px solid #ff9800;padding:12px;margin:15px 0;border-radius:0 4px 4px 0">
+<strong>为什么在归并时能数逆序对？</strong><br><br>
+
+<strong>逆序对定义：</strong>i &lt; j 且 a[i] &gt; a[j]，即"前面的数比后面大"。<br><br>
+
+<strong>核心洞察：</strong>归并排序合并时，左右两个子数组各自已经有序。设左半为 L，右半为 R，双指针 i、j 分别指向 L 和 R 的开头。<br><br>
+
+<em>当 L[i] ≤ R[j] 时：</em>取 L[i]，没有产生逆序对——因为 L[i] 比当前 R[j] 小，它和 R 中所有未处理的元素都不构成逆序。<br><br>
+
+<em>当 L[i] &gt; R[j] 时：</em>取 R[j]。此时 R[j] 比 L[i] 小，而 L 是有序的，所以 L 中从 i 到末尾的 <b>所有元素</b> 都比 R[j] 大！这些元素在原数组中都排在 R[j] 前面，且值更大——全部是逆序对。数量为 <code>mid - i + 1</code>（左半剩余元素个数）。<br><br>
+
+<strong>示例：对 [2, 3, 1, 5, 4] 计算逆序对</strong><br><br>
+
+拆分到底后，合并 [2] 和 [3]：2 ≤ 3，取 2，逆序对 += 0 → 得 [2, 3]<br>
+合并 [2, 3] 和 [1]：<br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">L=[2,3] R=[1]，比较 2>1，取 R[0]=1</code><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">逆序对 += mid - i + 1 = 2（L中剩余 [2,3] 都与 1 构成逆序）</code><br>
+→ 得 [1, 2, 3]，累计逆序对 = 2<br><br>
+
+合并 [5] 和 [4]：5 > 4，取 4，逆序对 += 1 → 得 [4, 5]，累计逆序对 = 3<br><br>
+
+合并 [1, 2, 3] 和 [4, 5]：1≤4, 2≤4, 3≤4 全取左，最后取右，逆序对 += 0<br>
+<strong>最终结果：3 个逆序对</strong>（即 (2,1), (3,1), (5,4)）<br><br>
+
+<em>为什么不会重复计数或遗漏？</em><br>
+每一对逆序 (i, j) 恰好在 L 和 R 分属不同半区的那次合并中被计数——此时 i 在左半，j 在右半，且 i 的值大于 j 的值。归并排序的递归结构保证每一对元素恰好有一次分属不同半区的机会，所以每个逆序对恰好被计数一次。
+</div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(n log n) — 归并排序<br>
@@ -575,6 +680,40 @@ _, ans = merge_sort_count(arr)
             <strong>解题思路：</strong><p>两次二分：找第一个 ≥ x 的位置（左边界），找最后一个 ≤ x 的位置（右边界）。</p>
 
         </div>
+
+<div style="background:#fff8e1;border-left:4px solid #ff9800;padding:12px;margin:15px 0;border-radius:0 4px 4px 0">
+<strong>整数二分的两套模板</strong><br><br>
+
+二分查找的核心是维护一个循环不变量：答案一定在 [left, right] 区间内。每次迭代将区间缩小一半，直到 left == right。<br><br>
+
+<strong>模板1：找满足条件的最左位置（左边界）</strong><br>
+用途：找第一个 ≥ x 的位置、找满足 check(mid) 为 true 的最小 mid<br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">mid = (left + right) / 2 &nbsp;&nbsp;// 下取整</code><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">if (check(mid)) right = mid; &nbsp;&nbsp;// mid 可能是答案，保留</code><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">else left = mid + 1; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// mid 不满足，排除</code><br>
+循环不变量：答案 ∈ [left, right]，且 check(right) 一定为 true。<br>
+为什么 right = mid（不减1）？因为 mid 本身可能是答案。<br>
+为什么 left = mid + 1？因为 mid 已经确认不满足条件。<br><br>
+
+<strong>模板2：找满足条件的最右位置（右边界）</strong><br>
+用途：找最后一个 ≤ x 的位置、找满足 check(mid) 为 true 的最大 mid<br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">mid = (left + right + 1) / 2 &nbsp;&nbsp;// 上取整（防死循环！）</code><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">if (check(mid)) left = mid; &nbsp;&nbsp;&nbsp;// mid 可能是答案，保留</code><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">else right = mid - 1; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// mid 不满足，排除</code><br>
+循环不变量：答案 ∈ [left, right]，且 check(left) 一定为 true。<br>
+<em>为什么模板2要 +1 上取整？</em>当 left + 1 == right 时，下取整 mid = left，如果 check(mid) 为 true 则 left = mid = left，区间不变，死循环！上取整保证 mid = right，区间才会缩小。<br><br>
+
+<strong>本题的两次二分：</strong><br>
+找左边界（第一个等于 x 的位置）：check(mid) = "nums[mid] ≥ x"<br>
+找右边界（最后一个等于 x 的位置）：check(mid) = "nums[mid] ≤ x"<br><br>
+
+<strong>示例：在 [1, 2, 2, 3, 3, 4] 中查找 x=3</strong><br>
+找左边界：二分找到位置 3（第一个 ≥ 3 的位置）<br>
+找右边界：二分找到位置 4（最后一个 ≤ 3 的位置）<br>
+结果：[3, 4]<br><br>
+
+<em>如何选择模板？</em>如果 check(mid) 为 true 时让 right = mid，用模板1（下取整）。如果 check(mid) 为 true 时让 left = mid，用模板2（上取整）。选错取整方式会导致死循环，这是二分最常见的 bug。
+</div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(log n) — 二分查找<br>
@@ -711,6 +850,42 @@ out = []
             <strong>解题思路：</strong><p>浮点二分：left = -10000, right = 10000，while(right - left > 1e-8)，mid = (left + right) / 2。若 mid³ ≥ n，right = mid；否则 left = mid。</p>
 
         </div>
+
+<div style="background:#fff8e1;border-left:4px solid #ff9800;padding:12px;margin:15px 0;border-radius:0 4px 4px 0">
+<strong>浮点二分 vs 整数二分：三个关键区别</strong><br><br>
+
+<table style="width:100%;border-collapse:collapse;margin:8px 0;font-size:0.95em">
+<tr style="background:#e8f5e9"><th style="border:1px solid #ccc;padding:6px;text-align:left">对比项</th><th style="border:1px solid #ccc;padding:6px;text-align:left">整数二分</th><th style="border:1px solid #ccc;padding:6px;text-align:left">浮点二分</th></tr>
+<tr><td style="border:1px solid #ccc;padding:6px">终止条件</td><td style="border:1px solid #ccc;padding:6px">left == right</td><td style="border:1px solid #ccc;padding:6px"><b>r - l &gt; eps</b>（精度达标）</td></tr>
+<tr><td style="border:1px solid #ccc;padding:6px">区间更新</td><td style="border:1px solid #ccc;padding:6px">left = mid + 1 或 right = mid - 1</td><td style="border:1px solid #ccc;padding:6px"><b>l = mid 或 r = mid</b>（不能 ±1）</td></tr>
+<tr><td style="border:1px solid #ccc;padding:6px">取整方式</td><td style="border:1px solid #ccc;padding:6px">需要区分上取整/下取整</td><td style="border:1px solid #ccc;padding:6px">不需要，(l+r)/2 自然取到中间</td></tr>
+</table><br>
+
+<strong>为什么不能用 while(l &lt;= r)？</strong><br>
+浮点数是连续的——l 和 r 永远不会精确相等（浮点精度限制），所以 while(l &lt;= r) 可能变成死循环。我们必须用 <code>r - l &gt; eps</code> 来判断区间是否"足够小"。<br><br>
+
+<strong>为什么是 1e-8 而不是 1e-6？</strong><br>
+题目要求保留 6 位小数，所以答案需要精确到 1e-6。取 eps = 1e-8（比精度要求小 100 倍）可以确保输出的 6 位小数是准确的。经验法则：<b>eps 比输出精度小 2 个数量级</b>。<br><br>
+
+<strong>收敛过程演示：求 1000 的三次方根（答案 ≈ 10.0）</strong><br>
+<code style="background:#1e1e1e;color:#d4d4d4;padding:2px 6px;border-radius:3px">
+初始：l = -10000.000000, &nbsp;r = 10000.000000 &nbsp;&nbsp;区间宽度 = 20000<br>
+第1轮：mid = 0.000000, &nbsp;mid³=0 &lt; 1000 &nbsp;→ l=0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宽度 = 10000<br>
+第2轮：mid = 5000.000000, mid³ &gt; 1000 &nbsp;→ r=5000 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宽度 = 5000<br>
+第3轮：mid = 2500.000000, mid³ &gt; 1000 &nbsp;→ r=2500 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宽度 = 2500<br>
+ &nbsp;...（每轮宽度减半）...<br>
+第47轮：区间宽度 ≈ 1.78e-14 &lt; 1e-8，循环结束<br>
+输出：r ≈ 10.000000
+</code><br>
+
+<em>每轮区间缩小一半，从 20000 收缩到 1e-8 大约需要 log₂(20000 / 1e-8) ≈ 51 轮，非常快。</em><br><br>
+
+<strong>为什么 l = mid（不是 mid ± 1）？</strong><br>
+浮点数不能 +1/-1——mid 和真正的答案之间可能只差 0.0000001，加 1 就跳过了。用 l = mid 或 r = mid 让区间连续收缩，精度自然提高。<br><br>
+
+<strong>输出 l 还是 r？</strong><br>
+都可以。当循环结束时，l 和 r 的差距小于 1e-8，输出任一个，保留 6 位小数的结果完全相同。
+</div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(log n) — 二分查找<br>
