@@ -36,6 +36,21 @@
         <p>「少白，剑道的传承不在刀剑之中，而在文字之间。」她抽出一卷泛黄的密文，展开铺在书案上，「字符串——字符的序列。古人把毕生所学刻在竹简上，一字一句，皆是心血。读懂文字，才能读懂剑意。」</p>
         <p>本章学习字符串处理——查找、替换、分割、加密。这些操作看似枯燥，却是破解古卷密文、传承剑道精髓的钥匙。</p>
     </div>
+    <div style="background:#e8f0fe;border-left:4px solid #1a73e8;padding:12px;margin:15px 0;border-radius:0 4px 4px 0">
+    <strong>Python vs C++ 字符串操作速查：</strong><br>
+    <table style="width:100%;font-size:0.9em;margin-top:8px;border-collapse:collapse">
+    <tr style="background:#d4e4f7"><td style="padding:4px 8px;border:1px solid #bbb"><strong>操作</strong></td><td style="padding:4px 8px;border:1px solid #bbb"><strong>C++ (string)</strong></td><td style="padding:4px 8px;border:1px solid #bbb"><strong>Python (str)</strong></td></tr>
+    <tr><td style="padding:4px 8px;border:1px solid #bbb">读整行</td><td style="padding:4px 8px;border:1px solid #bbb"><code>getline(cin, s)</code></td><td style="padding:4px 8px;border:1px solid #bbb"><code>input()</code></td></tr>
+    <tr><td style="padding:4px 8px;border:1px solid #bbb">长度</td><td style="padding:4px 8px;border:1px solid #bbb"><code>s.size()</code></td><td style="padding:4px 8px;border:1px solid #bbb"><code>len(s)</code></td></tr>
+    <tr><td style="padding:4px 8px;border:1px solid #bbb">替换字符</td><td style="padding:4px 8px;border:1px solid #bbb">循环遍历+原地修改</td><td style="padding:4px 8px;border:1px solid #bbb"><code>s.replace(old, new)</code></td></tr>
+    <tr><td style="padding:4px 8px;border:1px solid #bbb">分割单词</td><td style="padding:4px 8px;border:1px solid #bbb"><code>stringstream</code></td><td style="padding:4px 8px;border:1px solid #bbb"><code>s.split()</code></td></tr>
+    <tr><td style="padding:4px 8px;border:1px solid #bbb">子串查找</td><td style="padding:4px 8px;border:1px solid #bbb"><code>s.find(t)</code></td><td style="padding:4px 8px;border:1px solid #bbb"><code>s.find(t)</code> 或 <code>t in s</code></td></tr>
+    <tr><td style="padding:4px 8px;border:1px solid #bbb">连接</td><td style="padding:4px 8px;border:1px solid #bbb"><code>a + b</code></td><td style="padding:4px 8px;border:1px solid #bbb"><code>a + b</code> 或 <code>" ".join(list)</code></td></tr>
+    <tr><td style="padding:4px 8px;border:1px solid #bbb">字符→ASCII</td><td style="padding:4px 8px;border:1px solid #bbb"><code>(int)c</code></td><td style="padding:4px 8px;border:1px solid #bbb"><code>ord(c)</code></td></tr>
+    <tr><td style="padding:4px 8px;border:1px solid #bbb">ASCII→字符</td><td style="padding:4px 8px;border:1px solid #bbb"><code>(char)n</code></td><td style="padding:4px 8px;border:1px solid #bbb"><code>chr(n)</code></td></tr>
+    </table>
+    <p style="margin-top:8px;font-size:0.9em"><strong>核心区别：</strong> C++的char数组可原地修改，Python的str是不可变类型（每次操作返回新字符串）。</p>
+    </div>
 
     <div class="problem" id="JD067">
         <div class="problem-title">JD067：古卷测长</div>
@@ -604,8 +619,14 @@ Python str:   a==b, a!=b, a&lt;b 直接比较
             <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
 p1, p2 = data[<span class="number">0</span>], data[<span class="number">1</span>]
-<span class="keyword">if</span> p1 == p2: <span class="keyword">print</span>(<span class="string">'Tie'</span>)
-<span class="keyword">elif</span> (p1==<span class="string">'scissors'</span> <span class="keyword">and</span> p2==<span class="string">'cloth'</span>) <span class="keyword">or</span> (p1==<span class="string">'rock'</span> <span class="keyword">and</span> p2==<span class="string">'scissors'</span>) <span class="keyword">or</span> (p1==<span class="string">'cloth'</span> <span class="keyword">and</span> p2==<span class="string">'rock'</span>):
+<span class="comment"># Python字符串比较：直接用 == 运算符</span>
+<span class="comment"># C++ char数组比较: strcmp(a,b)==0</span>
+<span class="comment"># C++ string比较:   a==b（与Python相同）</span>
+<span class="keyword">if</span> p1 == p2:
+    <span class="keyword">print</span>(<span class="string">'Tie'</span>)
+<span class="keyword">elif</span> (p1==<span class="string">'scissors'</span> <span class="keyword">and</span> p2==<span class="string">'cloth'</span>) <span class="keyword">or</span> \
+     (p1==<span class="string">'rock'</span> <span class="keyword">and</span> p2==<span class="string">'scissors'</span>) <span class="keyword">or</span> \
+     (p1==<span class="string">'cloth'</span> <span class="keyword">and</span> p2==<span class="string">'rock'</span>):
     <span class="keyword">print</span>(<span class="string">'Player1'</span>)
 <span class="keyword">else</span>:
     <span class="keyword">print</span>(<span class="string">'Player2'</span>)</code></pre>
@@ -698,15 +719,22 @@ W(87) → 大写: (87-65+1)%26+65 = 88 → 'X'
     cout&lt;&lt;s&lt;&lt;endl;<span class="comment">//输出结果</span>
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">r = []
+            <pre><code class="language-python"><span class="comment"># Python实现凯撒密码加密</span>
+<span class="comment"># 与C++的关键区别：</span>
+<span class="comment"># C++: 用auto&c直接引用修改原字符串（原地修改）</span>
+<span class="comment"># Python: 字符串不可变，必须构建新字符串（用列表收集后join）</span>
+r = []
 <span class="keyword">for</span> c <span class="keyword">in</span> <span class="keyword">input</span>():
     <span class="keyword">if</span> <span class="string">&quot;a&quot;</span> &lt;= c &lt;= <span class="string">&quot;z&quot;</span>:
+        <span class="comment"># 小写字母：归到0~25，+1偏移，取模循环，转回字符</span>
+        <span class="comment"># 例: 'z'(122) → (122-97+1)%26+97 = 26%26+97 = 97 → 'a'</span>
         r.append(chr((ord(c) - <span class="number">97</span> + <span class="number">1</span>) % <span class="number">26</span> + <span class="number">97</span>))
     <span class="keyword">elif</span> <span class="string">&quot;A&quot;</span> &lt;= c &lt;= <span class="string">&quot;Z&quot;</span>:
+        <span class="comment"># 大写字母同理，基址从97换成65</span>
         r.append(chr((ord(c) - <span class="number">65</span> + <span class="number">1</span>) % <span class="number">26</span> + <span class="number">65</span>))
     <span class="keyword">else</span>:
-        r.append(c)
-<span class="keyword">print</span>(<span class="string">&quot;&quot;</span>.join(r))</code></pre>
+        r.append(c)  <span class="comment"># 非字母字符原样保留</span>
+<span class="keyword">print</span>(<span class="string">&quot;&quot;</span>.join(r))  <span class="comment"># 列表→字符串</span></code></pre>
             </details>
         </div>
     </div>
@@ -1083,16 +1111,25 @@ Python: from collections import Counter
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
+<span class="comment">// cnt[0]统计'a'出现次数, cnt[1]统计'b', ..., cnt[25]统计'z'</span>
+<span class="comment">// 字符映射: str[i]-'a' 把 'a'~'z' 映射到 0~25</span>
 <span class="keyword">int</span> cnt[<span class="number">26</span>];
 <span class="keyword">char</span> str[<span class="number">100010</span>];
 
 <span class="comment">// 独字寻踪：找第一个不重复字符</span>
+<span class="comment">// 两遍扫描法：</span>
+<span class="comment">// 第1遍：统计每个字符出现的次数</span>
+<span class="comment">// 第2遍：从头找第一个次数为1的字符</span>
 <span class="keyword">int</span> main()
 {
     cin &gt;&gt; str;
 
+    <span class="comment">// 第1遍：统计频率</span>
+    <span class="comment">// 例 "abaccdeff": cnt['a'-'a']=2, cnt['b'-'a']=1, cnt['c'-'a']=2, ...</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; str[i]; i ++ ) cnt[str[i] - 'a'] ++ ;
 
+    <span class="comment">// 第2遍：找第一个频率为1的</span>
+    <span class="comment">// 'a'→cnt[0]=2 跳过, 'b'→cnt[1]=1 找到!</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; str[i]; i ++ )
         <span class="keyword">if</span> (cnt[str[i] - 'a'] == <span class="number">1</span>)
         {
@@ -1102,7 +1139,7 @@ Python: from collections import Counter
 
         puts(<span class="string">&quot;no&quot;</span>);
 
-    <span class="keyword">return</span> <span class="number">0</span>;    
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">s = <span class="keyword">input</span>()
@@ -1311,25 +1348,31 @@ C++:    用循环拼接: for(i=0;i<n;i++) r += s;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="comment"># 字符串乘方</span>
+            <pre><code class="language-python"><span class="comment"># 字符串乘方 — Python版使用KMP的next数组（更高效）</span>
+<span class="comment"># ne[i] = 字符串s[0..i]的最长相等前后缀长度</span>
+<span class="comment"># 核心结论：最小周期长度 = n - ne[n-1]</span>
+<span class="comment"># 如果 n % 周期长度 == 0，则字符串可由周期重复构成</span>
+<span class="comment">#</span>
+<span class="comment"># 对比C++版的暴力枚举：C++从大到小枚举n，检查s重复n次是否等于原串</span>
+<span class="comment"># Python版用KMP的next数组，O(n)时间复杂度，更高效</span>
 <span class="keyword">while</span> <span class="keyword">True</span>:
     s = <span class="keyword">input</span>().strip()
     <span class="keyword">if</span> s == <span class="string">'.'</span>:
         <span class="keyword">break</span>
     n = <span class="keyword">len</span>(s)
-    ne = [<span class="number">0</span>] * n
+    ne = [<span class="number">0</span>] * n  <span class="comment"># next数组（前缀函数）</span>
     j = <span class="number">0</span>
     <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n):
         <span class="keyword">while</span> j &gt; <span class="number">0</span> <span class="keyword">and</span> s[i] != s[j]:
-            j = ne[j - <span class="number">1</span>]
+            j = ne[j - <span class="number">1</span>]  <span class="comment">// 回退</span>
         <span class="keyword">if</span> s[i] == s[j]:
             j += <span class="number">1</span>
         ne[i] = j
-    length = n - ne[n - <span class="number">1</span>]
+    length = n - ne[n - <span class="number">1</span>]  <span class="comment">// 最小周期长度</span>
     <span class="keyword">if</span> n % length == <span class="number">0</span>:
-        <span class="keyword">print</span>(n // length)
+        <span class="keyword">print</span>(n // length)  <span class="comment">// 重复次数</span>
     <span class="keyword">else</span>:
-        <span class="keyword">print</span>(<span class="number">1</span>)</code></pre>
+        <span class="keyword">print</span>(<span class="number">1</span>)  <span class="comment">// 不能整除，整个字符串就是最小单元</span></code></pre>
             </details>
         </div>
     </div>
@@ -1461,13 +1504,20 @@ Python: s.find(s1)  → 从左找第一次出现的位置
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="comment"># 字符串最大跨距</span>
+<span class="comment"># s.find(s1): 从左往右找s1第一次出现的位置</span>
+<span class="comment"># s.rfind(s2): 从右往左找s2最后一次出现的位置</span>
+<span class="comment"># 比C++手动逐字符匹配简洁得多！</span>
 s, s1, s2 = <span class="keyword">input</span>().split(<span class="string">','</span>)
-n = <span class="keyword">len</span>(s)
-l = s.find(s1)
-r = s.rfind(s2)
+l = s.find(s1)     <span class="comment"># S1最左出现位置（从左往右找）</span>
+r = s.rfind(s2)    <span class="comment"># S2最右出现位置（从右往左找）</span>
+<span class="comment"># 三个失败条件：</span>
+<span class="comment"># 1. S1不存在 (l==-1)</span>
+<span class="comment"># 2. S2不存在 (r==-1)</span>
+<span class="comment"># 3. S1的末尾越过S2的开头（重叠或反序）</span>
 <span class="keyword">if</span> l == -<span class="number">1</span> <span class="keyword">or</span> r == -<span class="number">1</span> <span class="keyword">or</span> l + <span class="keyword">len</span>(s1) &gt; r:
     <span class="keyword">print</span>(-<span class="number">1</span>)
 <span class="keyword">else</span>:
+    <span class="comment"># 跨距 = S2开始位置 - S1结束位置 = r - (l+len(s1))</span>
     <span class="keyword">print</span>(r - l - <span class="keyword">len</span>(s1))</code></pre>
             </details>
         </div>

@@ -4069,12 +4069,20 @@ X[9] = 31
             <strong>解题思路：</strong><p>遍历数组，将≤0的元素替换为1。数组下标从0开始，用 <code>X[i]</code> 访问第i个元素。</p>
 <p><strong>逐步模拟（输入 -73 27 -35 50 ...）：</strong></p>
 <pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
-i=0: 读入 -73 → -73≤0 → 替换为1 → 输出 X[0] = 1
-i=1: 读入  27 → 27>0  → 保留    → 输出 X[1] = 27
-i=2: 读入 -35 → -35≤0 → 替换为1 → 输出 X[2] = 1
-i=3: 读入  50 → 50>0  → 保留    → 输出 X[3] = 50
+数组下标:  [0]   [1]   [2]   [3]   [4]   [5]   [6]   [7]   [8]   [9]
+原始值:    -73   27    -35   50    -67   86    39    -81   -7    31
+
+i=0: 读入 -73 → -73≤0 → 替换为1 → X[0] = 1
+i=1: 读入  27 → 27>0  → 保留    → X[1] = 27
+i=2: 读入 -35 → -35≤0 → 替换为1 → X[2] = 1
+i=3: 读入  50 → 50>0  → 保留    → X[3] = 50
+i=4: 读入 -67 → -67≤0 → 替换为1 → X[4] = 1
+i=5: 读入  86 → 86>0  → 保留    → X[5] = 86
 ...
+
+最终数组: [ 1] [27] [ 1] [50] [ 1] [86] [39] [ 1] [ 1] [31]
 </pre>
+<p><strong>数组下标访问模式：</strong> 数组就像一排带编号的格子，X[i] 表示"取出第i个格子里的值"。下标从0开始，不是从1开始！</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -4177,8 +4185,10 @@ i=9: v=3072 → 输出 N[9] = 3072
     cin &gt;&gt; v;  <span class="comment">// 读入起点值，如 v=6</span>
     <span class="comment">// for循环三部分：初始化(i=0) → 条件(i&lt;10) → 更新(i++, v*=2)</span>
     <span class="comment">// 执行顺序：条件判断 → 循环体 → 更新 → 条件判断 → ...</span>
+    <span class="comment">// v的变化轨迹: 6 → 12 → 24 → 48 → 96 → 192 → 384 → 768 → 1536 → 3072</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++, v *= <span class="number">2</span>)
         <span class="comment">// 每次循环：先输出当前v，循环末尾才翻倍</span>
+        <span class="comment">// 相当于数组 N[] = {6, 12, 24, 48, 96, 192, 384, 768, 1536, 3072}</span>
         cout &lt;&lt; <span class="string">&quot;N[&quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot;] = &quot;</span> &lt;&lt; v &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -4519,6 +4529,14 @@ i=9: swap(arr[9],  arr[10]) → 交换  98 和 -95
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) cin &gt;&gt; arr[i];  <span class="comment">// 逐个读入</span>
     <span class="comment">// 双指针交换：i从左(0)往右，19-i从右(19)往左</span>
     <span class="comment">// 只需交换前半部分(i=0~9)，共10次</span>
+    <span class="comment">//</span>
+    <span class="comment">// 交换过程可视化（以输入 -40 57 99 2 ... 57 1 -32 为例）：</span>
+    <span class="comment">// 原始:  [-40] [57] [99] [2] ... [57] [1] [-32]</span>
+    <span class="comment">// i=0:  swap(arr[0], arr[19])  → 交换 -40 和 -32</span>
+    <span class="comment">// i=1:  swap(arr[1], arr[18])  → 交换  57 和   1</span>
+    <span class="comment">// i=2:  swap(arr[2], arr[17])  → 交换  99 和  54</span>
+    <span class="comment">// ...</span>
+    <span class="comment">// i=9:  swap(arr[9], arr[10])  → 交换  98 和 -95</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) swap(arr[i], arr[<span class="number">19</span> - i]);
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++)
         cout &lt;&lt; <span class="string">&quot;N[&quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot;] = &quot;</span> &lt;&lt; arr[i] &lt;&lt; endl;
@@ -4690,6 +4708,12 @@ i=3: t=1+2=3, a=2, b=3   → F(4)=3
     <span class="keyword">if</span> (n == <span class="number">0</span>) { cout &lt;&lt; <span class="number">0</span> &lt;&lt; endl; <span class="keyword">return</span> <span class="number">0</span>; }
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) {
         <span class="comment">// 三步滚动：临时变量保存 a+b，然后 a←b, b←t</span>
+        <span class="comment">// 滚动变量状态（以n=4为例）：</span>
+        <span class="comment">// 初始: a=0, b=1          → 代表 F(0), F(1)</span>
+        <span class="comment">// i=1:  t=0+1=1, a=1, b=1   → 代表 F(1), F(2)</span>
+        <span class="comment">// i=2:  t=1+1=2, a=1, b=2   → 代表 F(2), F(3)</span>
+        <span class="comment">// i=3:  t=1+2=3, a=2, b=3   → 代表 F(3), F(4)</span>
+        <span class="comment">// 输出 b=3 即 F(4)</span>
         <span class="keyword">long</span> <span class="keyword">long</span> t = a + b;  <span class="comment">// t = 新的斐波那契值</span>
         a = b;                <span class="comment">// a 前进一步</span>
         b = t;                <span class="comment">// b 前进一步</span>
@@ -4862,6 +4886,13 @@ i=10: 输出 10, sum=35+10=45
     <span class="keyword">while</span> (cin &gt;&gt; m &gt;&gt; n, m &gt; <span class="number">0</span> && n &gt; <span class="number">0</span>) {
         <span class="keyword">if</span> (m &gt; n) swap(m, n);  <span class="comment">// 保证 m≤n</span>
         <span class="keyword">int</span> sum = <span class="number">0</span>;
+        <span class="comment">// 累加过程追踪（M=5, N=10）：</span>
+        <span class="comment">// i=5:  sum = 0+5  =  5  → 输出 "5 "</span>
+        <span class="comment">// i=6:  sum = 5+6  = 11  → 输出 "6 "</span>
+        <span class="comment">// i=7:  sum = 11+7 = 18  → 输出 "7 "</span>
+        <span class="comment">// ...</span>
+        <span class="comment">// i=10: sum = 35+10= 45  → 输出 "10 "</span>
+        <span class="comment">// 最终输出: "5 6 7 8 9 10 Sum=45"</span>
         <span class="keyword">for</span> (<span class="keyword">int</span> i = m; i &lt;= n; i++) {
             cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;  <span class="comment">// 输出当前数</span>
             sum += i;           <span class="comment">// 累加到总和</span>
@@ -4947,10 +4978,15 @@ i=11 [11,0 ] [11,1 ] [11,2 ] ... [11,11 ]
     scanf(<span class="string">&quot;%d %c&quot;</span>, &l, &t);  <span class="comment">// l=行号, t=操作类型(S或M)</span>
     <span class="keyword">double</span> sum = <span class="number">0</span>, x;
     <span class="comment">// 双重循环读入12x12矩阵</span>
+    <span class="comment">// 矩阵元素 mat[i][j]：i是行号(0~11), j是列号(0~11)</span>
+    <span class="comment">// 外层循环i控制"行"，内层循环j控制"列"</span>
+    <span class="comment">// 按行优先顺序读入: 先读第0行的12个数，再读第1行...</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++)       <span class="comment">// i=行号 0~11</span>
         <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {  <span class="comment">// j=列号 0~11</span>
             scanf(<span class="string">&quot;%lf&quot;</span>, &x);
-            <span class="keyword">if</span> (i == l) sum += x;  <span class="comment">// 只累加第l行</span>
+            <span class="comment">// 只累加第l行：当行号i等于目标行l时，无论j是多少都累加</span>
+            <span class="comment">// 这样就把第l行的所有12个元素都加起来了</span>
+            <span class="keyword">if</span> (i == l) sum += x;
         }
     <span class="comment">// 三元运算符：t=='S'输出sum，否则输出sum/12</span>
     printf(<span class="string">&quot;%.1lf\n&quot;</span>, t == 'S' ? sum : sum / <span class="number">12</span>);
@@ -5042,10 +5078,16 @@ i=11: [ ... , arr[11][C], ... ] ← 累加
     <span class="keyword">int</span> c; <span class="keyword">char</span> t;
     scanf(<span class="string">&quot;%d %c&quot;</span>, &c, &t);  <span class="comment">// c=列号, t=操作类型</span>
     <span class="keyword">double</span> sum = <span class="number">0</span>, x;
+    <span class="comment">// 与JD051(行求和)的对比：</span>
+    <span class="comment">// 行求和: 固定i==l（行号等于目标），j从0到11遍历 → 横向一行</span>
+    <span class="comment">// 列求和: 固定j==c（列号等于目标），i从0到11遍历 → 纵向一列</span>
+    <span class="comment">// 读入顺序不变(行优先)，但累加条件变了</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++)       <span class="comment">// 遍历每一行</span>
         <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {  <span class="comment">// 遍历每一列</span>
             scanf(<span class="string">&quot;%lf&quot;</span>, &x);
-            <span class="keyword">if</span> (j == c) sum += x;  <span class="comment">// 只累加第c列</span>
+            <span class="comment">// 只累加第c列：列号j等于目标c时累加</span>
+            <span class="comment">// 取出: mat[0][c], mat[1][c], mat[2][c], ..., mat[11][c]</span>
+            <span class="keyword">if</span> (j == c) sum += x;
         }
     printf(<span class="string">&quot;%.1lf\n&quot;</span>, t == 'S' ? sum : sum / <span class="number">12</span>);
     <span class="keyword">return</span> <span class="number">0</span>;
@@ -5209,13 +5251,16 @@ i=9: j从2开始，j*j≤9
     <span class="keyword">int</span> n;
     cin &gt;&gt; n;
     <span class="comment">// 逐个检查 2 到 n 是否为质数</span>
+    <span class="comment">// 质数：只能被1和自身整除的数（如2,3,5,7,11...）</span>
+    <span class="comment">// 试除法：用2到√i之间的数去试除i</span>
+    <span class="comment">// 为什么只试到√i？如果i=a*b，那么a和b中必有一个≤√i</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) {
-        <span class="keyword">bool</span> prime = <span class="keyword">true</span>;  <span class="comment">// 假设i是质数</span>
-        <span class="comment">// 试除法：从2试到√i（用j*j&lt;=i避免浮点）</span>
+        <span class="keyword">bool</span> prime = <span class="keyword">true</span>;  <span class="comment">// 先假设i是质数</span>
+        <span class="comment">// j*j&lt;=i 等价于 j&lt;=√i，但避免了浮点运算</span>
         <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">2</span>; j * j &lt;= i; j++) {
-            <span class="keyword">if</span> (i % j == <span class="number">0</span>) {  <span class="comment">// 找到因子</span>
+            <span class="keyword">if</span> (i % j == <span class="number">0</span>) {  <span class="comment">// i能被j整除 → 找到因子</span>
                 prime = <span class="keyword">false</span>;  <span class="comment">// 不是质数</span>
-                <span class="keyword">break</span>;          <span class="comment">// 提前退出内层循环</span>
+                <span class="keyword">break</span>;          <span class="comment">// 提前退出，不用继续试</span>
             }
         }
         <span class="keyword">if</span> (prime) cout &lt;&lt; i &lt;&lt; endl;
@@ -5242,6 +5287,15 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
     <div class="chapter-subtitle">二维数组</div>
     <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
         <p>十二宫剑阵展开，光幕上浮现一个12×12的方格。"二维数组——矩阵。行与列交织，每个格子都是一个数据点。"</p><p>本章学习二维数组——矩阵的存储、遍历和方向数组。掌握这些，你就能操控任何网格结构。</p>
+    </div>
+    <div style="background:#e8f0fe;border-left:4px solid #1a73e8;padding:12px;margin:15px 0;border-radius:0 4px 4px 0">
+    <strong>矩阵i,j坐标速查：</strong><br>
+    <code>mat[i][j]</code> — i是行号(从上到下0~11), j是列号(从左到右0~11)<br>
+    主对角线: <code>i==j</code> | 反对角线: <code>i+j==11</code><br><br>
+    <strong>四域条件速查表（12x12矩阵）：</strong><br>
+    <code>上方: i&lt;j 且 i+j&lt;11</code> | <code>下方: i&gt;j 且 i+j&gt;11</code><br>
+    <code>左方: j&lt;i 且 i+j&lt;11</code> | <code>右方: j&gt;i 且 i+j&gt;11</code><br>
+    <code>右上半: j&gt;i</code> | <code>左下半: j&lt;i</code> | <code>左上半: i+j&lt;11</code> | <code>右下半: i+j&gt;11</code>
     </div>
 
     <div class="problem" id="JD055">
@@ -5316,19 +5370,25 @@ i=1,j=5: 1<5✓ 1+5=6<11✓ → 属于上方
     cin &gt;&gt; op;
     <span class="keyword">double</span> sum = <span class="number">0</span>;
     <span class="keyword">int</span> cnt = <span class="number">0</span>;
-    <span class="comment">// 遍历12x12矩阵的每个元素</span>
+    <span class="comment">// 12x12矩阵的i,j坐标系：</span>
+    <span class="comment">// i=行号(0~11, 从上到下), j=列号(0~11, 从左到右)</span>
+    <span class="comment">// 主对角线: i==j (从左上到右下)</span>
+    <span class="comment">// 反对角线: i+j==11 (从右上到左下)</span>
+    <span class="comment">//</span>
+    <span class="comment">// 两个条件确定"上方"三角形：</span>
+    <span class="comment">// i&lt;j  → 在主对角线的右上方</span>
+    <span class="comment">// i+j&lt;11 → 在反对角线的右上方</span>
+    <span class="comment">// 交集 → 右上角的小三角形</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
         <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
             cin &gt;&gt; x;
-            <span class="comment">// 上方区域：i&lt;j(主对角线上) 且 i+j&lt;11(反对角线上)</span>
             <span class="keyword">if</span> (i &lt; j && i + j &lt; <span class="number">11</span>) {
                 sum += x;
                 cnt++;
             }
         }
     }
-    <span class="comment">// S=求和，M=求平均(cnt为元素个数)</span>
     <span class="keyword">if</span> (op == 'S') printf(<span class="string">&quot;%.1f\n&quot;</span>, sum);
     <span class="keyword">else</span> printf(<span class="string">&quot;%.1f\n&quot;</span>, sum / cnt);
     <span class="keyword">return</span> <span class="number">0</span>;
@@ -6119,7 +6179,12 @@ i=11  ×  ×  ×  ×  ×  ×  ×  ×  ×  ×  ×  .
     <span class="keyword">while</span> (scanf(<span class="string">&quot;%d&quot;</span>, &n) == <span class="number">1</span> && n) {
         <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
             <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) {
-                <span class="comment">// 到四条边的最小距离</span>
+                <span class="comment">// 核心公式：位置(i,j)的值 = 到四条边的最小距离 + 1</span>
+                <span class="comment">// 到上边距离 = i          (行号，越往下越大)</span>
+                <span class="comment">// 到左边距离 = j          (列号，越往右越大)</span>
+                <span class="comment">// 到下边距离 = n-1-i      (从下往上数)</span>
+                <span class="comment">// 到右边距离 = n-1-j      (从右往左数)</span>
+                <span class="comment">// 取四者最小值，就是"离边界最近"的距离</span>
                 <span class="keyword">int</span> v = min(min(i, j), min(n - <span class="number">1</span> - i, n - <span class="number">1</span> - j));
                 printf(<span class="string">&quot;%3d&quot;</span>, v + <span class="number">1</span>);  <span class="comment">// %3d: 占3字符宽</span>
             }
@@ -6291,8 +6356,17 @@ data = sys.stdin.read().split()
     <span class="keyword">int</span> n;
     <span class="keyword">while</span> (scanf(<span class="string">&quot;%d&quot;</span>, &n) == <span class="number">1</span> && n) {
         <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
-            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)
+            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) {
+                <span class="comment">// M[i][j] = 2^(i+j)</span>
+                <span class="comment">// 位运算 1LL&lt;&lt;k = 2^k（1左移k位）</span>
+                <span class="comment">// 1LL是long long类型的1，防止左移超过31位溢出</span>
+                <span class="comment">//</span>
+                <span class="comment">// 3阶示例：          i+j的值：</span>
+                <span class="comment">//  1  2  4           0  1  2</span>
+                <span class="comment">//  2  4  8           1  2  3</span>
+                <span class="comment">//  4  8 16           2  3  4</span>
                 printf(<span class="string">&quot;%lld &quot;</span>, <span class="number">1LL</span> &lt;&lt; (i + j));
+            }
             printf(<span class="string">&quot;\n&quot;</span>);
         }
         printf(<span class="string">&quot;\n&quot;</span>);
@@ -6374,13 +6448,21 @@ dy = [ 1,  0, -1,  0]  ← 列变化量
 </pre>
 <p><strong>方向数组详解：</strong></p>
 <pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
-d=0(右): x不变, y+1 → 向右移动
-d=1(下): x+1, y不变 → 向下移动
-d=2(左): x不变, y-1 → 向左移动
-d=3(上): x-1, y不变 → 向上移动
+方向数组是处理矩阵"方向移动"的核心技巧：
 
-换向条件：下一步越界 或 已访问
-d = (d+1) % 4 → 右→下→左→上→右...循环
+    方向    d    dx[d]   dy[d]    含义
+    右      0      0       1      行不变, 列+1 → 向右
+    下      1      1       0      行+1, 列不变 → 向下
+    左      2      0      -1      行不变, 列-1 → 向左
+    上      3     -1       0      行-1, 列不变 → 向上
+
+dx = [0, 1, 0, -1]  ← 行的变化量
+dy = [1, 0, -1, 0]  ← 列的变化量
+
+移动公式: 新位置 (x+dx[d], y+dy[d])
+换向公式: d = (d+1) % 4  → 0→1→2→3→0→1... 循环
+
+适用场景：蛇形、螺旋、迷宫等需要"沿着方向走"的问题
 </pre>
 
         </div>
@@ -6400,20 +6482,32 @@ d = (d+1) % 4 → 右→下→左→上→右...循环
     <span class="keyword">int</span> n, m;
     scanf(<span class="string">&quot;%d%d&quot;</span>, &n, &m);
 
-    <span class="comment">// 方向数组：右(0,+1) 下(+1,0) 左(0,-1) 上(-1,0)</span>
+    <span class="comment">// 方向数组：用d(0~3)表示四个方向</span>
+    <span class="comment">// dx[d]和dy[d]分别是行和列的变化量</span>
     <span class="keyword">int</span> dx[] = {<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>}, dy[] = {<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>};
+
+    <span class="comment">// 模拟蛇形遍历（以3x3为例）：</span>
+    <span class="comment">// k=1: (0,0)填1, d=0(右), 下一步(0,1) → 填</span>
+    <span class="comment">// k=2: (0,1)填2, d=0(右), 下一步(0,2) → 填</span>
+    <span class="comment">// k=3: (0,2)填3, d=0(右), 下一步(0,3)越界 → 换方向d=1(下)</span>
+    <span class="comment">// k=4: (1,2)填4, d=1(下), 下一步(2,2) → 填</span>
+    <span class="comment">// k=5: (2,2)填5, d=1(下), 下一步(3,2)越界 → 换方向d=2(左)</span>
+    <span class="comment">// k=6: (2,1)填6, k=7: (2,0)填7 → 越界 → d=3(上)</span>
+    <span class="comment">// k=8: (1,0)填8, k=9: (1,1)填9 → 完成!</span>
+    <span class="comment">// 结果: 1 2 3 / 8 9 4 / 7 6 5</span>
 
     <span class="comment">// x,y=当前位置, d=方向(0=右), k=填入的数字</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>, y = <span class="number">0</span>, d = <span class="number">0</span>, k = <span class="number">1</span>; k &lt;= n * m; k++) {
-        res[x][y] = k;  <span class="comment">// 填入当前位置</span>
+        res[x][y] = k;  <span class="comment">// 在当前位置填入数字k</span>
         <span class="comment">// 计算下一步坐标</span>
         <span class="keyword">int</span> a = x + dx[d], b = y + dy[d];
-        <span class="comment">// 如果越界或已访问，转向（右→下→左→上）</span>
+        <span class="comment">// 如果下一步越界或已经填过数字，需要转向</span>
+        <span class="comment">// res[a][b]!=0 表示该位置已经被填过</span>
         <span class="keyword">if</span> (a &lt; <span class="number">0</span> || a &gt;= n || b &lt; <span class="number">0</span> || b &gt;= m || res[a][b]) {
-            d = (d + <span class="number">1</span>) % <span class="number">4</span>;  <span class="comment">// 换方向</span>
-            a = x + dx[d], b = y + dy[d];
+            d = (d + <span class="number">1</span>) % <span class="number">4</span>;  <span class="comment">// 右→下→左→上→右 循环</span>
+            a = x + dx[d], b = y + dy[d];  <span class="comment">// 重新计算新方向的下一步</span>
         }
-        x = a, y = b;  <span class="comment">// 移动到下一步</span>
+        x = a, y = b;  <span class="comment">// 移动到下一步位置</span>
     }
 
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
@@ -6450,6 +6544,21 @@ d = x = y = <span class="number">0</span>  <span class="comment"># d=方向, (x,
         <p>夜风卷起藏经阁的竹帘，月光洒在一排排古旧的竹简上。赵晴儿手持灯笼，缓步走过书架，指尖拂过积满灰尘的卷轴。</p>
         <p>「少白，剑道的传承不在刀剑之中，而在文字之间。」她抽出一卷泛黄的密文，展开铺在书案上，「字符串——字符的序列。古人把毕生所学刻在竹简上，一字一句，皆是心血。读懂文字，才能读懂剑意。」</p>
         <p>本章学习字符串处理——查找、替换、分割、加密。这些操作看似枯燥，却是破解古卷密文、传承剑道精髓的钥匙。</p>
+    </div>
+    <div style="background:#e8f0fe;border-left:4px solid #1a73e8;padding:12px;margin:15px 0;border-radius:0 4px 4px 0">
+    <strong>Python vs C++ 字符串操作速查：</strong><br>
+    <table style="width:100%;font-size:0.9em;margin-top:8px;border-collapse:collapse">
+    <tr style="background:#d4e4f7"><td style="padding:4px 8px;border:1px solid #bbb"><strong>操作</strong></td><td style="padding:4px 8px;border:1px solid #bbb"><strong>C++ (string)</strong></td><td style="padding:4px 8px;border:1px solid #bbb"><strong>Python (str)</strong></td></tr>
+    <tr><td style="padding:4px 8px;border:1px solid #bbb">读整行</td><td style="padding:4px 8px;border:1px solid #bbb"><code>getline(cin, s)</code></td><td style="padding:4px 8px;border:1px solid #bbb"><code>input()</code></td></tr>
+    <tr><td style="padding:4px 8px;border:1px solid #bbb">长度</td><td style="padding:4px 8px;border:1px solid #bbb"><code>s.size()</code></td><td style="padding:4px 8px;border:1px solid #bbb"><code>len(s)</code></td></tr>
+    <tr><td style="padding:4px 8px;border:1px solid #bbb">替换字符</td><td style="padding:4px 8px;border:1px solid #bbb">循环遍历+原地修改</td><td style="padding:4px 8px;border:1px solid #bbb"><code>s.replace(old, new)</code></td></tr>
+    <tr><td style="padding:4px 8px;border:1px solid #bbb">分割单词</td><td style="padding:4px 8px;border:1px solid #bbb"><code>stringstream</code></td><td style="padding:4px 8px;border:1px solid #bbb"><code>s.split()</code></td></tr>
+    <tr><td style="padding:4px 8px;border:1px solid #bbb">子串查找</td><td style="padding:4px 8px;border:1px solid #bbb"><code>s.find(t)</code></td><td style="padding:4px 8px;border:1px solid #bbb"><code>s.find(t)</code> 或 <code>t in s</code></td></tr>
+    <tr><td style="padding:4px 8px;border:1px solid #bbb">连接</td><td style="padding:4px 8px;border:1px solid #bbb"><code>a + b</code></td><td style="padding:4px 8px;border:1px solid #bbb"><code>a + b</code> 或 <code>" ".join(list)</code></td></tr>
+    <tr><td style="padding:4px 8px;border:1px solid #bbb">字符→ASCII</td><td style="padding:4px 8px;border:1px solid #bbb"><code>(int)c</code></td><td style="padding:4px 8px;border:1px solid #bbb"><code>ord(c)</code></td></tr>
+    <tr><td style="padding:4px 8px;border:1px solid #bbb">ASCII→字符</td><td style="padding:4px 8px;border:1px solid #bbb"><code>(char)n</code></td><td style="padding:4px 8px;border:1px solid #bbb"><code>chr(n)</code></td></tr>
+    </table>
+    <p style="margin-top:8px;font-size:0.9em"><strong>核心区别：</strong> C++的char数组可原地修改，Python的str是不可变类型（每次操作返回新字符串）。</p>
     </div>
 
     <div class="problem" id="JD067">
@@ -7019,8 +7128,14 @@ Python str:   a==b, a!=b, a&lt;b 直接比较
             <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
 p1, p2 = data[<span class="number">0</span>], data[<span class="number">1</span>]
-<span class="keyword">if</span> p1 == p2: <span class="keyword">print</span>(<span class="string">'Tie'</span>)
-<span class="keyword">elif</span> (p1==<span class="string">'scissors'</span> <span class="keyword">and</span> p2==<span class="string">'cloth'</span>) <span class="keyword">or</span> (p1==<span class="string">'rock'</span> <span class="keyword">and</span> p2==<span class="string">'scissors'</span>) <span class="keyword">or</span> (p1==<span class="string">'cloth'</span> <span class="keyword">and</span> p2==<span class="string">'rock'</span>):
+<span class="comment"># Python字符串比较：直接用 == 运算符</span>
+<span class="comment"># C++ char数组比较: strcmp(a,b)==0</span>
+<span class="comment"># C++ string比较:   a==b（与Python相同）</span>
+<span class="keyword">if</span> p1 == p2:
+    <span class="keyword">print</span>(<span class="string">'Tie'</span>)
+<span class="keyword">elif</span> (p1==<span class="string">'scissors'</span> <span class="keyword">and</span> p2==<span class="string">'cloth'</span>) <span class="keyword">or</span> \
+     (p1==<span class="string">'rock'</span> <span class="keyword">and</span> p2==<span class="string">'scissors'</span>) <span class="keyword">or</span> \
+     (p1==<span class="string">'cloth'</span> <span class="keyword">and</span> p2==<span class="string">'rock'</span>):
     <span class="keyword">print</span>(<span class="string">'Player1'</span>)
 <span class="keyword">else</span>:
     <span class="keyword">print</span>(<span class="string">'Player2'</span>)</code></pre>
@@ -7113,15 +7228,22 @@ W(87) → 大写: (87-65+1)%26+65 = 88 → 'X'
     cout&lt;&lt;s&lt;&lt;endl;<span class="comment">//输出结果</span>
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">r = []
+            <pre><code class="language-python"><span class="comment"># Python实现凯撒密码加密</span>
+<span class="comment"># 与C++的关键区别：</span>
+<span class="comment"># C++: 用auto&c直接引用修改原字符串（原地修改）</span>
+<span class="comment"># Python: 字符串不可变，必须构建新字符串（用列表收集后join）</span>
+r = []
 <span class="keyword">for</span> c <span class="keyword">in</span> <span class="keyword">input</span>():
     <span class="keyword">if</span> <span class="string">&quot;a&quot;</span> &lt;= c &lt;= <span class="string">&quot;z&quot;</span>:
+        <span class="comment"># 小写字母：归到0~25，+1偏移，取模循环，转回字符</span>
+        <span class="comment"># 例: 'z'(122) → (122-97+1)%26+97 = 26%26+97 = 97 → 'a'</span>
         r.append(chr((ord(c) - <span class="number">97</span> + <span class="number">1</span>) % <span class="number">26</span> + <span class="number">97</span>))
     <span class="keyword">elif</span> <span class="string">&quot;A&quot;</span> &lt;= c &lt;= <span class="string">&quot;Z&quot;</span>:
+        <span class="comment"># 大写字母同理，基址从97换成65</span>
         r.append(chr((ord(c) - <span class="number">65</span> + <span class="number">1</span>) % <span class="number">26</span> + <span class="number">65</span>))
     <span class="keyword">else</span>:
-        r.append(c)
-<span class="keyword">print</span>(<span class="string">&quot;&quot;</span>.join(r))</code></pre>
+        r.append(c)  <span class="comment"># 非字母字符原样保留</span>
+<span class="keyword">print</span>(<span class="string">&quot;&quot;</span>.join(r))  <span class="comment"># 列表→字符串</span></code></pre>
             </details>
         </div>
     </div>
@@ -7498,16 +7620,25 @@ Python: from collections import Counter
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
+<span class="comment">// cnt[0]统计'a'出现次数, cnt[1]统计'b', ..., cnt[25]统计'z'</span>
+<span class="comment">// 字符映射: str[i]-'a' 把 'a'~'z' 映射到 0~25</span>
 <span class="keyword">int</span> cnt[<span class="number">26</span>];
 <span class="keyword">char</span> str[<span class="number">100010</span>];
 
 <span class="comment">// 独字寻踪：找第一个不重复字符</span>
+<span class="comment">// 两遍扫描法：</span>
+<span class="comment">// 第1遍：统计每个字符出现的次数</span>
+<span class="comment">// 第2遍：从头找第一个次数为1的字符</span>
 <span class="keyword">int</span> main()
 {
     cin &gt;&gt; str;
 
+    <span class="comment">// 第1遍：统计频率</span>
+    <span class="comment">// 例 "abaccdeff": cnt['a'-'a']=2, cnt['b'-'a']=1, cnt['c'-'a']=2, ...</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; str[i]; i ++ ) cnt[str[i] - 'a'] ++ ;
 
+    <span class="comment">// 第2遍：找第一个频率为1的</span>
+    <span class="comment">// 'a'→cnt[0]=2 跳过, 'b'→cnt[1]=1 找到!</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; str[i]; i ++ )
         <span class="keyword">if</span> (cnt[str[i] - 'a'] == <span class="number">1</span>)
         {
@@ -7517,7 +7648,7 @@ Python: from collections import Counter
 
         puts(<span class="string">&quot;no&quot;</span>);
 
-    <span class="keyword">return</span> <span class="number">0</span>;    
+    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">s = <span class="keyword">input</span>()
@@ -7726,25 +7857,31 @@ C++:    用循环拼接: for(i=0;i<n;i++) r += s;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="comment"># 字符串乘方</span>
+            <pre><code class="language-python"><span class="comment"># 字符串乘方 — Python版使用KMP的next数组（更高效）</span>
+<span class="comment"># ne[i] = 字符串s[0..i]的最长相等前后缀长度</span>
+<span class="comment"># 核心结论：最小周期长度 = n - ne[n-1]</span>
+<span class="comment"># 如果 n % 周期长度 == 0，则字符串可由周期重复构成</span>
+<span class="comment">#</span>
+<span class="comment"># 对比C++版的暴力枚举：C++从大到小枚举n，检查s重复n次是否等于原串</span>
+<span class="comment"># Python版用KMP的next数组，O(n)时间复杂度，更高效</span>
 <span class="keyword">while</span> <span class="keyword">True</span>:
     s = <span class="keyword">input</span>().strip()
     <span class="keyword">if</span> s == <span class="string">'.'</span>:
         <span class="keyword">break</span>
     n = <span class="keyword">len</span>(s)
-    ne = [<span class="number">0</span>] * n
+    ne = [<span class="number">0</span>] * n  <span class="comment"># next数组（前缀函数）</span>
     j = <span class="number">0</span>
     <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n):
         <span class="keyword">while</span> j &gt; <span class="number">0</span> <span class="keyword">and</span> s[i] != s[j]:
-            j = ne[j - <span class="number">1</span>]
+            j = ne[j - <span class="number">1</span>]  <span class="comment">// 回退</span>
         <span class="keyword">if</span> s[i] == s[j]:
             j += <span class="number">1</span>
         ne[i] = j
-    length = n - ne[n - <span class="number">1</span>]
+    length = n - ne[n - <span class="number">1</span>]  <span class="comment">// 最小周期长度</span>
     <span class="keyword">if</span> n % length == <span class="number">0</span>:
-        <span class="keyword">print</span>(n // length)
+        <span class="keyword">print</span>(n // length)  <span class="comment">// 重复次数</span>
     <span class="keyword">else</span>:
-        <span class="keyword">print</span>(<span class="number">1</span>)</code></pre>
+        <span class="keyword">print</span>(<span class="number">1</span>)  <span class="comment">// 不能整除，整个字符串就是最小单元</span></code></pre>
             </details>
         </div>
     </div>
@@ -7876,13 +8013,20 @@ Python: s.find(s1)  → 从左找第一次出现的位置
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="comment"># 字符串最大跨距</span>
+<span class="comment"># s.find(s1): 从左往右找s1第一次出现的位置</span>
+<span class="comment"># s.rfind(s2): 从右往左找s2最后一次出现的位置</span>
+<span class="comment"># 比C++手动逐字符匹配简洁得多！</span>
 s, s1, s2 = <span class="keyword">input</span>().split(<span class="string">','</span>)
-n = <span class="keyword">len</span>(s)
-l = s.find(s1)
-r = s.rfind(s2)
+l = s.find(s1)     <span class="comment"># S1最左出现位置（从左往右找）</span>
+r = s.rfind(s2)    <span class="comment"># S2最右出现位置（从右往左找）</span>
+<span class="comment"># 三个失败条件：</span>
+<span class="comment"># 1. S1不存在 (l==-1)</span>
+<span class="comment"># 2. S2不存在 (r==-1)</span>
+<span class="comment"># 3. S1的末尾越过S2的开头（重叠或反序）</span>
 <span class="keyword">if</span> l == -<span class="number">1</span> <span class="keyword">or</span> r == -<span class="number">1</span> <span class="keyword">or</span> l + <span class="keyword">len</span>(s1) &gt; r:
     <span class="keyword">print</span>(-<span class="number">1</span>)
 <span class="keyword">else</span>:
+    <span class="comment"># 跨距 = S2开始位置 - S1结束位置 = r - (l+len(s1))</span>
     <span class="keyword">print</span>(r - l - <span class="keyword">len</span>(s1))</code></pre>
             </details>
         </div>
@@ -11402,6 +11546,24 @@ x = 0, 循环结束。结果: 2 个 1。
 
             <h4>为什么 lowbit 有效？</h4>
             <p>x & (-x) 在补码表示下，-x = ~x + 1。x 和 -x 做 AND，恰好保留最低位的 1，其余全变 0。每次减去 lowbit，就消掉一个 1，所以循环次数 = 1 的个数。</p>
+
+            <h4>n & (n-1) 的妙用：清除最低位的 1</h4>
+            <p><code>n & (n-1)</code> 这个操作会把 n 的二进制中<strong>最低位的 1 变成 0</strong>，其余位不变。用它来统计 1 的个数非常方便——每次操作消掉一个 1，操作几次就有几个 1。</p>
+            <p><strong>以 n = 12 为例：</strong></p>
+            <pre>
+n = 12，二进制 1100（有 2 个 1）
+
+第1轮: n    = 12 = 1100
+       n-1  = 11 = 1011
+       n & (n-1) = 1100 & 1011 = 1000 = 8  （消掉了最低位的1！）
+
+第2轮: n    = 8  = 1000
+       n-1  = 7  = 0111
+       n & (n-1) = 1000 & 0111 = 0000 = 0  （又消掉一个1！）
+
+n = 0，循环结束。共执行 2 轮 → 12 的二进制有 2 个 1  ✓
+            </pre>
+            <p><strong>原理</strong>：n-1 会把 n 最低位的 1 变成 0，该位右边的所有 0 变成 1。两者做 AND，恰好把最低位的 1 消掉，其余位不受影响。这比逐位右移更快——循环次数直接等于 1 的个数，而非总位数。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -11521,6 +11683,21 @@ C = [3, 4, 4, 1]，倒序输出 → 1443
             <p>1. <strong>倒序存储</strong>：让 A[0] 对应个位，进位自然向右（高下标）传播。</p>
             <p>2. <strong>进位变量 t</strong>：每一步 t = 当前位之和，C[i] = t%10（留余），t = t/10（进位）。</p>
             <p>3. <strong>最后检查 t</strong>：如果最高位还有进位，别忘了多加一位。</p>
+
+            <h4>边界情况：不同长度与最终进位</h4>
+            <p>两个数长度不同时，短的那个高位补 0 即可——代码中用 <code>i &lt; A.size()</code> 和 <code>i &lt; B.size()</code> 分别判断，超出范围就不加。</p>
+            <p><strong>容易出错的例子：999 + 1 = 1000</strong></p>
+            <pre>
+A = [9, 9, 9], B = [1]
+
+i=0: t = 9 + 1 + 0 = 10  → C = [0], t = 1
+i=1: t = 9 + 0 + 1 = 10  → C = [0, 0], t = 1
+i=2: t = 9 + 0 + 1 = 10  → C = [0, 0, 0], t = 1
+
+循环结束，t = 1 ≠ 0 → C.push_back(1) → C = [0, 0, 0, 1]
+倒序输出 → 1000  ✓
+            </pre>
+            <p>如果没有最后的 <code>if(t) C.push_back(1)</code>，结果就错成了 000！所以<strong>最终进位检查是必须的</strong>——它处理的是结果比两个加数都多一位的情况。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -11672,6 +11849,26 @@ C = [7, 8, 2, 5]，倒序输出 → 5287
             <p>1. <strong>借位技巧</strong>：用 <code>(t + 10) % 10</code> 统一处理正负——t>=0 时结果就是 t，t<0 时自动加 10。</p>
             <p>2. <strong>去前导零</strong>：减法结果可能有前导零（如 1000-999=0001），用 while 循环去掉。</p>
             <p>3. <strong>负数处理</strong>：如果 A < B，先算 B - A，再在前面加负号。</p>
+
+            <h4>负数结果示例：456 - 987</h4>
+            <p>当 A=456、B=987 时，A &lt; B，结果为负。算法步骤：</p>
+            <pre>
+第一步：比较大小 → A(456) < B(987)，标记结果为负数
+
+第二步：交换，计算 B - A = 987 - 456
+  A = [7, 8, 9], B = [6, 5, 4]（倒序）
+
+  i=0: t = 7 - 0 - 6 = 1   → C = [1], t = 0
+  i=1: t = 8 - 0 - 5 = 3   → C = [1, 3], t = 0
+  i=2: t = 9 - 0 - 4 = 5   → C = [1, 3, 5], t = 0
+
+  C = [1, 3, 5]，倒序输出 → 531
+
+第三步：前面加负号 → -531
+
+验证: 456 - 987 = -531  ✓
+            </pre>
+            <p><strong>关键</strong>：代码中永远只做"大数减小数"，然后根据原始输入的大小关系决定是否加负号。这样避免了在每位减法中处理负数的麻烦。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -11853,6 +12050,36 @@ i=3: t = A[3]*b + t = 9*9 + 7 = 88
 
             <h4>与加法的区别</h4>
             <p>乘法中 t = A[i]*b + t，一个位乘以小数可能产生很大的进位（最大 9*9999+...），所以循环条件用 <code>i < A.size() || t</code>——当 A 遍历完但 t 还有剩余时，继续处理进位。</p>
+
+            <h4>特殊情况与大进位示例</h4>
+            <p><strong>特殊情况：b = 0</strong>——任何数乘以 0 都是 0。</p>
+            <pre>
+A = [6, 7, 8, 9]（即 9876），b = 0
+
+i=0: t = 6*0 + 0 = 0  → C = [0], t = 0
+i=1: t = 7*0 + 0 = 0  → C = [0, 0], t = 0
+i=2: t = 8*0 + 0 = 0  → C = [0, 0, 0], t = 0
+i=3: t = 9*0 + 0 = 0  → C = [0, 0, 0, 0], t = 0
+
+循环结束，t = 0，不追加。
+C = [0, 0, 0, 0]，去前导零 → C = [0]
+输出 → 0  ✓
+            </pre>
+            <p>注意 <code>while(C.size()&gt;1 &amp;&amp; C.back()==0) C.pop_back()</code> 这行代码——它去掉了前导零，但保留至少一位，确保 0 的结果不会变成空串。</p>
+
+            <p><strong>大进位情况：9999 × 9 = 89991</strong></p>
+            <pre>
+A = [9, 9, 9, 9]（倒序），b = 9
+
+i=0: t = 9*9 + 0 = 81     → C = [1],     t = 8
+i=1: t = 9*9 + 8 = 89     → C = [1, 9],  t = 8
+i=2: t = 9*9 + 8 = 89     → C = [1, 9, 9],  t = 8
+i=3: t = 9*9 + 8 = 89     → C = [1, 9, 9, 9],  t = 8
+
+循环结束，t = 8 > 0 → C.push_back(8) → C = [1, 9, 9, 9, 8]
+倒序输出 → 89991  ✓
+            </pre>
+            <p>每个 9×9 产生 81，加上前一位的进位 8，得到 89——进位高达 8。这说明乘法的进位远比加法大（加法最多进 1），所以 <strong>t 的类型要足够大</strong>，不能只用 char。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -11997,7 +12224,29 @@ C = [0, 4, 2, 9]，去掉高位的 0 → C = [4, 2, 9]
             <h4>核心要点</h4>
             <p>1. <strong>从高位开始</strong>：和竖式除法方向一致，r = r*10 + A[i] 模拟"把下一位拉下来"。</p>
             <p>2. <strong>商的存储顺序</strong>：因为从高位往低位走，C[0] 是商的最高位，最后不需要反转（但代码中为了统一存储风格做了 reverse）。</p>
-            <p>3. <strong>去前导零</strong>：商的高位可能是 0（当被除数高位 < 除数时）。</p>
+            <p>3. <strong>去前导零</strong>：商的高位可能是 0（当被除数高位 &lt; 除数时）。</p>
+
+            <h4>特殊情况：被除数小于除数（15 ÷ 23）</h4>
+            <p>当 A 的每一位都比 B 小时，商为 0，余数就是 A 本身。</p>
+            <pre>
+a = "15" → A = [5, 1]（倒序，A[1]=1 是最高位）
+b = 23
+
+i=1 (最高位1): r = 0*10 + 1 = 1
+     1 ÷ 23 = 0 余 1
+     C.push_back(0)  → C = [0], r = 1
+
+i=0 (最低位5): r = 1*10 + 5 = 15
+     15 ÷ 23 = 0 余 15
+     C.push_back(0)  → C = [0, 0], r = 15
+
+去前导零: C = [0, 0] → C = [0]
+输出商 → 0，余数 → 15
+            </pre>
+            <pre>
+验证: 23 × 0 + 15 = 15  ✓
+            </pre>
+            <p><strong>关键观察</strong>：算法天然处理了 A &lt; B 的情况——每一位都除不出，商全是 0，最终去前导零后只剩一个 0。余数 r 就是 A 的原始值。不需要任何特殊处理。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -12119,6 +12368,23 @@ i=1, j=1: A[1]+B[1] = 2+4 = 6  = 6  → 找到！输出 (1, 1)
 
             <h4>为什么不会漏解？</h4>
             <p>当 A[i]+B[j] > x 时，因为 A 是升序的，A[i+1]+B[j] 只会更大，所以 j 必须减小才有机会等于 x。同理，和太小时 i 必须增大。每一步要么 i++ 要么 j--，两个指针各走一遍就结束，总复杂度 O(n+m)。</p>
+
+            <h4>为什么是 O(n+m)？严格分析</h4>
+            <p>可能有人疑惑：外层 for 循环 O(n)，内层 while 也循环，岂不是 O(n*m)？</p>
+            <p><strong>关键观察</strong>：指针 i 只能向右移动（从 0 到 n-1），指针 j 只能向左移动（从 m-1 到 0）。两者都<strong>不会回头</strong>。</p>
+            <pre>
+整个过程中：
+  i 最多移动 n 次（从 0 到 n-1）
+  j 最多移动 m 次（从 m-1 到 0）
+
+总操作次数 ≤ n + m
+
+例如 n=4, m=5 的样例中：
+  i: 0 → 0 → 0 → 0 → 1  （移动 1 次）
+  j: 4 → 3 → 2 → 1 → 1  （移动 3 次）
+  总移动: 1 + 3 = 4 次 ≤ 4 + 5 = 9
+            </pre>
+            <p>虽然代码写成了 for + while 的嵌套形式，但 j 在整个程序运行过程中<strong>只减不增</strong>，所以 while 循环的总执行次数不超过 m。这就是摊还分析（amortized analysis）的经典应用——看似嵌套，实则线性。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -12229,6 +12495,22 @@ p = 3 = len(a) → a 的所有元素都匹配了 → 输出 "Yes"
             <p>1. p 只会前进不会后退，所以匹配到的 a 的元素在 b 中保持原有次序。</p>
             <p>2. i 只遍历 b 一遍，时间复杂度 O(m)。</p>
             <p>3. 如果 p 最终等于 a 的长度，说明 a 的每个元素都在 b 中找到了匹配位置。</p>
+
+            <h4>反例：顺序错乱就不是子序列</h4>
+            <p>a = [1, 3, 2]，b = [1, 2, 3, 4, 5]——a 不是 b 的子序列。</p>
+            <pre>
+p = 0（指向 a[0]=1）
+
+i=0: b[0]=1, a[p]=1 → 匹配！p = 1
+i=1: b[1]=2, a[p]=3 → 不匹配，跳过
+i=2: b[2]=3, a[p]=3 → 匹配！p = 2
+i=3: b[3]=4, a[p]=2 → 不匹配，跳过
+i=4: b[4]=5, a[p]=2 → 不匹配，跳过
+
+p = 2 ≠ 3 = len(a) → 输出 "No"
+            </pre>
+            <p>虽然 1、3、2 这三个数<b>都</b>出现在 b 中，但它们在 b 中的出现顺序是 1 → 2 → 3，而 a 要求的顺序是 1 → 3 → 2。a 中的 2 要在 3 之后出现，但 b 中 2 在 3 之前。所以不是子序列。</p>
+            <p><strong>核心理解</strong>：子序列不仅要求"每个元素都存在"，还要求"相对顺序一致"。指针 p 只前进不后退，天然保证了这一点。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -12334,6 +12616,32 @@ i=4, a[4]=5: cnt{2:1,3:1,5:1}，无重复，窗口 [2,4]，res = max(2,3) = 3
             <h4>为什么是 O(n)？</h4>
             <p>右指针 i 从 0 走到 n-1，左指针 l 只会前进不会后退。每个元素最多被加入窗口一次、移出窗口一次，所以总共 O(n)。</p>
             <p><strong>滑动窗口口诀</strong>：右指针扩展，左指针收缩——像一扇窗户在数组上滑动，永远维护窗口内的"合法性"（无重复）。</p>
+
+            <h4>复杂案例追踪：[1, 2, 3, 1, 2, 3, 2]</h4>
+            <p>这个例子展示了窗口需要大幅收缩的情况：</p>
+            <pre>
+l = 0, res = 0
+
+i=0, a[0]=1: cnt{1:1}          窗口 [0,0], res = 1
+i=1, a[1]=2: cnt{1:1,2:1}      窗口 [0,1], res = 2
+i=2, a[2]=3: cnt{1:1,2:1,3:1}  窗口 [0,2], res = 3
+i=3, a[3]=1: cnt{1:2,2:1,3:1}  1重复！收缩：
+     cnt[1]--, l=1  → cnt{1:1,2:1,3:1}  不重复了
+     窗口 [1,3], res = 3
+i=4, a[4]=2: cnt{1:1,2:2,3:1}  2重复！收缩：
+     cnt[2]--, l=2  → cnt{1:1,2:1,3:1}  不重复了
+     窗口 [2,4], res = 3
+i=5, a[5]=3: cnt{1:1,2:1,3:2}  3重复！收缩：
+     cnt[3]--, l=3  → cnt{1:1,2:1,3:1}  不重复了
+     窗口 [3,5], res = 3
+i=6, a[6]=2: cnt{1:1,2:2,3:1}  2重复！收缩：
+     cnt[1]--, l=4  → cnt{1:0,2:2,3:1}  2还重复！
+     cnt[2]--, l=5  → cnt{1:0,2:1,3:1}  不重复了
+     窗口 [5,6], res = 3
+
+最终结果: 3（对应子序列 [1,2,3] 或 [2,3,1] 或 [3,1,2]）
+            </pre>
+            <p><strong>注意 i=6 这一步</strong>：遇到重复后，左指针需要连续收缩两次（从 l=3 到 l=5）才能消除重复。这说明 while 循环中可能执行多次，但每个元素最多被左指针"跳过"一次，总复杂度仍然是 O(n)。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -12457,6 +12765,23 @@ s = [0, 2, 3, 6, 12, 16]
 
             <h4>时间复杂度</h4>
             <p>预处理 O(n) 构建 s[]，每次查询 O(1)。总复杂度 O(n + m)，远优于暴力的 O(n*m)。</p>
+
+            <h4>公式推导：为什么 sum[l..r] = s[r] - s[l-1]？</h4>
+            <p>设原数组为 a[1], a[2], ..., a[n]，前缀和定义为：</p>
+            <pre>
+S[i] = a[1] + a[2] + ... + a[i]
+            </pre>
+            <p>展开 s[r] 和 s[l-1]：</p>
+            <pre>
+S[r]   = a[1] + a[2] + ... + a[l-1] + a[l] + a[l+1] + ... + a[r]
+S[l-1] = a[1] + a[2] + ... + a[l-1]
+
+S[r] - S[l-1] = (a[1]+...+a[l-1]+a[l]+...+a[r])
+              - (a[1]+...+a[l-1])
+              = a[l] + a[l+1] + ... + a[r]
+              = sum[l..r]  ✓
+            </pre>
+            <p><strong>核心理解</strong>：s[r] 包含从 1 到 r 的全部，s[l-1] 包含从 1 到 l-1 的全部。两者相减，1 到 l-1 的部分被抵消，恰好剩下 l 到 r 的和。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -12606,6 +12931,37 @@ s 矩阵:
 要的部分 = 全部 - 上面多减 - 左边多减 + 左上多减的
          = s[x2][y2] - s[x1-1][y2] - s[x2][y1-1] + s[x1-1][y1-1]
             </pre>
+
+            <h4>容斥原理详解——为什么公式里有加有减？</h4>
+            <p>s[x2][y2] 是从 (1,1) 到 (x2,y2) 整个大矩形的和。但我们只要从 (x1,y1) 到 (x2,y2) 的子矩形。看下面的图：</p>
+            <pre>
+    列 1..y1-1    列 y1..y2
+  ┌─────────────┬───────────┐
+  │             │           │
+  │   区域 A    │  区域 B    │  行 1..x1-1
+  │  (要减掉)   │  (要减掉)  │
+  │             │           │
+  ├─────────────┼───────────┤
+  │             │           │
+  │   区域 C    │  区域 D    │  行 x1..x2
+  │  (要减掉)   │  (我们要的!)│
+  │             │           │
+  └─────────────┴───────────┘
+
+s[x2][y2]   = A + B + C + D  （整个大矩形）
+s[x1-1][y2] = A + B           （上半部分，需要减掉）
+s[x2][y1-1] = A + C           （左半部分，需要减掉）
+
+s[x2][y2] - s[x1-1][y2] - s[x2][y1-1]
+= (A+B+C+D) - (A+B) - (A+C)
+= D - A
+
+问题：A 被减了两次！所以要加回来：
+s[x1-1][y1-1] = A
+
+最终：D - A + A = D = 子矩阵和 ✓
+            </pre>
+            <p><strong>记忆口诀</strong>：大减上，减左，加左上——因为左上角被多减了一次，必须补回来。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -12753,6 +13109,38 @@ a[1] = 3, a[2] = 3+2 = 5, a[3] = 5+4 = 9...
             <p>1. <strong>区间修改 = 两点操作</strong>：把 [l,r]+c 变成 b[l]+=c, b[r+1]-=c，只需 O(1)。</p>
             <p>2. <strong>前缀和是逆运算</strong>：差分的前缀和就是原数组。先做所有修改，最后一次前缀和还原。</p>
             <p>3. <strong>类比</strong>：想象在 b[l] 处"注入"c 的水量，在 b[r+1] 处"抽取"c 的水量。前缀和就像水流累积——l 到 r 之间水位上升了 c，其余不变。</p>
+
+            <h4>差分 vs 暴力：效率对比</h4>
+            <p>假设数组长度 n=100000，有 m=100000 个区间修改操作：</p>
+            <pre>
+暴力做法（逐个修改）:
+  每个操作遍历 [l, r] 的每个位置 → 每次 O(n)
+  m 个操作 → 总计 O(m * n) = O(10^10) → 超时！
+
+差分做法:
+  每个操作只改 b[l] 和 b[r+1] 两个位置 → 每次 O(1)
+  m 个操作 → 总计 O(m)
+  最后一次前缀和还原 → O(n)
+  总计 O(m + n) = O(2 * 10^5) → 秒出结果！
+            </pre>
+            <p><strong>直观对比</strong>：</p>
+            <pre>
+操作 [3, 7] + 5, [2, 5] + 3, [6, 9] + 2  （n=10, m=3）
+
+暴力：逐个修改每个位置
+  操作1: a[3..7] 每个+5 → 改7个位置
+  操作2: a[2..5] 每个+3 → 改4个位置
+  操作3: a[6..9] 每个+2 → 改4个位置
+  共改 7+4+4 = 15 个位置
+
+差分：只改端点
+  操作1: b[3]+=5, b[8]-=5         → 改2个位置
+  操作2: b[2]+=3, b[6]-=3         → 改2个位置
+  操作3: b[6]+=2, b[10]-=2        → 改2个位置
+  共改 6 个位置 + 最后 O(n) 前缀和还原
+
+差距随 m 增大而急剧拉大：差分是"预计算"思想的典范。
+            </pre>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -12911,6 +13299,40 @@ b[x2+1][y2+1] += c    ← 修补多减的部分
             <p>一维差分：区间 [l,r] 加 c → b[l]+=c, b[r+1]-= c（<strong>2个点</strong>）</p>
             <p>二维差分：子矩阵加 c → 4个角加减（<strong>4个点</strong>）</p>
             <p>维度越高，"角"越多，但核心思想不变：用端点的增减控制范围。</p>
+
+            <h4>从差分矩阵还原最终结果——逐步追踪</h4>
+            <p>所有操作完成后，差分矩阵 b 存储的是"变化量"。对 b 做二维前缀和，就还原出叠加在原矩阵上的增量。</p>
+            <p>以样例为例，操作后的差分矩阵 b（原始矩阵 a 全为 0，只看增量部分）：</p>
+            <pre>
+操作1: (1,1)-(2,2) + 1
+操作2: (2,2)-(3,3) + 2
+
+差分矩阵 b（5x6，只显示非零部分）:
+     col1  col2  col3  col4  col5
+row1: +1              -1
+row2:        +2              -2
+row3: -1        +1        +2
+row4:       -2        +2
+            </pre>
+            <p>对 b 做二维前缀和（逐行逐列累加），得到增量矩阵：</p>
+            <pre>
+逐行还原（每格 = 上方 + 左方 - 左上方 + b[i][j]）:
+
+row1: b[1][1]=1, b[1][2]=1+0=1, b[1][3]=1+0-1=0, ...
+      → [1, 1, 0, 0]
+
+row2: b[2][1]=1+0=1, b[2][2]=1+1+2=4, b[2][3]=1+4-1=4, ...
+      → [1, 4, 4, 0]
+
+row3: b[3][1]=1-1=0, b[3][2]=4+0+1=5, b[3][3]=4+5-4+1=6, ...
+      → [0, 2, 3, 0]
+
+叠加到原矩阵:
+  原: 1  2  3  4     增量: 1  1  0  0     结果: 2  3  3  4
+      5  6  7  8     +     1  4  4  0     =     6 10 10  8  ✓
+      9 10 11 12          0  2  3  0           9 12 14 12
+            </pre>
+            <p><strong>关键理解</strong>：差分矩阵记录的是"变化的波纹"，四角操作在 b 上画出了波纹的起点和终点。二维前缀和就像让波纹扩散、叠加，最终得到每个位置的总变化量。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -13087,6 +13509,34 @@ s = [_, 2, 8, 8, 8, 13, 13]
 
             <h4>离散化的本质</h4>
             <p>坐标范围可能到 10^9，但实际涉及的坐标只有 O(n+m) 个。离散化把"稀疏的大坐标"压缩成"连续的小下标"，从无法开数组变成轻松开数组，同时保持相对顺序不变。</p>
+
+            <h4>为什么需要二分查找来映射？</h4>
+            <p>排序去重后，alls 数组是有序的。例如 alls = [1, 3, 4, 6, 7, 8]。</p>
+            <p>当我们要找到坐标 x 对应的压缩下标时，需要知道 x 在排序数组中的位置。这正是二分查找的用武之地：</p>
+            <pre>
+查找 x=6 的下标（在 alls = [1, 3, 4, 6, 7, 8] 中）:
+
+二分过程:
+  left=0, right=5, mid=2 → alls[2]=4 < 6 → left=3
+  left=3, right=5, mid=4 → alls[4]=7 >= 6 → right=4
+  left=3, right=4, mid=3 → alls[3]=6 >= 6 → right=3
+  left=3, right=3 → 找到！alls[3]=6 → 映射到下标 4（从1开始）
+
+为什么用二分而不是遍历？
+  - alls 已排序 → 二分查找 O(log n)
+  - 如果用遍历查找 → O(n)，n 个坐标总查找就是 O(n²)
+  - 二分让总查找复杂度降到 O(n log n)
+            </pre>
+            <p><strong>Python 用户注意</strong>：Python 的字典（hash map）可以直接建立坐标到下标的映射，不需要二分。但 C++ 版本用二分是因为更通用——理解二分查找在这个场景中的作用，对掌握离散化至关重要。</p>
+            <p><strong>离散化的三个步骤</strong>：</p>
+            <pre>
+1. 收集所有用到的坐标 → alls 数组
+2. 排序 + 去重 → alls 变为有序且唯一
+3. 二分查找 → 坐标 x 在 alls 中的位置就是压缩下标
+
+排序保证了相对顺序不变（离散化的核心性质），
+二分利用了有序性实现了高效的坐标查找。
+            </pre>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -13281,6 +13731,47 @@ s = [<span class="number">0</span>] * (<span class="keyword">len</span>(all_x) +
             <h4>关键判断</h4>
             <p><code>if (right < seg.first)</code>：当前区间的右端点 < 新区间的左端点 → 两者无交集，新开一组。</p>
             <p><code>else right = max(right, seg.second)</code>：有交集，合并——右端点取两者较大值（新区间可能更长）。</p>
+
+            <h4>边界情况演示</h4>
+            <p><strong>情况1：完全不重叠</strong>——三个独立区间</p>
+            <pre>
+输入: [1,2], [4,5], [7,8]
+
+扫描:
+  [1,2]: 当前 = [1,2]
+  [4,5]: 2 < 4 → 存 [1,2]，新开 [4,5]
+  [7,8]: 5 < 7 → 存 [4,5]，新开 [7,8]
+  结束，存 [7,8]
+
+结果: [1,2], [4,5], [7,8] → 3个区间（全部独立，无法合并）
+            </pre>
+
+            <p><strong>情况2：完全重叠</strong>——一个大区间吞并小区间</p>
+            <pre>
+输入: [1,5], [2,3], [4,8]
+
+扫描:
+  [1,5]: 当前 = [1,5]
+  [2,3]: 5 >= 2 → 合并, right = max(5,3) = 5, 当前 = [1,5]
+  [4,8]: 5 >= 4 → 合并, right = max(5,8) = 8, 当前 = [1,8]
+  结束，存 [1,8]
+
+结果: [1,8] → 1个区间（[2,3]和[4,8]都被吞并了）
+            </pre>
+
+            <p><strong>情况3：端点相接</strong>——端点重合也算重叠</p>
+            <pre>
+输入: [1,3], [3,5], [5,7]
+
+扫描:
+  [1,3]: 当前 = [1,3]
+  [3,5]: 3 >= 3 → 合并, 当前 = [1,5]
+  [5,7]: 5 >= 5 → 合并, 当前 = [1,7]
+  结束，存 [1,7]
+
+结果: [1,7] → 1个区间（端点相接也算有交集！）
+            </pre>
+            <p><strong>注意</strong>：判断条件是 <code>right >= seg.first</code>（大于等于），端点相等也算重叠。这是题目要求"端点相交也算"的体现。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -13438,6 +13929,55 @@ ed = -∞（已选的最右点）
 结论：选右端点 r1 是"最靠左的、能覆盖第一个区间的点"，
      能覆盖尽可能多的后续区间 → 贪心最优。
             </pre>
+
+            <h4>进阶示例：5个区间，需要2个点</h4>
+            <p>输入：[1,4], [2,3], [3,6], [5,7], [7,8]</p>
+            <pre>
+第一步：按右端点排序
+  [2,3](r=3), [1,4](r=4), [3,6](r=6), [5,7](r=7), [7,8](r=8)
+
+第二步：贪心选点
+  ed = -∞
+
+  区间[2,3]: 2 > -∞ → 需要新点，选在右端点 3
+             ed = 3, res = 1
+
+  区间[1,4]: 1 <= 3 → 3 在 [1,4] 内，已覆盖，跳过
+
+  区间[3,6]: 3 <= 3 → 3 在 [3,6] 内（端点相交），已覆盖，跳过
+
+  区间[5,7]: 5 > 3 → 3 不在 [5,7] 内，需要新点！选在右端点 7
+             ed = 7, res = 2
+
+  区间[7,8]: 7 <= 7 → 7 在 [7,8] 内（端点相交），已覆盖，跳过
+
+结果: 2 个点（位置 3 和位置 7）
+
+验证:
+  [1,4] → 包含点 3  ✓
+  [2,3] → 包含点 3  ✓
+  [3,6] → 包含点 3  ✓
+  [5,7] → 包含点 7  ✓
+  [7,8] → 包含点 7  ✓
+  每个区间至少有一个点，共 2 个点，最优！
+            </pre>
+
+            <h4>贪心过程的直觉理解</h4>
+            <pre>
+数轴上标记选的点和覆盖范围:
+
+  点3          点7
+   ↓            ↓
+   ├────┤       │
+    ├──┤        │
+     ├──────┤   │
+         ├──────┤
+              ├──┤
+
+第一个点放在 3，覆盖了前三个区间（[1,4],[2,3],[3,6]）。
+[5,7] 的左端点 5 > 3，点 3 覆盖不到，必须选第二个点。
+选在 7，同时覆盖了 [5,7] 和 [7,8]。
+            </pre>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -13579,6 +14119,47 @@ last = -<span class="number">2</span> * <span class="number">10</span>**<span cl
 
             <h4>这就是哈夫曼编码的思想</h4>
             <p>每次取最小的两个节点合并成新节点（权值为两者之和），放回后继续。最终形成一棵二叉树——频率低的在深层（编码短），频率高的在浅层（编码长），实现最优压缩。</p>
+
+            <h4>进阶示例：[3, 4, 5, 6] 的多轮合并</h4>
+            <pre>
+初始堆: [3, 4, 5, 6]
+
+第1轮: 取出最小两个 → 3 和 4
+       合并代价 = 3 + 4 = 7
+       堆变为 [5, 6, 7]
+       累计代价 = 7
+
+第2轮: 取出最小两个 → 5 和 6
+       合并代价 = 5 + 6 = 11
+       堆变为 [7, 11]
+       累计代价 = 7 + 11 = 18
+
+第3轮: 取出最小两个 → 7 和 11
+       合并代价 = 7 + 11 = 18
+       堆变为 [18]
+       累计代价 = 7 + 11 + 18 = 36
+
+总代价 = 36
+
+合并过程（树形结构）:
+            18
+           /  \
+          7    11
+         / \  / \
+        3  4 5   6
+
+代价计算 = 3*3 + 4*3 + 5*2 + 6*2 = 9+12+10+12 = 36
+（每个叶子的深度 × 权值之和 = 总代价）
+            </pre>
+
+            <p><strong>为什么是哈夫曼树？</strong>每次合并的两个节点成为新节点的左右子树。最终形成的二叉树中：</p>
+            <pre>
+深度越大的节点（在树的底层）被合并越早，"被携带"的次数越多。
+所以让权值小的先合并（在底层），权值大的后合并（在浅层），
+使得"深度 × 权值"的总和最小——这就是哈夫曼编码的最优性。
+            </pre>
+
+            <p><strong>贪心的本质</strong>：局部最优（每次选最小两个）→ 全局最优（总代价最小）。这在贪心算法中非常常见——但需要数学证明（本题可以用交换论证证明）。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -13700,6 +14281,60 @@ p=3（中位数）得到最小值 6。
 数学本质: 绝对值之和的最小值点就是中位数。
   均值使平方差最小（最小二乘），中位数使绝对差最小。
             </pre>
+
+            <h4>偶数个点的情况：[1, 2, 3, 4]</h4>
+            <p>当 N 为偶数时，中间有两个"候选"中位数。选哪个都行，因为最小距离之和相同：</p>
+            <pre>
+排序后: [1, 2, 3, 4]，N=4
+
+候选中位数: a[2]=2 或 a[3]=3（下标从0开始时 a[N/2]）
+
+选 p=2: |1-2|+|2-2|+|3-2|+|4-2| = 1+0+1+2 = 4
+选 p=3: |1-3|+|2-3|+|3-3|+|4-3| = 2+1+0+1 = 4
+选 p=1: |1-1|+|2-1|+|3-1|+|4-1| = 0+1+2+3 = 6
+选 p=4: |1-4|+|2-4|+|3-4|+|4-4| = 3+2+1+0 = 6
+
+p=2 和 p=3 都得到最小值 4！
+            </pre>
+
+            <p><strong>为什么偶数时两个中间值都可以？</strong></p>
+            <pre>
+点 [1, 2, 3, 4]，选 p=2 和 p=3 的区别：
+
+  选 p=2: 左边1个点(1), 右边2个点(3,4)
+  选 p=3: 左边2个点(1,2), 右边1个点(4)
+
+  p 从 2 移到 3：
+    - 左边 1 个点各多走 1 步 → +1
+    - 右边 2 个点各少走 1 步 → -2
+    - 净变化 = +1 - 2 = -1... 但等等！
+
+  实际上：
+    p=2: 左侧 1 个点，右侧 2 个点
+    p=3: 左侧 2 个点，右侧 1 个点
+
+  p 从 2 变到 3 时，左侧多走 1 步的点有 2 个（1 和 2），
+  右边少走 1 步的点有 1 个（4），中间点 3 从距离1变0。
+
+  详细计算：
+    p=2: 1+0+1+2 = 4
+    p=3: 2+1+0+1 = 4
+    差值 = 0，所以两个中位数等价。
+
+结论：偶数个点时，取中间两个的任意一个都是最优解。
+代码中 a[n//2] 取的是右边那个（n=4 时 a[2]=3），刚好没问题。
+            </pre>
+
+            <p><strong>记忆要点</strong>：</p>
+            <pre>
+奇数个点 → 唯一中位数 → 直接取 a[n/2]
+偶数个点 → 两个中位数都最优 → 取 a[n/2] 即可（代码统一）
+
+均值 vs 中位数:
+  均值 → 最小化平方差之和 (Σ(a[i]-p)²)
+  中位数 → 最小化绝对差之和 (Σ|a[i]-p|)
+  本题求的是绝对距离，所以用中位数。
+            </pre>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -13818,6 +14453,46 @@ D 2
 操作4: H 6 → 头部插入 6
   e[2]=6, ne[2]=head=0, head=2, idx=3
   链表: head→[6]→[9]→∅
+            </pre>
+
+            <h4>数组与链表的映射关系图解——以 H 6 操作为例</h4>
+            <p>理解数组模拟链表的关键：用数组的下标充当"指针"。下面用图示展示 H 6 操作前后，数组和链表之间的对应关系。</p>
+            <pre>
+操作前（head→[9]→[1]→∅）:
+
+  数组状态:
+  下标 i :    0     1     2 ...
+  e[i]  :    9     1     ...
+  ne[i] :    1    -1     ...
+
+  链表结构:  head=0
+              ↓
+             [9] ──→ [1] ──→ ∅(-1)
+            下标0    下标1
+
+  连接方式: head=0 → e[0]=9, ne[0]=1 → e[1]=1, ne[1]=-1 → ∅
+
+
+执行 H 6（头部插入6）:
+  e[2]=6, ne[2]=head=0, head=2, idx=3
+
+  数组状态:
+  下标 i :    0     1     2
+  e[i]  :    9     1     6
+  ne[i] :    1    -1     0
+
+  链表结构:  head=2
+              ↓
+             [6] ──→ [9] ──→ [1] ──→ ∅(-1)
+            下标2    下标0    下标1
+
+  连接方式: head=2 → e[2]=6, ne[2]=0 → e[0]=9, ne[0]=1 → e[1]=1, ne[1]=-1 → ∅
+
+关键理解:
+  - head 存的不是值，而是"数组下标"（指针）
+  - ne[i] 存的也不是值，而是"下一个节点的数组下标"
+  - 沿着 ne[] 走一遍，就能按顺序访问所有节点
+  - 数组位置可以不连续（下标2可能排在下标0前面），靠 ne[] 串联
             </pre>
 
             <h4>数组模拟链表的三大操作</h4>
@@ -14035,6 +14710,19 @@ pop:     tt--;             // 移动指针即可，不需要清零
 query:   stk[tt]           // 读栈顶
 empty:   tt > 0 ? 非空 : 空
             </pre>
+
+            <h4>栈在生活中的应用</h4>
+            <p>栈无处不在，理解这些例子能帮助你建立直觉：</p>
+            <ul>
+                <li><strong>函数调用栈：</strong>程序执行时，每调用一个函数就把它压入栈，函数返回时弹出。这就是为什么递归太深会导致"栈溢出"——调用层数超过了栈的容量。</li>
+                <li><strong>撤销操作（Undo）：</strong>编辑器里按Ctrl+Z撤销，每次操作都压入栈，撤销时弹出栈顶的操作并恢复。</li>
+                <li><strong>浏览器后退按钮：</strong>每次访问新页面就压入栈，点"后退"时弹出上一个页面的URL。</li>
+                <li><strong>表达式求值：</strong>编译器用栈来处理运算符优先级和括号（下一题JD133就是这个应用）。</li>
+            </ul>
+
+            <h4>关于栈溢出（Stack Overflow）</h4>
+            <p>用数组模拟栈时，<code>tt</code> 不能超过数组大小 N。如果 tt 达到或超过 N，再执行 push 就会越界写入——这就是"栈溢出"。在递归程序中尤其常见：每次递归调用都会在系统调用栈上压入一层，如果递归太深（例如没有正确设置终止条件），系统栈就会溢出，程序崩溃。</p>
+            <p>竞赛中使用数组模拟栈的好处之一就是：你可以自己控制数组大小，避免系统栈溢出的问题。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -14173,6 +14861,31 @@ pop:     hh++;           // 队头移出
 query:   q[hh]           // 读队头
 empty:   hh <= tt ? 非空 : 空
             </pre>
+
+            <h4>栈 vs 队列：操作对比表</h4>
+            <p>假设依次执行：push 1, push 2, push 3, pop, push 4, pop</p>
+            <pre>
+操作         栈（LIFO）           队列（FIFO）
+─────────────────────────────────────────────────
+push 1      [1]                 [1]
+push 2      [1, 2]              [1, 2]
+push 3      [1, 2, 3]           [1, 2, 3]
+pop         弹出 3 → [1, 2]     弹出 1 → [2, 3]
+push 4      [1, 2, 4]           [2, 3, 4]
+pop         弹出 4 → [1, 2]     弹出 2 → [3, 4]
+─────────────────────────────────────────────────
+关键区别     最后进的先出          最先进的先出
+            </pre>
+            <p>同一组操作，栈和队列弹出的元素完全不同！栈像"叠盘子"——最后放的最先取；队列像"排队"——先来先服务。</p>
+
+            <h4>队列的核心应用：BFS（广度优先搜索）</h4>
+            <p>队列最重要的算法应用是 <strong>BFS</strong>——图和树的层次遍历。BFS 的核心思想是"先到先扩展"：</p>
+            <ul>
+                <li>把起点加入队列</li>
+                <li>每次从队头取出一个节点，把它的所有邻居加入队尾</li>
+                <li>重复直到队列为空</li>
+            </ul>
+            <p>因为队列是先进先出，所以 BFS 天然按照"从近到远"的顺序遍历——这正是"最短路径"问题的基础。第13章学习图论时，你会反复用到队列。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -14266,6 +14979,77 @@ q = deque()
         <div class="hint">
             <strong>解题思路：</strong><p>双栈法：数字栈+运算符栈。比较优先级决定是否先算栈顶。</p>
 
+            <h4>双栈法核心规则</h4>
+            <pre>
+优先级: '+'=1, '-'=1, '*'=2, '/'=2
+
+规则1: 遇到数字 → 直接压入数字栈
+规则2: 遇到 '('  → 直接压入运算符栈
+规则3: 遇到 ')'  → 不断弹出并计算，直到遇到 '('
+规则4: 遇到运算符 → 如果栈顶运算符优先级 >= 当前运算符，先算栈顶
+         （同级也要先算，保证左结合性）
+规则5: 表达式结束 → 把运算符栈全部弹出并计算
+            </pre>
+
+            <h4>样例追踪：2+3*4 = 14</h4>
+            <p>优先级：'+':1, '*':2。关键点：* 比 + 优先级高，所以先算乘法。</p>
+            <pre>
+i=0, c='2': 数字，压入数字栈
+  num = [2],  op = []
+
+i=1, c='+': 运算符，op 为空（无需比较），压入
+  num = [2],  op = ['+']
+
+i=2, c='3': 数字，压入数字栈
+  num = [2, 3],  op = ['+']
+
+i=3, c='*': 运算符，比较：pr['*']=2 > pr['+']=1，优先级更高，直接压入
+  num = [2, 3],  op = ['+', '*']
+
+i=4, c='4': 数字，压入数字栈
+  num = [2, 3, 4],  op = ['+', '*']
+
+表达式结束，依次弹出并计算：
+  eval: 3 * 4 = 12  → num = [2, 12], op = ['+']
+  eval: 2 + 12 = 14 → num = [14], op = []
+
+输出: 14 ✓
+
+关键: * 的优先级比 + 高，所以 + 被压在栈底等 * 先算
+            </pre>
+
+            <h4>含括号的追踪：(1+2)*3 = 9</h4>
+            <p>括号改变了运算顺序——括号内的先算。</p>
+            <pre>
+c='(': 遇到左括号，直接压入运算符栈
+  num = [],  op = ['(']
+
+c='1': 数字，压入
+  num = [1],  op = ['(']
+
+c='+': 运算符，栈顶是 '('（不是运算符），直接压入
+  num = [1],  op = ['(', '+']
+
+c='2': 数字，压入
+  num = [1, 2],  op = ['(', '+']
+
+c=')': 遇到右括号！不断计算直到 '('：
+  eval: 1 + 2 = 3 → num = [3]
+  弹出 '(' → op = []
+
+c='*': 运算符，op 为空，直接压入
+  num = [3],  op = ['*']
+
+c='3': 数字，压入
+  num = [3, 3],  op = ['*']
+
+表达式结束：
+  eval: 3 * 3 = 9 → num = [9], op = []
+
+输出: 9 ✓
+
+关键: '(' 遇到任何运算符都"放行"（直接压入），直到 ')' 才算括号内的结果
+            </pre>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -14550,6 +15334,80 @@ res = []
         <div class="hint">
             <strong>解题思路：</strong><p>单调队列：维护递增队列。窗口滑动时弹出过期元素和比新元素大的元素。</p>
 
+            <h4>单调队列的核心思想</h4>
+            <pre>
+队列中存的是数组下标，维护 a[q[0]] <= a[q[1]] <= ...（单调递增）
+
+每次处理新元素 a[i]，做两件事：
+  1. 队头过期检查: 如果 q[hh] 已经滑出窗口（q[hh] < i-k+1），弹出队头
+  2. 维护单调性:   如果队尾 a[q[tt]] >= a[i]，弹出队尾（它不可能是未来窗口的最小值）
+  然后把 i 加入队尾
+
+队头 q[hh] 永远是当前窗口最小值的下标！
+            </pre>
+
+            <h4>完整追踪：a=[1,3,-1,-3,5,3,6,7], k=3</h4>
+            <p>窗口大小 k=3，从 i>=k-1=2 开始输出。队列 q 存下标，单调递增：a[q[0]] <= a[q[1]] <= ...</p>
+            <pre>
+i=0, a[0]=1:
+  过期检查: q 空，跳过
+  单调性: q 空，跳过
+  入队: q=[0]  (下标0, 值1)
+  i=0 < 2, 不输出
+
+i=1, a[1]=3:
+  过期检查: q=[0], q[0]=0, i-k+1=-1, 0>=-1 没过期
+  单调性: a[q[-1]]=a[0]=1 < a[1]=3, 不弹出（3比1大，保持递增）
+  入队: q=[0,1]  (下标0和1, 值1和3)
+  i=1 < 2, 不输出
+
+i=2, a[2]=-1:
+  过期检查: q=[0,1], q[0]=0, i-k+1=0, 0>=0 没过期
+  单调性: a[q[-1]]=a[1]=3 >= a[2]=-1, 弹出1！
+          a[q[-1]]=a[0]=1 >= a[2]=-1, 弹出0！
+          q 空了
+  入队: q=[2]  (下标2, 值-1)
+  i=2 >= 2, 输出 a[q[0]]=a[2]=<strong>-1</strong>
+
+i=3, a[3]=-3:
+  过期检查: q=[2], q[0]=2, i-k+1=1, 2>=1 没过期
+  单调性: a[q[-1]]=a[2]=-1 >= a[3]=-3, 弹出2！
+          q 空了
+  入队: q=[3]  (下标3, 值-3)
+  i=3 >= 2, 输出 a[q[0]]=a[3]=<strong>-3</strong>
+
+i=4, a[4]=5:
+  过期检查: q=[3], q[0]=3, i-k+1=2, 3>=2 没过期
+  单调性: a[q[-1]]=a[3]=-3 < a[4]=5, 不弹出
+  入队: q=[3,4]  (下标3和4, 值-3和5)
+  i=4 >= 2, 输出 a[q[0]]=a[3]=<strong>-3</strong>
+
+i=5, a[5]=3:
+  过期检查: q=[3,4], q[0]=3, i-k+1=3, 3>=3 没过期
+  单调性: a[q[-1]]=a[4]=5 >= a[5]=3, 弹出4！
+          a[q[-1]]=a[3]=-3 < a[5]=3, 不弹出
+  入队: q=[3,5]  (下标3和5, 值-3和3)
+  i=5 >= 2, 输出 a[q[0]]=a[3]=<strong>-3</strong>
+
+i=6, a[6]=6:
+  过期检查: q=[3,5], q[0]=3, i-k+1=4, 3<4 过期了！弹出队头
+          q=[5], q[0]=5, i-k+1=4, 5>=4 没过期
+  单调性: a[q[-1]]=a[5]=3 < a[6]=6, 不弹出
+  入队: q=[5,6]  (下标5和6, 值3和6)
+  i=6 >= 2, 输出 a[q[0]]=a[5]=<strong>3</strong>
+
+i=7, a[7]=7:
+  过期检查: q=[5,6], q[0]=5, i-k+1=5, 5>=5 没过期
+  单调性: a[q[-1]]=a[6]=6 < a[7]=7, 不弹出
+  入队: q=[5,6,7]  (下标5,6,7, 值3,6,7)
+  i=7 >= 2, 输出 a[q[0]]=a[5]=<strong>3</strong>
+
+最终输出: -1 -3 -3 -3 3 3 ✓
+            </pre>
+
+            <h4>为什么每个元素最多入队出队各一次？</h4>
+            <p>每个下标 i 只入队一次。被弹出后就不会再回来。所以总操作次数是 O(n)，均摊 O(1)。</p>
+            <p>这就是单调队列的威力：看起来像 O(n*k) 的滑动窗口问题，用单调队列优化到 O(n)。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -14726,6 +15584,31 @@ KMP匹配:  文本指针 i 永远不回退！模式串指针 j 通过 next 跳�
 
 关键: next 数组告诉 j "不匹配时跳到哪里"，避免了重复比较。
             </pre>
+
+            <h4>next 数组的直觉理解</h4>
+            <p>next[i] 到底在说什么？用一句话概括：</p>
+            <p><strong>next[i] 告诉我们：如果在模式串的第 i+1 个字符处匹配失败，模式串指针应该跳回到 ne[i] 位置继续匹配。</strong></p>
+            <p>为什么可以这样跳？因为 ne[i] 表示 p[1..i] 的最长相等前后缀长度。这意味着：</p>
+            <ul>
+                <li>模式串的前 ne[i] 个字符 = 刚刚已匹配的后 ne[i] 个字符</li>
+                <li>既然这 ne[i] 个字符已经验证过匹配了，就不用重新比较</li>
+                <li>直接从 ne[i]+1 位置继续匹配即可</li>
+            </ul>
+            <pre>
+例子: p = "ababa", next = [_, 0, 0, 1, 2, 3]
+
+ne[5]=3 的含义:
+  p[1..5] = "ababa"
+  最长相等前后缀: "aba"="aba"（长度3）
+  即 p[1..3] = p[3..5] = "aba"
+
+  如果匹配到第5个字符后失败：
+  已知: 文本串最后匹配了 "aba"（后缀）
+  因为 p[1..3] 也是 "aba"（前缀）
+  所以直接从第4个字符（ne[5]+1=4）继续比较
+  不用回退文本指针！
+            </pre>
+            <p>next 数组的本质是：<strong>用模式串自身的重复结构，换取匹配时的跳转能力</strong>。模式串中越有重复的结构，跳转越高效。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -14847,6 +15730,81 @@ D 1
         <div class="hint">
             <strong>解题思路：</strong><p>数组模拟堆：上浮和下沉操作。父节点i的子节点是2i和2i+1。</p>
 
+            <h4>堆的基本结构</h4>
+            <pre>
+小根堆性质: h[父] <= h[子]，即堆顶 h[1] 是最小值
+
+数组下标关系（1-indexed）:
+  父节点 i 的左儿子: 2*i
+  父节点 i 的右儿子: 2*i+1
+  子节点 i 的父节点: i/2
+
+       h[1]=最小值
+      /          \
+   h[2]         h[3]
+   /   \        /   \
+ h[4] h[5]   h[6] h[7]
+            </pre>
+
+            <h4>堆操作追踪——以样例为例</h4>
+            <p>样例输入：I 3, I 1, I 4, PM, D 1。堆数组 1-indexed，cnt 为堆大小。</p>
+            <pre>
+I 3: 插入 3
+  cnt=1, h[1]=3, ph[1]=1, hp[1]=1
+  up(1): 1/2=0, 不需要上浮
+  堆: [_, 3]
+  树:    3
+
+I 1: 插入 1
+  cnt=2, h[2]=1, ph[2]=2, hp[2]=2
+  up(2): h[2]=1 < h[1]=3，交换 h[1] 和 h[2]
+  堆: [_, 1, 3]
+  树:    1
+        /
+       3
+
+I 4: 插入 4
+  cnt=3, h[3]=4, ph[3]=3, hp[3]=3
+  up(3): h[3]=4 > h[1]=1，不交换
+  堆: [_, 1, 3, 4]
+  树:    1
+        / \
+       3   4
+
+PM: 输出最小值
+  输出 h[1] = 1 ✓
+
+D 1: 删除第1个插入的元素（值3）
+  ph[1]=1（第1个插入的元素在堆位置1）
+  k=ph[1]=1
+  swap(1, cnt=3): h[1]=4, h[3]=1→被移除, cnt=2
+  堆: [_, 4, 3]  （位置3不再有效）
+  down(1): h[1]=4, 左子 h[2]=3, 4>3, 交换
+  堆: [_, 3, 4]
+  树:    3
+        /
+       4
+  (只有2个节点，右子不存在)
+            </pre>
+
+            <h4>上浮（up）和下沉（down）的本质</h4>
+            <pre>
+up(u):   当 h[u] 比父节点小时，不断与父节点交换 → 向上漂浮
+down(u): 当 h[u] 比子节点大时，与较小的子节点交换 → 向下沉降
+
+插入: 放在末尾，然后 up → O(log n)
+删除堆顶: 与末尾交换，缩小堆，然后 down → O(log n)
+删除任意元素: 与末尾交换，缩小堆，然后 up 和 down 都尝试 → O(log n)
+            </pre>
+
+            <h4>ph[] 和 hp[] 双向映射</h4>
+            <p>这道题的难点在于"删除第 k 个插入的元素"。因为插入顺序和堆位置不同，需要：</p>
+            <ul>
+                <li><code>ph[k]</code>：第 k 个插入的元素现在在堆的哪个位置</li>
+                <li><code>hp[u]</code>：堆位置 u 的元素是第几个插入的</li>
+                <li>两者互为反函数：ph[hp[u]] = u, hp[ph[k]] = k</li>
+            </ul>
+            <p>交换两个堆元素时，必须同时更新 ph 和 hp，保持映射一致。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -15090,6 +16048,41 @@ find(1) 的路径: 1 → 2 → 3（根）
 while(p[x] != x) { p[x] = p[p[x]]; x = p[x]; }
 每一步把 x 跳到"爷爷"节点，路径减半，最终摊销 O(α(n)) ≈ O(1)
             </pre>
+
+            <h4>森林演化图解——以样例为例</h4>
+            <p>并查集的核心是"森林"——每个集合是一棵树，树根就是集合的代表。</p>
+            <pre>
+初始: 每个元素自成一棵树（4个集合）
+
+  1     2     3     4
+  ↑     ↑     ↑     ↑
+ p[1]=1 p[2]=2 p[3]=3 p[4]=4
+
+
+M 1 2: 1 的根指向 2 的根（合并为一个集合）
+
+  2       3     4
+ / \      ↑     ↑
+1   ·    p[3]=3 p[4]=4
+↑
+p[1]=2
+
+
+M 2 3: 2 的根指向 3 的根（三个元素合为一个集合）
+
+     3         4
+    / \        ↑
+   2   ·     p[4]=4
+  / \
+ 1   ·
+ ↑
+ p[1]=2, p[2]=3
+
+
+Q 1 3: find(1)=3, find(3)=3 → 同根 → Yes
+Q 1 4: find(1)=3, find(4)=4 → 不同根 → No
+            </pre>
+            <p>合并方向可以任意选择。每次 find 操作会进行路径压缩，把沿途节点直接连到根上，让树越来越"扁平"。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -15233,6 +16226,28 @@ C 4
 
 注意: sz 只对根节点有意义！查询时必须先 find 到根，再读 sz[根]。
             </pre>
+
+            <h4>为什么必须先 find 再合并 sz？</h4>
+            <p>一个常见错误是直接对传入的 a 和 b 合并 size，而不是先找到它们的根。看看区别：</p>
+            <pre>
+正确做法:
+  ra = find(a)   // 找到 a 的根
+  rb = find(b)   // 找到 b 的根
+  if ra != rb:
+    p[ra] = rb
+    sz[rb] += sz[ra]  // 把 ra 集合的大小加到 rb 上
+
+错误做法:
+  p[a] = b            // 直接把 a 指向 b
+  sz[b] += sz[a]      // 把 sz[a] 加到 sz[b] 上 ← 错！
+</pre>
+            <p>为什么错误？因为 a 可能不是根节点！如果 a 已经被路径压缩过，sz[a] 存的是过时的值。正确做法是只对根节点操作：</p>
+            <ul>
+                <li><code>find(a)</code> 和 <code>find(b)</code> 保证拿到的是各自的根节点</li>
+                <li><code>sz[根]</code> 始终保存着该集合的真实大小</li>
+                <li>非根节点的 sz 值可能过时，但查询时我们用 <code>sz[find(a)]</code>，读的永远是根的 sz</li>
+            </ul>
+            <p>记住：并查集中所有涉及集合属性的操作（大小、距离等），都必须通过 find 先找到根，再操作根上的属性。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -15413,6 +16428,58 @@ find(x) 递归时:
   p[x] = t           // 路径压缩
 
 这样 d[x] 始终表示 x 到当前根的距离，压缩后也不丢失信息。
+            </pre>
+
+            <h4>实际样例追踪：N=100, K=7</h4>
+            <p>逐步验证为什么输出是 3 条假话。</p>
+            <pre>
+初始: p[i]=i, d[i]=0, 对所有 i=1..100
+
+第1句: "1 101 1" → t=1, y=101, z=1
+  x=101 > n=100！超出范围，这是假话！
+  res = 1
+
+第2句: "2 1 2" → t=2, y=1, z=2 → "1吃2"
+  find(1)=1, find(2)=2, 不同集合
+  合并: p[1]=2, d[1] = d[2]+1-d[1] = 0+1-0 = 1
+  → 1指向2，d[1]=1（1被2吃，或者说1和根2的距离为1）
+
+第3句: "2 2 3" → t=2, y=2, z=3 → "2吃3"
+  find(2)=2, find(3)=3, 不同集合
+  合并: p[2]=3, d[2] = d[3]+1-d[2] = 0+1-0 = 1
+  → 2指向3，d[2]=1
+
+第4句: "2 3 3" → t=2, y=3, z=3 → "3吃3"
+  find(3)=3, find(3)=3, 同根！
+  检查: (d[3]-d[3]-1)%3 = (0-0-1)%3 = -1%3 = 2 ≠ 0
+  → 3不可能吃自己！这是假话！
+  res = 2
+
+第5句: "1 1 3" → t=1, y=1, z=3 → "1和3同类"
+  find(1): 1→2→3, d[1]=1+d[2]=1+1=2, 路径压缩: p[1]=3, d[1]=2
+  find(3)=3, 同根！
+  检查: (d[1]-d[3])%3 = (2-0)%3 = 2 ≠ 0
+  → 1和3不是同类！（d[1]%3=2 表示1吃根3）
+  这是假话！res = 3
+
+第6句: "2 3 1" → t=2, y=3, z=1 → "3吃1"
+  find(3)=3, find(1): p[1]=3, d[1]=2 → 返回3
+  同根！
+  检查: (d[3]-d[1]-1)%3 = (0-2-1)%3 = -3%3 = 0
+  → 真话！（3确实吃1，因为d[1]%3=2表示1吃根3，即根3吃1的逆...实际上d[3]-d[1]=-2, -2%3=1, 说明3被1吃。但题目说3吃1，d[3]-d[1]-1=-3, -3%3=0, 所以是真话。这里需要仔细理解公式）
+
+  实际验证: (d[x]-d[y]-1)%3 = (d[3]-d[1]-1)%3 = (0-2-1)%3 = -3%3 = 0 → 真话 ✓
+
+第7句: "1 5 5" → t=1, y=5, z=5 → "5和5同类"
+  find(5)=5, find(5)=5, 同根
+  检查: (d[5]-d[5])%3 = 0 → 真话（自己和自己当然是同类）
+
+最终: res = 3 ✓
+
+三条假话分别是:
+  1. "1 101 1" — 101超出了N=100的范围
+  2. "2 3 3" — 3不可能吃自己
+  3. "1 1 3" — 已知1吃2、2吃3，所以1被3吃（距离%3=2），不可能是同类
             </pre>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">

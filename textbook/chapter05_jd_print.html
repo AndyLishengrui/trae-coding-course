@@ -34,6 +34,15 @@
     <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
         <p>十二宫剑阵展开，光幕上浮现一个12×12的方格。"二维数组——矩阵。行与列交织，每个格子都是一个数据点。"</p><p>本章学习二维数组——矩阵的存储、遍历和方向数组。掌握这些，你就能操控任何网格结构。</p>
     </div>
+    <div style="background:#e8f0fe;border-left:4px solid #1a73e8;padding:12px;margin:15px 0;border-radius:0 4px 4px 0">
+    <strong>矩阵i,j坐标速查：</strong><br>
+    <code>mat[i][j]</code> — i是行号(从上到下0~11), j是列号(从左到右0~11)<br>
+    主对角线: <code>i==j</code> | 反对角线: <code>i+j==11</code><br><br>
+    <strong>四域条件速查表（12x12矩阵）：</strong><br>
+    <code>上方: i&lt;j 且 i+j&lt;11</code> | <code>下方: i&gt;j 且 i+j&gt;11</code><br>
+    <code>左方: j&lt;i 且 i+j&lt;11</code> | <code>右方: j&gt;i 且 i+j&gt;11</code><br>
+    <code>右上半: j&gt;i</code> | <code>左下半: j&lt;i</code> | <code>左上半: i+j&lt;11</code> | <code>右下半: i+j&gt;11</code>
+    </div>
 
     <div class="problem" id="JD055">
         <div class="problem-title">JD055：上方剑域</div>
@@ -107,19 +116,25 @@ i=1,j=5: 1<5✓ 1+5=6<11✓ → 属于上方
     cin &gt;&gt; op;
     <span class="keyword">double</span> sum = <span class="number">0</span>;
     <span class="keyword">int</span> cnt = <span class="number">0</span>;
-    <span class="comment">// 遍历12x12矩阵的每个元素</span>
+    <span class="comment">// 12x12矩阵的i,j坐标系：</span>
+    <span class="comment">// i=行号(0~11, 从上到下), j=列号(0~11, 从左到右)</span>
+    <span class="comment">// 主对角线: i==j (从左上到右下)</span>
+    <span class="comment">// 反对角线: i+j==11 (从右上到左下)</span>
+    <span class="comment">//</span>
+    <span class="comment">// 两个条件确定"上方"三角形：</span>
+    <span class="comment">// i&lt;j  → 在主对角线的右上方</span>
+    <span class="comment">// i+j&lt;11 → 在反对角线的右上方</span>
+    <span class="comment">// 交集 → 右上角的小三角形</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
         <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
             cin &gt;&gt; x;
-            <span class="comment">// 上方区域：i&lt;j(主对角线上) 且 i+j&lt;11(反对角线上)</span>
             <span class="keyword">if</span> (i &lt; j && i + j &lt; <span class="number">11</span>) {
                 sum += x;
                 cnt++;
             }
         }
     }
-    <span class="comment">// S=求和，M=求平均(cnt为元素个数)</span>
     <span class="keyword">if</span> (op == 'S') printf(<span class="string">&quot;%.1f\n&quot;</span>, sum);
     <span class="keyword">else</span> printf(<span class="string">&quot;%.1f\n&quot;</span>, sum / cnt);
     <span class="keyword">return</span> <span class="number">0</span>;
@@ -910,7 +925,12 @@ i=11  ×  ×  ×  ×  ×  ×  ×  ×  ×  ×  ×  .
     <span class="keyword">while</span> (scanf(<span class="string">&quot;%d&quot;</span>, &n) == <span class="number">1</span> && n) {
         <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
             <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) {
-                <span class="comment">// 到四条边的最小距离</span>
+                <span class="comment">// 核心公式：位置(i,j)的值 = 到四条边的最小距离 + 1</span>
+                <span class="comment">// 到上边距离 = i          (行号，越往下越大)</span>
+                <span class="comment">// 到左边距离 = j          (列号，越往右越大)</span>
+                <span class="comment">// 到下边距离 = n-1-i      (从下往上数)</span>
+                <span class="comment">// 到右边距离 = n-1-j      (从右往左数)</span>
+                <span class="comment">// 取四者最小值，就是"离边界最近"的距离</span>
                 <span class="keyword">int</span> v = min(min(i, j), min(n - <span class="number">1</span> - i, n - <span class="number">1</span> - j));
                 printf(<span class="string">&quot;%3d&quot;</span>, v + <span class="number">1</span>);  <span class="comment">// %3d: 占3字符宽</span>
             }
@@ -1082,8 +1102,17 @@ data = sys.stdin.read().split()
     <span class="keyword">int</span> n;
     <span class="keyword">while</span> (scanf(<span class="string">&quot;%d&quot;</span>, &n) == <span class="number">1</span> && n) {
         <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
-            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)
+            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) {
+                <span class="comment">// M[i][j] = 2^(i+j)</span>
+                <span class="comment">// 位运算 1LL&lt;&lt;k = 2^k（1左移k位）</span>
+                <span class="comment">// 1LL是long long类型的1，防止左移超过31位溢出</span>
+                <span class="comment">//</span>
+                <span class="comment">// 3阶示例：          i+j的值：</span>
+                <span class="comment">//  1  2  4           0  1  2</span>
+                <span class="comment">//  2  4  8           1  2  3</span>
+                <span class="comment">//  4  8 16           2  3  4</span>
                 printf(<span class="string">&quot;%lld &quot;</span>, <span class="number">1LL</span> &lt;&lt; (i + j));
+            }
             printf(<span class="string">&quot;\n&quot;</span>);
         }
         printf(<span class="string">&quot;\n&quot;</span>);
@@ -1165,13 +1194,21 @@ dy = [ 1,  0, -1,  0]  ← 列变化量
 </pre>
 <p><strong>方向数组详解：</strong></p>
 <pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
-d=0(右): x不变, y+1 → 向右移动
-d=1(下): x+1, y不变 → 向下移动
-d=2(左): x不变, y-1 → 向左移动
-d=3(上): x-1, y不变 → 向上移动
+方向数组是处理矩阵"方向移动"的核心技巧：
 
-换向条件：下一步越界 或 已访问
-d = (d+1) % 4 → 右→下→左→上→右...循环
+    方向    d    dx[d]   dy[d]    含义
+    右      0      0       1      行不变, 列+1 → 向右
+    下      1      1       0      行+1, 列不变 → 向下
+    左      2      0      -1      行不变, 列-1 → 向左
+    上      3     -1       0      行-1, 列不变 → 向上
+
+dx = [0, 1, 0, -1]  ← 行的变化量
+dy = [1, 0, -1, 0]  ← 列的变化量
+
+移动公式: 新位置 (x+dx[d], y+dy[d])
+换向公式: d = (d+1) % 4  → 0→1→2→3→0→1... 循环
+
+适用场景：蛇形、螺旋、迷宫等需要"沿着方向走"的问题
 </pre>
 
         </div>
@@ -1191,20 +1228,32 @@ d = (d+1) % 4 → 右→下→左→上→右...循环
     <span class="keyword">int</span> n, m;
     scanf(<span class="string">&quot;%d%d&quot;</span>, &n, &m);
 
-    <span class="comment">// 方向数组：右(0,+1) 下(+1,0) 左(0,-1) 上(-1,0)</span>
+    <span class="comment">// 方向数组：用d(0~3)表示四个方向</span>
+    <span class="comment">// dx[d]和dy[d]分别是行和列的变化量</span>
     <span class="keyword">int</span> dx[] = {<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>}, dy[] = {<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>};
+
+    <span class="comment">// 模拟蛇形遍历（以3x3为例）：</span>
+    <span class="comment">// k=1: (0,0)填1, d=0(右), 下一步(0,1) → 填</span>
+    <span class="comment">// k=2: (0,1)填2, d=0(右), 下一步(0,2) → 填</span>
+    <span class="comment">// k=3: (0,2)填3, d=0(右), 下一步(0,3)越界 → 换方向d=1(下)</span>
+    <span class="comment">// k=4: (1,2)填4, d=1(下), 下一步(2,2) → 填</span>
+    <span class="comment">// k=5: (2,2)填5, d=1(下), 下一步(3,2)越界 → 换方向d=2(左)</span>
+    <span class="comment">// k=6: (2,1)填6, k=7: (2,0)填7 → 越界 → d=3(上)</span>
+    <span class="comment">// k=8: (1,0)填8, k=9: (1,1)填9 → 完成!</span>
+    <span class="comment">// 结果: 1 2 3 / 8 9 4 / 7 6 5</span>
 
     <span class="comment">// x,y=当前位置, d=方向(0=右), k=填入的数字</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>, y = <span class="number">0</span>, d = <span class="number">0</span>, k = <span class="number">1</span>; k &lt;= n * m; k++) {
-        res[x][y] = k;  <span class="comment">// 填入当前位置</span>
+        res[x][y] = k;  <span class="comment">// 在当前位置填入数字k</span>
         <span class="comment">// 计算下一步坐标</span>
         <span class="keyword">int</span> a = x + dx[d], b = y + dy[d];
-        <span class="comment">// 如果越界或已访问，转向（右→下→左→上）</span>
+        <span class="comment">// 如果下一步越界或已经填过数字，需要转向</span>
+        <span class="comment">// res[a][b]!=0 表示该位置已经被填过</span>
         <span class="keyword">if</span> (a &lt; <span class="number">0</span> || a &gt;= n || b &lt; <span class="number">0</span> || b &gt;= m || res[a][b]) {
-            d = (d + <span class="number">1</span>) % <span class="number">4</span>;  <span class="comment">// 换方向</span>
-            a = x + dx[d], b = y + dy[d];
+            d = (d + <span class="number">1</span>) % <span class="number">4</span>;  <span class="comment">// 右→下→左→上→右 循环</span>
+            a = x + dx[d], b = y + dy[d];  <span class="comment">// 重新计算新方向的下一步</span>
         }
-        x = a, y = b;  <span class="comment">// 移动到下一步</span>
+        x = a, y = b;  <span class="comment">// 移动到下一步位置</span>
     }
 
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {

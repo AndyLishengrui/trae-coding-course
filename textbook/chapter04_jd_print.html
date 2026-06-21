@@ -87,12 +87,20 @@ X[9] = 31
             <strong>解题思路：</strong><p>遍历数组，将≤0的元素替换为1。数组下标从0开始，用 <code>X[i]</code> 访问第i个元素。</p>
 <p><strong>逐步模拟（输入 -73 27 -35 50 ...）：</strong></p>
 <pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
-i=0: 读入 -73 → -73≤0 → 替换为1 → 输出 X[0] = 1
-i=1: 读入  27 → 27>0  → 保留    → 输出 X[1] = 27
-i=2: 读入 -35 → -35≤0 → 替换为1 → 输出 X[2] = 1
-i=3: 读入  50 → 50>0  → 保留    → 输出 X[3] = 50
+数组下标:  [0]   [1]   [2]   [3]   [4]   [5]   [6]   [7]   [8]   [9]
+原始值:    -73   27    -35   50    -67   86    39    -81   -7    31
+
+i=0: 读入 -73 → -73≤0 → 替换为1 → X[0] = 1
+i=1: 读入  27 → 27>0  → 保留    → X[1] = 27
+i=2: 读入 -35 → -35≤0 → 替换为1 → X[2] = 1
+i=3: 读入  50 → 50>0  → 保留    → X[3] = 50
+i=4: 读入 -67 → -67≤0 → 替换为1 → X[4] = 1
+i=5: 读入  86 → 86>0  → 保留    → X[5] = 86
 ...
+
+最终数组: [ 1] [27] [ 1] [50] [ 1] [86] [39] [ 1] [ 1] [31]
 </pre>
+<p><strong>数组下标访问模式：</strong> 数组就像一排带编号的格子，X[i] 表示"取出第i个格子里的值"。下标从0开始，不是从1开始！</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -195,8 +203,10 @@ i=9: v=3072 → 输出 N[9] = 3072
     cin &gt;&gt; v;  <span class="comment">// 读入起点值，如 v=6</span>
     <span class="comment">// for循环三部分：初始化(i=0) → 条件(i&lt;10) → 更新(i++, v*=2)</span>
     <span class="comment">// 执行顺序：条件判断 → 循环体 → 更新 → 条件判断 → ...</span>
+    <span class="comment">// v的变化轨迹: 6 → 12 → 24 → 48 → 96 → 192 → 384 → 768 → 1536 → 3072</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++, v *= <span class="number">2</span>)
         <span class="comment">// 每次循环：先输出当前v，循环末尾才翻倍</span>
+        <span class="comment">// 相当于数组 N[] = {6, 12, 24, 48, 96, 192, 384, 768, 1536, 3072}</span>
         cout &lt;&lt; <span class="string">&quot;N[&quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot;] = &quot;</span> &lt;&lt; v &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -537,6 +547,14 @@ i=9: swap(arr[9],  arr[10]) → 交换  98 和 -95
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) cin &gt;&gt; arr[i];  <span class="comment">// 逐个读入</span>
     <span class="comment">// 双指针交换：i从左(0)往右，19-i从右(19)往左</span>
     <span class="comment">// 只需交换前半部分(i=0~9)，共10次</span>
+    <span class="comment">//</span>
+    <span class="comment">// 交换过程可视化（以输入 -40 57 99 2 ... 57 1 -32 为例）：</span>
+    <span class="comment">// 原始:  [-40] [57] [99] [2] ... [57] [1] [-32]</span>
+    <span class="comment">// i=0:  swap(arr[0], arr[19])  → 交换 -40 和 -32</span>
+    <span class="comment">// i=1:  swap(arr[1], arr[18])  → 交换  57 和   1</span>
+    <span class="comment">// i=2:  swap(arr[2], arr[17])  → 交换  99 和  54</span>
+    <span class="comment">// ...</span>
+    <span class="comment">// i=9:  swap(arr[9], arr[10])  → 交换  98 和 -95</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) swap(arr[i], arr[<span class="number">19</span> - i]);
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++)
         cout &lt;&lt; <span class="string">&quot;N[&quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot;] = &quot;</span> &lt;&lt; arr[i] &lt;&lt; endl;
@@ -708,6 +726,12 @@ i=3: t=1+2=3, a=2, b=3   → F(4)=3
     <span class="keyword">if</span> (n == <span class="number">0</span>) { cout &lt;&lt; <span class="number">0</span> &lt;&lt; endl; <span class="keyword">return</span> <span class="number">0</span>; }
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) {
         <span class="comment">// 三步滚动：临时变量保存 a+b，然后 a←b, b←t</span>
+        <span class="comment">// 滚动变量状态（以n=4为例）：</span>
+        <span class="comment">// 初始: a=0, b=1          → 代表 F(0), F(1)</span>
+        <span class="comment">// i=1:  t=0+1=1, a=1, b=1   → 代表 F(1), F(2)</span>
+        <span class="comment">// i=2:  t=1+1=2, a=1, b=2   → 代表 F(2), F(3)</span>
+        <span class="comment">// i=3:  t=1+2=3, a=2, b=3   → 代表 F(3), F(4)</span>
+        <span class="comment">// 输出 b=3 即 F(4)</span>
         <span class="keyword">long</span> <span class="keyword">long</span> t = a + b;  <span class="comment">// t = 新的斐波那契值</span>
         a = b;                <span class="comment">// a 前进一步</span>
         b = t;                <span class="comment">// b 前进一步</span>
@@ -880,6 +904,13 @@ i=10: 输出 10, sum=35+10=45
     <span class="keyword">while</span> (cin &gt;&gt; m &gt;&gt; n, m &gt; <span class="number">0</span> && n &gt; <span class="number">0</span>) {
         <span class="keyword">if</span> (m &gt; n) swap(m, n);  <span class="comment">// 保证 m≤n</span>
         <span class="keyword">int</span> sum = <span class="number">0</span>;
+        <span class="comment">// 累加过程追踪（M=5, N=10）：</span>
+        <span class="comment">// i=5:  sum = 0+5  =  5  → 输出 "5 "</span>
+        <span class="comment">// i=6:  sum = 5+6  = 11  → 输出 "6 "</span>
+        <span class="comment">// i=7:  sum = 11+7 = 18  → 输出 "7 "</span>
+        <span class="comment">// ...</span>
+        <span class="comment">// i=10: sum = 35+10= 45  → 输出 "10 "</span>
+        <span class="comment">// 最终输出: "5 6 7 8 9 10 Sum=45"</span>
         <span class="keyword">for</span> (<span class="keyword">int</span> i = m; i &lt;= n; i++) {
             cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;  <span class="comment">// 输出当前数</span>
             sum += i;           <span class="comment">// 累加到总和</span>
@@ -965,10 +996,15 @@ i=11 [11,0 ] [11,1 ] [11,2 ] ... [11,11 ]
     scanf(<span class="string">&quot;%d %c&quot;</span>, &l, &t);  <span class="comment">// l=行号, t=操作类型(S或M)</span>
     <span class="keyword">double</span> sum = <span class="number">0</span>, x;
     <span class="comment">// 双重循环读入12x12矩阵</span>
+    <span class="comment">// 矩阵元素 mat[i][j]：i是行号(0~11), j是列号(0~11)</span>
+    <span class="comment">// 外层循环i控制"行"，内层循环j控制"列"</span>
+    <span class="comment">// 按行优先顺序读入: 先读第0行的12个数，再读第1行...</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++)       <span class="comment">// i=行号 0~11</span>
         <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {  <span class="comment">// j=列号 0~11</span>
             scanf(<span class="string">&quot;%lf&quot;</span>, &x);
-            <span class="keyword">if</span> (i == l) sum += x;  <span class="comment">// 只累加第l行</span>
+            <span class="comment">// 只累加第l行：当行号i等于目标行l时，无论j是多少都累加</span>
+            <span class="comment">// 这样就把第l行的所有12个元素都加起来了</span>
+            <span class="keyword">if</span> (i == l) sum += x;
         }
     <span class="comment">// 三元运算符：t=='S'输出sum，否则输出sum/12</span>
     printf(<span class="string">&quot;%.1lf\n&quot;</span>, t == 'S' ? sum : sum / <span class="number">12</span>);
@@ -1060,10 +1096,16 @@ i=11: [ ... , arr[11][C], ... ] ← 累加
     <span class="keyword">int</span> c; <span class="keyword">char</span> t;
     scanf(<span class="string">&quot;%d %c&quot;</span>, &c, &t);  <span class="comment">// c=列号, t=操作类型</span>
     <span class="keyword">double</span> sum = <span class="number">0</span>, x;
+    <span class="comment">// 与JD051(行求和)的对比：</span>
+    <span class="comment">// 行求和: 固定i==l（行号等于目标），j从0到11遍历 → 横向一行</span>
+    <span class="comment">// 列求和: 固定j==c（列号等于目标），i从0到11遍历 → 纵向一列</span>
+    <span class="comment">// 读入顺序不变(行优先)，但累加条件变了</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++)       <span class="comment">// 遍历每一行</span>
         <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {  <span class="comment">// 遍历每一列</span>
             scanf(<span class="string">&quot;%lf&quot;</span>, &x);
-            <span class="keyword">if</span> (j == c) sum += x;  <span class="comment">// 只累加第c列</span>
+            <span class="comment">// 只累加第c列：列号j等于目标c时累加</span>
+            <span class="comment">// 取出: mat[0][c], mat[1][c], mat[2][c], ..., mat[11][c]</span>
+            <span class="keyword">if</span> (j == c) sum += x;
         }
     printf(<span class="string">&quot;%.1lf\n&quot;</span>, t == 'S' ? sum : sum / <span class="number">12</span>);
     <span class="keyword">return</span> <span class="number">0</span>;
@@ -1227,13 +1269,16 @@ i=9: j从2开始，j*j≤9
     <span class="keyword">int</span> n;
     cin &gt;&gt; n;
     <span class="comment">// 逐个检查 2 到 n 是否为质数</span>
+    <span class="comment">// 质数：只能被1和自身整除的数（如2,3,5,7,11...）</span>
+    <span class="comment">// 试除法：用2到√i之间的数去试除i</span>
+    <span class="comment">// 为什么只试到√i？如果i=a*b，那么a和b中必有一个≤√i</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) {
-        <span class="keyword">bool</span> prime = <span class="keyword">true</span>;  <span class="comment">// 假设i是质数</span>
-        <span class="comment">// 试除法：从2试到√i（用j*j&lt;=i避免浮点）</span>
+        <span class="keyword">bool</span> prime = <span class="keyword">true</span>;  <span class="comment">// 先假设i是质数</span>
+        <span class="comment">// j*j&lt;=i 等价于 j&lt;=√i，但避免了浮点运算</span>
         <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">2</span>; j * j &lt;= i; j++) {
-            <span class="keyword">if</span> (i % j == <span class="number">0</span>) {  <span class="comment">// 找到因子</span>
+            <span class="keyword">if</span> (i % j == <span class="number">0</span>) {  <span class="comment">// i能被j整除 → 找到因子</span>
                 prime = <span class="keyword">false</span>;  <span class="comment">// 不是质数</span>
-                <span class="keyword">break</span>;          <span class="comment">// 提前退出内层循环</span>
+                <span class="keyword">break</span>;          <span class="comment">// 提前退出，不用继续试</span>
             }
         }
         <span class="keyword">if</span> (prime) cout &lt;&lt; i &lt;&lt; endl;
