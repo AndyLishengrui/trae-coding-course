@@ -361,12 +361,6 @@ stack2 = []
                 stack2.append(stack1.pop())
         <span class="keyword">if</span> stack2:
             <span class="keyword">print</span>(stack2.pop())
-    <span class="keyword">elif</span> parts[<span class="number">0</span>] == <span class="string">'peek'</span>:
-        <span class="keyword">if</span> <span class="keyword">not</span> stack2:
-            <span class="keyword">while</span> stack1:
-                stack2.append(stack1.pop())
-        <span class="keyword">if</span> stack2:
-            <span class="keyword">print</span>(stack2[-<span class="number">1</span>])
     <span class="keyword">elif</span> parts[<span class="number">0</span>] == <span class="string">'empty'</span>:
         <span class="keyword">print</span>(<span class="string">'yes'</span> <span class="keyword">if</span> (<span class="keyword">not</span> stack1 <span class="keyword">and</span> <span class="keyword">not</span> stack2) <span class="keyword">else</span> <span class="string">'no'</span>)</code></pre>
             </details>
@@ -437,12 +431,15 @@ stack2 = []
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">import</span> sys
-text = sys.stdin.read().strip()
-parts = text.split(<span class="string">&quot;-&gt;&quot;</span>)
-values = [p <span class="keyword">for</span> p <span class="keyword">in</span> parts <span class="keyword">if</span> p != <span class="string">&quot;NULL&quot;</span>]
-values.reverse()
-<span class="keyword">print</span>(<span class="string">&quot;-&gt;&quot;</span>.join(values) + <span class="string">&quot;-&gt;NULL&quot;</span>)</code></pre>
+            <pre><code class="language-python"><span class="comment"># 读入以-1结尾的数字序列，反转后输出</span>
+numbers = []
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    x = <span class="keyword">int</span>(<span class="keyword">input</span>())
+    <span class="keyword">if</span> x == -<span class="number">1</span>:        <span class="comment"># -1表示铁链结束</span>
+        <span class="keyword">break</span>
+    numbers.append(x)
+numbers.reverse()       <span class="comment"># 反转序列</span>
+<span class="keyword">print</span>(<span class="string">' '</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, numbers)))</code></pre>
             </details>
         </div>
     </div>
@@ -515,22 +512,32 @@ values.reverse()
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">import</span> sys
-lines = sys.stdin.read().strip().split(<span class="string">'\n'</span>)
-a = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> lines[<span class="number">0</span>].split(<span class="string">&quot;-&gt;&quot;</span>) <span class="keyword">if</span> x != <span class="string">&quot;NULL&quot;</span>]
-b = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> lines[<span class="number">1</span>].split(<span class="string">&quot;-&gt;&quot;</span>) <span class="keyword">if</span> x != <span class="string">&quot;NULL&quot;</span>]
+            <pre><code class="language-python"><span class="comment"># 读入两条有序链（以-1结尾），用双指针合并</span>
+a = []
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    x = <span class="keyword">int</span>(<span class="keyword">input</span>())
+    <span class="keyword">if</span> x == -<span class="number">1</span>: <span class="keyword">break</span>
+    a.append(x)
+b = []
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    x = <span class="keyword">int</span>(<span class="keyword">input</span>())
+    <span class="keyword">if</span> x == -<span class="number">1</span>: <span class="keyword">break</span>
+    b.append(x)
+
+<span class="comment"># 双指针合并两个有序序列</span>
 i = j = <span class="number">0</span>
-res = []
+result = []
 <span class="keyword">while</span> i < <span class="keyword">len</span>(a) <span class="keyword">and</span> j < <span class="keyword">len</span>(b):
     <span class="keyword">if</span> a[i] <= b[j]:
-        res.append(<span class="keyword">str</span>(a[i]))
+        result.append(<span class="keyword">str</span>(a[i]))
         i += <span class="number">1</span>
     <span class="keyword">else</span>:
-        res.append(<span class="keyword">str</span>(b[j]))
+        result.append(<span class="keyword">str</span>(b[j]))
         j += <span class="number">1</span>
-res.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> a[i:])
-res.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> b[j:])
-<span class="keyword">print</span>(<span class="string">&quot;-&gt;&quot;</span>.join(res))</code></pre>
+<span class="comment"># 把剩余元素全部接上</span>
+result.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> a[i:])
+result.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> b[j:])
+<span class="keyword">print</span>(<span class="string">' '</span>.join(result))</code></pre>
             </details>
         </div>
     </div>
@@ -629,7 +636,7 @@ data = []
     y = <span class="keyword">float</span>(parts[<span class="number">1</span>])
     z = parts[<span class="number">2</span>]
     data.append((x, y, z))
-data.sort(key=<span class="keyword">lambda</span> t: t[<span class="number">0</span>])
+data.sort(key=<span class="keyword">lambda</span> t: (t[<span class="number">0</span>], t[<span class="number">1</span>]))  <span class="comment"># 先按编号x排序，编号相同再按重量y排序</span>
 <span class="keyword">for</span> x, y, z <span class="keyword">in</span> data:
     <span class="keyword">print</span>(f<span class="string">'{x} {y:.2f} {z}'</span>)</code></pre>
             </details>

@@ -6086,7 +6086,15 @@ r = s.rfind(s2)
    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">import</span> math;<span class="keyword">print</span>(math.factorial(<span class="keyword">int</span>(<span class="keyword">input</span>())))</code></pre>
+            <pre><code class="language-python"><span class="comment"># 计算阶乘：n! = 1 x 2 x 3 x ... x n</span>
+<span class="keyword">def</span> factorial(number):
+    result = <span class="number">1</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, number + <span class="number">1</span>):
+        result *= i       <span class="comment"># 逐个累乘</span>
+    <span class="keyword">return</span> result
+
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(factorial(n))</code></pre>
             </details>
         </div>
     </div>
@@ -6301,7 +6309,10 @@ r = s.rfind(s2)
 
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">a,b=<span class="keyword">map</span>(<span class="keyword">int</span>,<span class="keyword">input</span>().split());a,b=b,a;<span class="keyword">print</span>(a,b)</code></pre>
+            <pre><code class="language-python"><span class="comment"># Python中交换两个变量非常简洁</span>
+first, second = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+first, second = second, first  <span class="comment"># 交换</span>
+<span class="keyword">print</span>(first, second)</code></pre>
             </details>
         </div>
     </div>
@@ -6689,8 +6700,11 @@ arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span c
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < row; i ++ )
     {
       <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < col; j ++ )
-          cout << a[i][j] << ' ';
-      cout << endl;    
+      {
+          <span class="keyword">if</span> (j) cout << ' ';  <span class="comment">// 第一个数前面不输出空格，之后每个数前面输出空格</span>
+          cout << a[i][j];
+      }
+      cout << endl;
     }
 }
 
@@ -6710,8 +6724,11 @@ arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span c
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">r,c=<span class="keyword">map</span>(<span class="keyword">int</span>,<span class="keyword">input</span>().split())
-<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(r):<span class="keyword">print</span>(<span class="string">' '</span>.join(<span class="keyword">input</span>().split()))</code></pre>
+            <pre><code class="language-python"><span class="comment"># 读入矩阵，按行输出（行内已空格分隔，直接输出即可）</span>
+rows, cols = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(rows):
+    line = <span class="keyword">input</span>().split()        <span class="comment"># 按空格拆分每行数字</span>
+    <span class="keyword">print</span>(<span class="string">' '</span>.join(line))        <span class="comment"># 用空格重新拼接输出</span></code></pre>
             </details>
         </div>
     </div>
@@ -6861,10 +6878,14 @@ a[l:r+<span class="number">1</span>] = <span class="keyword">sorted</span>(a[l:r
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">import</span> sys
-sys.setrecursionlimit(<span class="number">200000</span>)
-<span class="keyword">def</span> f(n):<span class="keyword">return</span> <span class="number">1</span> <span class="keyword">if</span> n<=<span class="number">1</span> <span class="keyword">else</span> n*f(n-<span class="number">1</span>)
-<span class="keyword">print</span>(f(<span class="keyword">int</span>(<span class="keyword">input</span>())))</code></pre>
+            <pre><code class="language-python"><span class="comment"># 递归阶乘：fact(n) = n * fact(n-1)，fact(1) = 1</span>
+<span class="keyword">def</span> factorial(n):
+    <span class="keyword">if</span> n == <span class="number">1</span>:            <span class="comment"># 递归终止条件</span>
+        <span class="keyword">return</span> <span class="number">1</span>
+    <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>)  <span class="comment"># 递推关系：n * fact(n-1)</span>
+
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(factorial(n))</code></pre>
             </details>
         </div>
     </div>
@@ -6933,10 +6954,15 @@ sys.setrecursionlimit(<span class="number">200000</span>)
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">import</span> sys
-sys.setrecursionlimit(<span class="number">200000</span>)
-<span class="keyword">def</span> f(n):<span class="keyword">return</span> n <span class="keyword">if</span> n<=<span class="number">1</span> <span class="keyword">else</span> f(n-<span class="number">1</span>)+f(n-<span class="number">2</span>)
-<span class="keyword">print</span>(f(<span class="keyword">int</span>(<span class="keyword">input</span>())))</code></pre>
+            <pre><code class="language-python"><span class="comment"># 递归斐波那契：fib(1)=1, fib(2)=1, fib(n)=fib(n-1)+fib(n-2)</span>
+<span class="comment"># 注意：朴素递归效率低(指数级)，后续会学到优化方法</span>
+<span class="keyword">def</span> fibonacci(n):
+    <span class="keyword">if</span> n <= <span class="number">2</span>:             <span class="comment"># 前两项都是1</span>
+        <span class="keyword">return</span> <span class="number">1</span>
+    <span class="keyword">return</span> fibonacci(n - <span class="number">1</span>) + fibonacci(n - <span class="number">2</span>)  <span class="comment"># 递推关系</span>
+
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(fibonacci(n))</code></pre>
             </details>
         </div>
     </div>
@@ -7538,12 +7564,6 @@ stack2 = []
                 stack2.append(stack1.pop())
         <span class="keyword">if</span> stack2:
             <span class="keyword">print</span>(stack2.pop())
-    <span class="keyword">elif</span> parts[<span class="number">0</span>] == <span class="string">'peek'</span>:
-        <span class="keyword">if</span> <span class="keyword">not</span> stack2:
-            <span class="keyword">while</span> stack1:
-                stack2.append(stack1.pop())
-        <span class="keyword">if</span> stack2:
-            <span class="keyword">print</span>(stack2[-<span class="number">1</span>])
     <span class="keyword">elif</span> parts[<span class="number">0</span>] == <span class="string">'empty'</span>:
         <span class="keyword">print</span>(<span class="string">'yes'</span> <span class="keyword">if</span> (<span class="keyword">not</span> stack1 <span class="keyword">and</span> <span class="keyword">not</span> stack2) <span class="keyword">else</span> <span class="string">'no'</span>)</code></pre>
             </details>
@@ -7614,12 +7634,15 @@ stack2 = []
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">import</span> sys
-text = sys.stdin.read().strip()
-parts = text.split(<span class="string">&quot;-&gt;&quot;</span>)
-values = [p <span class="keyword">for</span> p <span class="keyword">in</span> parts <span class="keyword">if</span> p != <span class="string">&quot;NULL&quot;</span>]
-values.reverse()
-<span class="keyword">print</span>(<span class="string">&quot;-&gt;&quot;</span>.join(values) + <span class="string">&quot;-&gt;NULL&quot;</span>)</code></pre>
+            <pre><code class="language-python"><span class="comment"># 读入以-1结尾的数字序列，反转后输出</span>
+numbers = []
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    x = <span class="keyword">int</span>(<span class="keyword">input</span>())
+    <span class="keyword">if</span> x == -<span class="number">1</span>:        <span class="comment"># -1表示铁链结束</span>
+        <span class="keyword">break</span>
+    numbers.append(x)
+numbers.reverse()       <span class="comment"># 反转序列</span>
+<span class="keyword">print</span>(<span class="string">' '</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, numbers)))</code></pre>
             </details>
         </div>
     </div>
@@ -7692,22 +7715,32 @@ values.reverse()
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">import</span> sys
-lines = sys.stdin.read().strip().split(<span class="string">'\n'</span>)
-a = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> lines[<span class="number">0</span>].split(<span class="string">&quot;-&gt;&quot;</span>) <span class="keyword">if</span> x != <span class="string">&quot;NULL&quot;</span>]
-b = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> lines[<span class="number">1</span>].split(<span class="string">&quot;-&gt;&quot;</span>) <span class="keyword">if</span> x != <span class="string">&quot;NULL&quot;</span>]
+            <pre><code class="language-python"><span class="comment"># 读入两条有序链（以-1结尾），用双指针合并</span>
+a = []
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    x = <span class="keyword">int</span>(<span class="keyword">input</span>())
+    <span class="keyword">if</span> x == -<span class="number">1</span>: <span class="keyword">break</span>
+    a.append(x)
+b = []
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    x = <span class="keyword">int</span>(<span class="keyword">input</span>())
+    <span class="keyword">if</span> x == -<span class="number">1</span>: <span class="keyword">break</span>
+    b.append(x)
+
+<span class="comment"># 双指针合并两个有序序列</span>
 i = j = <span class="number">0</span>
-res = []
+result = []
 <span class="keyword">while</span> i < <span class="keyword">len</span>(a) <span class="keyword">and</span> j < <span class="keyword">len</span>(b):
     <span class="keyword">if</span> a[i] <= b[j]:
-        res.append(<span class="keyword">str</span>(a[i]))
+        result.append(<span class="keyword">str</span>(a[i]))
         i += <span class="number">1</span>
     <span class="keyword">else</span>:
-        res.append(<span class="keyword">str</span>(b[j]))
+        result.append(<span class="keyword">str</span>(b[j]))
         j += <span class="number">1</span>
-res.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> a[i:])
-res.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> b[j:])
-<span class="keyword">print</span>(<span class="string">&quot;-&gt;&quot;</span>.join(res))</code></pre>
+<span class="comment"># 把剩余元素全部接上</span>
+result.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> a[i:])
+result.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> b[j:])
+<span class="keyword">print</span>(<span class="string">' '</span>.join(result))</code></pre>
             </details>
         </div>
     </div>
@@ -7806,7 +7839,7 @@ data = []
     y = <span class="keyword">float</span>(parts[<span class="number">1</span>])
     z = parts[<span class="number">2</span>]
     data.append((x, y, z))
-data.sort(key=<span class="keyword">lambda</span> t: t[<span class="number">0</span>])
+data.sort(key=<span class="keyword">lambda</span> t: (t[<span class="number">0</span>], t[<span class="number">1</span>]))  <span class="comment"># 先按编号x排序，编号相同再按重量y排序</span>
 <span class="keyword">for</span> x, y, z <span class="keyword">in</span> data:
     <span class="keyword">print</span>(f<span class="string">'{x} {y:.2f} {z}'</span>)</code></pre>
             </details>
@@ -8581,9 +8614,9 @@ l, r = -<span class="number">10000.0</span>, <span class="number">10000.0</span>
             <h4>C++</h4>
             <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
-<span class="keyword">inline</span> <span class="keyword">int</span> lowbit(<span class="keyword">int</span> &x)
+<span class="keyword">inline</span> <span class="keyword">int</span> lowbit(<span class="keyword">int</span> x)
 {
-    <span class="keyword">return</span> x & -x;<span class="comment">//x的二进制的最后一个1所构成的整数</span>
+    <span class="keyword">return</span> x & -x;  <span class="comment">// x的二进制的最后一个1所构成的整数</span>
 }
 <span class="keyword">int</span> main()
 {
@@ -9818,7 +9851,12 @@ b = [[<span class="number">0</span>] * (m + <span class="number">2</span>) <span
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>离散化：排序去重后映射到连续下标。用前缀和回答区间查询。</p>
+            <strong>解题思路：</strong><p>离散化的核心步骤：</p>
+<p><strong>1. 收集坐标：</strong>把所有用到的坐标（加法操作的位置x、查询区间的端点l和r）全部收集到一个数组 alls 中。</p>
+<p><strong>2. 排序去重：</strong>对 alls 排序并去重，得到一个从小到大排列的"映射表"。例如 alls = [1, 3, 7]。</p>
+<p><strong>3. 建立映射：</strong>用二分查找（或哈希表）将原始坐标映射到连续下标：1→1, 3→2, 7→3。这样原来稀疏的坐标就被"压缩"到了紧凑的数组下标上。</p>
+<p><strong>4. 前缀和：</strong>在映射后的数组上做前缀和，就能 O(1) 回答区间查询。</p>
+<p>离散化的本质：坐标值可能很大（如10^9），但实际用到的坐标只有少数几个。把这些稀疏坐标映射到连续小下标，既节省空间，又能用前缀和等技巧高效处理。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">

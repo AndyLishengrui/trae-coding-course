@@ -513,7 +513,12 @@ b = [[<span class="number">0</span>] * (m + <span class="number">2</span>) <span
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>离散化：排序去重后映射到连续下标。用前缀和回答区间查询。</p>
+            <strong>解题思路：</strong><p>离散化的核心步骤：</p>
+<p><strong>1. 收集坐标：</strong>把所有用到的坐标（加法操作的位置x、查询区间的端点l和r）全部收集到一个数组 alls 中。</p>
+<p><strong>2. 排序去重：</strong>对 alls 排序并去重，得到一个从小到大排列的"映射表"。例如 alls = [1, 3, 7]。</p>
+<p><strong>3. 建立映射：</strong>用二分查找（或哈希表）将原始坐标映射到连续下标：1→1, 3→2, 7→3。这样原来稀疏的坐标就被"压缩"到了紧凑的数组下标上。</p>
+<p><strong>4. 前缀和：</strong>在映射后的数组上做前缀和，就能 O(1) 回答区间查询。</p>
+<p>离散化的本质：坐标值可能很大（如10^9），但实际用到的坐标只有少数几个。把这些稀疏坐标映射到连续小下标，既节省空间，又能用前缀和等技巧高效处理。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">

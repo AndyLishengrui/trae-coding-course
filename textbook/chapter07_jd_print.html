@@ -102,7 +102,15 @@
    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">import</span> math;<span class="keyword">print</span>(math.factorial(<span class="keyword">int</span>(<span class="keyword">input</span>())))</code></pre>
+            <pre><code class="language-python"><span class="comment"># 计算阶乘：n! = 1 x 2 x 3 x ... x n</span>
+<span class="keyword">def</span> factorial(number):
+    result = <span class="number">1</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, number + <span class="number">1</span>):
+        result *= i       <span class="comment"># 逐个累乘</span>
+    <span class="keyword">return</span> result
+
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(factorial(n))</code></pre>
             </details>
         </div>
     </div>
@@ -317,7 +325,10 @@
 
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">a,b=<span class="keyword">map</span>(<span class="keyword">int</span>,<span class="keyword">input</span>().split());a,b=b,a;<span class="keyword">print</span>(a,b)</code></pre>
+            <pre><code class="language-python"><span class="comment"># Python中交换两个变量非常简洁</span>
+first, second = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+first, second = second, first  <span class="comment"># 交换</span>
+<span class="keyword">print</span>(first, second)</code></pre>
             </details>
         </div>
     </div>
@@ -705,8 +716,11 @@ arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span c
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < row; i ++ )
     {
       <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < col; j ++ )
-          cout << a[i][j] << ' ';
-      cout << endl;    
+      {
+          <span class="keyword">if</span> (j) cout << ' ';  <span class="comment">// 第一个数前面不输出空格，之后每个数前面输出空格</span>
+          cout << a[i][j];
+      }
+      cout << endl;
     }
 }
 
@@ -726,8 +740,11 @@ arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span c
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">r,c=<span class="keyword">map</span>(<span class="keyword">int</span>,<span class="keyword">input</span>().split())
-<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(r):<span class="keyword">print</span>(<span class="string">' '</span>.join(<span class="keyword">input</span>().split()))</code></pre>
+            <pre><code class="language-python"><span class="comment"># 读入矩阵，按行输出（行内已空格分隔，直接输出即可）</span>
+rows, cols = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(rows):
+    line = <span class="keyword">input</span>().split()        <span class="comment"># 按空格拆分每行数字</span>
+    <span class="keyword">print</span>(<span class="string">' '</span>.join(line))        <span class="comment"># 用空格重新拼接输出</span></code></pre>
             </details>
         </div>
     </div>
@@ -877,10 +894,14 @@ a[l:r+<span class="number">1</span>] = <span class="keyword">sorted</span>(a[l:r
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">import</span> sys
-sys.setrecursionlimit(<span class="number">200000</span>)
-<span class="keyword">def</span> f(n):<span class="keyword">return</span> <span class="number">1</span> <span class="keyword">if</span> n<=<span class="number">1</span> <span class="keyword">else</span> n*f(n-<span class="number">1</span>)
-<span class="keyword">print</span>(f(<span class="keyword">int</span>(<span class="keyword">input</span>())))</code></pre>
+            <pre><code class="language-python"><span class="comment"># 递归阶乘：fact(n) = n * fact(n-1)，fact(1) = 1</span>
+<span class="keyword">def</span> factorial(n):
+    <span class="keyword">if</span> n == <span class="number">1</span>:            <span class="comment"># 递归终止条件</span>
+        <span class="keyword">return</span> <span class="number">1</span>
+    <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>)  <span class="comment"># 递推关系：n * fact(n-1)</span>
+
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(factorial(n))</code></pre>
             </details>
         </div>
     </div>
@@ -949,10 +970,15 @@ sys.setrecursionlimit(<span class="number">200000</span>)
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">import</span> sys
-sys.setrecursionlimit(<span class="number">200000</span>)
-<span class="keyword">def</span> f(n):<span class="keyword">return</span> n <span class="keyword">if</span> n<=<span class="number">1</span> <span class="keyword">else</span> f(n-<span class="number">1</span>)+f(n-<span class="number">2</span>)
-<span class="keyword">print</span>(f(<span class="keyword">int</span>(<span class="keyword">input</span>())))</code></pre>
+            <pre><code class="language-python"><span class="comment"># 递归斐波那契：fib(1)=1, fib(2)=1, fib(n)=fib(n-1)+fib(n-2)</span>
+<span class="comment"># 注意：朴素递归效率低(指数级)，后续会学到优化方法</span>
+<span class="keyword">def</span> fibonacci(n):
+    <span class="keyword">if</span> n <= <span class="number">2</span>:             <span class="comment"># 前两项都是1</span>
+        <span class="keyword">return</span> <span class="number">1</span>
+    <span class="keyword">return</span> fibonacci(n - <span class="number">1</span>) + fibonacci(n - <span class="number">2</span>)  <span class="comment"># 递推关系</span>
+
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(fibonacci(n))</code></pre>
             </details>
         </div>
     </div>

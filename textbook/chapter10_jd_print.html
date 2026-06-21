@@ -83,9 +83,9 @@
             <h4>C++</h4>
             <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
-<span class="keyword">inline</span> <span class="keyword">int</span> lowbit(<span class="keyword">int</span> &x)
+<span class="keyword">inline</span> <span class="keyword">int</span> lowbit(<span class="keyword">int</span> x)
 {
-    <span class="keyword">return</span> x & -x;<span class="comment">//x的二进制的最后一个1所构成的整数</span>
+    <span class="keyword">return</span> x & -x;  <span class="comment">// x的二进制的最后一个1所构成的整数</span>
 }
 <span class="keyword">int</span> main()
 {
