@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剑道试炼 · 互动编程</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Monaco Editor from CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/editor/editor.main.min.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <a href="../index.html" class="nav-brand">剑道试炼</a>
+        <div class="nav-links">
+            <a href="../index.html" class="nav-link-text">教材首页</a>
+            <a href="index.html" class="nav-link-text active">互动编程</a>
+            <a href="progress.html" class="nav-link-text">我的进度</a>
+            <a href="leaderboard.html" class="nav-link-text">排行榜</a>
+            <button class="dark-toggle" aria-label="Toggle dark mode">☾</button>
+            <div class="user-menu" id="userMenu">
+                <button class="user-btn" id="userBtn">
+                    <span class="user-avatar">剑</span>
+                    <span class="user-name" id="userName">未登录</span>
+                </button>
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="profile.html">个人资料</a>
+                    <a href="progress.html">学习进度</a>
+                    <a href="settings.html">设置</a>
+                    <hr>
+                    <a href="#" id="logoutBtn">退出登录</a>
+                </div>
+            </div>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="interactive-layout">
+        <!-- Left: Problem List -->
+        <aside class="problem-sidebar" id="problemSidebar">
+            <div class="sidebar-header">
+                <h3>剑道修炼</h3>
+                <div class="progress-summary">
+                    <div class="progress-ring">
+                        <svg viewBox="0 0 36 36">
+                            <path class="progress-ring-bg"
+                                d="M18 2.0845
+                                   a 15.9155 15.9155 0 0 1 0 31.831
+                                   a 15.9155 15.9155 0 0 1 0 -31.831"
+                                fill="none" stroke="#eee" stroke-width="3"/>
+                            <path class="progress-ring-fill"
+                                d="M18 2.0845
+                                   a 15.9155 15.9155 0 0 1 0 31.831
+                                   a 15.9155 15.9155 0 0 1 0 -31.831"
+                                fill="none" stroke="#c9a227" stroke-width="3"
+                                stroke-dasharray="0, 100" id="progressArc"/>
+                        </svg>
+                        <span class="progress-text" id="progressText">0%</span>
+                    </div>
+                    <div class="progress-stats">
+                        <span id="solvedCount">0</span> / <span id="totalCount">172</span> 题
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-filter">
+                <select id="chapterSelect">
+                    <option value="all">全部章节</option>
+                    <option value="1">第一章 持剑叩门</option>
+                    <option value="2">第二章 歧路逢生</option>
+                    <option value="3">第三章 千回百转</option>
+                    <option value="4">第四章 排兵布阵</option>
+                    <option value="5">第五章 十二宫剑阵</option>
+                    <option value="6">第六章 古卷密文</option>
+                    <option value="7">第七章 以招创招</option>
+                    <option value="8">第八章 百器图谱</option>
+                    <option value="9">第九章 快剑如风</option>
+                    <option value="10">第十章 千锤百炼</option>
+                    <option value="11">第十一章 蓄势待发</option>
+                    <option value="12">第十二章 利器出鞘</option>
+                    <option value="13">第十三章 迷雾寻踪</option>
+                    <option value="14">第十四章 千里奔袭</option>
+                    <option value="15">第十五章 华山论剑</option>
+                </select>
+            </div>
+
+            <div class="problem-list" id="problemList">
+                <!-- Dynamically populated -->
+            </div>
+        </aside>
+
+        <!-- Center: Problem + Editor -->
+        <main class="problem-main">
+            <!-- Problem Display -->
+            <div class="problem-panel" id="problemPanel">
+                <div class="problem-header">
+                    <div class="problem-id" id="problemId">JD001</div>
+                    <h2 class="problem-title" id="problemTitle">铁令求和</h2>
+                    <div class="problem-tags" id="problemTags">
+                        <span class="tag">基础语法</span>
+                        <span class="tag">输入输出</span>
+                    </div>
+                    <div class="problem-status" id="problemStatus">
+                        <span class="status-icon">○</span>
+                        <span class="status-text">未完成</span>
+                    </div>
+                </div>
+
+                <div class="problem-story" id="problemStory">
+                    <p>李少白第一次来到剑道宗山门前。梁嘉峰递给他两枚铁令，上面各刻着一个数。「加起来，报给我。」</p>
+                </div>
+
+                <div class="problem-io">
+                    <div class="io-block">
+                        <h4>输入格式</h4>
+                        <p id="inputFormat">一行，两个整数A和B，用空格隔开。</p>
+                    </div>
+                    <div class="io-block">
+                        <h4>输出格式</h4>
+                        <p id="outputFormat">一个整数，即A+B的结果。</p>
+                    </div>
+                </div>
+
+                <div class="sample-io">
+                    <div class="sample-block">
+                        <div class="sample-header">
+                            <span class="sample-label">输入样例</span>
+                            <button class="copy-sample" data-target="sampleInput">复制</button>
+                        </div>
+                        <pre class="sample-content" id="sampleInput">3 4</pre>
+                    </div>
+                    <div class="sample-block">
+                        <div class="sample-header">
+                            <span class="sample-label">输出样例</span>
+                            <button class="copy-sample" data-target="sampleOutput">复制</button>
+                        </div>
+                        <pre class="sample-content" id="sampleOutput">7</pre>
+                    </div>
+                </div>
+
+                <!-- Hint System -->
+                <div class="hint-section">
+                    <button class="hint-toggle" id="hintToggle">
+                        <span class="hint-icon">💡</span>
+                        查看提示
+                        <span class="hint-cost">（消耗 5 剑气）</span>
+                    </button>
+                    <div class="hint-content" id="hintContent" style="display: none;">
+                        <div class="hint-level" id="hintLevel1">
+                            <h4>第一层提示</h4>
+                            <p>读入两个整数，输出它们的和。</p>
+                        </div>
+                        <div class="hint-level" id="hintLevel2" style="display: none;">
+                            <h4>第二层提示</h4>
+                            <p>使用 cin 读入，cout 输出。Python 可以用 input().split()。</p>
+                        </div>
+                        <div class="hint-level" id="hintLevel3" style="display: none;">
+                            <h4>参考思路</h4>
+                            <p>定义两个变量，读入后直接相加输出即可。</p>
+                        </div>
+                        <button class="hint-next" id="hintNext">查看下一层提示</button>
+                    </div>
+                </div>
+
+                <!-- Code Comparison -->
+                <div class="comparison-section" id="comparisonSection" style="display: none;">
+                    <h3>代码对比</h3>
+                    <div class="comparison-container">
+                        <div class="comparison-panel">
+                            <h4>我的代码</h4>
+                            <pre id="myCodePreview"></pre>
+                        </div>
+                        <div class="comparison-panel">
+                            <h4>参考代码</h4>
+                            <pre id="refCodePreview"></pre>
+                        </div>
+                    </div>
+                    <div class="diff-stats" id="diffStats"></div>
+                </div>
+            </div>
+
+            <!-- Code Editor Panel -->
+            <div class="editor-panel">
+                <div class="editor-toolbar">
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" data-lang="cpp">C++</button>
+                        <button class="lang-btn" data-lang="python">Python</button>
+                    </div>
+                    <div class="editor-actions">
+                        <button class="action-btn" id="resetBtn" title="重置代码">
+                            <span>↺</span> 重置
+                        </button>
+                        <button class="action-btn" id="formatBtn" title="格式化代码">
+                            <span>⫶</span> 格式化
+                        </button>
+                        <button class="action-btn primary" id="runBtn" title="运行代码">
+                            <span>▶</span> 运行
+                        </button>
+                        <button class="action-btn success" id="submitBtn" title="提交代码">
+                            <span>✓</span> 提交
+                        </button>
+                    </div>
+                </div>
+
+                <div class="editor-container" id="editorContainer">
+                    <!-- Monaco Editor will be mounted here -->
+                </div>
+
+                <!-- Input/Output Panel -->
+                <div class="io-panel">
+                    <div class="io-tabs">
+                        <button class="io-tab active" data-tab="stdin">标准输入</button>
+                        <button class="io-tab" data-tab="stdout">标准输出</button>
+                        <button class="io-tab" data-tab="stderr">错误信息</button>
+                        <button class="io-tab" data-tab="result">运行结果</button>
+                    </div>
+                    <div class="io-content">
+                        <div class="io-pane active" id="stdinPane">
+                            <textarea id="stdinInput" placeholder="在此输入测试数据...">3 4</textarea>
+                        </div>
+                        <div class="io-pane" id="stdoutPane">
+                            <pre id="stdoutOutput"></pre>
+                        </div>
+                        <div class="io-pane" id="stderrPane">
+                            <pre id="stderrOutput"></pre>
+                        </div>
+                        <div class="io-pane" id="resultPane">
+                            <div class="result-content" id="resultContent"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right: Submissions & Discussion -->
+        <aside class="submission-sidebar" id="submissionSidebar">
+            <div class="sidebar-section">
+                <h3>提交记录</h3>
+                <div class="submission-list" id="submissionList">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>讨论区</h3>
+                <div class="discussion-list" id="discussionList">
+                    <div class="discussion-item">
+                        <div class="discussion-author">剑道新手</div>
+                        <div class="discussion-text">这道题用 Python 怎么做？</div>
+                        <div class="discussion-meta">2小时前 · 3回复</div>
+                    </div>
+                </div>
+                <button class="discussion-btn">发起讨论</button>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>剑道试炼 · 登录</h2>
+                <button class="modal-close" id="closeLogin">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="login-tabs">
+                    <button class="login-tab active" data-tab="login">登录</button>
+                    <button class="login-tab" data-tab="register">注册</button>
+                </div>
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label>剑道名号</label>
+                        <input type="text" id="loginUsername" placeholder="请输入用户名" required>
+                    </div>
+                    <div class="form-group">
+                        <label>密令</label>
+                        <input type="password" id="loginPassword" placeholder="请输入密码" required>
+                    </div>
+                    <button type="submit" class="submit-btn">进入剑道</button>
+                </form>
+                <form id="registerForm" class="auth-form" style="display: none;">
+                    <div class="form-group">
+                        <label>剑道名号</label>
+                        <input type="text" id="regUsername" placeholder="设置用户名" required>
+                    </div>
+                    <div class="form-group">
+                        <label>密令</label>
+                        <input type="password" id="regPassword" placeholder="设置密码" required>
+                    </div>
+                    <div class="form-group">
+                        <label>确认密令</label>
+                        <input type="password" id="regPasswordConfirm" placeholder="再次输入密码" required>
+                    </div>
+                    <div class="form-group">
+                        <label>身份</label>
+                        <select id="regRole">
+                            <option value="student">弟子</option>
+                            <option value="teacher">师父</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn">注册入门</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>代码运行中...</p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

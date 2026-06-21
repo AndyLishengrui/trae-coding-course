@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教师后台 — 剑道试炼</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Teacher Dashboard Specific Styles */
+        .teacher-layout {
+            display: flex;
+            height: calc(100vh - 56px);
+            overflow: hidden;
+        }
+
+        .teacher-sidebar {
+            width: 240px;
+            background: var(--color-surface);
+            border-right: 1px solid var(--color-border);
+            padding: var(--gap-md);
+            overflow-y: auto;
+        }
+
+        .teacher-nav {
+            list-style: none;
+            padding: 0;
+        }
+
+        .teacher-nav li {
+            margin-bottom: var(--gap-xs);
+        }
+
+        .teacher-nav a {
+            display: flex;
+            align-items: center;
+            gap: var(--gap-sm);
+            padding: var(--gap-sm) var(--gap-md);
+            color: var(--color-text);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-sans);
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+
+        .teacher-nav a:hover {
+            background: rgba(139,0,0,0.06);
+            color: var(--color-heading);
+        }
+
+        .teacher-nav a.active {
+            background: rgba(139,0,0,0.1);
+            color: var(--color-heading);
+            font-weight: bold;
+        }
+
+        .teacher-main {
+            flex: 1;
+            overflow-y: auto;
+            padding: var(--gap-xl);
+            background: var(--color-bg);
+        }
+
+        .dashboard-header {
+            margin-bottom: var(--gap-xl);
+        }
+
+        .dashboard-header h1 {
+            font-family: var(--font-sans);
+            color: var(--color-heading);
+            font-size: 1.8em;
+            margin-bottom: var(--gap-sm);
+        }
+
+        .dashboard-header p {
+            color: var(--color-text-muted);
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--gap-lg);
+            margin-bottom: var(--gap-xl);
+        }
+
+        .stat-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--gap-lg);
+            box-shadow: var(--shadow-card);
+        }
+
+        .stat-card-icon {
+            font-size: 2em;
+            margin-bottom: var(--gap-sm);
+        }
+
+        .stat-card-value {
+            font-family: var(--font-sans);
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--color-heading);
+            margin-bottom: var(--gap-xs);
+        }
+
+        .stat-card-label {
+            font-family: var(--font-sans);
+            font-size: 0.85em;
+            color: var(--color-text-muted);
+        }
+
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            margin-bottom: var(--gap-xl);
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: var(--gap-md);
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+            font-family: var(--font-sans);
+            font-size: 0.9em;
+        }
+
+        .data-table th {
+            background: var(--color-bg);
+            font-weight: bold;
+            color: var(--color-heading);
+        }
+
+        .data-table tr:hover {
+            background: rgba(139,0,0,0.03);
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Status Badges */
+        .badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .badge-success {
+            background: rgba(46,125,50,0.1);
+            color: var(--color-success);
+        }
+
+        .badge-warning {
+            background: rgba(245,127,23,0.1);
+            color: var(--color-warning);
+        }
+
+        .badge-error {
+            background: rgba(198,40,40,0.1);
+            color: var(--color-error);
+        }
+
+        .badge-info {
+            background: rgba(21,101,192,0.1);
+            color: var(--color-info);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--color-bg);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-heading), var(--color-accent));
+            transition: width 0.3s ease;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--gap-lg);
+            box-shadow: var(--shadow-card);
+            margin-bottom: var(--gap-xl);
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--gap-lg);
+        }
+
+        .chart-header h3 {
+            font-family: var(--font-sans);
+            color: var(--color-heading);
+        }
+
+        .chart-area {
+            height: 300px;
+            position: relative;
+        }
+
+        /* Problem Difficulty Distribution */
+        .difficulty-bars {
+            display: flex;
+            gap: var(--gap-md);
+            align-items: flex-end;
+            height: 200px;
+            padding: var(--gap-md) 0;
+        }
+
+        .difficulty-bar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--gap-sm);
+        }
+
+        .difficulty-bar-fill {
+            width: 100%;
+            background: linear-gradient(180deg, var(--color-accent), var(--color-heading));
+            border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+            transition: height 0.3s ease;
+        }
+
+        .difficulty-bar-label {
+            font-family: var(--font-sans);
+            font-size: 0.75em;
+            color: var(--color-text-muted);
+        }
+
+        .difficulty-bar-value {
+            font-family: var(--font-sans);
+            font-size: 0.85em;
+            font-weight: bold;
+            color: var(--color-heading);
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: var(--gap-md);
+            margin-bottom: var(--gap-lg);
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: var(--gap-sm);
+        }
+
+        .filter-group label {
+            font-family: var(--font-sans);
+            font-size: 0.85em;
+            color: var(--color-text-muted);
+        }
+
+        .filter-group select,
+        .filter-group input {
+            padding: var(--gap-sm) var(--gap-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            background: var(--color-surface);
+            color: var(--color-text);
+            font-family: var(--font-sans);
+            font-size: 0.85em;
+        }
+
+        /* Student Detail Modal */
+        .student-detail {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .student-detail.show {
+            display: flex;
+        }
+
+        .student-detail-content {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            width: 800px;
+            max-width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+
+        .student-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--gap-lg);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .student-detail-header h2 {
+            font-family: var(--font-sans);
+            color: var(--color-heading);
+        }
+
+        .student-detail-body {
+            padding: var(--gap-lg);
+        }
+
+        .student-progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: var(--gap-sm);
+            margin-top: var(--gap-lg);
+        }
+
+        .progress-cell {
+            aspect-ratio: 1;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.7em;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .progress-cell:hover {
+            transform: scale(1.1);
+        }
+
+        .progress-cell.solved {
+            background: rgba(46,125,50,0.2);
+            color: var(--color-success);
+            border: 1px solid rgba(46,125,50,0.3);
+        }
+
+        .progress-cell.attempted {
+            background: rgba(245,127,23,0.2);
+            color: var(--color-warning);
+            border: 1px solid rgba(245,127,23,0.3);
+        }
+
+        .progress-cell.unsolved {
+            background: var(--color-bg);
+            color: var(--color-text-muted);
+            border: 1px solid var(--color-border);
+        }
+
+        /* Export Button */
+        .export-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--gap-sm);
+            padding: var(--gap-sm) var(--gap-lg);
+            background: var(--color-accent);
+            border: none;
+            color: white;
+            font-family: var(--font-sans);
+            font-size: 0.9em;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .export-btn:hover {
+            background: var(--color-accent-light);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: var(--gap-xl);
+            color: var(--color-text-muted);
+        }
+
+        .empty-state-icon {
+            font-size: 3em;
+            margin-bottom: var(--gap-md);
+        }
+
+        .empty-state-text {
+            font-family: var(--font-sans);
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <a href="../index.html" class="nav-brand">剑道试炼</a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link-text">互动编程</a>
+            <a href="teacher.html" class="nav-link-text active">教师后台</a>
+            <button class="dark-toggle" aria-label="Toggle dark mode">☾</button>
+            <div class="user-menu">
+                <button class="user-btn" id="userBtn">
+                    <span class="user-avatar">师</span>
+                    <span class="user-name" id="userName">教师</span>
+                </button>
+            </div>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    </nav>
+
+    <div class="teacher-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="teacher-sidebar">
+            <ul class="teacher-nav">
+                <li><a href="#overview" class="active" data-section="overview">📊 数据概览</a></li>
+                <li><a href="#students" data-section="students">👥 学生管理</a></li>
+                <li><a href="#problems" data-section="problems">📝 题目分析</a></li>
+                <li><a href="#submissions" data-section="submissions">📤 提交记录</a></li>
+                <li><a href="#grading" data-section="grading">✅ 自动评分</a></li>
+                <li><a href="#export" data-section="export">📥 数据导出</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="teacher-main">
+            <!-- Overview Section -->
+            <section id="overview" class="dashboard-section">
+                <div class="dashboard-header">
+                    <h1>数据概览</h1>
+                    <p>班级整体学习情况统计</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-icon">👥</div>
+                        <div class="stat-card-value" id="totalStudents">0</div>
+                        <div class="stat-card-label">学生总数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon">📝</div>
+                        <div class="stat-card-value" id="totalProblems">172</div>
+                        <div class="stat-card-label">题目总数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon">✅</div>
+                        <div class="stat-card-value" id="totalSolved">0</div>
+                        <div class="stat-card-label">总通过次数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon">📊</div>
+                        <div class="stat-card-value" id="avgCompletion">0%</div>
+                        <div class="stat-card-label">平均完成率</div>
+                    </div>
+                </div>
+
+                <!-- Completion Chart -->
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>各章完成率</h3>
+                    </div>
+                    <div class="difficulty-bars" id="chapterBars">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+
+                <!-- Problem Difficulty Distribution -->
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>题目难度分布</h3>
+                    </div>
+                    <div class="difficulty-bars" id="difficultyBars">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Students Section -->
+            <section id="students" class="dashboard-section" style="display: none;">
+                <div class="dashboard-header">
+                    <h1>学生管理</h1>
+                    <p>查看和管理班级学生</p>
+                </div>
+
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>搜索：</label>
+                        <input type="text" id="studentSearch" placeholder="输入学生姓名...">
+                    </div>
+                    <div class="filter-group">
+                        <label>排序：</label>
+                        <select id="studentSort">
+                            <option value="name">按姓名</option>
+                            <option value="progress">按进度</option>
+                            <option value="submissions">按提交次数</option>
+                        </select>
+                    </div>
+                    <button class="export-btn" onclick="exportStudentData()">📥 导出学生数据</button>
+                </div>
+
+                <table class="data-table" id="studentsTable">
+                    <thead>
+                        <tr>
+                            <th>学生姓名</th>
+                            <th>完成题数</th>
+                            <th>完成率</th>
+                            <th>提交次数</th>
+                            <th>剑气值</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentsBody">
+                        <!-- Dynamically populated -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Problems Section -->
+            <section id="problems" class="dashboard-section" style="display: none;">
+                <div class="dashboard-header">
+                    <h1>题目分析</h1>
+                    <p>查看各题目的通过情况</p>
+                </div>
+
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>章节：</label>
+                        <select id="problemChapterFilter">
+                            <option value="all">全部章节</option>
+                            <!-- Chapter options will be added dynamically -->
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>状态：</label>
+                        <select id="problemStatusFilter">
+                            <option value="all">全部</option>
+                            <option value="easy">简单（通过率 > 70%）</option>
+                            <option value="medium">中等（通过率 30-70%）</option>
+                            <option value="hard">困难（通过率 < 30%）</option>
+                        </select>
+                    </div>
+                </div>
+
+                <table class="data-table" id="problemsTable">
+                    <thead>
+                        <tr>
+                            <th>题号</th>
+                            <th>题目</th>
+                            <th>章节</th>
+                            <th>尝试人数</th>
+                            <th>通过人数</th>
+                            <th>通过率</th>
+                        </tr>
+                    </thead>
+                    <tbody id="problemsBody">
+                        <!-- Dynamically populated -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Submissions Section -->
+            <section id="submissions" class="dashboard-section" style="display: none;">
+                <div class="dashboard-header">
+                    <h1>提交记录</h1>
+                    <p>查看所有学生的代码提交</p>
+                </div>
+
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>学生：</label>
+                        <select id="submissionStudentFilter">
+                            <option value="all">全部学生</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>题目：</label>
+                        <select id="submissionProblemFilter">
+                            <option value="all">全部题目</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>状态：</label>
+                        <select id="submissionStatusFilter">
+                            <option value="all">全部</option>
+                            <option value="AC">通过</option>
+                            <option value="WA">答案错误</option>
+                            <option value="TLE">超时</option>
+                            <option value="RE">运行错误</option>
+                        </select>
+                    </div>
+                </div>
+
+                <table class="data-table" id="submissionsTable">
+                    <thead>
+                        <tr>
+                            <th>学生</th>
+                            <th>题目</th>
+                            <th>语言</th>
+                            <th>状态</th>
+                            <th>得分</th>
+                            <th>时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="submissionsBody">
+                        <!-- Dynamically populated -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Grading Section -->
+            <section id="grading" class="dashboard-section" style="display: none;">
+                <div class="dashboard-header">
+                    <h1>自动评分</h1>
+                    <p>配置和管理自动评分规则</p>
+                </div>
+
+                <div class="chart-container">
+                    <h3 style="margin-bottom: var(--gap-lg); font-family: var(--font-sans); color: var(--color-heading);">
+                        评分规则配置
+                    </h3>
+
+                    <div style="display: grid; gap: var(--gap-lg);">
+                        <div>
+                            <label style="font-family: var(--font-sans); font-size: 0.9em; display: block; margin-bottom: var(--gap-sm);">
+                                通过题目得分
+                            </label>
+                            <input type="number" id="scorePerProblem" value="10" min="0" max="100"
+                                   style="padding: var(--gap-sm); border: 1px solid var(--color-border); border-radius: var(--radius-sm); width: 120px;">
+                            <span style="color: var(--color-text-muted); font-size: 0.85em;"> 分/题</span>
+                        </div>
+
+                        <div>
+                            <label style="font-family: var(--font-sans); font-size: 0.9em; display: block; margin-bottom: var(--gap-sm);">
+                                使用提示扣分
+                            </label>
+                            <input type="number" id="hintPenalty" value="2" min="0" max="10"
+                                   style="padding: var(--gap-sm); border: 1px solid var(--color-border); border-radius: var(--radius-sm); width: 120px;">
+                            <span style="color: var(--color-text-muted); font-size: 0.85em;"> 分/次</span>
+                        </div>
+
+                        <div>
+                            <label style="font-family: var(--font-sans); font-size: 0.9em; display: block; margin-bottom: var(--gap-sm);">
+                                代码风格评分
+                            </label>
+                            <select id="codeStyleScoring"
+                                    style="padding: var(--gap-sm); border: 1px solid var(--color-border); border-radius: var(--radius-sm);">
+                                <option value="none">不评分</option>
+                                <option value="basic">基础检查</option>
+                                <option value="strict">严格检查</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label style="font-family: var(--font-sans); font-size: 0.9em; display: block; margin-bottom: var(--gap-sm);">
+                                最大提交次数限制
+                            </label>
+                            <input type="number" id="maxSubmissions" value="0" min="0"
+                                   style="padding: var(--gap-sm); border: 1px solid var(--color-border); border-radius: var(--radius-sm); width: 120px;">
+                            <span style="color: var(--color-text-muted); font-size: 0.85em;"> 次（0表示不限制）</span>
+                        </div>
+
+                        <button class="export-btn" onclick="saveGradingConfig()" style="width: fit-content;">
+                            💾 保存配置
+                        </button>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3 style="margin-bottom: var(--gap-lg); font-family: var(--font-sans); color: var(--color-heading);">
+                        批量评分
+                    </h3>
+                    <p style="color: var(--color-text-muted); margin-bottom: var(--gap-lg);">
+                        对所有学生的最终成绩进行批量计算和导出
+                    </p>
+                    <div style="display: flex; gap: var(--gap-md);">
+                        <button class="export-btn" onclick="calculateFinalScores()">📊 计算最终成绩</button>
+                        <button class="export-btn" onclick="exportGrades()">📥 导出成绩单</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Export Section -->
+            <section id="export" class="dashboard-section" style="display: none;">
+                <div class="dashboard-header">
+                    <h1>数据导出</h1>
+                    <p>导出各类学习数据</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card" style="cursor: pointer;" onclick="exportStudentData()">
+                        <div class="stat-card-icon">👥</div>
+                        <div class="stat-card-label">学生数据</div>
+                        <p style="font-size: 0.85em; color: var(--color-text-muted); margin-top: var(--gap-sm);">
+                            导出学生列表、进度、成绩
+                        </p>
+                    </div>
+                    <div class="stat-card" style="cursor: pointer;" onclick="exportSubmissionData()">
+                        <div class="stat-card-icon">📤</div>
+                        <div class="stat-card-label">提交记录</div>
+                        <p style="font-size: 0.85em; color: var(--color-text-muted); margin-top: var(--gap-sm);">
+                            导出所有代码提交记录
+                        </p>
+                    </div>
+                    <div class="stat-card" style="cursor: pointer;" onclick="exportProblemStats()">
+                        <div class="stat-card-icon">📊</div>
+                        <div class="stat-card-label">题目统计</div>
+                        <p style="font-size: 0.85em; color: var(--color-text-muted); margin-top: var(--gap-sm);">
+                            导出题目通过率等统计
+                        </p>
+                    </div>
+                    <div class="stat-card" style="cursor: pointer;" onclick="exportGrades()">
+                        <div class="stat-card-icon">📝</div>
+                        <div class="stat-card-label">成绩单</div>
+                        <p style="font-size: 0.85em; color: var(--color-text-muted); margin-top: var(--gap-sm);">
+                            导出最终成绩单
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Student Detail Modal -->
+    <div class="student-detail" id="studentDetail">
+        <div class="student-detail-content">
+            <div class="student-detail-header">
+                <h2 id="studentDetailName">学生详情</h2>
+                <button class="modal-close" onclick="closeStudentDetail()">&times;</button>
+            </div>
+            <div class="student-detail-body">
+                <div class="stats-grid" style="margin-bottom: var(--gap-lg);">
+                    <div class="stat-card">
+                        <div class="stat-card-value" id="studentSolved">0</div>
+                        <div class="stat-card-label">已完成</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-value" id="studentAttempted">0</div>
+                        <div class="stat-card-label">已尝试</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-value" id="studentSubmissions">0</div>
+                        <div class="stat-card-label">提交次数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-value" id="studentEnergy">0</div>
+                        <div class="stat-card-label">剑气值</div>
+                    </div>
+                </div>
+
+                <h3 style="font-family: var(--font-sans); color: var(--color-heading); margin-bottom: var(--gap-md);">
+                    题目完成情况
+                </h3>
+                <div class="student-progress-grid" id="studentProgressGrid">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Code View Modal -->
+    <div class="modal" id="codeModal">
+        <div class="modal-content" style="width: 800px; max-width: 90%;">
+            <div class="modal-header">
+                <h2>查看代码</h2>
+                <button class="modal-close" onclick="closeCodeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <pre style="background: var(--color-code-bg); color: #d4d4d4; padding: var(--gap-md); border-radius: var(--radius-md); overflow-x: auto; font-family: var(--font-mono); font-size: 0.85em; max-height: 400px; overflow-y: auto;"
+                     id="codeContent"></pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // Teacher Dashboard Logic
+        // ============================================================
+
+        let teacherData = {
+            students: [],
+            problems: [],
+            submissions: [],
+            stats: {}
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initNavigation();
+            loadTeacherData();
+        });
+
+        // Navigation
+        function initNavigation() {
+            document.querySelectorAll('.teacher-nav a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const section = link.dataset.section;
+
+                    // Update active state
+                    document.querySelectorAll('.teacher-nav a').forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+
+                    // Show section
+                    document.querySelectorAll('.dashboard-section').forEach(s => s.style.display = 'none');
+                    document.getElementById(section).style.display = '';
+                });
+            });
+        }
+
+        // Load data from API
+        async function loadTeacherData() {
+            const token = localStorage.getItem('jd_token');
+            if (!token) {
+                alert('请先登录');
+                window.location.href = 'index.html';
+                return;
+            }
+
+            try {
+                // Load stats
+                const statsRes = await fetch('/api/teacher/stats', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (statsRes.ok) {
+                    teacherData.stats = await statsRes.json();
+                    updateStatsDisplay();
+                }
+
+                // Load students
+                const studentsRes = await fetch('/api/teacher/students', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (studentsRes.ok) {
+                    teacherData.students = await studentsRes.json();
+                    renderStudentsTable();
+                }
+
+                // Load submissions
+                const submissionsRes = await fetch('/api/teacher/submissions', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (submissionsRes.ok) {
+                    teacherData.submissions = await submissionsRes.json();
+                    renderSubmissionsTable();
+                }
+
+                // Load problems
+                const problemsRes = await fetch('/api/problems');
+                if (problemsRes.ok) {
+                    const problemsData = await problemsRes.json();
+                    teacherData.problems = Object.entries(problemsData).map(([id, data]) => ({ id, ...data }));
+                    renderProblemsTable();
+                    populateFilters();
+                }
+            } catch (error) {
+                console.error('Error loading data:', error);
+                // Load demo data for testing
+                loadDemoData();
+            }
+        }
+
+        // Demo data for testing
+        function loadDemoData() {
+            teacherData = {
+                students: [
+                    { username: '李少白', solved: 45, sword_energy: 150, totalSubmissions: 120, progress: {} },
+                    { username: '梁嘉峰', solved: 38, sword_energy: 120, totalSubmissions: 95, progress: {} },
+                    { username: '张三丰', solved: 52, sword_energy: 180, totalSubmissions: 150, progress: {} },
+                    { username: '令狐冲', solved: 30, sword_energy: 90, totalSubmissions: 80, progress: {} },
+                    { username: '任盈盈', solved: 42, sword_energy: 140, totalSubmissions: 110, progress: {} }
+                ],
+                stats: {
+                    totalStudents: 5,
+                    totalProblems: 172,
+                    totalSubmissions: 555,
+                    problemStats: [],
+                    chapterStats: {}
+                },
+                submissions: [],
+                problems: []
+            };
+
+            // Generate chapter stats
+            for (let i = 1; i <= 15; i++) {
+                const total = i <= 3 ? 14 : i <= 5 ? 12 : i <= 7 ? 14 : i <= 9 ? 7 : 8;
+                teacherData.stats.chapterStats[i] = {
+                    total: total,
+                    solved: Math.floor(total * (0.3 + Math.random() * 0.5))
+                };
+            }
+
+            updateStatsDisplay();
+            renderStudentsTable();
+            renderProblemsTable();
+            renderSubmissionsTable();
+        }
+
+        // Update stats display
+        function updateStatsDisplay() {
+            const stats = teacherData.stats;
+            document.getElementById('totalStudents').textContent = stats.totalStudents || 0;
+            document.getElementById('totalProblems').textContent = stats.totalProblems || 172;
+            document.getElementById('totalSolved').textContent = stats.totalSubmissions || 0;
+
+            const avgCompletion = stats.totalStudents > 0
+                ? Math.round((stats.totalSubmissions / (stats.totalStudents * stats.totalProblems)) * 100)
+                : 0;
+            document.getElementById('avgCompletion').textContent = `${avgCompletion}%`;
+
+            renderChapterBars();
+            renderDifficultyBars();
+        }
+
+        // Render chapter completion bars
+        function renderChapterBars() {
+            const container = document.getElementById('chapterBars');
+            const chapters = teacherData.stats.chapterStats || {};
+
+            const chapterNames = [
+                '持剑叩门', '歧路逢生', '千回百转', '排兵布阵', '十二宫剑阵',
+                '古卷密文', '以招创招', '百器图谱', '快剑如风', '千锤百炼',
+                '蓄势待发', '利器出鞘', '迷雾寻踪', '千里奔袭', '华山论剑'
+            ];
+
+            container.innerHTML = Array.from({ length: 15 }, (_, i) => {
+                const ch = chapters[i + 1] || { total: 10, solved: 0 };
+                const percentage = Math.round((ch.solved / (ch.total * (teacherData.stats.totalStudents || 1))) * 100);
+                const height = Math.max(20, percentage * 1.5);
+
+                return `
+                    <div class="difficulty-bar">
+                        <div class="difficulty-bar-value">${percentage}%</div>
+                        <div class="difficulty-bar-fill" style="height: ${height}px;"></div>
+                        <div class="difficulty-bar-label">第${i + 1}章</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Render difficulty distribution
+        function renderDifficultyBars() {
+            const container = document.getElementById('difficultyBars');
+            const difficulties = ['入门', '简单', '中等', '较难', '困难'];
+            const counts = [40, 50, 45, 25, 12]; // Demo data
+
+            container.innerHTML = difficulties.map((diff, i) => {
+                const height = Math.max(20, counts[i] * 2);
+                return `
+                    <div class="difficulty-bar">
+                        <div class="difficulty-bar-value">${counts[i]}</div>
+                        <div class="difficulty-bar-fill" style="height: ${height}px;"></div>
+                        <div class="difficulty-bar-label">${diff}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Render students table
+        function renderStudentsTable() {
+            const tbody = document.getElementById('studentsBody');
+            const students = teacherData.students || [];
+
+            tbody.innerHTML = students.map(s => {
+                const completionRate = Math.round((s.solved / (teacherData.stats.totalProblems || 172)) * 100);
+                return `
+                    <tr>
+                        <td><strong>${s.username}</strong></td>
+                        <td>${s.solved}</td>
+                        <td>
+                            <div style="display: flex; align-items: center; gap: var(--gap-sm);">
+                                <div class="progress-bar" style="width: 100px;">
+                                    <div class="progress-bar-fill" style="width: ${completionRate}%;"></div>
+                                </div>
+                                <span>${completionRate}%</span>
+                            </div>
+                        </td>
+                        <td>${s.totalSubmissions}</td>
+                        <td>${s.sword_energy}</td>
+                        <td>
+                            <button class="action-btn" onclick="viewStudentDetail('${s.username}')"
+                                    style="padding: 4px 12px; font-size: 0.8em;">
+                                查看详情
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            if (students.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align: center; color: var(--color-text-muted); padding: var(--gap-xl);">
+                            暂无学生数据
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        // Render problems table
+        function renderProblemsTable() {
+            const tbody = document.getElementById('problemsBody');
+            const stats = teacherData.stats.problemStats || [];
+
+            tbody.innerHTML = stats.map(p => {
+                const rate = p.solveRate;
+                let rateClass = 'badge-success';
+                if (rate < 30) rateClass = 'badge-error';
+                else if (rate < 70) rateClass = 'badge-warning';
+
+                return `
+                    <tr>
+                        <td><strong>${p.id}</strong></td>
+                        <td>${p.title}</td>
+                        <td>第${p.chapter}章</td>
+                        <td>${p.attemptedCount}</td>
+                        <td>${p.solvedCount}</td>
+                        <td><span class="badge ${rateClass}">${rate}%</span></td>
+                    </tr>
+                `;
+            }).join('');
+
+            if (stats.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align: center; color: var(--color-text-muted); padding: var(--gap-xl);">
+                            暂无题目统计数据
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        // Render submissions table
+        function renderSubmissionsTable() {
+            const tbody = document.getElementById('submissionsBody');
+            const submissions = teacherData.submissions || [];
+
+            tbody.innerHTML = submissions.slice(0, 50).map(s => {
+                const statusClass = s.status === 'AC' ? 'badge-success' :
+                                   s.status === 'WA' ? 'badge-error' :
+                                   s.status === 'TLE' ? 'badge-warning' : 'badge-info';
+
+                const timeAgo = getTimeAgo(s.createdAt);
+
+                return `
+                    <tr>
+                        <td>${s.username || '未知'}</td>
+                        <td>${s.problemId} ${s.problemTitle || ''}</td>
+                        <td>${s.language === 'cpp' ? 'C++' : 'Python'}</td>
+                        <td><span class="badge ${statusClass}">${s.status}</span></td>
+                        <td>${s.score}/${s.totalScore}</td>
+                        <td>${timeAgo}</td>
+                        <td>
+                            <button class="action-btn" onclick="viewSubmissionCode(${s.id})"
+                                    style="padding: 4px 12px; font-size: 0.8em;">
+                                查看代码
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            if (submissions.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" style="text-align: center; color: var(--color-text-muted); padding: var(--gap-xl);">
+                            暂无提交记录
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        // Populate filter dropdowns
+        function populateFilters() {
+            // Chapter filter
+            const chapterSelect = document.getElementById('problemChapterFilter');
+            for (let i = 1; i <= 15; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = `第${i}章`;
+                chapterSelect.appendChild(option);
+            }
+
+            // Student filter
+            const studentSelect = document.getElementById('submissionStudentFilter');
+            teacherData.students.forEach(s => {
+                const option = document.createElement('option');
+                option.value = s.username;
+                option.textContent = s.username;
+                studentSelect.appendChild(option);
+            });
+        }
+
+        // View student detail
+        function viewStudentDetail(username) {
+            const student = teacherData.students.find(s => s.username === username);
+            if (!student) return;
+
+            document.getElementById('studentDetailName').textContent = username;
+            document.getElementById('studentSolved').textContent = student.solved;
+            document.getElementById('studentAttempted').textContent = Object.keys(student.progress || {}).length - student.solved;
+            document.getElementById('studentSubmissions').textContent = student.totalSubmissions;
+            document.getElementById('studentEnergy').textContent = student.sword_energy;
+
+            // Render progress grid
+            const grid = document.getElementById('studentProgressGrid');
+            const progress = student.progress || {};
+
+            grid.innerHTML = Array.from({ length: 172 }, (_, i) => {
+                const jdId = `JD${String(i + 1).padStart(3, '0')}`;
+                const status = progress[jdId]?.status || 'unsolved';
+                return `<div class="progress-cell ${status}" title="${jdId}">${jdId.replace('JD', '')}</div>`;
+            }).join('');
+
+            document.getElementById('studentDetail').classList.add('show');
+        }
+
+        function closeStudentDetail() {
+            document.getElementById('studentDetail').classList.remove('show');
+        }
+
+        // View submission code
+        function viewSubmissionCode(submissionId) {
+            const submission = teacherData.submissions.find(s => s.id === submissionId);
+            if (!submission) return;
+
+            document.getElementById('codeContent').textContent = submission.code || '// 代码暂不可用';
+            document.getElementById('codeModal').classList.add('show');
+        }
+
+        function closeCodeModal() {
+            document.getElementById('codeModal').classList.remove('show');
+        }
+
+        // Export functions
+        function exportStudentData() {
+            const data = teacherData.students.map(s => ({
+                '学生姓名': s.username,
+                '完成题数': s.solved,
+                '完成率': Math.round((s.solved / 172) * 100) + '%',
+                '提交次数': s.totalSubmissions,
+                '剑气值': s.sword_energy
+            }));
+            downloadCSV(data, '学生数据.csv');
+        }
+
+        function exportSubmissionData() {
+            const data = teacherData.submissions.map(s => ({
+                '学生': s.username,
+                '题目': s.problemId,
+                '语言': s.language,
+                '状态': s.status,
+                '得分': `${s.score}/${s.totalScore}`,
+                '时间': s.createdAt
+            }));
+            downloadCSV(data, '提交记录.csv');
+        }
+
+        function exportProblemStats() {
+            const data = (teacherData.stats.problemStats || []).map(p => ({
+                '题号': p.id,
+                '题目': p.title,
+                '章节': p.chapter,
+                '尝试人数': p.attemptedCount,
+                '通过人数': p.solvedCount,
+                '通过率': p.solveRate + '%'
+            }));
+            downloadCSV(data, '题目统计.csv');
+        }
+
+        function exportGrades() {
+            const data = teacherData.students.map(s => ({
+                '学生姓名': s.username,
+                '完成题数': s.solved,
+                '总分': s.solved * 10,
+                '等级': s.solved >= 100 ? 'A' : s.solved >= 70 ? 'B' : s.solved >= 40 ? 'C' : 'D'
+            }));
+            downloadCSV(data, '成绩单.csv');
+        }
+
+        function downloadCSV(data, filename) {
+            if (data.length === 0) {
+                alert('没有数据可导出');
+                return;
+            }
+
+            const headers = Object.keys(data[0]);
+            const csv = [
+                '﻿' + headers.join(','), // BOM for Excel
+                ...data.map(row => headers.map(h => `"${row[h]}"`).join(','))
+            ].join('\n');
+
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            link.click();
+        }
+
+        // Helper functions
+        function getTimeAgo(dateString) {
+            const date = new Date(dateString);
+            const now = new Date();
+            const diff = now - date;
+
+            if (diff < 60000) return '刚刚';
+            if (diff < 3600000) return `${Math.floor(diff / 60000)}分钟前`;
+            if (diff < 86400000) return `${Math.floor(diff / 3600000)}小时前`;
+            return `${Math.floor(diff / 86400000)}天前`;
+        }
+
+        function saveGradingConfig() {
+            const config = {
+                scorePerProblem: document.getElementById('scorePerProblem').value,
+                hintPenalty: document.getElementById('hintPenalty').value,
+                codeStyleScoring: document.getElementById('codeStyleScoring').value,
+                maxSubmissions: document.getElementById('maxSubmissions').value
+            };
+            localStorage.setItem('jd_grading_config', JSON.stringify(config));
+            alert('配置已保存');
+        }
+
+        function calculateFinalScores() {
+            alert('最终成绩计算完成！请在成绩单导出中查看。');
+        }
+
+        // Dark mode
+        const darkToggle = document.querySelector('.dark-toggle');
+        if (darkToggle) {
+            darkToggle.addEventListener('click', () => {
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                if (isDark) {
+                    document.documentElement.removeAttribute('data-theme');
+                    darkToggle.textContent = '☾';
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    darkToggle.textContent = '☀';
+                }
+            });
+        }
+
+        // Mobile menu
+        const menuToggle = document.querySelector('.menu-toggle');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.toggle('open');
+            });
+        }
+    </script>
+</body>
+</html>
