@@ -89,11 +89,11 @@ Sao Multiplos
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> a, b;
-    cin >> a >> b;  <span class="comment">// 输入 "6 24" → a=6, b=24</span>
+    cin &gt;&gt; a &gt;&gt; b;  <span class="comment">// 输入 "6 24" → a=6, b=24</span>
 
     <span class="comment">// % 是取余运算符：24 % 6 = 0（能整除）</span>
     <span class="comment">// || 是"或者"（逻辑或）：只要有一个条件成立就为真</span>
@@ -103,9 +103,9 @@ Sao Multiplos
     <span class="comment">// 24 % 6 == 0 → true（24÷6=4 余0）</span>
     <span class="comment">// 短路求值：第一个条件已为真，不再检查第二个</span>
     <span class="keyword">if</span> (a % b == <span class="number">0</span> || b % a == <span class="number">0</span>)
-        cout << <span class="string">&quot;Yes&quot;</span> << endl;
+        cout &lt;&lt; <span class="string">&quot;Yes&quot;</span> &lt;&lt; endl;
     <span class="keyword">else</span>
-        cout << <span class="string">&quot;No&quot;</span> << endl;
+        cout &lt;&lt; <span class="string">&quot;No&quot;</span> &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -174,17 +174,17 @@ Area = 10.0
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
-#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">double</span> a, b, c;
-    cin >> a >> b >> c;  <span class="comment">// 输入 "6.0 4.0 2.0"</span>
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;  <span class="comment">// 输入 "6.0 4.0 2.0"</span>
 
-    <span class="comment">// 三角形成立条件：任意两边之和 > 第三边</span>
+    <span class="comment">// 三角形成立条件：任意两边之和 &gt; 第三边</span>
     <span class="comment">// && 是"并且"（逻辑与）：三个条件都满足才为真</span>
-    <span class="comment">// 6+4>2 ✓, 6+2>4 ✓, 4+2=6 不>6 ✗ → 不能构成三角形</span>
-    <span class="keyword">if</span> (a + b > c && a + c > b && b + c > a)
+    <span class="comment">// 6+4&gt;2 ✓, 6+2&gt;4 ✓, 4+2=6 不&gt;6 ✗ → 不能构成三角形</span>
+    <span class="keyword">if</span> (a + b &gt; c && a + c &gt; b && b + c &gt; a)
         printf(<span class="string">&quot;Perimeter = %.1lf\n"</span>, a + b + c);
     <span class="keyword">else</span>
         printf(<span class="string">&quot;Area = %.1lf\n"</span>, (a + b) * c / <span class="number">2</span>);
@@ -192,16 +192,16 @@ Area = 10.0
 }
 
 <span class="comment">// 【逻辑运算符 && || ! 优先级】</span>
-<span class="comment">// ! (非) > && (与) > || (或)</span>
+<span class="comment">// ! (非) &gt; && (与) &gt; || (或)</span>
 <span class="comment">// 如果不确定优先级，加括号最安全！</span></code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="comment"># 读入三边长度</span>
 a, b, c = <span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split())
 <span class="comment"># 输入 "6.0 4.0 2.0"</span>
 
-<span class="comment"># 三角形成立条件：任意两边之和 > 第三边</span>
-<span class="comment"># 6+4>2 ✓, 6+2>4 ✓, 4+2=6 不>6 ✗</span>
-<span class="keyword">if</span> a + b > c <span class="keyword">and</span> a + c > b <span class="keyword">and</span> b + c > a:
+<span class="comment"># 三角形成立条件：任意两边之和 &gt; 第三边</span>
+<span class="comment"># 6+4&gt;2 ✓, 6+2&gt;4 ✓, 4+2=6 不&gt;6 ✗</span>
+<span class="keyword">if</span> a + b &gt; c <span class="keyword">and</span> a + c &gt; b <span class="keyword">and</span> b + c &gt; a:
     <span class="comment"># 能构成三角形 → 输出周长</span>
     <span class="keyword">print</span>(f<span class="string">&quot;Perimeter = {a + b + c:.1f}"</span>)
 <span class="keyword">else</span>:
@@ -255,18 +255,18 @@ O JOGO DUROU 8 HORA(S)
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> a, b;
     scanf(<span class="string">&quot;%d%d"</span>, &a, &b);  <span class="comment">// 输入 "16 2" → a=16, b=2</span>
 
     <span class="comment">// 三种情况的逻辑：</span>
-    <span class="comment">// 情况1：B > A → 没过零点，直接 B - A</span>
+    <span class="comment">// 情况1：B &gt; A → 没过零点，直接 B - A</span>
     <span class="comment">// 情况2：B == A → 刚好24小时（整整一天）</span>
-    <span class="comment">// 情况3：B < A → 过了零点，24 - A + B</span>
+    <span class="comment">// 情况3：B &lt; A → 过了零点，24 - A + B</span>
 
     <span class="keyword">int</span> res;
-    <span class="keyword">if</span> (a < b)        res = b - a;      <span class="comment">// 16 < 2? 否</span>
+    <span class="keyword">if</span> (a &lt; b)        res = b - a;      <span class="comment">// 16 &lt; 2? 否</span>
     <span class="keyword">else</span> <span class="keyword">if</span> (a == b)  res = <span class="number">24</span>;          <span class="comment">// 16 == 2? 否</span>
     <span class="keyword">else</span>               res = <span class="number">24</span> - a + b;  <span class="comment">// 24 - 16 + 2 = 10</span>
 
@@ -284,13 +284,13 @@ a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span 
 <span class="comment"># 输入 "16 2" → a=16, b=2</span>
 
 <span class="comment"># 三种情况：</span>
-<span class="comment"># B > A：没过零点，直接 B - A</span>
+<span class="comment"># B &gt; A：没过零点，直接 B - A</span>
 <span class="comment"># B == A：刚好24小时</span>
-<span class="comment"># B < A：过了零点，24 - A + B</span>
-<span class="keyword">if</span> a < b:
+<span class="comment"># B &lt; A：过了零点，24 - A + B</span>
+<span class="keyword">if</span> a &lt; b:
     horas = b - a
 <span class="keyword">else</span>:
-    horas = <span class="number">24</span> - a + b  <span class="comment"># 包含了 B<=A 的两种情况</span>
+    horas = <span class="number">24</span> - a + b  <span class="comment"># 包含了 B&lt;=A 的两种情况</span>
 
 <span class="keyword">print</span>(f<span class="string">&quot;O JOGO DUROU {horas} HORA(S)"</span>)
 <span class="comment"># 输出: O JOGO DUROU 10 HORA(S)</span>
@@ -343,26 +343,26 @@ a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span 
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> a, b, c;
-    cin >> a >> b >> c;  <span class="comment">// 输入 "7 21 -14"</span>
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;  <span class="comment">// 输入 "7 21 -14"</span>
 
     <span class="comment">// 冒泡排序的思路：两两比较，把大的往后换</span>
     <span class="comment">// swap(a, b) 交换两个变量的值</span>
 
     <span class="comment">// 第一轮：比较前两个</span>
-    <span class="keyword">if</span> (a > b) swap(a, b);  <span class="comment">// 7 > 21? 否 → 不交换</span>
+    <span class="keyword">if</span> (a &gt; b) swap(a, b);  <span class="comment">// 7 &gt; 21? 否 → 不交换</span>
 
     <span class="comment">// 第二轮：比较第一和第三</span>
-    <span class="keyword">if</span> (a > c) swap(a, c);  <span class="comment">// 7 > -14? 是 → 交换 → a=-14, c=7</span>
+    <span class="keyword">if</span> (a &gt; c) swap(a, c);  <span class="comment">// 7 &gt; -14? 是 → 交换 → a=-14, c=7</span>
 
     <span class="comment">// 第三轮：比较第二和第三</span>
-    <span class="keyword">if</span> (b > c) swap(b, c);  <span class="comment">// 21 > 7? 是 → 交换 → b=7, c=21</span>
+    <span class="keyword">if</span> (b &gt; c) swap(b, c);  <span class="comment">// 21 &gt; 7? 是 → 交换 → b=7, c=21</span>
 
     <span class="comment">// 结果：a=-14, b=7, c=21 ✓ 从小到大！</span>
-    cout << a << <span class="string">&quot; "</span> << b << <span class="string">&quot; "</span> << c << endl;
+    cout &lt;&lt; a &lt;&lt; <span class="string">&quot; "</span> &lt;&lt; b &lt;&lt; <span class="string">&quot; "</span> &lt;&lt; c &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }
 
@@ -377,13 +377,13 @@ a, b, c = <span class="keyword">map</span>(<span class="keyword">int</span>, <sp
 <span class="comment"># Python 交换两个变量：a, b = b, a（不需要临时变量！）</span>
 
 <span class="comment"># 第一轮：比较前两个</span>
-<span class="keyword">if</span> a > b: a, b = b, a   <span class="comment"># 7 > 21? 否</span>
+<span class="keyword">if</span> a &gt; b: a, b = b, a   <span class="comment"># 7 &gt; 21? 否</span>
 
 <span class="comment"># 第二轮：比较第一和第三</span>
-<span class="keyword">if</span> a > c: a, c = c, a   <span class="comment"># 7 > -14? 是 → a=-14, c=7</span>
+<span class="keyword">if</span> a &gt; c: a, c = c, a   <span class="comment"># 7 &gt; -14? 是 → a=-14, c=7</span>
 
 <span class="comment"># 第三轮：比较第二和第三</span>
-<span class="keyword">if</span> b > c: b, c = c, b   <span class="comment"># 21 > 7? 是 → b=7, c=21</span>
+<span class="keyword">if</span> b &gt; c: b, c = c, b   <span class="comment"># 21 &gt; 7? 是 → b=7, c=21</span>
 
 <span class="keyword">print</span>(a, b, c)
 <span class="comment"># 输出: -14 7 21</span>
@@ -436,7 +436,7 @@ Total: R$ 10.00
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> x, y;
     scanf(<span class="string">&quot;%d%d&quot;</span>, &x, &y);
@@ -499,26 +499,26 @@ Interval (75,100]
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">double</span> x;
-    cin >> x;  <span class="comment">// 输入 "95.29"</span>
+    cin &gt;&gt; x;  <span class="comment">// 输入 "95.29"</span>
 
     <span class="comment">// 多分支判断：用 else if 链逐一检查区间</span>
-    <span class="comment">// [0,25] 用 >= 表示包含0</span>
-    <span class="comment">// (25,50] 用 > 表示不包含25</span>
+    <span class="comment">// [0,25] 用 &gt;= 表示包含0</span>
+    <span class="comment">// (25,50] 用 &gt; 表示不包含25</span>
 
-    <span class="keyword">if</span> (x >= <span class="number">0</span> && x <= <span class="number">25</span>)          <span class="comment">// 95.29 >= 0 && 95.29 <= 25? 否</span>
-        cout << <span class="string">&quot;Interval [0,25]&quot;</span> << endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x > <span class="number">25</span> && x <= <span class="number">50</span>)   <span class="comment">// 95.29 > 25 && 95.29 <= 50? 否</span>
-        cout << <span class="string">&quot;Interval (25,50]&quot;</span> << endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x > <span class="number">50</span> && x <= <span class="number">75</span>)   <span class="comment">// 95.29 > 50 && 95.29 <= 75? 否</span>
-        cout << <span class="string">&quot;Interval (50,75]&quot;</span> << endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x > <span class="number">75</span> && x <= <span class="number">100</span>)  <span class="comment">// 95.29 > 75 && 95.29 <= 100? 是！</span>
-        cout << <span class="string">&quot;Interval (75,100]&quot;</span> << endl;
+    <span class="keyword">if</span> (x &gt;= <span class="number">0</span> && x &lt;= <span class="number">25</span>)          <span class="comment">// 95.29 &gt;= 0 && 95.29 &lt;= 25? 否</span>
+        cout &lt;&lt; <span class="string">&quot;Interval [0,25]&quot;</span> &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; <span class="number">25</span> && x &lt;= <span class="number">50</span>)   <span class="comment">// 95.29 &gt; 25 && 95.29 &lt;= 50? 否</span>
+        cout &lt;&lt; <span class="string">&quot;Interval (25,50]&quot;</span> &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; <span class="number">50</span> && x &lt;= <span class="number">75</span>)   <span class="comment">// 95.29 &gt; 50 && 95.29 &lt;= 75? 否</span>
+        cout &lt;&lt; <span class="string">&quot;Interval (50,75]&quot;</span> &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; <span class="number">75</span> && x &lt;= <span class="number">100</span>)  <span class="comment">// 95.29 &gt; 75 && 95.29 &lt;= 100? 是！</span>
+        cout &lt;&lt; <span class="string">&quot;Interval (75,100]&quot;</span> &lt;&lt; endl;
     <span class="keyword">else</span>
-        cout << <span class="string">&quot;Out of interval&quot;</span> << endl;
+        cout &lt;&lt; <span class="string">&quot;Out of interval&quot;</span> &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }
 
@@ -531,16 +531,16 @@ Interval (75,100]
 x = <span class="keyword">float</span>(<span class="keyword">input</span>())
 <span class="comment"># 输入 "95.29"</span>
 
-<span class="comment"># Python 特有写法：0 <= x <= 25（链式比较）</span>
-<span class="comment"># 等价于 0 <= x and x <= 25</span>
+<span class="comment"># Python 特有写法：0 &lt;= x &lt;= 25（链式比较）</span>
+<span class="comment"># 等价于 0 &lt;= x and x &lt;= 25</span>
 
-<span class="keyword">if</span> <span class="number">0</span> <= x <= <span class="number">25</span>:
+<span class="keyword">if</span> <span class="number">0</span> &lt;= x &lt;= <span class="number">25</span>:
     <span class="keyword">print</span>(<span class="string">&quot;Interval [0,25]"</span>)      <span class="comment"># 入门</span>
-<span class="keyword">elif</span> <span class="number">25</span> < x <= <span class="number">50</span>:
+<span class="keyword">elif</span> <span class="number">25</span> &lt; x &lt;= <span class="number">50</span>:
     <span class="keyword">print</span>(<span class="string">&quot;Interval (25,50]"</span>)     <span class="comment"># 初级</span>
-<span class="keyword">elif</span> <span class="number">50</span> < x <= <span class="number">75</span>:
+<span class="keyword">elif</span> <span class="number">50</span> &lt; x &lt;= <span class="number">75</span>:
     <span class="keyword">print</span>(<span class="string">&quot;Interval (50,75]"</span>)     <span class="comment"># 中级</span>
-<span class="keyword">elif</span> <span class="number">75</span> < x <= <span class="number">100</span>:
+<span class="keyword">elif</span> <span class="number">75</span> &lt; x &lt;= <span class="number">100</span>:
     <span class="keyword">print</span>(<span class="string">&quot;Interval (75,100]"</span>)    <span class="comment"># 高级 ← 95.29 落在这里</span>
 <span class="keyword">else</span>:
     <span class="keyword">print</span>(<span class="string">&quot;Out of interval"</span>)       <span class="comment"># 超出范围</span>
@@ -594,26 +594,26 @@ Q4
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">double</span> x, y;
-    cin >> x >> y;
-    <span class="keyword">if</span> (x > <span class="number">0</span> && y > <span class="number">0</span>) cout << <span class="string">&quot;Q1&quot;</span> << endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x < <span class="number">0</span> && y > <span class="number">0</span>) cout << <span class="string">&quot;Q2&quot;</span> << endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x < <span class="number">0</span> && y < <span class="number">0</span>) cout << <span class="string">&quot;Q3&quot;</span> << endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x > <span class="number">0</span> && y < <span class="number">0</span>) cout << <span class="string">&quot;Q4&quot;</span> << endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">0</span> && y == <span class="number">0</span>) cout << <span class="string">&quot;Origem&quot;</span> << endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">0</span>) cout << <span class="string">&quot;Eixo Y&quot;</span> << endl;
-    <span class="keyword">else</span> cout << <span class="string">&quot;Eixo X&quot;</span> << endl;
+    cin &gt;&gt; x &gt;&gt; y;
+    <span class="keyword">if</span> (x &gt; <span class="number">0</span> && y &gt; <span class="number">0</span>) cout &lt;&lt; <span class="string">&quot;Q1&quot;</span> &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x &lt; <span class="number">0</span> && y &gt; <span class="number">0</span>) cout &lt;&lt; <span class="string">&quot;Q2&quot;</span> &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x &lt; <span class="number">0</span> && y &lt; <span class="number">0</span>) cout &lt;&lt; <span class="string">&quot;Q3&quot;</span> &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; <span class="number">0</span> && y &lt; <span class="number">0</span>) cout &lt;&lt; <span class="string">&quot;Q4&quot;</span> &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">0</span> && y == <span class="number">0</span>) cout &lt;&lt; <span class="string">&quot;Origem&quot;</span> &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">0</span>) cout &lt;&lt; <span class="string">&quot;Eixo Y&quot;</span> &lt;&lt; endl;
+    <span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;Eixo X&quot;</span> &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">x, y = <span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split())
-<span class="keyword">if</span> x > <span class="number">0</span> <span class="keyword">and</span> y > <span class="number">0</span>: <span class="keyword">print</span>(<span class="string">&quot;Q1&quot;</span>)
-<span class="keyword">elif</span> x < <span class="number">0</span> <span class="keyword">and</span> y > <span class="number">0</span>: <span class="keyword">print</span>(<span class="string">&quot;Q2&quot;</span>)
-<span class="keyword">elif</span> x < <span class="number">0</span> <span class="keyword">and</span> y < <span class="number">0</span>: <span class="keyword">print</span>(<span class="string">&quot;Q3&quot;</span>)
-<span class="keyword">elif</span> x > <span class="number">0</span> <span class="keyword">and</span> y < <span class="number">0</span>: <span class="keyword">print</span>(<span class="string">&quot;Q4&quot;</span>)
+<span class="keyword">if</span> x &gt; <span class="number">0</span> <span class="keyword">and</span> y &gt; <span class="number">0</span>: <span class="keyword">print</span>(<span class="string">&quot;Q1&quot;</span>)
+<span class="keyword">elif</span> x &lt; <span class="number">0</span> <span class="keyword">and</span> y &gt; <span class="number">0</span>: <span class="keyword">print</span>(<span class="string">&quot;Q2&quot;</span>)
+<span class="keyword">elif</span> x &lt; <span class="number">0</span> <span class="keyword">and</span> y &lt; <span class="number">0</span>: <span class="keyword">print</span>(<span class="string">&quot;Q3&quot;</span>)
+<span class="keyword">elif</span> x &gt; <span class="number">0</span> <span class="keyword">and</span> y &lt; <span class="number">0</span>: <span class="keyword">print</span>(<span class="string">&quot;Q4&quot;</span>)
 <span class="keyword">elif</span> x == <span class="number">0</span> <span class="keyword">and</span> y == <span class="number">0</span>: <span class="keyword">print</span>(<span class="string">&quot;Origem&quot;</span>)
 <span class="keyword">elif</span> x == <span class="number">0</span>: <span class="keyword">print</span>(<span class="string">&quot;Eixo Y&quot;</span>)
 <span class="keyword">else</span>: <span class="keyword">print</span>(<span class="string">&quot;Eixo X&quot;</span>)</code></pre>
@@ -663,12 +663,12 @@ Q4
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> a, b, c, d;
     scanf(<span class="string">&quot;%d%d%d%d&quot;</span>, &a, &b, &c, &d);
     <span class="keyword">int</span> start = a * <span class="number">60</span> + b, end = c * <span class="number">60</span> + d;
-    <span class="keyword">if</span> (end <= start) end += <span class="number">24</span> * <span class="number">60</span>;
+    <span class="keyword">if</span> (end &lt;= start) end += <span class="number">24</span> * <span class="number">60</span>;
     <span class="keyword">int</span> diff = end - start;
     printf(<span class="string">&quot;%d:%d\n&quot;</span>, diff / <span class="number">60</span>, diff % <span class="number">60</span>);
     <span class="keyword">return</span> <span class="number">0</span>;
@@ -677,7 +677,7 @@ Q4
             <pre><code class="language-python">a, b, c, d = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
 s = a * <span class="number">60</span> + b
 e = c * <span class="number">60</span> + d
-<span class="keyword">if</span> e <= s: e += <span class="number">24</span> * <span class="number">60</span>
+<span class="keyword">if</span> e &lt;= s: e += <span class="number">24</span> * <span class="number">60</span>
 d = e - s
 <span class="keyword">print</span>(f<span class="string">&quot;{d // 60}:{d % 60}&quot;</span>)</code></pre>
             </details>
@@ -729,15 +729,15 @@ Percentage: 15 %
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 <span class="keyword">int</span> main() {
     <span class="keyword">double</span> s;
     scanf(<span class="string">&quot;%lf&quot;</span>, &s);
     <span class="keyword">int</span> p;
-    <span class="keyword">if</span> (s <= <span class="number">400</span>) p = <span class="number">15</span>;
-    <span class="keyword">else</span> <span class="keyword">if</span> (s <= <span class="number">800</span>) p = <span class="number">12</span>;
-    <span class="keyword">else</span> <span class="keyword">if</span> (s <= <span class="number">1200</span>) p = <span class="number">10</span>;
-    <span class="keyword">else</span> <span class="keyword">if</span> (s <= <span class="number">2000</span>) p = <span class="number">7</span>;
+    <span class="keyword">if</span> (s &lt;= <span class="number">400</span>) p = <span class="number">15</span>;
+    <span class="keyword">else</span> <span class="keyword">if</span> (s &lt;= <span class="number">800</span>) p = <span class="number">12</span>;
+    <span class="keyword">else</span> <span class="keyword">if</span> (s &lt;= <span class="number">1200</span>) p = <span class="number">10</span>;
+    <span class="keyword">else</span> <span class="keyword">if</span> (s &lt;= <span class="number">2000</span>) p = <span class="number">7</span>;
     <span class="keyword">else</span> p = <span class="number">4</span>;
     <span class="keyword">double</span> r = s * p / <span class="number">100</span>;
     printf(<span class="string">&quot;New salary: %.2lf\nIncrease: %.2lf\nPercentage: %d %%\n&quot;</span>, s + r, r, p);
@@ -745,10 +745,10 @@ Percentage: 15 %
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">s = <span class="keyword">float</span>(<span class="keyword">input</span>())
-<span class="keyword">if</span> s <= <span class="number">400</span>: p = <span class="number">15</span>
-<span class="keyword">elif</span> s <= <span class="number">800</span>: p = <span class="number">12</span>
-<span class="keyword">elif</span> s <= <span class="number">1200</span>: p = <span class="number">10</span>
-<span class="keyword">elif</span> s <= <span class="number">2000</span>: p = <span class="number">7</span>
+<span class="keyword">if</span> s &lt;= <span class="number">400</span>: p = <span class="number">15</span>
+<span class="keyword">elif</span> s &lt;= <span class="number">800</span>: p = <span class="number">12</span>
+<span class="keyword">elif</span> s &lt;= <span class="number">1200</span>: p = <span class="number">10</span>
+<span class="keyword">elif</span> s &lt;= <span class="number">2000</span>: p = <span class="number">7</span>
 <span class="keyword">else</span>: p = <span class="number">4</span>
 r = s * p / <span class="number">100</span>
 <span class="keyword">print</span>(f<span class="string">&quot;New salary: {s + r:.2f}&quot;</span>)
@@ -800,20 +800,20 @@ Not accepted
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> a, b, c, d;
-    cin >> a >> b >> c >> d;
-    <span class="keyword">if</span> (b > a && d > a && c + d > a + b && c > <span class="number">0</span> && d > <span class="number">0</span> && a % <span class="number">2</span> == <span class="number">0</span>)
-        cout << <span class="string">&quot;Accepted&quot;</span> << endl;
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;
+    <span class="keyword">if</span> (b &gt; a && d &gt; a && c + d &gt; a + b && c &gt; <span class="number">0</span> && d &gt; <span class="number">0</span> && a % <span class="number">2</span> == <span class="number">0</span>)
+        cout &lt;&lt; <span class="string">&quot;Accepted&quot;</span> &lt;&lt; endl;
     <span class="keyword">else</span>
-        cout << <span class="string">&quot;Not accepted&quot;</span> << endl;
+        cout &lt;&lt; <span class="string">&quot;Not accepted&quot;</span> &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">a, b, c, d = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-<span class="keyword">if</span> b > c <span class="keyword">and</span> d > a <span class="keyword">and</span> c + d > a + b <span class="keyword">and</span> c > <span class="number">0</span> <span class="keyword">and</span> d > <span class="number">0</span> <span class="keyword">and</span> a % <span class="number">2</span> == <span class="number">0</span>:
+<span class="keyword">if</span> b &gt; c <span class="keyword">and</span> d &gt; a <span class="keyword">and</span> c + d &gt; a + b <span class="keyword">and</span> c &gt; <span class="number">0</span> <span class="keyword">and</span> d &gt; <span class="number">0</span> <span class="keyword">and</span> a % <span class="number">2</span> == <span class="number">0</span>:
     <span class="keyword">print</span>(<span class="string">&quot;Accepted&quot;</span>)
 <span class="keyword">else</span>:
     <span class="keyword">print</span>(<span class="string">&quot;Not accepted&quot;</span>)</code></pre>
@@ -865,20 +865,20 @@ Sao Paulo
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> x;
-    cin >> x;
-    <span class="keyword">if</span> (x == <span class="number">61</span>) cout << <span class="string">&quot;Brasilia&quot;</span> << endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">71</span>) cout << <span class="string">&quot;Salvador&quot;</span> << endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">11</span>) cout << <span class="string">&quot;Sao Paulo&quot;</span> << endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">21</span>) cout << <span class="string">&quot;Rio de Janeiro&quot;</span> << endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">32</span>) cout << <span class="string">&quot;Juiz de Fora&quot;</span> << endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">19</span>) cout << <span class="string">&quot;Campinas&quot;</span> << endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">27</span>) cout << <span class="string">&quot;Vitoria&quot;</span> << endl;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">31</span>) cout << <span class="string">&quot;Belo Horizonte&quot;</span> << endl;
-    <span class="keyword">else</span> cout << <span class="string">&quot;DDD nao cadastrado&quot;</span> << endl;
+    cin &gt;&gt; x;
+    <span class="keyword">if</span> (x == <span class="number">61</span>) cout &lt;&lt; <span class="string">&quot;Brasilia&quot;</span> &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">71</span>) cout &lt;&lt; <span class="string">&quot;Salvador&quot;</span> &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">11</span>) cout &lt;&lt; <span class="string">&quot;Sao Paulo&quot;</span> &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">21</span>) cout &lt;&lt; <span class="string">&quot;Rio de Janeiro&quot;</span> &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">32</span>) cout &lt;&lt; <span class="string">&quot;Juiz de Fora&quot;</span> &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">19</span>) cout &lt;&lt; <span class="string">&quot;Campinas&quot;</span> &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">27</span>) cout &lt;&lt; <span class="string">&quot;Vitoria&quot;</span> &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">31</span>) cout &lt;&lt; <span class="string">&quot;Belo Horizonte&quot;</span> &lt;&lt; endl;
+    <span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;DDD nao cadastrado&quot;</span> &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -931,33 +931,33 @@ Not a triangle
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <algorithm>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">double</span> a, b, c;
-    cin >> a >> b >> c;
-    <span class="keyword">if</span> (b > a) swap(a, b);
-    <span class="keyword">if</span> (c > a) swap(a, c);
-    <span class="keyword">if</span> (c > b) swap(b, c);
-    <span class="keyword">if</span> (a >= b + c) cout << <span class="string">&quot;Not a triangle&quot;</span> << endl;
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+    <span class="keyword">if</span> (b &gt; a) swap(a, b);
+    <span class="keyword">if</span> (c &gt; a) swap(a, c);
+    <span class="keyword">if</span> (c &gt; b) swap(b, c);
+    <span class="keyword">if</span> (a &gt;= b + c) cout &lt;&lt; <span class="string">&quot;Not a triangle&quot;</span> &lt;&lt; endl;
     <span class="keyword">else</span> {
-        <span class="keyword">if</span> (a*a == b*b + c*c) cout << <span class="string">&quot;Right&quot;</span> << endl;
-        <span class="keyword">if</span> (a*a > b*b + c*c) cout << <span class="string">&quot;Obtuse&quot;</span> << endl;
-        <span class="keyword">if</span> (a*a < b*b + c*c) cout << <span class="string">&quot;Acute&quot;</span> << endl;
-        <span class="keyword">if</span> (a == b && b == c) cout << <span class="string">&quot;Equilateral&quot;</span> << endl;
-        <span class="keyword">else</span> <span class="keyword">if</span> (a == b || a == c || b == c) cout << <span class="string">&quot;Isosceles&quot;</span> << endl;
+        <span class="keyword">if</span> (a*a == b*b + c*c) cout &lt;&lt; <span class="string">&quot;Right&quot;</span> &lt;&lt; endl;
+        <span class="keyword">if</span> (a*a &gt; b*b + c*c) cout &lt;&lt; <span class="string">&quot;Obtuse&quot;</span> &lt;&lt; endl;
+        <span class="keyword">if</span> (a*a &lt; b*b + c*c) cout &lt;&lt; <span class="string">&quot;Acute&quot;</span> &lt;&lt; endl;
+        <span class="keyword">if</span> (a == b && b == c) cout &lt;&lt; <span class="string">&quot;Equilateral&quot;</span> &lt;&lt; endl;
+        <span class="keyword">else</span> <span class="keyword">if</span> (a == b || a == c || b == c) cout &lt;&lt; <span class="string">&quot;Isosceles&quot;</span> &lt;&lt; endl;
     }
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">a, b, c = <span class="keyword">sorted</span>(<span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split()), reverse=<span class="keyword">True</span>)
-<span class="keyword">if</span> a >= b + c:
+<span class="keyword">if</span> a &gt;= b + c:
     <span class="keyword">print</span>(<span class="string">&quot;Not a triangle&quot;</span>)
 <span class="keyword">else</span>:
     <span class="keyword">if</span> a*a == b*b + c*c: <span class="keyword">print</span>(<span class="string">&quot;Right&quot;</span>)
-    <span class="keyword">if</span> a*a > b*b + c*c: <span class="keyword">print</span>(<span class="string">&quot;Obtuse&quot;</span>)
-    <span class="keyword">if</span> a*a < b*b + c*c: <span class="keyword">print</span>(<span class="string">&quot;Acute&quot;</span>)
+    <span class="keyword">if</span> a*a &gt; b*b + c*c: <span class="keyword">print</span>(<span class="string">&quot;Obtuse&quot;</span>)
+    <span class="keyword">if</span> a*a &lt; b*b + c*c: <span class="keyword">print</span>(<span class="string">&quot;Acute&quot;</span>)
     <span class="keyword">if</span> a == b == c: <span class="keyword">print</span>(<span class="string">&quot;Equilateral&quot;</span>)
     <span class="keyword">elif</span> a == b <span class="keyword">or</span> b == c <span class="keyword">or</span> a == c: <span class="keyword">print</span>(<span class="string">&quot;Isosceles&quot;</span>)</code></pre>
             </details>
@@ -1008,26 +1008,26 @@ homem
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">string</span> a, b, c;
-    cin >> a >> b >> c;
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
     <span class="keyword">if</span> (a == <span class="string">&quot;vertebrado&quot;</span>) {
         <span class="keyword">if</span> (b == <span class="string">&quot;ave&quot;</span>) {
-            <span class="keyword">if</span> (c == <span class="string">&quot;carnivoro&quot;</span>) cout << <span class="string">&quot;aguia&quot;</span> << endl;
-            <span class="keyword">else</span> cout << <span class="string">&quot;pomba&quot;</span> << endl;
+            <span class="keyword">if</span> (c == <span class="string">&quot;carnivoro&quot;</span>) cout &lt;&lt; <span class="string">&quot;aguia&quot;</span> &lt;&lt; endl;
+            <span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;pomba&quot;</span> &lt;&lt; endl;
         } <span class="keyword">else</span> {
-            <span class="keyword">if</span> (c == <span class="string">&quot;onivoro&quot;</span>) cout << <span class="string">&quot;homem&quot;</span> << endl;
-            <span class="keyword">else</span> cout << <span class="string">&quot;vaca&quot;</span> << endl;
+            <span class="keyword">if</span> (c == <span class="string">&quot;onivoro&quot;</span>) cout &lt;&lt; <span class="string">&quot;homem&quot;</span> &lt;&lt; endl;
+            <span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;vaca&quot;</span> &lt;&lt; endl;
         }
     } <span class="keyword">else</span> {
         <span class="keyword">if</span> (b == <span class="string">&quot;inseto&quot;</span>) {
-            <span class="keyword">if</span> (c == <span class="string">&quot;hematofago&quot;</span>) cout << <span class="string">&quot;pulga&quot;</span> << endl;
-            <span class="keyword">else</span> cout << <span class="string">&quot;lagarta&quot;</span> << endl;
+            <span class="keyword">if</span> (c == <span class="string">&quot;hematofago&quot;</span>) cout &lt;&lt; <span class="string">&quot;pulga&quot;</span> &lt;&lt; endl;
+            <span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;lagarta&quot;</span> &lt;&lt; endl;
         } <span class="keyword">else</span> {
-            <span class="keyword">if</span> (c == <span class="string">&quot;hematofago&quot;</span>) cout << <span class="string">&quot;sanguessuga&quot;</span> << endl;
-            <span class="keyword">else</span> cout << <span class="string">&quot;minhoca&quot;</span> << endl;
+            <span class="keyword">if</span> (c == <span class="string">&quot;hematofago&quot;</span>) cout &lt;&lt; <span class="string">&quot;sanguessuga&quot;</span> &lt;&lt; endl;
+            <span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;minhoca&quot;</span> &lt;&lt; endl;
         }
     }
     <span class="keyword">return</span> <span class="number">0</span>;
@@ -1092,35 +1092,35 @@ R$ 80.36
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 <span class="keyword">int</span> main() {
     <span class="keyword">double</span> x;
     scanf(<span class="string">&quot;%lf&quot;</span>, &x);
-    <span class="keyword">if</span> (x <= <span class="number">2000</span>) { printf(<span class="string">&quot;Isento\n&quot;</span>); <span class="keyword">return</span> <span class="number">0</span>; }
+    <span class="keyword">if</span> (x &lt;= <span class="number">2000</span>) { printf(<span class="string">&quot;Isento\n&quot;</span>); <span class="keyword">return</span> <span class="number">0</span>; }
     x -= <span class="number">2000</span>;
     <span class="keyword">double</span> t = <span class="number">0</span>;
-    <span class="keyword">if</span> (x > <span class="number">0</span>) { <span class="keyword">double</span> v = x < <span class="number">1000</span> ? x : <span class="number">1000</span>; t += v * <span class="number">0.08</span>; x -= v; }
-    <span class="keyword">if</span> (x > <span class="number">0</span>) { <span class="keyword">double</span> v = x < <span class="number">1500</span> ? x : <span class="number">1500</span>; t += v * <span class="number">0.18</span>; x -= v; }
-    <span class="keyword">if</span> (x > <span class="number">0</span>) t += x * <span class="number">0.28</span>;
+    <span class="keyword">if</span> (x &gt; <span class="number">0</span>) { <span class="keyword">double</span> v = x &lt; <span class="number">1000</span> ? x : <span class="number">1000</span>; t += v * <span class="number">0.08</span>; x -= v; }
+    <span class="keyword">if</span> (x &gt; <span class="number">0</span>) { <span class="keyword">double</span> v = x &lt; <span class="number">1500</span> ? x : <span class="number">1500</span>; t += v * <span class="number">0.18</span>; x -= v; }
+    <span class="keyword">if</span> (x &gt; <span class="number">0</span>) t += x * <span class="number">0.28</span>;
     printf(<span class="string">&quot;R$ %.2lf\n&quot;</span>, t);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">x = <span class="keyword">float</span>(<span class="keyword">input</span>())
-<span class="keyword">if</span> x <= <span class="number">2000</span>:
+<span class="keyword">if</span> x &lt;= <span class="number">2000</span>:
     <span class="keyword">print</span>(<span class="string">&quot;Isento&quot;</span>)
 <span class="keyword">else</span>:
     x -= <span class="number">2000</span>
     t = <span class="number">0</span>
-    <span class="keyword">if</span> x > <span class="number">0</span>:
+    <span class="keyword">if</span> x &gt; <span class="number">0</span>:
         v = <span class="keyword">min</span>(x, <span class="number">1000</span>)
         t += v * <span class="number">0.08</span>
         x -= v
-    <span class="keyword">if</span> x > <span class="number">0</span>:
+    <span class="keyword">if</span> x &gt; <span class="number">0</span>:
         v = <span class="keyword">min</span>(x, <span class="number">1500</span>)
         t += v * <span class="number">0.18</span>
         x -= v
-    <span class="keyword">if</span> x > <span class="number">0</span>:
+    <span class="keyword">if</span> x &gt; <span class="number">0</span>:
         t += x * <span class="number">0.28</span>
     <span class="keyword">print</span>(f<span class="string">&quot;R$ {t:.2f}&quot;</span>)</code></pre>
             </details>

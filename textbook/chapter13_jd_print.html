@@ -108,7 +108,7 @@
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">10</span>;  <span class="comment">//最大值</span>
@@ -119,12 +119,12 @@
 <span class="keyword">void</span> dfs(<span class="keyword">int</span> u) {
   <span class="keyword">if</span> (u == n) {
     <span class="comment">//输出排列</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++) cout << path[i] << <span class="string">&quot; &quot;</span>;
-    cout << endl;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) cout &lt;&lt; path[i] &lt;&lt; <span class="string">&quot; &quot;</span>;
+    cout &lt;&lt; endl;
     <span class="keyword">return</span>;
   }
   <span class="comment">//枚举数字1--n</span>
-  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++) {
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) {
     <span class="keyword">if</span> (!used[i]) {
       path[u] = i;      <span class="comment">//记录当前位path[u]的数字为i</span>
       used[i] = <span class="keyword">true</span>;   <span class="comment">//标记数字i为已经使用过</span>
@@ -135,7 +135,7 @@
 }
 
 <span class="keyword">int</span> main() {
-  cin >> n;
+  cin &gt;&gt; n;
   dfs(<span class="number">0</span>);
   <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -267,7 +267,7 @@ Q...
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">20</span>;  <span class="comment">//最大值</span>
@@ -279,12 +279,12 @@ Q...
 <span class="keyword">void</span> dfs(<span class="keyword">int</span> u) {
   <span class="keyword">if</span> (u == n) {
     <span class="comment">//输出排列</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++) puts(g[i]);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) puts(g[i]);
     puts(<span class="string">&quot;&quot;</span>);
     <span class="keyword">return</span>;
   }
   <span class="comment">//枚举列0--n</span>
-  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++) {
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
     <span class="keyword">if</span> (!col[i] && !dg[i + u] && !udg[i - u + n]) {
       g[u][i] = 'Q';  <span class="comment">//当前位置设置为Q字符</span>
       col[i] = dg[i + u] = udg[i - u + n] = <span class="keyword">true</span>;  <span class="comment">//标记数字i为已经使用过</span>
@@ -296,10 +296,10 @@ Q...
 }
 
 <span class="keyword">int</span> main() {
-  cin >> n;
+  cin &gt;&gt; n;
   <span class="comment">//初始化图</span>
-  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++)
-    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < n; j++) g[i][j] = '.';
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) g[i][j] = '.';
   dfs(<span class="number">0</span>);
   <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -417,13 +417,13 @@ dfs(<span class="number">0</span>)</code></pre>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <algorithm>
-#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <queue>
-#<span class="keyword">include</span> <cstring>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;algorithm&gt;
+#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;queue&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span class="keyword">typedef</span> pair<<span class="keyword">int</span>, <span class="keyword">int</span>> PII;  <span class="comment">// Y总风格pair&lt;int,int&gt;声明</span>
+<span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII;  <span class="comment">// Y总风格pair&lt;int,int&gt;声明</span>
 
 <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">107</span>;
 
@@ -433,7 +433,7 @@ dfs(<span class="number">0</span>)</code></pre>
 <span class="comment">//广搜</span>
 <span class="keyword">int</span> bfs() {
 
-  queue<PII> q;      <span class="comment">//队列</span>
+  queue&lt;PII&gt; q;      <span class="comment">//队列</span>
 
   memset(d,-<span class="number">1</span>,<span class="keyword">sizeof</span> d);
   d[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>;
@@ -448,11 +448,11 @@ dfs(<span class="number">0</span>)</code></pre>
     q.pop();             <span class="comment">//弹出队头</span>
 
     <span class="comment">//搜索四个方向</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">4</span>; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)
     {
       <span class="keyword">int</span> x = t.first + dx[i], y = t.second + dy[i];  <span class="comment">//待搜索的新坐标点</span>
 
-      <span class="keyword">if</span> (x < <span class="number">0</span> || x >= n || y < <span class="number">0</span> || y >= m || g[x][y] != <span class="number">0</span> || d[x][y]!=-<span class="number">1</span>) <span class="keyword">continue</span>;
+      <span class="keyword">if</span> (x &lt; <span class="number">0</span> || x &gt;= n || y &lt; <span class="number">0</span> || y &gt;= m || g[x][y] != <span class="number">0</span> || d[x][y]!=-<span class="number">1</span>) <span class="keyword">continue</span>;
 
       d[x][y] = d[t.first][t.second]+<span class="number">1</span>;
 
@@ -467,13 +467,13 @@ dfs(<span class="number">0</span>)</code></pre>
 
 <span class="keyword">int</span> main() {
 
-    cin >> n >> m;
+    cin &gt;&gt; n &gt;&gt; m;
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++) 
-      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j <m; j++)
-        cin >> g[i][j];
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) 
+      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;m; j++)
+        cin &gt;&gt; g[i][j];
 
-    cout << bfs() << endl;
+    cout &lt;&lt; bfs() &lt;&lt; endl;
 
   <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -497,7 +497,7 @@ dist[<span class="number">0</span>][<span class="number">0</span>] = <span class
     x, y = q.popleft()
     <span class="keyword">for</span> d <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">4</span>):
         nx, ny = x + dx[d], y + dy[d]
-        <span class="keyword">if</span> <span class="number">0</span> <= nx < n <span class="keyword">and</span> <span class="number">0</span> <= ny < m <span class="keyword">and</span> g[nx][ny] == <span class="number">0</span> <span class="keyword">and</span> dist[nx][ny] == -<span class="number">1</span>:
+        <span class="keyword">if</span> <span class="number">0</span> &lt;= nx &lt; n <span class="keyword">and</span> <span class="number">0</span> &lt;= ny &lt; m <span class="keyword">and</span> g[nx][ny] == <span class="number">0</span> <span class="keyword">and</span> dist[nx][ny] == -<span class="number">1</span>:
             dist[nx][ny] = dist[x][y] + <span class="number">1</span>
             q.append((nx, ny))
 <span class="keyword">print</span>(dist[n - <span class="number">1</span>][m - <span class="number">1</span>])</code></pre>
@@ -603,11 +603,11 @@ x 4 6
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <cstring>
-#<span class="keyword">include</span> <algorithm>
-#<span class="keyword">include</span> <unordered_map>
-#<span class="keyword">include</span> <queue>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+#<span class="keyword">include</span> &lt;unordered_map&gt;
+#<span class="keyword">include</span> &lt;queue&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
@@ -621,8 +621,8 @@ x 4 6
 {
   <span class="keyword">string</span> end = <span class="string">&quot;12345678x&quot;</span>;
 
-  queue<<span class="keyword">string</span>> q;
-  unordered_map<<span class="keyword">string</span>,<span class="keyword">int</span>> d;<span class="comment">//字符串映射到整数</span>
+  queue&lt;<span class="keyword">string</span>&gt; q;
+  unordered_map&lt;<span class="keyword">string</span>,<span class="keyword">int</span>&gt; d;<span class="comment">//字符串映射到整数</span>
 
   q.push(start);
   d[start] = <span class="number">0</span>;<span class="comment">//map的用法</span>
@@ -643,11 +643,11 @@ x 4 6
     <span class="keyword">int</span> k = t.find('x');
     <span class="keyword">int</span> x = k / <span class="number">3</span>, y = k % <span class="number">3</span>;<span class="comment">//转换为宫格坐标</span>
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">4</span>; i ++ )
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i ++ )
     {
       <span class="keyword">int</span> a = x + dx[i], b = y + dy[i];
 
-      <span class="keyword">if</span> (a >= <span class="number">0</span> && a < <span class="number">3</span> && b >= <span class="number">0</span> && b < <span class="number">3</span>)
+      <span class="keyword">if</span> (a &gt;= <span class="number">0</span> && a &lt; <span class="number">3</span> && b &gt;= <span class="number">0</span> && b &lt; <span class="number">3</span>)
       {
         swap(t[k], t[a*<span class="number">3</span>+b]);<span class="comment">//移动x的位置</span>
         <span class="keyword">if</span> (!d.count(t))
@@ -667,13 +667,13 @@ x 4 6
 {
     <span class="keyword">string</span> c, start;
     <span class="comment">//去掉空格</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">9</span>; i ++ )
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i ++ )
     {
-      cin>>c;
+      cin&gt;&gt;c;
       start += c;
     }
 
-    cout<<bfs(start)<<endl;
+    cout&lt;&lt;bfs(start)&lt;&lt;endl;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
@@ -690,7 +690,7 @@ dist = {start: <span class="number">0</span>}
     x, y = k//<span class="number">3</span>, k%<span class="number">3</span>
     <span class="keyword">for</span> d <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">4</span>):
         nx, ny = x+dx[d], y+dy[d]
-        <span class="keyword">if</span> <span class="number">0</span><=nx<<span class="number">3</span> <span class="keyword">and</span> <span class="number">0</span><=ny<<span class="number">3</span>:
+        <span class="keyword">if</span> <span class="number">0</span>&lt;=nx&lt;<span class="number">3</span> <span class="keyword">and</span> <span class="number">0</span>&lt;=ny&lt;<span class="number">3</span>:
             nk = nx*<span class="number">3</span> + ny
             lst = <span class="keyword">list</span>(s)
             lst[k], lst[nk] = lst[nk], lst[k]
@@ -757,9 +757,9 @@ dist = {start: <span class="number">0</span>}
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <cstring>
-#<span class="keyword">include</span> <algorithm>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
@@ -799,16 +799,16 @@ dist = {start: <span class="number">0</span>}
 
 <span class="keyword">int</span> main()
 {
-    cin>>n;
+    cin&gt;&gt;n;
     memset(h, -<span class="number">1</span>, <span class="keyword">sizeof</span> h);
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n-<span class="number">1</span>; i ++ )
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n-<span class="number">1</span>; i ++ )
     {
       <span class="keyword">int</span> a,b;
-      cin>>a>>b;
+      cin&gt;&gt;a&gt;&gt;b;
       add(a, b),add(b,a);<span class="comment">//无向边</span>
     }
     dfs(<span class="number">1</span>);
-    cout<<ans<<endl;
+    cout&lt;&lt;ans&lt;&lt;endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -891,10 +891,10 @@ dfs(<span class="number">1</span>, -<span class="number">1</span>)
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <cstring>
-#<span class="keyword">include</span> <algorithm>
-#<span class="keyword">include</span> <queue>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+#<span class="keyword">include</span> &lt;queue&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
@@ -918,7 +918,7 @@ dfs(<span class="number">1</span>, -<span class="number">1</span>)
 <span class="keyword">int</span> bfs()
 {
   memset(d,-<span class="number">1</span>,<span class="keyword">sizeof</span> d);
-  queue<<span class="keyword">int</span>> q;
+  queue&lt;<span class="keyword">int</span>&gt; q;
   d[<span class="number">1</span>] = <span class="number">0</span>;<span class="comment">//起始点</span>
   q.push(<span class="number">1</span>);
 
@@ -942,17 +942,17 @@ dfs(<span class="number">1</span>, -<span class="number">1</span>)
 
 <span class="keyword">int</span> main()
 {
-    cin>>n>>m;
+    cin&gt;&gt;n&gt;&gt;m;
     memset(h, -<span class="number">1</span>, <span class="keyword">sizeof</span> h);
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < m; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)
     {
       <span class="keyword">int</span> a, b;
-      cin>>a>>b;
+      cin&gt;&gt;a&gt;&gt;b;
       add(a,b);
     }
 
-    cout<<bfs()<<endl;
+    cout&lt;&lt;bfs()&lt;&lt;endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>

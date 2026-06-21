@@ -80,7 +80,7 @@
             <pre><code class="language-cpp"><span class="comment">// ===== C++ 解法 =====</span>
 <span class="comment">// 第一步：引入输入输出库</span>
 <span class="comment">// iostream 是 C++ 的标准输入输出头文件，cin 和 cout 都来自这里</span>
-#<span class="keyword">include</span> <iostream>
+#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">int</span> main() {
@@ -89,14 +89,14 @@
     <span class="keyword">int</span> a, b;
 
     <span class="comment">// 第三步：读入数据</span>
-    <span class="comment">// cin >> 从键盘读取数据，>> 是"流向"的意思</span>
+    <span class="comment">// cin &gt;&gt; 从键盘读取数据，&gt;&gt; 是"流向"的意思</span>
     <span class="comment">// 键盘输入 "3 4" 后，a 变成 3，b 变成 4</span>
-    cin >> a >> b;
+    cin &gt;&gt; a &gt;&gt; b;
 
     <span class="comment">// 第四步：计算并输出</span>
-    <span class="comment">// cout << 输出内容，<< 也是"流向"，把数据流向屏幕</span>
+    <span class="comment">// cout &lt;&lt; 输出内容，&lt;&lt; 也是"流向"，把数据流向屏幕</span>
     <span class="comment">// endl 表示换行（end line 的缩写）</span>
-    cout << a + b << endl;
+    cout &lt;&lt; a + b &lt;&lt; endl;
 
     <span class="comment">// 第五步：返回 0 表示程序正常结束</span>
     <span class="keyword">return</span> <span class="number">0</span>;
@@ -187,16 +187,16 @@ PROD = 27
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> a, b;
-    cin >> a >> b;   <span class="comment">// 读入两个整数，比如输入 "3 9"，则 a=3, b=9</span>
+    cin &gt;&gt; a &gt;&gt; b;   <span class="comment">// 读入两个整数，比如输入 "3 9"，则 a=3, b=9</span>
 
     <span class="comment">// 输出格式：先输出 "PROD = "，再输出计算结果</span>
-    <span class="comment">// 可以用 << 把文字和数字串在一起输出</span>
-    cout << <span class="string">&quot;PROD = &quot;</span> << a * b << endl;
+    <span class="comment">// 可以用 &lt;&lt; 把文字和数字串在一起输出</span>
+    cout &lt;&lt; <span class="string">&quot;PROD = &quot;</span> &lt;&lt; a * b &lt;&lt; endl;
     <span class="comment">// 运行过程：输出 "PROD = " → 输出 3*9=27 → 换行</span>
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -263,7 +263,7 @@ DIFFERENCE = -26
             <h4>C++</h4>
             <pre><code class="language-cpp"><span class="comment">// scanf/printf 比 cin/cout 更快，适合大量数据</span>
 <span class="comment">// 需要引入 cstdio（C语言标准输入输出库）</span>
-#<span class="keyword">include</span> <cstdio>
+#<span class="keyword">include</span> &lt;cstdio&gt;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> a, b, c, d;
@@ -341,7 +341,7 @@ TOTAL = 5.30
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> id, qty;        <span class="comment">// id=商品编号, qty=数量（都是整数）</span>
@@ -430,7 +430,7 @@ A=12.5664
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">double</span> r;           <span class="comment">// 半径是小数，用 double 类型</span>
@@ -511,7 +511,7 @@ Average = 6.70000
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">double</span> a, b;           <span class="comment">// a=剑术成绩, b=心法成绩</span>
@@ -597,7 +597,7 @@ SALARY = U$ 550.00
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> id, days;
@@ -677,7 +677,7 @@ days, rate = <span class="keyword">map</span>(<span class="keyword">float</span>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">double</span> s, l;                <span class="comment">// s=路程(km), l=草料消耗(L)</span>
@@ -745,7 +745,7 @@ VOLUME = 113.097
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">double</span> r;
@@ -825,7 +825,7 @@ Max = 106
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> a, b, c;
@@ -834,8 +834,8 @@ Max = 106
     <span class="comment">// 找三个数中的最大值——"打擂台"算法</span>
     <span class="comment">// 思路：先假设第一个数最大，然后逐个比较</span>
     <span class="keyword">int</span> max_val = a;               <span class="comment">// 先假设 a=7 最大</span>
-    <span class="keyword">if</span> (b > max_val) max_val = b;  <span class="comment">// b=14 > 7，所以 max_val 更新为 14</span>
-    <span class="keyword">if</span> (c > max_val) max_val = c;  <span class="comment">// c=106 > 14，所以 max_val 更新为 106</span>
+    <span class="keyword">if</span> (b &gt; max_val) max_val = b;  <span class="comment">// b=14 &gt; 7，所以 max_val 更新为 14</span>
+    <span class="keyword">if</span> (c &gt; max_val) max_val = c;  <span class="comment">// c=106 &gt; 14，所以 max_val 更新为 106</span>
     <span class="comment">// 最终 max_val = 106</span>
 
     printf(<span class="string">&quot;Max = %d\n"</span>, max_val);
@@ -857,8 +857,8 @@ a, b, c = <span class="keyword">map</span>(<span class="keyword">int</span>, <sp
 
 <span class="comment"># 方法二：用 if 比较（和 C++ 思路一样）</span>
 <span class="comment"># max_val = a</span>
-<span class="comment"># if b > max_val: max_val = b</span>
-<span class="comment"># if c > max_val: max_val = c</span>
+<span class="comment"># if b &gt; max_val: max_val = b</span>
+<span class="comment"># if c &gt; max_val: max_val = c</span>
 <span class="comment"># print(f"Max = {max_val}")</span></code></pre>
             </details>
         </div>
@@ -906,8 +906,8 @@ a, b, c = <span class="keyword">map</span>(<span class="keyword">int</span>, <sp
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
-#<span class="keyword">include</span> <cmath>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;cmath&gt;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">double</span> x1, y1, x2, y2;          <span class="comment">// 两个点的坐标</span>
@@ -1005,7 +1005,7 @@ RETANGULO: 12.000
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 #define PI <span class="number">3.14159</span>
 
 <span class="keyword">int</span> main() {
@@ -1096,7 +1096,7 @@ pi = <span class="number">3.14159</span>   <span class="comment"># 定义 π 常
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n;
@@ -1199,7 +1199,7 @@ s = n % <span class="number">60</span>             <span class="comment"># 秒 =
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n;
@@ -1210,7 +1210,7 @@ s = n % <span class="number">60</span>             <span class="comment"># 秒 =
     <span class="comment">// 面额数组：100, 50, 20, 10, 5, 2, 1</span>
     <span class="keyword">int</span> denoms[] = {<span class="number">100</span>, <span class="number">50</span>, <span class="number">20</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">1</span>};
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">7</span>; i++) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">7</span>; i++) {
         <span class="comment">// n / denoms[i] = 该面额需要几张</span>
         <span class="comment">// n % denoms[i] = 换完后剩余金额</span>
         printf(<span class="string">&quot;%d nota(s) de R$ %d,00\n"</span>, n / denoms[i], denoms[i]);

@@ -109,17 +109,17 @@ Hello%20World
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <<span class="keyword">string</span>>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;<span class="keyword">string</span>&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">string</span> s;
     getline(cin, s);
     <span class="keyword">for</span> (<span class="keyword">char</span> c : s) {
-        <span class="keyword">if</span> (c == ' ') cout << <span class="string">&quot;%20&quot;</span>;
-        <span class="keyword">else</span> cout << c;
+        <span class="keyword">if</span> (c == ' ') cout &lt;&lt; <span class="string">&quot;%20&quot;</span>;
+        <span class="keyword">else</span> cout &lt;&lt; c;
     }
-    cout << endl;
+    cout &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -227,23 +227,23 @@ a=0, b=1（只保留最近两项）
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <vector>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="comment">// 用 vector 存储斐波那契数列，迭代计算</span>
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n;
-    cin >> n;
-    <span class="keyword">if</span> (n == <span class="number">0</span>) { cout << <span class="number">0</span> << endl; <span class="keyword">return</span> <span class="number">0</span>; }
+    cin &gt;&gt; n;
+    <span class="keyword">if</span> (n == <span class="number">0</span>) { cout &lt;&lt; <span class="number">0</span> &lt;&lt; endl; <span class="keyword">return</span> <span class="number">0</span>; }
 
-    vector<<span class="keyword">long</span> <span class="keyword">long</span>> fib;
+    vector&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; fib;
     fib.push_back(<span class="number">0</span>);  <span class="comment">// fib[0] = 0</span>
     fib.push_back(<span class="number">1</span>);  <span class="comment">// fib[1] = 1</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i <= n; i++) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) {
         fib.push_back(fib[i - <span class="number">1</span>] + fib[i - <span class="number">2</span>]);
     }
-    cout << fib[n] << endl;
+    cout &lt;&lt; fib[n] &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -349,19 +349,19 @@ a=0, b=1（只保留最近两项）
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <vector>
-#<span class="keyword">include</span> <algorithm>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">int</span> main() {
-    vector<<span class="keyword">int</span>> nums;
+    vector&lt;<span class="keyword">int</span>&gt; nums;
     <span class="keyword">int</span> x;
-    <span class="keyword">while</span> (cin >> x && x != -<span class="number">1</span>) {
+    <span class="keyword">while</span> (cin &gt;&gt; x && x != -<span class="number">1</span>) {
         nums.push_back(x);
     }
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = nums.size() - <span class="number">1</span>; i >= <span class="number">0</span>; i--) {
-        cout << nums[i] << endl;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = nums.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) {
+        cout &lt;&lt; nums[i] &lt;&lt; endl;
     }
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -500,15 +500,15 @@ yes
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <stack>
-#<span class="keyword">include</span> <<span class="keyword">string</span>>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;stack&gt;
+#<span class="keyword">include</span> &lt;<span class="keyword">string</span>&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="comment">// 用两个栈模拟队列</span>
 <span class="comment">// 栈1负责入队，栈2负责出队</span>
 <span class="comment">// 出队时若栈2空，把栈1全部倒入栈2</span>
-stack<<span class="keyword">int</span>> s1, s2;
+stack&lt;<span class="keyword">int</span>&gt; s1, s2;
 
 <span class="keyword">void</span> transfer() {
     <span class="keyword">while</span> (s1.size()) {
@@ -519,16 +519,16 @@ stack<<span class="keyword">int</span>> s1, s2;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">string</span> cmd;
-    <span class="keyword">while</span> (cin >> cmd) {
+    <span class="keyword">while</span> (cin &gt;&gt; cmd) {
         <span class="keyword">if</span> (cmd == <span class="string">&quot;push&quot;</span>) {
-            <span class="keyword">int</span> x; cin >> x;
+            <span class="keyword">int</span> x; cin &gt;&gt; x;
             s1.push(x);
         } <span class="keyword">else</span> <span class="keyword">if</span> (cmd == <span class="string">&quot;pop&quot;</span>) {
             <span class="keyword">if</span> (s2.empty()) transfer();
-            cout << s2.top() << endl;
+            cout &lt;&lt; s2.top() &lt;&lt; endl;
             s2.pop();
         } <span class="keyword">else</span> <span class="keyword">if</span> (cmd == <span class="string">&quot;empty&quot;</span>) {
-            cout << (s1.empty() && s2.empty() ? <span class="string">&quot;yes&quot;</span> : <span class="string">&quot;no&quot;</span>) << endl;
+            cout &lt;&lt; (s1.empty() && s2.empty() ? <span class="string">&quot;yes&quot;</span> : <span class="string">&quot;no&quot;</span>) &lt;&lt; endl;
         }
     }
     <span class="keyword">return</span> <span class="number">0</span>;
@@ -649,23 +649,23 @@ Phase 2: 弹栈（逐个弹出，输出结果）
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <stack>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;stack&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="comment">// 用栈实现链表反转：读入时压栈，输出时弹栈（后进先出 = 反转）</span>
 <span class="keyword">int</span> main() {
-    stack<<span class="keyword">int</span>> stk;
+    stack&lt;<span class="keyword">int</span>&gt; stk;
     <span class="keyword">int</span> x;
-    <span class="keyword">while</span> (cin >> x && x != -<span class="number">1</span>) {
+    <span class="keyword">while</span> (cin &gt;&gt; x && x != -<span class="number">1</span>) {
         stk.push(x);
     }
     <span class="keyword">while</span> (!stk.empty()) {
-        cout << stk.top();
+        cout &lt;&lt; stk.top();
         stk.pop();
-        <span class="keyword">if</span> (!stk.empty()) cout << <span class="string">&quot; &quot;</span>;
+        <span class="keyword">if</span> (!stk.empty()) cout &lt;&lt; <span class="string">&quot; &quot;</span>;
     }
-    cout << endl;
+    cout &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -771,26 +771,26 @@ numbers.reverse()       <span class="comment"># 反转序列</span>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <vector>
-#<span class="keyword">include</span> <algorithm>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="comment">// 合并两条有序链表</span>
 <span class="comment">// 读入两行，每行以-1结尾，输出合并后的有序序列</span>
 <span class="keyword">int</span> main() {
-    vector<<span class="keyword">int</span>> a;
+    vector&lt;<span class="keyword">int</span>&gt; a;
     <span class="keyword">int</span> x;
     <span class="comment">// 读入第一条链表</span>
-    <span class="keyword">while</span> (cin >> x && x != -<span class="number">1</span>) a.push_back(x);
+    <span class="keyword">while</span> (cin &gt;&gt; x && x != -<span class="number">1</span>) a.push_back(x);
     <span class="comment">// 读入第二条链表</span>
-    <span class="keyword">while</span> (cin >> x && x != -<span class="number">1</span>) a.push_back(x);
+    <span class="keyword">while</span> (cin &gt;&gt; x && x != -<span class="number">1</span>) a.push_back(x);
     sort(a.begin(), a.end());
-    <span class="keyword">for</span> (size_t i = <span class="number">0</span>; i < a.size(); i++) {
-        cout << a[i];
-        <span class="keyword">if</span> (i + <span class="number">1</span> < a.size()) cout << <span class="string">&quot; &quot;</span>;
+    <span class="keyword">for</span> (size_t i = <span class="number">0</span>; i &lt; a.size(); i++) {
+        cout &lt;&lt; a[i];
+        <span class="keyword">if</span> (i + <span class="number">1</span> &lt; a.size()) cout &lt;&lt; <span class="string">&quot; &quot;</span>;
     }
-    cout << endl;
+    cout &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -809,8 +809,8 @@ b = []
 <span class="comment"># 双指针合并两个有序序列</span>
 i = j = <span class="number">0</span>
 result = []
-<span class="keyword">while</span> i < <span class="keyword">len</span>(a) <span class="keyword">and</span> j < <span class="keyword">len</span>(b):
-    <span class="keyword">if</span> a[i] <= b[j]:
+<span class="keyword">while</span> i &lt; <span class="keyword">len</span>(a) <span class="keyword">and</span> j &lt; <span class="keyword">len</span>(b):
+    <span class="keyword">if</span> a[i] &lt;= b[j]:
         result.append(<span class="keyword">str</span>(a[i]))
         i += <span class="number">1</span>
     <span class="keyword">else</span>:
@@ -927,9 +927,9 @@ result.extend(<span class="keyword">str</span>(x) <span class="keyword">for</spa
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <vector>
-#<span class="keyword">include</span> <algorithm>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="comment">// 用 vector + struct 存储三元组，自定义排序</span>
@@ -940,24 +940,24 @@ result.extend(<span class="keyword">str</span>(x) <span class="keyword">for</spa
 };
 
 <span class="keyword">bool</span> cmp(<span class="keyword">const</span> Record &a, <span class="keyword">const</span> Record &b) {
-    <span class="keyword">if</span> (a.x != b.x) <span class="keyword">return</span> a.x < b.x;
-    <span class="keyword">return</span> a.y < b.y;
+    <span class="keyword">if</span> (a.x != b.x) <span class="keyword">return</span> a.x &lt; b.x;
+    <span class="keyword">return</span> a.y &lt; b.y;
 }
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n;
-    cin >> n;
+    cin &gt;&gt; n;
 
-    vector<Record> records;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++) {
+    vector&lt;Record&gt; records;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
         Record r;
-        cin >> r.x >> r.y >> r.z;
+        cin &gt;&gt; r.x &gt;&gt; r.y &gt;&gt; r.z;
         records.push_back(r);
     }
 
     sort(records.begin(), records.end(), cmp);
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
         printf(<span class="string">&quot;%d %.2lf %s\n&quot;</span>, records[i].x, records[i].y, records[i].z.c_str());
     }
     <span class="keyword">return</span> <span class="number">0</span>;

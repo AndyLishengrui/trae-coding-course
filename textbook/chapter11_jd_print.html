@@ -114,7 +114,7 @@ s = [0, 2, 3, 6, 12, 16]
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000007</span>;
@@ -125,10 +125,10 @@ s = [0, 2, 3, 6, 12, 16]
 <span class="keyword">int</span> main()
 {
     scanf(<span class="string">&quot;%d%d&quot;</span>, &n, &m);
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
         scanf(<span class="string">&quot;%d&quot;</span>, &a[i]);
     s[<span class="number">0</span>] = <span class="number">0</span>; <span class="comment">//刻意初始化s[0]为0 ，此句可以不写，写也无妨</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
         s[i] = s[i - <span class="number">1</span>] + a[i]; <span class="comment">//打表法</span>
     <span class="comment">//m次询问</span>
     <span class="keyword">while</span> (m--)
@@ -263,7 +263,7 @@ s 矩阵:
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1007</span>;
 <span class="keyword">int</span> n, m, q;
@@ -273,13 +273,13 @@ s 矩阵:
 {
     <span class="comment">//读入矩阵</span>
     scanf(<span class="string">&quot;%d%d%d&quot;</span>, &n, &m, &q);
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++)
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= m; j++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
             scanf(<span class="string">&quot;%d&quot;</span>, &a[i][j]);
 
     s[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>; <span class="comment">//刻意初始化s[0]为0 ，此句可以不写，写也无妨</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++)
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= m; j++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
             s[i][j] = s[i - <span class="number">1</span>][j] + s[i][j - <span class="number">1</span>] - s[i - <span class="number">1</span>][j - <span class="number">1</span>] + a[i][j]; <span class="comment">//打表法</span>
     <span class="comment">//q次询问</span>
     <span class="keyword">while</span> (q--)
@@ -410,7 +410,7 @@ a[1] = 3, a[2] = 3+2 = 5, a[3] = 5+4 = 9...
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000007</span>;
 <span class="keyword">int</span> n, m;
@@ -425,27 +425,27 @@ a[1] = 3, a[2] = 3+2 = 5, a[3] = 5+4 = 9...
 
 <span class="keyword">int</span> main()
 {
-    cin >> n >> m;
+    cin &gt;&gt; n &gt;&gt; m;
     <span class="comment">//读入数组</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++)
-        cin >> a[i];
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        cin &gt;&gt; a[i];
     <span class="comment">//构造差分数组b</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
         insert(i, i, a[i]);
     <span class="comment">//输出查询结果</span>
     <span class="keyword">while</span> (m--)
     {
         <span class="keyword">int</span> l, r, c;
-        cin >> l >> r >> c;
+        cin &gt;&gt; l &gt;&gt; r &gt;&gt; c;
         insert(l, r, c);
     }
     <span class="comment">//重新复原a数组(前缀和)</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
         a[i] = a[i - <span class="number">1</span>] + b[i];
     <span class="comment">//输出a</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++)
-        cout << a[i] << <span class="string">&quot; &quot;</span>;
-    cout << endl;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        cout &lt;&lt; a[i] &lt;&lt; <span class="string">&quot; &quot;</span>;
+    cout &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -568,7 +568,7 @@ b[x2+1][y2+1] += c    ← 修补多减的部分
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1007</span>;
 <span class="keyword">int</span> n, m, q;
@@ -585,12 +585,12 @@ b[x2+1][y2+1] += c    ← 修补多减的部分
 {
     <span class="comment">//读入矩阵</span>
     scanf(<span class="string">&quot;%d%d%d&quot;</span>, &n, &m, &q);
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++)
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= m; j++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
             scanf(<span class="string">&quot;%d&quot;</span>, &a[i][j]);
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++)
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= m; j++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
             insert(i, j, i, j, a[i][j]); <span class="comment">//构造二维差分矩阵</span>
 
     <span class="comment">//q次询问</span>
@@ -602,15 +602,15 @@ b[x2+1][y2+1] += c    ← 修补多减的部分
         insert(x1, y1, x2, y2, c);
     }
     <span class="comment">//重建a[][],即求二维前缀和</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++)
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= m; j++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
             a[i][j] = a[i - <span class="number">1</span>][j] + a[i][j - <span class="number">1</span>] - a[i - <span class="number">1</span>][j - <span class="number">1</span>] + b[i][j];
     <span class="comment">//输出a[][]</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
     {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= m; j++)
-            cout << a[i][j] << <span class="string">&quot; &quot;</span>;
-        cout << endl;
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
+            cout &lt;&lt; a[i][j] &lt;&lt; <span class="string">&quot; &quot;</span>;
+        cout &lt;&lt; endl;
     }
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -744,27 +744,27 @@ s = [_, 2, 8, 8, 8, 13, 13]
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <vector>
-#<span class="keyword">include</span> <algorithm>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
-<span class="keyword">typedef</span> pair<<span class="keyword">int</span>, <span class="keyword">int</span>> PII; <span class="comment">//自定义类型PII，表示容器类型是&lt;int,int&gt;的pair</span>
+<span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII; <span class="comment">//自定义类型PII，表示容器类型是&lt;int,int&gt;的pair</span>
 
 <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">300007</span>; <span class="comment">//需要记录n个坐标值，以及m个区间的坐标，所以是100000*(1+2)</span>
 <span class="keyword">int</span> n, m;
 <span class="keyword">int</span> a[N], s[N];
 
-vector<<span class="keyword">int</span>> alls;       <span class="comment">//存储所有的点坐标，包括询问点坐标</span>
-vector<PII> add, query; <span class="comment">//输入操作的坐标，查询的区间坐标</span>
+vector&lt;<span class="keyword">int</span>&gt; alls;       <span class="comment">//存储所有的点坐标，包括询问点坐标</span>
+vector&lt;PII&gt; add, query; <span class="comment">//输入操作的坐标，查询的区间坐标</span>
 <span class="comment">//在alls之中，查找值是x的元素值的下标，并且映射到[1...n]</span>
 <span class="keyword">int</span> find(<span class="keyword">int</span> x)
 {
     <span class="keyword">int</span> left = <span class="number">0</span>, right = alls.size() - <span class="number">1</span>; <span class="comment">//vector从0开始计数</span>
-    <span class="keyword">while</span> (left < right)
+    <span class="keyword">while</span> (left &lt; right)
     {
-        <span class="keyword">int</span> mid = left + right >> <span class="number">1</span>; <span class="comment">//取中值</span>
-        <span class="keyword">if</span> (alls[mid] >= x)
+        <span class="keyword">int</span> mid = left + right &gt;&gt; <span class="number">1</span>; <span class="comment">//取中值</span>
+        <span class="keyword">if</span> (alls[mid] &gt;= x)
             right = mid;
         <span class="keyword">else</span>
             left = mid + <span class="number">1</span>;
@@ -777,22 +777,22 @@ vector<PII> add, query; <span class="comment">//输入操作的坐标，查询�
 <span class="comment">//? 本题目可以参考797.差分的模板写成</span>
 <span class="keyword">int</span> main()
 {
-    cin >> n >> m;
+    cin &gt;&gt; n &gt;&gt; m;
     <span class="comment">//!离散化：构造映射表</span>
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)
     {
         <span class="comment">//todo 不直接把数存入a[i],乃是存入add容器内</span>
         <span class="keyword">int</span> x, c;
-        cin >> x >> c;
+        cin &gt;&gt; x &gt;&gt; c;
         add.push_back({x, c}); <span class="comment">//?将某一位置x上的数加c</span>
         alls.push_back(x);     <span class="comment">//把x位置加入alls</span>
     }
     <span class="comment">// 读入query</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < m; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)
     {
         <span class="keyword">int</span> l, r; <span class="comment">//区间l和r</span>
-        cin >> l >> r;
+        cin &gt;&gt; l &gt;&gt; r;
         query.push_back({l, r});
         alls.push_back(l); <span class="comment">//坐标与alls的下标做映射</span>
         alls.push_back(r);
@@ -810,13 +810,13 @@ vector<PII> add, query; <span class="comment">//输入操作的坐标，查询�
         a[index] += it.second; <span class="comment">//将index位置上的数加c</span>
     }
     <span class="comment">//预处理前缀和</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= alls.size(); i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= alls.size(); i++)
         s[i] = s[i - <span class="number">1</span>] + a[i];
     <span class="comment">//处理询问，并且输出</span>
     <span class="keyword">for</span> (<span class="keyword">auto</span> item : query)
     {
         <span class="keyword">int</span> l = find(item.first), r = find(item.second);
-        cout << s[r] - s[l - <span class="number">1</span>] << endl; <span class="comment">//前缀和计算公式</span>
+        cout &lt;&lt; s[r] - s[l - <span class="number">1</span>] &lt;&lt; endl; <span class="comment">//前缀和计算公式</span>
     }
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -938,28 +938,28 @@ s = [<span class="number">0</span>] * (<span class="keyword">len</span>(all_x) +
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <vector>
-#<span class="keyword">include</span> <algorithm>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
-<span class="keyword">typedef</span> pair<<span class="keyword">int</span>, <span class="keyword">int</span>> PII; <span class="comment">//自定义类型PII，表示容器类型是&lt;int,int&gt;的pair</span>
+<span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII; <span class="comment">//自定义类型PII，表示容器类型是&lt;int,int&gt;的pair</span>
 
 <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100007</span>; <span class="comment">//1&lt;=n&lt;=100000</span>
 <span class="keyword">int</span> n;<span class="comment">//n个区间</span>
 
-vector<PII> segments; <span class="comment">//区间坐标</span>
+vector&lt;PII&gt; segments; <span class="comment">//区间坐标</span>
 
-<span class="keyword">void</span> merge(vector<PII> &segs)
+<span class="keyword">void</span> merge(vector&lt;PII&gt; &segs)
 {
-    vector<PII> res;
+    vector&lt;PII&gt; res;
     <span class="comment">//pair排序先按左端点，后右端点</span>
     sort(segs.begin(), segs.end());
 
     <span class="comment">//数字范围是-10^9&lt;num&lt;10^9,因此负无穷大初始化为-2e9</span>
     <span class="keyword">int</span> left = -2e9, right = -2e9;<span class="comment">//当前操作的区间[left,right]</span>
     <span class="keyword">for</span> (<span class="keyword">auto</span> seg : segs)<span class="comment">//遍历segs</span>
-        <span class="keyword">if</span> (right < seg.first)<span class="comment">//区间没有交集，更新当前区间</span>
+        <span class="keyword">if</span> (right &lt; seg.first)<span class="comment">//区间没有交集，更新当前区间</span>
         {
             <span class="comment">//存储合并完毕的区间[left,right]</span>
             <span class="keyword">if</span> (left != -2e9) res.push_back({left, right});
@@ -975,18 +975,18 @@ vector<PII> segments; <span class="comment">//区间坐标</span>
 
 <span class="keyword">int</span> main()
 {
-    cin >> n;
+    cin &gt;&gt; n;
     <span class="comment">// 读入n组区间</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)
     {
         <span class="keyword">int</span> l, r; <span class="comment">//区间l和r</span>
-        cin >> l >> r;
+        cin &gt;&gt; l &gt;&gt; r;
         segments.push_back({l, r});
     }
     <span class="comment">//合并区间segment</span>
     merge(segments);
     <span class="comment">//输出合并后的区间个数</span>
-    cout<<segments.size()<<endl;<span class="comment">//输出合并后的区间元素个数</span>
+    cout&lt;&lt;segments.size()&lt;&lt;endl;<span class="comment">//输出合并后的区间元素个数</span>
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -1004,7 +1004,7 @@ segs.sort()
 merged = []
 st, ed = segs[<span class="number">0</span>]
 <span class="keyword">for</span> l, r <span class="keyword">in</span> segs[<span class="number">1</span>:]:
-    <span class="keyword">if</span> l <= ed: ed = <span class="keyword">max</span>(ed, r)
+    <span class="keyword">if</span> l &lt;= ed: ed = <span class="keyword">max</span>(ed, r)
     <span class="keyword">else</span>: merged.append((st, ed)); st, ed = l, r
 merged.append((st, ed))
 <span class="keyword">print</span>(<span class="keyword">len</span>(merged))</code></pre>
@@ -1095,9 +1095,9 @@ ed = -∞（已选的最右点）
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <cstring>
-#<span class="keyword">include</span> <algorithm>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
@@ -1106,9 +1106,9 @@ ed = -∞（已选的最右点）
 <span class="keyword">struct</span> Range
 {
   <span class="keyword">int</span> l , r;
-  <span class="keyword">bool</span> operator< (<span class="keyword">const</span> Range & R) <span class="keyword">const</span>
+  <span class="keyword">bool</span> operator&lt; (<span class="keyword">const</span> Range & R) <span class="keyword">const</span>
   {
-    <span class="keyword">return</span> r < R.r;<span class="comment">//重载比较符，根据r排序</span>
+    <span class="keyword">return</span> r &lt; R.r;<span class="comment">//重载比较符，根据r排序</span>
   }
 } range[N];
 
@@ -1117,7 +1117,7 @@ ed = -∞（已选的最右点）
     <span class="keyword">int</span> n;
     scanf(<span class="string">&quot;%d&quot;</span>, &n);
     <span class="comment">//读入区间</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i <n; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;n; i++)
     {
       <span class="keyword">int</span> l,r;
       scanf(<span class="string">&quot;%d%d&quot;</span>, &l, &r);
@@ -1127,8 +1127,8 @@ ed = -∞（已选的最右点）
     sort(range,range+n);
     <span class="comment">//根据右端点计算覆盖的区间个数</span>
     <span class="keyword">int</span> res = <span class="number">0</span>, ed = -2e9;<span class="comment">//已统计区间的右端点</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i ++ )
-     <span class="keyword">if</span> (range[i].l > ed)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )
+     <span class="keyword">if</span> (range[i].l &gt; ed)
      {
        res ++;
        ed = range[i].r;
@@ -1148,7 +1148,7 @@ segs.sort(key=<span class="keyword">lambda</span> x: x[<span class="number">1</s
 ans = <span class="number">0</span>
 last = -<span class="number">2</span> * <span class="number">10</span>**<span class="number">9</span>
 <span class="keyword">for</span> l, r <span class="keyword">in</span> segs:
-    <span class="keyword">if</span> l > last:
+    <span class="keyword">if</span> l &gt; last:
         ans += <span class="number">1</span>
         last = r
 <span class="keyword">print</span>(ans)</code></pre>
@@ -1236,25 +1236,25 @@ last = -<span class="number">2</span> * <span class="number">10</span>**<span cl
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <queue>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;queue&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">int</span> main()
 {
-    <span class="keyword">int</span> n; cin>>n;
+    <span class="keyword">int</span> n; cin&gt;&gt;n;
     <span class="comment">//优先队列，使用greater作比较函数,把默认的大根堆变为小根堆</span>
-    priority_queue<<span class="keyword">int</span>, vector<<span class="keyword">int</span>>,greater<<span class="keyword">int</span>>> heap;
+    priority_queue&lt;<span class="keyword">int</span>, vector&lt;<span class="keyword">int</span>&gt;,greater&lt;<span class="keyword">int</span>&gt;&gt; heap;
     <span class="comment">//把读入数据压入堆</span>
     <span class="keyword">while</span> (n--)
     {
-        <span class="keyword">int</span> x; cin>>x;
+        <span class="keyword">int</span> x; cin&gt;&gt;x;
         heap.push(x);
     }
 
     <span class="keyword">int</span> res = <span class="number">0</span>;
-    <span class="keyword">while</span>(heap.size() > <span class="number">1</span>)
+    <span class="keyword">while</span>(heap.size() &gt; <span class="number">1</span>)
     {
         <span class="keyword">int</span> x = heap.top(); heap.pop();
         <span class="keyword">int</span> y = heap.top(); heap.pop();
@@ -1262,7 +1262,7 @@ last = -<span class="number">2</span> * <span class="number">10</span>**<span cl
         heap.push(x+y);<span class="comment">//把当前合并的值压入堆</span>
     }
 
-    cout<<res<<endl;
+    cout&lt;&lt;res&lt;&lt;endl;
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -1273,7 +1273,7 @@ n = <span class="keyword">int</span>(data[<span class="number">0</span>])
 a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span class="number">1</span>:<span class="number">1</span>+n]))
 heapq.heapify(a)
 ans = <span class="number">0</span>
-<span class="keyword">while</span> <span class="keyword">len</span>(a) > <span class="number">1</span>:
+<span class="keyword">while</span> <span class="keyword">len</span>(a) &gt; <span class="number">1</span>:
     x = heapq.heappop(a)
     y = heapq.heappop(a)
     ans += x + y
@@ -1357,9 +1357,9 @@ p=3（中位数）得到最小值 6。
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <cstring>
-#<span class="keyword">include</span> <algorithm>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
@@ -1370,13 +1370,13 @@ p=3（中位数）得到最小值 6。
 
 <span class="keyword">int</span> main()
 {
-    cin >> n;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i ++) cin >> a[i];
+    cin &gt;&gt; n;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++) cin &gt;&gt; a[i];
     sort(a, a+n);
     <span class="keyword">int</span> res = <span class="number">0</span>;
     <span class="comment">//中位数a[n/2],求距离之和的最小值</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i ++ ) res += abs(a[i]- a[n/<span class="number">2</span>]);
-    cout << res <<endl;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ ) res += abs(a[i]- a[n/<span class="number">2</span>]);
+    cout &lt;&lt; res &lt;&lt;endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>

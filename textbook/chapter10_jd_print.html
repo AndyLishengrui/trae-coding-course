@@ -126,7 +126,7 @@ x = 0, 循环结束。结果: 2 个 1。
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">inline</span> <span class="keyword">int</span> lowbit(<span class="keyword">int</span> x)
 {
@@ -135,15 +135,15 @@ x = 0, 循环结束。结果: 2 个 1。
 <span class="keyword">int</span> main()
 {
     <span class="keyword">int</span> n, x;
-    cin >> n;
+    cin &gt;&gt; n;
     <span class="keyword">while</span> (n--)
     {
         <span class="comment">//读入一个数，并且计算1的个数，并且输出</span>
-        cin >> x;
+        cin &gt;&gt; x;
         <span class="keyword">int</span> res = <span class="number">0</span>;<span class="comment">//计数变量</span>
         <span class="keyword">while</span> (x)
             x -= lowbit(x), res++; <span class="comment">//使用,表达式，简化代码去括号</span>
-        cout << res << <span class="string">&quot; &quot;</span>;        <span class="comment">//输出运算结果</span>
+        cout &lt;&lt; res &lt;&lt; <span class="string">&quot; &quot;</span>;        <span class="comment">//输出运算结果</span>
     }
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -245,18 +245,18 @@ C = [3, 4, 4, 1]，倒序输出 → 1443
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <cstring>
-#<span class="keyword">include</span> <vector>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">const</span> <span class="keyword">int</span> N = 1e6+<span class="number">7</span>; 
 
-vector<<span class="keyword">int</span>> add(vector<<span class="keyword">int</span>> &A, vector<<span class="keyword">int</span>>&B){
-    vector<<span class="keyword">int</span>> C;
+vector&lt;<span class="keyword">int</span>&gt; add(vector&lt;<span class="keyword">int</span>&gt; &A, vector&lt;<span class="keyword">int</span>&gt;&B){
+    vector&lt;<span class="keyword">int</span>&gt; C;
     <span class="keyword">int</span> t=<span class="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i<A.size()||i<B.size(); i++) {
-        <span class="keyword">if</span> (i<A.size()) t+=A[i];
-        <span class="keyword">if</span> (i<B.size()) t+=B[i];
+    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;A.size()||i&lt;B.size(); i++) {
+        <span class="keyword">if</span> (i&lt;A.size()) t+=A[i];
+        <span class="keyword">if</span> (i&lt;B.size()) t+=B[i];
         <span class="comment">//对t取模，取进位</span>
         C.push_back(t %<span class="number">10</span>);<span class="comment">//把t模10的余数入数组，商为进位</span>
         t /= <span class="number">10</span>; <span class="comment">//算出进位，供下一次循环使用</span>
@@ -268,16 +268,16 @@ vector<<span class="keyword">int</span>> add(vector<<span class="keyword">int</s
 <span class="keyword">int</span> main(){
     <span class="comment">//输入为字符串</span>
     <span class="keyword">string</span> a,b;
-    vector<<span class="keyword">int</span>> A,B;
+    vector&lt;<span class="keyword">int</span>&gt; A,B;
 
-    cin >> a>>b; <span class="comment">// a=&quot;786654&quot;</span>
+    cin &gt;&gt; a&gt;&gt;b; <span class="comment">// a=&quot;786654&quot;</span>
     <span class="comment">//倒序存储A，B，a[0]乃是最低位</span>
-    <span class="keyword">for</span>(<span class="keyword">int</span> i= a.size()-<span class="number">1</span>; i>=<span class="number">0</span>; i--) A.push_back(a[i]-'<span class="number">0</span>');
-    <span class="keyword">for</span>(<span class="keyword">int</span> i= b.size()-<span class="number">1</span>; i>=<span class="number">0</span>; i--) B.push_back(b[i]-'<span class="number">0</span>');
+    <span class="keyword">for</span>(<span class="keyword">int</span> i= a.size()-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--) A.push_back(a[i]-'<span class="number">0</span>');
+    <span class="keyword">for</span>(<span class="keyword">int</span> i= b.size()-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--) B.push_back(b[i]-'<span class="number">0</span>');
 
     <span class="keyword">auto</span> C = add(A,B);
 
-    <span class="keyword">for</span>(<span class="keyword">int</span> i= C.size()-<span class="number">1</span>; i>=<span class="number">0</span>; i--) cout<<C[i];<span class="comment">//打印C</span>
+    <span class="keyword">for</span>(<span class="keyword">int</span> i= C.size()-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--) cout&lt;&lt;C[i];<span class="comment">//打印C</span>
     <span class="keyword">return</span> <span class="number">0</span>;
 
 }</code></pre>
@@ -291,8 +291,8 @@ B = [<span class="keyword">int</span>(ch) <span class="keyword">for</span> ch <s
 C = []
 t = <span class="number">0</span>  <span class="comment"># 进位</span>
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="keyword">max</span>(<span class="keyword">len</span>(A), <span class="keyword">len</span>(B))):
-    <span class="keyword">if</span> i < <span class="keyword">len</span>(A): t += A[i]
-    <span class="keyword">if</span> i < <span class="keyword">len</span>(B): t += B[i]
+    <span class="keyword">if</span> i &lt; <span class="keyword">len</span>(A): t += A[i]
+    <span class="keyword">if</span> i &lt; <span class="keyword">len</span>(B): t += B[i]
     C.append(t % <span class="number">10</span>)   <span class="comment"># 当前位</span>
     t //= <span class="number">10</span>            <span class="comment"># 更新进位</span>
 <span class="keyword">if</span> t: C.append(<span class="number">1</span>)      <span class="comment"># 最高位进位</span>
@@ -396,40 +396,40 @@ C = [7, 8, 2, 5]，倒序输出 → 5287
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <cstring>
-#<span class="keyword">include</span> <vector>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">const</span> <span class="keyword">int</span> N = 1e6 + <span class="number">7</span>;
-<span class="keyword">bool</span> isGreater(vector<<span class="keyword">int</span>> &A, vector<<span class="keyword">int</span>> &B)
+<span class="keyword">bool</span> isGreater(vector&lt;<span class="keyword">int</span>&gt; &A, vector&lt;<span class="keyword">int</span>&gt; &B)
 {
     <span class="keyword">if</span> (A.size() != B.size()) <span class="comment">//比较大小</span>
-        <span class="keyword">return</span> A.size() > B.size();
+        <span class="keyword">return</span> A.size() &gt; B.size();
     <span class="comment">//否则大小相等，逐位比较大小</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = A.size() - <span class="number">1</span>; i >= <span class="number">0</span>; i--)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = A.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)
         <span class="keyword">if</span> (A[i] != B[i])
-            <span class="keyword">return</span> A[i] > B[i];
+            <span class="keyword">return</span> A[i] &gt; B[i];
     <span class="keyword">return</span> <span class="keyword">true</span>; <span class="comment">//每个数字都相同，长度相同，两数相等</span>
 }
 <span class="comment">//C= A-B</span>
-vector<<span class="keyword">int</span>> sub(vector<<span class="keyword">int</span>> &A, vector<<span class="keyword">int</span>> &B)
+vector&lt;<span class="keyword">int</span>&gt; sub(vector&lt;<span class="keyword">int</span>&gt; &A, vector&lt;<span class="keyword">int</span>&gt; &B)
 {
-    vector<<span class="keyword">int</span>> C;
+    vector&lt;<span class="keyword">int</span>&gt; C;
     <span class="comment">//A是比较大的数</span>
     <span class="keyword">int</span> t = <span class="number">0</span>; <span class="comment">//第一轮减法进位为0</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < A.size(); i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.size(); i++)
     {
         t = A[i] - t;
-        <span class="keyword">if</span> (i < B.size())
+        <span class="keyword">if</span> (i &lt; B.size())
             t -= B[i];              <span class="comment">//A[i]-B[i] + t</span>
         C.push_back((t + <span class="number">10</span>) % <span class="number">10</span>); <span class="comment">//得到对应位</span>
-        <span class="keyword">if</span> (t < <span class="number">0</span>)
+        <span class="keyword">if</span> (t &lt; <span class="number">0</span>)
             t = <span class="number">1</span>;
         <span class="keyword">else</span>
             t = <span class="number">0</span>; <span class="comment">//判断是否借一位</span>
     }
     <span class="comment">//去掉开头的0</span>
-    <span class="keyword">while</span> (C.size() > <span class="number">1</span> && C.back()==<span class="number">0</span>) C.pop_back();
+    <span class="keyword">while</span> (C.size() &gt; <span class="number">1</span> && C.back()==<span class="number">0</span>) C.pop_back();
 
     <span class="keyword">return</span> C;
 }
@@ -438,27 +438,27 @@ vector<<span class="keyword">int</span>> sub(vector<<span class="keyword">int</s
 {
     <span class="comment">//输入为字符串</span>
     <span class="keyword">string</span> a, b;
-    vector<<span class="keyword">int</span>> A, B;
+    vector&lt;<span class="keyword">int</span>&gt; A, B;
 
-    cin >> a >> b; <span class="comment">// a=&quot;786654&quot;</span>
+    cin &gt;&gt; a &gt;&gt; b; <span class="comment">// a=&quot;786654&quot;</span>
     <span class="comment">//倒序存储A，B，a[0]乃是最低位</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = a.size() - <span class="number">1</span>; i >= <span class="number">0</span>; i--)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = a.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)
         A.push_back(a[i] - '<span class="number">0</span>');
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = b.size() - <span class="number">1</span>; i >= <span class="number">0</span>; i--)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = b.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)
         B.push_back(b[i] - '<span class="number">0</span>');
     <span class="comment">//判断A与B的大小</span>
     <span class="keyword">if</span> (isGreater(A, B))
     {
         <span class="keyword">auto</span> C = sub(A, B);
-        <span class="keyword">for</span> (<span class="keyword">int</span> i = C.size() - <span class="number">1</span>; i >= <span class="number">0</span>; i--)
-            cout << C[i]; <span class="comment">//打印C</span>
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = C.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)
+            cout &lt;&lt; C[i]; <span class="comment">//打印C</span>
     }
     <span class="keyword">else</span>
     {
         <span class="keyword">auto</span> C = sub(B, A);
-        cout << <span class="string">&quot;-&quot;</span>;
-        <span class="keyword">for</span> (<span class="keyword">int</span> i = C.size() - <span class="number">1</span>; i >= <span class="number">0</span>; i--)
-            cout << C[i]; <span class="comment">//打印C</span>
+        cout &lt;&lt; <span class="string">&quot;-&quot;</span>;
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = C.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)
+            cout &lt;&lt; C[i]; <span class="comment">//打印C</span>
     }
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -472,21 +472,21 @@ B = [<span class="keyword">int</span>(ch) <span class="keyword">for</span> ch <s
 
 <span class="comment"># 判断A是否大于等于B（先比长度，再从高位逐位比）</span>
 <span class="keyword">def</span> ge(A, B):
-    <span class="keyword">if</span> <span class="keyword">len</span>(A) != <span class="keyword">len</span>(B): <span class="keyword">return</span> <span class="keyword">len</span>(A) > <span class="keyword">len</span>(B)
+    <span class="keyword">if</span> <span class="keyword">len</span>(A) != <span class="keyword">len</span>(B): <span class="keyword">return</span> <span class="keyword">len</span>(A) &gt; <span class="keyword">len</span>(B)
     <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="keyword">len</span>(A) - <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):
-        <span class="keyword">if</span> A[i] != B[i]: <span class="keyword">return</span> A[i] > B[i]
+        <span class="keyword">if</span> A[i] != B[i]: <span class="keyword">return</span> A[i] &gt; B[i]
     <span class="keyword">return</span> <span class="keyword">True</span>  <span class="comment"># 两数相等</span>
 
-<span class="comment"># C = A - B（保证A >= B）</span>
+<span class="comment"># C = A - B（保证A &gt;= B）</span>
 <span class="keyword">def</span> sub(A, B):
     C = []
     t = <span class="number">0</span>  <span class="comment"># 借位</span>
     <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="keyword">len</span>(A)):
         t = A[i] - t
-        <span class="keyword">if</span> i < <span class="keyword">len</span>(B): t -= B[i]
+        <span class="keyword">if</span> i &lt; <span class="keyword">len</span>(B): t -= B[i]
         C.append((t + <span class="number">10</span>) % <span class="number">10</span>)  <span class="comment"># 当前位</span>
-        t = <span class="number">1</span> <span class="keyword">if</span> t < <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span>     <span class="comment"># 是否借位</span>
-    <span class="keyword">while</span> <span class="keyword">len</span>(C) > <span class="number">1</span> <span class="keyword">and</span> C[-<span class="number">1</span>] == <span class="number">0</span>: C.pop()  <span class="comment"># 去前导零</span>
+        t = <span class="number">1</span> <span class="keyword">if</span> t &lt; <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span>     <span class="comment"># 是否借位</span>
+    <span class="keyword">while</span> <span class="keyword">len</span>(C) &gt; <span class="number">1</span> <span class="keyword">and</span> C[-<span class="number">1</span>] == <span class="number">0</span>: C.pop()  <span class="comment"># 去前导零</span>
     <span class="keyword">return</span> C
 
 <span class="keyword">if</span> ge(A, B):
@@ -577,23 +577,23 @@ i=3: t = A[3]*b + t = 9*9 + 7 = 88
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <cstring>
-#<span class="keyword">include</span> <vector>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">const</span> <span class="keyword">int</span> N = 1e6 + <span class="number">7</span>;
 
 <span class="comment">//C= A*b,t的用法很精彩！</span>
-vector<<span class="keyword">int</span>> mul(vector<<span class="keyword">int</span>> &A, <span class="keyword">int</span> b){
-    vector<<span class="keyword">int</span>> C;
+vector&lt;<span class="keyword">int</span>&gt; mul(vector&lt;<span class="keyword">int</span>&gt; &A, <span class="keyword">int</span> b){
+    vector&lt;<span class="keyword">int</span>&gt; C;
     <span class="keyword">int</span> t=<span class="number">0</span>;
-    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i<A.size() || t; i++){
+    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;A.size() || t; i++){
         <span class="comment">//如果t还有剩余或者A还有剩余，乘法结果C需要加新的位</span>
-        <span class="keyword">if</span>(i<A.size()) t+=A[i]*b;<span class="comment">//把b当作整体做乘法</span>
+        <span class="keyword">if</span>(i&lt;A.size()) t+=A[i]*b;<span class="comment">//把b当作整体做乘法</span>
         C.push_back(t % <span class="number">10</span>);<span class="comment">//存储第i位</span>
         t /=<span class="number">10</span>; <span class="comment">//更新t</span>
     }
-    <span class="keyword">while</span>(C.size()><span class="number">1</span> && C.back()==<span class="number">0</span>) C.pop_back();<span class="comment">//去掉C开头的0</span>
+    <span class="keyword">while</span>(C.size()&gt;<span class="number">1</span> && C.back()==<span class="number">0</span>) C.pop_back();<span class="comment">//去掉C开头的0</span>
     <span class="keyword">return</span> C;
 }
 
@@ -602,15 +602,15 @@ vector<<span class="keyword">int</span>> mul(vector<<span class="keyword">int</s
     <span class="comment">//输入为字符串</span>
     <span class="keyword">string</span> a;
     <span class="keyword">int</span> b;<span class="comment">//输入的b比较小，作为一个整体处理</span>
-    vector<<span class="keyword">int</span>> A,C;
+    vector&lt;<span class="keyword">int</span>&gt; A,C;
 
-    cin >> a >> b; <span class="comment">// a=&quot;786654&quot;</span>
+    cin &gt;&gt; a &gt;&gt; b; <span class="comment">// a=&quot;786654&quot;</span>
     <span class="comment">//倒序存储A，B，a[0]乃是最低位</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = a.size() - <span class="number">1</span>; i >= <span class="number">0</span>; i--)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = a.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)
         A.push_back(a[i] - '<span class="number">0</span>');
     C=mul(A,b);
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = C.size() - <span class="number">1</span>; i >= <span class="number">0</span>; i--)
-            cout << C[i]; <span class="comment">//打印C</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = C.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)
+            cout &lt;&lt; C[i]; <span class="comment">//打印C</span>
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -628,7 +628,7 @@ t = <span class="number">0</span>  <span class="comment"># 进位</span>
 <span class="keyword">while</span> t:                 <span class="comment"># 处理剩余进位</span>
     C.append(t % <span class="number">10</span>)
     t //= <span class="number">10</span>
-<span class="keyword">while</span> <span class="keyword">len</span>(C) > <span class="number">1</span> <span class="keyword">and</span> C[-<span class="number">1</span>] == <span class="number">0</span>: C.pop()  <span class="comment"># 去前导零</span>
+<span class="keyword">while</span> <span class="keyword">len</span>(C) &gt; <span class="number">1</span> <span class="keyword">and</span> C[-<span class="number">1</span>] == <span class="number">0</span>: C.pop()  <span class="comment"># 去前导零</span>
 <span class="keyword">print</span>(<span class="string">''</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, <span class="keyword">reversed</span>(C))))</code></pre>
             </details>
         </div>
@@ -722,25 +722,25 @@ C = [0, 4, 2, 9]，去掉高位的 0 → C = [4, 2, 9]
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <cstring>
-#<span class="keyword">include</span> <vector>
-#<span class="keyword">include</span> <algorithm>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">const</span> <span class="keyword">int</span> N = 1e6 + <span class="number">7</span>;
 
 <span class="comment">//C= A/b 余数为r</span>
-vector<<span class="keyword">int</span>> div(vector<<span class="keyword">int</span>> &A, <span class="keyword">int</span> b, <span class="keyword">int</span> &r){
-    vector<<span class="keyword">int</span>> C;
+vector&lt;<span class="keyword">int</span>&gt; div(vector&lt;<span class="keyword">int</span>&gt; &A, <span class="keyword">int</span> b, <span class="keyword">int</span> &r){
+    vector&lt;<span class="keyword">int</span>&gt; C;
     r=<span class="number">0</span>;<span class="comment">//余数</span>
-    <span class="keyword">for</span>(<span class="keyword">int</span> i=A.size()-<span class="number">1</span>; i>=<span class="number">0</span>; i--){
+    <span class="keyword">for</span>(<span class="keyword">int</span> i=A.size()-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--){
         r = r* <span class="number">10</span> + A[i];<span class="comment">//从最高位开始，当前余数r需要上一次运算的r乘10</span>
         C.push_back(r/b);
         r %= b;
     }
     reverse(C.begin(), C.end());<span class="comment">//定义的数是最低位在C[0],因此需要取逆</span>
-    <span class="keyword">while</span>(C.size()><span class="number">1</span> && C.back()==<span class="number">0</span>) C.pop_back();<span class="comment">//去掉C开头的0字符</span>
+    <span class="keyword">while</span>(C.size()&gt;<span class="number">1</span> && C.back()==<span class="number">0</span>) C.pop_back();<span class="comment">//去掉C开头的0字符</span>
     <span class="keyword">return</span> C;
 }
 
@@ -749,19 +749,19 @@ vector<<span class="keyword">int</span>> div(vector<<span class="keyword">int</s
     <span class="comment">//输入为字符串</span>
     <span class="keyword">string</span> a;
     <span class="keyword">int</span> b;<span class="comment">//输入的b比较小，作为一个整体处理</span>
-    vector<<span class="keyword">int</span>> A;
+    vector&lt;<span class="keyword">int</span>&gt; A;
 
-    cin >> a >> b; <span class="comment">// a=&quot;786654&quot;</span>
+    cin &gt;&gt; a &gt;&gt; b; <span class="comment">// a=&quot;786654&quot;</span>
     <span class="comment">//倒序存储A，B，a[0]乃是最低位</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = a.size() - <span class="number">1</span>; i >= <span class="number">0</span>; i--)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = a.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)
         A.push_back(a[i] - '<span class="number">0</span>');
 
     <span class="keyword">int</span> r;
     <span class="keyword">auto</span> C=div(A,b,r);<span class="comment">//使用auto自动辨别变量类型</span>
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = C.size() - <span class="number">1</span>; i >= <span class="number">0</span>; i--)
-            cout << C[i]; <span class="comment">//打印C</span>
-            cout<<endl<<r<<endl;<span class="comment">//打印余数</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = C.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)
+            cout &lt;&lt; C[i]; <span class="comment">//打印C</span>
+            cout&lt;&lt;endl&lt;&lt;r&lt;&lt;endl;<span class="comment">//打印余数</span>
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -777,7 +777,7 @@ r = <span class="number">0</span>  <span class="comment"># 余数</span>
     C.append(r // b)            <span class="comment"># 商的一位</span>
     r %= b                      <span class="comment"># 更新余数</span>
 <span class="comment"># C[0]是商的最高位，需要去掉前导零</span>
-<span class="keyword">while</span> <span class="keyword">len</span>(C) > <span class="number">1</span> <span class="keyword">and</span> C[<span class="number">0</span>] == <span class="number">0</span>: C.pop(<span class="number">0</span>)
+<span class="keyword">while</span> <span class="keyword">len</span>(C) &gt; <span class="number">1</span> <span class="keyword">and</span> C[<span class="number">0</span>] == <span class="number">0</span>: C.pop(<span class="number">0</span>)
 <span class="keyword">print</span>(<span class="string">''</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, C)))
 <span class="keyword">print</span>(r)</code></pre>
             </details>
@@ -843,8 +843,8 @@ i=1, j=1: A[1]+B[1] = 2+4 = 6  = 6  → 找到！输出 (1, 1)
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <algorithm>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100007</span>;
 <span class="keyword">int</span> n,m,x;
@@ -853,13 +853,13 @@ i=1, j=1: A[1]+B[1] = 2+4 = 6  = 6  → 找到！输出 (1, 1)
 <span class="keyword">int</span> main(){
        <span class="comment">//读入n,m,x其中x为目标和</span>
    scanf(<span class="string">&quot;%d%d%d&quot;</span>,&n,&m,&x);
-   <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i<n; i++) scanf(<span class="string">&quot;%d&quot;</span>,&numA[i]);
-   <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>; j<m; j++) scanf(<span class="string">&quot;%d&quot;</span>,&numB[j]);
+   <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) scanf(<span class="string">&quot;%d&quot;</span>,&numA[i]);
+   <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;m; j++) scanf(<span class="string">&quot;%d&quot;</span>,&numB[j]);
    <span class="comment">//双指针查找和</span>
 
-   <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>, j= m-<span class="number">1</span>; i<n; i++){
+   <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>, j= m-<span class="number">1</span>; i&lt;n; i++){
        <span class="comment">//check(i,j)</span>
-       <span class="keyword">while</span> (j>=<span class="number">0</span> && numA[i]+numB[j]>x) j--;
+       <span class="keyword">while</span> (j&gt;=<span class="number">0</span> && numA[i]+numB[j]&gt;x) j--;
        <span class="keyword">if</span> (numA[i]+numB[j]==x)<span class="comment">//判断是否和相等</span>
        {
          printf(<span class="string">&quot;%d %d\n&quot;</span>,i,j);
@@ -874,12 +874,12 @@ n, m, x = <span class="keyword">map</span>(<span class="keyword">int</span>, <sp
 a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
 b = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
 i, j = <span class="number">0</span>, m - <span class="number">1</span>
-<span class="keyword">while</span> i < n <span class="keyword">and</span> j >= <span class="number">0</span>:
+<span class="keyword">while</span> i &lt; n <span class="keyword">and</span> j &gt;= <span class="number">0</span>:
     s = a[i] + b[j]
     <span class="keyword">if</span> s == x:
         <span class="keyword">print</span>(i, j)
         <span class="keyword">break</span>
-    <span class="keyword">elif</span> s < x:
+    <span class="keyword">elif</span> s &lt; x:
         i += <span class="number">1</span>
     <span class="keyword">else</span>:
         j -= <span class="number">1</span></code></pre>
@@ -953,8 +953,8 @@ p = 3 = len(a) → a 的所有元素都匹配了 → 输出 "Yes"
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
-#<span class="keyword">include</span> <cstdio>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstdio&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">const</span> <span class="keyword">int</span> N = 1e5+<span class="number">7</span>;<span class="comment">//我的风格</span>
 <span class="keyword">int</span> a[N],b[N];
@@ -963,13 +963,13 @@ p = 3 = len(a) → a 的所有元素都匹配了 → 输出 "Yes"
 {
   <span class="keyword">int</span> n,m;
   scanf(<span class="string">&quot;%d%d&quot;</span>,&n,&m);
-  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i<n; i++) scanf(<span class="string">&quot;%d&quot;</span>,&a[i]);
-  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i<m; i++) scanf(<span class="string">&quot;%d&quot;</span>,&b[i]);
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;n; i++) scanf(<span class="string">&quot;%d&quot;</span>,&a[i]);
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;m; i++) scanf(<span class="string">&quot;%d&quot;</span>,&b[i]);
 
   <span class="keyword">int</span> p = <span class="number">0</span>;<span class="comment">//指向a数组的指针</span>
-  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < m; i++)
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)
   {
-    <span class="keyword">if</span> (p < n && a[p] == b[i]) p++;
+    <span class="keyword">if</span> (p &lt; n && a[p] == b[i]) p++;
   }
   <span class="comment">//完全匹配</span>
   <span class="keyword">if</span> (p==n) puts(<span class="string">&quot;Yes&quot;</span>);
@@ -985,7 +985,7 @@ a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span cla
 b = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
 i = <span class="number">0</span>
 <span class="keyword">for</span> x <span class="keyword">in</span> b:
-    <span class="keyword">if</span> i < n <span class="keyword">and</span> a[i] == x:
+    <span class="keyword">if</span> i &lt; n <span class="keyword">and</span> a[i] == x:
         i += <span class="number">1</span>
 <span class="keyword">print</span>(<span class="string">'Yes'</span> <span class="keyword">if</span> i == n <span class="keyword">else</span> <span class="string">'No'</span>)</code></pre>
             </details>
@@ -1058,26 +1058,26 @@ i=4, a[4]=5: cnt{2:1,3:1,5:1}，无重复，窗口 [2,4]，res = max(2,3) = 3
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100007</span>;
 <span class="keyword">int</span> num[N],visited[N];
 
 <span class="keyword">int</span> main(){
     <span class="keyword">int</span> n;
-    cin>>n;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i<n; i++ ) cin>>num[i];<span class="comment">//读入n个数</span>
+    cin&gt;&gt;n;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++ ) cin&gt;&gt;num[i];<span class="comment">//读入n个数</span>
     <span class="comment">//双指针扫描</span>
     <span class="keyword">int</span> res=<span class="number">0</span>;<span class="comment">//初始化为最小值</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>, j=<span class="number">0</span>; i<n; i++){
+    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>, j=<span class="number">0</span>; i&lt;n; i++){
         visited[num[i]]++;
-        <span class="keyword">while</span>(j<=i && visited[num[i]]><span class="number">1</span>){
+        <span class="keyword">while</span>(j&lt;=i && visited[num[i]]&gt;<span class="number">1</span>){
             visited[num[j]]--;
             j++; <span class="comment">//去掉重复数</span>
         }
         res= max(res,i-j+<span class="number">1</span>);<span class="comment">//j--i 之间的数字个数</span>
     }
-    cout<<res<<endl;
+    cout&lt;&lt;res&lt;&lt;endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -1089,7 +1089,7 @@ l = <span class="number">0</span>
 ans = <span class="number">0</span>
 <span class="keyword">for</span> r <span class="keyword">in</span> <span class="keyword">range</span>(n):
     cnt[a[r]] = cnt.get(a[r], <span class="number">0</span>) + <span class="number">1</span>
-    <span class="keyword">while</span> cnt[a[r]] > <span class="number">1</span>:
+    <span class="keyword">while</span> cnt[a[r]] &gt; <span class="number">1</span>:
         cnt[a[l]] -= <span class="number">1</span>
         l += <span class="number">1</span>
     ans = <span class="keyword">max</span>(ans, r - l + <span class="number">1</span>)

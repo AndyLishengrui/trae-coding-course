@@ -109,14 +109,14 @@ Step 4: 返回值 6 传回 main()
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">int</span> fact(<span class="keyword">int</span> n)
 {
   <span class="keyword">int</span> res = <span class="number">1</span>;
-  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i ++ )
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )
       res *= i;
   <span class="keyword">return</span> res;    
 }
@@ -124,9 +124,9 @@ Step 4: 返回值 6 传回 main()
 <span class="keyword">int</span> main()
 {
    <span class="keyword">int</span> n;
-   cin >> n;
+   cin &gt;&gt; n;
 
-   cout << fact(n) << endl;
+   cout &lt;&lt; fact(n) &lt;&lt; endl;
 
    <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -215,28 +215,28 @@ Step 4: 返回值 5 传回 main()
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">int</span> max(<span class="keyword">int</span> x, <span class="keyword">int</span> y)
 {
-  <span class="keyword">if</span> (x > y) <span class="keyword">return</span> x;
+  <span class="keyword">if</span> (x &gt; y) <span class="keyword">return</span> x;
   <span class="keyword">return</span> y;
 }
 
 <span class="keyword">int</span> main()
 {
     <span class="keyword">int</span> x, y;
-    cin >> x >> y;
+    cin &gt;&gt; x &gt;&gt; y;
 
-    cout << max(x, y) << endl;
+    cout &lt;&lt; max(x, y) &lt;&lt; endl;
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">x, y = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-<span class="keyword">if</span> x > y:
+<span class="keyword">if</span> x &gt; y:
     <span class="keyword">print</span>(x)
 <span class="keyword">else</span>:
     <span class="keyword">print</span>(y)</code></pre>
@@ -310,27 +310,27 @@ Step 4: main() 输出 5
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">int</span> abs(<span class="keyword">int</span> x)
 {
-  <span class="keyword">if</span> (x > <span class="number">0</span>) <span class="keyword">return</span> x;
+  <span class="keyword">if</span> (x &gt; <span class="number">0</span>) <span class="keyword">return</span> x;
   <span class="keyword">return</span> -x;
 }
 
 <span class="keyword">int</span> main()
 {
     <span class="keyword">int</span> x;
-    cin >> x;
-    cout << abs(x) << endl;
+    cin &gt;&gt; x;
+    cout &lt;&lt; abs(x) &lt;&lt; endl;
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">x = <span class="keyword">int</span>(<span class="keyword">input</span>())
-<span class="keyword">print</span>(x <span class="keyword">if</span> x >= <span class="number">0</span> <span class="keyword">else</span> -x)</code></pre>
+<span class="keyword">print</span>(x <span class="keyword">if</span> x &gt;= <span class="number">0</span> <span class="keyword">else</span> -x)</code></pre>
             </details>
         </div>
     </div>
@@ -414,7 +414,7 @@ Step 4: 函数返回，main 中变量已被修改
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
@@ -430,10 +430,10 @@ Step 4: 函数返回，main 中变量已被修改
 <span class="keyword">int</span> main()
 {
     <span class="keyword">int</span> x, y;
-    cin >> x >> y;
+    cin &gt;&gt; x &gt;&gt; y;
     swap(x, y);
 
-    cout << x << ' ' << y << endl;
+    cout &lt;&lt; x &lt;&lt; ' ' &lt;&lt; y &lt;&lt; endl;
 
     <span class="keyword">return</span> <span class="number">0</span>;
 
@@ -522,7 +522,7 @@ first, second = second, first  <span class="comment"># 交换</span>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
@@ -541,8 +541,8 @@ first, second = second, first  <span class="comment"># 交换</span>
 <span class="keyword">int</span> main()
 {
     <span class="keyword">int</span> a, b;
-    cin >> a >> b;
-    cout << gcd(a, b) << endl;
+    cin &gt;&gt; a &gt;&gt; b;
+    cout &lt;&lt; gcd(a, b) &lt;&lt; endl;
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -603,7 +603,7 @@ first, second = second, first  <span class="comment"># 交换</span>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">110</span>;
@@ -613,21 +613,21 @@ first, second = second, first  <span class="comment"># 交换</span>
 
 <span class="keyword">void</span> copy(<span class="keyword">int</span> a[], <span class="keyword">int</span> b[], <span class="keyword">int</span> size)
 {
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < size; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)
         b[i] = a[i];
 }
 
 <span class="keyword">int</span> main()
 {
     <span class="keyword">int</span> n, m, size;
-    cin >> n >> m >> size;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++) cin >> a[i];
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < m; i++) cin >> b[i];
+    cin &gt;&gt; n &gt;&gt; m &gt;&gt; size;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) cin &gt;&gt; a[i];
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) cin &gt;&gt; b[i];
 
     copy(a, b, size);
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < m; i++) cout << b[i] << ' ';
-    cout << endl;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) cout &lt;&lt; b[i] &lt;&lt; ' ';
+    cout &lt;&lt; endl;
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -686,7 +686,7 @@ b[:size] = a[:size]
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1010</span>;
@@ -696,19 +696,19 @@ b[:size] = a[:size]
 
 <span class="keyword">void</span> reverse(<span class="keyword">int</span> a[], <span class="keyword">int</span> size)
 {
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = size - <span class="number">1</span>; i < j; i++, j--)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = size - <span class="number">1</span>; i &lt; j; i++, j--)
         swap(a[i], a[j]);
 }
 
 <span class="keyword">int</span> main()
 {
     <span class="keyword">int</span> n, size;
-    cin >> n >> size;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++) cin >> a[i];
+    cin &gt;&gt; n &gt;&gt; size;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) cin &gt;&gt; a[i];
     reverse(a, size);
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++) cout << a[i] << ' ';
-    cout << endl;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) cout &lt;&lt; a[i] &lt;&lt; ' ';
+    cout &lt;&lt; endl;
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -766,7 +766,7 @@ a[:size] = <span class="keyword">reversed</span>(a[:size])
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
@@ -774,9 +774,9 @@ a[:size] = <span class="keyword">reversed</span>(a[:size])
 
 <span class="keyword">void</span> print(<span class="keyword">int</span> a[], <span class="keyword">int</span> size)
 {
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < size; i ++ )
-        cout << a[i] << ' ';
-    cout << endl;    
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i ++ )
+        cout &lt;&lt; a[i] &lt;&lt; ' ';
+    cout &lt;&lt; endl;    
 
 }
 
@@ -785,8 +785,8 @@ a[:size] = <span class="keyword">reversed</span>(a[:size])
     <span class="keyword">int</span> n, size;
     <span class="keyword">int</span> a[N];
 
-    cin >> n >> size;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i ++ ) cin >> a[i];
+    cin &gt;&gt; n &gt;&gt; size;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ ) cin &gt;&gt; a[i];
 
     print(a, size);
 
@@ -852,20 +852,20 @@ arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span c
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">void</span> print2D(<span class="keyword">int</span> a[][<span class="number">100</span>], <span class="keyword">int</span> row, <span class="keyword">int</span> col)
 {
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < row; i ++ )
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; i ++ )
     {
-      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < col; j ++ )
+      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; col; j ++ )
       {
-          <span class="keyword">if</span> (j) cout << ' ';  <span class="comment">// 第一个数前面不输出空格，之后每个数前面输出空格</span>
-          cout << a[i][j];
+          <span class="keyword">if</span> (j) cout &lt;&lt; ' ';  <span class="comment">// 第一个数前面不输出空格，之后每个数前面输出空格</span>
+          cout &lt;&lt; a[i][j];
       }
-      cout << endl;
+      cout &lt;&lt; endl;
     }
 }
 
@@ -875,10 +875,10 @@ arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span c
 
     <span class="keyword">int</span> row, col;
 
-    cin >> row >> col;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < row; i ++ )
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < col; j ++ )
-            cin >> a[i][j];
+    cin &gt;&gt; row &gt;&gt; col;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; i ++ )
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; col; j ++ )
+            cin &gt;&gt; a[i][j];
 
     print2D(a, row, col);        
 
@@ -939,15 +939,15 @@ rows, cols = <span class="keyword">map</span>(<span class="keyword">int</span>, 
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">void</span> sort(<span class="keyword">int</span> a[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)
 {
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i <= r; i ++ )
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j <= r; j ++ )
-            <span class="keyword">if</span> (a[j] < a[i])
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt;= r; i ++ )
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt;= r; j ++ )
+            <span class="keyword">if</span> (a[j] &lt; a[i])
                 swap(a[i], a[j]);
 }
 
@@ -955,12 +955,12 @@ rows, cols = <span class="keyword">map</span>(<span class="keyword">int</span>, 
 {
     <span class="keyword">int</span> a[<span class="number">1000</span>];
     <span class="keyword">int</span> n, l, r;
-    cin >> n >> l >> r;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i ++ ) cin >> a[i];
+    cin &gt;&gt; n &gt;&gt; l &gt;&gt; r;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ ) cin &gt;&gt; a[i];
 
     sort(a, l, r);
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i ++ ) cout << a[i] << ' ';
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ ) cout &lt;&lt; a[i] &lt;&lt; ' ';
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -1068,7 +1068,7 @@ fact(5) = 5 × 24 = 120，返回 120
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
@@ -1082,8 +1082,8 @@ fact(5) = 5 × 24 = 120，返回 120
 <span class="keyword">int</span> main()
 {
     <span class="keyword">int</span> n;
-    cin >> n;
-    cout << fact(n) << endl;
+    cin &gt;&gt; n;
+    cout &lt;&lt; fact(n) &lt;&lt; endl;
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -1185,21 +1185,21 @@ n=30 → 调用 2692537 次  ← 超过200万次！
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">int</span> f(<span class="keyword">int</span> n)
 {
-    <span class="keyword">if</span> (n <= <span class="number">2</span>) <span class="keyword">return</span> <span class="number">1</span>;
+    <span class="keyword">if</span> (n &lt;= <span class="number">2</span>) <span class="keyword">return</span> <span class="number">1</span>;
     <span class="keyword">return</span> f(n - <span class="number">2</span>) + f(n - <span class="number">1</span>);
 }
 
 <span class="keyword">int</span> main()
 {
     <span class="keyword">int</span> n;
-    cin >> n;
-    cout << f(n) << endl;
+    cin &gt;&gt; n;
+    cout &lt;&lt; f(n) &lt;&lt; endl;
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -1207,7 +1207,7 @@ n=30 → 调用 2692537 次  ← 超过200万次！
             <pre><code class="language-python"><span class="comment"># 递归斐波那契：fib(1)=1, fib(2)=1, fib(n)=fib(n-1)+fib(n-2)</span>
 <span class="comment"># 注意：朴素递归效率低(指数级)，后续会学到优化方法</span>
 <span class="keyword">def</span> fibonacci(n):
-    <span class="keyword">if</span> n <= <span class="number">2</span>:             <span class="comment"># 前两项都是1</span>
+    <span class="keyword">if</span> n &lt;= <span class="number">2</span>:             <span class="comment"># 前两项都是1</span>
         <span class="keyword">return</span> <span class="number">1</span>
     <span class="keyword">return</span> fibonacci(n - <span class="number">1</span>) + fibonacci(n - <span class="number">2</span>)  <span class="comment"># 递推关系</span>
 
@@ -1336,7 +1336,7 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
@@ -1346,7 +1346,7 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
 <span class="keyword">void</span> f(<span class="keyword">int</span> k)
 {
   <span class="keyword">if</span> (k == n) ans ++ ;
-  <span class="keyword">else</span> <span class="keyword">if</span> (k < n)
+  <span class="keyword">else</span> <span class="keyword">if</span> (k &lt; n)
   {
     f(k + <span class="number">1</span>);
     f(k + <span class="number">2</span>);
@@ -1355,9 +1355,9 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
 
 <span class="keyword">int</span> main()
 {
-    cin >> n;
+    cin &gt;&gt; n;
     f(<span class="number">0</span>);
-    cout << ans << endl;
+    cout &lt;&lt; ans &lt;&lt; endl;
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -1367,7 +1367,7 @@ sys.setrecursionlimit(<span class="number">200000</span>)
 <span class="comment"># 递归计数：从位置k出发，走到位置n有多少种走法</span>
 <span class="keyword">def</span> f(k):
     <span class="keyword">if</span> k == n: <span class="keyword">return</span> <span class="number">1</span>          <span class="comment"># 到达终点，计数+1</span>
-    <span class="keyword">if</span> k > n: <span class="keyword">return</span> <span class="number">0</span>           <span class="comment"># 超过终点，无效路径</span>
+    <span class="keyword">if</span> k &gt; n: <span class="keyword">return</span> <span class="number">0</span>           <span class="comment"># 超过终点，无效路径</span>
     <span class="keyword">return</span> f(k + <span class="number">1</span>) + f(k + <span class="number">2</span>)  <span class="comment"># 跨1级 + 跨2级</span>
 n = <span class="keyword">int</span>(<span class="keyword">input</span>())
 <span class="keyword">print</span>(f(<span class="number">0</span>))</code></pre>
@@ -1420,7 +1420,7 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
@@ -1432,16 +1432,16 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
     <span class="keyword">if</span> (x == n && y == m) ans ++ ;
     <span class="keyword">else</span>
     {
-      <span class="keyword">if</span> (y < m) dfs(x, y + <span class="number">1</span>);
-      <span class="keyword">if</span> (x < n) dfs(x + <span class="number">1</span>, y);
+      <span class="keyword">if</span> (y &lt; m) dfs(x, y + <span class="number">1</span>);
+      <span class="keyword">if</span> (x &lt; n) dfs(x + <span class="number">1</span>, y);
     }
 }
 
 <span class="keyword">int</span> main()
 {
-    cin >> n >> m;
+    cin &gt;&gt; n &gt;&gt; m;
     dfs(<span class="number">0</span>, <span class="number">0</span>);
-    cout << ans << endl;
+    cout &lt;&lt; ans &lt;&lt; endl;
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -1455,8 +1455,8 @@ ans = <span class="number">0</span>
     <span class="keyword">if</span> x == n <span class="keyword">and</span> y == m:   <span class="comment"># 到达终点</span>
         ans += <span class="number">1</span>
         <span class="keyword">return</span>
-    <span class="keyword">if</span> y < m: dfs(x, y + <span class="number">1</span>)   <span class="comment"># 向右走</span>
-    <span class="keyword">if</span> x < n: dfs(x + <span class="number">1</span>, y)   <span class="comment"># 向下走</span>
+    <span class="keyword">if</span> y &lt; m: dfs(x, y + <span class="number">1</span>)   <span class="comment"># 向右走</span>
+    <span class="keyword">if</span> x &lt; n: dfs(x + <span class="number">1</span>, y)   <span class="comment"># 向下走</span>
 n, m = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
 dfs(<span class="number">0</span>, <span class="number">0</span>)
 <span class="keyword">print</span>(ans)</code></pre>
@@ -1576,20 +1576,20 @@ dfs(0): 位置0，尝试 i=3
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 <span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">10</span>;
 <span class="keyword">int</span> n,path[N];
 <span class="keyword">bool</span> st[N];
 <span class="keyword">void</span> dfs(<span class="keyword">int</span> u) {
   <span class="keyword">if</span>(u==n) {
-    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i<n;i++) {
+    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) {
       <span class="keyword">if</span>(i) printf(<span class="string">&quot; &quot;</span>);
       printf(<span class="string">&quot;%d&quot;</span>,path[i]);
     }
     printf(<span class="string">&quot;\n&quot;</span>);
     <span class="keyword">return</span>;
   }
-  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i<=n;i++) {
+  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) {
     <span class="keyword">if</span>(!st[i]) {
       path[u]=i; st[i]=<span class="keyword">true</span>;
       dfs(u+<span class="number">1</span>); st[i]=<span class="keyword">false</span>;
