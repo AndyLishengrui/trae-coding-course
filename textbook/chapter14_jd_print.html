@@ -72,8 +72,42 @@
 
         <div class="hint">
             <strong>解题思路：</strong><p>BFS+入度维护。有环则无解。</p>
-
         </div>
+
+<div style="background:#fce4ec;border-left:4px solid #c62828;padding:16px;margin:15px 0;border-radius:0 8px 8px 0">
+<strong style="color:#b71c1c;font-size:1.1em">算法图解：拓扑排序逐步过程</strong>
+<p>以样例图为例：3个点，边 1→2, 2→3, 1→3</p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+图结构:     1 → 2
+            ↓   ↓
+            → 3 ←
+
+初始入度:   d[1]=0, d[2]=1, d[3]=2
+</pre>
+<p><strong>逐步执行：</strong></p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+第1步: 找入度为0的点 → 只有1 → 入队
+  队列: [1]      输出: 1
+  状态: d[1]=0(已出队)  d[2]=1  d[3]=2
+
+第2步: 弹出1，删除1的所有出边(1→2, 1→3)
+  d[2]-- → d[2]=0 → 入队
+  d[3]-- → d[3]=1
+  队列: [2]      输出: 1 2
+
+第3步: 弹出2，删除2的所有出边(2→3)
+  d[3]-- → d[3]=0 → 入队
+  队列: [3]      输出: 1 2 3
+
+第4步: 弹出3，无出边
+  队列: []       输出: 1 2 3
+
+所有点都出队 → 拓扑序: 1 2 3
+</pre>
+<p><strong>如何判断有环？</strong></p>
+<p>如果图中有环（如 1→2→3→1），则每个点入度都≥1，队列一开始就为空，最终出队的点数 &lt; n。这说明有些点永远无法入度降为0——它们被困在环里了。</p>
+<p><strong>拓扑序不唯一！</strong> 如果同一时刻有多个入度为0的点，它们的相对顺序可以任意。上面的算法只是其中一种合法的拓扑序。</p>
+</div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(V + E) — BFS遍历，每个节点和边访问一次<br>
@@ -210,8 +244,50 @@ res = []
 
         <div class="hint">
             <strong>解题思路：</strong><p>Dijkstra：O(n²)。每次选最近未访问点，更新邻居。</p>
-
         </div>
+
+<div style="background:#e8eaf6;border-left:4px solid #283593;padding:16px;margin:15px 0;border-radius:0 8px 8px 0">
+<strong style="color:#1a237e;font-size:1.1em">算法图解：Dijkstra松弛过程</strong>
+<p>以样例为例：3个点，边 1→2(权2), 2→3(权1), 1→3(权4)</p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+图结构:
+    1 ---(2)---→ 2
+    |            |
+   (4)         (1)
+    ↓            ↓
+    └----→ 3 ←──┘
+</pre>
+<p><strong>松弛（Relaxation）是什么？</strong></p>
+<p>"松弛"就是尝试找到更短的路径。对于边 u→v(权w)，如果 dist[u]+w &lt; dist[v]，就更新 dist[v]。这就像发现了一条近路，赶紧更新地图上的距离标记。</p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+初始:  dist = [∞, 0, ∞, ∞]     st = [F, F, F]
+       （dist[1]=0，其余无穷大）
+
+═══ 第1轮 ═══
+选最近未访问点 → 点1（dist=0）
+标记 st[1]=true
+用点1松弛邻居:
+  1→2: dist[1]+2=2 < ∞ → dist[2]更新为2  ← 松弛成功!
+  1→3: dist[1]+4=4 < ∞ → dist[3]更新为4  ← 松弛成功!
+dist = [∞, 0, 2, 4]
+
+═══ 第2轮 ═══
+选最近未访问点 → 点2（dist=2）
+标记 st[2]=true
+用点2松弛邻居:
+  2→3: dist[2]+1=3 < 4 → dist[3]更新为3  ← 松弛成功!发现更短路!
+dist = [∞, 0, 2, 3]
+
+═══ 第3轮 ═══
+选最近未访问点 → 点3（dist=3）
+标记 st[3]=true，无邻居
+dist = [∞, 0, 2, 3]
+
+最终结果: 0 2 3
+</pre>
+<p><strong>关键洞察：</strong>点1→点3直接走是4，但经过点2中转（1→2→3）只需2+1=3。Dijkstra通过"松弛"自动发现了这条更短的路径。</p>
+<p><strong>为什么Dijkstra不能处理负权边？</strong>因为Dijkstra一旦标记某点为"已确定"就不再更新。如果有负权边，后面可能出现更短路径，破坏了"已确定"的假设。</p>
+</div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O((V + E) log V) — Dijkstra最短路，优先队列优化<br>
@@ -787,8 +863,68 @@ sys.stdout.write(<span class="string">'\n'</span>.join(out) + <span class="strin
 
         <div class="hint">
             <strong>解题思路：</strong><p>Prim：O(n²)。每次选最近未加入点。</p>
-
         </div>
+
+<div style="background:#e8f5e9;border-left:4px solid #2e7d32;padding:16px;margin:15px 0;border-radius:0 8px 8px 0">
+<strong style="color:#1b5e20;font-size:1.1em">补充图解：Kruskal算法（逐边+并查集）</strong>
+<p>Kruskal是另一种求最小生成树的算法，思路完全不同——<strong>不从点出发，而是从边出发</strong>。这里用同样的样例展示Kruskal的执行过程。</p>
+<p>样例图：4个点，5条边</p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+边列表（按权重排序后）:
+  1-2 (w=1)
+  1-3 (w=2)
+  2-3 (w=3)
+  2-4 (w=4)
+  3-4 (w=5)
+</pre>
+<p><strong>Kruskal逐步执行（并查集状态）：</strong></p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+初始并查集: p[1]=1, p[2]=2, p[3]=3, p[4]=4  （各自独立）
+已选边数: cnt=0   总权值: res=0
+
+═══ 第1步: 取边 1-2 (w=1) ═══
+find(1)=1, find(2)=2 → 不同集合!
+合并: p[1]=2
+并查集: {1,2}, {3}, {4}
+cnt=1, res=1
+
+      (1)---1---(2)        (3)        (4)
+          选中↑
+
+═══ 第2步: 取边 1-3 (w=2) ═══
+find(1)=2, find(3)=3 → 不同集合!
+合并: p[2]=3
+并查集: {1,2,3}, {4}
+cnt=2, res=3
+
+      (1)---1---(2)
+       \              (4)
+        2\   /
+           (3)
+        选中↑
+
+═══ 第3步: 取边 2-3 (w=3) ═══
+find(2)=3, find(3)=3 → 同一集合! 跳过!
+（加入会形成环 1-2-3-1）
+
+═══ 第4步: 取边 2-4 (w=4) ═══
+find(2)=3, find(4)=4 → 不同集合!
+合并: p[3]=4
+并查集: {1,2,3,4}
+cnt=3, res=7
+
+      (1)---1---(2)
+       \        |
+        2\     4|
+          \    |
+           (3) (4)   ← 所有4个点连通!
+
+═══ 结束: cnt=3 = n-1=3 ✓ ═══
+最小生成树总权值 = 7
+</pre>
+<p><strong>并查集的作用：</strong>快速判断两个点是否在同一连通块。find(x)返回x所在集合的"代表元素"。如果两个端点find结果相同，说明已经连通，再加边就会形成环——这不是树！</p>
+<p><strong>路径压缩：</strong>find函数中的 <code>p[x] = find(p[x])</code> 把沿途所有点直接指向根，让后续查询几乎O(1)。</p>
+</div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(E log E) — 最小生成树，排序边后并查集<br>

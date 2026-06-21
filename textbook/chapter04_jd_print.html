@@ -84,7 +84,15 @@ X[9] = 31
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>遍历数组，将≤0的元素替换为1。</p>
+            <strong>解题思路：</strong><p>遍历数组，将≤0的元素替换为1。数组下标从0开始，用 <code>X[i]</code> 访问第i个元素。</p>
+<p><strong>逐步模拟（输入 -73 27 -35 50 ...）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+i=0: 读入 -73 → -73≤0 → 替换为1 → 输出 X[0] = 1
+i=1: 读入  27 → 27>0  → 保留    → 输出 X[1] = 27
+i=2: 读入 -35 → -35≤0 → 替换为1 → 输出 X[2] = 1
+i=3: 读入  50 → 50>0  → 保留    → 输出 X[3] = 50
+...
+</pre>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -100,16 +108,20 @@ X[9] = 31
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> x;
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">10</span>; i++) {
-        cin >> x;
-        <span class="keyword">if</span> (x <= <span class="number">0</span>) x = <span class="number">1</span>;
+        <span class="comment">// i = 0,1,2,...,9 —— 数组下标从0开始</span>
+        cin >> x;                  <span class="comment">// 读入第i个元素</span>
+        <span class="keyword">if</span> (x <= <span class="number">0</span>) x = <span class="number">1</span>;       <span class="comment">// 负数或零 → 替换为1（净化）</span>
+        <span class="comment">// 此时 x 的状态：可能是原值(>0)，也可能是替换后的1(≤0)</span>
         cout << <span class="string">&quot;X[&quot;</span> << i << <span class="string">&quot;] = &quot;</span> << x << endl;
     }
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>):
-    x = <span class="keyword">int</span>(<span class="keyword">input</span>())
-    <span class="keyword">if</span> x <= <span class="number">0</span>: x = <span class="number">1</span>
+            <pre><code class="language-python"><span class="comment"># range(10) 生成 0,1,2,...,9 —— 数组下标从0开始</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>):
+    x = <span class="keyword">int</span>(<span class="keyword">input</span>())            <span class="comment"># 读入第i个元素</span>
+    <span class="keyword">if</span> x <= <span class="number">0</span>: x = <span class="number">1</span>           <span class="comment"># 负数或零 → 替换为1（净化）</span>
+    <span class="comment"># f-string: {i}和{x}会被自动替换为变量的值</span>
     <span class="keyword">print</span>(f<span class="string">&quot;X[{i}] = {x}&quot;</span>)</code></pre>
             </details>
         </div>
@@ -155,7 +167,17 @@ N[9] = 3072
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>N[0]=V，循环N[i]=N[i-1]*2。</p>
+            <strong>解题思路：</strong><p>N[0]=V，循环N[i]=N[i-1]*2。不需要数组存储所有值，只用一个变量v不断翻倍即可。</p>
+<p><strong>逐步模拟（输入 V=6）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+i=0: v=6    → 输出 N[0] = 6     → v翻倍: v=12
+i=1: v=12   → 输出 N[1] = 12    → v翻倍: v=24
+i=2: v=24   → 输出 N[2] = 24    → v翻倍: v=48
+i=3: v=48   → 输出 N[3] = 48    → v翻倍: v=96
+...
+i=9: v=3072 → 输出 N[9] = 3072
+</pre>
+<p><strong>关键点：</strong> 先输出当前值，再翻倍（C++版本在for语句的更新部分 <code>v*=2</code> 实现）。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -170,16 +192,20 @@ N[9] = 3072
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> v;
-    cin >> v;
+    cin >> v;  <span class="comment">// 读入起点值，如 v=6</span>
+    <span class="comment">// for循环三部分：初始化(i=0) → 条件(i<10) → 更新(i++, v*=2)</span>
+    <span class="comment">// 执行顺序：条件判断 → 循环体 → 更新 → 条件判断 → ...</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">10</span>; i++, v *= <span class="number">2</span>)
+        <span class="comment">// 每次循环：先输出当前v，循环末尾才翻倍</span>
         cout << <span class="string">&quot;N[&quot;</span> << i << <span class="string">&quot;] = &quot;</span> << v << endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">v = <span class="keyword">int</span>(<span class="keyword">input</span>())
+            <pre><code class="language-python">v = <span class="keyword">int</span>(<span class="keyword">input</span>())  <span class="comment"># 读入起点值，如 v=6</span>
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>):
+    <span class="comment"># 先输出当前值，再翻倍（与C++版略有不同）</span>
     <span class="keyword">print</span>(f<span class="string">&quot;N[{i}] = {v}&quot;</span>)
-    v *= <span class="number">2</span></code></pre>
+    v *= <span class="number">2</span>  <span class="comment"># v = v * 2，等价于 v <<= 1</span></code></pre>
             </details>
         </div>
     </div>
@@ -364,7 +390,16 @@ A[99] = -18.7
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>遍历数组，if元素≤10则输出。</p>
+            <strong>解题思路：</strong><p>遍历100个浮点数，只输出≤10的元素及其下标。注意下标从0开始。</p>
+<p><strong>逐步模拟（前几个输入）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+i=0: 读入 79.5 → 79.5>10 → 不输出
+i=1: 读入 -35.1 → -35.1≤10 → 输出 A[1] = -35.1
+i=2: 读入 65.0 → 65.0>10 → 不输出
+i=3: 读入 -89.9 → -89.9≤10 → 输出 A[3] = -89.9
+...
+</pre>
+<p><strong>关键点：</strong> 不需要数组存储所有100个数——边读边判断，只输出满足条件的。这叫"流式处理"。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -379,15 +414,18 @@ A[99] = -18.7
 <span class="keyword">int</span> main() {
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">100</span>; i++) {
         <span class="keyword">double</span> x;
-        scanf(<span class="string">&quot;%lf&quot;</span>, &x);
+        scanf(<span class="string">&quot;%lf&quot;</span>, &x);          <span class="comment">// 读入第i个浮点数</span>
+        <span class="comment">// 只输出满足条件的：x≤10（精良之剑）</span>
+        <span class="comment">// %.1f 表示保留1位小数</span>
         <span class="keyword">if</span> (x <= <span class="number">10</span>) printf(<span class="string">&quot;A[%d] = %.1f\n&quot;</span>, i, x);
     }
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">100</span>):
-    x = <span class="keyword">float</span>(<span class="keyword">input</span>())
-    <span class="keyword">if</span> x <= <span class="number">10</span>:
+    x = <span class="keyword">float</span>(<span class="keyword">input</span>())           <span class="comment"># 读入第i个浮点数</span>
+    <span class="keyword">if</span> x <= <span class="number">10</span>:                  <span class="comment"># 只输出精良之剑</span>
+        <span class="comment"># :.1f 表示保留1位小数（格式化输出）</span>
         <span class="keyword">print</span>(f<span class="string">&quot;A[{i}] = {x:.1f}&quot;</span>)</code></pre>
             </details>
         </div>
@@ -465,7 +503,23 @@ N[19] = -40
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>双指针从两端向中间交换。</p>
+            <strong>解题思路：</strong><p>双指针从两端向中间交换。20个元素只需交换10次（首尾配对）。</p>
+<p><strong>数组下标与交换过程：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+原始:  arr[0] arr[1] arr[2] ... arr[17] arr[18] arr[19]
+       -40    57     99    ...  57      1       -32
+
+交换配对（i从0到9）：
+i=0: swap(arr[0],  arr[19]) → 交换 -40 和 -32
+i=1: swap(arr[1],  arr[18]) → 交换  57 和   1
+i=2: swap(arr[2],  arr[17]) → 交换  99 和  54
+...
+i=9: swap(arr[9],  arr[10]) → 交换  98 和 -95
+
+翻转后: -32  1  54 -55  48 -55 -100 -100 -92 -95  98  70 -76 -67  25 -20  2  99  57 -40
+索引:    [0] [1] [2] [3] [4] [5] [6]  [7]  [8] [9] [10]...
+</pre>
+<p><strong>关键公式：</strong> arr[i] 与 arr[19-i] 交换，i只到9（共10次），否则会重复交换。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -479,16 +533,20 @@ N[19] = -40
             <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
-    <span class="keyword">int</span> arr[<span class="number">20</span>];
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">20</span>; i++) cin >> arr[i];
+    <span class="keyword">int</span> arr[<span class="number">20</span>];  <span class="comment">// 声明大小为20的整型数组，下标0~19</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">20</span>; i++) cin >> arr[i];  <span class="comment">// 逐个读入</span>
+    <span class="comment">// 双指针交换：i从左(0)往右，19-i从右(19)往左</span>
+    <span class="comment">// 只需交换前半部分(i=0~9)，共10次</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">10</span>; i++) swap(arr[i], arr[<span class="number">19</span> - i]);
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">20</span>; i++)
         cout << <span class="string">&quot;N[&quot;</span> << i << <span class="string">&quot;] = &quot;</span> << arr[i] << endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">arr = [<span class="keyword">int</span>(<span class="keyword">input</span>()) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">20</span>)]
-arr.reverse()
+            <pre><code class="language-python"><span class="comment"># 列表推导式：读入20个整数存入列表</span>
+arr = [<span class="keyword">int</span>(<span class="keyword">input</span>()) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">20</span>)]
+arr.reverse()  <span class="comment"># 原地翻转列表（等价于 arr = arr[::-1]）</span>
+<span class="comment"># enumerate同时返回下标(i)和值(v)</span>
 <span class="keyword">for</span> i, v <span class="keyword">in</span> <span class="keyword">enumerate</span>(arr):
     <span class="keyword">print</span>(f<span class="string">&quot;N[{i}] = {v}&quot;</span>)</code></pre>
             </details>
@@ -507,8 +565,9 @@ arr.reverse()
 
         </div>
 
-        <div <div style="background:#fff3cd;border-left:4px solid #ffc107;padding:8px;margin:10px 0;border-radius:0 4px 4px 0;font-size:0.9em">本题输出 Menor valor / Posicao 为原题葡语格式（最小值/位置）。</div>
-        class="io-section">
+        <div style="background:#fff3cd;border-left:4px solid #ffc107;padding:8px;margin:10px 0;border-radius:0 4px 4px 0;font-size:0.9em">本题输出 Menor valor / Posicao 为原题葡语格式（最小值/位置）。</div>
+
+        <div class="io-section">
             <h4>输入格式</h4>
             <p>第一行一个整数N。第二行N个整数。</p>
 
@@ -532,7 +591,21 @@ Posicao: 4
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>遍历时记录最小值和位置。</p>
+            <strong>解题思路：</strong><p>遍历时记录最小值和位置。用"打擂台"策略：每读一个数，比当前最小值小就更新。</p>
+<p><strong>逐步模拟（输入 1 2 3 4 -5 6 7 8 9 10）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+i=0: 读入  1 → 第一个数，初始化 mn=1, pos=0
+i=1: 读入  2 → 2≥1  → 不更新（mn=1, pos=0）
+i=2: 读入  3 → 3≥1  → 不更新
+i=3: 读入  4 → 4≥1  → 不更新
+i=4: 读入 -5 → -5<1 → 更新！mn=-5, pos=4
+i=5: 读入  6 → 6≥-5 → 不更新（mn=-5, pos=4）
+...
+i=9: 读入 10 → 10≥-5 → 不更新
+
+最终：最小值mn=-5，位置pos=4
+</pre>
+<p><strong>关键点：</strong> <code>i==0 || x<mn</code> 中的 <code>i==0</code> 保证第一个数直接赋值给mn。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -550,17 +623,21 @@ Posicao: 4
     cin >> n;
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++) {
         cin >> x;
+        <span class="comment">// i==0: 第一个数，直接记为最小值</span>
+        <span class="comment">// x&lt;mn: 发现更小的数，更新最小值和位置</span>
         <span class="keyword">if</span> (i == <span class="number">0</span> || x < mn) { mn = x; pos = i; }
     }
+    <span class="comment">// Menor valor = 最小值, Posicao = 位置（葡语格式）</span>
     cout << <span class="string">&quot;Menor valor: &quot;</span> << mn << endl;
     cout << <span class="string">&quot;Posicao: &quot;</span> << pos << endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
-data = sys.stdin.read().split()
-n = <span class="keyword">int</span>(data[<span class="number">0</span>])
-a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span class="number">1</span>:<span class="number">1</span>+n]))
+data = sys.stdin.read().split()  <span class="comment"># 一次性读入所有数据</span>
+n = <span class="keyword">int</span>(data[<span class="number">0</span>])                 <span class="comment"># 第一个是n</span>
+a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span class="number">1</span>:<span class="number">1</span>+n]))  <span class="comment"># 接下来n个转为整数列表</span>
+<span class="comment"># min()找最小值，index()找第一次出现的位置</span>
 mn = <span class="keyword">min</span>(a)
 pos = a.index(mn)
 <span class="keyword">print</span>(f<span class="string">&quot;Menor valor: {mn}&quot;</span>)
@@ -600,7 +677,17 @@ pos = a.index(mn)
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>两个变量滚动：a,b = b,a+b。</p>
+            <strong>解题思路：</strong><p>两个变量滚动计算斐波那契数列，不需要数组。a和b始终代表相邻两项。</p>
+<p><strong>逐步模拟（输入 N=4，求F(4)）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+初始: a=0, b=1     → F(0)=0, F(1)=1
+i=1: t=0+1=1, a=1, b=1   → F(2)=1
+i=2: t=1+1=2, a=1, b=2   → F(3)=2
+i=3: t=1+2=3, a=2, b=3   → F(4)=3
+
+输出 b=3（即F(4)=3）
+</pre>
+<p><strong>Python的优雅写法：</strong> <code>a, b = b, a+b</code> 同时赋值，无需临时变量t。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -616,20 +703,26 @@ pos = a.index(mn)
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n;
     cin >> n;
-    <span class="keyword">long</span> <span class="keyword">long</span> a = <span class="number">0</span>, b = <span class="number">1</span>;
+    <span class="comment">// long long 防止大数溢出（斐波那契增长很快）</span>
+    <span class="keyword">long</span> <span class="keyword">long</span> a = <span class="number">0</span>, b = <span class="number">1</span>;  <span class="comment">// a=F(0), b=F(1)</span>
     <span class="keyword">if</span> (n == <span class="number">0</span>) { cout << <span class="number">0</span> << endl; <span class="keyword">return</span> <span class="number">0</span>; }
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i < n; i++) {
-        <span class="keyword">long</span> <span class="keyword">long</span> t = a + b; a = b; b = t;
+        <span class="comment">// 三步滚动：临时变量保存 a+b，然后 a←b, b←t</span>
+        <span class="keyword">long</span> <span class="keyword">long</span> t = a + b;  <span class="comment">// t = 新的斐波那契值</span>
+        a = b;                <span class="comment">// a 前进一步</span>
+        b = t;                <span class="comment">// b 前进一步</span>
     }
-    cout << b << endl;
+    cout << b << endl;  <span class="comment">// 输出 F(n)</span>
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">n = <span class="keyword">int</span>(<span class="keyword">input</span>())
-a, b = <span class="number">0</span>, <span class="number">1</span>
+a, b = <span class="number">0</span>, <span class="number">1</span>  <span class="comment"># a=F(0), b=F(1)</span>
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n):
+    <span class="comment"># Python的同时赋值，等价于C++的三步滚动</span>
+    <span class="comment"># 右边先计算完，再同时赋给左边</span>
     a, b = b, a + b
-<span class="keyword">print</span>(a)</code></pre>
+<span class="keyword">print</span>(a)  <span class="comment"># 循环n次后，a 就是 F(n)</span></code></pre>
             </details>
         </div>
     </div>
@@ -665,7 +758,19 @@ a, b = <span class="number">0</span>, <span class="number">1</span>
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>预处理斐波那契数组到60，查询时直接取值。</p>
+            <strong>解题思路：</strong><p>边算边输出前N个斐波那契数，空格隔开。与JD048不同，这里需要输出从F(0)到F(N-1)的所有值。</p>
+<p><strong>逐步模拟（输入 N=5）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+初始: a=0, b=1
+i=0: 输出 a=0   → t=0+1=1, a=1, b=1
+i=1: 输出 a=1   → t=1+1=2, a=1, b=2
+i=2: 输出 a=1   → t=1+2=3, a=2, b=3
+i=3: 输出 a=2   → t=2+3=5, a=3, b=5
+i=4: 输出 a=3   → t=3+5=8, a=5, b=8
+
+输出: "0 1 1 2 3"
+</pre>
+<p><strong>关键点：</strong> 先输出a（当前值），再计算下一个。i>0时先输出空格再输出值。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -681,10 +786,11 @@ a, b = <span class="number">0</span>, <span class="number">1</span>
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n;
     cin >> n;
-    <span class="keyword">long</span> <span class="keyword">long</span> a = <span class="number">0</span>, b = <span class="number">1</span>;
+    <span class="keyword">long</span> <span class="keyword">long</span> a = <span class="number">0</span>, b = <span class="number">1</span>;  <span class="comment">// a=F(0), b=F(1)</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++) {
-        <span class="keyword">if</span> (i) cout << <span class="string">&quot; &quot;</span>;
-        cout << a;
+        <span class="keyword">if</span> (i) cout << <span class="string">&quot; &quot;</span>;  <span class="comment">// 非第一个数前加空格</span>
+        cout << a;           <span class="comment">// 输出当前值</span>
+        <span class="comment">// 滚动更新到下一个斐波那契值</span>
         <span class="keyword">long</span> <span class="keyword">long</span> t = a + b; a = b; b = t;
     }
     cout << endl;
@@ -696,6 +802,8 @@ data = sys.stdin.read().split()
 n = <span class="keyword">int</span>(data[<span class="number">0</span>]) <span class="keyword">if</span> data <span class="keyword">else</span> <span class="number">0</span>
 a, b = <span class="number">0</span>, <span class="number">1</span>
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n):
+    <span class="comment"># sys.stdout.write 不自动换行，手动控制格式</span>
+    <span class="comment"># 最后一个数后换行，其余后加空格</span>
     sys.stdout.write(<span class="keyword">str</span>(a) + (<span class="string">' '</span> <span class="keyword">if</span> _ < n-<span class="number">1</span> <span class="keyword">else</span> <span class="string">'\n'</span>))
     a, b = b, a + b</code></pre>
             </details>
@@ -739,7 +847,20 @@ a, b = <span class="number">0</span>, <span class="number">1</span>
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>循环从M到N输出并累加。</p>
+            <strong>解题思路：</strong><p>循环从M到N，逐个输出并累加。若M>N则先交换。</p>
+<p><strong>逐步模拟（输入 M=5, N=10）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+5≤10，不需交换。sum=0
+i=5: 输出 5,  sum=0+5=5
+i=6: 输出 6,  sum=5+6=11
+i=7: 输出 7,  sum=11+7=18
+i=8: 输出 8,  sum=18+8=26
+i=9: 输出 9,  sum=26+9=35
+i=10: 输出 10, sum=35+10=45
+
+输出: "5 6 7 8 9 10 Sum=45"
+</pre>
+<p><strong>关键点：</strong> 用 <code>while(cin>>m>>n, m>0 && n>0)</code> 实现"读到两个0才停止"。逗号运算符返回最后一个表达式的值。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -754,12 +875,14 @@ a, b = <span class="number">0</span>, <span class="number">1</span>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> m, n;
+    <span class="comment">// 逗号运算符：先cin>>m>>n，再判断m>0&&n>0</span>
+    <span class="comment">// 当m和n都为0时循环结束</span>
     <span class="keyword">while</span> (cin >> m >> n, m > <span class="number">0</span> && n > <span class="number">0</span>) {
-        <span class="keyword">if</span> (m > n) swap(m, n);
+        <span class="keyword">if</span> (m > n) swap(m, n);  <span class="comment">// 保证 m≤n</span>
         <span class="keyword">int</span> sum = <span class="number">0</span>;
         <span class="keyword">for</span> (<span class="keyword">int</span> i = m; i <= n; i++) {
-            cout << i << <span class="string">&quot; &quot;</span>;
-            sum += i;
+            cout << i << <span class="string">&quot; &quot;</span>;  <span class="comment">// 输出当前数</span>
+            sum += i;           <span class="comment">// 累加到总和</span>
         }
         cout << <span class="string">&quot;Sum=&quot;</span> << sum << endl;
     }
@@ -768,9 +891,10 @@ a, b = <span class="number">0</span>, <span class="number">1</span>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">while</span> <span class="keyword">True</span>:
     m, n = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-    <span class="keyword">if</span> m <= <span class="number">0</span> <span class="keyword">or</span> n <= <span class="number">0</span>: <span class="keyword">break</span>
-    <span class="keyword">if</span> m > n: m, n = n, m
-    nums = <span class="keyword">range</span>(m, n + <span class="number">1</span>)
+    <span class="keyword">if</span> m <= <span class="number">0</span> <span class="keyword">or</span> n <= <span class="number">0</span>: <span class="keyword">break</span>  <span class="comment"># 两个0结束</span>
+    <span class="keyword">if</span> m > n: m, n = n, m          <span class="comment"># 保证 m≤n</span>
+    nums = <span class="keyword">range</span>(m, n + <span class="number">1</span>)          <span class="comment"># 生成 m 到 n 的序列</span>
+    <span class="comment"># join将列表用空格连接，sum()内置求和</span>
     <span class="keyword">print</span>(<span class="string">' '</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, nums)), f<span class="string">&quot;Sum={sum(nums)}&quot;</span>)</code></pre>
             </details>
         </div>
@@ -813,7 +937,18 @@ M
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>遍历指定行，根据操作类型求和或求平均。</p>
+            <strong>解题思路：</strong><p>12x12矩阵中，遍历所有元素，只累加第L行的值。矩阵用 <code>mat[i][j]</code> 访问，i是行号，j是列号。</p>
+<p><strong>矩阵下标示意（12x12）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+        j=0    j=1    j=2   ...  j=11
+i=0  [ 0,0 ] [ 0,1 ] [ 0,2 ] ... [ 0,11 ]
+i=1  [ 1,0 ] [ 1,1 ] [ 1,2 ] ... [ 1,11 ]
+...
+i=L  [ L,0 ] [ L,1 ] [ L,2 ] ... [ L,11 ]  ← 只累加这一行
+...
+i=11 [11,0 ] [11,1 ] [11,2 ] ... [11,11 ]
+</pre>
+<p><strong>关键点：</strong> 虽然读入全部12x12=144个数，但只在 <code>i==L</code> 时累加。这避免了先存入数组再遍历。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -827,29 +962,32 @@ M
             <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> l; <span class="keyword">char</span> t;
-    scanf(<span class="string">&quot;%d %c&quot;</span>, &l, &t);
+    scanf(<span class="string">&quot;%d %c&quot;</span>, &l, &t);  <span class="comment">// l=行号, t=操作类型(S或M)</span>
     <span class="keyword">double</span> sum = <span class="number">0</span>, x;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">12</span>; i++)
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < <span class="number">12</span>; j++) {
+    <span class="comment">// 双重循环读入12x12矩阵</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">12</span>; i++)       <span class="comment">// i=行号 0~11</span>
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < <span class="number">12</span>; j++) {  <span class="comment">// j=列号 0~11</span>
             scanf(<span class="string">&quot;%lf&quot;</span>, &x);
-            <span class="keyword">if</span> (i == l) sum += x;
+            <span class="keyword">if</span> (i == l) sum += x;  <span class="comment">// 只累加第l行</span>
         }
+    <span class="comment">// 三元运算符：t=='S'输出sum，否则输出sum/12</span>
     printf(<span class="string">&quot;%.1lf\n&quot;</span>, t == 'S' ? sum : sum / <span class="number">12</span>);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
-l = <span class="keyword">int</span>(data[<span class="number">0</span>])
-t = data[<span class="number">1</span>]
+l = <span class="keyword">int</span>(data[<span class="number">0</span>])   <span class="comment"># 行号</span>
+t = data[<span class="number">1</span>]        <span class="comment"># 操作类型</span>
 s = <span class="number">0.0</span>
 idx = <span class="number">2</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
-    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):      <span class="comment"># 行</span>
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):  <span class="comment"># 列</span>
         x = <span class="keyword">float</span>(data[idx])
         idx += <span class="number">1</span>
-        <span class="keyword">if</span> i == l:
+        <span class="keyword">if</span> i == l:        <span class="comment"># 只累加第l行</span>
             s += x
+<span class="comment"># f-string格式化：保留1位小数</span>
 <span class="keyword">print</span>(f<span class="string">&quot;{s if t == 'S' else s / 12:.1f}&quot;</span>)</code></pre>
             </details>
         </div>
@@ -892,7 +1030,21 @@ S
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>遍历所有行取指定列元素。</p>
+            <strong>解题思路：</strong><p>与JD051类似，但这次累加指定列而非行。行和列的区别：行求和用 <code>i==L</code>，列求和用 <code>j==C</code>。</p>
+<p><strong>矩阵列遍历示意：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+累加第C列的元素（j==C时）：
+
+i=0:  [ ... , arr[0][C], ... ]  ← 累加
+i=1:  [ ... , arr[1][C], ... ]  ← 累加
+i=2:  [ ... , arr[2][C], ... ]  ← 累加
+...
+i=11: [ ... , arr[11][C], ... ] ← 累加
+
+对比行求和（JD051）：
+行求和：固定 i=L，j从0遍历到11  → 横向一行
+列求和：固定 j=C，i从0遍历到11  → 纵向一列
+</pre>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -906,12 +1058,12 @@ S
             <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> c; <span class="keyword">char</span> t;
-    scanf(<span class="string">&quot;%d %c&quot;</span>, &c, &t);
+    scanf(<span class="string">&quot;%d %c&quot;</span>, &c, &t);  <span class="comment">// c=列号, t=操作类型</span>
     <span class="keyword">double</span> sum = <span class="number">0</span>, x;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">12</span>; i++)
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < <span class="number">12</span>; j++) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">12</span>; i++)       <span class="comment">// 遍历每一行</span>
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < <span class="number">12</span>; j++) {  <span class="comment">// 遍历每一列</span>
             scanf(<span class="string">&quot;%lf&quot;</span>, &x);
-            <span class="keyword">if</span> (j == c) sum += x;
+            <span class="keyword">if</span> (j == c) sum += x;  <span class="comment">// 只累加第c列</span>
         }
     printf(<span class="string">&quot;%.1lf\n&quot;</span>, t == 'S' ? sum : sum / <span class="number">12</span>);
     <span class="keyword">return</span> <span class="number">0</span>;
@@ -919,15 +1071,15 @@ S
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
-c = <span class="keyword">int</span>(data[<span class="number">0</span>])
-t = data[<span class="number">1</span>]
+c = <span class="keyword">int</span>(data[<span class="number">0</span>])   <span class="comment"># 列号</span>
+t = data[<span class="number">1</span>]        <span class="comment"># 操作类型</span>
 s = <span class="number">0.0</span>
 idx = <span class="number">2</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
-    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):      <span class="comment"># 遍历行</span>
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):  <span class="comment"># 遍历列</span>
         x = <span class="keyword">float</span>(data[idx])
         idx += <span class="number">1</span>
-        <span class="keyword">if</span> j == c:
+        <span class="keyword">if</span> j == c:        <span class="comment"># 只累加第c列（与JD051的 i==l 不同）</span>
             s += x
 <span class="keyword">print</span>(f<span class="string">&quot;{s if t == 'S' else s / 12:.1f}&quot;</span>)</code></pre>
             </details>
@@ -966,7 +1118,15 @@ idx = <span class="number">2</span>
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>对每个数找所有真因子求和，等于自身则输出。</p>
+            <strong>解题思路：</strong><p>完全数 = 所有真因子之和。10^8以内只有5个完全数，直接打表即可。</p>
+<p><strong>完全数的验证：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+6 的真因子: 1, 2, 3 → 1+2+3 = 6  ✓
+28 的真因子: 1, 2, 4, 7, 14 → 1+2+4+7+14 = 28  ✓
+496 的真因子: 1,2,4,8,16,31,62,124,248 → 和=496  ✓
+8128 的真因子: 1,2,4,8,16,32,64,127,... → 和=8128  ✓
+</pre>
+<p><strong>关键点：</strong> 10^8以内完全数极少（数学上已知的完全数都很稀疏），所以直接枚举比逐个判断更高效。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -980,16 +1140,19 @@ idx = <span class="number">2</span>
             <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
+    <span class="comment">// 打表：10^8以内的所有完全数</span>
     <span class="keyword">int</span> perfect[] = {<span class="number">6</span>, <span class="number">28</span>, <span class="number">496</span>, <span class="number">8128</span>, <span class="number">33550336</span>};
     <span class="keyword">int</span> n;
     cin >> n;
+    <span class="comment">// 范围for循环：逐个检查是否≤n</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> x : perfect)
         <span class="keyword">if</span> (x <= n) cout << x << endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">n = <span class="keyword">int</span>(<span class="keyword">input</span>())
-<span class="comment"># All perfect numbers up to 10^8: 6, 28, 496, 8128, 33550336</span>
+<span class="comment"># 打表：10^8以内的所有完全数</span>
+<span class="comment"># 完全数 = 所有真因子(不含自身)之和等于自身</span>
 perfect = [<span class="number">6</span>, <span class="number">28</span>, <span class="number">496</span>, <span class="number">8128</span>, <span class="number">33550336</span>]
 <span class="keyword">for</span> p <span class="keyword">in</span> perfect:
     <span class="keyword">if</span> p <= n:
@@ -1032,7 +1195,21 @@ perfect = [<span class="number">6</span>, <span class="number">28</span>, <span 
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>对每个数从2到√n试除。</p>
+            <strong>解题思路：</strong><p>对每个数i从2到sqrt(i)试除，若都不能整除则是质数。只需试除到sqrt(i)即可。</p>
+<p><strong>试除法示意（判断i=7是否为质数）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+i=7: j从2开始，j*j≤7
+  j=2: 7%2=1≠0 → 继续
+  j=3: 3*3=9>7 → 停止（已超过√7≈2.6）
+  → 7是质数 ✓
+
+i=9: j从2开始，j*j≤9
+  j=2: 9%2=1≠0 → 继续
+  j=3: 9%3=0 → 不是质数 ✗（找到因子3）
+
+输出2~10的质数: 2, 3, 5, 7
+</pre>
+<p><strong>关键优化：</strong> <code>j*j<=i</code> 等价于 <code>j<=sqrt(i)</code>，但避免了浮点运算，更快更安全。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -1049,10 +1226,15 @@ perfect = [<span class="number">6</span>, <span class="number">28</span>, <span 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n;
     cin >> n;
+    <span class="comment">// 逐个检查 2 到 n 是否为质数</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i <= n; i++) {
-        <span class="keyword">bool</span> prime = <span class="keyword">true</span>;
+        <span class="keyword">bool</span> prime = <span class="keyword">true</span>;  <span class="comment">// 假设i是质数</span>
+        <span class="comment">// 试除法：从2试到√i（用j*j<=i避免浮点）</span>
         <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">2</span>; j * j <= i; j++) {
-            <span class="keyword">if</span> (i % j == <span class="number">0</span>) { prime = <span class="keyword">false</span>; <span class="keyword">break</span>; }
+            <span class="keyword">if</span> (i % j == <span class="number">0</span>) {  <span class="comment">// 找到因子</span>
+                prime = <span class="keyword">false</span>;  <span class="comment">// 不是质数</span>
+                <span class="keyword">break</span>;          <span class="comment">// 提前退出内层循环</span>
+            }
         }
         <span class="keyword">if</span> (prime) cout << i << endl;
     }
@@ -1061,10 +1243,13 @@ perfect = [<span class="number">6</span>, <span class="number">28</span>, <span 
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> math
 n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="comment"># 逐个检查 2 到 n 是否为质数</span>
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">2</span>, n + <span class="number">1</span>):
     prime = <span class="keyword">True</span>
+    <span class="comment"># 试除法：从2试到√i</span>
+    <span class="comment"># int(math.sqrt(i)) + 1 确保包含√i本身</span>
     <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">2</span>, <span class="keyword">int</span>(math.sqrt(i)) + <span class="number">1</span>):
-        <span class="keyword">if</span> i % j == <span class="number">0</span>:
+        <span class="keyword">if</span> i % j == <span class="number">0</span>:  <span class="comment"># 找到因子</span>
             prime = <span class="keyword">False</span>
             <span class="keyword">break</span>
     <span class="keyword">if</span> prime:

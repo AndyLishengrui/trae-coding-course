@@ -70,7 +70,25 @@ Hello World
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>读入一行字符串（含空格），输出其长度。</p>
+            <strong>解题思路：</strong><p>读入一行字符串（含空格），输出其长度。注意C++和Python读取含空格字符串的区别。</p>
+<p><strong>Python vs C++ 字符串读取对比：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+输入: "Hello World"（含空格）
+
+Python:
+  input()         → "Hello World"  （读整行，含空格）
+  len("Hello World") → 11
+
+C++ (char数组):
+  fgets(str, 101, stdin) → 读整行（含空格和换行符\n）
+  手动遍历到'\0'或'\n'停止
+  "Hello World\n" → 遍历 H,e,l,l,o, ,W,o,r,l,d → len=11
+
+C++ (string):
+  getline(cin, s) → 读整行（不含换行符）
+  s.size() → 11
+</pre>
+<p><strong>关键区别：</strong> <code>cin>></code> 遇空格停止，<code>getline(cin,s)</code> 和 <code>fgets()</code> 读整行。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -88,9 +106,12 @@ Hello World
 {
     <span class="keyword">char</span> str[<span class="number">101</span>];
 
+    <span class="comment">// fgets读整行（含空格），最多100字符+\0</span>
+    <span class="comment">// 注意：fgets会把换行符\n也读进来</span>
     fgets(str, <span class="number">101</span>, stdin);
 
     <span class="keyword">int</span> len = <span class="number">0</span>;
+    <span class="comment">// 遍历到字符串结束(\0)或换行符(\n)为止</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; str[i] && str[i] != '\n'; i ++ ) len ++ ;
 
     printf(<span class="string">&quot;%d\n&quot;</span>, len);
@@ -98,7 +119,9 @@ Hello World
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">print</span>(<span class="keyword">len</span>(<span class="keyword">input</span>()))</code></pre>
+            <pre><code class="language-python"><span class="comment"># Python一行搞定：input()读整行，len()求长度</span>
+<span class="comment"># C++需要手动遍历或用string.size()</span>
+<span class="keyword">print</span>(<span class="keyword">len</span>(<span class="keyword">input</span>()))</code></pre>
             </details>
         </div>
     </div>
@@ -136,7 +159,28 @@ a b c
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>遍历字符串，每个字符后输出一个空格。</p>
+            <strong>解题思路：</strong><p>遍历字符串，每个字符后加一个空格。</p>
+<p><strong>字符串操作过程追踪：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+输入: "abc"
+
+C++过程（逐字符拼接）：
+  b = ""
+  c='a' → b = "a "     (b + c + ' ')
+  c='b' → b = "a b "   (b + c + ' ')
+  c='c' → b = "a b c " (b + c + ' ')
+  pop_back() → b = "a b c"  (去掉末尾多余空格)
+
+Python（join一行搞定）：
+  "abc" → list("abc") = ['a','b','c']
+  " ".join(['a','b','c']) → "a b c"
+</pre>
+<p><strong>Python vs C++ 字符串拼接效率：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+Python: " ".join(list) — O(n)，推荐
+C++: b = b + c + ' ' — 每次创建新字符串，O(n^2)
+C++优化: 用 b.push_back(c); b.push_back(' '); — O(n)
+</pre>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -155,19 +199,23 @@ a b c
 <span class="keyword">int</span> main()
 {
     <span class="keyword">string</span> a;
-    getline(cin, a);
+    getline(cin, a);  <span class="comment">// 读整行（含空格）</span>
 
     <span class="keyword">string</span> b;
+    <span class="comment">// range-for: c依次为a中的每个字符</span>
     <span class="keyword">for</span> (<span class="keyword">auto</span> c : a) b = b + c + ' ';
 
-    b.pop_back();
+    b.pop_back();  <span class="comment">// 去掉末尾多余的空格</span>
 
     cout << b << endl;
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">print</span>(<span class="string">&quot; &quot;</span>.join(<span class="keyword">input</span>()))</code></pre>
+            <pre><code class="language-python"><span class="comment"># join: 将字符串的每个字符用空格连接</span>
+<span class="comment"># "abc" → ['a','b','c'] → "a b c"</span>
+<span class="comment"># 比C++逐字符拼接更简洁高效</span>
+<span class="keyword">print</span>(<span class="string">&quot; &quot;</span>.join(<span class="keyword">input</span>()))</code></pre>
             </details>
         </div>
     </div>
@@ -216,7 +264,29 @@ hell#
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>遍历字符串，遇到目标字符输出'#'，否则输出原字符。</p>
+            <strong>解题思路：</strong><p>遍历字符串，遇到目标字符替换为'#'，其他保留。</p>
+<p><strong>替换过程追踪（输入 "hello", 目标字符 'o'）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+原始: "hello"
+      01234  ← 下标
+
+C++原地修改 char数组：
+i=0: 'h' ≠ 'o' → 保留
+i=1: 'e' ≠ 'o' → 保留
+i=2: 'l' ≠ 'o' → 保留
+i=3: 'l' ≠ 'o' → 保留
+i=4: 'o' = 'o' → 替换为 '#'
+结果: "hell#"
+
+Python一行替换：
+s.replace('o', '#') → "hell#"
+</pre>
+<p><strong>C++ vs Python 字符串替换：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+C++ char数组: 直接修改 str[i] = '#'（原地，高效）
+C++ string:   可用循环遍历+修改，或自己实现replace
+Python:       s.replace(old, new) 一行搞定（返回新字符串）
+</pre>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -236,23 +306,26 @@ hell#
 <span class="keyword">int</span> main()
 {
     <span class="keyword">char</span> str[<span class="number">31</span>];
-    scanf(<span class="string">&quot;%s&quot;</span>, str);
+    scanf(<span class="string">&quot;%s&quot;</span>, str);  <span class="comment">// 读入字符串（不含空格）</span>
 
     <span class="keyword">char</span> c;
-    scanf(<span class="string">&quot;\n%c&quot;</span>, &c);
+    scanf(<span class="string">&quot;\n%c&quot;</span>, &c);  <span class="comment">// \n吃掉换行符，再读一个字符</span>
 
+    <span class="comment">// 遍历char数组，遇到目标字符就原地替换</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; str[i]; i ++ )
         <span class="keyword">if</span> (str[i] == c)
             str[i] = '#';
 
-    puts(str);
+    puts(str);  <span class="comment">// 输出并自动换行</span>
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">s = <span class="keyword">input</span>()
-c = <span class="keyword">input</span>()
-<span class="keyword">print</span>(s.replace(c, "<span class="comment">#&quot;))</span></code></pre>
+            <pre><code class="language-python">s = <span class="keyword">input</span>()   <span class="comment"># 原文</span>
+c = <span class="keyword">input</span>()   <span class="comment"># 目标字符</span>
+<span class="comment"># replace: 返回新字符串，不修改原串</span>
+<span class="comment"># C++的char数组是原地修改，Python的str是不可变类型</span>
+<span class="keyword">print</span>(s.replace(c, "#"))</code></pre>
             </details>
         </div>
     </div>
@@ -291,7 +364,24 @@ jfdhkaZcxiNBHR`cjklhZbimiqxobc^caZUO^mbG]c_`R^dVcruhSgqhXXceiURchojXYS[njVCVfUUn
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>遍历a，b[i] = chr(ord(a[i]) + ord(a[i+1]))。最后一个用a[-1]和a[0]。</p>
+            <strong>解题思路：</strong><p>b[i] = chr(ord(a[i]) + ord(a[(i+1) % n]))。取模让最后一个字符与第一个配对（循环）。</p>
+<p><strong>字符串ASCII运算追踪（输入 "abc"）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+a = "abc", n=3
+i=0: b[0] = chr(ord('a') + ord('b')) = chr(97+98)  = chr(195) = 'Ã'
+i=1: b[1] = chr(ord('b') + ord('c')) = chr(98+99)  = chr(197) = 'Å'
+i=2: b[2] = chr(ord('c') + ord('a')) = chr(99+97)  = chr(196) = 'Ä'
+     ↑ 注意：(2+1)%3 = 0 → 回到a[0]，首尾相连
+
+结果: b = "ÃÅÄ"
+</pre>
+<p><strong>关键技巧：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+(i+1) % n  →  取模实现循环：0,1,2,...,n-1,0,1,2,...
+ord(ch)    →  字符→ASCII码（Python内置）
+chr(num)   →  ASCII码→字符（Python内置）
+(char)num  →  整数→字符（C++强制类型转换）
+</pre>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -312,7 +402,10 @@ jfdhkaZcxiNBHR`cjklhZbimiqxobc^caZUO^mbG]c_`R^dVcruhSgqhXXceiURchojXYS[njVCVfUUn
     <span class="keyword">string</span> a, b;
     getline(cin, a);
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < a.size(); i ++ ) b += (<span class="keyword">char</span>)(a[i] + a[(i + <span class="number">1</span>) % a.size()]);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < a.size(); i ++ )
+        <span class="comment">// (i+1)%a.size() 实现循环配对</span>
+        <span class="comment">// (char) 强制转换：整数→字符</span>
+        b += (<span class="keyword">char</span>)(a[i] + a[(i + <span class="number">1</span>) % a.size()]);
 
     cout << b << endl;
 
@@ -322,6 +415,9 @@ jfdhkaZcxiNBHR`cjklhZbimiqxobc^caZUO^mbG]c_`R^dVcruhSgqhXXceiURchojXYS[njVCVfUUn
             <pre><code class="language-python"><span class="keyword">import</span> sys
 s = sys.stdin.read().rstrip(<span class="string">'\n'</span>)
 n = <span class="keyword">len</span>(s)
+<span class="comment"># 生成器表达式：逐个计算每个位置的新字符</span>
+<span class="comment"># ord(): 字符→ASCII码, chr(): ASCII码→字符</span>
+<span class="comment"># (i+1)%n: 取模实现首尾循环配对</span>
 result = <span class="string">''</span>.join(chr(ord(s[i]) + ord(s[(i+<span class="number">1</span>) % n])) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n))
 <span class="keyword">print</span>(result)</code></pre>
             </details>
@@ -363,6 +459,31 @@ hello2024world
 
         <div class="hint">
             <strong>解题思路：</strong><p>遍历字符串，判断每个字符是否在'0'到'9'之间。</p>
+<p><strong>字符判断过程追踪（输入 "hello2024world"）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+h → 不是数字('0'~'9')
+e → 不是数字
+l → 不是数字
+l → 不是数字
+o → 不是数字
+2 → 是数字! cnt=1
+0 → 是数字! cnt=2
+2 → 是数字! cnt=3
+4 → 是数字! cnt=4
+w → 不是数字
+o → 不是数字
+r → 不是数字
+l → 不是数字
+d → 不是数字
+
+输出: 4
+</pre>
+<p><strong>C++ vs Python 判断数字：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+C++:   str[i] >= '0' && str[i] <= '9'  （字符比较ASCII码）
+Python: c.isdigit()                      （内置方法）
+Python: '0' <= c <= '9'                  （链式比较）
+</pre>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -434,7 +555,29 @@ Player2
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>判断两者相等→平局；否则检查是否构成"石头>剪刀>布>石头"的环。</p>
+            <strong>解题思路：</strong><p>判断相等→平局；否则检查是否构成"石头>剪刀>布>石头"的克制环。</p>
+<p><strong>胜负判断逻辑：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+克制环：rock → scissors → cloth → rock
+        石头    剪刀      布     石头
+
+输入: "scissors" "rock"
+scissors ≠ rock → 不是平局
+检查Player1赢的条件：
+  scissors vs cloth? → 不是
+  cloth vs rock?     → 不是
+  rock vs scissors?  → 不是（Player1出的是scissors不是rock）
+→ Player2赢
+
+C++字符串比较: strcmp(a,b)==0 表示相等
+Python字符串比较: a == b 直接比较
+</pre>
+<p><strong>C++ vs Python 字符串比较：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+C++ char数组: strcmp(a,b)==0 相等, strcmp(a,b)<0 a<b
+C++ string:   a==b, a!=b, a&lt;b 直接比较
+Python str:   a==b, a!=b, a&lt;b 直接比较
+</pre>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -504,7 +647,29 @@ Ifmmp, Xpsme!
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>遍历字符串，对字母、数字分别做+1循环偏移，其他字符原样输出。</p>
+            <strong>解题思路：</strong><p>遍历字符串，对字母做+1循环偏移（凯撒密码），其他字符原样输出。</p>
+<p><strong>凯撒加密过程追踪（输入 "Hello, World!"）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+原始:  H  e  l  l  o  ,     W  o  r  l  d  !
+ASCII: 72 101 108 108 111 44 32 87 111 114 108 100 33
+
+H(72) → 大写: (72-65+1)%26+65 = 73 → 'I'
+e(101)→ 小写: (101-97+1)%26+97 = 102 → 'f'
+l(108)→ 小写: (108-97+1)%26+97 = 109 → 'm'
+l(108)→ 小写: → 'm'
+o(111)→ 小写: (111-97+1)%26+97 = 112 → 'p'
+','(44)→ 非字母 → 保留 ','
+' '(32)→ 非字母 → 保留 ' '
+W(87) → 大写: (87-65+1)%26+65 = 88 → 'X'
+...
+
+结果: "Ifmmp, Xpsme!"
+</pre>
+<p><strong>取模运算关键：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+(c-'a'+1) % 26:  先归到0~25，+1偏移，取模防止'z'+1越界
+'z'(122): (122-97+1)%26+97 = 26%26+97 = 0+97 = 97 → 'a'  ✓ 循环回去
+</pre>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -581,7 +746,32 @@ first late system see school still great different year Place far take same
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>字符串替换函数，或按空格分割单词逐个比较替换。</p>
+            <strong>解题思路：</strong><p>按空格分割单词，逐个比较，相等就替换为B。</p>
+<p><strong>单词替换过程追踪：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+输入:
+  原文: "first late system see school still great different year Place far take same"
+  A: "life"
+  B: "group"
+
+按空格分割 → ["first","late","system","see","school","still",
+              "great","different","year","Place","far","take","same"]
+
+逐个比较：
+  "first" == "life"?  → No  → 保留 "first"
+  "late"  == "life"?  → No  → 保留 "late"
+  ...
+  没有匹配的词 → 原文不变
+
+输出: "first late system see school ..."
+</pre>
+<p><strong>C++ vs Python 单词分割：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+C++: stringstream ssin(s); while(ssin >> str) {...}
+     → 用流自动按空格分割
+Python: s.split() → 返回单词列表
+     → 一行搞定
+</pre>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -660,7 +850,27 @@ University
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>按空格分割单词（去掉末尾的'.'），遍历比较长度。</p>
+            <strong>解题思路：</strong><p>按空格分割单词，去掉末尾的'.'，遍历比较长度找最长的。</p>
+<p><strong>查找最长词过程追踪（输入 "I am a student of Peking University."）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+分割: ["I", "am", "a", "student", "of", "Peking", "University."]
+
+逐个处理（去掉末尾的'.'）：
+  "I"          → len=1   → 当前最长: "I"(1)
+  "am"         → len=2   → 当前最长: "am"(2)
+  "a"          → len=1   → 不更新
+  "student"    → len=7   → 当前最长: "student"(7)
+  "of"         → len=2   → 不更新
+  "Peking"     → len=6   → 不更新
+  "University."→ 去掉'.' → "University" → len=10 → 当前最长: "University"(10)
+
+输出: "University"
+</pre>
+<p><strong>C++ vs Python 找最长：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+C++: 逐个比较 str.size() > res.size()，更新res
+Python: max(words, key=len) 一行搞定
+</pre>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -732,7 +942,32 @@ helloX
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>找到str中ASCII值最大的字符的位置，把substr插在它后面。</p>
+            <strong>解题思路：</strong><p>找到str中ASCII值最大的字符位置p，把substr插在p后面。</p>
+<p><strong>字符串插入过程追踪（输入 str="hello", substr="X"）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+str = "hello"
+ASCII: h=104, e=101, l=108, l=108, o=111
+
+找最大ASCII值的位置：
+p=0: 'h'(104)
+p=1: 'e'(101) < 104 → 不更新
+p=2: 'l'(108) > 104 → p=2
+p=3: 'l'(108) = 108 → 不更新（取第一个）
+p=4: 'o'(111) > 108 → p=4
+
+p=4（'o'的位置）
+
+插入：str[:p+1] + substr + str[p+1:]
+     = "hello"[:5] + "X" + "hello"[5:]
+     = "hello" + "X" + ""
+     = "helloX"
+</pre>
+<p><strong>C++ vs Python 字符串切片：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+C++:   a.substr(0, p+1) + b + a.substr(p+1)
+Python: a[:p+1] + b + a[p+1:]
+两者等价，Python切片更直观
+</pre>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -809,7 +1044,30 @@ b
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>先统计每个字符出现次数，再从头遍历找第一个次数为1的。</p>
+            <strong>解题思路：</strong><p>先统计每个字符出现次数，再从头遍历找第一个出现次数为1的字符。</p>
+<p><strong>频率统计过程追踪（输入 "abaccdeff"）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+第一遍：统计每个字符出现次数
+  a: 出现2次 (位置0,2)
+  b: 出现1次 (位置1)
+  c: 出现2次 (位置3,4)
+  d: 出现1次 (位置5)
+  e: 出现1次 (位置6)
+  f: 出现2次 (位置7,8)
+
+第二遍：从头找第一个次数为1的
+  a → cnt['a']=2 → 跳过
+  b → cnt['b']=1 → 找到! 输出 'b'
+
+输出: b
+</pre>
+<p><strong>C++ vs Python 频率统计：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+C++:   int cnt[26]; cnt[str[i]-'a']++;
+       → 用数组下标映射'a'~'z'到0~25
+Python: from collections import Counter
+       cnt = Counter(s) → 返回字符→次数的字典
+</pre>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -892,7 +1150,29 @@ no
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>遍历a的每个位置，用strncmp比较是否与b匹配。匹配则输出yes。strncmp(a+i, b, len(b))==0表示b是a的子串。</p>
+            <strong>解题思路：</strong><p>遍历a的每个位置，检查从该位置开始是否与b完全匹配（子串查找）。</p>
+<p><strong>子串查找过程追踪（输入 a="abc", b="d"）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+a = "abc", b = "d"
+b的长度lb=1, a的长度la=3
+
+i=0: 比较 a[0..0]="a" 与 b="d" → 不匹配
+i=1: 比较 a[1..1]="b" 与 b="d" → 不匹配
+i=2: 比较 a[2..2]="c" 与 b="d" → 不匹配
+
+输出: "no"
+
+若 a="abcd", b="bc":
+i=0: "ab" vs "bc" → 不匹配
+i=1: "bc" vs "bc" → 匹配! 输出 "yes"
+</pre>
+<p><strong>C++ vs Python 子串查找：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+C++:   strncmp(a+i, b, lb)==0 → 逐字符比较
+       或 strstr(a, b) != NULL → 内置子串查找
+Python: b in a → 直接用in运算符，返回True/False
+       a.find(b) → 返回第一次出现的位置，-1表示不存在
+</pre>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -964,7 +1244,31 @@ ababab
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>枚举周期p（p是len的因子），检查s[0:p]重复len/p次是否等于原串。</p>
+            <strong>解题思路：</strong><p>枚举重复次数n（n是len的因子），检查s[0:len/n]重复n次是否等于原串。</p>
+<p><strong>周期查找过程追踪：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+输入: "ababab" (len=6)
+
+枚举n从大到小（找最大重复次数）：
+n=6: 周期=6/6=1, s[0:1]="a", "a"*6="aaaaaa" ≠ "ababab" → 不是
+n=3: 周期=6/3=2, s[0:2]="ab", "ab"*3="ababab" = "ababab" → 是!
+输出: 3
+
+输入: "aaaa" (len=4)
+n=4: 周期=4/4=1, s[0:1]="a", "a"*4="aaaa" = "aaaa" → 是!
+输出: 4
+
+输入: "abcd" (len=4)
+n=4: "a"*4="aaaa" ≠ "abcd"
+n=2: "ab"*2="abab" ≠ "abcd"
+n=1: "abcd"*1="abcd" = "abcd" → 是!
+输出: 1
+</pre>
+<p><strong>Python vs C++ 字符串重复：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+Python: "ab" * 3 = "ababab"  （*运算符直接重复）
+C++:    用循环拼接: for(i=0;i<n;i++) r += s;
+</pre>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -1064,7 +1368,36 @@ abcd123dABdefghjsdef76ki,ab,ef
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>从左往右找S1最后出现的位置end1，从右往左找S2最后出现的位置start2。如果end1<start2，跨距=start2-end1-len(S1)。</p>
+            <strong>解题思路：</strong><p>从左往右找S1最后出现的位置，从右往左找S2最后出现的位置，计算间距。</p>
+<p><strong>跨距计算过程追踪（输入 S="abcd123dABdefghjsdef76ki", S1="ab", S2="ef"）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+S  = "abcd123dABdefghjsdef76ki"
+S1 = "ab"
+S2 = "ef"
+
+从左往右找S1="ab"最后出现的位置：
+  位置0: "ab" → 匹配! → l=0
+  （继续往后找，看有没有更靠后的"ab"）
+  没有更靠后的 → l=0
+
+从右往左找S2="ef"最后出现的位置：
+  从右端开始找"ef"
+  位置17: "ef" → 匹配! → r=17
+
+计算跨距：
+  S1结束位置 = l + len(S1) = 0 + 2 = 2
+  S2开始位置 = r = 17
+  跨距 = r - (l + len(S1)) = 17 - 2 = 15
+
+  验证: S[2:17] = "cd123dABdefghjsd" → S1在左，S2在右，不重叠 ✓
+</pre>
+<p><strong>C++ vs Python 子串查找：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+C++:   手动从左/右逐字符匹配strncmp
+Python: s.find(s1)  → 从左找第一次出现的位置
+       s.rfind(s2) → 从右找最后一次出现的位置
+       比C++简洁得多
+</pre>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">

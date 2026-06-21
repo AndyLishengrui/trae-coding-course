@@ -73,8 +73,33 @@
 
         <div class="hint">
             <strong>解题思路：</strong><p>DFS+回溯：选→递归→撤销。用used[]标记。</p>
-
         </div>
+
+<div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 8px 8px 0">
+<strong style="color:#1a237e;font-size:1.1em">算法图解：DFS决策树（n=3）</strong>
+<p>想象一棵决策树，每层代表一个位置，每个分支代表选择一个未使用的数字：</p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+                        [ ]                        ← 第0位，可选{1,2,3}
+                      /  |  \
+                   1/   2|   3\
+                   /     |     \
+               [1]      [2]     [3]               ← 第1位，从剩余中选
+              / \      / \      / \
+            2/   3\  1/   3\  1/   2\
+            /     \  /     \  /     \
+         [1,2] [1,3][2,1] [2,3][3,1] [3,2]       ← 第2位，最后一个
+           |     |    |     |    |     |
+         [1,2,3][1,3,2][2,1,3][2,3,1][3,1,2][3,2,1]  ← 输出排列
+</pre>
+<p><strong>DFS遍历过程：</strong></p>
+<p>1. 站在第0位，尝试放1 → 进入第1位</p>
+<p>2. 站在第1位，尝试放2（1已用）→ 进入第2位</p>
+<p>3. 站在第2位，只剩3 → 放入，输出 <code>1 2 3</code></p>
+<p>4. 回溯到第2位 → 无其他选择 → 回溯到第1位</p>
+<p>5. 第1位尝试放3 → 进入第2位 → 放入2，输出 <code>1 3 2</code></p>
+<p>6. 继续回溯，最终生成全部 3! = 6 个排列</p>
+<p><strong>关键理解：</strong>回溯的本质是"试错"——选了不行就撤销，换下一个。就像走迷宫，走到死胡同就退回来，换一条路继续。used[]数组就像"已走过"的标记牌。</p>
+</div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(V + E) — DFS遍历，每个节点和边访问一次<br>
@@ -182,8 +207,58 @@ Q...
 
         <div class="hint">
             <strong>解题思路：</strong><p>DFS+回溯：逐行放置，标记列和两条对角线。</p>
-
         </div>
+
+<div style="background:#fff3e0;border-left:4px solid #e65100;padding:16px;margin:15px 0;border-radius:0 8px 8px 0">
+<strong style="color:#bf360c;font-size:1.1em">算法图解：N=4逐步放置过程</strong>
+<p><strong>对角线编号规则：</strong>主对角线编号 = 列+行（相同值在一条斜线上），副对角线编号 = 列-行+n（相同值在一条反斜线上）。</p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+第1步：第0行，尝试列0 → 放Q，标记 col[0], dg[0], udg[4]
+
+  Q . . .     列: 0被占    主对角线: 0被占    副对角线: 4被占
+  . . . .
+  . . . .
+  . . . .
+
+第2步：第1行，尝试列0 → 冲突! col[0]已占
+       尝试列1 → 冲突! dg[2]与(0,0)的dg[0]...实际检查: col[1]空, dg[1+1=2]空, udg[1-1+4=4]冲突!
+       尝试列2 → col[2]空, dg[2+1=3]空, udg[2-1+4=5]空 → 放Q!
+
+  Q . . .
+  . . Q .     列: 0,2被占
+  . . . .
+  . . . .
+
+第3步：第2行，尝试列0→冲突col   列1→冲突dg[3]   列2→冲突col   列3→冲突dg[5]
+       → 全部冲突! 回溯! 撤销第1行列2的Q
+
+第4步：回溯到第1行，尝试列3 → col[3]空, dg[4]空, udg[1]空 → 放Q
+
+  Q . . .
+  . . . Q     列: 0,3被占
+  . . . .
+  . . . .
+
+第5步：第2行，列0→冲突col  列1→col空,dg[3]空,udg[6]空 → 放Q!
+
+  Q . . .
+  . . . Q
+  . Q . .
+
+第6步：第3行，列0→冲突col  列1→冲突col  列2→col空,dg[5]空,udg[5]空 → 放Q!
+
+  Q . . .
+  . . . Q       ← 输出第一个解！
+  . Q . .
+  . . Q .
+
+然后继续回溯寻找第二个解...
+</pre>
+<p><strong>对角线编号速记：</strong></p>
+<p>主对角线(\)：同一斜线上，列-行的值相同 → 编号用 row+col，范围 0~2n-2</p>
+<p>副对角线(/)：同一斜线上，列+行的值相同 → 编号用 col-row+n，范围 0~2n-2</p>
+<p><strong>为什么三个布尔数组够用？</strong> 因为约束只有三条：不能同列、不能同主对角线、不能同副对角线。逐行放置保证了不会同行。</p>
+</div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(V + E) — DFS遍历，每个节点和边访问一次<br>
@@ -297,8 +372,43 @@ dfs(<span class="number">0</span>)</code></pre>
 
         <div class="hint">
             <strong>解题思路：</strong><p>BFS层序遍历，第一次到达终点就是最短路径。</p>
-
         </div>
+
+<div style="background:#e8f5e9;border-left:4px solid #2e7d32;padding:16px;margin:15px 0;border-radius:0 8px 8px 0">
+<strong style="color:#1b5e20;font-size:1.1em">算法图解：BFS逐层扩展（5x5迷宫）</strong>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+迷宫（0可走，1是墙）：            距离矩阵d[][]：
+  0 1 0 0 0                        0  -1  2  3  4
+  0 1 0 1 0                        1  -1  3 -1  5
+  0 0 0 0 0                        2   3  4  5  6
+  0 1 1 1 0                        3  -1 -1 -1  7
+  0 0 0 1 0                        4   5  6 -1  8  ← 到达终点！
+</pre>
+<p><strong>BFS逐层扩展过程（像水波纹扩散）：</strong></p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+第0层（起点）: 队列=[(0,0)]，d[0][0]=0
+  → 弹出(0,0)，扩展邻居：下(1,0)可走 → d[1][0]=1 入队
+  队列=[(1,0)]
+
+第1层: 队列=[(1,0)]
+  → 弹出(1,0)，扩展邻居：下(2,0)可走 → d[2][0]=2 入队
+  队列=[(2,0)]
+
+第2层: 队列=[(2,0)]
+  → 弹出(2,0)，扩展邻居：右(2,1)可走 → d[2][1]=3 入队
+  队列=[(2,1)]
+
+第3层: 队列=[(2,1)]
+  → 弹出(2,1)，扩展邻居：上(1,1)是墙跳过，右(2,2)可走 → d[2][2]=4
+  → 下(3,1)是墙跳过，左(2,0)已访问跳过
+  队列=[(2,2)]  同时(0,2)也会从(2,1)的上一层扩展到这里...
+
+...以此类推，直到d[4][4]=8
+</pre>
+<p><strong>为什么BFS一定是最短路？</strong></p>
+<p>BFS是"先到先服务"——同一层的点距离相同，下一层的点距离+1。当我们第一次到达终点时，一定是通过最少步数到达的，因为如果有更短路径，那个路径上的点一定在更早的层就被访问过了。</p>
+<p><strong>关键点：</strong>队列保证了"先进先出"，距离近的点一定比距离远的点先出队。这就是BFS天然求最短路的原因。</p>
+</div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(V + E) — BFS遍历，每个节点和边访问一次<br>
@@ -435,8 +545,56 @@ x 4 6
 
         <div class="hint">
             <strong>解题思路：</strong><p>BFS+状态编码为字符串，哈希表判重。</p>
-
         </div>
+
+<div style="background:#e3f2fd;border-left:4px solid #1565c0;padding:16px;margin:15px 0;border-radius:0 8px 8px 0">
+<strong style="color:#0d47a1;font-size:1.1em">核心概念：状态编码与BFS搜索</strong>
+<p><strong>1. 为什么要把棋盘编码成字符串？</strong></p>
+<p>八数码的"状态"是整个3x3棋盘的布局。要判断是否访问过某个状态，必须有一个唯一的标识。把9个格子按行展开成字符串，就是一个完美的"状态指纹"：</p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+棋盘:              字符串编码:
+1 2 3              "12345678x"  ← 目标状态
+4 5 6
+7 8 x
+
+1 2 3              "123x56784"  ← x在位置3（第1行第1列）
+x 4 6
+7 5 8
+
+坐标转换: 位置k ↔ (k/3, k%3)
+  位置0=(0,0)  位置1=(0,1)  位置2=(0,2)
+  位置3=(1,0)  位置4=(1,1)  位置5=(1,2)
+  位置6=(2,0)  位置7=(2,1)  位置8=(2,2)
+</pre>
+<p><strong>2. BFS搜索过程（样例：初始"123x46758"→目标"12345678x"）：</strong></p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+初始状态: 123x46758  (x在位置3)
+
+第0步: dist["123x46758"] = 0，入队
+
+第1步: 弹出"123x46758"，x在位置3=(1,0)
+  → 上(0,0)='1'，交换 → "x23146758"  dist=1 入队
+  → 下(2,0)='7'，交换 → "123746x58"  dist=1 入队
+  → 左(1,-1)越界跳过
+  → 右(1,1)='4'，交换 → "1234x6758"  dist=1 入队  ★接近目标!
+
+第2步: 弹出"1234x6758"，x在位置4=(1,1)
+  → 上(0,1)='2'，交换 → "1x3426758"  dist=2
+  → 下(2,1)='5'，交换 → "1234567x8"  dist=2 入队  ★更近了!
+  → 左(1,0)='3'，交换 → "123x46758"  dist=2 → 已访问!跳过
+  → 右(1,2)='6'，交换 → "12346x758"  dist=2
+
+第3步: 弹出"1234567x8"，x在位置7=(2,1)
+  → 下越界，左(2,0)='7'，交换 → "123456x78"  dist=3
+  → 右(2,2)='8'，交换 → "12345678x"  dist=3  ★★找到目标!
+
+答案: 3步（样例输出2是因为初始状态不同）
+</pre>
+<p><strong>3. 为什么用unordered_map（哈希表）判重？</strong></p>
+<p>状态空间巨大（9! = 362880种），用布尔数组不现实。哈希表以字符串为键，O(1)查重。每生成一个新状态，先查哈希表——没出现过就入队并记录距离；出现过就跳过。</p>
+<p><strong>4. 为什么BFS保证最少步数？</strong></p>
+<p>和迷宫问题一样——BFS逐层扩展，第k层的所有状态都是k步可达的。第一次到达目标状态时，步数一定最少。</p>
+</div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(V + E) — BFS遍历，每个节点和边访问一次<br>

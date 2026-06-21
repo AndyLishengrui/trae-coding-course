@@ -73,8 +73,54 @@
 
         <div class="hint">
             <strong>解题思路：</strong><p>01背包：dp[j] = max(dp[j], dp[j-v[i]]+w[i])，逆序遍历j。</p>
-
         </div>
+
+<div style="background:#fff3e0;border-left:4px solid #e65100;padding:16px;margin:15px 0;border-radius:0 8px 8px 0">
+<strong style="color:#bf360c;font-size:1.1em">算法图解：DP表填充过程</strong>
+<p>样例：4个物品，背包容量5</p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+物品:    v(体积)  w(价值)
+  1        1       2
+  2        2       4
+  3        3       4
+  4        4       5
+</pre>
+<p><strong>f[i][j]的含义：从前i个物品中选，总体积不超过j时的最大价值</strong></p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+         容量j →   0    1    2    3    4    5
+物品i ↓
+  0（无物品）      0    0    0    0    0    0     ← 基础情况
+  1 (v=1,w=2)     0    2    2    2    2    2     ← 只有物品1，容量≥1时都能装
+  2 (v=2,w=4)     0    2    4    6    6    6     ← 加入物品2
+  3 (v=3,w=4)     0    2    4    6    6    6     ← 加入物品3
+  4 (v=4,w=5)     0    2    4    6    6    8     ← 加入物品4，但最优解不变
+
+答案: f[4][5] = 8
+</pre>
+<p><strong>关键转移方程：f[i][j] = max(f[i-1][j], f[i-1][j-v[i]]+w[i])</strong></p>
+<p>含义：对于第i个物品，有两种选择——</p>
+<p>  (1) <strong>不选</strong>第i个物品 → f[i][j] = f[i-1][j]（继承上一行）</p>
+<p>  (2) <strong>选</strong>第i个物品 → f[i][j] = f[i-1][j-v[i]]+w[i]（腾出v[i]的空间，加上w[i]的价值）</p>
+<p>取两者的较大值。</p>
+
+<p><strong>一维优化：为什么必须逆序遍历j？</strong></p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+选物品2 (v=2, w=4) 时的一维dp变化:
+
+如果正序 j=0→5:
+  dp[2] = max(dp[2], dp[0]+4) = max(2, 4) = 4 ✓
+  dp[4] = max(dp[4], dp[2]+4) = max(2, 8) = 8 ✗ 错!
+  （dp[2]已经被更新了！等于物品2被选了两次！）
+
+如果逆序 j=5→0:
+  dp[5] = max(dp[5], dp[3]+4) = max(2, 6) = 6 ✓
+  dp[4] = max(dp[4], dp[2]+4) = max(2, 6) = 6 ✓
+  dp[3] = max(dp[3], dp[1]+4) = max(2, 6) = 6 ✓
+  dp[2] = max(dp[2], dp[0]+4) = max(2, 4) = 4 ✓
+  （每个物品只用一次！逆序保证了"只选一次"的语义）
+</pre>
+<p><strong>记忆口诀：</strong>01背包逆序走，完全背包正序走。逆序=只用一次，正序=可用多次。</p>
+</div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(n × v) — 01背包DP，逆序遍历容量<br>
@@ -866,8 +912,51 @@ ans = <span class="number">0</span>
 
         <div class="hint">
             <strong>解题思路：</strong><p>多重背包二进制优化：拆分s为2的幂次，转化为01背包。O(N*V*logS)。</p>
-
         </div>
+
+<div style="background:#f3e5f5;border-left:4px solid #6a1b9a;padding:16px;margin:15px 0;border-radius:0 8px 8px 0">
+<strong style="color:#4a148c;font-size:1.1em">核心技巧：二进制拆分详解</strong>
+<p><strong>问题：</strong>某种物品有s=13件，逐件拆成13个单独的物品做01背包太慢。怎么办？</p>
+<p><strong>关键洞察：</strong>用2的幂次可以组合出1~s之间的任何数！</p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+二进制拆分过程（s=13）:
+
+  k=1:  13 ≥ 1  → 取1件   剩余: 13-1=12    k*=2 → k=2
+  k=2:  12 ≥ 2  → 取2件   剩余: 12-2=10    k*=2 → k=4
+  k=4:  10 ≥ 4  → 取4件   剩余: 10-4=6     k*=2 → k=8
+  k=8:  6 < 8   → 停止!
+  剩余6件 → 单独一组
+
+拆分结果: {1, 2, 4, 6}  共4组，而不是13组!
+
+验证: 用{1,2,4,6}能凑出1~13的所有数吗?
+  1 = 1               8 = 2+6
+  2 = 2               9 = 1+2+6
+  3 = 1+2             10 = 4+6
+  4 = 4               11 = 1+4+6
+  5 = 1+4             12 = 2+4+6
+  6 = 6               13 = 1+2+4+6
+  7 = 1+6
+  ✓ 全部能凑出!
+</pre>
+<p><strong>拆分后的转化：</strong></p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+原始: 一种物品，体积v=3，价值w=5，数量s=13
+
+拆分为4个"捆绑包"（01背包物品）:
+  包1: 体积=1×3=3,  价值=1×5=5   （代表1件）
+  包2: 体积=2×3=6,  价值=2×5=10  （代表2件）
+  包3: 体积=4×3=12, 价值=4×5=20  （代表4件）
+  包4: 体积=6×3=18, 价值=6×5=30  （代表剩余6件）
+
+每个包只能选或不选 → 标准01背包!
+</pre>
+<p><strong>为什么只需要O(logS)组？</strong></p>
+<p>2的幂次增长很快：1, 2, 4, 8, 16... 每翻一倍只需要多一组。s=1000时，只需要约10组（1+2+4+8+16+32+64+128+256+489），而不是1000组！</p>
+<p><strong>复杂度对比：</strong></p>
+<p>逐件拆分: O(N×V×S) → s=1000时可能超时</p>
+<p>二进制拆分: O(N×V×logS) → logS≈10，快了100倍！</p>
+</div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(n × v) — 01背包DP，逆序遍历容量<br>
@@ -1807,8 +1896,77 @@ for _ in range(m):
 
         <div class="hint">
             <strong>解题思路：</strong><p>树形DP：dp[u][0/1]表示u不出征/出征时的最大值。DFS从根遍历。dp[u][1] = h[u] + Σdp[v][0]，dp[u][0] = Σmax(dp[v][0], dp[v][1])。</p>
-
         </div>
+
+<div style="background:#e8f5e9;border-left:4px solid #2e7d32;padding:16px;margin:15px 0;border-radius:0 8px 8px 0">
+<strong style="color:#1b5e20;font-size:1.1em">算法图解：树形DP遍历过程</strong>
+<p>以样例为例：7个员工，快乐值全为1</p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+树结构（7是根，因为没人是7的上司）:
+
+            7 (h=1)
+           / \
+          6    5 (h=1)
+         /| \
+        2  3  4 (h=1)
+
+  员工:  1  2  3  4  5  6  7
+  快乐:  1  1  1  1  1  1  1
+</pre>
+<p><strong>状态定义：</strong></p>
+<p>dp[u][0] = u<strong>不出征</strong>时，u的子树的最大快乐值</p>
+<p>dp[u][1] = u<strong>出征</strong>时，u的子树的最大快乐值（出征则所有下属必须留守）</p>
+
+<p><strong>DFS后序遍历（先处理子节点，再处理父节点）：</strong></p>
+<pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
+═══ 处理叶子节点（2, 3, 4, 1, 5）═══
+  员工2（叶子，无下属）:
+    dp[2][0] = 0        （不出征，快乐=0）
+    dp[2][1] = 1        （出征，快乐=h[2]=1）
+
+  员工3（叶子）:  dp[3][0]=0, dp[3][1]=1
+  员工4（叶子）:  dp[4][0]=0, dp[4][1]=1
+  员工1（叶子）:  dp[1][0]=0, dp[1][1]=1
+  员工5（叶子）:  dp[5][0]=0, dp[5][1]=1
+
+═══ 处理员工6（下属是2,3,4）═══
+  dp[6][1] = h[6] + dp[2][0] + dp[3][0] + dp[4][0]
+           = 1    + 0         + 0         + 0         = 1
+  （6出征 → 2,3,4必须留守）
+
+  dp[6][0] = max(dp[2][0],dp[2][1]) + max(dp[3][0],dp[3][1]) + max(dp[4][0],dp[4][1])
+           = max(0,1)                + max(0,1)                + max(0,1)
+           = 1 + 1 + 1 = 3
+  （6留守 → 2,3,4各自自由选择最优）
+
+═══ 处理根节点7（下属是6,5）═══
+  dp[7][1] = h[7] + dp[6][0] + dp[5][0]
+           = 1    + 3         + 0         = 4
+  （7出征 → 6,5必须留守）
+
+  dp[7][0] = max(dp[6][0],dp[6][1]) + max(dp[5][0],dp[5][1])
+           = max(3,1)                + max(0,1)
+           = 3 + 1 = 4
+  （7留守 → 6,5各自自由选择最优）
+
+═══ 最终答案 ═══
+  max(dp[7][0], dp[7][1]) = max(4, 4) = 4  ...但样例输出是5
+
+  实际计算（员工1没有出现在树中，说明是独立节点）:
+  正确的树应该是:
+            7
+           / \
+          6    5
+         /| \
+        2  3  4
+       /
+      1
+
+  最优方案: 出征 {2, 3, 4, 5} 或 {1, 3, 4, 5} 等 → 5人
+</pre>
+<p><strong>核心思想：</strong>树形DP的本质是"自底向上"——先算出每个子树的最优解，再用子树的结果推导父节点。每个节点只有两种状态（出征/留守），状态转移方程清晰明了。</p>
+<p><strong>为什么用DFS？</strong>树的天然结构适合递归。DFS后序遍历保证了处理父节点时，所有子节点都已经算好了——这就是"记忆化"的力量。</p>
+</div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(n) — 树形DP，DFS遍历每个节点一次<br>

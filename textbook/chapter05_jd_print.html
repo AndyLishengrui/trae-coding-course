@@ -71,7 +71,23 @@ S
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>先读操作类型（S求和/M求平均），再判断行号。上方区域即i<j的元素。</p>
+            <strong>解题思路：</strong><p>上方区域 = 主对角线上方(i&lt;j) 且 反对角线上方(i+j&lt;11) 的交集。这是一个三角形区域。</p>
+<p><strong>12x12矩阵区域示意（标记×为上方区域）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+     j=0  1  2  3  4  5  6  7  8  9 10 11
+i=0   .  ×  ×  ×  ×  ×  .  .  .  .  .  .
+i=1   .  .  ×  ×  ×  .  .  .  .  .  .  .
+i=2   .  .  .  ×  .  .  .  .  .  .  .  .
+i=3   .  .  .  .  .  .  .  .  .  .  .  .
+...
+
+条件：i<j（主对角线上方）AND i+j<11（反对角线上方）
+i=0,j=1: 0<1✓ 0+1=1<11✓ → 属于上方
+i=0,j=6: 0<6✓ 0+6=6<11✓ → 属于上方
+i=1,j=4: 1<4✓ 1+4=5<11✓ → 属于上方
+i=1,j=5: 1<5✓ 1+5=6<11✓ → 属于上方
+</pre>
+<p><strong>关键：</strong> 两个条件缺一不可：i&lt;j 确保在主对角线上方，i+j&lt;11 确保在反对角线上方。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -91,27 +107,33 @@ S
     cin >> op;
     <span class="keyword">double</span> sum = <span class="number">0</span>;
     <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="comment">// 遍历12x12矩阵的每个元素</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">12</span>; i++) {
         <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
             cin >> x;
-            <span class="keyword">if</span> (i<j&&i+j<<span class="number">11</span>) {
+            <span class="comment">// 上方区域：i&lt;j(主对角线上) 且 i+j&lt;11(反对角线上)</span>
+            <span class="keyword">if</span> (i < j && i + j < <span class="number">11</span>) {
                 sum += x;
                 cnt++;
             }
         }
     }
+    <span class="comment">// S=求和，M=求平均(cnt为元素个数)</span>
     <span class="keyword">if</span> (op == 'S') printf(<span class="string">&quot;%.1f\n&quot;</span>, sum);
     <span class="keyword">else</span> printf(<span class="string">&quot;%.1f\n&quot;</span>, sum / cnt);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">t=<span class="keyword">input</span>().strip();s=c=<span class="number">0</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
- <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
-  x=<span class="keyword">float</span>(<span class="keyword">input</span>())
-  <span class="keyword">if</span> i<j <span class="keyword">and</span> i+j<<span class="number">11</span>:s+=x;c+=<span class="number">1</span>
-<span class="keyword">print</span>(f<span class="string">'{s if t==&quot;S&quot; else s/c:.1f}'</span>)</code></pre>
+            <pre><code class="language-python">t = <span class="keyword">input</span>().strip()  <span class="comment"># 操作类型 S 或 M</span>
+s = c = <span class="number">0</span>              <span class="comment"># s=累加和, c=元素计数</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):       <span class="comment"># 行号 0~11</span>
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):   <span class="comment"># 列号 0~11</span>
+        x = <span class="keyword">float</span>(<span class="keyword">input</span>())
+        <span class="comment"># 上方区域：主对角线上(i&lt;j) 且 反对角线上(i+j&lt;11)</span>
+        <span class="keyword">if</span> i < j <span class="keyword">and</span> i + j < <span class="number">11</span>:
+            s += x; c += <span class="number">1</span>
+<span class="keyword">print</span>(f<span class="string">'{s if t=="S" else s/c:.1f}'</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -153,7 +175,25 @@ S
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>下方区域即i>j的元素。</p>
+            <strong>解题思路：</strong><p>下方区域 = 主对角线下方(i&gt;j) 且 反对角线下方(i+j&gt;11) 的交集。</p>
+<p><strong>12x12矩阵区域示意（标记×为下方区域）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+     j=0  1  2  3  4  5  6  7  8  9 10 11
+i=8   .  .  .  .  .  .  .  .  .  ×  ×  ×
+i=9   .  .  .  .  .  .  .  .  ×  ×  ×  ×
+i=10  .  .  .  .  .  .  .  ×  ×  ×  ×  ×
+i=11  .  .  .  .  .  .  ×  ×  ×  ×  ×  ×
+
+条件：i>j（主对角线下方）AND i+j>11（反对角线下方）
+与JD055"上方"正好相反。
+</pre>
+<p><strong>对比四域：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+上方: i&lt;j  且 i+j&lt;11   → 右上角小三角
+下方: i&gt;j  且 i+j&gt;11   → 左下角小三角
+左方: j&lt;i  且 i+j&lt;11   → 左上角小三角
+右方: j&gt;i  且 i+j&gt;11   → 右下角小三角
+</pre>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -177,7 +217,8 @@ S
         <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
             cin >> x;
-            <span class="keyword">if</span> (i>j&&i+j><span class="number">11</span>) {
+            <span class="comment">// 下方区域：i&gt;j(主对角线下) 且 i+j&gt;11(反对角线下)</span>
+            <span class="keyword">if</span> (i > j && i + j > <span class="number">11</span>) {
                 sum += x;
                 cnt++;
             }
@@ -196,6 +237,7 @@ idx = <span class="number">1</span>
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
     <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
         x = <span class="keyword">float</span>(data[idx]); idx += <span class="number">1</span>
+        <span class="comment"># 下方区域：i&gt;j(主对角线下) 且 i+j&gt;11(反对角线下)</span>
         <span class="keyword">if</span> i > j <span class="keyword">and</span> i + j > <span class="number">11</span>: s += x
 <span class="keyword">print</span>(f<span class="string">&quot;{s:.1f}&quot;</span> <span class="keyword">if</span> t == <span class="string">'S'</span> <span class="keyword">else</span> f<span class="string">&quot;{s/30:.1f}&quot;</span>)</code></pre>
             </details>
@@ -239,7 +281,20 @@ S
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>左方区域即满足j < i && i + j < 11的元素（主对角线下且反对角线上）。</p>
+            <strong>解题思路：</strong><p>左方区域 = 主对角线下方(j&lt;i) 且 反对角线上方(i+j&lt;11) 的交集。</p>
+<p><strong>12x12矩阵区域示意（标记×为左方区域）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+     j=0  1  2  3  4  5  6  7  8  9 10 11
+i=1   ×  .  .  .  .  .  .  .  .  .  .  .
+i=2   ×  ×  .  .  .  .  .  .  .  .  .  .
+i=3   ×  ×  ×  .  .  .  .  .  .  .  .  .
+i=4   ×  ×  ×  .  .  .  .  .  .  .  .  .
+i=5   ×  ×  .  .  .  .  .  .  .  .  .  .
+
+条件：j&lt;i（主对角线下方）AND i+j&lt;11（反对角线上方）
+左方 = 左上角的三角形区域
+</pre>
+<p><strong>记忆口诀：</strong> 上/下看i和j的大小关系，左/右看i+j与11的关系。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -263,7 +318,8 @@ S
         <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
             cin >> x;
-            <span class="keyword">if</span> (j<i&&i+j<<span class="number">11</span>) {
+            <span class="comment">// 左方区域：j&lt;i(主对角线下) 且 i+j&lt;11(反对角线上)</span>
+            <span class="keyword">if</span> (j < i && i + j < <span class="number">11</span>) {
                 sum += x;
                 cnt++;
             }
@@ -274,12 +330,15 @@ S
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">t=<span class="keyword">input</span>().strip();s=c=<span class="number">0</span>
+            <pre><code class="language-python">t = <span class="keyword">input</span>().strip()
+s = c = <span class="number">0</span>
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
- <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
-  x=<span class="keyword">float</span>(<span class="keyword">input</span>())
-  <span class="keyword">if</span> j<i <span class="keyword">and</span> i+j<<span class="number">11</span>:s+=x;c+=<span class="number">1</span>
-<span class="keyword">print</span>(f<span class="string">'{s if t==&quot;S&quot; else s/c:.1f}'</span>)</code></pre>
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+        x = <span class="keyword">float</span>(<span class="keyword">input</span>())
+        <span class="comment"># 左方区域：j&lt;i(主对角线下) 且 i+j&lt;11(反对角线上)</span>
+        <span class="keyword">if</span> j < i <span class="keyword">and</span> i + j < <span class="number">11</span>:
+            s += x; c += <span class="number">1</span>
+<span class="keyword">print</span>(f<span class="string">'{s if t=="S" else s/c:.1f}'</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -321,7 +380,28 @@ S
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>右方区域即满足j > i && i + j > 11的元素（主对角线上且反对角线下）。</p>
+            <strong>解题思路：</strong><p>右方区域 = 主对角线上方(j&gt;i) 且 反对角线下方(i+j&gt;11) 的交集。</p>
+<p><strong>12x12矩阵区域示意（标记×为右方区域）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+     j=0  1  2  3  4  5  6  7  8  9 10 11
+i=6   .  .  .  .  .  .  .  .  .  .  .  ×
+i=7   .  .  .  .  .  .  .  .  .  .  ×  ×
+i=8   .  .  .  .  .  .  .  .  .  ×  ×  ×
+i=9   .  .  .  .  .  .  .  .  ×  ×  ×  ×
+i=10  .  .  .  .  .  .  .  ×  ×  ×  ×  ×
+i=11  .  .  .  .  .  .  ×  ×  ×  ×  ×  ×
+
+条件：j&gt;i（主对角线上方）AND i+j&gt;11（反对角线下方）
+右方 = 右下角的三角形区域
+</pre>
+<p><strong>四域条件总结：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+方向    i与j关系    i+j与11关系
+上方    i &lt; j      i + j &lt; 11
+下方    i &gt; j      i + j &gt; 11
+左方    j &lt; i      i + j &lt; 11
+右方    j &gt; i      i + j &gt; 11
+</pre>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -407,7 +487,21 @@ S
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>右上部分即j>i的元素。S求和，M求平均。</p>
+            <strong>解题思路：</strong><p>右上部分 = 主对角线上方(j&gt;i)的所有元素。这是一个直角三角形区域。</p>
+<p><strong>12x12矩阵区域示意（标记×为右上部分）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+     j=0  1  2  3  4  5  6  7  8  9 10 11
+i=0   .  ×  ×  ×  ×  ×  ×  ×  ×  ×  ×  ×
+i=1   .  .  ×  ×  ×  ×  ×  ×  ×  ×  ×  ×
+i=2   .  .  .  ×  ×  ×  ×  ×  ×  ×  ×  ×
+...
+i=10  .  .  .  .  .  .  .  .  .  .  .  ×
+i=11  .  .  .  .  .  .  .  .  .  .  .  .
+
+条件：j&gt;i（严格在主对角线上方，不含对角线）
+元素个数 = C(12,2) = 12*11/2 = 66
+</pre>
+<p><strong>对比：</strong> 只用一个条件j&gt;i，比四域问题（JD055-058需要两个条件）更简单。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -493,7 +587,22 @@ S
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>左上部分即i+j<11的元素。</p>
+            <strong>解题思路：</strong><p>左上部分 = 反对角线上方(i+j&lt;11)的所有元素。反对角线从左下到右上。</p>
+<p><strong>12x12矩阵区域示意（标记×为左上部分）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+     j=0  1  2  3  4  5  6  7  8  9 10 11
+i=0   ×  ×  ×  ×  ×  ×  ×  ×  ×  ×  ×  .
+i=1   ×  ×  ×  ×  ×  ×  ×  ×  ×  ×  .  .
+i=2   ×  ×  ×  ×  ×  ×  ×  ×  ×  .  .  .
+...
+i=10  ×  .  .  .  .  .  .  .  .  .  .  .
+i=11  .  .  .  .  .  .  .  .  .  .  .  .
+
+条件：i+j&lt;11（反对角线上方，不含反对角线）
+反对角线: i+j=11 的位置（从(0,11)到(11,0)）
+元素个数 = 1+2+3+...+11 = 66
+</pre>
+<p><strong>对比：</strong> i+j&lt;11 是反对角线的判断，与主对角线(i==j)是两种不同的对角线。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -573,7 +682,21 @@ S
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>右下部分即满足i + j > 11的元素（反对角线以下）。</p>
+            <strong>解题思路：</strong><p>右下部分 = 反对角线下方(i+j&gt;11)的所有元素。与JD060"左上"正好互补。</p>
+<p><strong>12x12矩阵区域示意（标记×为右下部分）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+     j=0  1  2  3  4  5  6  7  8  9 10 11
+i=0   .  .  .  .  .  .  .  .  .  .  .  .
+i=1   .  .  .  .  .  .  .  .  .  .  .  ×
+i=2   .  .  .  .  .  .  .  .  .  .  ×  ×
+...
+i=10  .  ×  ×  ×  ×  ×  ×  ×  ×  ×  ×  ×
+i=11  ×  ×  ×  ×  ×  ×  ×  ×  ×  ×  ×  ×
+
+条件：i+j&gt;11（反对角线下方，不含反对角线）
+元素个数 = 1+2+3+...+11 = 66
+</pre>
+<p><strong>对称关系：</strong> 左上(i+j&lt;11) + 右下(i+j&gt;11) + 反对角线(i+j=11) = 全部144个元素。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -657,7 +780,22 @@ S
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>左下部分即满足j < i的元素（主对角线以下）。</p>
+            <strong>解题思路：</strong><p>左下部分 = 主对角线下方(j&lt;i)的所有元素。与JD059"右上"正好互补。</p>
+<p><strong>12x12矩阵区域示意（标记×为左下部分）：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+     j=0  1  2  3  4  5  6  7  8  9 10 11
+i=0   .  .  .  .  .  .  .  .  .  .  .  .
+i=1   ×  .  .  .  .  .  .  .  .  .  .  .
+i=2   ×  ×  .  .  .  .  .  .  .  .  .  .
+i=3   ×  ×  ×  .  .  .  .  .  .  .  .  .
+...
+i=10  ×  ×  ×  ×  ×  ×  ×  ×  ×  ×  .  .
+i=11  ×  ×  ×  ×  ×  ×  ×  ×  ×  ×  ×  .
+
+条件：j&lt;i（严格在主对角线下方，不含对角线）
+元素个数 = C(12,2) = 12*11/2 = 66
+</pre>
+<p><strong>对称关系：</strong> 右上(j&gt;i) + 左下(j&lt;i) + 主对角线(i=j) = 全部144个元素。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -736,7 +874,23 @@ S
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>每个位置的值 = min(i+1, j+1, N-i, N-j)，即到四条边的最小距离。</p>
+            <strong>解题思路：</strong><p>每个位置的值 = 到四条边的最小距离 + 1。用 <code>min(i, j, N-1-i, N-1-j) + 1</code> 计算。</p>
+<p><strong>5阶方圆矩阵示意：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+  1  1  1  1  1     ← 到上边距离=0, min(0,j,4-i,4-j)+1=1
+  1  2  2  2  1     ← 到上/下/左/右的最小距离=1
+  1  2  3  2  1     ← 中心距离最远=3
+  1  2  2  2  1
+  1  1  1  1  1
+
+距离计算示意（位置i=2,j=3）：
+  到上边(i):     i = 2
+  到左边(j):     j = 3
+  到下边(N-1-i): 5-1-2 = 2
+  到右边(N-1-j): 5-1-3 = 1
+  min(2,3,2,1) + 1 = 2
+</pre>
+<p><strong>关键公式：</strong> <code>v = min(i, j, n-1-i, n-1-j) + 1</code>。每个元素只看它到四条边的最小距离。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -756,12 +910,13 @@ S
     <span class="keyword">while</span> (scanf(<span class="string">&quot;%d&quot;</span>, &n) == <span class="number">1</span> && n) {
         <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++) {
             <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < n; j++) {
+                <span class="comment">// 到四条边的最小距离</span>
                 <span class="keyword">int</span> v = min(min(i, j), min(n - <span class="number">1</span> - i, n - <span class="number">1</span> - j));
-                printf(<span class="string">&quot;%3d&quot;</span>, v + <span class="number">1</span>);
+                printf(<span class="string">&quot;%3d&quot;</span>, v + <span class="number">1</span>);  <span class="comment">// %3d: 占3字符宽</span>
             }
             printf(<span class="string">&quot;\n&quot;</span>);
         }
-        printf(<span class="string">&quot;\n&quot;</span>);
+        printf(<span class="string">&quot;\n&quot;</span>);  <span class="comment">// 每个矩阵后空一行</span>
     }
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -774,6 +929,7 @@ data = sys.stdin.read().split()
     <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n):
         row = []
         <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(n):
+            <span class="comment"># min(i, j, n-1-i, n-1-j) 到四条边的最小距离</span>
             v = <span class="keyword">min</span>(i, j, n-<span class="number">1</span>-i, n-<span class="number">1</span>-j) + <span class="number">1</span>
             row.append(f<span class="string">'{v:3d}'</span>)
         <span class="keyword">print</span>(<span class="string">''</span>.join(row))
@@ -816,7 +972,19 @@ data = sys.stdin.read().split()
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>M[i][j] = |i-j|+1。对角线为1，离对角线越远数越大。</p>
+            <strong>解题思路：</strong><p>M[i][j] = |i-j| + 1。主对角线上值为1，离对角线越远值越大。</p>
+<p><strong>5阶镜像方阵示意：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+  1  2  3  4  5     |i-j|: |0-0|=0, |0-1|=1, ...
+  2  1  2  3  4     主对角线(i=j): |i-j|=0 → 值=1
+  3  2  1  2  3     离对角线越远: |i-j|越大 → 值越大
+  4  3  2  1  2
+  5  4  3  2  1
+
+计算示例（i=1, j=3）：
+  |1-3| + 1 = 2 + 1 = 3
+</pre>
+<p><strong>关键：</strong> <code>abs(i-j)</code> 是绝对值函数，C++用 <code>&lt;cstdlib&gt;</code> 的abs，Python内置abs。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -888,7 +1056,16 @@ data = sys.stdin.read().split()
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>M[i][j] = 2^(i+j)。用位运算 1<<(i+j) 或 pow函数。</p>
+            <strong>解题思路：</strong><p>M[i][j] = 2^(i+j)。用位运算 <code>1&lt;&lt;(i+j)</code> 最快，等价于 2 的幂次。</p>
+<p><strong>3阶倍增方阵示意：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+  1  2  4       2^(0+0)=1   2^(0+1)=2   2^(0+2)=4
+  2  4  8       2^(1+0)=2   2^(1+1)=4   2^(1+2)=8
+  4  8  16      2^(2+0)=4   2^(2+1)=8   2^(2+2)=16
+
+规律：每个数 = 左边的数 × 2 = 上边的数 × 2
+</pre>
+<p><strong>位运算技巧：</strong> <code>1&lt;&lt;k</code> = 2^k，比调用pow()快得多。例如 <code>1&lt;&lt;3 = 8</code>。</p>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -967,7 +1144,35 @@ data = sys.stdin.read().split()
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>模拟蛇形遍历：右→下→左→上循环。维护四个边界。</p>
+            <strong>解题思路：</strong><p>用方向数组模拟蛇形（螺旋）遍历：右→下→左→上，循环填入1到n*m。</p>
+<p><strong>3x3蛇形矩阵遍历过程：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+方向数组:      右    下    左    上
+dx = [ 0,  1,  0, -1]  ← 行变化量
+dy = [ 1,  0, -1,  0]  ← 列变化量
+
+步骤1-3:  右→  1  2  3
+                      ↓
+步骤4-5:       .  .  4
+                  ↓
+步骤6-7:  ←7  6  5
+          ↓
+步骤8-9:  8  9  →
+
+最终:     1  2  3
+          8  9  4
+          7  6  5
+</pre>
+<p><strong>方向数组详解：</strong></p>
+<pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
+d=0(右): x不变, y+1 → 向右移动
+d=1(下): x+1, y不变 → 向下移动
+d=2(左): x不变, y-1 → 向左移动
+d=3(上): x-1, y不变 → 向上移动
+
+换向条件：下一步越界 或 已访问
+d = (d+1) % 4 → 右→下→左→上→右...循环
+</pre>
 
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -986,15 +1191,20 @@ data = sys.stdin.read().split()
     <span class="keyword">int</span> n, m;
     scanf(<span class="string">&quot;%d%d&quot;</span>, &n, &m);
 
+    <span class="comment">// 方向数组：右(0,+1) 下(+1,0) 左(0,-1) 上(-1,0)</span>
     <span class="keyword">int</span> dx[] = {<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>}, dy[] = {<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>};
+
+    <span class="comment">// x,y=当前位置, d=方向(0=右), k=填入的数字</span>
     <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>, y = <span class="number">0</span>, d = <span class="number">0</span>, k = <span class="number">1</span>; k <= n * m; k++) {
-        res[x][y] = k;
+        res[x][y] = k;  <span class="comment">// 填入当前位置</span>
+        <span class="comment">// 计算下一步坐标</span>
         <span class="keyword">int</span> a = x + dx[d], b = y + dy[d];
+        <span class="comment">// 如果越界或已访问，转向（右→下→左→上）</span>
         <span class="keyword">if</span> (a < <span class="number">0</span> || a >= n || b < <span class="number">0</span> || b >= m || res[a][b]) {
-            d = (d + <span class="number">1</span>) % <span class="number">4</span>;
+            d = (d + <span class="number">1</span>) % <span class="number">4</span>;  <span class="comment">// 换方向</span>
             a = x + dx[d], b = y + dy[d];
         }
-        x = a, y = b;
+        x = a, y = b;  <span class="comment">// 移动到下一步</span>
     }
 
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++) {
@@ -1008,13 +1218,15 @@ data = sys.stdin.read().split()
             <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
 n, m = <span class="keyword">int</span>(data[<span class="number">0</span>]), <span class="keyword">int</span>(data[<span class="number">1</span>])
-a = [[<span class="number">0</span>] * m <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n)]
+a = [[<span class="number">0</span>] * m <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n)]  <span class="comment"># n行m列的矩阵</span>
+<span class="comment"># 方向数组：右(0,+1) 下(+1,0) 左(0,-1) 上(-1,0)</span>
 dx = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>]
 dy = [<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>]
-d = x = y = <span class="number">0</span>
+d = x = y = <span class="number">0</span>  <span class="comment"># d=方向, (x,y)=当前位置</span>
 <span class="keyword">for</span> v <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n * m + <span class="number">1</span>):
-    a[x][y] = v
-    nx, ny = x + dx[d], y + dy[d]
+    a[x][y] = v  <span class="comment"># 填入当前位置</span>
+    nx, ny = x + dx[d], y + dy[d]  <span class="comment"># 下一步坐标</span>
+    <span class="comment"># 越界或已访问则转向</span>
     <span class="keyword">if</span> nx < <span class="number">0</span> <span class="keyword">or</span> nx >= n <span class="keyword">or</span> ny < <span class="number">0</span> <span class="keyword">or</span> ny >= m <span class="keyword">or</span> a[nx][ny]:
         d = (d + <span class="number">1</span>) % <span class="number">4</span>
         nx, ny = x + dx[d], y + dy[d]
