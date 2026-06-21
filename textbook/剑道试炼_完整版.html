@@ -1324,9 +1324,9 @@ Sao Multiplos
     <span class="comment">// 24 % 6 == 0 → true（24÷6=4 余0）</span>
     <span class="comment">// 短路求值：第一个条件已为真，不再检查第二个</span>
     <span class="keyword">if</span> (a % b == <span class="number">0</span> || b % a == <span class="number">0</span>)
-        cout &lt;&lt; <span class="string">&quot;Yes&quot;</span> &lt;&lt; endl;
+        cout &lt;&lt; <span class="string">&quot;Sao Multiplos&quot;</span> &lt;&lt; endl;
     <span class="keyword">else</span>
-        cout &lt;&lt; <span class="string">&quot;No&quot;</span> &lt;&lt; endl;
+        cout &lt;&lt; <span class="string">&quot;Nao sao Multiplos&quot;</span> &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -1490,7 +1490,7 @@ O JOGO DUROU 8 HORA(S)
     <span class="keyword">else</span> <span class="keyword">if</span> (a == b)  res = <span class="number">24</span>;          <span class="comment">// 16 == 2? 否</span>
     <span class="keyword">else</span>               res = <span class="number">24</span> - a + b;  <span class="comment">// 24 - 16 + 2 = 10</span>
 
-    printf(<span class="string">&quot;%d\n"</span>, res);
+    printf(<span class="string">&quot;O JOGO DUROU %d HORA(S)\n"</span>, res);
     <span class="keyword">return</span> <span class="number">0</span>;
 }
 
@@ -3287,7 +3287,6 @@ in_cnt = <span class="keyword">sum</span>(<span class="number">1</span> <span cl
 <span class="comment">#     x = int(input())</span>
 <span class="comment">#     if 10 <= x <= 20:</span>
 <span class="comment">#         in_cnt += 1</span></code></pre>
-<span class="keyword">print</span>(f<span class="string">&quot;{n - in_cnt} out&quot;</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -5508,7 +5507,7 @@ idx = <span class="number">1</span>
         x = <span class="keyword">float</span>(data[idx]); idx += <span class="number">1</span>
         <span class="comment"># 下方区域：i&gt;j(主对角线下) 且 i+j&gt;11(反对角线下)</span>
         <span class="keyword">if</span> i &gt; j <span class="keyword">and</span> i + j &gt; <span class="number">11</span>: s += x
-<span class="keyword">print</span>(f<span class="string">&quot;{s:.1f}&quot;</span> <span class="keyword">if</span> t == <span class="string">'S'</span> <span class="keyword">else</span> f<span class="string">&quot;{s/30:.1f}&quot;</span>)</code></pre>
+<span class="keyword">print</span>(f<span class="string">&quot;{s:.1f}&quot;</span> <span class="keyword">if</span> t == <span class="string">'S'</span> <span class="keyword">else</span> f<span class="string">&quot;{s/15:.1f}&quot;</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -5714,7 +5713,7 @@ idx = <span class="number">1</span>
     <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
         x = <span class="keyword">float</span>(data[idx]); idx += <span class="number">1</span>
         <span class="keyword">if</span> j &gt; i <span class="keyword">and</span> i + j &gt; <span class="number">11</span>: s += x
-<span class="keyword">print</span>(f<span class="string">&quot;{s:.1f}&quot;</span> <span class="keyword">if</span> t == <span class="string">'S'</span> <span class="keyword">else</span> f<span class="string">&quot;{s/30:.1f}&quot;</span>)</code></pre>
+<span class="keyword">print</span>(f<span class="string">&quot;{s:.1f}&quot;</span> <span class="keyword">if</span> t == <span class="string">'S'</span> <span class="keyword">else</span> f<span class="string">&quot;{s/15:.1f}&quot;</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -5816,7 +5815,7 @@ idx = <span class="number">1</span>
         idx += <span class="number">1</span>
         <span class="keyword">if</span> j &gt; i:
             s += x
-<span class="keyword">print</span>(f<span class="string">&quot;{s if t == 'S' else s / cnt:.1f}&quot;</span>)</code></pre>
+<span class="keyword">print</span>(f<span class="string">&quot;{s if t == 'S' else s / 66:.1f}&quot;</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -7438,7 +7437,7 @@ Python: max(words, key=len) 一行搞定
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">words=<span class="keyword">input</span>().split()
+            <pre><code class="language-python">words=<span class="keyword">input</span>().rstrip('.').split()
 <span class="keyword">print</span>(<span class="keyword">max</span>(words,key=<span class="keyword">len</span>))</code></pre>
             </details>
         </div>
@@ -7873,15 +7872,15 @@ C++:    用循环拼接: for(i=0;i<n;i++) r += s;
     j = <span class="number">0</span>
     <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n):
         <span class="keyword">while</span> j &gt; <span class="number">0</span> <span class="keyword">and</span> s[i] != s[j]:
-            j = ne[j - <span class="number">1</span>]  <span class="comment">// 回退</span>
+            j = ne[j - <span class="number">1</span>]  <span class="comment"># 回退</span>
         <span class="keyword">if</span> s[i] == s[j]:
             j += <span class="number">1</span>
         ne[i] = j
-    length = n - ne[n - <span class="number">1</span>]  <span class="comment">// 最小周期长度</span>
+    length = n - ne[n - <span class="number">1</span>]  <span class="comment"># 最小周期长度</span>
     <span class="keyword">if</span> n % length == <span class="number">0</span>:
-        <span class="keyword">print</span>(n // length)  <span class="comment">// 重复次数</span>
+        <span class="keyword">print</span>(n // length)  <span class="comment"># 重复次数</span>
     <span class="keyword">else</span>:
-        <span class="keyword">print</span>(<span class="number">1</span>)  <span class="comment">// 不能整除，整个字符串就是最小单元</span></code></pre>
+        <span class="keyword">print</span>(<span class="number">1</span>)  <span class="comment"># 不能整除，整个字符串就是最小单元</span></code></pre>
             </details>
         </div>
     </div>
@@ -11787,7 +11786,7 @@ _, ans = merge_sort_count(arr)
       <span class="keyword">int</span> left = <span class="number">0</span>, right = n-<span class="number">1</span>;<span class="comment">//初始化left和right</span>
       <span class="keyword">while</span> (left &lt; right) <span class="comment">//模板2</span>
       {
-          <span class="keyword">int</span> mid = left + right&gt;&gt;<span class="number">1</span>;
+          <span class="keyword">int</span> mid = (left + right)&gt;&gt;<span class="number">1</span>;
           <span class="keyword">if</span> (nums[mid]&gt;=k) right = mid;<span class="comment">//模板1,</span>
           <span class="keyword">else</span> left = mid +<span class="number">1</span>;
       }
@@ -11801,7 +11800,7 @@ _, ans = merge_sort_count(arr)
           left=<span class="number">0</span>, right=n-<span class="number">1</span>;<span class="comment">//重新初始化left,right,进行第二次二分搜索</span>
           <span class="keyword">while</span> (left &lt; right)
           {
-              <span class="keyword">int</span> mid = left+right+<span class="number">1</span>&gt;&gt;<span class="number">1</span>;
+              <span class="keyword">int</span> mid = (left+right+<span class="number">1</span>)&gt;&gt;<span class="number">1</span>;
               <span class="keyword">if</span> (nums[mid]&lt;=k) left=mid;
               <span class="keyword">else</span> right = mid -<span class="number">1</span>;              
           }
@@ -13497,7 +13496,7 @@ s[x1-1][y1-1] = A
         <span class="keyword">int</span> x1, x2, y1, y2;
         scanf(<span class="string">&quot;%d%d%d%d&quot;</span>, &x1, &y1, &x2, &y2);
         <span class="comment">//求子矩阵和，直接从s中读取数值</span>
-        printf(<span class="string">&quot;%d\n&quot;</span>, s[x2][y2] - s[x2][y1 - <span class="number">1</span>] - s[x1 - <span class="number">1</span>][y2] + s[x1 - <span class="number">1</span>][y1 - <span class="number">1</span>]); 
+        printf(<span class="string">&quot;%d\n&quot;</span>, s[x2][y2] - s[x1 - <span class="number">1</span>][y2] - s[x2][y1 - <span class="number">1</span>] + s[x1 - <span class="number">1</span>][y1 - <span class="number">1</span>]);
     }
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -15774,7 +15773,7 @@ i=4, x=4: 栈顶 1 < 4，弹出！
     cin&gt;&gt; n;
     <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt; n; i++){
         <span class="keyword">int</span> x; cin&gt;&gt;x;
-        <span class="keyword">while</span> (tt && stk[tt]&gt;= x)<span class="comment">//tt不为空，并且单调栈顶元素比x大或等于</span>
+        <span class="keyword">while</span> (tt && stk[tt]&gt; x)<span class="comment">//tt不为空，并且单调栈顶元素比x大</span>
           tt--;<span class="comment">//出栈，这些数永远不会用到</span>
           <span class="keyword">if</span> (tt) cout&lt;&lt;stk[tt]&lt;&lt;' '; <span class="comment">//栈顶就是比x大的元素，直接输出</span>
            <span class="keyword">else</span> cout&lt;&lt;-<span class="number">1</span>&lt;&lt;' '; <span class="comment">//x左边没有任何数比它大</span>
@@ -15790,7 +15789,7 @@ a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span cla
 stk = []
 res = []
 <span class="keyword">for</span> x <span class="keyword">in</span> a:
-    <span class="keyword">while</span> stk <span class="keyword">and</span> stk[-<span class="number">1</span>] &gt;= x:
+    <span class="keyword">while</span> stk <span class="keyword">and</span> stk[-<span class="number">1</span>] &gt; x:
         stk.pop()
     res.append(<span class="keyword">str</span>(stk[-<span class="number">1</span>]) <span class="keyword">if</span> stk <span class="keyword">else</span> <span class="string">'-1'</span>)
     stk.append(x)
@@ -16781,7 +16780,7 @@ C 4
   <span class="keyword">while</span> (m--) {
     <span class="keyword">char</span> op[<span class="number">4</span>];
     scanf(<span class="string">&quot;%s&quot;</span>, op);
-    <span class="keyword">if</span> (op[<span class="number">0</span>] == 'C') {
+    <span class="keyword">if</span> (op[<span class="number">0</span>] == 'M') {
       <span class="keyword">int</span> a, b;
       scanf(<span class="string">&quot;%d%d&quot;</span>, &a, &b);
       <span class="keyword">int</span> ra = find(a), rb = find(b);
@@ -16814,7 +16813,7 @@ idx = <span class="number">2</span>
 out = []
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(m):
     op = data[idx]
-    <span class="keyword">if</span> op == <span class="string">'C'</span>:
+    <span class="keyword">if</span> op == <span class="string">'M'</span>:
         a, b = <span class="keyword">int</span>(data[idx+<span class="number">1</span>]), <span class="keyword">int</span>(data[idx+<span class="number">2</span>])
         idx += <span class="number">3</span>
         ra, rb = find(a), find(b)
@@ -17601,7 +17600,7 @@ x 4 6
         </div>
         <div class="sample">
             <div class="sample-label">输出样例</div>
-2
+3
         </div>
 
         <div class="hint">
@@ -17649,7 +17648,7 @@ x 4 6
   → 下越界，左(2,0)='7'，交换 → "123456x78"  dist=3
   → 右(2,2)='8'，交换 → "12345678x"  dist=3  ★★找到目标!
 
-答案: 3步（样例输出2是因为初始状态不同）
+答案: 3步
 </pre>
 <p><strong>3. 为什么用unordered_map（哈希表）判重？</strong></p>
 <p>状态空间巨大（9! = 362880种），用布尔数组不现实。哈希表以字符串为键，O(1)查重。每生成一个新状态，先查哈希表——没出现过就入队并记录距离；出现过就跳过。</p>
@@ -18104,7 +18103,7 @@ dfs(<span class="number">1</span>, -<span class="number">1</span>)
       }
     }
   }
-  <span class="keyword">return</span> d[n];
+  <span class="keyword">return</span> <span class="number">0</span>;
 }
 
 <span class="keyword">int</span> main()
@@ -18119,7 +18118,9 @@ dfs(<span class="number">1</span>, -<span class="number">1</span>)
       add(a,b);
     }
 
-    cout&lt;&lt;bfs()&lt;&lt;endl;
+    bfs();
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+      printf(<span class="string">&quot;%d &quot;</span>, d[i]);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -18139,7 +18140,7 @@ q = deque([<span class="number">1</span>])
         <span class="keyword">if</span> dist[v] == -<span class="number">1</span>:
             dist[v] = dist[u] + <span class="number">1</span>
             q.append(v)
-<span class="keyword">print</span>(dist[n])</code></pre>
+<span class="keyword">print</span>(<span class="string">' '</span>.join(<span class="keyword">str</span>(dist[i]) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n+<span class="number">1</span>)))</code></pre>
             </details>
         </div>
     </div></div><div style="page-break-before:always;margin-top:40px" id="ch14"><h1>第14章 千里奔袭</h1>
@@ -19989,46 +19990,36 @@ f = [<span class="number">0</span>] * (V + <span class="number">1</span>)
 原始三角形:          从底向上DP后的dp数组:
 
       7                    30
-     3 8                 23  22
-    8 1 0              20  14  13
-   2 7 4 4           12  13  10  9
+     3 8                 23  21
+    8 1 0              20  13  10
+   2 7 4 4            7  12  10  10
   4 5 2 6 5         4   5   2   6   5
 </pre>
 <p><strong>从底向上填充过程：</strong></p>
 <pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
 初始化: dp[5] = [4, 5, 2, 6, 5]  ← 最底层直接复制
 
-═══ 第4层: i=4 ═══
-  dp[4][1] = max(dp[5][1], dp[5][2]) + a[4][1]
-           = max(5, 2) + 2 = 5 + 2 = 7 → 修正: max(dp[5][1],dp[5][2])=5, +2=7
-  dp[4][2] = max(dp[5][2], dp[5][3]) + a[4][2]
-           = max(2, 6) + 7 = 6 + 7 = 13
-  dp[4][3] = max(dp[5][3], dp[5][4]) + a[4][3]
-           = max(6, 5) + 4 = 6 + 4 = 10
-  dp[4][4] = max(dp[5][4], dp[5][5]) + a[4][4]
-           = max(5, ?) + 4... 实际: dp[4]=max(5,6)+4=10
-  dp[4] = [12, 13, 10, 9]
+═══ 第4层 (i=3, 0-indexed): 处理 [2, 7, 4, 4] ═══
+  dp[3][0] = max(dp[4][0], dp[4][1]) + a[3][0] = max(4, 5) + 2 = 7
+  dp[3][1] = max(dp[4][1], dp[4][2]) + a[3][1] = max(5, 2) + 7 = 12
+  dp[3][2] = max(dp[4][2], dp[4][3]) + a[3][2] = max(2, 6) + 4 = 10
+  dp[3][3] = max(dp[4][3], dp[4][4]) + a[3][3] = max(6, 5) + 4 = 10
+  dp[3] = [7, 12, 10, 10]
 
-═══ 第3层: i=3 ═══
-  dp[3][1] = max(dp[4][1], dp[4][2]) + a[3][1]
-           = max(12, 13) + 8 = 13 + 8 = 21... 实际: max(7,13)+8=20
-  dp[3][2] = max(dp[4][2], dp[4][3]) + a[3][2]
-           = max(13, 10) + 1 = 13 + 1 = 14
-  dp[3][3] = max(dp[4][3], dp[4][4]) + a[3][3]
-           = max(10, 9) + 0 = 10 + 0 = 10... 实际: max(10,10)+0=13
-  dp[3] = [20, 14, 13]
+═══ 第3层 (i=2, 0-indexed): 处理 [8, 1, 0] ═══
+  dp[2][0] = max(dp[3][0], dp[3][1]) + a[2][0] = max(7, 12) + 8 = 20
+  dp[2][1] = max(dp[3][1], dp[3][2]) + a[2][1] = max(12, 10) + 1 = 13
+  dp[2][2] = max(dp[3][2], dp[3][3]) + a[2][2] = max(10, 10) + 0 = 10
+  dp[2] = [20, 13, 10]
 
-═══ 第2层: i=2 ═══
-  dp[2][1] = max(dp[3][1], dp[3][2]) + a[2][1]
-           = max(20, 14) + 3 = 20 + 3 = 23
-  dp[2][2] = max(dp[3][2], dp[3][3]) + a[2][2]
-           = max(14, 13) + 8 = 14 + 8 = 22
-  dp[2] = [23, 22]
+═══ 第2层 (i=1, 0-indexed): 处理 [3, 8] ═══
+  dp[1][0] = max(dp[2][0], dp[2][1]) + a[1][0] = max(20, 13) + 3 = 23
+  dp[1][1] = max(dp[2][1], dp[2][2]) + a[1][1] = max(13, 10) + 8 = 21
+  dp[1] = [23, 21]
 
-═══ 第1层: i=1 ═══
-  dp[1][1] = max(dp[2][1], dp[2][2]) + a[1][1]
-           = max(23, 22) + 7 = 23 + 7 = 30
-  dp[1] = [30]
+═══ 第1层 (i=0, 0-indexed): 处理 [7] ═══
+  dp[0][0] = max(dp[1][0], dp[1][1]) + a[0][0] = max(23, 21) + 7 = 30
+  dp[0] = [30]
 
 答案: dp[1][1] = 30
 最优路径: 7→3→8→7→5 = 30
@@ -20069,7 +20060,7 @@ f = [<span class="number">0</span>] * (V + <span class="number">1</span>)
 
    <span class="comment">//用dp从底层往上计算每个f[i][j]的值</span>
    <span class="keyword">for</span> (<span class="keyword">int</span> i = n-<span class="number">1</span>; i; i--)
-     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n; j++)
+     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++)
         f[i][j] = max(f[i+<span class="number">1</span>][j]+w[i][j], f[i+<span class="number">1</span>][j+<span class="number">1</span>] + w[i][j]);
 
   cout&lt;&lt;f[<span class="number">1</span>][<span class="number">1</span>]&lt;&lt;endl;
@@ -22112,6 +22103,7 @@ for _ in range(m):
             <div class="sample-label">输入样例</div>
 7
 1 1 1 1 1 1 1
+1 7
 2 6
 3 6
 4 6

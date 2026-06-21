@@ -929,7 +929,7 @@ Python: max(words, key=len) 一行搞定
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">words=<span class="keyword">input</span>().split()
+            <pre><code class="language-python">words=<span class="keyword">input</span>().rstrip('.').split()
 <span class="keyword">print</span>(<span class="keyword">max</span>(words,key=<span class="keyword">len</span>))</code></pre>
             </details>
         </div>
@@ -1364,15 +1364,15 @@ C++:    用循环拼接: for(i=0;i<n;i++) r += s;
     j = <span class="number">0</span>
     <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n):
         <span class="keyword">while</span> j &gt; <span class="number">0</span> <span class="keyword">and</span> s[i] != s[j]:
-            j = ne[j - <span class="number">1</span>]  <span class="comment">// 回退</span>
+            j = ne[j - <span class="number">1</span>]  <span class="comment"># 回退</span>
         <span class="keyword">if</span> s[i] == s[j]:
             j += <span class="number">1</span>
         ne[i] = j
-    length = n - ne[n - <span class="number">1</span>]  <span class="comment">// 最小周期长度</span>
+    length = n - ne[n - <span class="number">1</span>]  <span class="comment"># 最小周期长度</span>
     <span class="keyword">if</span> n % length == <span class="number">0</span>:
-        <span class="keyword">print</span>(n // length)  <span class="comment">// 重复次数</span>
+        <span class="keyword">print</span>(n // length)  <span class="comment"># 重复次数</span>
     <span class="keyword">else</span>:
-        <span class="keyword">print</span>(<span class="number">1</span>)  <span class="comment">// 不能整除，整个字符串就是最小单元</span></code></pre>
+        <span class="keyword">print</span>(<span class="number">1</span>)  <span class="comment"># 不能整除，整个字符串就是最小单元</span></code></pre>
             </details>
         </div>
     </div>

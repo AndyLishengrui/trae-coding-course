@@ -540,7 +540,7 @@ x 4 6
         </div>
         <div class="sample">
             <div class="sample-label">输出样例</div>
-2
+3
         </div>
 
         <div class="hint">
@@ -588,7 +588,7 @@ x 4 6
   → 下越界，左(2,0)='7'，交换 → "123456x78"  dist=3
   → 右(2,2)='8'，交换 → "12345678x"  dist=3  ★★找到目标!
 
-答案: 3步（样例输出2是因为初始状态不同）
+答案: 3步
 </pre>
 <p><strong>3. 为什么用unordered_map（哈希表）判重？</strong></p>
 <p>状态空间巨大（9! = 362880种），用布尔数组不现实。哈希表以字符串为键，O(1)查重。每生成一个新状态，先查哈希表——没出现过就入队并记录距离；出现过就跳过。</p>
@@ -1043,7 +1043,7 @@ dfs(<span class="number">1</span>, -<span class="number">1</span>)
       }
     }
   }
-  <span class="keyword">return</span> d[n];
+  <span class="keyword">return</span> <span class="number">0</span>;
 }
 
 <span class="keyword">int</span> main()
@@ -1058,7 +1058,9 @@ dfs(<span class="number">1</span>, -<span class="number">1</span>)
       add(a,b);
     }
 
-    cout&lt;&lt;bfs()&lt;&lt;endl;
+    bfs();
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+      printf(<span class="string">&quot;%d &quot;</span>, d[i]);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -1078,7 +1080,7 @@ q = deque([<span class="number">1</span>])
         <span class="keyword">if</span> dist[v] == -<span class="number">1</span>:
             dist[v] = dist[u] + <span class="number">1</span>
             q.append(v)
-<span class="keyword">print</span>(dist[n])</code></pre>
+<span class="keyword">print</span>(<span class="string">' '</span>.join(<span class="keyword">str</span>(dist[i]) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n+<span class="number">1</span>)))</code></pre>
             </details>
         </div>
     </div>
