@@ -173,21 +173,21 @@ idx = <span class="number">0</span>
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(m):
     op = data[idx_ptr]
     idx_ptr += <span class="number">1</span>
-    <span class="keyword">if</span> op == <span class="string">&#x27;H&#x27;</span>:
+    <span class="keyword">if</span> op == <span class="string">'H'</span>:
         x = <span class="keyword">int</span>(data[idx_ptr])
         idx_ptr += <span class="number">1</span>
         e[idx] = x
         ne[idx] = head
         head = idx
         idx += <span class="number">1</span>
-    <span class="keyword">elif</span> op == <span class="string">&#x27;D&#x27;</span>:
+    <span class="keyword">elif</span> op == <span class="string">'D'</span>:
         k = <span class="keyword">int</span>(data[idx_ptr])
         idx_ptr += <span class="number">1</span>
         <span class="keyword">if</span> k == <span class="number">0</span>:
             head = ne[head]
         <span class="keyword">else</span>:
             ne[k - <span class="number">1</span>] = ne[ne[k - <span class="number">1</span>]]
-    <span class="keyword">elif</span> op == <span class="string">&#x27;I&#x27;</span>:
+    <span class="keyword">elif</span> op == <span class="string">'I'</span>:
         k = <span class="keyword">int</span>(data[idx_ptr])
         x = <span class="keyword">int</span>(data[idx_ptr + <span class="number">1</span>])
         idx_ptr += <span class="number">2</span>
@@ -202,7 +202,7 @@ i = head
 <span class="keyword">while</span> i != -<span class="number">1</span>:
     out.append(<span class="keyword">str</span>(e[i]))
     i = ne[i]
-<span class="keyword">print</span>(<span class="string">&#x27; &#x27;</span>.join(out))</code></pre>
+<span class="keyword">print</span>(<span class="string">' '</span>.join(out))</code></pre>
             </details>
         </div>
     </div>
@@ -299,14 +299,14 @@ stk = []
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(m):
     parts = <span class="keyword">input</span>().split()
     op = parts[<span class="number">0</span>]
-    <span class="keyword">if</span> op == <span class="string">&#x27;push&#x27;</span>:
+    <span class="keyword">if</span> op == <span class="string">'push'</span>:
         stk.append(<span class="keyword">int</span>(parts[<span class="number">1</span>]))
-    <span class="keyword">elif</span> op == <span class="string">&#x27;pop&#x27;</span>:
+    <span class="keyword">elif</span> op == <span class="string">'pop'</span>:
         stk.pop()
-    <span class="keyword">elif</span> op == <span class="string">&#x27;query&#x27;</span>:
+    <span class="keyword">elif</span> op == <span class="string">'query'</span>:
         <span class="keyword">print</span>(stk[-<span class="number">1</span>])
     <span class="keyword">else</span>:
-        <span class="keyword">print</span>(<span class="string">&#x27;YES&#x27;</span> <span class="keyword">if</span> <span class="keyword">not</span> stk <span class="keyword">else</span> <span class="string">&#x27;NO&#x27;</span>)</code></pre>
+        <span class="keyword">print</span>(<span class="string">'YES'</span> <span class="keyword">if</span> <span class="keyword">not</span> stk <span class="keyword">else</span> <span class="string">'NO'</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -405,14 +405,14 @@ q = deque()
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(m):
     parts = <span class="keyword">input</span>().split()
     op = parts[<span class="number">0</span>]
-    <span class="keyword">if</span> op == <span class="string">&#x27;push&#x27;</span>:
+    <span class="keyword">if</span> op == <span class="string">'push'</span>:
         q.append(<span class="keyword">int</span>(parts[<span class="number">1</span>]))
-    <span class="keyword">elif</span> op == <span class="string">&#x27;pop&#x27;</span>:
+    <span class="keyword">elif</span> op == <span class="string">'pop'</span>:
         q.popleft()
-    <span class="keyword">elif</span> op == <span class="string">&#x27;query&#x27;</span>:
+    <span class="keyword">elif</span> op == <span class="string">'query'</span>:
         <span class="keyword">print</span>(q[<span class="number">0</span>])
     <span class="keyword">else</span>:
-        <span class="keyword">print</span>(<span class="string">&#x27;YES&#x27;</span> <span class="keyword">if</span> <span class="keyword">not</span> q <span class="keyword">else</span> <span class="string">&#x27;NO&#x27;</span>)</code></pre>
+        <span class="keyword">print</span>(<span class="string">'YES'</span> <span class="keyword">if</span> <span class="keyword">not</span> q <span class="keyword">else</span> <span class="string">'NO'</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -534,17 +534,17 @@ stack<<span class="keyword">char</span>> op; <span class="comment">//存储操�
 s = <span class="keyword">input</span>().strip()
 num = []
 op = []
-pri = {<span class="string">&#x27;+&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;-&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;*&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;/&#x27;</span>: <span class="number">2</span>}
+pri = {<span class="string">'+'</span>: <span class="number">1</span>, <span class="string">'-'</span>: <span class="number">1</span>, <span class="string">'*'</span>: <span class="number">2</span>, <span class="string">'/'</span>: <span class="number">2</span>}
 
 <span class="keyword">def</span> eval_op():
     b = num.pop()
     a = num.pop()
     c = op.pop()
-    <span class="keyword">if</span> c == <span class="string">&#x27;+&#x27;</span>:
+    <span class="keyword">if</span> c == <span class="string">'+'</span>:
         num.append(a + b)
-    <span class="keyword">elif</span> c == <span class="string">&#x27;-&#x27;</span>:
+    <span class="keyword">elif</span> c == <span class="string">'-'</span>:
         num.append(a - b)
-    <span class="keyword">elif</span> c == <span class="string">&#x27;*&#x27;</span>:
+    <span class="keyword">elif</span> c == <span class="string">'*'</span>:
         num.append(a * b)
     <span class="keyword">else</span>:
         num.append(<span class="keyword">int</span>(a / b))
@@ -552,7 +552,7 @@ pri = {<span class="string">&#x27;+&#x27;</span>: <span class="number">1</span>,
 i = <span class="number">0</span>
 <span class="keyword">while</span> i < <span class="keyword">len</span>(s):
     c = s[i]
-    <span class="keyword">if</span> c == <span class="string">&#x27; &#x27;</span>:
+    <span class="keyword">if</span> c == <span class="string">' '</span>:
         i += <span class="number">1</span>
         <span class="keyword">continue</span>
     <span class="keyword">if</span> c.isdigit():
@@ -562,14 +562,14 @@ i = <span class="number">0</span>
         num.append(<span class="keyword">int</span>(s[i:j]))
         i = j
         <span class="keyword">continue</span>
-    <span class="keyword">if</span> c == <span class="string">&#x27;(&#x27;</span>:
+    <span class="keyword">if</span> c == <span class="string">'('</span>:
         op.append(c)
-    <span class="keyword">elif</span> c == <span class="string">&#x27;)&#x27;</span>:
-        <span class="keyword">while</span> op[-<span class="number">1</span>] != <span class="string">&#x27;(&#x27;</span>:
+    <span class="keyword">elif</span> c == <span class="string">')'</span>:
+        <span class="keyword">while</span> op[-<span class="number">1</span>] != <span class="string">'('</span>:
             eval_op()
         op.pop()
     <span class="keyword">else</span>:
-        <span class="keyword">while</span> op <span class="keyword">and</span> op[-<span class="number">1</span>] != <span class="string">&#x27;(&#x27;</span> <span class="keyword">and</span> pri.get(op[-<span class="number">1</span>], <span class="number">0</span>) >= pri.get(c, <span class="number">0</span>):
+        <span class="keyword">while</span> op <span class="keyword">and</span> op[-<span class="number">1</span>] != <span class="string">'('</span> <span class="keyword">and</span> pri.get(op[-<span class="number">1</span>], <span class="number">0</span>) >= pri.get(c, <span class="number">0</span>):
             eval_op()
         op.append(c)
     i += <span class="number">1</span>
@@ -654,9 +654,9 @@ res = []
 <span class="keyword">for</span> x <span class="keyword">in</span> a:
     <span class="keyword">while</span> stk <span class="keyword">and</span> stk[-<span class="number">1</span>] >= x:
         stk.pop()
-    res.append(<span class="keyword">str</span>(stk[-<span class="number">1</span>]) <span class="keyword">if</span> stk <span class="keyword">else</span> <span class="string">&#x27;-1&#x27;</span>)
+    res.append(<span class="keyword">str</span>(stk[-<span class="number">1</span>]) <span class="keyword">if</span> stk <span class="keyword">else</span> <span class="string">'-1'</span>)
     stk.append(x)
-<span class="keyword">print</span>(<span class="string">&#x27; &#x27;</span>.join(res))</code></pre>
+<span class="keyword">print</span>(<span class="string">' '</span>.join(res))</code></pre>
             </details>
         </div>
     </div>
@@ -775,8 +775,8 @@ maxs = []
     <span class="keyword">if</span> q[<span class="number">0</span>] <= i - k: q.popleft()
     <span class="keyword">if</span> i >= k - <span class="number">1</span>: maxs.append(<span class="keyword">str</span>(a[q[<span class="number">0</span>]]))
 <span class="comment"># Match C++ printf(&quot;%d &quot;, ...) format with trailing spaces</span>
-sys.stdout.write(<span class="string">&#x27; &#x27;</span>.join(mins) + <span class="string">&#x27; \n&#x27;</span>)
-sys.stdout.write(<span class="string">&#x27; &#x27;</span>.join(maxs) + <span class="string">&#x27; \n&#x27;</span>)</code></pre>
+sys.stdout.write(<span class="string">' '</span>.join(mins) + <span class="string">' \n'</span>)
+sys.stdout.write(<span class="string">' '</span>.join(maxs) + <span class="string">' \n'</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -894,7 +894,7 @@ res = []
     <span class="keyword">if</span> j == n:
         res.append(<span class="keyword">str</span>(i - n + <span class="number">1</span>))
         j = ne[j - <span class="number">1</span>]
-<span class="keyword">print</span>(<span class="string">&#x27; &#x27;</span>.join(res))</code></pre>
+<span class="keyword">print</span>(<span class="string">' '</span>.join(res))</code></pre>
             </details>
         </div>
     </div>
@@ -1067,7 +1067,7 @@ idx = <span class="number">0</span>
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n):
     parts = sys.stdin.readline().split()
     op = parts[<span class="number">0</span>]
-    <span class="keyword">if</span> op == <span class="string">&#x27;I&#x27;</span>:
+    <span class="keyword">if</span> op == <span class="string">'I'</span>:
         x = <span class="keyword">int</span>(parts[<span class="number">1</span>])
         sz += <span class="number">1</span>
         idx += <span class="number">1</span>
@@ -1075,13 +1075,13 @@ idx = <span class="number">0</span>
         hp[sz] = idx
         h[sz] = x
         up(sz)
-    <span class="keyword">elif</span> op == <span class="string">&#x27;PM&#x27;</span>:
+    <span class="keyword">elif</span> op == <span class="string">'PM'</span>:
         <span class="keyword">print</span>(h[<span class="number">1</span>])
-    <span class="keyword">elif</span> op == <span class="string">&#x27;DM&#x27;</span>:
+    <span class="keyword">elif</span> op == <span class="string">'DM'</span>:
         heap_swap(<span class="number">1</span>, sz)
         sz -= <span class="number">1</span>
         down(<span class="number">1</span>)
-    <span class="keyword">elif</span> op == <span class="string">&#x27;D&#x27;</span>:
+    <span class="keyword">elif</span> op == <span class="string">'D'</span>:
         k = <span class="keyword">int</span>(parts[<span class="number">1</span>])
         u = ph[k]
         heap_swap(u, sz)
@@ -1192,9 +1192,9 @@ out = []
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(m):
     op, a, b = data[idx], <span class="keyword">int</span>(data[idx+<span class="number">1</span>]), <span class="keyword">int</span>(data[idx+<span class="number">2</span>])
     idx += <span class="number">3</span>
-    <span class="keyword">if</span> op == <span class="string">&#x27;M&#x27;</span>: p[find(a)] = find(b)
-    <span class="keyword">else</span>: out.append(<span class="string">&#x27;Yes&#x27;</span> <span class="keyword">if</span> find(a) == find(b) <span class="keyword">else</span> <span class="string">&#x27;No&#x27;</span>)
-<span class="keyword">print</span>(<span class="string">&#x27;\n&#x27;</span>.join(out))</code></pre>
+    <span class="keyword">if</span> op == <span class="string">'M'</span>: p[find(a)] = find(b)
+    <span class="keyword">else</span>: out.append(<span class="string">'Yes'</span> <span class="keyword">if</span> find(a) == find(b) <span class="keyword">else</span> <span class="string">'No'</span>)
+<span class="keyword">print</span>(<span class="string">'\n'</span>.join(out))</code></pre>
             </details>
         </div>
     </div>
@@ -1305,20 +1305,20 @@ idx = <span class="number">2</span>
 out = []
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(m):
     op = data[idx]
-    <span class="keyword">if</span> op == <span class="string">&#x27;C&#x27;</span>:
+    <span class="keyword">if</span> op == <span class="string">'C'</span>:
         a, b = <span class="keyword">int</span>(data[idx+<span class="number">1</span>]), <span class="keyword">int</span>(data[idx+<span class="number">2</span>])
         idx += <span class="number">3</span>
         ra, rb = find(a), find(b)
         <span class="keyword">if</span> ra != rb: p[ra] = rb; sz[rb] += sz[ra]
-    <span class="keyword">elif</span> op == <span class="string">&#x27;Q1&#x27;</span>:
+    <span class="keyword">elif</span> op == <span class="string">'Q1'</span>:
         a, b = <span class="keyword">int</span>(data[idx+<span class="number">1</span>]), <span class="keyword">int</span>(data[idx+<span class="number">2</span>])
         idx += <span class="number">3</span>
-        out.append(<span class="string">&#x27;Yes&#x27;</span> <span class="keyword">if</span> find(a)==find(b) <span class="keyword">else</span> <span class="string">&#x27;No&#x27;</span>)
+        out.append(<span class="string">'Yes'</span> <span class="keyword">if</span> find(a)==find(b) <span class="keyword">else</span> <span class="string">'No'</span>)
     <span class="keyword">else</span>:
         a = <span class="keyword">int</span>(data[idx+<span class="number">1</span>])
         idx += <span class="number">2</span>
         out.append(<span class="keyword">str</span>(sz[find(a)]))
-<span class="keyword">print</span>(<span class="string">&#x27;\n&#x27;</span>.join(out))</code></pre>
+<span class="keyword">print</span>(<span class="string">'\n'</span>.join(out))</code></pre>
             </details>
         </div>
     </div>

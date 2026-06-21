@@ -124,7 +124,7 @@ used = [<span class="keyword">False</span>] * (n + <span class="number">1</span>
 
 <span class="keyword">def</span> dfs():
     <span class="keyword">if</span> <span class="keyword">len</span>(path) == n:
-        <span class="keyword">print</span>(<span class="string">&#x27; &#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, path)) + <span class="string">&#x27; &#x27;</span>)
+        <span class="keyword">print</span>(<span class="string">' '</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, path)) + <span class="string">' '</span>)
         <span class="keyword">return</span>
     <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
         <span class="keyword">if</span> <span class="keyword">not</span> used[i]:
@@ -232,7 +232,7 @@ Q...
 sys.setrecursionlimit(<span class="number">200000</span>)
 <span class="comment"># n-皇后问题</span>
 n = <span class="keyword">int</span>(<span class="keyword">input</span>())
-g = [[<span class="string">&#x27;.&#x27;</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n)]
+g = [[<span class="string">'.'</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n)]
 col = [<span class="keyword">False</span>] * n
 dg = [<span class="keyword">False</span>] * (<span class="number">2</span> * n)
 udg = [<span class="keyword">False</span>] * (<span class="number">2</span> * n)
@@ -240,15 +240,15 @@ udg = [<span class="keyword">False</span>] * (<span class="number">2</span> * n)
 <span class="keyword">def</span> dfs(r):
     <span class="keyword">if</span> r == n:
         <span class="keyword">for</span> row <span class="keyword">in</span> g:
-            <span class="keyword">print</span>(<span class="string">&#x27;&#x27;</span>.join(row))
+            <span class="keyword">print</span>(<span class="string">''</span>.join(row))
         <span class="keyword">print</span>()
         <span class="keyword">return</span>
     <span class="keyword">for</span> c <span class="keyword">in</span> <span class="keyword">range</span>(n):
         <span class="keyword">if</span> <span class="keyword">not</span> col[c] <span class="keyword">and</span> <span class="keyword">not</span> dg[r + c] <span class="keyword">and</span> <span class="keyword">not</span> udg[r - c + n]:
             col[c] = dg[r + c] = udg[r - c + n] = <span class="keyword">True</span>
-            g[r][c] = <span class="string">&#x27;Q&#x27;</span>
+            g[r][c] = <span class="string">'Q'</span>
             dfs(r + <span class="number">1</span>)
-            g[r][c] = <span class="string">&#x27;.&#x27;</span>
+            g[r][c] = <span class="string">'.'</span>
             col[c] = dg[r + c] = udg[r - c + n] = <span class="keyword">False</span>
 
 dfs(<span class="number">0</span>)</code></pre>
@@ -518,15 +518,15 @@ x 4 6
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
 <span class="keyword">from</span> collections <span class="keyword">import</span> deque
-start = <span class="string">&#x27;&#x27;</span>.join(sys.stdin.read().split())
-target = <span class="string">&#x27;12345678x&#x27;</span>
+start = <span class="string">''</span>.join(sys.stdin.read().split())
+target = <span class="string">'12345678x'</span>
 <span class="keyword">if</span> start == target: <span class="keyword">print</span>(<span class="number">0</span>); sys.exit(<span class="number">0</span>)
 dx, dy = [-<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>], [<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,-<span class="number">1</span>]
 q = deque([start])
 dist = {start: <span class="number">0</span>}
 <span class="keyword">while</span> q:
     s = q.popleft()
-    k = s.index(<span class="string">&#x27;x&#x27;</span>)
+    k = s.index(<span class="string">'x'</span>)
     x, y = k//<span class="number">3</span>, k%<span class="number">3</span>
     <span class="keyword">for</span> d <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">4</span>):
         nx, ny = x+dx[d], y+dy[d]
@@ -534,7 +534,7 @@ dist = {start: <span class="number">0</span>}
             nk = nx*<span class="number">3</span> + ny
             lst = <span class="keyword">list</span>(s)
             lst[k], lst[nk] = lst[nk], lst[k]
-            ns = <span class="string">&#x27;&#x27;</span>.join(lst)
+            ns = <span class="string">''</span>.join(lst)
             <span class="keyword">if</span> ns <span class="keyword">not</span> <span class="keyword">in</span> dist:
                 dist[ns] = dist[s] + <span class="number">1</span>
                 <span class="keyword">if</span> ns == target: <span class="keyword">print</span>(dist[ns]); sys.exit(<span class="number">0</span>)

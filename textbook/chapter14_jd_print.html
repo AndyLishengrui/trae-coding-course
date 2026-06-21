@@ -168,7 +168,7 @@ res = []
     <span class="keyword">for</span> v <span class="keyword">in</span> adj[u]:
         indeg[v] -= <span class="number">1</span>
         <span class="keyword">if</span> indeg[v] == <span class="number">0</span>: q.append(v)
-<span class="keyword">print</span>(<span class="string">&#x27; &#x27;</span>.join(res) <span class="keyword">if</span> <span class="keyword">len</span>(res)==n <span class="keyword">else</span> -<span class="number">1</span>)</code></pre>
+<span class="keyword">print</span>(<span class="string">' '</span>.join(res) <span class="keyword">if</span> <span class="keyword">len</span>(res)==n <span class="keyword">else</span> -<span class="number">1</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -607,7 +607,7 @@ st[<span class="number">1</span>] = <span class="keyword">True</span>
             dist[v] = dist[u] + w
             <span class="keyword">if</span> <span class="keyword">not</span> st[v]:
                 q.append(v); st[v] = <span class="keyword">True</span>
-<span class="keyword">print</span>(dist[n] <span class="keyword">if</span> dist[n] != INF <span class="keyword">else</span> <span class="string">&#x27;impossible&#x27;</span>)</code></pre>
+<span class="keyword">print</span>(dist[n] <span class="keyword">if</span> dist[n] != INF <span class="keyword">else</span> <span class="string">'impossible'</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -738,8 +738,8 @@ out = []
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(q):
     a, b = <span class="keyword">int</span>(data[idx]), <span class="keyword">int</span>(data[idx+<span class="number">1</span>])
     idx += <span class="number">2</span>
-    out.append(<span class="keyword">str</span>(d[a][b]) <span class="keyword">if</span> d[a][b] < INF // <span class="number">2</span> <span class="keyword">else</span> <span class="string">&#x27;impossible&#x27;</span>)
-sys.stdout.write(<span class="string">&#x27;\n&#x27;</span>.join(out) + <span class="string">&#x27;\n&#x27;</span>)</code></pre>
+    out.append(<span class="keyword">str</span>(d[a][b]) <span class="keyword">if</span> d[a][b] < INF // <span class="number">2</span> <span class="keyword">else</span> <span class="string">'impossible'</span>)
+sys.stdout.write(<span class="string">'\n'</span>.join(out) + <span class="string">'\n'</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -866,7 +866,7 @@ ans = <span class="number">0</span>
     t = -<span class="number">1</span>
     <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):
         <span class="keyword">if</span> <span class="keyword">not</span> st[i] <span class="keyword">and</span> (t == -<span class="number">1</span> <span class="keyword">or</span> dist[i] < dist[t]): t = i
-    <span class="keyword">if</span> _ > <span class="number">0</span> <span class="keyword">and</span> dist[t] == INF: <span class="keyword">print</span>(<span class="string">&#x27;impossible&#x27;</span>); sys.exit(<span class="number">0</span>)
+    <span class="keyword">if</span> _ > <span class="number">0</span> <span class="keyword">and</span> dist[t] == INF: <span class="keyword">print</span>(<span class="string">'impossible'</span>); sys.exit(<span class="number">0</span>)
     <span class="keyword">if</span> _ > <span class="number">0</span>: ans += dist[t]
     st[t] = <span class="keyword">True</span>
     <span class="keyword">for</span> v <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):
@@ -1013,7 +1013,7 @@ cnt = <span class="number">0</span>
         p[ru] = rv
         ans += w
         cnt += <span class="number">1</span>
-<span class="keyword">print</span>(ans <span class="keyword">if</span> cnt == n - <span class="number">1</span> <span class="keyword">else</span> <span class="string">&#x27;impossible&#x27;</span>)</code></pre>
+<span class="keyword">print</span>(ans <span class="keyword">if</span> cnt == n - <span class="number">1</span> <span class="keyword">else</span> <span class="string">'impossible'</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -1145,7 +1145,7 @@ ok = <span class="keyword">True</span>
         <span class="keyword">if</span> <span class="keyword">not</span> dfs(i, <span class="number">1</span>):
             ok = <span class="keyword">False</span>
             <span class="keyword">break</span>
-<span class="keyword">print</span>(<span class="string">&#x27;Yes&#x27;</span> <span class="keyword">if</span> ok <span class="keyword">else</span> <span class="string">&#x27;No&#x27;</span>)</code></pre>
+<span class="keyword">print</span>(<span class="string">'Yes'</span> <span class="keyword">if</span> ok <span class="keyword">else</span> <span class="string">'No'</span>)</code></pre>
             </details>
         </div>
     </div>

@@ -480,7 +480,7 @@
 a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
 b = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
 b[:size] = a[:size]
-<span class="keyword">print</span>(<span class="string">&#x27; &#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, b)))</code></pre>
+<span class="keyword">print</span>(<span class="string">' '</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, b)))</code></pre>
             </details>
         </div>
     </div>
@@ -560,7 +560,7 @@ b[:size] = a[:size]
             <pre><code class="language-python">n, size = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
 a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
 a[:size] = <span class="keyword">reversed</span>(a[:size])
-<span class="keyword">print</span>(<span class="string">&#x27; &#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, a)))</code></pre>
+<span class="keyword">print</span>(<span class="string">' '</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, a)))</code></pre>
             </details>
         </div>
     </div>
@@ -642,7 +642,7 @@ data = sys.stdin.read().split()
 n = <span class="keyword">int</span>(data[<span class="number">0</span>])
 size = <span class="keyword">int</span>(data[<span class="number">1</span>])
 arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span class="number">2</span>:<span class="number">2</span>+n]))
-<span class="keyword">print</span>(<span class="string">&#x27; &#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, arr[:size])))</code></pre>
+<span class="keyword">print</span>(<span class="string">' '</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, arr[:size])))</code></pre>
             </details>
         </div>
     </div>
@@ -727,7 +727,7 @@ arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span c
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">r,c=<span class="keyword">map</span>(<span class="keyword">int</span>,<span class="keyword">input</span>().split())
-<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(r):<span class="keyword">print</span>(<span class="string">&#x27; &#x27;</span>.join(<span class="keyword">input</span>().split()))</code></pre>
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(r):<span class="keyword">print</span>(<span class="string">' '</span>.join(<span class="keyword">input</span>().split()))</code></pre>
             </details>
         </div>
     </div>
@@ -808,7 +808,7 @@ data = sys.stdin.read().split()
 n, l, r = <span class="keyword">int</span>(data[<span class="number">0</span>]), <span class="keyword">int</span>(data[<span class="number">1</span>]), <span class="keyword">int</span>(data[<span class="number">2</span>])
 a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span class="number">3</span>:<span class="number">3</span>+n]))
 a[l:r+<span class="number">1</span>] = <span class="keyword">sorted</span>(a[l:r+<span class="number">1</span>])
-<span class="keyword">print</span>(<span class="string">&#x27; &#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, a)))</code></pre>
+<span class="keyword">print</span>(<span class="string">' '</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, a)))</code></pre>
             </details>
         </div>
     </div>
@@ -1208,7 +1208,7 @@ dfs(<span class="number">0</span>, <span class="number">0</span>)
             <pre><code class="language-python"><span class="comment"># DFS+回溯：枚举1~n的全排列</span>
 <span class="keyword">def</span> dfs(u):
     <span class="keyword">if</span> u == n:                     <span class="comment"># 已选满n个数，输出排列</span>
-        <span class="keyword">print</span>(<span class="string">&#x27; &#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, path)))
+        <span class="keyword">print</span>(<span class="string">' '</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, path)))
         <span class="keyword">return</span>
     <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):     <span class="comment"># 按字典序从1到n尝试</span>
         <span class="keyword">if</span> <span class="keyword">not</span> used[i]:            <span class="comment"># 如果数字i还没用过</span>

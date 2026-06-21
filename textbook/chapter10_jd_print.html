@@ -108,8 +108,8 @@ data = sys.stdin.read().split()
 n = <span class="keyword">int</span>(data[<span class="number">0</span>])
 out = []
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
-    out.append(<span class="keyword">str</span>(bin(<span class="keyword">int</span>(data[i])).count(<span class="string">&#x27;1&#x27;</span>)))
-sys.stdout.write(<span class="string">&#x27; &#x27;</span>.join(out) + <span class="string">&#x27; &#x27;</span>)</code></pre>
+    out.append(<span class="keyword">str</span>(bin(<span class="keyword">int</span>(data[i])).count(<span class="string">'1'</span>)))
+sys.stdout.write(<span class="string">' '</span>.join(out) + <span class="string">' '</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -212,7 +212,7 @@ t = <span class="number">0</span>  <span class="comment"># 进位</span>
     C.append(t % <span class="number">10</span>)   <span class="comment"># 当前位</span>
     t //= <span class="number">10</span>            <span class="comment"># 更新进位</span>
 <span class="keyword">if</span> t: C.append(<span class="number">1</span>)      <span class="comment"># 最高位进位</span>
-<span class="keyword">print</span>(<span class="string">&#x27;&#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, <span class="keyword">reversed</span>(C))))</code></pre>
+<span class="keyword">print</span>(<span class="string">''</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, <span class="keyword">reversed</span>(C))))</code></pre>
             </details>
         </div>
     </div>
@@ -358,10 +358,10 @@ B = [<span class="keyword">int</span>(ch) <span class="keyword">for</span> ch <s
 
 <span class="keyword">if</span> ge(A, B):
     C = sub(A, B)
-    <span class="keyword">print</span>(<span class="string">&#x27;&#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, <span class="keyword">reversed</span>(C))))
+    <span class="keyword">print</span>(<span class="string">''</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, <span class="keyword">reversed</span>(C))))
 <span class="keyword">else</span>:
     C = sub(B, A)
-    <span class="keyword">print</span>(<span class="string">&#x27;-&#x27;</span> + <span class="string">&#x27;&#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, <span class="keyword">reversed</span>(C))))</code></pre>
+    <span class="keyword">print</span>(<span class="string">'-'</span> + <span class="string">''</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, <span class="keyword">reversed</span>(C))))</code></pre>
             </details>
         </div>
     </div>
@@ -463,7 +463,7 @@ t = <span class="number">0</span>  <span class="comment"># 进位</span>
     C.append(t % <span class="number">10</span>)
     t //= <span class="number">10</span>
 <span class="keyword">while</span> <span class="keyword">len</span>(C) > <span class="number">1</span> <span class="keyword">and</span> C[-<span class="number">1</span>] == <span class="number">0</span>: C.pop()  <span class="comment"># 去前导零</span>
-<span class="keyword">print</span>(<span class="string">&#x27;&#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, <span class="keyword">reversed</span>(C))))</code></pre>
+<span class="keyword">print</span>(<span class="string">''</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, <span class="keyword">reversed</span>(C))))</code></pre>
             </details>
         </div>
     </div>
@@ -570,7 +570,7 @@ r = <span class="number">0</span>  <span class="comment"># 余数</span>
     r %= b                      <span class="comment"># 更新余数</span>
 <span class="comment"># C[0]是商的最高位，需要去掉前导零</span>
 <span class="keyword">while</span> <span class="keyword">len</span>(C) > <span class="number">1</span> <span class="keyword">and</span> C[<span class="number">0</span>] == <span class="number">0</span>: C.pop(<span class="number">0</span>)
-<span class="keyword">print</span>(<span class="string">&#x27;&#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, C)))
+<span class="keyword">print</span>(<span class="string">''</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, C)))
 <span class="keyword">print</span>(r)</code></pre>
             </details>
         </div>
@@ -747,7 +747,7 @@ i = <span class="number">0</span>
 <span class="keyword">for</span> x <span class="keyword">in</span> b:
     <span class="keyword">if</span> i < n <span class="keyword">and</span> a[i] == x:
         i += <span class="number">1</span>
-<span class="keyword">print</span>(<span class="string">&#x27;Yes&#x27;</span> <span class="keyword">if</span> i == n <span class="keyword">else</span> <span class="string">&#x27;No&#x27;</span>)</code></pre>
+<span class="keyword">print</span>(<span class="string">'Yes'</span> <span class="keyword">if</span> i == n <span class="keyword">else</span> <span class="string">'No'</span>)</code></pre>
             </details>
         </div>
     </div>

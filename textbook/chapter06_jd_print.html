@@ -309,9 +309,9 @@ jfdhkaZcxiNBHR`cjklhZbimiqxobc^caZUO^mbG]c_`R^dVcruhSgqhXXceiURchojXYS[njVCVfUUn
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
-s = sys.stdin.read().rstrip(<span class="string">&#x27;\n&#x27;</span>)
+s = sys.stdin.read().rstrip(<span class="string">'\n'</span>)
 n = <span class="keyword">len</span>(s)
-result = <span class="string">&#x27;&#x27;</span>.join(chr(ord(s[i]) + ord(s[(i+<span class="number">1</span>) % n])) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n))
+result = <span class="string">''</span>.join(chr(ord(s[i]) + ord(s[(i+<span class="number">1</span>) % n])) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n))
 <span class="keyword">print</span>(result)</code></pre>
             </details>
         </div>
@@ -442,11 +442,11 @@ Player2
             <pre><code class="language-python"><span class="keyword">import</span> sys
 data = sys.stdin.read().split()
 p1, p2 = data[<span class="number">0</span>], data[<span class="number">1</span>]
-<span class="keyword">if</span> p1 == p2: <span class="keyword">print</span>(<span class="string">&#x27;Tie&#x27;</span>)
-<span class="keyword">elif</span> (p1==<span class="string">&#x27;Hunter&#x27;</span> <span class="keyword">and</span> p2==<span class="string">&#x27;Gun&#x27;</span>) <span class="keyword">or</span> (p1==<span class="string">&#x27;Bear&#x27;</span> <span class="keyword">and</span> p2==<span class="string">&#x27;Hunter&#x27;</span>) <span class="keyword">or</span> (p1==<span class="string">&#x27;Gun&#x27;</span> <span class="keyword">and</span> p2==<span class="string">&#x27;Bear&#x27;</span>):
-    <span class="keyword">print</span>(<span class="string">&#x27;Player1&#x27;</span>)
+<span class="keyword">if</span> p1 == p2: <span class="keyword">print</span>(<span class="string">'Tie'</span>)
+<span class="keyword">elif</span> (p1==<span class="string">'Hunter'</span> <span class="keyword">and</span> p2==<span class="string">'Gun'</span>) <span class="keyword">or</span> (p1==<span class="string">'Bear'</span> <span class="keyword">and</span> p2==<span class="string">'Hunter'</span>) <span class="keyword">or</span> (p1==<span class="string">'Gun'</span> <span class="keyword">and</span> p2==<span class="string">'Bear'</span>):
+    <span class="keyword">print</span>(<span class="string">'Player1'</span>)
 <span class="keyword">else</span>:
-    <span class="keyword">print</span>(<span class="string">&#x27;Player2&#x27;</span>)</code></pre>
+    <span class="keyword">print</span>(<span class="string">'Player2'</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -592,11 +592,11 @@ first late system see school still great different year Place far take same
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
 lines = sys.stdin.read().splitlines()
-s = lines[<span class="number">0</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) > <span class="number">0</span> <span class="keyword">else</span> <span class="string">&#x27;&#x27;</span>
-a = lines[<span class="number">1</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) > <span class="number">1</span> <span class="keyword">else</span> <span class="string">&#x27;&#x27;</span>
-b = lines[<span class="number">2</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) > <span class="number">2</span> <span class="keyword">else</span> <span class="string">&#x27;&#x27;</span>
+s = lines[<span class="number">0</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) > <span class="number">0</span> <span class="keyword">else</span> <span class="string">''</span>
+a = lines[<span class="number">1</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) > <span class="number">1</span> <span class="keyword">else</span> <span class="string">''</span>
+b = lines[<span class="number">2</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) > <span class="number">2</span> <span class="keyword">else</span> <span class="string">''</span>
 words = s.split()
-result = <span class="string">&#x27; &#x27;</span>.join(b <span class="keyword">if</span> w == a <span class="keyword">else</span> w <span class="keyword">for</span> w <span class="keyword">in</span> words)
+result = <span class="string">' '</span>.join(b <span class="keyword">if</span> w == a <span class="keyword">else</span> w <span class="keyword">for</span> w <span class="keyword">in</span> words)
 <span class="keyword">print</span>(result)</code></pre>
             </details>
         </div>
@@ -888,8 +888,8 @@ no
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
 lines = sys.stdin.read().splitlines()
-a = lines[<span class="number">0</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) > <span class="number">0</span> <span class="keyword">else</span> <span class="string">&#x27;&#x27;</span>
-b = lines[<span class="number">1</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) > <span class="number">1</span> <span class="keyword">else</span> <span class="string">&#x27;&#x27;</span>
+a = lines[<span class="number">0</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) > <span class="number">0</span> <span class="keyword">else</span> <span class="string">''</span>
+b = lines[<span class="number">1</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) > <span class="number">1</span> <span class="keyword">else</span> <span class="string">''</span>
 <span class="keyword">print</span>(<span class="string">&quot;yes&quot;</span> <span class="keyword">if</span> b <span class="keyword">in</span> a <span class="keyword">else</span> <span class="string">&quot;no&quot;</span>)</code></pre>
             </details>
         </div>
@@ -977,7 +977,7 @@ ababab
             <pre><code class="language-python"><span class="comment"># 字符串乘方</span>
 <span class="keyword">while</span> <span class="keyword">True</span>:
     s = <span class="keyword">input</span>().strip()
-    <span class="keyword">if</span> s == <span class="string">&#x27;.&#x27;</span>:
+    <span class="keyword">if</span> s == <span class="string">'.'</span>:
         <span class="keyword">break</span>
     n = <span class="keyword">len</span>(s)
     ne = [<span class="number">0</span>] * n
@@ -1092,7 +1092,7 @@ abcd123dABdefghjsdef76ki,ab,ef
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="comment"># 字符串最大跨距</span>
-s, s1, s2 = <span class="keyword">input</span>().split(<span class="string">&#x27;,&#x27;</span>)
+s, s1, s2 = <span class="keyword">input</span>().split(<span class="string">','</span>)
 n = <span class="keyword">len</span>(s)
 l = s.find(s1)
 r = s.rfind(s2)
