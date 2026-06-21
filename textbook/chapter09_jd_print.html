@@ -235,7 +235,7 @@ quicksort(arr, <span class="number">0</span>, n - <span class="number">1</span>)
 
 <strong>示例：</strong>在 [3, 1, 2, 4, 5] 中找第 3 小（k=3）<br>
 第一轮 partition：取 3 为基准 → 左半 [1, 2]，右半 [4, 5]，基准在位置 2。<br>
-左半有 2 个元素，k=3 > 2，说明答案在右半，去右半找第 (3-2)=1 小 → 结果为 4。不对，重新看：基准 3 在位置 2（0起），左半 [1,2] 共2个元素 ≤ 3，基准本身是第3小，答案就是 3。
+左半有 2 个元素（≤基准的共3个），k=3 恰好等于 3，说明基准 3 本身就是第 3 小，答案就是 3。
 </div>
 
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">

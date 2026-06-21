@@ -775,10 +775,10 @@ i=4, x=4: 栈顶 1 < 4，弹出！
     cin&gt;&gt; n;
     <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt; n; i++){
         <span class="keyword">int</span> x; cin&gt;&gt;x;
-        <span class="keyword">while</span> (tt && stk[tt]&gt;= x)<span class="comment">//tt为空，并且单调栈顶元素比x大</span>
+        <span class="keyword">while</span> (tt && stk[tt]&gt;= x)<span class="comment">//tt不为空，并且单调栈顶元素比x大或等于</span>
           tt--;<span class="comment">//出栈，这些数永远不会用到</span>
-          <span class="keyword">if</span> (tt) cout&lt;&lt;stk[tt]&lt;&lt;' '; <span class="comment">//栈顶就是比x小的元素，直接输出</span>
-           <span class="keyword">else</span> cout&lt;&lt;-<span class="number">1</span>&lt;&lt;' '; <span class="comment">//x左边没有任何数比它小</span>
+          <span class="keyword">if</span> (tt) cout&lt;&lt;stk[tt]&lt;&lt;' '; <span class="comment">//栈顶就是比x大的元素，直接输出</span>
+           <span class="keyword">else</span> cout&lt;&lt;-<span class="number">1</span>&lt;&lt;' '; <span class="comment">//x左边没有任何数比它大</span>
            <span class="comment">//入栈</span>
            stk[++tt] = x;
     }

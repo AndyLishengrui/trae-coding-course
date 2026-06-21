@@ -8055,7 +8055,7 @@ b[:size] = a[:size]
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
-时间复杂度：O(n + m) — 双指针遍历<br>
+时间复杂度：O(size) — 双指针遍历前size个元素<br>
 空间复杂度：O(1)
 </div>
         <div class="code-section">
@@ -8789,7 +8789,7 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
-时间复杂度：O(n × m) — DP计算网格路径，二维状态<br>
+时间复杂度：O(C(n+m,n)) — 组合数计算，从n+m步中选n步向下<br>
 空间复杂度：O(n × m)
 </div>
         <div class="code-section">
@@ -10147,7 +10147,7 @@ quicksort(arr, <span class="number">0</span>, n - <span class="number">1</span>)
 
 <strong>示例：</strong>在 [3, 1, 2, 4, 5] 中找第 3 小（k=3）<br>
 第一轮 partition：取 3 为基准 → 左半 [1, 2]，右半 [4, 5]，基准在位置 2。<br>
-左半有 2 个元素，k=3 > 2，说明答案在右半，去右半找第 (3-2)=1 小 → 结果为 4。不对，重新看：基准 3 在位置 2（0起），左半 [1,2] 共2个元素 ≤ 3，基准本身是第3小，答案就是 3。
+左半有 2 个元素（≤基准的共3个），k=3 恰好等于 3，说明基准 3 本身就是第 3 小，答案就是 3。
 </div>
 
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
@@ -12432,7 +12432,7 @@ b[x2+1][y2+1] += c    ← 修补多减的部分
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
-时间复杂度：O(n<sup>2</sup>) — 二维前缀和<br>
+时间复杂度：O(n × m + q) — 二维前缀和预处理 + q次操作<br>
 空间复杂度：O(n<sup>2</sup>)
 </div>
         <div class="code-section">
@@ -14006,10 +14006,10 @@ i=4, x=4: 栈顶 1 < 4，弹出！
     cin&gt;&gt; n;
     <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt; n; i++){
         <span class="keyword">int</span> x; cin&gt;&gt;x;
-        <span class="keyword">while</span> (tt && stk[tt]&gt;= x)<span class="comment">//tt为空，并且单调栈顶元素比x大</span>
+        <span class="keyword">while</span> (tt && stk[tt]&gt;= x)<span class="comment">//tt不为空，并且单调栈顶元素比x大或等于</span>
           tt--;<span class="comment">//出栈，这些数永远不会用到</span>
-          <span class="keyword">if</span> (tt) cout&lt;&lt;stk[tt]&lt;&lt;' '; <span class="comment">//栈顶就是比x小的元素，直接输出</span>
-           <span class="keyword">else</span> cout&lt;&lt;-<span class="number">1</span>&lt;&lt;' '; <span class="comment">//x左边没有任何数比它小</span>
+          <span class="keyword">if</span> (tt) cout&lt;&lt;stk[tt]&lt;&lt;' '; <span class="comment">//栈顶就是比x大的元素，直接输出</span>
+           <span class="keyword">else</span> cout&lt;&lt;-<span class="number">1</span>&lt;&lt;' '; <span class="comment">//x左边没有任何数比它大</span>
            <span class="comment">//入栈</span>
            stk[++tt] = x;
     }
@@ -15112,8 +15112,8 @@ idx = <span class="number">2</span>
 </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
-时间复杂度：O(V + E) — DFS遍历，每个节点和边访问一次<br>
-空间复杂度：O(V)
+时间复杂度：O(n! × n) — 生成n!个排列，每个排列O(n)输出<br>
+空间复杂度：O(n)
 </div>
         <div class="code-section">
             <details><summary>参考代码</summary>
@@ -15271,8 +15271,8 @@ Q...
 </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
-时间复杂度：O(V + E) — DFS遍历，每个节点和边访问一次<br>
-空间复杂度：O(V)
+时间复杂度：O(n!) — 皇后排列的回溯搜索，最坏情况遍历所有排列<br>
+空间复杂度：O(n)
 </div>
         <div class="code-section">
             <details><summary>参考代码</summary>
@@ -15607,8 +15607,8 @@ x 4 6
 </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
-时间复杂度：O(V + E) — BFS遍历，每个节点和边访问一次<br>
-空间复杂度：O(V)
+时间复杂度：O(9! × 9) — 状态空间最多9!个状态，每个状态O(9)生成邻居<br>
+空间复杂度：O(9!)
 </div>
         <div class="code-section">
             <details><summary>参考代码</summary>
@@ -16246,7 +16246,7 @@ dist = [∞, 0, 2, 3]
 </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
-时间复杂度：O((V + E) log V) — Dijkstra最短路，优先队列优化<br>
+时间复杂度：O(V²) — 朴素Dijkstra，每次选最近点O(V)，共V次<br>
 空间复杂度：O(V + E)
 </div>
         <div class="code-section">
@@ -19120,13 +19120,15 @@ for _ in range(m):
 <strong style="color:#1b5e20;font-size:1.1em">算法图解：树形DP遍历过程</strong>
 <p>以样例为例：7个员工，快乐值全为1</p>
 <pre style="background:#fafafa;color:#333;padding:12px;border-radius:4px;font-size:0.85em;line-height:1.6">
-树结构（7是根，因为没人是7的上司）:
+树结构（7是根，因为没人是7的上司。员工1没有出现在输入的边中，是独立节点）:
 
             7 (h=1)
            / \
           6    5 (h=1)
          /| \
         2  3  4 (h=1)
+
+  独立节点: 1 (h=1)
 
   员工:  1  2  3  4  5  6  7
   快乐:  1  1  1  1  1  1  1
@@ -19144,7 +19146,6 @@ for _ in range(m):
 
   员工3（叶子）:  dp[3][0]=0, dp[3][1]=1
   员工4（叶子）:  dp[4][0]=0, dp[4][1]=1
-  员工1（叶子）:  dp[1][0]=0, dp[1][1]=1
   员工5（叶子）:  dp[5][0]=0, dp[5][1]=1
 
 ═══ 处理员工6（下属是2,3,4）═══
@@ -19167,20 +19168,15 @@ for _ in range(m):
            = 3 + 1 = 4
   （7留守 → 6,5各自自由选择最优）
 
+═══ 处理独立节点1（叶子，无下属）═══
+  dp[1][0] = 0, dp[1][1] = 1
+
 ═══ 最终答案 ═══
-  max(dp[7][0], dp[7][1]) = max(4, 4) = 4  ...但样例输出是5
+  主树最优: max(dp[7][0], dp[7][1]) = max(4, 4) = 4
+  独立节点: max(dp[1][0], dp[1][1]) = max(0, 1) = 1
+  总计: 4 + 1 = 5
 
-  实际计算（员工1没有出现在树中，说明是独立节点）:
-  正确的树应该是:
-            7
-           / \
-          6    5
-         /| \
-        2  3  4
-       /
-      1
-
-  最优方案: 出征 {2, 3, 4, 5} 或 {1, 3, 4, 5} 等 → 5人
+  最优方案: 出征 {2, 3, 4, 5, 1} 等 → 5人
 </pre>
 <p><strong>核心思想：</strong>树形DP的本质是"自底向上"——先算出每个子树的最优解，再用子树的结果推导父节点。每个节点只有两种状态（出征/留守），状态转移方程清晰明了。</p>
 <p><strong>为什么用DFS？</strong>树的天然结构适合递归。DFS后序遍历保证了处理父节点时，所有子节点都已经算好了——这就是"记忆化"的力量。</p>
