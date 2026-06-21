@@ -306,7 +306,9 @@ st = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
         <div class="problem-meta"><span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:12px;font-size:0.8em;margin-right:8px">简单</span>AcWing 850 | JD149</div>
 
         <div class="description">
-            <p>"点很多，边很少。用堆优化Dijkstra——用小根堆代替遍历找最近点。"赵晴儿说，"每次从堆顶取最近的未访问点。"</p>
+            <p>梁嘉峰指着地图上密密麻麻的城池，却只有稀疏的几条道路相连："点很多，边很少——朴素Dijkstra每次遍历所有点找最近的，太慢了。"</p>
+<p>赵晴儿眼睛一亮："用小根堆代替遍历——每次从堆顶取最近的未访问点，O(logn)。"她拿起一把石子，在沙地上摆出堆的结构，"堆优化后，总复杂度从O(n²)降到O(mlogn)——边少的时候快得多。"</p>
+<p>李少白看着堆顶那颗最小的石子，忽然明白了："原来堆就是Dijkstra的加速器！"</p>
 <p>给定一个带权有向图和起点，求到每个点的最短距离。边数远小于点数的平方。</p>
 
         </div>
@@ -617,7 +619,9 @@ st[<span class="number">1</span>] = <span class="keyword">True</span>
         <div class="problem-meta"><span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:12px;font-size:0.8em;margin-right:8px">简单</span>AcWing 854 | JD151</div>
 
         <div class="description">
-            <p>梁嘉峰铺开全图："多源最短路——任意两点之间的最短距离。Floyd算法：三重循环，dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j])。"</p>
+            <p>梁嘉峰铺开全图，一张巨大的城池网络图铺满了整张桌子。墨线纵横交错，连接着每一座城池。"多源最短路——任意两点之间的最短距离，都要算出来。"</p>
+<p>赵晴儿皱眉："那要跑n次Dijkstra？"梁嘉峰摇头，拿起毛笔在图边写下三行代码："Floyd算法——三重循环。外层枚举中间点k，内层枚举起点i和终点j。dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j])。"</p>
+<p>李少白盯着公式看了许久，忽然悟了："就像在图上架桥——如果经过k点能缩短i到j的距离，就更新。三层循环下来，所有最短路都算好了。"</p>
 <p>给定一个带权图，求任意两点之间的最短距离。</p>
 
         </div>
@@ -881,7 +885,9 @@ ans = <span class="number">0</span>
         <div class="problem-meta"><span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:12px;font-size:0.8em;margin-right:8px">简单</span>AcWing 859 | JD153</div>
 
         <div class="description">
-            <p>梁嘉峰说："Kruskal——按边权从小到大排序，逐条加入。如果这条边的两个端点已经在同一连通块里（用并查集判断），就跳过；否则加入。"</p>
+            <p>散落的城池之间，道路纵横。梁嘉峰把所有道路写在竹简上，按造价从低到高排好："Kruskal——按边权从小到大排序，逐条加入。"</p>
+<p>他拿起最便宜的那条路，看了看两端的城池，用并查集查了查："这两座城已经在同一个连通块里了？跳过。"他又拿起下一条："不在同一个连通块？加入！"</p>
+<p>赵晴儿看着逐渐成形的路网，忽然明白了："并查集在这里的作用就是判环——如果两个端点已经连通，再加边就会形成环，那就不是树了。"</p>
 <p>给定一个带权无向图，求最小生成树的总权值。</p>
 
         </div>
@@ -1023,8 +1029,9 @@ cnt = <span class="number">0</span>
         <div class="problem-meta"><span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:12px;font-size:0.8em;margin-right:8px">简单</span>AcWing 860 | JD154</div>
 
         <div class="description">
-            <p>赵晴儿指着一个图："能不能把所有点分成两组，同组之间没有直接相连的边？"</p>
-<p>梁嘉峰说："染色法——从任意点开始，染红色；它的邻居染蓝色；邻居的邻居染红色……如果某个点需要同时染两种颜色，就不是二分图。"</p>
+            <p>赵晴儿指着沙盘上的一个图，节点之间连线纵横交错："能不能把所有点分成两组，同组之间没有直接相连的边？"</p>
+<p>梁嘉峰拿起红蓝两色的石子："染色法——从任意点开始，染红色；它的邻居染蓝色；邻居的邻居染红色……"他一边说，一边在沙盘上摆放石子。忽然，他停住了——某个节点的邻居既需要红色又需要蓝色。"冲突了——不是二分图。"</p>
+<p>李少白看着沙盘上红蓝相间的石子，忽然明白了："BFS或DFS染色，冲突就返回false。这就是二分图判定的本质。"</p>
 <p>给定一个无向图，判断是否是二分图。</p>
 
         </div>
