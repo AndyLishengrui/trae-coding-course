@@ -184,6 +184,12 @@ a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span 
             <strong>f-string 小贴士：</strong><br>
             Python 用 <code>f"文字{表达式}文字"</code> 来格式化输出。花括号里可以放变量、运算，甚至函数调用。
             </div>
+            <div style="background:#e8f0fe;border-left:4px solid #1a73e8;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+            <strong>C++ vs Python 对照：</strong><br>
+            <code>cin >> a >> b;</code> &harr; <code>a, b = map(int, input().split())</code><br>
+            <code>cout << "PROD = " << a*b << endl;</code> &harr; <code>print(f"PROD = {a*b}")</code><br>
+            字符串拼接：<code>cout << "文字" << 变量;</code> &harr; <code>print(f"文字{变量}")</code>
+            </div>
             </details>
         </div>
     </div>
@@ -264,6 +270,12 @@ a, b, c, d = <span class="keyword">map</span>(<span class="keyword">int</span>, 
 <span class="comment"># 运算顺序：先乘后减（乘法优先级高于减法）</span>
 <span class="comment"># 5*6 - 7*8 = 30 - 56 = -26</span>
 <span class="keyword">print</span>(f<span class="string">&quot;DIFFERENCE = {a * b - c * d}&quot;</span>)</code></pre>
+            <div style="background:#e8f0fe;border-left:4px solid #1a73e8;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+            <strong>C++ vs Python 对照（格式化输出）：</strong><br>
+            <code>printf("DIFFERENCE = %d\n", a*b - c*d);</code> &harr; <code>print(f"DIFFERENCE = {a*b - c*d}")</code><br>
+            <code>%d</code> 是整数占位符 &harr; Python 的 <code>{表达式}</code> 直接嵌入 f-string 中<br>
+            <code>\n</code> 手动换行 &harr; <code>print()</code> 自动换行，不用写 \n
+            </div>
             </details>
         </div>
     </div>
@@ -432,6 +444,12 @@ r = <span class="keyword">float</span>(<span class="keyword">input</span>())
 <span class="comment"># 【小贴士】保留小数位数</span>
 <span class="comment"># f"{x:.2f}" → 保留2位小数</span>
 <span class="comment"># f"{x:.4f}" → 保留4位小数</span></code></pre>
+            <div style="background:#e8f0fe;border-left:4px solid #1a73e8;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+            <strong>C++ vs Python 对照（浮点数）：</strong><br>
+            读入小数：<code>scanf("%lf", &r);</code> &harr; <code>r = float(input())</code><br>
+            保留位数：<code>printf("%.4f", val);</code> &harr; <code>print(f"{val:.4f}")</code><br>
+            注意：C++ 用 <code>double</code> 声明小数变量，Python 不需要声明类型。
+            </div>
             </details>
         </div>
     </div>
@@ -748,6 +766,13 @@ r = <span class="keyword">float</span>(<span class="keyword">input</span>())
 <span class="comment"># ** 是乘方运算符，r**3 就是 r³</span>
 volume = <span class="number">4.0</span> / <span class="number">3.0</span> * <span class="number">3.14159</span> * r ** <span class="number">3</span>
 <span class="keyword">print</span>(f<span class="string">&quot;VOLUME = {4.0 / 3.0 * 3.14159 * r ** 3:.3f}&quot;</span>)</code></pre>
+            <div style="background:#e8f0fe;border-left:4px solid #1a73e8;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+            <strong>C++ vs Python 对照（除法陷阱）：</strong><br>
+            C++ 整数除法：<code>4/3</code> = <code>1</code>（小数丢掉！）<br>
+            Python 整数除法：<code>4/3</code> = <code>1.333...</code>（Python3 的 / 总是浮点除法）<br>
+            C++ 浮点除法：<code>4.0/3.0</code> = <code>1.333...</code><br>
+            <strong>经验法则：</strong>涉及小数计算时，C++ 中写 <code>4.0/3.0</code> 而不是 <code>4/3</code>；Python 中用 <code>//</code> 做整除，<code>/</code> 做浮点除法。
+            </div>
             </details>
         </div>
     </div>
@@ -1114,6 +1139,12 @@ s = n % <span class="number">60</span>             <span class="comment"># 秒 =
 <span class="comment"># 【注意】C++ 用 / 做整除，Python 用 //</span>
 <span class="comment"># Python 的 / 是浮点除法（556/60 = 9.2666...）</span>
 <span class="comment"># Python 的 // 是整除（556//60 = 9）</span></code></pre>
+            <div style="background:#e8f0fe;border-left:4px solid #1a73e8;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+            <strong>C++ vs Python 对照（整除与取余）：</strong><br>
+            整除：<code>n / 3600</code> (C++) &harr; <code>n // 3600</code> (Python)<br>
+            取余：<code>n % 60</code> (两者相同)<br>
+            <strong>注意：</strong>C++ 的 <code>/</code> 对整数做整除；Python 的 <code>/</code> 做浮点除法，整除要用 <code>//</code>。
+            </div>
             </details>
         </div>
     </div>
@@ -1246,7 +1277,7 @@ denoms = [<span class="number">100</span>, <span class="number">50</span>, <span
         </div>
 
         <div style="background:#fff3cd;border-left:4px solid #ffc107;padding:8px;margin:10px 0;border-radius:0 4px 4px 0;font-size:0.9em">本题输出 Sao Multiplos / Nao sao Multiplos 为原题葡语格式（是倍数/不是倍数）。</div>
-        class="io-section">
+        <div class="io-section">
             <h4>输入格式</h4>
             <p>一行，两个整数A和B。</p>
 
@@ -1258,7 +1289,6 @@ denoms = [<span class="number">100</span>, <span class="number">50</span>, <span
 
         </div>
 
-        <div 
         <div class="sample">
             <div class="sample-label">输入样例</div>
 6 24
@@ -1268,7 +1298,7 @@ denoms = [<span class="number">100</span>, <span class="number">50</span>, <span
 Sao Multiplos
         </div>
 
-        class="hint">
+        <div class="hint">
             <strong>解题思路：</strong><p>判断 A%B==0 或 B%A==0，只要有一个成立就是倍数关系，输出Yes；否则输出No。</p>
 
         </div>
@@ -1412,7 +1442,7 @@ a, b, c = <span class="keyword">map</span>(<span class="keyword">float</span>, <
         </div>
 
         <div style="background:#fff3cd;border-left:4px solid #ffc107;padding:8px;margin:10px 0;border-radius:0 4px 4px 0;font-size:0.9em">本题输出 O JOGO DUROU X HORA(S) 为原题葡语格式（游戏持续了X小时）。</div>
-        class="io-section">
+        <div class="io-section">
             <h4>输入格式</h4>
             <p>一行，两个整数A和B（0≤A,B≤23）。</p>
 
@@ -1424,7 +1454,6 @@ a, b, c = <span class="keyword">map</span>(<span class="keyword">float</span>, <
 
         </div>
 
-        <div 
         <div class="sample">
             <div class="sample-label">输入样例</div>
 16 2
@@ -1434,7 +1463,7 @@ a, b, c = <span class="keyword">map</span>(<span class="keyword">float</span>, <
 O JOGO DUROU 8 HORA(S)
         </div>
 
-        class="hint">
+        <div class="hint">
             <strong>解题思路：</strong><p>用条件判断：如果B>A，输出B-A；如果B==A，输出24；否则输出24-A+B。</p>
 
         </div>
@@ -1629,21 +1658,48 @@ Total: R$ 10.00
             <h4>C++</h4>
             <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 <span class="keyword">int</span> main() {
-    <span class="keyword">int</span> x, y;
-    scanf(<span class="string">&quot;%d%d&quot;</span>, &x, &y);
-    <span class="keyword">double</span> p;
-    <span class="keyword">if</span> (x == <span class="number">1</span>) p = <span class="number">4.0</span>;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">2</span>) p = <span class="number">4.5</span>;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">3</span>) p = <span class="number">5.0</span>;
-    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">4</span>) p = <span class="number">2.0</span>;
-    <span class="keyword">else</span> p = <span class="number">1.5</span>;
+    <span class="keyword">int</span> x, y;              <span class="comment">// x=干粮编号, y=数量</span>
+    scanf(<span class="string">&quot;%d%d&quot;</span>, &x, &y);  <span class="comment">// 输入 "3 2" → x=3, y=2</span>
+
+    <span class="comment">// 根据编号查单价——用 if-else if 链逐一比对</span>
+    <span class="comment">// 注意：这里是 ==（比较），不是 =（赋值）！</span>
+    <span class="keyword">double</span> p;              <span class="comment">// p=单价</span>
+    <span class="keyword">if</span> (x == <span class="number">1</span>) p = <span class="number">4.0</span>;       <span class="comment">// 编号1: 烧饼 4.0文</span>
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">2</span>) p = <span class="number">4.5</span>;  <span class="comment">// 编号2: 馒头 4.5文</span>
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">3</span>) p = <span class="number">5.0</span>;  <span class="comment">// 编号3: 肉包 5.0文 ← x=3 走这里</span>
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">4</span>) p = <span class="number">2.0</span>;  <span class="comment">// 编号4: 馄饨 2.0文</span>
+    <span class="keyword">else</span> p = <span class="number">1.5</span>;              <span class="comment">// 编号5: 花卷 1.5文</span>
+
+    <span class="comment">// 总价 = 单价 × 数量</span>
+    <span class="comment">// x=3 → p=5.0, y=2 → 总价=5.0×2=10.00</span>
     printf(<span class="string">&quot;Total: R$ %.2lf\n&quot;</span>, p * y);
     <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
+}
+
+<span class="comment">// 【if-else if 链的执行过程】</span>
+<span class="comment">// 输入 x=3：</span>
+<span class="comment">// x==1? 3==1? 否 → 跳过</span>
+<span class="comment">// x==2? 3==2? 否 → 跳过</span>
+<span class="comment">// x==3? 3==3? 是！→ p=5.0，跳出整个链</span>
+<span class="comment">// 后面的 else if 和 else 都不再检查！</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">prices = {<span class="number">1</span>: <span class="number">4.0</span>, <span class="number">2</span>: <span class="number">4.5</span>, <span class="number">3</span>: <span class="number">5.0</span>, <span class="number">4</span>: <span class="number">2.0</span>, <span class="number">5</span>: <span class="number">1.5</span>}
+            <pre><code class="language-python"><span class="comment"># 杂货铺：根据编号查单价，计算总价</span>
+
+<span class="comment"># 字典（dict）：编号 → 单价 的映射表</span>
+<span class="comment"># 比 if-else if 链更简洁，查找速度也更快</span>
+prices = {<span class="number">1</span>: <span class="number">4.0</span>, <span class="number">2</span>: <span class="number">4.5</span>, <span class="number">3</span>: <span class="number">5.0</span>, <span class="number">4</span>: <span class="number">2.0</span>, <span class="number">5</span>: <span class="number">1.5</span>}
+
+<span class="comment"># 读入编号和数量</span>
 x, y = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-<span class="keyword">print</span>(f<span class="string">&quot;Total: R$ {prices[x] * y:.2f}&quot;</span>)</code></pre>
+<span class="comment"># 输入 "3 2" → x=3, y=2</span>
+
+<span class="comment"># prices[x] 查表得到单价：prices[3] = 5.0</span>
+<span class="comment"># 总价 = 5.0 × 2 = 10.00</span>
+<span class="keyword">print</span>(f<span class="string">&quot;Total: R$ {prices[x] * y:.2f}&quot;</span>)
+
+<span class="comment"># 【C++ if-else vs Python 字典】</span>
+<span class="comment"># C++ 用 if-else if 链逐一比对（适合条件复杂时）</span>
+<span class="comment"># Python 用字典查表更简洁（适合"编号→值"映射）</span></code></pre>
             </details>
         </div>
     </div>
@@ -1858,19 +1914,50 @@ Q4
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> a, b, c, d;
     scanf(<span class="string">&quot;%d%d%d%d&quot;</span>, &a, &b, &c, &d);
-    <span class="keyword">int</span> start = a * <span class="number">60</span> + b, end = c * <span class="number">60</span> + d;
+    <span class="comment">// 输入 "8 56 7 37" → a=8, b=56, c=7, d=37</span>
+
+    <span class="comment">// 关键思路：全部转成分钟再做减法</span>
+    <span class="comment">// 开始时间 = 8时56分 = 8×60 + 56 = 536 分钟</span>
+    <span class="comment">// 结束时间 = 7时37分 = 7×60 + 37 = 457 分钟</span>
+    <span class="keyword">int</span> start = a * <span class="number">60</span> + b;   <span class="comment">// start = 536</span>
+    <span class="keyword">int</span> end = c * <span class="number">60</span> + d;     <span class="comment">// end = 457</span>
+
+    <span class="comment">// 如果结束时间 ≤ 开始时间，说明跨了零点</span>
+    <span class="comment">// 加上 24×60=1440 分钟（一整天）</span>
+    <span class="comment">// 457 ≤ 536 ✓ → end = 457 + 1440 = 1897</span>
     <span class="keyword">if</span> (end &lt;= start) end += <span class="number">24</span> * <span class="number">60</span>;
+
+    <span class="comment">// 时间差 = 1897 - 536 = 1361 分钟</span>
     <span class="keyword">int</span> diff = end - start;
+
+    <span class="comment">// 转回 时:分 格式</span>
+    <span class="comment">// 时 = 1361 / 60 = 22（整除取小时）</span>
+    <span class="comment">// 分 = 1361 % 60 = 41（取余取分钟）</span>
     printf(<span class="string">&quot;%d:%d\n&quot;</span>, diff / <span class="number">60</span>, diff % <span class="number">60</span>);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">a, b, c, d = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-s = a * <span class="number">60</span> + b
-e = c * <span class="number">60</span> + d
-<span class="keyword">if</span> e &lt;= s: e += <span class="number">24</span> * <span class="number">60</span>
-d = e - s
-<span class="keyword">print</span>(f<span class="string">&quot;{d // 60}:{d % 60}&quot;</span>)</code></pre>
+            <pre><code class="language-python"><span class="comment"># 跨夜比武：计算时间差</span>
+
+<span class="comment"># 读入 开始时、开始分、结束时、结束分</span>
+a, b, c, d = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="comment"># 输入 "8 56 7 37"</span>
+
+<span class="comment"># 全部转成分钟</span>
+s = a * <span class="number">60</span> + b      <span class="comment"># 开始 = 8×60+56 = 536 分钟</span>
+e = c * <span class="number">60</span> + d      <span class="comment"># 结束 = 7×60+37 = 457 分钟</span>
+
+<span class="comment"># 跨零点判断：结束 ≤ 开始 → 加一天</span>
+<span class="keyword">if</span> e &lt;= s: e += <span class="number">24</span> * <span class="number">60</span>  <span class="comment"># 457+1440 = 1897</span>
+
+<span class="comment"># 算差值，再转回 时:分</span>
+d = e - s             <span class="comment"># 1897-536 = 1361 分钟</span>
+<span class="keyword">print</span>(f<span class="string">&quot;{d // 60}:{d % 60}&quot;</span>)  <span class="comment"># 22:41</span>
+
+<span class="comment"># 【时间计算的通用套路】</span>
+<span class="comment"># 1. 全部转成最小单位（秒或分钟）</span>
+<span class="comment"># 2. 做减法</span>
+<span class="comment"># 3. 再转回需要的格式</span></code></pre>
             </details>
         </div>
     </div>
@@ -1922,29 +2009,62 @@ Percentage: 15 %
             <h4>C++</h4>
             <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
 <span class="keyword">int</span> main() {
-    <span class="keyword">double</span> s;
-    scanf(<span class="string">&quot;%lf&quot;</span>, &s);
-    <span class="keyword">int</span> p;
-    <span class="keyword">if</span> (s &lt;= <span class="number">400</span>) p = <span class="number">15</span>;
-    <span class="keyword">else</span> <span class="keyword">if</span> (s &lt;= <span class="number">800</span>) p = <span class="number">12</span>;
-    <span class="keyword">else</span> <span class="keyword">if</span> (s &lt;= <span class="number">1200</span>) p = <span class="number">10</span>;
-    <span class="keyword">else</span> <span class="keyword">if</span> (s &lt;= <span class="number">2000</span>) p = <span class="number">7</span>;
-    <span class="keyword">else</span> p = <span class="number">4</span>;
+    <span class="keyword">double</span> s;               <span class="comment">// s=原月钱</span>
+    scanf(<span class="string">&quot;%lf&quot;</span>, &s);       <span class="comment">// 输入 "400.00"</span>
+
+    <span class="comment">// 第一步：根据月钱区间确定涨幅百分比</span>
+    <span class="comment">// 注意：条件从上到下逐一检查，一旦匹配就不再往下</span>
+    <span class="keyword">int</span> p;                  <span class="comment">// p=涨幅百分比</span>
+    <span class="keyword">if</span> (s &lt;= <span class="number">400</span>) p = <span class="number">15</span>;       <span class="comment">// 400 ≤ 400 ✓ → p=15</span>
+    <span class="keyword">else</span> <span class="keyword">if</span> (s &lt;= <span class="number">800</span>) p = <span class="number">12</span>;  <span class="comment">// 400.01~800 → p=12</span>
+    <span class="keyword">else</span> <span class="keyword">if</span> (s &lt;= <span class="number">1200</span>) p = <span class="number">10</span>; <span class="comment">// 800.01~1200 → p=10</span>
+    <span class="keyword">else</span> <span class="keyword">if</span> (s &lt;= <span class="number">2000</span>) p = <span class="number">7</span>;  <span class="comment">// 1200.01~2000 → p=7</span>
+    <span class="keyword">else</span> p = <span class="number">4</span>;                  <span class="comment">// 2000以上 → p=4</span>
+
+    <span class="comment">// 第二步：计算涨额和新月钱</span>
+    <span class="comment">// 涨额 = 原月钱 × 涨幅 / 100</span>
+    <span class="comment">// s=400, p=15 → r = 400×15/100 = 60</span>
     <span class="keyword">double</span> r = s * p / <span class="number">100</span>;
+
+    <span class="comment">// 第三步：输出三行</span>
+    <span class="comment">// %% 在 printf 中表示输出一个 % 字符</span>
     printf(<span class="string">&quot;New salary: %.2lf\nIncrease: %.2lf\nPercentage: %d %%\n&quot;</span>, s + r, r, p);
     <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
+}
+
+<span class="comment">// 运行演示（输入 400.00）：</span>
+<span class="comment">// s=400 → s<=400 ✓ → p=15</span>
+<span class="comment">// r = 400×15/100 = 60</span>
+<span class="comment">// 新月钱 = 400+60 = 460.00</span>
+<span class="comment">// 涨额 = 60.00</span>
+<span class="comment">// 涨幅 = 15 %</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">s = <span class="keyword">float</span>(<span class="keyword">input</span>())
-<span class="keyword">if</span> s &lt;= <span class="number">400</span>: p = <span class="number">15</span>
-<span class="keyword">elif</span> s &lt;= <span class="number">800</span>: p = <span class="number">12</span>
-<span class="keyword">elif</span> s &lt;= <span class="number">1200</span>: p = <span class="number">10</span>
-<span class="keyword">elif</span> s &lt;= <span class="number">2000</span>: p = <span class="number">7</span>
-<span class="keyword">else</span>: p = <span class="number">4</span>
-r = s * p / <span class="number">100</span>
-<span class="keyword">print</span>(f<span class="string">&quot;New salary: {s + r:.2f}&quot;</span>)
-<span class="keyword">print</span>(f<span class="string">&quot;Increase: {r:.2f}&quot;</span>)
-<span class="keyword">print</span>(f<span class="string">&quot;Percentage: {p} %&quot;</span>)</code></pre>
+            <pre><code class="language-python"><span class="comment"># 账房调薪：根据月钱区间确定涨幅</span>
+
+<span class="comment"># 读入原月钱</span>
+s = <span class="keyword">float</span>(<span class="keyword">input</span>())
+<span class="comment"># 输入 "400.00" → s=400.0</span>
+
+<span class="comment"># 用 if-elif-else 确定涨幅百分比</span>
+<span class="comment"># elif 是 "else if" 的缩写</span>
+<span class="comment"># 条件从上到下逐一检查，一旦匹配就不再往下</span>
+<span class="keyword">if</span> s &lt;= <span class="number">400</span>: p = <span class="number">15</span>       <span class="comment"># 0~400: 涨15% ← 400走这里</span>
+<span class="keyword">elif</span> s &lt;= <span class="number">800</span>: p = <span class="number">12</span>     <span class="comment"># 400.01~800: 涨12%</span>
+<span class="keyword">elif</span> s &lt;= <span class="number">1200</span>: p = <span class="number">10</span>    <span class="comment"># 800.01~1200: 涨10%</span>
+<span class="keyword">elif</span> s &lt;= <span class="number">2000</span>: p = <span class="number">7</span>     <span class="comment"># 1200.01~2000: 涨7%</span>
+<span class="keyword">else</span>: p = <span class="number">4</span>                <span class="comment"># 2000以上: 涨4%</span>
+
+<span class="comment"># 计算涨额</span>
+r = s * p / <span class="number">100</span>     <span class="comment"># 400×15/100 = 60</span>
+
+<span class="comment"># 输出三行</span>
+<span class="keyword">print</span>(f<span class="string">&quot;New salary: {s + r:.2f}&quot;</span>)   <span class="comment"># 460.00</span>
+<span class="keyword">print</span>(f<span class="string">&quot;Increase: {r:.2f}&quot;</span>)         <span class="comment"># 60.00</span>
+<span class="keyword">print</span>(f<span class="string">&quot;Percentage: {p} %&quot;</span>)         <span class="comment"># 15 %</span>
+
+<span class="comment"># 【小贴士】printf 的 %% 和 Python 的 %</span>
+<span class="comment"># C++ printf: 用 %% 输出一个 % 字符</span>
+<span class="comment># Python f-string: 直接写 % 就行，不需要转义</span></code></pre>
             </details>
         </div>
     </div>
@@ -1996,18 +2116,49 @@ Not accepted
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> a, b, c, d;
     cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;
-    <span class="keyword">if</span> (b &gt; a && d &gt; a && c + d &gt; a + b && c &gt; <span class="number">0</span> && d &gt; <span class="number">0</span> && a % <span class="number">2</span> == <span class="number">0</span>)
+    <span class="comment">// 输入 "-87 14 68 33" → a=-87, b=14, c=68, d=33</span>
+
+    <span class="comment">// 五个条件用 &&（并且）连接，全部为真才通过</span>
+    <span class="comment">// 条件1：b &gt; a        → 14 &gt; -87 ✓</span>
+    <span class="comment">// 条件2：d &gt; a        → 33 &gt; -87 ✓</span>
+    <span class="comment">// 条件3：c+d &gt; a+b    → 68+33=101 &gt; -87+14=-73 ✓</span>
+    <span class="comment">// 条件4：c &gt; 0        → 68 &gt; 0 ✓</span>
+    <span class="comment">// 条件5：a % 2 == 0   → -87 % 2 = -1 ≠ 0 ✗ ← 不满足！</span>
+    <span class="comment">// 条件5不满足 → 整体为假 → 输出 "Not accepted"</span>
+
+    <span class="keyword">if</span> (b &gt; a && d &gt; a && c + d &gt; a + b && c &gt; <span class="number">0</span> && a % <span class="number">2</span> == <span class="number">0</span>)
         cout &lt;&lt; <span class="string">&quot;Accepted&quot;</span> &lt;&lt; endl;
     <span class="keyword">else</span>
         cout &lt;&lt; <span class="string">&quot;Not accepted&quot;</span> &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
+}
+
+<span class="comment">// 【&& 的短路求值】</span>
+<span class="comment">// C++ 的 && 会"短路"：如果第一个条件已经为假</span>
+<span class="comment">// 后面的条件不再检查，直接判定整体为假</span>
+<span class="comment">// 这样既快又安全（避免不必要的计算）</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">a, b, c, d = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-<span class="keyword">if</span> b &gt; c <span class="keyword">and</span> d &gt; a <span class="keyword">and</span> c + d &gt; a + b <span class="keyword">and</span> c &gt; <span class="number">0</span> <span class="keyword">and</span> d &gt; <span class="number">0</span> <span class="keyword">and</span> a % <span class="number">2</span> == <span class="number">0</span>:
+            <pre><code class="language-python"><span class="comment"># 五关考验：五个条件全部满足才通过</span>
+
+a, b, c, d = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="comment"># 输入 "-87 14 68 33"</span>
+
+<span class="comment"># 五个条件用 and 连接（Python 中 && 写成 and）</span>
+<span class="comment"># 条件1：b &gt; a         → 14 &gt; -87 ✓</span>
+<span class="comment"># 条件2：d &gt; a         → 33 &gt; -87 ✓</span>
+<span class="comment"># 条件3：c+d &gt; a+b     → 101 &gt; -73 ✓</span>
+<span class="comment"># 条件4：c &gt; 0         → 68 &gt; 0 ✓</span>
+<span class="comment"># 条件5：a % 2 == 0    → -87 % 2 = -1 ≠ 0 ✗</span>
+
+<span class="keyword">if</span> (b &gt; a <span class="keyword">and</span> d &gt; a <span class="keyword">and</span> c + d &gt; a + b
+        <span class="keyword">and</span> c &gt; <span class="number">0</span> <span class="keyword">and</span> a % <span class="number">2</span> == <span class="number">0</span>):
     <span class="keyword">print</span>(<span class="string">&quot;Accepted&quot;</span>)
 <span class="keyword">else</span>:
-    <span class="keyword">print</span>(<span class="string">&quot;Not accepted&quot;</span>)</code></pre>
+    <span class="keyword">print</span>(<span class="string">&quot;Not accepted&quot;</span>)
+
+<span class="comment"># 【C++ vs Python 逻辑运算符对照】</span>
+<span class="comment"># C++:   &&    ||    !</span>
+<span class="comment"># Python: and  or   not</span></code></pre>
             </details>
         </div>
     </div>
@@ -2023,7 +2174,7 @@ Not accepted
         </div>
 
         <div style="background:#fff3cd;border-left:4px solid #ffc107;padding:8px;margin:10px 0;border-radius:0 4px 4px 0;font-size:0.9em">本题输出 DDD nao cadastrado 为原题葡语格式（未注册的区号）。</div>
-        class="io-section">
+        <div class="io-section">
             <h4>输入格式</h4>
             <p>一个整数。</p>
 
@@ -2128,29 +2279,58 @@ Not a triangle
 <span class="keyword">int</span> main() {
     <span class="keyword">double</span> a, b, c;
     cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
-    <span class="keyword">if</span> (b &gt; a) swap(a, b);
-    <span class="keyword">if</span> (c &gt; a) swap(a, c);
-    <span class="keyword">if</span> (c &gt; b) swap(b, c);
+    <span class="comment">// 输入 "6.0 4.0 2.0"</span>
+
+    <span class="comment">// 第一步：排序，让 a 成为最长边</span>
+    <span class="comment">// swap(x,y) 交换两个变量的值</span>
+    <span class="keyword">if</span> (b &gt; a) swap(a, b);  <span class="comment">// 确保 a ≥ b</span>
+    <span class="keyword">if</span> (c &gt; a) swap(a, c);  <span class="comment">// 确保 a ≥ c（a是最大值）</span>
+    <span class="keyword">if</span> (c &gt; b) swap(b, c);  <span class="comment">// 确保 b ≥ c</span>
+    <span class="comment">// 排序后：a=6.0, b=4.0, c=2.0</span>
+
+    <span class="comment">// 第二步：判断能否构成三角形</span>
+    <span class="comment">// 三角形条件：最长边 &lt; 另外两边之和</span>
+    <span class="comment">// 6.0 ≥ 4.0+2.0=6.0? 是 → 不能构成三角形</span>
     <span class="keyword">if</span> (a &gt;= b + c) cout &lt;&lt; <span class="string">&quot;Not a triangle&quot;</span> &lt;&lt; endl;
     <span class="keyword">else</span> {
+        <span class="comment">// 第三步：判断角度（用勾股定理的推广）</span>
+        <span class="comment">// a² = b² + c² → 直角</span>
+        <span class="comment">// a² &gt; b² + c² → 钝角</span>
+        <span class="comment">// a² &lt; b² + c² → 锐角</span>
         <span class="keyword">if</span> (a*a == b*b + c*c) cout &lt;&lt; <span class="string">&quot;Right&quot;</span> &lt;&lt; endl;
         <span class="keyword">if</span> (a*a &gt; b*b + c*c) cout &lt;&lt; <span class="string">&quot;Obtuse&quot;</span> &lt;&lt; endl;
         <span class="keyword">if</span> (a*a &lt; b*b + c*c) cout &lt;&lt; <span class="string">&quot;Acute&quot;</span> &lt;&lt; endl;
-        <span class="keyword">if</span> (a == b && b == c) cout &lt;&lt; <span class="string">&quot;Equilateral&quot;</span> &lt;&lt; endl;
-        <span class="keyword">else</span> <span class="keyword">if</span> (a == b || a == c || b == c) cout &lt;&lt; <span class="string">&quot;Isosceles&quot;</span> &lt;&lt; endl;
+
+        <span class="comment">// 第四步：判断边的关系</span>
+        <span class="keyword">if</span> (a == b && b == c) cout &lt;&lt; <span class="string">&quot;Equilateral&quot;</span> &lt;&lt; endl;      <span class="comment">// 等边</span>
+        <span class="keyword">else</span> <span class="keyword">if</span> (a == b || a == c || b == c) cout &lt;&lt; <span class="string">&quot;Isosceles&quot;</span> &lt;&lt; endl;  <span class="comment">// 等腰</span>
     }
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">a, b, c = <span class="keyword">sorted</span>(<span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split()), reverse=<span class="keyword">True</span>)
+            <pre><code class="language-python"><span class="comment"># 木棍辨形：判断三角形类型</span>
+
+<span class="comment"># sorted(..., reverse=True) 从大到小排序</span>
+<span class="comment"># 这样 a 就是最长边</span>
+a, b, c = <span class="keyword">sorted</span>(<span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split()), reverse=<span class="keyword">True</span>)
+<span class="comment"># 输入 "6.0 4.0 2.0" → a=6.0, b=4.0, c=2.0</span>
+
+<span class="comment"># 判断能否构成三角形</span>
 <span class="keyword">if</span> a &gt;= b + c:
-    <span class="keyword">print</span>(<span class="string">&quot;Not a triangle&quot;</span>)
+    <span class="keyword">print</span>(<span class="string">&quot;Not a triangle&quot;</span>)  <span class="comment"># 6.0 ≥ 6.0 → 不能构成</span>
 <span class="keyword">else</span>:
-    <span class="keyword">if</span> a*a == b*b + c*c: <span class="keyword">print</span>(<span class="string">&quot;Right&quot;</span>)
-    <span class="keyword">if</span> a*a &gt; b*b + c*c: <span class="keyword">print</span>(<span class="string">&quot;Obtuse&quot;</span>)
-    <span class="keyword">if</span> a*a &lt; b*b + c*c: <span class="keyword">print</span>(<span class="string">&quot;Acute&quot;</span>)
-    <span class="keyword">if</span> a == b == c: <span class="keyword">print</span>(<span class="string">&quot;Equilateral&quot;</span>)
-    <span class="keyword">elif</span> a == b <span class="keyword">or</span> b == c <span class="keyword">or</span> a == c: <span class="keyword">print</span>(<span class="string">&quot;Isosceles&quot;</span>)</code></pre>
+    <span class="comment"># 判断角度</span>
+    <span class="keyword">if</span> a*a == b*b + c*c: <span class="keyword">print</span>(<span class="string">&quot;Right&quot;</span>)    <span class="comment"># 直角</span>
+    <span class="keyword">if</span> a*a &gt; b*b + c*c: <span class="keyword">print</span>(<span class="string">&quot;Obtuse&quot;</span>)   <span class="comment"># 钝角</span>
+    <span class="keyword">if</span> a*a &lt; b*b + c*c: <span class="keyword">print</span>(<span class="string">&quot;Acute&quot;</span>)    <span class="comment"># 锐角</span>
+
+    <span class="comment"># 判断边的关系</span>
+    <span class="keyword">if</span> a == b == c: <span class="keyword">print</span>(<span class="string">&quot;Equilateral&quot;</span>)          <span class="comment"># 等边</span>
+    <span class="keyword">elif</span> a == b <span class="keyword">or</span> b == c <span class="keyword">or</span> a == c: <span class="keyword">print</span>(<span class="string">&quot;Isosceles&quot;</span>)  <span class="comment"># 等腰</span>
+
+<span class="comment"># 【Python 链式比较】</span>
+<span class="comment"># a == b == c 等价于 a == b and b == c</span>
+<span class="comment"># Python 支持这种写法，C++ 不支持</span></code></pre>
             </details>
         </div>
     </div>
@@ -2250,7 +2430,7 @@ a, b, c = sys.stdin.read().split()
         </div>
 
         <div style="background:#fff3cd;border-left:4px solid #ffc107;padding:8px;margin:10px 0;border-radius:0 4px 4px 0;font-size:0.9em">本题输出 R$ X.XX 和 Isento 为巴西货币和葡语免税标记。</div>
-        class="io-section">
+        <div class="io-section">
             <h4>输入格式</h4>
             <p>一个浮点数，表示月收入。</p>
 
@@ -2287,33 +2467,73 @@ R$ 80.36
 <span class="keyword">int</span> main() {
     <span class="keyword">double</span> x;
     scanf(<span class="string">&quot;%lf&quot;</span>, &x);
+    <span class="comment">// 输入 "3002.00"</span>
+
+    <span class="comment">// 2000以下免税</span>
     <span class="keyword">if</span> (x &lt;= <span class="number">2000</span>) { printf(<span class="string">&quot;Isento\n&quot;</span>); <span class="keyword">return</span> <span class="number">0</span>; }
-    x -= <span class="number">2000</span>;
-    <span class="keyword">double</span> t = <span class="number">0</span>;
+
+    <span class="comment">// 去掉免税额度，只对超出部分计税</span>
+    x -= <span class="number">2000</span>;       <span class="comment">// 3002-2000 = 1002（应税部分）</span>
+
+    <span class="keyword">double</span> t = <span class="number">0</span>;    <span class="comment">// t=总税额</span>
+
+    <span class="comment">// 第一档：0~1000，税率8%</span>
+    <span class="comment">// 三目运算符：条件 ? 真值 : 假值</span>
+    <span class="comment">// v = min(x, 1000) → 取本档的应税金额</span>
     <span class="keyword">if</span> (x &gt; <span class="number">0</span>) { <span class="keyword">double</span> v = x &lt; <span class="number">1000</span> ? x : <span class="number">1000</span>; t += v * <span class="number">0.08</span>; x -= v; }
+    <span class="comment">// x=1002, v=min(1002,1000)=1000, t=1000×0.08=80, x=2</span>
+
+    <span class="comment">// 第二档：1000~2500，税率18%</span>
     <span class="keyword">if</span> (x &gt; <span class="number">0</span>) { <span class="keyword">double</span> v = x &lt; <span class="number">1500</span> ? x : <span class="number">1500</span>; t += v * <span class="number">0.18</span>; x -= v; }
+    <span class="comment">// x=2, v=min(2,1500)=2, t=80+2×0.18=80.36, x=0</span>
+
+    <span class="comment">// 第三档：2500以上，税率28%</span>
     <span class="keyword">if</span> (x &gt; <span class="number">0</span>) t += x * <span class="number">0.28</span>;
-    printf(<span class="string">&quot;R$ %.2lf\n&quot;</span>, t);
+    <span class="comment">// x=0, 跳过</span>
+
+    printf(<span class="string">&quot;R$ %.2lf\n&quot;</span>, t);  <span class="comment">// 输出 R$ 80.36</span>
     <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
+}
+
+<span class="comment">// 【分段计税的思路】</span>
+<span class="comment">// 1. 先去掉免税额度</span>
+<span class="comment">// 2. 从低档到高档，每档只对"剩余金额"征税</span>
+<span class="comment">// 3. 每档征完后，减去已征部分，进入下一档</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">x = <span class="keyword">float</span>(<span class="keyword">input</span>())
+            <pre><code class="language-python"><span class="comment"># 田赋计算：分段累进税率</span>
+
+x = <span class="keyword">float</span>(<span class="keyword">input</span>())
+<span class="comment"># 输入 "3002.00"</span>
+
+<span class="comment"># 2000以下免税</span>
 <span class="keyword">if</span> x &lt;= <span class="number">2000</span>:
     <span class="keyword">print</span>(<span class="string">&quot;Isento&quot;</span>)
 <span class="keyword">else</span>:
-    x -= <span class="number">2000</span>
-    t = <span class="number">0</span>
+    <span class="comment"># 去掉免税额度</span>
+    x -= <span class="number">2000</span>          <span class="comment"># 3002-2000 = 1002（应税部分）</span>
+    t = <span class="number">0</span>               <span class="comment"># t=总税额</span>
+
+    <span class="comment"># 第一档：0~1000，税率8%</span>
     <span class="keyword">if</span> x &gt; <span class="number">0</span>:
-        v = <span class="keyword">min</span>(x, <span class="number">1000</span>)
-        t += v * <span class="number">0.08</span>
-        x -= v
+        v = <span class="keyword">min</span>(x, <span class="number">1000</span>)   <span class="comment"># v = min(1002, 1000) = 1000</span>
+        t += v * <span class="number">0.08</span>      <span class="comment"># t = 1000×0.08 = 80</span>
+        x -= v              <span class="comment"># x = 1002-1000 = 2</span>
+
+    <span class="comment"># 第二档：1000~2500，税率18%</span>
     <span class="keyword">if</span> x &gt; <span class="number">0</span>:
-        v = <span class="keyword">min</span>(x, <span class="number">1500</span>)
-        t += v * <span class="number">0.18</span>
-        x -= v
+        v = <span class="keyword">min</span>(x, <span class="number">1500</span>)   <span class="comment"># v = min(2, 1500) = 2</span>
+        t += v * <span class="number">0.18</span>      <span class="comment"># t = 80 + 2×0.18 = 80.36</span>
+        x -= v              <span class="comment"># x = 0</span>
+
+    <span class="comment"># 第三档：2500以上，税率28%</span>
     <span class="keyword">if</span> x &gt; <span class="number">0</span>:
-        t += x * <span class="number">0.28</span>
-    <span class="keyword">print</span>(f<span class="string">&quot;R$ {t:.2f}&quot;</span>)</code></pre>
+        t += x * <span class="number">0.28</span>      <span class="comment"># x=0, 跳过</span>
+
+    <span class="keyword">print</span>(f<span class="string">&quot;R$ {t:.2f}&quot;</span>)  <span class="comment"># R$ 80.36</span>
+
+<span class="comment"># 【三目运算符 vs min()】</span>
+<span class="comment"># C++: x < 1000 ? x : 1000  （三目运算符）</span>
+<span class="comment"># Python: min(x, 1000)      （内置函数，更直观）</span></code></pre>
             </details>
         </div>
     </div></div><div style="page-break-before:always;margin-top:40px" id="ch3"><h1>第3章 千回百转</h1>
@@ -2356,7 +2576,6 @@ R$ 80.36
 
         </div>
 
-        <div 
         <div class="sample">
             <div class="sample-label">输出样例</div>
 2
@@ -2411,7 +2630,7 @@ R$ 80.36
 100
         </div>
 
-        class="hint">
+        <div class="hint">
             <strong>解题思路：</strong><p>for循环从2开始，步长为2，到100结束。</p>
 
         </div>
@@ -2519,15 +2738,51 @@ R$ 80.36
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> x;
-    cin &gt;&gt; x;
+    cin &gt;&gt; x;  <span class="comment">// 输入 "8"</span>
+
+    <span class="comment">// for循环：从1开始，每次加2，直到超过x</span>
+    <span class="comment">// 步长为2 → 1, 3, 5, 7, ...（全是奇数）</span>
+
+    <span class="comment">// 执行过程（x=8）：</span>
+    <span class="comment">// 第1次：i=1, 1&lt;=8 ✓ → 输出 1, 然后 i=3</span>
+    <span class="comment">// 第2次：i=3, 3&lt;=8 ✓ → 输出 3, 然后 i=5</span>
+    <span class="comment">// 第3次：i=5, 5&lt;=8 ✓ → 输出 5, 然后 i=7</span>
+    <span class="comment">// 第4次：i=7, 7&lt;=8 ✓ → 输出 7, 然后 i=9</span>
+    <span class="comment">// 第5次：i=9, 9&lt;=8 ✗ → 循环结束</span>
+
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= x; i += <span class="number">2</span>)
         cout &lt;&lt; i &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
+}
+
+<span class="comment">// 【步长不一定是1！】</span>
+<span class="comment">// i++ 等价于 i += 1（步长1）</span>
+<span class="comment">// i += 2（步长2）→ 只遍历奇数或偶数</span>
+<span class="comment">// i += 3（步长3）→ 每隔两个数取一个</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">x = <span class="keyword">int</span>(<span class="keyword">input</span>())
+            <pre><code class="language-python"><span class="comment"># 奇数石砖：输出1到X的所有奇数</span>
+
+x = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="comment"># 输入 "8"</span>
+
+<span class="comment"># range(1, x+1, 2) → 从1开始，到x+1之前，每次加2</span>
+<span class="comment"># 注意：stop 是 x+1 不是 x（range 不包含 stop）</span>
+
+<span class="comment"># 执行过程（x=8）：</span>
+<span class="comment"># i=1 → 输出 1</span>
+<span class="comment"># i=3 → 输出 3</span>
+<span class="comment"># i=5 → 输出 5</span>
+<span class="comment"># i=7 → 输出 7</span>
+<span class="comment"># (9 不在 range(1,9,2) 中，循环结束)</span>
+
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, x + <span class="number">1</span>, <span class="number">2</span>):
-    <span class="keyword">print</span>(i)</code></pre>
+    <span class="keyword">print</span>(i)
+
+<span class="comment"># 【range 的三个参数】</span>
+<span class="comment"># range(start, stop, step)</span>
+<span class="comment"># start: 起始值（包含）</span>
+<span class="comment"># stop:  结束值（不包含！）</span>
+<span class="comment"># step:  步长（每次加多少）</span></code></pre>
             </details>
         </div>
     </div>
@@ -2685,19 +2940,58 @@ R$ 80.36
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> x;
-    cin &gt;&gt; x;
+    cin &gt;&gt; x;  <span class="comment">// 输入 "8"</span>
+
+    <span class="comment">// 第一步：确保 x 是奇数</span>
+    <span class="comment">// 如果 x 是偶数，加1变成奇数</span>
+    <span class="comment">// 8 % 2 == 0 ✓ → x = 8+1 = 9</span>
     <span class="keyword">if</span> (x % <span class="number">2</span> == <span class="number">0</span>) x++;
+
+    <span class="comment">// 第二步：输出6个连续奇数</span>
+    <span class="comment">// for 循环的"逗号表达式"：i++, x += 2</span>
+    <span class="comment">// 每轮结束后 i 加1，x 加2</span>
+
+    <span class="comment">// 执行过程：</span>
+    <span class="comment">// 第1次：i=0, x=9  → 输出 9,  i=1, x=11</span>
+    <span class="comment">// 第2次：i=1, x=11 → 输出 11, i=2, x=13</span>
+    <span class="comment">// 第3次：i=2, x=13 → 输出 13, i=3, x=15</span>
+    <span class="comment">// 第4次：i=3, x=15 → 输出 15, i=4, x=17</span>
+    <span class="comment">// 第5次：i=4, x=17 → 输出 17, i=5, x=19</span>
+    <span class="comment">// 第6次：i=5, x=19 → 输出 19, i=6, x=21</span>
+    <span class="comment">// i=6, 6&lt;6 ✗ → 循环结束</span>
+
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++, x += <span class="number">2</span>)
         cout &lt;&lt; x &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">x = <span class="keyword">int</span>(<span class="keyword">input</span>())
+            <pre><code class="language-python"><span class="comment"># 六奇连珠：从X之后找6个连续奇数</span>
+
+x = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="comment"># 输入 "8"</span>
+
+<span class="comment"># 确保 x 是奇数</span>
 <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span>:
-    x += <span class="number">1</span>
+    x += <span class="number">1</span>      <span class="comment"># 8是偶数 → x=9</span>
+
+<span class="comment"># _ 是"丢弃变量"，表示循环变量不需要用</span>
+<span class="comment"># 我们只需要循环6次，不需要知道是第几次</span>
+
+<span class="comment"># 执行过程：</span>
+<span class="comment"># 第1次：x=9  → 输出 9,  x=11</span>
+<span class="comment"># 第2次：x=11 → 输出 11, x=13</span>
+<span class="comment"># 第3次：x=13 → 输出 13, x=15</span>
+<span class="comment"># 第4次：x=15 → 输出 15, x=17</span>
+<span class="comment"># 第5次：x=17 → 输出 17, x=19</span>
+<span class="comment"># 第6次：x=19 → 输出 19, x=21</span>
+
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">6</span>):
     <span class="keyword">print</span>(x)
-    x += <span class="number">2</span></code></pre>
+    x += <span class="number">2</span>      <span class="comment"># 每次加2，保持奇数</span>
+
+<span class="comment"># 【range(6) 的含义】</span>
+<span class="comment"># 生成 0,1,2,3,4,5 → 循环6次</span>
+<span class="comment"># 等价于 C++ 的 for (int i = 0; i < 6; i++)</span></code></pre>
             </details>
         </div>
     </div>
@@ -2851,16 +3145,52 @@ cnt = <span class="number">0</span>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n;
-    cin &gt;&gt; n;
+    cin &gt;&gt; n;  <span class="comment">// 输入 "13"</span>
+
+    <span class="comment">// 从1到10000逐个检查，余数为2就输出</span>
+
+    <span class="comment">// 执行过程（n=13）：</span>
+    <span class="comment">// i=1:  1%13=1  ≠2 → 跳过</span>
+    <span class="comment">// i=2:  2%13=2  =2 → 输出 2</span>
+    <span class="comment">// i=3:  3%13=3  ≠2 → 跳过</span>
+    <span class="comment">// ...</span>
+    <span class="comment">// i=13: 13%13=0 ≠2 → 跳过</span>
+    <span class="comment">// i=14: 14%13=1 ≠2 → 跳过</span>
+    <span class="comment">// i=15: 15%13=2 =2 → 输出 15</span>
+    <span class="comment">// ...</span>
+
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10000</span>; i++)
         <span class="keyword">if</span> (i % n == <span class="number">2</span>) cout &lt;&lt; i &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
+}
+
+<span class="comment">// 【% 取余运算符】</span>
+<span class="comment">// 15 % 13 = 2  （15 ÷ 13 = 1 余 2）</span>
+<span class="comment">// 28 % 13 = 2  （28 ÷ 13 = 2 余 2）</span>
+<span class="comment">// 13 % 13 = 0  （13 ÷ 13 = 1 余 0）</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+            <pre><code class="language-python"><span class="comment"># 余数寻踪：找除以N余2的数</span>
+
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="comment"># 输入 "13"</span>
+
+<span class="comment"># 从1到10000逐个检查</span>
+<span class="comment"># range(1, 10001) → 1到10000（注意10001不包含）</span>
+
+<span class="comment"># 执行过程（n=13）：</span>
+<span class="comment"># i=1:  1%13=1  ≠2 → 跳过</span>
+<span class="comment"># i=2:  2%13=2  =2 → 输出 2</span>
+<span class="comment"># ...</span>
+<span class="comment"># i=15: 15%13=2 =2 → 输出 15</span>
+<span class="comment"># ...</span>
+
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, <span class="number">10001</span>):
     <span class="keyword">if</span> i % n == <span class="number">2</span>:
-        <span class="keyword">print</span>(i)</code></pre>
+        <span class="keyword">print</span>(i)
+
+<span class="comment"># 【range 的 stop 参数为什么要 +1？】</span>
+<span class="comment"># range(1, 10001) 包含 10000</span>
+<span class="comment"># range(1, 10000) 不包含 10000（差一错误！）</span></code></pre>
             </details>
         </div>
     </div>
@@ -2913,20 +3243,50 @@ cnt = <span class="number">0</span>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n, x, in = <span class="number">0</span>, out = <span class="number">0</span>;
-    cin &gt;&gt; n;
+    cin &gt;&gt; n;  <span class="comment">// 输入 "5"</span>
+
+    <span class="comment">// 两个计数器：in=区间内, out=区间外</span>
+
+    <span class="comment">// 执行过程（输入 5 12 18 25 10）：</span>
+    <span class="comment">// i=0: x=5,  5在[10,20]内? 否 → out=1</span>
+    <span class="comment">// i=1: x=12, 12在[10,20]内? 是 → in=1</span>
+    <span class="comment">// i=2: x=18, 18在[10,20]内? 是 → in=2</span>
+    <span class="comment">// i=3: x=25, 25在[10,20]内? 否 → out=2</span>
+    <span class="comment">// i=4: x=10, 10在[10,20]内? 是 → in=3</span>
+
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
         cin &gt;&gt; x;
-        <span class="keyword">if</span> (x &gt;= <span class="number">10</span> && x &lt;= <span class="number">20</span>) in++;
-        <span class="keyword">else</span> out++;
+        <span class="keyword">if</span> (x &gt;= <span class="number">10</span> && x &lt;= <span class="number">20</span>) in++;   <span class="comment">// 区间内：计数器+1</span>
+        <span class="keyword">else</span> out++;                         <span class="comment">// 区间外：另一个计数器+1</span>
     }
-    cout &lt;&lt; in &lt;&lt; <span class="string">&quot; in&quot;</span> &lt;&lt; endl;
-    cout &lt;&lt; out &lt;&lt; <span class="string">&quot; out&quot;</span> &lt;&lt; endl;
+    cout &lt;&lt; in &lt;&lt; <span class="string">&quot; in&quot;</span> &lt;&lt; endl;   <span class="comment">// 3 in</span>
+    cout &lt;&lt; out &lt;&lt; <span class="string">&quot; out&quot;</span> &lt;&lt; endl; <span class="comment">// 2 out</span>
     <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
+}
+
+<span class="comment">// 【双计数器模式】</span>
+<span class="comment">// 当数据只分两类时，可以用两个计数器</span>
+<span class="comment">// 或者只记一类，另一类用 n - in 算出</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+            <pre><code class="language-python"><span class="comment"># 区间计数：统计区间内/外的个数</span>
+
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="comment"># 输入 "5"</span>
+
+<span class="comment"># 方法一：用 sum + 生成器表达式（简洁）</span>
+<span class="comment"># sum(1 for ... if 条件) 统计满足条件的个数</span>
 in_cnt = <span class="keyword">sum</span>(<span class="number">1</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n) <span class="keyword">if</span> <span class="number">10</span> &lt;= <span class="keyword">int</span>(<span class="keyword">input</span>()) &lt;= <span class="number">20</span>)
-<span class="keyword">print</span>(f<span class="string">&quot;{in_cnt} in&quot;</span>)
+<span class="comment"># 读入5个数，统计在[10,20]内的个数</span>
+
+<span class="keyword">print</span>(f<span class="string">&quot;{in_cnt} in&quot;</span>)         <span class="comment"># 3 in</span>
+<span class="keyword">print</span>(f<span class="string">&quot;{n - in_cnt} out&quot;</span>)    <span class="comment"># 2 out</span>
+
+<span class="comment"># 方法二：逐行读入（更直观，适合初学者）</span>
+<span class="comment"># in_cnt = 0</span>
+<span class="comment"># for _ in range(n):</span>
+<span class="comment">#     x = int(input())</span>
+<span class="comment">#     if 10 <= x <= 20:</span>
+<span class="comment">#         in_cnt += 1</span></code></pre>
 <span class="keyword">print</span>(f<span class="string">&quot;{n - in_cnt} out&quot;</span>)</code></pre>
             </details>
         </div>
@@ -2979,17 +3339,62 @@ in_cnt = <span class="keyword">sum</span>(<span class="number">1</span> <span cl
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> x, y, sum = <span class="number">0</span>;
-    cin &gt;&gt; x &gt;&gt; y;
-    <span class="keyword">if</span> (x &gt; y) swap(x, y);
+    cin &gt;&gt; x &gt;&gt; y;  <span class="comment">// 输入 "6 -5"</span>
+
+    <span class="comment">// 确保 x < y（如果输入反了就交换）</span>
+    <span class="keyword">if</span> (x &gt; y) swap(x, y);  <span class="comment">// 6 > -5 → 交换 → x=-5, y=6</span>
+
+    <span class="comment">// 从 x+1 到 y-1（不含端点）循环</span>
+    <span class="comment">// 判断是否为奇数：i % 2 != 0</span>
+    <span class="comment">// 注意：i % 2 的结果是 0 或 1，可以直接当布尔值用</span>
+
+    <span class="comment">// 执行过程（x=-5, y=6）：</span>
+    <span class="comment">// i=-4: -4%2=0  偶数 → 跳过</span>
+    <span class="comment">// i=-3: -3%2=-1 奇数 → sum += -3, sum=-3</span>
+    <span class="comment">// i=-2: -2%2=0  偶数 → 跳过</span>
+    <span class="comment">// i=-1: -1%2=-1 奇数 → sum += -1, sum=-4</span>
+    <span class="comment">// i=0:  0%2=0   偶数 → 跳过</span>
+    <span class="comment">// i=1:  1%2=1   奇数 → sum += 1, sum=-3</span>
+    <span class="comment">// i=2:  2%2=0   偶数 → 跳过</span>
+    <span class="comment">// i=3:  3%2=1   奇数 → sum += 3, sum=0</span>
+    <span class="comment">// i=4:  4%2=0   偶数 → 跳过</span>
+    <span class="comment">// i=5:  5%2=1   奇数 → sum += 5, sum=5</span>
+    <span class="comment">// 输出: 5</span>
+
     <span class="keyword">for</span> (<span class="keyword">int</span> i = x + <span class="number">1</span>; i &lt; y; i++)
         <span class="keyword">if</span> (i % <span class="number">2</span>) sum += i;
     cout &lt;&lt; sum &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python">x, y = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-<span class="keyword">if</span> x &gt; y: x, y = y, x
-<span class="keyword">print</span>(<span class="keyword">sum</span>(i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(x + <span class="number">1</span>, y) <span class="keyword">if</span> i % <span class="number">2</span>))</code></pre>
+            <pre><code class="language-python"><span class="comment"># 奇数求和：X和Y之间（不含端点）的奇数之和</span>
+
+x, y = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="comment"># 输入 "6 -5"</span>
+
+<span class="comment"># 确保 x < y</span>
+<span class="keyword">if</span> x &gt; y: x, y = y, x  <span class="comment"># x=-5, y=6</span>
+
+<span class="comment"># range(x+1, y) → 从 -4 到 5（不含6）</span>
+<span class="comment"># i % 2 → 奇数为 True（非零），偶数为 False（零）</span>
+<span class="comment"># sum(...) 把所有满足条件的 i 加起来</span>
+
+<span class="comment"># 执行过程：</span>
+<span class="comment"># -4%2=0 偶数跳过, -3%2=-1 奇数加入</span>
+<span class="comment"># -2%2=0 跳过, -1%2=-1 加入, 0%2=0 跳过</span>
+<span class="comment"># 1%2=1 加入, 2%2=0 跳过, 3%2=1 加入</span>
+<span class="comment"># 4%2=0 跳过, 5%2=1 加入</span>
+<span class="comment"># sum = -3 + -1 + 1 + 3 + 5 = 5</span>
+
+<span class="keyword">print</span>(<span class="keyword">sum</span>(i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(x + <span class="number">1</span>, y) <span class="keyword">if</span> i % <span class="number">2</span>))
+
+<span class="comment"># 【生成器表达式】</span>
+<span class="comment"># sum(i for i in range(...) if 条件)</span>
+<span class="comment"># 比写完整的 for 循环更简洁</span>
+<span class="comment"># 等价于：</span>
+<span class="comment"># total = 0</span>
+<span class="comment"># for i in range(x+1, y):</span>
+<span class="comment">#     if i % 2: total += i</span></code></pre>
             </details>
         </div>
     </div>
@@ -3106,23 +3511,59 @@ in_cnt = <span class="keyword">sum</span>(<span class="number">1</span> <span cl
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n, x, mx, pos = <span class="number">1</span>;
-    cin &gt;&gt; n;
+    cin &gt;&gt; n;  <span class="comment">// 输入 "5"</span>
+
+    <span class="comment">// "打擂台"算法：边读入边找最大值</span>
+    <span class="comment">// mx 记录当前最大值，pos 记录它的位置</span>
+
+    <span class="comment">// 执行过程（输入 3 2 5 1 4）：</span>
+    <span class="comment">// i=1: x=3, i==1 ✓ → mx=3, pos=1（第一个数直接当擂主）</span>
+    <span class="comment">// i=2: x=2, 2>3?   ✗ → 不更新</span>
+    <span class="comment">// i=3: x=5, 5>3?   ✓ → mx=5, pos=3（新擂主！）</span>
+    <span class="comment">// i=4: x=1, 1>5?   ✗ → 不更新</span>
+    <span class="comment">// i=5: x=4, 4>5?   ✗ → 不更新</span>
+    <span class="comment">// 最终：mx=5, pos=3</span>
+
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) {
         cin &gt;&gt; x;
+        <span class="comment">// i==1 时直接赋值（第一个数当擂主）</span>
+        <span class="comment">// 之后只有更大的数才更新</span>
         <span class="keyword">if</span> (i == <span class="number">1</span> || x &gt; mx) { mx = x; pos = i; }
     }
     cout &lt;&lt; mx &lt;&lt; endl &lt;&lt; pos &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
+}
+
+<span class="comment">// 【|| 的短路求值】</span>
+<span class="comment">// i==1 || x > mx</span>
+<span class="comment">// 当 i==1 时，第一个条件为真，不再检查 x>mx</span>
+<span class="comment">// 这样避免了 mx 未初始化就被比较的问题</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">import</span> sys
+            <pre><code class="language-python"><span class="comment"># 石中之王：找最大值和它的位置</span>
+
+<span class="comment"># 方法一：用内置函数（简洁）</span>
+<span class="keyword">import</span> sys
 data = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, sys.stdin.read().split()))
-n = data[<span class="number">0</span>]
-vals = data[<span class="number">1</span>:n+<span class="number">1</span>]
-mx = <span class="keyword">max</span>(vals)
-pos = vals.index(mx) + <span class="number">1</span>
-<span class="keyword">print</span>(mx)
-<span class="keyword">print</span>(pos)</code></pre>
+n = data[<span class="number">0</span>]                <span class="comment"># n=5</span>
+vals = data[<span class="number">1</span>:n+<span class="number">1</span>]         <span class="comment"># vals=[3,2,5,1,4]</span>
+mx = <span class="keyword">max</span>(vals)             <span class="comment"># mx=5</span>
+pos = vals.index(mx) + <span class="number">1</span>  <span class="comment"># index(5)=2, +1=3（从1开始计数）</span>
+<span class="keyword">print</span>(mx)                  <span class="comment"># 5</span>
+<span class="keyword">print</span>(pos)                 <span class="comment"># 3</span>
+
+<span class="comment"># 方法二：手动"打擂台"（和 C++ 思路一样）</span>
+<span class="comment"># n = int(input())</span>
+<span class="comment"># mx = -10**18  # 初始化为极小值</span>
+<span class="comment"># pos = 1</span>
+<span class="comment"># for i, x in enumerate(map(int, input().split()), 1):</span>
+<span class="comment">#     if x > mx:</span>
+<span class="comment">#         mx = x</span>
+<span class="comment">#         pos = i</span>
+<span class="comment"># print(mx); print(pos)</span>
+
+<span class="comment"># 【enumerate 函数】</span>
+<span class="comment"># enumerate(列表, 起始编号) 同时返回下标和值</span>
+<span class="comment"># enumerate([3,2,5], 1) → (1,3), (2,2), (3,5)</span></code></pre>
             </details>
         </div>
     </div>
@@ -3489,44 +3930,85 @@ Percentage of spears: 53.52 %
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n, c = <span class="number">0</span>, r = <span class="number">0</span>, f = <span class="number">0</span>;
-    cin &gt;&gt; n;
+    <span class="comment">// c=剑(C), r=刀(R), f=枪(F) 的数量</span>
+    cin &gt;&gt; n;  <span class="comment">// 输入 "11"（观察11次）</span>
+
+    <span class="comment">// 循环读入每条记录</span>
+    <span class="comment">// 执行过程（前3条）：</span>
+    <span class="comment">// i=0: k=1, t='F' → f += 1, f=1</span>
+    <span class="comment">// i=1: k=5, t='C' → c += 5, c=5</span>
+    <span class="comment">// i=2: k=4, t='C' → c += 4, c=9</span>
+    <span class="comment">// ...</span>
+
     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
         <span class="keyword">int</span> k; <span class="keyword">char</span> t;
-        cin &gt;&gt; k &gt;&gt; t;
-        <span class="keyword">if</span> (t == 'C') c += k;
-        <span class="keyword">else</span> <span class="keyword">if</span> (t == 'R') r += k;
-        <span class="keyword">else</span> f += k;
+        cin &gt;&gt; k &gt;&gt; t;      <span class="comment">// 先读数量，再读类型</span>
+        <span class="keyword">if</span> (t == 'C') c += k;       <span class="comment">// 剑：累加到 c</span>
+        <span class="keyword">else</span> <span class="keyword">if</span> (t == 'R') r += k;  <span class="comment">// 刀：累加到 r</span>
+        <span class="keyword">else</span> f += k;                <span class="comment">// 枪：累加到 f</span>
     }
-    <span class="keyword">int</span> s = c + r + f;
+
+    <span class="comment">// 总数 = 三类之和</span>
+    <span class="keyword">int</span> s = c + r + f;  <span class="comment">// 33+0+38 = 71</span>
+
+    <span class="comment">// 输出总数量和各类数量</span>
     printf(<span class="string">&quot;Total: %d weapons\n&quot;</span>, s);
-    printf(<span class="string">&quot;Total swords: %d\n&quot;</span>, c);
-    printf(<span class="string">&quot;Total blades: %d\n&quot;</span>, r);
-    printf(<span class="string">&quot;Total spears: %d\n&quot;</span>, f);
+    printf(<span class="string">&quot;Total swords: %d\n&quot;</span>, c);    <span class="comment">// 33</span>
+    printf(<span class="string">&quot;Total blades: %d\n&quot;</span>, r);    <span class="comment">// 0</span>
+    printf(<span class="string">&quot;Total spears: %d\n&quot;</span>, f);    <span class="comment">// 38</span>
+
+    <span class="comment">// 输出占比（注意 100.0 而不是 100，确保浮点除法）</span>
+    <span class="comment">// %% 在 printf 中输出一个 % 字符</span>
     printf(<span class="string">&quot;Percentage of swords: %.2lf %%\n&quot;</span>, <span class="number">100.0</span> * c / s);
     printf(<span class="string">&quot;Percentage of blades: %.2lf %%\n&quot;</span>, <span class="number">100.0</span> * r / s);
     printf(<span class="string">&quot;Percentage of spears: %.2lf %%\n&quot;</span>, <span class="number">100.0</span> * f / s);
     <span class="keyword">return</span> <span class="number">0</span>;
-}</code></pre>
+}
+
+<span class="comment">// 【多个计数器的模式】</span>
+<span class="comment">// 当数据分多类时，每类一个计数器</span>
+<span class="comment">// 循环中根据类型累加到对应的计数器</span>
+<span class="comment">// 最后汇总输出</span></code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">import</span> sys
+            <pre><code class="language-python"><span class="comment"># 兵刃统计：分类计数 + 占比计算</span>
+
+<span class="comment"># 一次性读入所有数据（比逐行读更快）</span>
+<span class="keyword">import</span> sys
 data = sys.stdin.read().split()
-n = <span class="keyword">int</span>(data[<span class="number">0</span>])
-c = r = f = <span class="number">0</span>
-idx = <span class="number">1</span>
+<span class="comment"># data = ["11", "1", "F", "5", "C", "4", "C", ...]</span>
+
+n = <span class="keyword">int</span>(data[<span class="number">0</span>])   <span class="comment"># n=11（观察次数）</span>
+
+<span class="comment"># 三个计数器</span>
+c = r = f = <span class="number">0</span>      <span class="comment"># c=剑, r=刀, f=枪</span>
+
+idx = <span class="number">1</span>             <span class="comment"># 当前读到 data 的第几个元素</span>
+
+<span class="comment"># 循环读入每条记录</span>
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n):
-    k = <span class="keyword">int</span>(data[idx]); t = data[idx + <span class="number">1</span>]
-    idx += <span class="number">2</span>
-    <span class="keyword">if</span> t == <span class="string">'C'</span>: c += k
-    <span class="keyword">elif</span> t == <span class="string">'R'</span>: r += k
-    <span class="keyword">else</span>: f += k
-s = c + r + f
+    k = <span class="keyword">int</span>(data[idx])       <span class="comment"># 数量</span>
+    t = data[idx + <span class="number">1</span>]       <span class="comment"># 类型（C/R/F）</span>
+    idx += <span class="number">2</span>                 <span class="comment"># 每条记录占2个元素</span>
+
+    <span class="keyword">if</span> t == <span class="string">'C'</span>: c += k      <span class="comment"># 剑</span>
+    <span class="keyword">elif</span> t == <span class="string">'R'</span>: r += k    <span class="comment"># 刀</span>
+    <span class="keyword">else</span>: f += k             <span class="comment"># 枪</span>
+
+<span class="comment"># 计算总数和占比</span>
+s = c + r + f               <span class="comment"># 71</span>
+
+<span class="comment"># 输出</span>
 <span class="keyword">print</span>(f<span class="string">&quot;Total: {s} weapons&quot;</span>)
 <span class="keyword">print</span>(f<span class="string">&quot;Total swords: {c}&quot;</span>)
 <span class="keyword">print</span>(f<span class="string">&quot;Total blades: {r}&quot;</span>)
 <span class="keyword">print</span>(f<span class="string">&quot;Total spears: {f}&quot;</span>)
 <span class="keyword">print</span>(f<span class="string">&quot;Percentage of swords: {c / s * 100:.2f} %&quot;</span>)
 <span class="keyword">print</span>(f<span class="string">&quot;Percentage of blades: {r / s * 100:.2f} %&quot;</span>)
-<span class="keyword">print</span>(f<span class="string">&quot;Percentage of spears: {f / s * 100:.2f} %&quot;</span>)</code></pre>
+<span class="keyword">print</span>(f<span class="string">&quot;Percentage of spears: {f / s * 100:.2f} %&quot;</span>)
+
+<span class="comment"># 【sys.stdin.read() 的好处】</span>
+<span class="comment"># 一次性读入所有输入，比多次调用 input() 更快</span>
+<span class="comment"># split() 按空白字符切分，自动处理换行和空格</span></code></pre>
             </details>
         </div>
     </div></div><div style="page-break-before:always;margin-top:40px" id="ch4"><h1>第4章 排兵布阵</h1>

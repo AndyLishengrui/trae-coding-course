@@ -215,6 +215,12 @@ a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span 
             <strong>f-string 小贴士：</strong><br>
             Python 用 <code>f"文字{表达式}文字"</code> 来格式化输出。花括号里可以放变量、运算，甚至函数调用。
             </div>
+            <div style="background:#e8f0fe;border-left:4px solid #1a73e8;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+            <strong>C++ vs Python 对照：</strong><br>
+            <code>cin >> a >> b;</code> &harr; <code>a, b = map(int, input().split())</code><br>
+            <code>cout << "PROD = " << a*b << endl;</code> &harr; <code>print(f"PROD = {a*b}")</code><br>
+            字符串拼接：<code>cout << "文字" << 变量;</code> &harr; <code>print(f"文字{变量}")</code>
+            </div>
             </details>
         </div>
     </div>
@@ -295,6 +301,12 @@ a, b, c, d = <span class="keyword">map</span>(<span class="keyword">int</span>, 
 <span class="comment"># 运算顺序：先乘后减（乘法优先级高于减法）</span>
 <span class="comment"># 5*6 - 7*8 = 30 - 56 = -26</span>
 <span class="keyword">print</span>(f<span class="string">&quot;DIFFERENCE = {a * b - c * d}&quot;</span>)</code></pre>
+            <div style="background:#e8f0fe;border-left:4px solid #1a73e8;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+            <strong>C++ vs Python 对照（格式化输出）：</strong><br>
+            <code>printf("DIFFERENCE = %d\n", a*b - c*d);</code> &harr; <code>print(f"DIFFERENCE = {a*b - c*d}")</code><br>
+            <code>%d</code> 是整数占位符 &harr; Python 的 <code>{表达式}</code> 直接嵌入 f-string 中<br>
+            <code>\n</code> 手动换行 &harr; <code>print()</code> 自动换行，不用写 \n
+            </div>
             </details>
         </div>
     </div>
@@ -463,6 +475,12 @@ r = <span class="keyword">float</span>(<span class="keyword">input</span>())
 <span class="comment"># 【小贴士】保留小数位数</span>
 <span class="comment"># f"{x:.2f}" → 保留2位小数</span>
 <span class="comment"># f"{x:.4f}" → 保留4位小数</span></code></pre>
+            <div style="background:#e8f0fe;border-left:4px solid #1a73e8;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+            <strong>C++ vs Python 对照（浮点数）：</strong><br>
+            读入小数：<code>scanf("%lf", &r);</code> &harr; <code>r = float(input())</code><br>
+            保留位数：<code>printf("%.4f", val);</code> &harr; <code>print(f"{val:.4f}")</code><br>
+            注意：C++ 用 <code>double</code> 声明小数变量，Python 不需要声明类型。
+            </div>
             </details>
         </div>
     </div>
@@ -779,6 +797,13 @@ r = <span class="keyword">float</span>(<span class="keyword">input</span>())
 <span class="comment"># ** 是乘方运算符，r**3 就是 r³</span>
 volume = <span class="number">4.0</span> / <span class="number">3.0</span> * <span class="number">3.14159</span> * r ** <span class="number">3</span>
 <span class="keyword">print</span>(f<span class="string">&quot;VOLUME = {4.0 / 3.0 * 3.14159 * r ** 3:.3f}&quot;</span>)</code></pre>
+            <div style="background:#e8f0fe;border-left:4px solid #1a73e8;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+            <strong>C++ vs Python 对照（除法陷阱）：</strong><br>
+            C++ 整数除法：<code>4/3</code> = <code>1</code>（小数丢掉！）<br>
+            Python 整数除法：<code>4/3</code> = <code>1.333...</code>（Python3 的 / 总是浮点除法）<br>
+            C++ 浮点除法：<code>4.0/3.0</code> = <code>1.333...</code><br>
+            <strong>经验法则：</strong>涉及小数计算时，C++ 中写 <code>4.0/3.0</code> 而不是 <code>4/3</code>；Python 中用 <code>//</code> 做整除，<code>/</code> 做浮点除法。
+            </div>
             </details>
         </div>
     </div>
@@ -1145,6 +1170,12 @@ s = n % <span class="number">60</span>             <span class="comment"># 秒 =
 <span class="comment"># 【注意】C++ 用 / 做整除，Python 用 //</span>
 <span class="comment"># Python 的 / 是浮点除法（556/60 = 9.2666...）</span>
 <span class="comment"># Python 的 // 是整除（556//60 = 9）</span></code></pre>
+            <div style="background:#e8f0fe;border-left:4px solid #1a73e8;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+            <strong>C++ vs Python 对照（整除与取余）：</strong><br>
+            整除：<code>n / 3600</code> (C++) &harr; <code>n // 3600</code> (Python)<br>
+            取余：<code>n % 60</code> (两者相同)<br>
+            <strong>注意：</strong>C++ 的 <code>/</code> 对整数做整除；Python 的 <code>/</code> 做浮点除法，整除要用 <code>//</code>。
+            </div>
             </details>
         </div>
     </div>
