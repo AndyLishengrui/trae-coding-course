@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第八章 百器图谱 — 剑道试炼</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="index.html" class="nav-brand">剑道试炼</a>
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link-text">首页</a>
+            <a href="code.html" class="nav-link-text">代码参考</a>
+            <button class="dark-toggle" aria-label="Toggle dark mode">☽</button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="chapter-sidebar">
+            <div class="sidebar-title">章节目录</div>
+            <ul class="chapter-list">
+                <li><a href="chapter01.html">第一章 持剑叩门</a></li>
+                <li><a href="chapter02.html">第二章 歧路逢生</a></li>
+                <li><a href="chapter03.html">第三章 千回百转</a></li>
+                <li><a href="chapter04.html">第四章 排兵布阵</a></li>
+                <li><a href="chapter05.html">第五章 十二宫剑阵</a></li>
+                <li><a href="chapter06.html">第六章 古卷密文</a></li>
+                <li><a href="chapter07.html">第七章 以招创招</a></li>
+                <li><a href="chapter08.html" class="active">第八章 百器图谱</a></li>
+                <li><a href="chapter09.html">第九章 快剑如风</a></li>
+                <li><a href="chapter10.html">第十章 千锤百炼</a></li>
+                <li><a href="chapter11.html">第十一章 蓄势待发</a></li>
+                <li><a href="chapter12.html">第十二章 利器出鞘</a></li>
+                <li><a href="chapter13.html">第十三章 迷雾寻踪</a></li>
+                <li><a href="chapter14.html">第十四章 千里奔袭</a></li>
+                <li><a href="chapter15.html">第十五章 华山论剑</a></li>
+            </ul>
+        </aside>
+
+        <main class="chapter-main">
+            <div class="chapter-header">
+                <h1>第八章 百器图谱</h1>
+                <div class="chapter-subtitle">容器与内置算法</div>
+            </div>
+
+            <div class="problem" id="JD096">
+        <div class="problem-title">JD096：空格替换</div>
+        <div class="problem-meta">AcWing JD | JD096</div>
+
+        <div class="description">
+            <p>兵器阁的大门上刻着一行古文，但年代久远，字迹模糊，空格处尤其难以辨认。赵晴儿凑近看了看："这行字里夹了太多空格，密密麻麻的，根本看不清。"</p>
+<p>梁嘉峰说："古卷传输时，空格容易丢失。古人想了个办法——把每个空格替换成 <code>%20</code>，这样既保留了间隔，又不会和真正的空白混淆。"</p>
+<p>"你写一段程序，把这行古文里的所有空格替换成 <code>%20</code>。"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行字符串（长度不超过100），可能包含空格。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>替换空格为 <code>%20</code> 后的字符串。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+Hello World
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+Hello%20World
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>遍历字符串，遇到空格输出 <code>%20</code>，否则输出原字符。可用 <code>string</code> 的 <code>getline</code> 读入含空格的整行。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;<span class="keyword">string</span>&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">string</span> s;
+    getline(cin, s);
+    <span class="keyword">for</span> (<span class="keyword">char</span> c : s) {
+        <span class="keyword">if</span> (c == &#x27; &#x27;) cout &lt;&lt; &quot;%<span class="number">20</span>&quot;;
+        <span class="keyword">else</span> cout &lt;&lt; c;
+    }
+    cout &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">s = <span class="keyword">input</span>()
+<span class="keyword">print</span>(s.replace(&<span class="comment">#x27; &#x27;, &#x27;%20&#x27;))</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD097">
+        <div class="problem-title">JD097：再算斐波</div>
+        <div class="problem-meta">AcWing JD | JD097</div>
+
+        <div class="description">
+            <p>赵晴儿在兵器阁的账本上翻到一串奇怪的数字：1, 1, 2, 3, 5, 8, 13, 21……</p>
+<p>"这是前辈铸剑师留下的排列规律，"梁嘉峰说，"每一柄新剑的重量都是前两柄之和。第1柄和第2柄都是1斤，第3柄就是1+1=2斤，第4柄是1+2=3斤……"</p>
+<p>"上一章你用递归算过这个数列，但递归太慢了。这次用容器来存——把每一项都推进一个序列里，只保留最近两项，循环推进。"</p>
+<p>请帮赵晴儿算出第n柄剑的重量。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个整数n（0 ≤ n ≤ 90）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出斐波那契数列第n项。约定第0项为0，第1项为1。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+10
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+55
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>迭代法：用两个变量 <code>a</code> 和 <code>b</code> 滚动，每次 <code>c = a + b</code>，然后 <code>a = b, b = c</code>。循环 n 次。也可以用 <code>vector</code> 存储每一项。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="comment">// 用 vector 存储斐波那契数列，迭代计算</span>
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n;
+    cin &gt;&gt; n;
+    <span class="keyword">if</span> (n == <span class="number">0</span>) { cout &lt;&lt; <span class="number">0</span> &lt;&lt; endl; <span class="keyword">return</span> <span class="number">0</span>; }
+
+    vector&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; fib;
+    fib.push_back(<span class="number">0</span>);  <span class="comment">// fib[0] = 0</span>
+    fib.push_back(<span class="number">1</span>);  <span class="comment">// fib[1] = 1</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) {
+        fib.push_back(fib[i - <span class="number">1</span>] + fib[i - <span class="number">2</span>]);
+    }
+    cout &lt;&lt; fib[n] &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">if</span> n == <span class="number">0</span>: <span class="keyword">print</span>(<span class="number">0</span>)
+<span class="keyword">else</span>:
+    a, b = <span class="number">0</span>, <span class="number">1</span>
+    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n - <span class="number">1</span>): a, b = b, a + b
+    <span class="keyword">print</span>(b)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD098">
+        <div class="problem-title">JD098：倒转铁链</div>
+        <div class="problem-meta">AcWing JD | JD098</div>
+
+        <div class="description">
+            <p>兵器阁的架子上挂着一串铁环，每个环上刻着一个数字，从头到尾依次是 1、2、3……最后一个环上刻着 -1，表示链条结束。</p>
+<p>梁嘉峰指着铁链说："我要从最后一个环开始，把数字一个个报出来。但这串铁环只能从前往后读，不能直接跳到末尾。"</p>
+<p>赵晴儿想了想："用一个容器——先把所有数字存进去，再从后往前取出来。这就像把铁环一个个摘下来放到盒子里，最后从盒子里倒着取。"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行整数，以 -1 结尾，表示铁链上每个环的数字（-1 不算节点）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>从尾到头输出每个数字，每行一个。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+1 2 3 -1
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+3
+2
+1
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>用 <code>vector</code> 依次存入所有数字，然后从后往前遍历输出。也可以用 <code>stack</code>：读入时压栈，读完后依次弹出。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">int</span> main() {
+    vector&lt;<span class="keyword">int</span>&gt; nums;
+    <span class="keyword">int</span> x;
+    <span class="keyword">while</span> (cin &gt;&gt; x &amp;&amp; x != -<span class="number">1</span>) {
+        nums.push_back(x);
+    }
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = nums.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) {
+        cout &lt;&lt; nums[i] &lt;&lt; endl;
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+<span class="keyword">for</span> line <span class="keyword">in</span> sys.stdin:
+    line = line.strip()
+    <span class="keyword">if</span> <span class="keyword">not</span> line:
+        <span class="keyword">continue</span>
+    nums = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, line.split()))
+    nums.pop()  <span class="comment"># remove -1</span>
+    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="keyword">reversed</span>(nums):
+        <span class="keyword">print</span>(x)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD099">
+        <div class="problem-title">JD099：双栈为队</div>
+        <div class="problem-meta">AcWing JD | JD099</div>
+
+        <div class="description">
+            <p>赵晴儿在兵器阁里找到两个铁盒，每个盒子只能从顶部放入和取出——这就是"栈"，后进先出。</p>
+<p>梁嘉峰说："现在我需要一个'队列'——先进先出。但手边只有这两个栈，没有队列。你能用这两个栈模拟一个队列吗？"</p>
+<p>赵晴儿思索片刻："入队的时候都放进盒子1。出队的时候，如果盒子2是空的，就把盒子1的东西全部倒进盒子2——这样顺序就反过来了，最先进来的变成了盒子2的顶部，直接取就行。"</p>
+<p>请帮赵晴儿实现这个"双栈模拟队列"的操作。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>若干行操作命令：</p>
+<ul>
+  <li><code>push x</code>：将 x 入队</li>
+  <li><code>pop</code>：出队并输出队首值</li>
+  <li><code>empty</code>：判空，输出 <code>yes</code> 或 <code>no</code></li>
+</ul>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>对每个 <code>pop</code> 操作输出一行队首值，对每个 <code>empty</code> 操作输出一行 <code>yes</code> 或 <code>no</code>。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+push 1
+push 2
+pop
+push 3
+pop
+pop
+empty
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1
+2
+3
+yes
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>用两个 <code>stack<int></code>：栈1负责入队，栈2负责出队。出队时若栈2为空，把栈1全部倒入栈2（<code>push</code> 栈1的 <code>top</code> 到栈2，再 <code>pop</code> 栈1）。这样栈2的顶部就是最早入队的元素。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;stack&gt;
+#<span class="keyword">include</span> &lt;<span class="keyword">string</span>&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="comment">// 用两个栈模拟队列</span>
+<span class="comment">// 栈1负责入队，栈2负责出队</span>
+<span class="comment">// 出队时若栈2空，把栈1全部倒入栈2</span>
+stack&lt;<span class="keyword">int</span>&gt; s1, s2;
+
+<span class="keyword">void</span> transfer() {
+    <span class="keyword">while</span> (s1.size()) {
+        s2.push(s1.top());
+        s1.pop();
+    }
+}
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">string</span> cmd;
+    <span class="keyword">while</span> (cin &gt;&gt; cmd) {
+        <span class="keyword">if</span> (cmd == &quot;push&quot;) {
+            <span class="keyword">int</span> x; cin &gt;&gt; x;
+            s1.push(x);
+        } <span class="keyword">else</span> <span class="keyword">if</span> (cmd == &quot;pop&quot;) {
+            <span class="keyword">if</span> (s2.empty()) transfer();
+            cout &lt;&lt; s2.top() &lt;&lt; endl;
+            s2.pop();
+        } <span class="keyword">else</span> <span class="keyword">if</span> (cmd == &quot;empty&quot;) {
+            cout &lt;&lt; (s1.empty() &amp;&amp; s2.empty() ? &quot;yes&quot; : &quot;no&quot;) &lt;&lt; endl;
+        }
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+
+stack1 = []
+stack2 = []
+
+<span class="keyword">for</span> line <span class="keyword">in</span> sys.stdin:
+    line = line.strip()
+    <span class="keyword">if</span> <span class="keyword">not</span> line:
+        <span class="keyword">continue</span>
+    parts = line.split()
+    <span class="keyword">if</span> parts[<span class="number">0</span>] == &<span class="comment">#x27;push&#x27;:</span>
+        stack1.append(<span class="keyword">int</span>(parts[<span class="number">1</span>]))
+    <span class="keyword">elif</span> parts[<span class="number">0</span>] == &<span class="comment">#x27;pop&#x27;:</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> stack2:
+            <span class="keyword">while</span> stack1:
+                stack2.append(stack1.pop())
+        <span class="keyword">if</span> stack2:
+            <span class="keyword">print</span>(stack2.pop())
+    <span class="keyword">elif</span> parts[<span class="number">0</span>] == &<span class="comment">#x27;peek&#x27;:</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> stack2:
+            <span class="keyword">while</span> stack1:
+                stack2.append(stack1.pop())
+        <span class="keyword">if</span> stack2:
+            <span class="keyword">print</span>(stack2[-<span class="number">1</span>])
+    <span class="keyword">elif</span> parts[<span class="number">0</span>] == &<span class="comment">#x27;empty&#x27;:</span>
+        <span class="keyword">print</span>(&<span class="comment">#x27;true&#x27; if (not stack1 and not stack2) else &#x27;false&#x27;)</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD100">
+        <div class="problem-title">JD100：铁链翻转</div>
+        <div class="problem-meta">AcWing JD | JD100</div>
+
+        <div class="description">
+            <p>梁嘉峰从架子上取下一条铁链，每个环上刻着一个数字。他把铁链平铺在桌上，从头到尾是 1、2、3、4、5……最后一个环上刻着 -1，表示结束。</p>
+<p>"我要把这条铁链反过来，"梁嘉峰说，"第一个变最后一个，最后一个变第一个。但不能断开重接，只能用容器来辅助。"</p>
+<p>赵晴儿拿起一个铁盒："把铁环一个个摘下来放进盒子里——先进去的沉到底部。等全部摘完，再从盒子里取出来，顺序就反了。"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行整数，以 -1 结尾，表示铁链上每个环的数字（-1 不算节点）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>反转后的铁链，数字用空格隔开。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+1 2 3 4 5 -1
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+5 4 3 2 1
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>用 <code>vector</code> 读入所有数字，然后从后往前输出。或者用 <code>stack</code>：读入时压栈，读完后依次弹出。栈的后进先出特性天然实现了反转。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;stack&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="comment">// 用栈实现链表反转：读入时压栈，输出时弹栈（后进先出 = 反转）</span>
+<span class="keyword">int</span> main() {
+    stack&lt;<span class="keyword">int</span>&gt; stk;
+    <span class="keyword">int</span> x;
+    <span class="keyword">while</span> (cin &gt;&gt; x &amp;&amp; x != -<span class="number">1</span>) {
+        stk.push(x);
+    }
+    <span class="keyword">while</span> (!stk.empty()) {
+        cout &lt;&lt; stk.top();
+        stk.pop();
+        <span class="keyword">if</span> (!stk.empty()) cout &lt;&lt; &quot; &quot;;
+    }
+    cout &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+text = sys.stdin.read().strip()
+parts = text.split(&quot;-&gt;&quot;)
+values = [p <span class="keyword">for</span> p <span class="keyword">in</span> parts <span class="keyword">if</span> p != &quot;NULL&quot;]
+values.reverse()
+<span class="keyword">print</span>(&quot;-&gt;&quot;.join(values) + &quot;-&gt;NULL&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD101">
+        <div class="problem-title">JD101：双链归并</div>
+        <div class="problem-meta">AcWing JD | JD101</div>
+
+        <div class="description">
+            <p>赵晴儿从兵器阁的两个抽屉里各取出一条铁链，每条链上的数字都从小到大排好了。她需要把两条链合并成一条，仍然保持从小到大的顺序。</p>
+<p>"不能拆开重排，"梁嘉峰说，"两条链都是有序的，你要利用这个特点——从两条链的头部同时开始比较，每次取较小的那个接到结果链的末尾。"</p>
+<p>赵晴儿拿起两个容器："用一个容器存结果。两个指针分别指向两条链的头部，谁小就取谁，直到一条链取完，再把另一条的剩余全部接上。"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>两行，每行若干整数（以 -1 结尾），分别表示两条有序铁链上的数字（-1 不算节点）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>合并后的有序铁链，数字用空格隔开。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+1 3 5 -1
+2 4 6 -1
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 2 3 4 5 6
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>用 <code>vector</code> 分别读入两条链，然后双指针合并：比较两个 <code>vector</code> 当前元素，取较小的放入结果 <code>vector</code>。一个遍历完后，把另一个的剩余部分直接追加。最后用 <code>sort</code> 也可，但双指针更高效。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="comment">// 合并两条有序链表</span>
+<span class="comment">// 读入两行，每行以-1结尾，输出合并后的有序序列</span>
+<span class="keyword">int</span> main() {
+    vector&lt;<span class="keyword">int</span>&gt; a;
+    <span class="keyword">int</span> x;
+    <span class="comment">// 读入第一条链表</span>
+    <span class="keyword">while</span> (cin &gt;&gt; x &amp;&amp; x != -<span class="number">1</span>) a.push_back(x);
+    <span class="comment">// 读入第二条链表</span>
+    <span class="keyword">while</span> (cin &gt;&gt; x &amp;&amp; x != -<span class="number">1</span>) a.push_back(x);
+    sort(a.begin(), a.end());
+    <span class="keyword">for</span> (size_t i = <span class="number">0</span>; i &lt; a.size(); i++) {
+        cout &lt;&lt; a[i];
+        <span class="keyword">if</span> (i + <span class="number">1</span> &lt; a.size()) cout &lt;&lt; &quot; &quot;;
+    }
+    cout &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+lines = sys.stdin.read().strip().split(&<span class="comment">#x27;\n&#x27;)</span>
+a = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> lines[<span class="number">0</span>].split(&quot;-&gt;&quot;) <span class="keyword">if</span> x != &quot;NULL&quot;]
+b = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> lines[<span class="number">1</span>].split(&quot;-&gt;&quot;) <span class="keyword">if</span> x != &quot;NULL&quot;]
+i = j = <span class="number">0</span>
+res = []
+<span class="keyword">while</span> i &lt; <span class="keyword">len</span>(a) <span class="keyword">and</span> j &lt; <span class="keyword">len</span>(b):
+    <span class="keyword">if</span> a[i] &lt;= b[j]:
+        res.append(<span class="keyword">str</span>(a[i]))
+        i += <span class="number">1</span>
+    <span class="keyword">else</span>:
+        res.append(<span class="keyword">str</span>(b[j]))
+        j += <span class="number">1</span>
+res.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> a[i:])
+res.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> b[j:])
+<span class="keyword">print</span>(&quot;-&gt;&quot;.join(res))</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD102">
+        <div class="problem-title">JD102：三元归序</div>
+        <div class="problem-meta">AcWing JD | JD102</div>
+
+        <div class="description">
+            <p>兵器阁的账房先生有一本厚厚的兵器账本，每条记录记着三样东西：兵器编号 x、重量 y（带两位小数）、兵器名称 z。</p>
+<p>"这本账太乱了，"赵晴儿翻了几页就头疼，"编号不按顺序，同编号的重量也乱排。"</p>
+<p>梁嘉峰说："先按编号从小到大排，编号相同的再按重量从小到大排。你可以用结构体存每条记录，放进容器里，再自定义排序规则。"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数 N（记录条数）。</p>
+<p>接下来 N 行，每行两个整数和一个字符串，分别为编号 x、重量 y、名称 z。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>排序后的 N 条记录，每行一条。编号输出整数，重量保留两位小数，名称原样输出，空格隔开。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3
+1 2 abc
+3 4 def
+2 1 ghi
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 2.00 abc
+2 1.00 ghi
+3 4.00 def
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>用 <code>struct</code> 定义三元组（编号、重量、名称），存入 <code>vector</code>。自定义比较函数：先比编号，编号相同再比重量。用 <code>sort(a.begin(), a.end(), cmp)</code> 排序。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="comment">// 用 vector + struct 存储三元组，自定义排序</span>
+<span class="keyword">struct</span> Record {
+    <span class="keyword">int</span> x;      <span class="comment">// 编号</span>
+    <span class="keyword">double</span> y;   <span class="comment">// 重量</span>
+    <span class="keyword">string</span> z;   <span class="comment">// 名称</span>
+};
+
+<span class="keyword">bool</span> cmp(<span class="keyword">const</span> Record &amp;a, <span class="keyword">const</span> Record &amp;b) {
+    <span class="keyword">if</span> (a.x != b.x) <span class="keyword">return</span> a.x &lt; b.x;
+    <span class="keyword">return</span> a.y &lt; b.y;
+}
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n;
+    cin &gt;&gt; n;
+
+    vector&lt;Record&gt; records;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+        Record r;
+        cin &gt;&gt; r.x &gt;&gt; r.y &gt;&gt; r.z;
+        records.push_back(r);
+    }
+
+    sort(records.begin(), records.end(), cmp);
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+        printf(&quot;%d %.<span class="number">2lf</span> %s\n&quot;, records[i].x, records[i].y, records[i].z.c_str());
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+data = []
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n):
+    parts = <span class="keyword">input</span>().split()
+    x = <span class="keyword">int</span>(parts[<span class="number">0</span>])
+    y = <span class="keyword">float</span>(parts[<span class="number">1</span>])
+    z = parts[<span class="number">2</span>]
+    data.append((x, y, z))
+data.sort(key=<span class="keyword">lambda</span> t: t[<span class="number">0</span>])
+<span class="keyword">for</span> x, y, z <span class="keyword">in</span> data:
+    <span class="keyword">print</span>(f&<span class="comment">#x27;{x} {y:.2f} {z}&#x27;)</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+            <div class="chapter-nav">
+                <a href="chapter07.html">← 第七章 以招创招</a>
+                <a href="index.html" class="nav-home">返回目录</a>
+                <a href="chapter09.html">第九章 快剑如风 →</a>
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <p>《剑道试炼》第八章 百器图谱 · <a href="index.html">返回首页</a></p>
+    </footer>
+
+    <button class="scroll-top" aria-label="回到顶部">↑</button>
+    <script src="script.js"></script>
+</body>
+</html>

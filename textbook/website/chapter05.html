@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五章 十二宫剑阵 — 剑道试炼</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="index.html" class="nav-brand">剑道试炼</a>
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link-text">首页</a>
+            <a href="code.html" class="nav-link-text">代码参考</a>
+            <button class="dark-toggle" aria-label="Toggle dark mode">☽</button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="chapter-sidebar">
+            <div class="sidebar-title">章节目录</div>
+            <ul class="chapter-list">
+                <li><a href="chapter01.html">第一章 持剑叩门</a></li>
+                <li><a href="chapter02.html">第二章 歧路逢生</a></li>
+                <li><a href="chapter03.html">第三章 千回百转</a></li>
+                <li><a href="chapter04.html">第四章 排兵布阵</a></li>
+                <li><a href="chapter05.html" class="active">第五章 十二宫剑阵</a></li>
+                <li><a href="chapter06.html">第六章 古卷密文</a></li>
+                <li><a href="chapter07.html">第七章 以招创招</a></li>
+                <li><a href="chapter08.html">第八章 百器图谱</a></li>
+                <li><a href="chapter09.html">第九章 快剑如风</a></li>
+                <li><a href="chapter10.html">第十章 千锤百炼</a></li>
+                <li><a href="chapter11.html">第十一章 蓄势待发</a></li>
+                <li><a href="chapter12.html">第十二章 利器出鞘</a></li>
+                <li><a href="chapter13.html">第十三章 迷雾寻踪</a></li>
+                <li><a href="chapter14.html">第十四章 千里奔袭</a></li>
+                <li><a href="chapter15.html">第十五章 华山论剑</a></li>
+            </ul>
+        </aside>
+
+        <main class="chapter-main">
+            <div class="chapter-header">
+                <h1>第五章 十二宫剑阵</h1>
+                <div class="chapter-subtitle">二维数组</div>
+            </div>
+
+            <div class="problem" id="JD055">
+        <div class="problem-title">JD055：上方剑域</div>
+        <div class="problem-meta">AcWing JD | JD055</div>
+
+        <div class="description">
+            <p>演武场上空，赵晴儿凌空画出一道12×12的剑气光幕。剑阵分十二宫方位，她指向光幕上方：</p>
+<p>「上域之剑，取天位之力。首行的剑主攻正面，越往下剑气越弱。算算上域之力和。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个大写字母S或M。接下来12行，每行12个浮点数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出对应区域的和或平均值，保留一位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+S
+5.0 65.0 82.0 54.0 60.0 96.0 64.0 88.0 81.0 2.0 86.0 29.0
+66.0 16.0 27.0 63.0 1.0 52.0 67.0 76.0 94.0 88.0 65.0 39.0
+48.0 61.0 15.0 22.0 48.0 30.0 57.0 15.0 97.0 18.0 19.0 49.0
+...
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1594.0
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>先读操作类型（S求和/M求平均），再判断行号。上方区域即i<j的元素。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstdio&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">char</span> op;
+    cin &gt;&gt; op;
+    <span class="keyword">double</span> sum = <span class="number">0</span>;
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
+            <span class="keyword">double</span> x;
+            cin &gt;&gt; x;
+            <span class="keyword">if</span> (i&lt;j&amp;&amp;i+j&lt;<span class="number">11</span>) {
+                sum += x;
+                cnt++;
+            }
+        }
+    }
+    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
+    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">t=<span class="keyword">input</span>().strip();s=c=<span class="number">0</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+ <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+  x=<span class="keyword">float</span>(<span class="keyword">input</span>())
+  <span class="keyword">if</span> i&lt;j <span class="keyword">and</span> i+j&lt;<span class="number">11</span>:s+=x;c+=<span class="number">1</span>
+<span class="keyword">print</span>(f&<span class="comment">#x27;{s if t==&quot;S&quot; else s/c:.1f}&#x27;)</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD056">
+        <div class="problem-title">JD056：下方剑域</div>
+        <div class="problem-meta">AcWing JD | JD056</div>
+
+        <div class="description">
+            <p>「下域之剑，承地脉之气。」</p>
+<p>赵晴儿的手指向光幕下方划去，</p>
+<p>「靠近大地的剑势更沉。算算下域之力和。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个大写字母S或M。接下来12行，每行12个浮点数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出对应区域的和或平均值，保留一位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+S
+6.0 90.0 70.0 55.0 69.0 69.0 62.0 79.0 7.0 9.0 54.0 43.0
+30.0 75.0 74.0 58.0 99.0 52.0 88.0 51.0 77.0 92.0 77.0 10.0
+89.0 99.0 84.0 60.0 90.0 25.0 95.0 82.0 96.0 5.0 92.0 10.0
+...
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1694.0
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>下方区域即i>j的元素。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstdio&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">char</span> op;
+    cin &gt;&gt; op;
+    <span class="keyword">double</span> sum = <span class="number">0</span>;
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
+            <span class="keyword">double</span> x;
+            cin &gt;&gt; x;
+            <span class="keyword">if</span> (i&gt;j&amp;&amp;i+j&gt;<span class="number">11</span>) {
+                sum += x;
+                cnt++;
+            }
+        }
+    }
+    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
+    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+data = sys.stdin.read().split()
+t = data[<span class="number">0</span>]
+s = <span class="number">0.0</span>
+idx = <span class="number">1</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+        x = <span class="keyword">float</span>(data[idx]); idx += <span class="number">1</span>
+        <span class="keyword">if</span> i &gt; j <span class="keyword">and</span> i + j &gt; <span class="number">11</span>: s += x
+<span class="keyword">print</span>(f&quot;{s:.1f}&quot; <span class="keyword">if</span> t == &<span class="comment">#x27;S&#x27; else f&quot;{s/30:.1f}&quot;)</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD057">
+        <div class="problem-title">JD057：左方剑域</div>
+        <div class="problem-meta">AcWing JD | JD057</div>
+
+        <div class="description">
+            <p>「左域之剑，守青龙之位。」</p>
+<p>赵晴儿指向光幕左侧，</p>
+<p>「左方剑阵主守，去势较短。算算左域之力和。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个大写字母S或M。接下来12行，每行12个浮点数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出对应区域的和或平均值，保留一位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+S
+68.0 59.0 10.0 88.0 95.0 50.0 60.0 8.0 6.0 7.0 5.0 79.0
+18.0 94.0 63.0 2.0 15.0 13.0 39.0 37.0 33.0 27.0 11.0 29.0
+12.0 23.0 6.0 42.0 4.0 63.0 7.0 20.0 11.0 74.0 27.0 5.0
+...
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1410.0
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>左方区域即满足j < i && i + j < 11的元素（主对角线下且反对角线上）。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstdio&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">char</span> op;
+    cin &gt;&gt; op;
+    <span class="keyword">double</span> sum = <span class="number">0</span>;
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
+            <span class="keyword">double</span> x;
+            cin &gt;&gt; x;
+            <span class="keyword">if</span> (j&lt;i&amp;&amp;i+j&lt;<span class="number">11</span>) {
+                sum += x;
+                cnt++;
+            }
+        }
+    }
+    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
+    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">t=<span class="keyword">input</span>().strip();s=c=<span class="number">0</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+ <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+  x=<span class="keyword">float</span>(<span class="keyword">input</span>())
+  <span class="keyword">if</span> j&lt;i <span class="keyword">and</span> i+j&lt;<span class="number">11</span>:s+=x;c+=<span class="number">1</span>
+<span class="keyword">print</span>(f&<span class="comment">#x27;{s if t==&quot;S&quot; else s/c:.1f}&#x27;)</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD058">
+        <div class="problem-title">JD058：右方剑域</div>
+        <div class="problem-meta">AcWing JD | JD058</div>
+
+        <div class="description">
+            <p>「右域之剑，据白虎之位。」</p>
+<p>赵晴儿指向光幕右侧，</p>
+<p>「右方剑阵主攻，去势较长。算算右域之力和。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个大写字母S或M。接下来12行，每行12个浮点数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出对应区域的和或平均值，保留一位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+S
+69.0 84.0 98.0 42.0 4.0 23.0 58.0 99.0 32.0 14.0 26.0 40.0
+29.0 6.0 10.0 50.0 60.0 13.0 7.0 59.0 16.0 31.0 23.0 0.0
+0.0 61.0 75.0 80.0 46.0 58.0 45.0 34.0 10.0 61.0 53.0 66.0
+...
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1203.0
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>右方区域即满足j > i && i + j > 11的元素（主对角线上且反对角线下）。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstdio&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">char</span> op;
+    cin &gt;&gt; op;
+    <span class="keyword">double</span> sum = <span class="number">0</span>;
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
+            <span class="keyword">double</span> x;
+            cin &gt;&gt; x;
+            <span class="keyword">if</span> (j&gt;i&amp;&amp;i+j&gt;<span class="number">11</span>) {
+                sum += x;
+                cnt++;
+            }
+        }
+    }
+    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
+    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+data = sys.stdin.read().split()
+t = data[<span class="number">0</span>]
+s = <span class="number">0.0</span>
+idx = <span class="number">1</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+        x = <span class="keyword">float</span>(data[idx]); idx += <span class="number">1</span>
+        <span class="keyword">if</span> j &gt; i <span class="keyword">and</span> i + j &gt; <span class="number">11</span>: s += x
+<span class="keyword">print</span>(f&quot;{s:.1f}&quot; <span class="keyword">if</span> t == &<span class="comment">#x27;S&#x27; else f&quot;{s/30:.1f}&quot;)</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD059">
+        <div class="problem-title">JD059：右上剑角</div>
+        <div class="problem-meta">AcWing JD | JD059</div>
+
+        <div class="description">
+            <p>「右上剑角——天乾之位，日升之处。」</p>
+<p>赵晴儿在沙盘上比划，</p>
+<p>「从主对角线往上，剑势腾空而起，覆盖右上半壁。算算这角的剑气总和。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个大写字母S或M。接下来12行，每行12个浮点数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出右上半部分的和或平均值，保留一位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+S
+86.0 26.0 52.0 44.0 73.0 60.0 63.0 26.0 54.0 1.0 35.0 0.0
+60.0 49.0 95.0 82.0 59.0 59.0 69.0 19.0 72.0 79.0 82.0 75.0
+86.0 23.0 26.0 13.0 5.0 99.0 13.0 84.0 28.0 26.0 60.0 23.0
+...
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+3319.0
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>右上部分即j>i的元素。S求和，M求平均。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstdio&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">char</span> op;
+    cin &gt;&gt; op;
+    <span class="keyword">double</span> sum = <span class="number">0</span>;
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
+            <span class="keyword">double</span> x;
+            cin &gt;&gt; x;
+            <span class="keyword">if</span> (j&gt;i) {
+                sum += x;
+                cnt++;
+            }
+        }
+    }
+    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
+    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+data = sys.stdin.read().split()
+t = data[<span class="number">0</span>]
+s = <span class="number">0.0</span>
+idx = <span class="number">1</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+        x = <span class="keyword">float</span>(data[idx])
+        idx += <span class="number">1</span>
+        <span class="keyword">if</span> j &gt; i:
+            s += x
+<span class="keyword">print</span>(f&quot;{s <span class="keyword">if</span> t == &<span class="comment">#x27;S&#x27; else s / 66:.1f}&quot;)</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD060">
+        <div class="problem-title">JD060：左上剑角</div>
+        <div class="problem-meta">AcWing JD | JD060</div>
+
+        <div class="description">
+            <p>「左上剑角——天坤之位，月落之处。从主对角线往上左方，剑气如新月之弧，划出一角天地。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个大写字母S或M。接下来12行，每行12个浮点数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出对应区域的和或平均值，保留一位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+S
+49.0 20.0 80.0 78.0 8.0 14.0 59.0 46.0 32.0 6.0 7.0 97.0
+59.0 80.0 31.0 74.0 20.0 20.0 88.0 27.0 11.0 18.0 28.0 12.0
+97.0 85.0 70.0 33.0 61.0 32.0 10.0 89.0 42.0 82.0 21.0 79.0
+...
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+2981.0
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>左上部分即i+j<11的元素。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstdio&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">char</span> op;
+    cin &gt;&gt; op;
+    <span class="keyword">double</span> sum = <span class="number">0</span>;
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
+            <span class="keyword">double</span> x;
+            cin &gt;&gt; x;
+            <span class="keyword">if</span> (i+j&lt;<span class="number">11</span>) {
+                sum += x;
+                cnt++;
+            }
+        }
+    }
+    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
+    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">t=<span class="keyword">input</span>().strip();s=<span class="number">0</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+ <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+  x=<span class="keyword">float</span>(<span class="keyword">input</span>())
+  <span class="keyword">if</span> j&lt;<span class="number">11</span>-i:s+=x
+<span class="keyword">print</span>(f&<span class="comment">#x27;{s if t==&quot;S&quot; else s/66:.1f}&#x27;)</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD061">
+        <div class="problem-title">JD061：右下剑角</div>
+        <div class="problem-meta">AcWing JD | JD061</div>
+
+        <div class="description">
+            <p>「右下剑角——地乾之位，日落之处。从主对角线往下右方，剑势如残阳下沉，渐行渐远。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个大写字母S或M。接下来12行，每行12个浮点数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出对应区域的和或平均值，保留一位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+S
+80.0 49.0 14.0 87.0 99.0 61.0 17.0 39.0 57.0 46.0 63.0 43.0
+79.0 19.0 8.0 27.0 77.0 77.0 97.0 82.0 52.0 14.0 85.0 36.0
+61.0 75.0 96.0 20.0 78.0 6.0 1.0 72.0 15.0 46.0 23.0 98.0
+...
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+2790.0
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>右下部分即满足i + j > 11的元素（反对角线以下）。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstdio&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">char</span> op;
+    cin &gt;&gt; op;
+    <span class="keyword">double</span> sum = <span class="number">0</span>;
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
+            <span class="keyword">double</span> x;
+            cin &gt;&gt; x;
+            <span class="keyword">if</span> (i+j&gt;<span class="number">11</span>) {
+                sum += x;
+                cnt++;
+            }
+        }
+    }
+    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
+    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+data = sys.stdin.read().split()
+t = data[<span class="number">0</span>]
+s = <span class="number">0.0</span>
+idx = <span class="number">1</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+        x = <span class="keyword">float</span>(data[idx]); idx += <span class="number">1</span>
+        <span class="keyword">if</span> i + j &gt; <span class="number">11</span>: s += x
+<span class="keyword">print</span>(f&quot;{s:.1f}&quot; <span class="keyword">if</span> t == &<span class="comment">#x27;S&#x27; else f&quot;{s/66:.1f}&quot;)</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD062">
+        <div class="problem-title">JD062：左下剑角</div>
+        <div class="problem-meta">AcWing JD | JD062</div>
+
+        <div class="description">
+            <p>「左下剑角——地坤之位，月升之处。从主对角线往下左方，剑气似初月升空，一弧清辉。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个大写字母S或M。接下来12行，每行12个浮点数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出对应区域的和或平均值，保留一位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+S
+43.0 96.0 42.0 21.0 34.0 15.0 13.0 59.0 82.0 4.0 35.0 93.0
+78.0 97.0 91.0 19.0 38.0 91.0 16.0 90.0 38.0 53.0 31.0 73.0
+25.0 37.0 40.0 40.0 34.0 39.0 98.0 77.0 29.0 2.0 84.0 54.0
+...
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+3154.0
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>左下部分即满足j < i的元素（主对角线以下）。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstdio&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">char</span> op;
+    cin &gt;&gt; op;
+    <span class="keyword">double</span> sum = <span class="number">0</span>;
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
+            <span class="keyword">double</span> x;
+            cin &gt;&gt; x;
+            <span class="keyword">if</span> (j&lt;i) {
+                sum += x;
+                cnt++;
+            }
+        }
+    }
+    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
+    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">t=<span class="keyword">input</span>().strip();s=<span class="number">0</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+ <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
+  x=<span class="keyword">float</span>(<span class="keyword">input</span>())
+  <span class="keyword">if</span> j&lt;i:s+=x
+<span class="keyword">print</span>(f&<span class="comment">#x27;{s if t==&quot;S&quot; else s/66:.1f}&#x27;)</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD063">
+        <div class="problem-title">JD063：方圆初阵</div>
+        <div class="problem-meta">AcWing JD | JD063</div>
+
+        <div class="description">
+            <p>「此乃方圆剑阵——最外圈剑气最淡，标记为1；往里一圈剑气渐浓，标记为2。」</p>
+<p>赵晴儿在沙盘上画出一圈圈剑芒，</p>
+<p>「到剑阵中心，剑气愈凝愈实。每一圈剑芒的强度，就是你离外界最远的那道剑气的距离。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>多行，每行一个整数N。N=0时结束。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>每个N输出一个N阶矩阵，每个数字占3个字符宽度。每个矩阵后跟一个空行。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+1
+0
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>每个位置的值 = min(i+1, j+1, N-i, N-j)，即到四条边的最小距离。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+
+<span class="keyword">int</span> min(<span class="keyword">int</span> a, <span class="keyword">int</span> b) { <span class="keyword">return</span> a &lt; b ? a : b; }
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n;
+    <span class="keyword">while</span> (scanf(&quot;%d&quot;, &amp;n) == <span class="number">1</span> &amp;&amp; n) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) {
+                <span class="keyword">int</span> v = min(min(i, j), min(n - <span class="number">1</span> - i, n - <span class="number">1</span> - j));
+                printf(&quot;%3d&quot;, v + <span class="number">1</span>);
+            }
+            printf(&quot;\n&quot;);
+        }
+        printf(&quot;\n&quot;);
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+data = sys.stdin.read().split()
+<span class="keyword">for</span> val <span class="keyword">in</span> data:
+    n = <span class="keyword">int</span>(val)
+    <span class="keyword">if</span> n == <span class="number">0</span>: <span class="keyword">break</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n):
+        row = []
+        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(n):
+            v = <span class="keyword">min</span>(i, j, n-<span class="number">1</span>-i, n-<span class="number">1</span>-j) + <span class="number">1</span>
+            row.append(f&<span class="comment">#x27;{v:3d}&#x27;)</span>
+        <span class="keyword">print</span>(&<span class="comment">#x27;&#x27;.join(row))</span>
+    <span class="keyword">print</span>()</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD064">
+        <div class="problem-title">JD064：镜像方阵</div>
+        <div class="problem-meta">AcWing JD | JD064</div>
+
+        <div class="description">
+            <p>「此阵以主对角线为镜——镜中剑影，左右互映。」</p>
+<p>赵晴儿落下第一柄长剑，</p>
+<p>「主对角线上的剑势最强，为1；往右上和左下方逐次递减，如剑光在水面的倒影越远越淡。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>多行，每行一个整数N。N=0时结束。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>每个N输出一个N阶矩阵，每个数字占3个字符宽度。每个矩阵后跟一个空行。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+1
+0
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>M[i][j] = |i-j|+1。对角线为1，离对角线越远数越大。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;cstdlib&gt;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n;
+    <span class="keyword">while</span> (scanf(&quot;%d&quot;, &amp;n) == <span class="number">1</span> &amp;&amp; n) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)
+                printf(&quot;%3d&quot;, abs(i - j) + <span class="number">1</span>);
+            printf(&quot;\n&quot;);
+        }
+        printf(&quot;\n&quot;);
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">while</span> <span class="keyword">True</span>:
+ n=<span class="keyword">int</span>(<span class="keyword">input</span>())
+ <span class="keyword">if</span> n==<span class="number">0</span>:<span class="keyword">break</span>
+ <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n):
+  <span class="keyword">print</span>(&<span class="comment">#x27;&#x27;.join(f&#x27;{abs(i-j)+1:3d}&#x27;for j in range(n)))</span>
+ <span class="keyword">print</span>()</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD065">
+        <div class="problem-title">JD065：倍增方阵</div>
+        <div class="problem-meta">AcWing JD | JD065</div>
+
+        <div class="description">
+            <p>「此阵每一格，剑气强度皆由剑气原点(0,0)倍增而来。」</p>
+<p>赵晴儿剑尖轻点沙盘，</p>
+<p>「位在(i,j)的剑势，强度为2的(i+j)次方。一生二，二生四，剑气倍增如潮水蔓延。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>多行，每行一个整数N（0≤N≤15）。N=0时结束。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>每个N输出一个N阶矩阵，每行N个整数用空格隔开。每个矩阵后跟一个空行。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3 0
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 2 4 
+2 4 8 
+4 8 16
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>M[i][j] = 2^(i+j)。用位运算 1<<(i+j) 或 pow函数。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n;
+    <span class="keyword">while</span> (scanf(&quot;%d&quot;, &amp;n) == <span class="number">1</span> &amp;&amp; n) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)
+                printf(&quot;%lld &quot;, <span class="number">1LL</span> &lt;&lt; (i + j));
+            printf(&quot;\n&quot;);
+        }
+        printf(&quot;\n&quot;);
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+data = sys.stdin.read().split()
+<span class="keyword">for</span> val <span class="keyword">in</span> data:
+    n = <span class="keyword">int</span>(val)
+    <span class="keyword">if</span> n == <span class="number">0</span>: <span class="keyword">break</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n):
+        row = []
+        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(n):
+            v = <span class="number">1</span>
+            <span class="keyword">for</span> k <span class="keyword">in</span> <span class="keyword">range</span>(i + j):
+                v *= <span class="number">2</span>
+            row.append(<span class="keyword">str</span>(v))
+        <span class="keyword">print</span>(&<span class="comment">#x27; &#x27;.join(row) + &#x27; &#x27;)</span>
+    <span class="keyword">print</span>()</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD066">
+        <div class="problem-title">JD066：蛇形剑阵</div>
+        <div class="problem-meta">AcWing JD | JD066</div>
+
+        <div class="description">
+            <p>「剑阵蜿蜒如蛇，以身引气，气走周身。」</p>
+<p>赵晴儿在沙盘上画了一个n行m列的剑阵，</p>
+<p>「从左上角开始，依次填入从1到n×m的剑气。行到尽头便拐弯，似灵蛇折返。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，两个整数n和m。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>n行，每行m个整数用空格隔开。输出后跟一个空行。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3 3
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 2 3 
+8 9 4 
+7 6 5
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>模拟蛇形遍历：右→下→左→上循环。维护四个边界。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+
+<span class="keyword">int</span> res[<span class="number">110</span>][<span class="number">110</span>];
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n, m;
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+
+    <span class="keyword">int</span> dx[] = {<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>}, dy[] = {<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>};
+    <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>, y = <span class="number">0</span>, d = <span class="number">0</span>, k = <span class="number">1</span>; k &lt;= n * m; k++) {
+        res[x][y] = k;
+        <span class="keyword">int</span> a = x + dx[d], b = y + dy[d];
+        <span class="keyword">if</span> (a &lt; <span class="number">0</span> || a &gt;= n || b &lt; <span class="number">0</span> || b &gt;= m || res[a][b]) {
+            d = (d + <span class="number">1</span>) % <span class="number">4</span>;
+            a = x + dx[d], b = y + dy[d];
+        }
+        x = a, y = b;
+    }
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++)
+            printf(&quot;%d &quot;, res[i][j]);
+        printf(&quot;\n&quot;);
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+data = sys.stdin.read().split()
+n, m = <span class="keyword">int</span>(data[<span class="number">0</span>]), <span class="keyword">int</span>(data[<span class="number">1</span>])
+a = [[<span class="number">0</span>] * m <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n)]
+dx = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>]
+dy = [<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>]
+d = x = y = <span class="number">0</span>
+<span class="keyword">for</span> v <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n * m + <span class="number">1</span>):
+    a[x][y] = v
+    nx, ny = x + dx[d], y + dy[d]
+    <span class="keyword">if</span> nx &lt; <span class="number">0</span> <span class="keyword">or</span> nx &gt;= n <span class="keyword">or</span> ny &lt; <span class="number">0</span> <span class="keyword">or</span> ny &gt;= m <span class="keyword">or</span> a[nx][ny]:
+        d = (d + <span class="number">1</span>) % <span class="number">4</span>
+        nx, ny = x + dx[d], y + dy[d]
+    x, y = nx, ny
+<span class="keyword">for</span> r <span class="keyword">in</span> a:
+    <span class="keyword">print</span>(&<span class="comment">#x27; &#x27;.join(map(str, r)) + &#x27; &#x27;)</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+            <div class="chapter-nav">
+                <a href="chapter04.html">← 第四章 排兵布阵</a>
+                <a href="index.html" class="nav-home">返回目录</a>
+                <a href="chapter06.html">第六章 古卷密文 →</a>
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <p>《剑道试炼》第五章 十二宫剑阵 · <a href="index.html">返回首页</a></p>
+    </footer>
+
+    <button class="scroll-top" aria-label="回到顶部">↑</button>
+    <script src="script.js"></script>
+</body>
+</html>

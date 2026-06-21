@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第十章 千锤百炼 — 剑道试炼</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="index.html" class="nav-brand">剑道试炼</a>
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link-text">首页</a>
+            <a href="code.html" class="nav-link-text">代码参考</a>
+            <button class="dark-toggle" aria-label="Toggle dark mode">☽</button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="chapter-sidebar">
+            <div class="sidebar-title">章节目录</div>
+            <ul class="chapter-list">
+                <li><a href="chapter01.html">第一章 持剑叩门</a></li>
+                <li><a href="chapter02.html">第二章 歧路逢生</a></li>
+                <li><a href="chapter03.html">第三章 千回百转</a></li>
+                <li><a href="chapter04.html">第四章 排兵布阵</a></li>
+                <li><a href="chapter05.html">第五章 十二宫剑阵</a></li>
+                <li><a href="chapter06.html">第六章 古卷密文</a></li>
+                <li><a href="chapter07.html">第七章 以招创招</a></li>
+                <li><a href="chapter08.html">第八章 百器图谱</a></li>
+                <li><a href="chapter09.html">第九章 快剑如风</a></li>
+                <li><a href="chapter10.html" class="active">第十章 千锤百炼</a></li>
+                <li><a href="chapter11.html">第十一章 蓄势待发</a></li>
+                <li><a href="chapter12.html">第十二章 利器出鞘</a></li>
+                <li><a href="chapter13.html">第十三章 迷雾寻踪</a></li>
+                <li><a href="chapter14.html">第十四章 千里奔袭</a></li>
+                <li><a href="chapter15.html">第十五章 华山论剑</a></li>
+            </ul>
+        </aside>
+
+        <main class="chapter-main">
+            <div class="chapter-header">
+                <h1>第十章 千锤百炼</h1>
+                <div class="chapter-subtitle">高精度与位运算</div>
+            </div>
+
+            <div class="problem" id="JD109">
+        <div class="problem-title">JD109：铁壁识痕</div>
+        <div class="problem-meta">AcWing 801 | JD109</div>
+
+        <div class="description">
+            <p>精铸阁的墙壁上嵌着一排铁板，每块铁板上用二进制刻着一个数——有凹痕的地方是1，平整的地方是0。</p>
+<p>赵晴儿递给李少白一串数字："每块铁板上有几道凹痕？数出来。"</p>
+<p>李少白想逐位检查。赵晴儿教他一个窍门："用位运算——<code>n & 1</code> 看最低位是不是1，然后 <code>n >>= 1</code> 右移一位，继续看下一位。数完所有位，就知道有几道凹痕了。"</p>
+<p>给定 n 个整数，输出每个数的二进制表示中有多少个1。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数 n。第二行 n 个整数（1 ≤ n ≤ 100000）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，每个数对应的1的个数，空格隔开。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5
+1 2 3 4 5
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 1 2 1 2
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>位运算：while(n > 0) { count += n & 1; n >>= 1; }。或用 n & (n-1) 消去最低位的1，计数更快。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">inline</span> <span class="keyword">int</span> lowbit(<span class="keyword">int</span> &amp;x)
+{
+    <span class="keyword">return</span> x &amp; -x;<span class="comment">//x的二进制的最后一个1所构成的整数</span>
+}
+<span class="keyword">int</span> main()
+{
+    <span class="keyword">int</span> n, x;
+    cin &gt;&gt; n;
+    <span class="keyword">while</span> (n--)
+    {
+        <span class="comment">//读入一个数，并且计算1的个数，并且输出</span>
+        cin &gt;&gt; x;
+        <span class="keyword">int</span> res = <span class="number">0</span>;<span class="comment">//计数变量</span>
+        <span class="keyword">while</span> (x)
+            x -= lowbit(x), res++; <span class="comment">//使用,表达式，简化代码去括号</span>
+        cout &lt;&lt; res &lt;&lt; &quot; &quot;;        <span class="comment">//输出运算结果</span>
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+data = sys.stdin.read().split()
+n = <span class="keyword">int</span>(data[<span class="number">0</span>])
+out = []
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+    out.append(<span class="keyword">str</span>(bin(<span class="keyword">int</span>(data[i])).count(&<span class="comment">#x27;1&#x27;)))</span>
+sys.stdout.write(&<span class="comment">#x27; &#x27;.join(out) + &#x27; &#x27;)</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD110">
+        <div class="problem-title">JD110：万钧合一</div>
+        <div class="problem-meta">AcWing 791 | JD110</div>
+
+        <div class="description">
+            <p>精铸阁中，赵晴儿递来两块铁牌，上面各刻着一个巨大的数字——长到普通变量根本装不下。</p>
+<p>"这两个数要加起来，"赵晴儿说，"但没有那么大的容器。怎么办？"</p>
+<p>李少白想了想："像竖式加法一样，把每一位拆开，用数组存。从最低位开始逐位相加，满十进一。"</p>
+<p>"对。这就是高精度加法——用数组模拟竖式。"</p>
+<p>给定两个正整数，计算它们的和。每个数不超过 100000 位。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>两行，每行一个正整数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，两数之和。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+123456789012345678901234567890
+987654321098765432109876543210
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1111111110111111111011111111100
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>用数组存每一位（倒序），从低位到高位逐位相加，处理进位。最后倒序输出。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = 1e6+<span class="number">7</span>; 
+
+vector&lt;<span class="keyword">int</span>&gt; add(vector&lt;<span class="keyword">int</span>&gt; &amp;A, vector&lt;<span class="keyword">int</span>&gt;&amp;B){
+    vector&lt;<span class="keyword">int</span>&gt; C;
+    <span class="keyword">int</span> t=<span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;A.size()||i&lt;B.size(); i++) {
+        <span class="keyword">if</span> (i&lt;A.size()) t+=A[i];
+        <span class="keyword">if</span> (i&lt;B.size()) t+=B[i];
+        <span class="comment">//对t取模，取进位</span>
+        C.push_back(t %<span class="number">10</span>);<span class="comment">//把t模10的余数入数组，商为进位</span>
+        t /= <span class="number">10</span>; <span class="comment">//算出进位，供下一次循环使用</span>
+    }
+    <span class="keyword">if</span>(t) C.push_back(<span class="number">1</span>);<span class="comment">//最高位进位</span>
+    <span class="keyword">return</span> C;
+}
+
+<span class="keyword">int</span> main(){
+    <span class="comment">//输入为字符串</span>
+    <span class="keyword">string</span> a,b;
+    vector&lt;<span class="keyword">int</span>&gt; A,B;
+
+    cin &gt;&gt; a&gt;&gt;b; <span class="comment">// a=&quot;786654&quot;</span>
+    <span class="comment">//倒序存储A，B，a[0]乃是最低位</span>
+    <span class="keyword">for</span>(<span class="keyword">int</span> i= a.size()-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--) A.push_back(a[i]-&#x27;<span class="number">0</span>&#x27;);
+    <span class="keyword">for</span>(<span class="keyword">int</span> i= b.size()-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--) B.push_back(b[i]-&#x27;<span class="number">0</span>&#x27;);
+
+    <span class="keyword">auto</span> C = add(A,B);
+
+    <span class="keyword">for</span>(<span class="keyword">int</span> i= C.size()-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--) cout&lt;&lt;C[i];<span class="comment">//打印C</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+data = sys.stdin.read().split()
+a = <span class="keyword">int</span>(data[<span class="number">0</span>])
+b = <span class="keyword">int</span>(data[<span class="number">1</span>])
+<span class="keyword">print</span>(a + b)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD111">
+        <div class="problem-title">JD111：削铁如泥</div>
+        <div class="problem-meta">AcWing 792 | JD111</div>
+
+        <div class="description">
+            <p>梁嘉峰递给李少白两块铁牌："这次是减法。大数减大数，注意借位。"</p>
+<p>李少白接过一看，两个数都很长。他先比较了大小——如果被减数比减数小，结果就是负数，先交换再算。</p>
+<p>"像竖式减法一样，从最低位开始，不够减就向高位借1。"梁嘉峰说，"削铁如泥，一刃一刃来。"</p>
+<p>给定两个正整数，计算它们的差（结果可能为负数）。每个数不超过 100000 位。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>两行，每行一个正整数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，两数之差。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+9876543210
+1234567890
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+8641975320
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>先判断大小，大减小，从低位逐位减，处理借位。如果被减数小则结果加负号。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = 1e6 + <span class="number">7</span>;
+<span class="keyword">bool</span> isGreater(vector&lt;<span class="keyword">int</span>&gt; &amp;A, vector&lt;<span class="keyword">int</span>&gt; &amp;B)
+{
+    <span class="keyword">if</span> (A.size() != B.size()) <span class="comment">//比较大小</span>
+        <span class="keyword">return</span> A.size() &gt; B.size();
+    <span class="comment">//否则大小相等，逐位比较大小</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = A.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)
+        <span class="keyword">if</span> (A[i] != B[i])
+            <span class="keyword">return</span> A[i] &gt; B[i];
+    <span class="keyword">return</span> <span class="keyword">true</span>; <span class="comment">//每个数字都相同，长度相同，两数相等</span>
+}
+<span class="comment">//C= A-B</span>
+vector&lt;<span class="keyword">int</span>&gt; sub(vector&lt;<span class="keyword">int</span>&gt; &amp;A, vector&lt;<span class="keyword">int</span>&gt; &amp;B)
+{
+    vector&lt;<span class="keyword">int</span>&gt; C;
+    <span class="comment">//A是比较大的数</span>
+    <span class="keyword">int</span> t = <span class="number">0</span>; <span class="comment">//第一轮减法进位为0</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.size(); i++)
+    {
+        t = A[i] - t;
+        <span class="keyword">if</span> (i &lt; B.size())
+            t -= B[i];              <span class="comment">//A[i]-B[i] + t</span>
+        C.push_back((t + <span class="number">10</span>) % <span class="number">10</span>); <span class="comment">//得到对应位</span>
+        <span class="keyword">if</span> (t &lt; <span class="number">0</span>)
+            t = <span class="number">1</span>;
+        <span class="keyword">else</span>
+            t = <span class="number">0</span>; <span class="comment">//判断是否借一位</span>
+    }
+    <span class="comment">//去掉开头的0</span>
+    <span class="keyword">while</span> (C.size() &gt; <span class="number">1</span> &amp;&amp; C.back()==<span class="number">0</span>) C.pop_back();
+
+    <span class="keyword">return</span> C;
+}
+
+<span class="keyword">int</span> main()
+{
+    <span class="comment">//输入为字符串</span>
+    <span class="keyword">string</span> a, b;
+    vector&lt;<span class="keyword">int</span>&gt; A, B;
+
+    cin &gt;&gt; a &gt;&gt; b; <span class="comment">// a=&quot;786654&quot;</span>
+    <span class="comment">//倒序存储A，B，a[0]乃是最低位</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = a.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)
+        A.push_back(a[i] - &#x27;<span class="number">0</span>&#x27;);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = b.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)
+        B.push_back(b[i] - &#x27;<span class="number">0</span>&#x27;);
+    <span class="comment">//判断A与B的大小</span>
+    <span class="keyword">if</span> (isGreater(A, B))
+    {
+        <span class="keyword">auto</span> C = sub(A, B);
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = C.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)
+            cout &lt;&lt; C[i]; <span class="comment">//打印C</span>
+    }
+    <span class="keyword">else</span>
+    {
+        <span class="keyword">auto</span> C = sub(B, A);
+        cout &lt;&lt; &quot;-&quot;;
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = C.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)
+            cout &lt;&lt; C[i]; <span class="comment">//打印C</span>
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 高精度减法</span>
+<span class="keyword">import</span> sys
+sys.set_int_max_str_digits(<span class="number">1000000</span>)
+a = <span class="keyword">int</span>(<span class="keyword">input</span>())
+b = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(a - b)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD112">
+        <div class="problem-title">JD112：叠甲千层</div>
+        <div class="problem-meta">AcWing 793 | JD112</div>
+
+        <div class="description">
+            <p>赵晴儿递来一块刻着万位数的铁牌和一个小铁块："大数乘以小数。铁牌上的每一位都要乘以小铁块的数，再处理进位——就像叠甲，一层压一层。"</p>
+<p>李少白从铁牌的最低位开始，逐位乘以小数，加上前一位的进位，本位留下余数，进位带到下一位。</p>
+<p>给定一个大正整数 A 和一个小正整数 B，计算 A × B。A 不超过 100000 位，B 不超过 10000。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>两行，第一行正整数 A，第二行正整数 B。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，A × B 的结果。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+123456
+789
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+97406784
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>高精度×低精度：大数每一位乘以小数，处理进位。注意结果可能有前导零需要去掉。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = 1e6 + <span class="number">7</span>;
+
+<span class="comment">//C= A*b,t的用法很精彩！</span>
+vector&lt;<span class="keyword">int</span>&gt; mul(vector&lt;<span class="keyword">int</span>&gt; &amp;A, <span class="keyword">int</span> b){
+    vector&lt;<span class="keyword">int</span>&gt; C;
+    <span class="keyword">int</span> t=<span class="number">0</span>;
+    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;A.size() || t; i++){
+        <span class="comment">//如果t还有剩余或者A还有剩余，乘法结果C需要加新的位</span>
+        <span class="keyword">if</span>(i&lt;A.size()) t+=A[i]*b;<span class="comment">//把b当作整体做乘法</span>
+        C.push_back(t % <span class="number">10</span>);<span class="comment">//存储第i位</span>
+        t /=<span class="number">10</span>; <span class="comment">//更新t</span>
+    }
+    <span class="keyword">while</span>(C.size()&gt;<span class="number">1</span> &amp;&amp; C.back()==<span class="number">0</span>) C.pop_back();<span class="comment">//去掉C开头的0</span>
+    <span class="keyword">return</span> C;
+}
+
+<span class="keyword">int</span> main()
+{
+    <span class="comment">//输入为字符串</span>
+    <span class="keyword">string</span> a;
+    <span class="keyword">int</span> b;<span class="comment">//输入的b比较小，作为一个整体处理</span>
+    vector&lt;<span class="keyword">int</span>&gt; A,C;
+
+    cin &gt;&gt; a &gt;&gt; b; <span class="comment">// a=&quot;786654&quot;</span>
+    <span class="comment">//倒序存储A，B，a[0]乃是最低位</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = a.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)
+        A.push_back(a[i] - &#x27;<span class="number">0</span>&#x27;);
+    C=mul(A,b);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = C.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)
+            cout &lt;&lt; C[i]; <span class="comment">//打印C</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 高精度乘法</span>
+<span class="keyword">import</span> sys
+sys.set_int_max_str_digits(<span class="number">1000000</span>)
+a = <span class="keyword">int</span>(<span class="keyword">input</span>())
+b = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(a * b)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD113">
+        <div class="problem-title">JD113：分金断玉</div>
+        <div class="problem-meta">AcWing 794 | JD113</div>
+
+        <div class="description">
+            <p>梁嘉峰拿起一把锉刀："大数除以小数——分金断玉，从高位一刀一刀切。"</p>
+<p>"从最高位开始，"赵晴儿解释，"当前余数乘10加上当前位，除以除数得到商的一位，剩下的余数带到下一位。和竖式除法一模一样。"</p>
+<p>给定一个大非负整数 A 和一个小正整数 B，计算 A ÷ B 的商和余数。A 不超过 100000 位，B 不超过 10000。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>两行，第一行非负整数 A，第二行正整数 B（B ≠ 0）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>两行，第一行商，第二行余数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+9876543210
+123
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+80297099
+33
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>高精度÷低精度：从高位到低位，当前余数×10+当前位，除以B得商的一位，更新余数。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = 1e6 + <span class="number">7</span>;
+
+<span class="comment">//C= A/b 余数为r</span>
+vector&lt;<span class="keyword">int</span>&gt; div(vector&lt;<span class="keyword">int</span>&gt; &amp;A, <span class="keyword">int</span> b, <span class="keyword">int</span> &amp;r){
+    vector&lt;<span class="keyword">int</span>&gt; C;
+    r=<span class="number">0</span>;<span class="comment">//余数</span>
+    <span class="keyword">for</span>(<span class="keyword">int</span> i=A.size()-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--){
+        r = r* <span class="number">10</span> + A[i];<span class="comment">//从最高位开始，当前余数r需要上一次运算的r乘10</span>
+        C.push_back(r/b);
+        r %= b;
+    }
+    reverse(C.begin(), C.end());<span class="comment">//定义的数是最低位在C[0],因此需要取逆</span>
+    <span class="keyword">while</span>(C.size()&gt;<span class="number">1</span> &amp;&amp; C.back()==<span class="number">0</span>) C.pop_back();<span class="comment">//去掉C开头的0字符</span>
+    <span class="keyword">return</span> C;
+}
+
+<span class="keyword">int</span> main()
+{
+    <span class="comment">//输入为字符串</span>
+    <span class="keyword">string</span> a;
+    <span class="keyword">int</span> b;<span class="comment">//输入的b比较小，作为一个整体处理</span>
+    vector&lt;<span class="keyword">int</span>&gt; A;
+
+    cin &gt;&gt; a &gt;&gt; b; <span class="comment">// a=&quot;786654&quot;</span>
+    <span class="comment">//倒序存储A，B，a[0]乃是最低位</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = a.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)
+        A.push_back(a[i] - &#x27;<span class="number">0</span>&#x27;);
+
+    <span class="keyword">int</span> r;
+    <span class="keyword">auto</span> C=div(A,b,r);<span class="comment">//使用auto自动辨别变量类型</span>
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = C.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)
+            cout &lt;&lt; C[i]; <span class="comment">//打印C</span>
+            cout&lt;&lt;endl&lt;&lt;r&lt;&lt;endl;<span class="comment">//打印余数</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+data = sys.stdin.read().split()
+a = <span class="keyword">int</span>(data[<span class="number">0</span>])
+b = <span class="keyword">int</span>(data[<span class="number">1</span>])
+<span class="keyword">print</span>(a // b)
+<span class="keyword">print</span>(a % b)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD114">
+        <div class="problem-title">JD114：双剑求和</div>
+        <div class="problem-meta">AcWing 800 | JD114</div>
+
+        <div class="description">
+            <p>赵晴儿递给李少白两排有序的铁牌，每排上的数字从小到大排列。她说："从两排铁牌中各取一块，使它们的数字之和刚好等于一个目标值。"</p>
+<p>李少白想暴力枚举，但每排都有十万块。赵晴儿说："两排都是有序的——第一个指针从第一排的头部开始，第二个指针从第二排的尾部开始。如果和太大，第二个指针往左移；和太小，第一个指针往右移。两个指针配合，一次遍历就够了。"</p>
+<p>给定两个升序数组 A 和 B，以及目标值 x，找出满足 A[i] + B[j] = x 的数对 (i, j)。保证有唯一解。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行三个整数 n、m 和 x。第二行 n 个整数（数组 A）。第三行 m 个整数（数组 B）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，两个整数 i 和 j。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+4 5 6
+1 2 4 7
+3 4 6 8 9
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 1
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>双指针：i 从 A 的头，j 从 B 的尾。A[i]+B[j] < x 则 i++，> x 则 j--。O(n+m)。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100007</span>;
+<span class="keyword">int</span> n,m,x;
+<span class="keyword">int</span> numA[N],numB[N];
+
+<span class="keyword">int</span> main(){
+       <span class="comment">//读入n,m,x其中x为目标和</span>
+   scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;x);
+   <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) scanf(&quot;%d&quot;,&amp;numA[i]);
+   <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;m; j++) scanf(&quot;%d&quot;,&amp;numB[j]);
+   <span class="comment">//双指针查找和</span>
+
+   <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>, j= m-<span class="number">1</span>; i&lt;n; i++){
+       <span class="comment">//check(i,j)</span>
+       <span class="keyword">while</span> (j&gt;=<span class="number">0</span> &amp;&amp; numA[i]+numB[j]&gt;x) j--;
+       <span class="keyword">if</span> (numA[i]+numB[j]==x)<span class="comment">//判断是否和相等</span>
+       {
+         printf(&quot;%d %d\n&quot;,i,j);
+        <span class="keyword">break</span>;
+       }
+   }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 数组元素的目标和</span>
+n, m, x = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
+b = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
+i, j = <span class="number">0</span>, m - <span class="number">1</span>
+<span class="keyword">while</span> i &lt; n <span class="keyword">and</span> j &gt;= <span class="number">0</span>:
+    s = a[i] + b[j]
+    <span class="keyword">if</span> s == x:
+        <span class="keyword">print</span>(i, j)
+        <span class="keyword">break</span>
+    <span class="keyword">elif</span> s &lt; x:
+        i += <span class="number">1</span>
+    <span class="keyword">else</span>:
+        j -= <span class="number">1</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD115">
+        <div class="problem-title">JD115：双剑验序</div>
+        <div class="problem-meta">AcWing 2816 | JD115</div>
+
+        <div class="description">
+            <p>赵晴儿拿着两卷竹简，上面各写着一串数字。她问："第二卷的内容是不是第一卷的子序列？子序列不要求连续，但必须保持原有次序。"</p>
+<p>李少白用两个指针："一个指针遍历第一卷，另一个指向第二卷。如果当前字符匹配，第二卷的指针就往前走。最后看第二卷的指针有没有走到头——走到头就说明全部匹配上了。"</p>
+<p>"对，两个指针各走一遍，O(n)。"</p>
+<p>给定序列 a（长度 n）和序列 b（长度 m），判断 a 是否为 b 的子序列。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数 n 和 m。第二行 n 个整数（序列 a）。第三行 m 个整数（序列 b）（1 ≤ n ≤ m ≤ 100000）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>是子序列输出 <code>Yes</code>，否则输出 <code>No</code>。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3 5
+1 3 5
+1 2 3 4 5
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+Yes
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>双指针：i 遍历 a，j 遍历 b。a[i] == b[j] 时 i++。i 到头说明是子序列。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstdio&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = 1e5+<span class="number">7</span>;<span class="comment">//我的风格</span>
+<span class="keyword">int</span> a[N],b[N];
+
+<span class="keyword">int</span> main()
+{
+  <span class="keyword">int</span> n,m;
+  scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;n; i++) scanf(&quot;%d&quot;,&amp;a[i]);
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;m; i++) scanf(&quot;%d&quot;,&amp;b[i]);
+
+  <span class="keyword">int</span> p = <span class="number">0</span>;<span class="comment">//指向a数组的指针</span>
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)
+  {
+    <span class="keyword">if</span> (p &lt; n &amp;&amp; a[p] == b[i]) p++;
+  }
+  <span class="comment">//完全匹配</span>
+  <span class="keyword">if</span> (p==n) puts(&quot;Yes&quot;);
+  <span class="keyword">else</span> puts(&quot;No&quot;);
+
+  <span class="keyword">return</span> <span class="number">0</span>;
+
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 判断子序列</span>
+n, m = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
+b = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
+i = <span class="number">0</span>
+<span class="keyword">for</span> x <span class="keyword">in</span> b:
+    <span class="keyword">if</span> i &lt; n <span class="keyword">and</span> a[i] == x:
+        i += <span class="number">1</span>
+<span class="keyword">print</span>(&<span class="comment">#x27;Yes&#x27; if i == n else &#x27;No&#x27;)</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD116">
+        <div class="problem-title">JD116：无重之最</div>
+        <div class="problem-meta">AcWing 799 | JD116</div>
+
+        <div class="description">
+            <p>梁嘉峰在沙盘上摆了一排石块，每块上刻着一个数字。他问："从这排石块中，找出最长的一段——这段里每个数字都不重复。"</p>
+<p>李少白想从头遍历每一段，但石块有十万块。赵晴儿教他："用两个指针，一左一右，框住一段区间。右指针往右扩展，遇到重复数字就收缩左指针，直到区间内没有重复。每一步都更新最大长度。"</p>
+<p>"两个指针各走各的，总共只走一遍——O(n)。"</p>
+<p>给定一个长度为 n 的整数序列，找出最长的不含重复数字的连续子序列，输出其长度。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数 n。第二行 n 个整数（1 ≤ n ≤ 100000）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最长连续不重复子序列的长度。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5
+1 2 2 3 5
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+3
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>滑动窗口：右指针扩展，用哈希表判断是否重复，重复则左指针收缩。O(n)。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100007</span>;
+<span class="keyword">int</span> num[N],visited[N];
+
+<span class="keyword">int</span> main(){
+    <span class="keyword">int</span> n;
+    cin&gt;&gt;n;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++ ) cin&gt;&gt;num[i];<span class="comment">//读入n个数</span>
+    <span class="comment">//双指针扫描</span>
+    <span class="keyword">int</span> res=<span class="number">0</span>;<span class="comment">//初始化为最小值</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>, j=<span class="number">0</span>; i&lt;n; i++){
+        visited[num[i]]++;
+        <span class="keyword">while</span>(j&lt;=i &amp;&amp; visited[num[i]]&gt;<span class="number">1</span>){
+            visited[num[j]]--;
+            j++; <span class="comment">//去掉重复数</span>
+        }
+        res= max(res,i-j+<span class="number">1</span>);<span class="comment">//j--i 之间的数字个数</span>
+    }
+    cout&lt;&lt;res&lt;&lt;endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 最长连续不重复子序列</span>
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
+cnt = {}
+l = <span class="number">0</span>
+ans = <span class="number">0</span>
+<span class="keyword">for</span> r <span class="keyword">in</span> <span class="keyword">range</span>(n):
+    cnt[a[r]] = cnt.get(a[r], <span class="number">0</span>) + <span class="number">1</span>
+    <span class="keyword">while</span> cnt[a[r]] &gt; <span class="number">1</span>:
+        cnt[a[l]] -= <span class="number">1</span>
+        l += <span class="number">1</span>
+    ans = <span class="keyword">max</span>(ans, r - l + <span class="number">1</span>)
+<span class="keyword">print</span>(ans)</code></pre>
+            </details>
+        </div>
+    </div>
+
+            <div class="chapter-nav">
+                <a href="chapter09.html">← 第九章 快剑如风</a>
+                <a href="index.html" class="nav-home">返回目录</a>
+                <a href="chapter11.html">第十一章 蓄势待发 →</a>
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <p>《剑道试炼》第十章 千锤百炼 · <a href="index.html">返回首页</a></p>
+    </footer>
+
+    <button class="scroll-top" aria-label="回到顶部">↑</button>
+    <script src="script.js"></script>
+</body>
+</html>

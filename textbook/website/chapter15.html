@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第十五章 华山论剑 — 剑道试炼</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="index.html" class="nav-brand">剑道试炼</a>
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link-text">首页</a>
+            <a href="code.html" class="nav-link-text">代码参考</a>
+            <button class="dark-toggle" aria-label="Toggle dark mode">☽</button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="chapter-sidebar">
+            <div class="sidebar-title">章节目录</div>
+            <ul class="chapter-list">
+                <li><a href="chapter01.html">第一章 持剑叩门</a></li>
+                <li><a href="chapter02.html">第二章 歧路逢生</a></li>
+                <li><a href="chapter03.html">第三章 千回百转</a></li>
+                <li><a href="chapter04.html">第四章 排兵布阵</a></li>
+                <li><a href="chapter05.html">第五章 十二宫剑阵</a></li>
+                <li><a href="chapter06.html">第六章 古卷密文</a></li>
+                <li><a href="chapter07.html">第七章 以招创招</a></li>
+                <li><a href="chapter08.html">第八章 百器图谱</a></li>
+                <li><a href="chapter09.html">第九章 快剑如风</a></li>
+                <li><a href="chapter10.html">第十章 千锤百炼</a></li>
+                <li><a href="chapter11.html">第十一章 蓄势待发</a></li>
+                <li><a href="chapter12.html">第十二章 利器出鞘</a></li>
+                <li><a href="chapter13.html">第十三章 迷雾寻踪</a></li>
+                <li><a href="chapter14.html">第十四章 千里奔袭</a></li>
+                <li><a href="chapter15.html" class="active">第十五章 华山论剑</a></li>
+            </ul>
+        </aside>
+
+        <main class="chapter-main">
+            <div class="chapter-header">
+                <h1>第十五章 华山论剑</h1>
+                <div class="chapter-subtitle">动态规划</div>
+            </div>
+
+            <div class="problem" id="JD155">
+        <div class="problem-title">JD155：一剑一鞘</div>
+        <div class="problem-meta">AcWing 2 | JD155</div>
+
+        <div class="description">
+            <p>华山脚下，试剑台前。西域刀客赫连铁拔出背上唯一的刀鞘，鞘中却藏着N柄短刀，每柄有重量和锋芒。刀鞘容量有限——选哪些刀，才能让锋芒之和最大？</p>
+<p>李少白拔剑上前。梁嘉峰低声道："每柄刀只能选一次——01背包。逆序遍历容量，dp[j] = max(dp[j], dp[j-v]+w)。"</p>
+<p>李少白深吸一口气，提笔写下。赫连铁看了答案，缓缓点头："第一关，过了。"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数N和V。接下来N行每行两个整数v和w。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最大价值。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+4 5
+1 2
+2 4
+3 4
+4 5
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+8
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>01背包：dp[j] = max(dp[j], dp[j-v[i]]+w[i])，逆序遍历j。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> N= <span class="number">1007</span>;
+<span class="comment">// 2维的解法</span>
+<span class="keyword">int</span> n,m;
+<span class="keyword">int</span> f[N][N];
+<span class="keyword">int</span> v[N],w[N];
+
+<span class="keyword">int</span> main()
+{
+  cin&gt;&gt;n&gt;&gt;m;<span class="comment">//读入N,V</span>
+  <span class="comment">//读入v,w</span>
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cin&gt;&gt;v[i]&gt;&gt;w[i];
+  <span class="comment">//朴素的二维dp</span>
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;=m; j++)
+    {
+      f[i][j]=f[i-<span class="number">1</span>][j];
+      <span class="keyword">if</span> ( j &gt;= v[i]) <span class="comment">//剩余体积大于第i项的体积</span>
+      f[i][j] = max(f[i][j],f[i-<span class="number">1</span>][j-v[i]]+w[i]);
+    }
+  <span class="comment">//根据定义，从前n个物品中，选取总体积不超过m的选法集合f[n][m]就是答案</span>
+  cout&lt;&lt;f[n][m]&lt;&lt;endl;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 01背包问题</span>
+N, V = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+f = [<span class="number">0</span>] * (V + <span class="number">1</span>)
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(N):
+    v, w = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(V, v - <span class="number">1</span>, -<span class="number">1</span>):
+        f[j] = <span class="keyword">max</span>(f[j], f[j - v] + w)
+<span class="keyword">print</span>(f[V])</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD156">
+        <div class="problem-title">JD156：无穷剑阵</div>
+        <div class="problem-meta">AcWing 3 | JD156</div>
+
+        <div class="description">
+            <p>第二阵。铸剑山庄庄主出场，身后跟着仆从，抬着无数柄相同的剑。"每柄剑重v，锋利w。我的剑取之不尽——你能装多少？"</p>
+<p>赵晴儿上前一步："完全背包——每种剑可以拿无限柄，内层循环正序遍历。"她提笔如飞，片刻交卷。庄主愕然："这么快？"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数N和V。接下来N行每行两个整数v和w。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最大价值。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+4 5
+1 2
+2 4
+3 4
+4 5
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+10
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>完全背包：内层正序遍历。每种物品可选无限次。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1007</span>;
+
+<span class="keyword">int</span> n,m;
+<span class="keyword">int</span> f[N][N];
+<span class="keyword">int</span> v[N],w[N];
+
+<span class="keyword">int</span> main()
+{
+    cin &gt;&gt;n &gt;&gt;m;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cin&gt;&gt;v[i]&gt;&gt;w[i];
+
+    <span class="comment">//完全背包</span>
+    <span class="comment">// 1.f[i][j] = f[i-1][j];(不选物品i)</span>
+    <span class="comment">// 2.f[i][j]= max(f[i-1][j], f[i][j-v]+w)(选若干个物品i)</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+      <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>; j &lt;= m; j ++)
+      {
+        f[i][j]=f[i-<span class="number">1</span>][j];
+        <span class="keyword">if</span> (j &gt;= v[i])
+          f[i][j] = max(f[i-<span class="number">1</span>][j], f[i][j-v[i]]+w[i]);
+      }
+
+
+    cout&lt;&lt;f[n][m]&lt;&lt;endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 完全背包问题</span>
+N, V = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+f = [<span class="number">0</span>] * (V + <span class="number">1</span>)
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(N):
+    v, w = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(v, V + <span class="number">1</span>):
+        f[j] = <span class="keyword">max</span>(f[j], f[j - v] + w)
+<span class="keyword">print</span>(f[V])</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD157">
+        <div class="problem-title">JD157：三角登峰</div>
+        <div class="problem-meta">AcWing 898 | JD157</div>
+
+        <div class="description">
+            <p>华山云梯，台阶排成三角形，每级刻着一个数字。从顶到底，每步只能向左下或右下。"找出一条路径，使数字之和最大。"裁判宣布。</p>
+<p>李少白仰望云梯，忽然笑了："从底向上——每级取下方两个方向中较大的，加上自己。一层层往上推，山顶就是答案。"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数n。接下来n行第i行有i个整数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最大路径和。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5
+7
+3 8
+8 1 0
+2 7 4 4
+4 5 2 6 5
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+30
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>从底向上DP。dp[i][j] = max(dp[i+1][j], dp[i+1][j+1]) + a[i][j]。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">507</span>;
+
+<span class="keyword">int</span> n;
+<span class="keyword">int</span> w[N][N], f[N][N];<span class="comment">//三角矩阵依旧用2纬存储</span>
+
+<span class="keyword">int</span> main()
+{
+    <span class="comment">//读入n，w</span>
+    cin&gt;&gt;n;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;=n; i++)
+      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++)
+        cin &gt;&gt; w[i][j];
+
+   <span class="comment">//初始化最底层的f[n][j]</span>
+   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) f[n][i] = w[n][i];
+
+   <span class="comment">//用dp从底层往上计算每个f[i][j]的值</span>
+   <span class="keyword">for</span> (<span class="keyword">int</span> i = n-<span class="number">1</span>; i; i--)
+     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n; j++)
+        f[i][j] = max(f[i+<span class="number">1</span>][j]+w[i][j], f[i+<span class="number">1</span>][j+<span class="number">1</span>] + w[i][j]);
+
+  cout&lt;&lt;f[<span class="number">1</span>][<span class="number">1</span>]&lt;&lt;endl;
+  <span class="keyword">return</span> <span class="number">0</span>;
+
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+data = sys.stdin.read().split()
+n = <span class="keyword">int</span>(data[<span class="number">0</span>])
+idx = <span class="number">1</span>
+a = []
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n):
+    a.append([<span class="keyword">int</span>(data[idx+j]) <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(i+<span class="number">1</span>)])
+    idx += i + <span class="number">1</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n-<span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(i+<span class="number">1</span>):
+        a[i][j] += <span class="keyword">max</span>(a[i+<span class="number">1</span>][j], a[i+<span class="number">1</span>][j+<span class="number">1</span>])
+<span class="keyword">print</span>(a[<span class="number">0</span>][<span class="number">0</span>])</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD158">
+        <div class="problem-title">JD158：递增剑意</div>
+        <div class="problem-meta">AcWing 895 | JD158</div>
+
+        <div class="description">
+            <p>擂台上，青城派弟子摆出一排剑，每把刻着一个数字。"选出最长的递增序列——数字必须递增，不必相邻。"</p>
+<p>李少白用O(n²)的DP接下第一招。梁嘉峰却摇头："后面数据更大。贪心+二分——维护最小末尾数组，O(nlogn)。"</p>
+<p>李少白重写代码，青城弟子面色一变："好快的剑！"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数n。第二行n个整数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最长递增子序列的长度。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+7
+3 1 2 1 8 5 6
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+4
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>贪心+二分：维护最小末尾数组q[]，二分查找替换。O(nlogn)。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="comment">// f[i]定义为以s[i]结尾的最长的子序列</span>
+<span class="comment">// 集合：所有以第i个数结尾的上升子序列集合</span>
+<span class="comment">// 属性: Max 上升子序列长度的最大值</span>
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">10007</span>;
+<span class="keyword">int</span> n;
+<span class="keyword">int</span> a[N], f[N];
+<span class="comment">//状态计算</span>
+<span class="keyword">int</span> main()
+{
+    cin &gt;&gt; n;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        cin &gt;&gt; a[i]; <span class="comment">//从1开始初始化</span>
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+    {
+
+        f[i] = <span class="number">1</span>;                   <span class="comment">// a[i]只有一个元素，所以f[i]=1;</span>
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; j++) <span class="comment">//求i之前的f[j]</span>
+            <span class="keyword">if</span> (a[j] &lt; a[i])
+                f[i] = max(f[i], f[j] + <span class="number">1</span>);
+    }
+
+    <span class="keyword">int</span> res = <span class="number">1</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        res = max(res, f[i]);
+    cout &lt;&lt; res &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+sys.setrecursionlimit(<span class="number">200000</span>)
+<span class="comment"># 最长上升子序列</span>
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
+tails = []
+<span class="keyword">for</span> x <span class="keyword">in</span> a:
+    l, r = <span class="number">0</span>, <span class="keyword">len</span>(tails)
+    <span class="keyword">while</span> l &lt; r:
+        mid = (l + r) // <span class="number">2</span>
+        <span class="keyword">if</span> tails[mid] &gt;= x:
+            r = mid
+        <span class="keyword">else</span>:
+            l = mid + <span class="number">1</span>
+    <span class="keyword">if</span> l == <span class="keyword">len</span>(tails):
+        tails.append(x)
+    <span class="keyword">else</span>:
+        tails[l] = x
+<span class="keyword">print</span>(<span class="keyword">len</span>(tails))</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD159">
+        <div class="problem-title">JD159：双谱共鸣</div>
+        <div class="problem-meta">AcWing 897 | JD159</div>
+
+        <div class="description">
+            <p>峨眉派女侠递来两卷剑谱："找出两谱中最长的公共剑招序列——顺序一致但不必连续。"</p>
+<p>赵晴儿接过剑谱："LCS——dp[i][j]表示前i招和前j招的最长公共子序列。相等时加一，否则取较大值。"</p>
+<p>女侠看了答案，微微一笑："峨眉输了。"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数n和m。第二行长度为n的字符串。第三行长度为m的字符串。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最长公共子序列的长度。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+4 5
+abcd
+acebd
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+3
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>LCS：二维DP。相等时dp[i][j]=dp[i-1][j-1]+1，否则取max(dp[i-1][j], dp[i][j-1])。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;<span class="keyword">string</span>&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1010</span>;
+<span class="keyword">int</span> f[N][N];
+
+<span class="keyword">int</span> main()
+{
+    <span class="keyword">int</span> n, m;
+    <span class="keyword">string</span> a, b;
+    cin &gt;&gt; n &gt;&gt; m;
+    cin &gt;&gt; a &gt;&gt; b;
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
+        {
+            f[i][j] = max(f[i-<span class="number">1</span>][j], f[i][j-<span class="number">1</span>]);
+            <span class="keyword">if</span> (a[i-<span class="number">1</span>] == b[j-<span class="number">1</span>]) f[i][j] = max(f[i][j], f[i-<span class="number">1</span>][j-<span class="number">1</span>] + <span class="number">1</span>);
+        }
+
+    cout &lt;&lt; f[n][m] &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+data = sys.stdin.read().split()
+n, m = <span class="keyword">int</span>(data[<span class="number">0</span>]), <span class="keyword">int</span>(data[<span class="number">1</span>])
+a, b = data[<span class="number">2</span>], data[<span class="number">3</span>]
+dp = [[<span class="number">0</span>]*(m+<span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n+<span class="number">1</span>)]
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, m+<span class="number">1</span>):
+        <span class="keyword">if</span> a[i-<span class="number">1</span>] == b[j-<span class="number">1</span>]: dp[i][j] = dp[i-<span class="number">1</span>][j-<span class="number">1</span>] + <span class="number">1</span>
+        <span class="keyword">else</span>: dp[i][j] = <span class="keyword">max</span>(dp[i-<span class="number">1</span>][j], dp[i][j-<span class="number">1</span>])
+<span class="keyword">print</span>(dp[n][m])</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD160">
+        <div class="problem-title">JD160：合石成堆</div>
+        <div class="problem-meta">AcWing 282 | JD160</div>
+
+        <div class="description">
+            <p>华山脚下的石阵——N堆石子排成一行，每次只能合并相邻两堆，代价是两堆之和。"全部合并的最小代价？"</p>
+<p>少林高僧双手合十："贪心不行，必须区间DP。枚举分割点k，dp[i][j] = min(dp[i][k] + dp[k+1][j]) + sum(i..j)。"</p>
+<p>李少白闭目凝神，三重循环缓缓展开。高僧点头："施主悟了。"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数N。第二行N个整数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最小总代价。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+4
+1 3 5 2
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+22
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>区间DP：枚举分割点。dp[i][j] = min(dp[i][k] + dp[k+1][j]) + sum(i..j)。O(n³)。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">307</span>;
+
+<span class="keyword">int</span> n;
+<span class="keyword">int</span> s[N]; <span class="comment">//前缀和</span>
+<span class="keyword">int</span> f[N][N]; <span class="comment">//所有将[i,j]合并成一堆的方案数</span>
+
+<span class="keyword">int</span> main()
+{
+    cin&gt;&gt;n;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;=n; i ++) cin&gt;&gt;s[i], s[i] += s[i-<span class="number">1</span>];<span class="comment">//计算前缀和</span>
+
+    <span class="comment">//区间DP，先枚举长度，后枚举端点</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> len = <span class="number">2</span>; len &lt;= n; len ++)
+     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i+len-<span class="number">1</span> &lt;= n; i++)<span class="comment">//区间左端点</span>
+     {
+       <span class="comment">//区间右端点</span>
+       <span class="keyword">int</span> j = i + len -<span class="number">1</span>;
+       f[i][j] = 1e9;<span class="comment">//初始化为无穷大</span>
+       <span class="keyword">for</span> (<span class="keyword">int</span> k = i ; k &lt; j; k++)<span class="comment">//区间dp，枚举分隔点</span>
+         f[i][j] = min(f[i][j], f[i][k]+f[k+<span class="number">1</span>][j]+s[j]-s[i-<span class="number">1</span>]);
+     }
+
+     cout&lt;&lt;f[<span class="number">1</span>][n]&lt;&lt;endl;
+     <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+data = sys.stdin.read().split()
+n = <span class="keyword">int</span>(data[<span class="number">0</span>])
+a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span class="number">1</span>:<span class="number">1</span>+n]))
+s = [<span class="number">0</span>] * (n + <span class="number">1</span>)
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n+<span class="number">1</span>): s[i] = s[i-<span class="number">1</span>] + a[i-<span class="number">1</span>]
+INF = <span class="number">10</span>**<span class="number">9</span>
+f = [[<span class="number">0</span>]*n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n)]
+<span class="keyword">for</span> length <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">2</span>, n+<span class="number">1</span>):
+    <span class="keyword">for</span> l <span class="keyword">in</span> <span class="keyword">range</span>(n-length+<span class="number">1</span>):
+        r = l + length - <span class="number">1</span>
+        f[l][r] = INF
+        <span class="keyword">for</span> k <span class="keyword">in</span> <span class="keyword">range</span>(l, r):
+            f[l][r] = <span class="keyword">min</span>(f[l][r], f[l][k] + f[k+<span class="number">1</span>][r] + s[r+<span class="number">1</span>] - s[l])
+<span class="keyword">print</span>(f[<span class="number">0</span>][n-<span class="number">1</span>])</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD161">
+        <div class="problem-title">JD161：改字成经</div>
+        <div class="problem-meta">AcWing 902 | JD161</div>
+
+        <div class="description">
+            <p>武当道长递来两卷经文："把A卷改成B卷，最少几步？增、删、改，每次算一步。"</p>
+<p>李少白沉思："dp[i][j]表示A的前i个改成B的前j个的最少操作。三种操作取min+1。"</p>
+<p>道长抚须而笑："小友的剑法，已经入了化境。"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数n和m。第二行长度为n的字符串A。第三行长度为m的字符串B。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，编辑距离。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3 3
+abc
+adc
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>编辑距离：dp[i][j] = min(dp[i-1][j]+1, dp[i][j-1]+1, dp[i-1][j-1]+cost)。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1007</span>;
+
+<span class="keyword">int</span> n,m;
+<span class="keyword">char</span> a[N],b[N];
+<span class="keyword">int</span> f[N][N];<span class="comment">//所有將a[i]變爲b[i]的操作步驟</span>
+
+<span class="keyword">int</span> main()
+{
+    cin&gt;&gt;n&gt;&gt;a+<span class="number">1</span>;<span class="comment">//下標從1開始</span>
+    cin&gt;&gt;m&gt;&gt;b+<span class="number">1</span>;
+
+    <span class="comment">//初始化</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i ++ ) f[i][<span class="number">0</span>] = i;<span class="comment">//把a[i]變爲空串</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i ++ ) f[<span class="number">0</span>][i] = i;<span class="comment">//把空串變爲b[i]</span>
+
+    <span class="comment">// DP</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;=n; i++)
+      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
+      {
+        f[i][j] = min(f[i-<span class="number">1</span>][j] +<span class="number">1</span>, f[i][j-<span class="number">1</span>]+<span class="number">1</span>);
+        <span class="keyword">if</span> (a[i]==b[j]) f[i][j] = min(f[i][j], f[i-<span class="number">1</span>][j-<span class="number">1</span>]);
+        <span class="keyword">else</span> f[i][j] = min(f[i][j], f[i-<span class="number">1</span>][j-<span class="number">1</span>]+ <span class="number">1</span>);
+      }
+
+    cout&lt;&lt;f[n][m]&lt;&lt;endl;
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+sys.setrecursionlimit(<span class="number">200000</span>)
+<span class="comment"># 最短编辑距离</span>
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+a = <span class="keyword">input</span>().strip()
+m = <span class="keyword">int</span>(<span class="keyword">input</span>())
+b = <span class="keyword">input</span>().strip()
+f = [[<span class="number">0</span>] * (m + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n + <span class="number">1</span>)]
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n + <span class="number">1</span>):
+    f[i][<span class="number">0</span>] = i
+<span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(m + <span class="number">1</span>):
+    f[<span class="number">0</span>][j] = j
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, m + <span class="number">1</span>):
+        <span class="keyword">if</span> a[i - <span class="number">1</span>] == b[j - <span class="number">1</span>]:
+            f[i][j] = f[i - <span class="number">1</span>][j - <span class="number">1</span>]
+        <span class="keyword">else</span>:
+            f[i][j] = <span class="keyword">min</span>(f[i - <span class="number">1</span>][j], f[i][j - <span class="number">1</span>], f[i - <span class="number">1</span>][j - <span class="number">1</span>]) + <span class="number">1</span>
+<span class="keyword">print</span>(f[n][m])</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD162">
+        <div class="problem-title">JD162：雪道寻长</div>
+        <div class="problem-meta">AcWing 901 | JD162</div>
+
+        <div class="description">
+            <p>华山后山，白雪皑皑。一个R×C的滑雪场，从任意高处滑向相邻的低处。"最长能滑多远？"</p>
+<p>赵晴儿踏雪而行："记忆化搜索——DFS+缓存。每个格子只算一次，取四个方向中最长的路径加一。"</p>
+<p>她的身影在雪道上飞驰，划出一道完美的弧线。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数R和C。接下来R行每行C个整数表示高度。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最长递减路径的长度。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5 5
+1 2 3 4 5
+16 17 18 19 6
+15 24 25 20 7
+14 23 22 21 8
+13 12 11 10 9
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+25
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>记忆化搜索：DFS+缓存。每个格子只算一次，取四个方向中最长路径+1。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">307</span>;
+
+<span class="keyword">int</span> g[N][N];<span class="comment">//地图高度</span>
+<span class="keyword">int</span> f[N][N];<span class="comment">//从[i,j]开始滑的最长的轨迹</span>
+
+<span class="keyword">int</span> n,m;<span class="comment">//宽高</span>
+
+<span class="keyword">int</span> dx[<span class="number">4</span>] = {-<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>}, dy[<span class="number">4</span>] = {<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>};
+
+<span class="keyword">int</span> dp(<span class="keyword">int</span> x, <span class="keyword">int</span> y)
+{
+  <span class="comment">//记忆化搜索</span>
+  <span class="keyword">if</span> (f[x][y] != -<span class="number">1</span>) <span class="keyword">return</span> f[x][y];
+  <span class="comment">//否则，从x,y开始滑</span>
+  f[x][y] = <span class="number">1</span>;<span class="comment">//当前位置至少是1格</span>
+  <span class="comment">//分上下左右四个方向滑雪</span>
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)
+  {
+    <span class="keyword">int</span> a = x + dx[i], b = y + dy[i];
+    <span class="keyword">if</span> (a&lt;<span class="number">1</span> || a &gt;n || b &lt;<span class="number">1</span> || b &gt; m) <span class="keyword">continue</span>;<span class="comment">//越界</span>
+    <span class="keyword">if</span> (g[a][b] &gt;= g[x][y]) <span class="keyword">continue</span>;<span class="comment">//不能走</span>
+    <span class="comment">//四个方向深搜，更新f[a][b],取最大值</span>
+    f[x][y] = max(f[x][y], dp(a,b) + <span class="number">1</span>);
+  }
+
+  <span class="keyword">return</span> f[x][y];<span class="comment">//返回f[x][y]</span>
+}
+
+<span class="keyword">int</span> main()
+{
+    cin&gt;&gt;n&gt;&gt;m;
+    <span class="comment">//读入高度图</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )
+     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j ++ )
+       cin&gt;&gt;g[i][j];
+
+    memset(f,-<span class="number">1</span>,<span class="keyword">sizeof</span> f);<span class="comment">//初始化为-1，表示该点未被访问</span>
+
+    <span class="comment">//把每个点作为起点深搜</span>
+    <span class="keyword">int</span> res = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )
+     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j ++ )
+       res = max(res,dp(i,j));
+
+    cout &lt;&lt;res &lt;&lt;endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 滑雪</span>
+<span class="keyword">import</span> sys
+sys.setrecursionlimit(<span class="number">1000000</span>)
+R, C = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+h = [<span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(R)]
+dp = [[-<span class="number">1</span>] * C <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(R)]
+dx = [-<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>]
+dy = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>]
+
+<span class="keyword">def</span> dfs(x, y):
+    <span class="keyword">if</span> dp[x][y] != -<span class="number">1</span>:
+        <span class="keyword">return</span> dp[x][y]
+    dp[x][y] = <span class="number">1</span>
+    <span class="keyword">for</span> d <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">4</span>):
+        nx, ny = x + dx[d], y + dy[d]
+        <span class="keyword">if</span> <span class="number">0</span> &lt;= nx &lt; R <span class="keyword">and</span> <span class="number">0</span> &lt;= ny &lt; C <span class="keyword">and</span> h[nx][ny] &lt; h[x][y]:
+            dp[x][y] = <span class="keyword">max</span>(dp[x][y], dfs(nx, ny) + <span class="number">1</span>)
+    <span class="keyword">return</span> dp[x][y]
+
+ans = <span class="number">0</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(R):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(C):
+        ans = <span class="keyword">max</span>(ans, dfs(i, j))
+<span class="keyword">print</span>(ans)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD163">
+        <div class="problem-title">JD163：背包叠甲</div>
+        <div class="problem-meta">AcWing 4 | JD163</div>
+
+        <div class="description">
+            <p>论剑峰上，铠甲大师出场。他有N种铠甲，每种有重量、防御和库存。"每种最多拿s件——你能装多少防御？"</p>
+<p>李少白眉头一皱："逐件拆分太慢……二进制优化！把s拆成1、2、4、8…的和，转化为01背包。"</p>
+<p>铠甲大师大惊："你竟然知道这种方法！"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数N和V。接下来N行每行三个整数v、w和s（体积、价值、数量）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最大价值。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3 12
+76 84 46
+34 31 44
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+0
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>多重背包二进制优化：拆分s为2的幂次，转化为01背包。O(N*V*logS)。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> MAXV = <span class="number">2010</span>;
+<span class="keyword">int</span> dp[MAXV];
+<span class="keyword">int</span> vbuf[<span class="number">20010</span>], wbuf[<span class="number">20010</span>];
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> N, V;
+    scanf(&quot;%d%d&quot;, &amp;N, &amp;V);
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) {
+        <span class="keyword">int</span> v, w, s;
+        scanf(&quot;%d%d%d&quot;, &amp;v, &amp;w, &amp;s);
+        <span class="comment">// Binary split: decompose s into powers of 2</span>
+        <span class="keyword">int</span> k = <span class="number">1</span>;
+        <span class="keyword">while</span> (k &lt;= s) {
+            vbuf[cnt] = k * v;
+            wbuf[cnt] = k * w;
+            cnt++;
+            s -= k;
+            k *= <span class="number">2</span>;
+        }
+        <span class="keyword">if</span> (s &gt; <span class="number">0</span>) {
+            vbuf[cnt] = s * v;
+            wbuf[cnt] = s * w;
+            cnt++;
+        }
+    }
+    <span class="comment">// 0-1 knapsack over decomposed items</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cnt; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = V; j &gt;= vbuf[i]; j--) {
+            dp[j] = max(dp[j], dp[j - vbuf[i]] + wbuf[i]);
+        }
+    }
+    printf(&quot;%d\n&quot;, dp[V]);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD164">
+        <div class="problem-title">JD164：背包限重</div>
+        <div class="problem-meta">AcWing 5 | JD164</div>
+
+        <div class="description">
+            <p>第二轮铠甲战。数据更大——N和V都到了极限。"同样的方法还管用吗？"对手冷笑。</p>
+<p>梁嘉峰在台下喊道："方法不变，多重背包的经典解法！"</p>
+<p>李少白再次出手，代码如剑，一气呵成。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数N和V。接下来N行每行三个整数v、w和s。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最大价值。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+680 1562
+866 815 599
+1355 680 202
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+742560
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>多重背包二进制优化。与JD163相同思路，数据范围更大。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> MAXV = <span class="number">2010</span>;
+<span class="keyword">int</span> dp[MAXV];
+<span class="keyword">int</span> vbuf[<span class="number">20010</span>], wbuf[<span class="number">20010</span>];
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> N, V;
+    scanf(&quot;%d%d&quot;, &amp;N, &amp;V);
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) {
+        <span class="keyword">int</span> v, w, s;
+        scanf(&quot;%d%d%d&quot;, &amp;v, &amp;w, &amp;s);
+        <span class="comment">// Binary split</span>
+        <span class="keyword">int</span> k = <span class="number">1</span>;
+        <span class="keyword">while</span> (k &lt;= s) {
+            vbuf[cnt] = k * v;
+            wbuf[cnt] = k * w;
+            cnt++;
+            s -= k;
+            k *= <span class="number">2</span>;
+        }
+        <span class="keyword">if</span> (s &gt; <span class="number">0</span>) {
+            vbuf[cnt] = s * v;
+            wbuf[cnt] = s * w;
+            cnt++;
+        }
+    }
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cnt; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = V; j &gt;= vbuf[i]; j--) {
+            dp[j] = max(dp[j], dp[j - vbuf[i]] + wbuf[i]);
+        }
+    }
+    printf(&quot;%d\n&quot;, dp[V]);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD165">
+        <div class="problem-title">JD165：分组选宝</div>
+        <div class="problem-meta">AcWing 9 | JD165</div>
+
+        <div class="description">
+            <p>宝物被分成若干组，每组只能选一件。"分组背包——三重循环：外层遍历组，内层逆序容量，最内层遍历组内物品。"</p>
+<p>对手是丐帮长老，手中竹棒一点："小子，你确定每组只选一件？"</p>
+<p>李少白微微一笑："确定。每组选最优的那一件。"长老哈哈大笑："好！"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数N和V。接下来每组：第一行S（组内物品数），接下来S行每行两个整数v和w。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最大价值。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+71 46
+80
+84 76
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1869
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>分组背包：外层遍历组，内层逆序容量，最内层遍历组内物品。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> MAXV = <span class="number">1010</span>;
+<span class="keyword">int</span> dp[MAXV];
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> N, V;
+    scanf(&quot;%d%d&quot;, &amp;N, &amp;V);
+    <span class="keyword">for</span> (<span class="keyword">int</span> g = <span class="number">0</span>; g &lt; N; g++) {
+        <span class="keyword">int</span> S;
+        scanf(&quot;%d&quot;, &amp;S);
+        <span class="keyword">int</span> gv[<span class="number">1010</span>], gw[<span class="number">1010</span>];
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; S; i++) {
+            scanf(&quot;%d%d&quot;, &amp;gv[i], &amp;gw[i]);
+        }
+        <span class="comment">// For each group, try each item (at most one per group)</span>
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = V; j &gt;= <span class="number">0</span>; j--) {
+            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; S; i++) {
+                <span class="keyword">if</span> (j &gt;= gv[i]) {
+                    dp[j] = max(dp[j], dp[j - gv[i]] + gw[i]);
+                }
+            }
+        }
+    }
+    printf(&quot;%d\n&quot;, dp[V]);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD166">
+        <div class="problem-title">JD166：递增剑意II</div>
+        <div class="problem-meta">AcWing 896 | JD166</div>
+
+        <div class="description">
+            <p>擂台第二轮——剑的数量到了十万。O(n²)的剑法已经不够用了。</p>
+<p>梁嘉峰在台下传音："贪心+二分——维护最小末尾数组，O(nlogn)。这是剑法的极致。"</p>
+<p>李少白闭上眼睛，剑意如丝，层层递进。对手的剑阵瞬间崩溃。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数N。第二行N个整数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最长递增子序列的长度。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+7
+3 1 2 1 8 5 6
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+4
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>贪心+二分：维护最小末尾数组q[]，二分查找替换。O(nlogn)。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">100010</span>;
+<span class="keyword">int</span> q[MAXN]; <span class="comment">// q[len] = minimum tail value for LIS of length len</span>
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> N;
+    scanf(&quot;%d&quot;, &amp;N);
+    <span class="keyword">int</span> len = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) {
+        <span class="keyword">int</span> a;
+        scanf(&quot;%d&quot;, &amp;a);
+        <span class="comment">// Find first q[k] &gt;= a using binary search</span>
+        <span class="keyword">int</span> lo = <span class="number">0</span>, hi = len;
+        <span class="keyword">while</span> (lo &lt; hi) {
+            <span class="keyword">int</span> mid = (lo + hi) / <span class="number">2</span>;
+            <span class="keyword">if</span> (q[mid] &gt;= a) hi = mid;
+            <span class="keyword">else</span> lo = mid + <span class="number">1</span>;
+        }
+        q[lo] = a;
+        <span class="keyword">if</span> (lo == len) len++;
+    }
+    printf(&quot;%d\n&quot;, len);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD167">
+        <div class="problem-title">JD167：整分剑法</div>
+        <div class="problem-meta">AcWing 900 | JD167</div>
+
+        <div class="description">
+            <p>对手是一位数学大师，他写下数字n："把它拆成若干正整数之和，有多少种拆法？"</p>
+<p>赵晴儿上前："完全背包——从1到n，每个数可以用无限次。dp[j] += dp[j-i]，模1e9+7。"</p>
+<p>大师推了推眼镜："你用背包来解整数划分？有意思。"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个整数n（1≤n≤1000）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，划分方案数模1e9+7。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+7
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>完全背包DP：dp[j] += dp[j-i]，i从1到n。模1e9+7。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">1000000007</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1010</span>;
+<span class="keyword">int</span> dp[MAXN]; <span class="comment">// dp[j] = number of ways to partition j</span>
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n;
+    scanf(&quot;%d&quot;, &amp;n);
+    dp[<span class="number">0</span>] = <span class="number">1</span>;
+    <span class="comment">// For each value i from 1 to n, treat as complete knapsack</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt;= n; j++) {
+            dp[j] = (dp[j] + dp[j - i]) % MOD;
+        }
+    }
+    printf(&quot;%d\n&quot;, dp[n]);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD168">
+        <div class="problem-title">JD168：数码计数</div>
+        <div class="problem-meta">AcWing 338 | JD168</div>
+
+        <div class="description">
+            <p>华山石壁上刻着从a到b的所有数字。"0到9每个数字各出现了几次？"对手出了一道算术题。</p>
+<p>李少白没有一个个数。"数位统计——对每个数字和位置，用数学公式算出现次数。f(b)-f(a-1)。"</p>
+<p>对手目瞪口呆："你……你怎么算得这么快？"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行两个整数a和b。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，10个整数，分别表示数字0~9在[a,b]中出现的次数，空格隔开。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+1 10
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 2 1 1 1 1 1 1 1 1
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>数位统计：对每个数字和位置用数学公式计算出现次数。f(b)-f(a-1)。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="comment">// Count occurrences of digit d in all numbers from 1 to n</span>
+<span class="keyword">long</span> <span class="keyword">long</span> countDigit(<span class="keyword">long</span> <span class="keyword">long</span> n, <span class="keyword">int</span> d) {
+    <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;
+    <span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">long</span> <span class="keyword">long</span> p = <span class="number">1</span>; p &lt;= n; p *= <span class="number">10</span>) {
+        <span class="keyword">long</span> <span class="keyword">long</span> high = n / (p * <span class="number">10</span>);
+        <span class="keyword">int</span> cur = (n / p) % <span class="number">10</span>;
+        <span class="keyword">long</span> <span class="keyword">long</span> low = n % p;
+        <span class="keyword">if</span> (d == <span class="number">0</span>) {
+            <span class="keyword">if</span> (high &gt; <span class="number">0</span>) {
+                res += (high - <span class="number">1</span>) * p;
+                <span class="keyword">if</span> (cur == <span class="number">0</span>)
+                    res += low + <span class="number">1</span>;
+                <span class="keyword">else</span>
+                    res += p;
+            }
+        } <span class="keyword">else</span> {
+            res += high * p;
+            <span class="keyword">if</span> (cur == d)
+                res += low + <span class="number">1</span>;
+            <span class="keyword">else</span> <span class="keyword">if</span> (cur &gt; d)
+                res += p;
+        }
+    }
+    <span class="keyword">return</span> res;
+}
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">long</span> <span class="keyword">long</span> a, b;
+    <span class="keyword">while</span> (scanf(&quot;%lld %lld&quot;, &amp;a, &amp;b) == <span class="number">2</span>) {
+        <span class="keyword">if</span> (a == <span class="number">0</span> &amp;&amp; b == <span class="number">0</span>) <span class="keyword">break</span>;
+        <span class="keyword">long</span> <span class="keyword">long</span> lo = min(a, b);
+        <span class="keyword">long</span> <span class="keyword">long</span> hi = max(a, b);
+        <span class="keyword">for</span> (<span class="keyword">int</span> d = <span class="number">0</span>; d &lt;= <span class="number">9</span>; d++) {
+            <span class="keyword">long</span> <span class="keyword">long</span> ans = countDigit(hi, d) - countDigit(lo - <span class="number">1</span>, d);
+            printf(&quot;%lld &quot;, ans);
+        }
+        printf(&quot;\n&quot;);
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD169">
+        <div class="problem-title">JD169：棋盘铺阵</div>
+        <div class="problem-meta">AcWing 291 | JD169</div>
+
+        <div class="description">
+            <p>华山之巅，云雾缭绕。四位绝顶高手已经等候多时。</p>
+<p>第一位是棋圣。他摆出一个n×m的棋盘和一堆1×2的骨牌："铺满整个棋盘，有多少种铺法？"</p>
+<p>赵晴儿凝视棋盘，忽然眼中一亮："状压DP——逐列处理。用二进制掩码表示哪些格子被前一列的横骨牌占了。"</p>
+<p>棋圣抚掌而笑："好一个状压！老夫输了。"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>多组数据，每组两个整数n和m。以0 0结束。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>每组一行，铺法总数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+2 3
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+3
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>状压DP：逐列处理，状态掩码表示被前一列横骨牌占的格子。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">int</span> n, m;
+<span class="keyword">long</span> <span class="keyword">long</span> dp[<span class="number">12</span>][<span class="number">1</span> &lt;&lt; <span class="number">11</span>];
+vector&lt;<span class="keyword">int</span>&gt; valid[<span class="number">1</span> &lt;&lt; <span class="number">11</span>];
+
+<span class="comment">// Check if mask has all consecutive runs of 1-bits with even length</span>
+<span class="keyword">bool</span> checkEven(<span class="keyword">int</span> mask) {
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">while</span> (mask) {
+        <span class="keyword">if</span> (mask &amp; <span class="number">1</span>) {
+            cnt++;
+        } <span class="keyword">else</span> {
+            <span class="keyword">if</span> (cnt &amp; <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;
+            cnt = <span class="number">0</span>;
+        }
+        mask &gt;&gt;= <span class="number">1</span>;
+    }
+    <span class="keyword">return</span> (cnt &amp; <span class="number">1</span>) == <span class="number">0</span>;
+}
+
+<span class="keyword">void</span> solve() {
+    <span class="keyword">int</span> fullMask = (<span class="number">1</span> &lt;&lt; n) - <span class="number">1</span>;
+    <span class="comment">// Precompute valid transitions: from state j, which states k are valid</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= fullMask; j++) {
+        valid[j].clear();
+        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= fullMask; k++) {
+            <span class="keyword">if</span> (j &amp; k) <span class="keyword">continue</span>; <span class="comment">// horizontal domino on filled cell</span>
+            <span class="keyword">if</span> (!checkEven(fullMask ^ (j | k))) <span class="keyword">continue</span>; <span class="comment">// remaining cells must be vertically tileable</span>
+            valid[j].push_back(k);
+        }
+    }
+
+    memset(dp, <span class="number">0</span>, <span class="keyword">sizeof</span>(dp));
+    dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> col = <span class="number">0</span>; col &lt; m; col++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= fullMask; j++) {
+            <span class="keyword">if</span> (dp[col][j] == <span class="number">0</span>) <span class="keyword">continue</span>;
+            <span class="keyword">for</span> (<span class="keyword">int</span> k : valid[j]) {
+                dp[col + <span class="number">1</span>][k] += dp[col][j];
+            }
+        }
+    }
+    printf(&quot;%lld\n&quot;, dp[m][<span class="number">0</span>]);
+}
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">while</span> (scanf(&quot;%d %d&quot;, &amp;n, &amp;m) == <span class="number">2</span>) {
+        <span class="keyword">if</span> (n == <span class="number">0</span> &amp;&amp; m == <span class="number">0</span>) <span class="keyword">break</span>;
+        solve();
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD170">
+        <div class="problem-title">JD170：万城巡游</div>
+        <div class="problem-meta">AcWing 91 | JD170</div>
+
+        <div class="description">
+            <p>第二位绝顶高手——游侠。他铺开一张城池图："从城0出发，每座城恰好走一次，到城n-1。最短路径？"</p>
+<p>李少白眼中精光一闪："状压DP——dp[mask][i]表示访问集合mask、当前在城i的最小代价。枚举所有状态和转移。O(2^n × n²)。"</p>
+<p>游侠击节赞叹："好！这一剑，我甘拜下风！"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数n。接下来n行每行n个整数，表示邻接矩阵。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最短Hamilton路径长度。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5
+0 2 4 5 1
+2 0 6 5 3
+4 6 0 8 3
+5 5 8 0 5
+1 3 3 5 0
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+19
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>状压DP：dp[mask][i]表示访问集合mask、当前在城i的最小代价。O(2^n * n²)。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">int</span> n;
+<span class="keyword">int</span> w[<span class="number">20</span>][<span class="number">20</span>];
+<span class="keyword">long</span> <span class="keyword">long</span> dp[<span class="number">1</span> &lt;&lt; <span class="number">16</span>][<span class="number">16</span>];
+
+<span class="keyword">int</span> main() {
+    scanf(&quot;%d&quot;, &amp;n);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)
+            scanf(&quot;%d&quot;, &amp;w[i][j]);
+
+    <span class="keyword">int</span> full = (<span class="number">1</span> &lt;&lt; n) - <span class="number">1</span>;
+    memset(dp, 0x3f, <span class="keyword">sizeof</span>(dp));
+    dp[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">0</span>; <span class="comment">// start at vertex 0</span>
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> mask = <span class="number">0</span>; mask &lt;= full; mask++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+            <span class="keyword">if</span> (!(mask &amp; (<span class="number">1</span> &lt;&lt; i))) <span class="keyword">continue</span>;
+            <span class="keyword">if</span> (dp[mask][i] &gt;= 0x3f3f3f3f3f3f3f3fLL) <span class="keyword">continue</span>;
+            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) {
+                <span class="keyword">if</span> (mask &amp; (<span class="number">1</span> &lt;&lt; j)) <span class="keyword">continue</span>;
+                <span class="keyword">int</span> nmask = mask | (<span class="number">1</span> &lt;&lt; j);
+                dp[nmask][j] = min(dp[nmask][j], dp[mask][i] + w[i][j]);
+            }
+        }
+    }
+    printf(&quot;%lld\n&quot;, dp[full][n - <span class="number">1</span>]);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD171">
+        <div class="problem-title">JD171：群经改字</div>
+        <div class="problem-meta">AcWing 899 | JD171</div>
+
+        <div class="description">
+            <p>第三位——藏经阁阁主。他取出一本字典和一段经文："字典里有多少个词，和这段经文的编辑距离不超过k？"</p>
+<p>赵晴儿沉吟片刻："对字典里每个词，算它和经文的编辑距离。标准编辑距离DP——dp[i][j] = min(三种操作)。"</p>
+<p>阁主长叹："当年我花了十年才悟出此法，你竟片刻之间……"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数N和M。接下来N行每行一个字符串（字典）。接下来M行每行一个字符串和一个整数k。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>M行，每行一个整数（字典中编辑距离≤k的字符串个数）。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3 2
+abc
+def
+1 abc adc
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>编辑距离DP：dp[i][j] = min(dp[i-1][j]+1, dp[i][j-1]+1, dp[i-1][j-1]+cost)。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">int</span> n, m;
+<span class="keyword">char</span> dict[<span class="number">1010</span>][<span class="number">22</span>];
+<span class="keyword">int</span> dlen[<span class="number">1010</span>];
+
+<span class="keyword">int</span> editDist(<span class="keyword">const</span> <span class="keyword">char</span> *a, <span class="keyword">int</span> alen, <span class="keyword">const</span> <span class="keyword">char</span> *b, <span class="keyword">int</span> blen) {
+    <span class="keyword">static</span> <span class="keyword">int</span> f[<span class="number">22</span>][<span class="number">22</span>];
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= alen; i++) f[i][<span class="number">0</span>] = i;
+    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= blen; j++) f[<span class="number">0</span>][j] = j;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= alen; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= blen; j++) {
+            f[i][j] = min(f[i - <span class="number">1</span>][j] + <span class="number">1</span>, f[i][j - <span class="number">1</span>] + <span class="number">1</span>);
+            <span class="keyword">if</span> (a[i - <span class="number">1</span>] == b[j - <span class="number">1</span>])
+                f[i][j] = min(f[i][j], f[i - <span class="number">1</span>][j - <span class="number">1</span>]);
+            <span class="keyword">else</span>
+                f[i][j] = min(f[i][j], f[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>);
+        }
+    <span class="keyword">return</span> f[alen][blen];
+}
+
+<span class="keyword">int</span> main() {
+    scanf(&quot;%d %d&quot;, &amp;n, &amp;m);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+        scanf(&quot;%s&quot;, dict[i]);
+        dlen[i] = strlen(dict[i]);
+    }
+    <span class="keyword">for</span> (<span class="keyword">int</span> q = <span class="number">0</span>; q &lt; m; q++) {
+        <span class="keyword">char</span> query[<span class="number">22</span>];
+        <span class="keyword">int</span> limit;
+        scanf(&quot;%s %d&quot;, query, &amp;limit);
+        <span class="keyword">int</span> qlen = strlen(query);
+        <span class="keyword">int</span> cnt = <span class="number">0</span>;
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+            <span class="keyword">if</span> (editDist(query, qlen, dict[i], dlen[i]) &lt;= limit)
+                cnt++;
+        }
+        printf(&quot;%d\n&quot;, cnt);
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD172">
+        <div class="problem-title">JD172：千机棋局</div>
+        <div class="problem-meta">AcWing 285 | JD172</div>
+
+        <div class="description">
+            <p>华山绝顶，风雷激荡。最后一位对手——棋魔，传说中的千机棋圣。他缓缓展开一张巨大的人员图谱："这是宗门的命脉——每个人有一个直属上司。现在要派人出征，但一个士兵和他的上司不能同时出征——否则后方崩溃。每个士兵有不同的战斗力。"</p>
+<p>梁嘉峰在台下喊道："树形DP！dp[u][0]表示u留守时子树的最大战力，dp[u][1]表示u出征时。出征则下属必须留守，留守则下属可出可留。找到根节点，DFS一遍！"</p>
+<p>李少白深吸一口气，闭上眼睛。他想起了第一天来到剑道宗的那个下午——梁嘉峰递给他两枚铁令，赵晴儿在沙盘上画圆。从变量到递归，从数组到图论，从排序到动态规划……每一步都是剑道的修行。</p>
+<p>他睁开眼睛，提笔写下最后一行代码。</p>
+<p>棋魔看着答案，沉默良久，终于起身，深深一揖："华山论剑，到此为止。"</p>
+<p>梁嘉峰走上前来，拍了拍李少白的肩膀："恭喜。你可以出师了。"</p>
+<p>赵晴儿在一旁笑了："别急，回去还得教下一届呢。"</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数N。第二行N个整数（每个员工的快乐值）。接下来N-1行每行两个整数l k（l的上司是k）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最大总快乐值。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+7
+1 1 1 1 1 1 1
+2 6
+3 6
+4 6
+6 7
+5 7
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+5
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>树形DP：dp[u][0/1]表示u不出征/出征时的最大值。DFS从根遍历。dp[u][1] = h[u] + Σdp[v][0]，dp[u][0] = Σmax(dp[v][0], dp[v][1])。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">6010</span>;
+vector&lt;<span class="keyword">int</span>&gt; children[MAXN];
+<span class="keyword">int</span> h[MAXN];
+<span class="keyword">long</span> <span class="keyword">long</span> dp[MAXN][<span class="number">2</span>]; <span class="comment">// dp[u][0]: u doesn&#x27;t attend, dp[u][1]: u attends</span>
+<span class="keyword">bool</span> hasBoss[MAXN];
+
+<span class="keyword">void</span> dfs(<span class="keyword">int</span> u) {
+    dp[u][<span class="number">0</span>] = <span class="number">0</span>;
+    dp[u][<span class="number">1</span>] = h[u];
+    <span class="keyword">for</span> (<span class="keyword">int</span> v : children[u]) {
+        dfs(v);
+        dp[u][<span class="number">0</span>] += max(dp[v][<span class="number">0</span>], dp[v][<span class="number">1</span>]);
+        dp[u][<span class="number">1</span>] += dp[v][<span class="number">0</span>];
+    }
+}
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n;
+    scanf(&quot;%d&quot;, &amp;n);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        scanf(&quot;%d&quot;, &amp;h[i]);
+
+    memset(hasBoss, <span class="number">0</span>, <span class="keyword">sizeof</span>(hasBoss));
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) {
+        <span class="keyword">int</span> l, k;
+        scanf(&quot;%d %d&quot;, &amp;l, &amp;k);
+        children[k].push_back(l);
+        hasBoss[l] = <span class="keyword">true</span>;
+    }
+
+    <span class="keyword">int</span> root = -<span class="number">1</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        <span class="keyword">if</span> (!hasBoss[i]) { root = i; <span class="keyword">break</span>; }
+
+    dfs(root);
+    printf(&quot;%lld\n&quot;, max(dp[root][<span class="number">0</span>], dp[root][<span class="number">1</span>]));
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            </details>
+        </div>
+    </div>
+
+            <div class="chapter-nav">
+                <a href="chapter14.html">← 第十四章 千里奔袭</a>
+                <a href="index.html" class="nav-home">返回目录</a>
+                <span></span>
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <p>《剑道试炼》第十五章 华山论剑 · <a href="index.html">返回首页</a></p>
+    </footer>
+
+    <button class="scroll-top" aria-label="回到顶部">↑</button>
+    <script src="script.js"></script>
+</body>
+</html>

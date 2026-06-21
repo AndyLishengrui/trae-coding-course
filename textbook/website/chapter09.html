@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第九章 快剑如风 — 剑道试炼</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="index.html" class="nav-brand">剑道试炼</a>
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link-text">首页</a>
+            <a href="code.html" class="nav-link-text">代码参考</a>
+            <button class="dark-toggle" aria-label="Toggle dark mode">☽</button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="chapter-sidebar">
+            <div class="sidebar-title">章节目录</div>
+            <ul class="chapter-list">
+                <li><a href="chapter01.html">第一章 持剑叩门</a></li>
+                <li><a href="chapter02.html">第二章 歧路逢生</a></li>
+                <li><a href="chapter03.html">第三章 千回百转</a></li>
+                <li><a href="chapter04.html">第四章 排兵布阵</a></li>
+                <li><a href="chapter05.html">第五章 十二宫剑阵</a></li>
+                <li><a href="chapter06.html">第六章 古卷密文</a></li>
+                <li><a href="chapter07.html">第七章 以招创招</a></li>
+                <li><a href="chapter08.html">第八章 百器图谱</a></li>
+                <li><a href="chapter09.html" class="active">第九章 快剑如风</a></li>
+                <li><a href="chapter10.html">第十章 千锤百炼</a></li>
+                <li><a href="chapter11.html">第十一章 蓄势待发</a></li>
+                <li><a href="chapter12.html">第十二章 利器出鞘</a></li>
+                <li><a href="chapter13.html">第十三章 迷雾寻踪</a></li>
+                <li><a href="chapter14.html">第十四章 千里奔袭</a></li>
+                <li><a href="chapter15.html">第十五章 华山论剑</a></li>
+            </ul>
+        </aside>
+
+        <main class="chapter-main">
+            <div class="chapter-header">
+                <h1>第九章 快剑如风</h1>
+                <div class="chapter-subtitle">排序与二分</div>
+            </div>
+
+            <div class="problem" id="JD103">
+        <div class="problem-title">JD103：立桩定阵</div>
+        <div class="problem-meta">AcWing 785 | JD103</div>
+
+        <div class="description">
+            <p>试炼场上，弟子们按身高排成一列，但顺序完全乱了。梁嘉峰走过去，随便挑了一个弟子站到中间，然后让所有比他矮的站到左边，比他高的站到右边。</p>
+<p>"现在左边和右边各自还是乱的，"赵晴儿看出来了。</p>
+<p>"对。所以对左边和右边各自重复这个过程——挑一个人，矮的左、高的右。每次都能让一个人站到最终位置上，直到每一组只剩一个人。"梁嘉峰说，"这就是快速排序。一剑分两路，递归再出剑。"</p>
+<p>给定一个长度为 n 的整数数列，请用快速排序将其从小到大排序。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行包含整数 n。第二行包含 n 个整数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，n 个排好序的整数，空格隔开。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5
+3 1 2 4 5
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 2 3 4 5
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>选基准元素，双指针分区：左边 ≤ 基准，右边 > 基准。递归处理左右两半。平均 O(nlogn)。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cmath&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">long</span> <span class="keyword">long</span> *numbers;
+
+<span class="keyword">void</span> quicksort(<span class="keyword">long</span> <span class="keyword">long</span> nums[], <span class="keyword">int</span> left, <span class="keyword">int</span> right)
+{
+    <span class="keyword">if</span> (left &gt;= right)
+        <span class="keyword">return</span>;
+    <span class="comment">//选取分割数</span>
+    <span class="keyword">long</span> <span class="keyword">long</span> target = nums[left]; <span class="comment">//选取第一个快排的分割数</span>
+    <span class="keyword">int</span> i = left - <span class="number">1</span>, j = right + <span class="number">1</span>;
+    <span class="keyword">while</span> (i &lt; j)
+    {
+        <span class="keyword">do</span>
+            i++;
+        <span class="keyword">while</span> (nums[i] &lt; target); <span class="comment">//i指针定位</span>
+        <span class="keyword">do</span>
+            j--;
+        <span class="keyword">while</span> (nums[j] &gt; target); <span class="comment">//j指针定位</span>
+        <span class="keyword">if</span> (i &lt; j)
+            swap(nums[i], nums[j]); <span class="comment">//交换</span>
+    }
+    <span class="comment">//分治</span>
+    quicksort(nums, left, j);      <span class="comment">//j左边的都是不比Target大的</span>
+    quicksort(nums, j + <span class="number">1</span>, right); <span class="comment">// j右边的都比Target大</span>
+}
+<span class="keyword">int</span> main()
+{
+    <span class="comment">//!cin\cout提速</span>
+    ios::sync_with_stdio(<span class="keyword">false</span>); <span class="comment">//来打消iostream的输入输出缓存</span>
+    cin.tie(<span class="number">0</span>);                  <span class="comment">//cin.tie(0)来解除cin与cout的绑定,0表示NULL</span>
+
+    <span class="keyword">int</span> n;
+    <span class="comment">//创建动态数组</span>
+    cin &gt;&gt; n;
+    numbers = <span class="keyword">new</span> <span class="keyword">long</span> <span class="keyword">long</span>[n];
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)
+        cin &gt;&gt; numbers[i];
+    quicksort(numbers, <span class="number">0</span>, n - <span class="number">1</span>); <span class="comment">//注意边界</span>
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)
+        cout &lt;&lt; numbers[i] &lt;&lt; &quot; &quot;;
+
+    <span class="keyword">delete</span>[] numbers;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 快速排序</span>
+<span class="keyword">def</span> quicksort(arr, l, r):
+    <span class="keyword">if</span> l &gt;= r:
+        <span class="keyword">return</span>
+    x = arr[(l + r) // <span class="number">2</span>]
+    i, j = l - <span class="number">1</span>, r + <span class="number">1</span>
+    <span class="keyword">while</span> i &lt; j:
+        i += <span class="number">1</span>
+        <span class="keyword">while</span> arr[i] &lt; x:
+            i += <span class="number">1</span>
+        j -= <span class="number">1</span>
+        <span class="keyword">while</span> arr[j] &gt; x:
+            j -= <span class="number">1</span>
+        <span class="keyword">if</span> i &lt; j:
+            arr[i], arr[j] = arr[j], arr[i]
+    quicksort(arr, l, j)
+    quicksort(arr, j + <span class="number">1</span>, r)
+
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
+quicksort(arr, <span class="number">0</span>, n - <span class="number">1</span>)
+<span class="keyword">print</span>(&<span class="comment">#x27; &#x27;.join(map(str, arr)))</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD104">
+        <div class="problem-title">JD104：照妖辨品</div>
+        <div class="problem-meta">AcWing 786 | JD104</div>
+
+        <div class="description">
+            <p>梁嘉峰指着那排弟子："我不需要所有人都排好——只要知道第 K 矮的人是谁。"</p>
+<p>赵晴儿想了想："还是用刚才的方法：挑一个人站中间，矮的左、高的右。数一数左边有几个人——如果左边刚好有 K-1 个人，那中间那个就是答案。如果左边人比 K-1 多，说明答案在左边，只管左边就行。如果不够，就去右边找第 K-左-1 矮的。"</p>
+<p>"所以快排是把两边都排好，快选只需要管一边。"梁嘉峰点头，"省了一半的力气。"</p>
+<p>给定一个长度为 n 的整数数列和一个整数 k，求数列中第 k 小的数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数 n 和 k。第二行 n 个整数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，第 k 小的数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5 3
+3 1 2 4 5
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+3
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>partition 后判断 k 在左半还是右半，只递归一半。平均 O(n)。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cmath&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">long</span> <span class="keyword">long</span> *numbers;
+
+<span class="keyword">long</span> <span class="keyword">long</span> quickFind(<span class="keyword">long</span> <span class="keyword">long</span> nums[], <span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="keyword">int</span> k)
+{
+    <span class="keyword">if</span> (left == right)
+        <span class="keyword">return</span> nums[left]; <span class="comment">//只有一个元素，左开右闭</span>
+    <span class="comment">//选取分割数</span>
+    <span class="keyword">long</span> <span class="keyword">long</span> target = nums[left]; <span class="comment">//选取第一个快排的分割数</span>
+    <span class="keyword">int</span> i = left - <span class="number">1</span>, j = right + <span class="number">1</span>;
+    <span class="keyword">while</span> (i &lt; j)
+    {
+        <span class="keyword">do</span>
+            i++;
+        <span class="keyword">while</span> (nums[i] &lt; target); <span class="comment">//i指针定位</span>
+        <span class="keyword">do</span>
+            j--;
+        <span class="keyword">while</span> (nums[j] &gt; target); <span class="comment">//j指针定位</span>
+        <span class="keyword">if</span> (i &lt; j)
+            swap(nums[i], nums[j]); <span class="comment">//交换</span>
+    }
+    <span class="comment">//判断i与k的关系</span>
+    <span class="keyword">int</span> sumofLeft = j - left + <span class="number">1</span>; <span class="comment">//计算左边区间数字个数，用于与k比较</span>
+
+    <span class="keyword">if</span> (k &lt;= sumofLeft)              <span class="comment">//分治</span>
+        <span class="keyword">return</span> quickFind(nums, left, j, k); <span class="comment">//j左边的都是不比Target大的</span>
+    <span class="keyword">else</span>
+        <span class="keyword">return</span> quickFind(nums, j + <span class="number">1</span>, right, k - sumofLeft); <span class="comment">// j右边的都比Target大</span>
+}
+<span class="keyword">int</span> main()
+{
+    <span class="comment">//!cin\cout提速</span>
+    ios::sync_with_stdio(<span class="keyword">false</span>); <span class="comment">//来打消iostream的输入输出缓存</span>
+    cin.tie(<span class="number">0</span>);                  <span class="comment">//cin.tie(0)来解除cin与cout的绑定,0表示NULL</span>
+
+    <span class="keyword">int</span> n, k;
+    <span class="comment">//创建动态数组</span>
+    cin &gt;&gt; n &gt;&gt; k;
+    numbers = <span class="keyword">new</span> <span class="keyword">long</span> <span class="keyword">long</span>[n];
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)
+        cin &gt;&gt; numbers[i];
+    <span class="comment">//查找第k小数，输出之</span>
+    cout &lt;&lt; quickFind(numbers, <span class="number">0</span>, n - <span class="number">1</span>, k) &lt;&lt; endl; <span class="comment">//注意边界</span>
+
+    <span class="keyword">delete</span>[] numbers;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+
+<span class="keyword">def</span> quick_select(nums, left, right, k):
+    <span class="keyword">if</span> left == right:
+        <span class="keyword">return</span> nums[left]
+    target = nums[left]
+    i, j = left - <span class="number">1</span>, right + <span class="number">1</span>
+    <span class="keyword">while</span> i &lt; j:
+        i += <span class="number">1</span>
+        <span class="keyword">while</span> nums[i] &lt; target:
+            i += <span class="number">1</span>
+        j -= <span class="number">1</span>
+        <span class="keyword">while</span> nums[j] &gt; target:
+            j -= <span class="number">1</span>
+        <span class="keyword">if</span> i &lt; j:
+            nums[i], nums[j] = nums[j], nums[i]
+    sl = j - left + <span class="number">1</span>
+    <span class="keyword">if</span> k &lt;= sl:
+        <span class="keyword">return</span> quick_select(nums, left, j, k)
+    <span class="keyword">else</span>:
+        <span class="keyword">return</span> quick_select(nums, j + <span class="number">1</span>, right, k - sl)
+
+data = sys.stdin.read().split()
+n, k = <span class="keyword">int</span>(data[<span class="number">0</span>]), <span class="keyword">int</span>(data[<span class="number">1</span>])
+arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span class="number">2</span>:<span class="number">2</span> + n]))
+<span class="keyword">print</span>(quick_select(arr, <span class="number">0</span>, n - <span class="number">1</span>, k))</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD105">
+        <div class="problem-title">JD105：双剑合阵</div>
+        <div class="problem-meta">AcWing 787 | JD105</div>
+
+        <div class="description">
+            <p>赵晴儿把弟子们两两分成一组，每组内部先按身高排好。然后两组合成一组四人——从两组的排头各看一眼，矮的先出列，依次接上。四人组再两两合并成八人组……</p>
+<p>梁嘉峰看明白了："快排是先挑基准把人分开，归并是先把人拆到最小单位，再一层层合并上来。"</p>
+<p>"对，"赵晴儿说，"合并时两边都是有序的，所以每次只需要比较排头，O(n)就能合并。拆到底再合上来，总共 O(nlogn)。而且最坏情况也一样——不像快排最坏会退化。"</p>
+<p>给定一个长度为 n 的整数数列，请用归并排序将其从小到大排序。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行包含整数 n。第二行包含 n 个整数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，n 个排好序的整数，空格隔开。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5
+3 1 2 4 5
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 2 3 4 5
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>递归拆分 → 合并两个有序数组。需要额外空间 O(n)。稳定排序。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cmath&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100007</span>;
+<span class="keyword">int</span> n;
+<span class="keyword">int</span> numbers[N],tmp[N];
+
+<span class="keyword">void</span> mergeSort(<span class="keyword">int</span> nums[], <span class="keyword">int</span> left, <span class="keyword">int</span> right)
+{
+    <span class="keyword">if</span> (left&gt;=right) <span class="keyword">return</span>;
+
+    <span class="keyword">int</span> mid = left+(right-left)/<span class="number">2</span>;<span class="comment">//防止溢出</span>
+
+    mergeSort(nums,left,mid), mergeSort(nums,mid+<span class="number">1</span>,right);<span class="comment">//先调用归并排序</span>
+    <span class="comment">//合二为一</span>
+    <span class="keyword">int</span> k=<span class="number">0</span>, i=left, j=mid+<span class="number">1</span>;<span class="comment">//左右两部分数组的起点</span>
+
+    <span class="keyword">while</span>(i&lt;=mid &amp;&amp; j&lt;=right) <span class="comment">//扫描还未抵达终点</span>
+      <span class="keyword">if</span> (nums[i]&lt;=nums[j])<span class="comment">//把小的放到tmp数组里面</span>
+        tmp[k++] = nums[i++];
+        <span class="keyword">else</span> tmp[k++] = nums[j++];
+
+    <span class="keyword">while</span>(i&lt;=mid) tmp[k++]=nums[i++];<span class="comment">//把左边剩余的部分插入tmp</span>
+    <span class="keyword">while</span>(j&lt;=right) tmp[k++]=nums[j++];<span class="comment">//把右边剩余的部分插入tmp</span>
+
+    <span class="comment">//把tmp的部分复制回数组</span>
+    <span class="keyword">for</span> (i=left,k=<span class="number">0</span>; i&lt;=right; i++, k++) nums[i]=tmp[k];
+
+}
+<span class="keyword">int</span> main()
+{
+    <span class="comment">//数据大，使用printf和scanf</span>
+    scanf(&quot;%d&quot;,&amp;n);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;n ;i++) scanf(&quot;%d&quot;,&amp;numbers[i]);
+
+    mergeSort(numbers,<span class="number">0</span>,n-<span class="number">1</span>);
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n ;i++) printf(&quot;%d &quot;,numbers[i]);
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 归并排序</span>
+<span class="keyword">def</span> merge_sort(arr, l, r):
+    <span class="keyword">if</span> l &gt;= r:
+        <span class="keyword">return</span>
+    mid = (l + r) // <span class="number">2</span>
+    merge_sort(arr, l, mid)
+    merge_sort(arr, mid + <span class="number">1</span>, r)
+    tmp = []
+    i, j = l, mid + <span class="number">1</span>
+    <span class="keyword">while</span> i &lt;= mid <span class="keyword">and</span> j &lt;= r:
+        <span class="keyword">if</span> arr[i] &lt;= arr[j]:
+            tmp.append(arr[i])
+            i += <span class="number">1</span>
+        <span class="keyword">else</span>:
+            tmp.append(arr[j])
+            j += <span class="number">1</span>
+    tmp.extend(arr[i:mid + <span class="number">1</span>])
+    tmp.extend(arr[j:r + <span class="number">1</span>])
+    arr[l:r + <span class="number">1</span>] = tmp
+
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
+merge_sort(arr, <span class="number">0</span>, n - <span class="number">1</span>)
+<span class="keyword">print</span>(&<span class="comment">#x27; &#x27;.join(map(str, arr)))</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD106">
+        <div class="problem-title">JD106：逆流之数</div>
+        <div class="problem-meta">AcWing 788 | JD106</div>
+
+        <div class="description">
+            <p>弟子们排成一列，每人身上有一个编号。赵晴儿发现，有些排在前面的人编号反而比后面的大——这就是"逆序对"，说明队伍很乱。</p>
+<p>"逆序对越多，队伍越乱。"赵晴儿说，"但要一个个比太慢了。有没有 O(nlogn) 的方法？"</p>
+<p>李少白盯着归并排序看了一会儿，突然开窍："归并的时候，左右两队都是从小到大排好的。从两队的排头开始比较——如果右边的先出列，说明右边这个人比左边队里剩下的所有人都小，那些都是逆序对！"</p>
+<p>"没错。"赵晴儿笑了，"排完序，逆序对也数完了。"</p>
+<p>给定一个长度为 n 的整数数列，求逆序对的数量。逆序对定义：i < j 且 a[i] > a[j]。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行包含整数 n。第二行包含 n 个整数（1 ≤ n ≤ 100000）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，逆序对的数量。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5
+2 3 1 5 4
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+3
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>归并排序过程中，当右边元素先被选中时，左边剩余元素个数就是新增的逆序对数。用 <code>long long</code> 存结果。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cmath&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;
+
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100007</span>;
+<span class="keyword">int</span> n;
+<span class="keyword">int</span> numbers[N],tmp[N];
+<span class="comment">//最大的数可能会是 n^2/2 </span>
+ LL mergeSort(<span class="keyword">int</span> nums[], <span class="keyword">int</span> left, <span class="keyword">int</span> right)
+{
+    <span class="keyword">if</span> (left&gt;=right) <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">//如果左指针越过右指针，则返回</span>
+
+    <span class="keyword">int</span> mid = left+(right-left)/<span class="number">2</span>;<span class="comment">//防止溢出</span>
+
+    LL result = mergeSort(nums,left,mid)+mergeSort(nums,mid+<span class="number">1</span>,right);<span class="comment">//先调用归并排序</span>
+    <span class="comment">//合二为一</span>
+    <span class="keyword">int</span> k=<span class="number">0</span>, i=left, j=mid+<span class="number">1</span>;<span class="comment">//左右两部分数组的起点</span>
+
+    <span class="keyword">while</span>(i&lt;=mid &amp;&amp; j&lt;=right) <span class="comment">//扫描还未抵达终点</span>
+      <span class="keyword">if</span> (nums[i]&lt;=nums[j])<span class="comment">//把小的放到tmp数组里面</span>
+        tmp[k++] = nums[i++];
+        <span class="keyword">else</span> {
+            <span class="comment">//计算逆序对的个数mid-i+1</span>
+            result += mid -i +<span class="number">1</span>;
+            tmp[k++] = nums[j++];
+        }
+
+    <span class="keyword">while</span>(i&lt;=mid) tmp[k++]=nums[i++];<span class="comment">//把左边剩余的部分插入tmp</span>
+    <span class="keyword">while</span>(j&lt;=right) tmp[k++]=nums[j++];<span class="comment">//把右边剩余的部分插入tmp</span>
+
+    <span class="comment">//把tmp的部分复制回数组</span>
+    <span class="keyword">for</span> (i=left,k=<span class="number">0</span>; i&lt;=right; i++, k++) nums[i]=tmp[k];
+
+    <span class="keyword">return</span> result;
+
+}
+<span class="keyword">int</span> main()
+{
+    <span class="comment">//数据大，使用printf和scanf</span>
+    scanf(&quot;%d&quot;,&amp;n);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;n ;i++) scanf(&quot;%d&quot;,&amp;numbers[i]);
+
+   cout&lt;&lt;mergeSort(numbers,<span class="number">0</span>,n-<span class="number">1</span>)&lt;&lt;endl;
+
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+
+<span class="keyword">def</span> merge_sort_count(arr):
+    &quot;&quot;&quot;Return <span class="keyword">sorted</span> array <span class="keyword">and</span> inversion count.&quot;&quot;&quot;
+    n = <span class="keyword">len</span>(arr)
+    <span class="keyword">if</span> n &lt;= <span class="number">1</span>:
+        <span class="keyword">return</span> arr, <span class="number">0</span>
+    mid = n // <span class="number">2</span>
+    left, inv_left = merge_sort_count(arr[:mid])
+    right, inv_right = merge_sort_count(arr[mid:])
+    merged = []
+    i = j = <span class="number">0</span>
+    inv = inv_left + inv_right
+    <span class="keyword">while</span> i &lt; <span class="keyword">len</span>(left) <span class="keyword">and</span> j &lt; <span class="keyword">len</span>(right):
+        <span class="keyword">if</span> left[i] &lt;= right[j]:
+            merged.append(left[i])
+            i += <span class="number">1</span>
+        <span class="keyword">else</span>:
+            merged.append(right[j])
+            j += <span class="number">1</span>
+            inv += <span class="keyword">len</span>(left) - i
+    merged.extend(left[i:])
+    merged.extend(right[j:])
+    <span class="keyword">return</span> merged, inv
+
+data = sys.stdin.read().split()
+n = <span class="keyword">int</span>(data[<span class="number">0</span>])
+arr = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> data[<span class="number">1</span>:<span class="number">1</span>+n]]
+_, ans = merge_sort_count(arr)
+<span class="keyword">print</span>(ans)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD107">
+        <div class="problem-title">JD107：石壁听风</div>
+        <div class="problem-meta">AcWing 789 | JD107</div>
+
+        <div class="description">
+            <p>赵晴儿递给李少白一排刻着数字的石块，从左到右从小到大排好了。她问："数字 3 第一次出现在哪块石块上？最后一次出现在哪？"</p>
+<p>李少白想从头数，但石块有十万块。赵晴儿拦住他："石块是有序的，不用一个个看。先看最中间那块——如果中间的数比 3 大，说明 3 只可能在左半边，右半边不用看了。每次都把范围砍一半，这就是二分。"</p>
+<p>"找第一次出现的位置和最后一次出现的位置，各二分一次。"李少白接话道。</p>
+<p>"对。如果整个范围里都找不到，就说明没有。"</p>
+<p>给定一个升序排列的长度为 n 的整数数组和 q 个查询，对每个查询返回目标值的起始位置和终止位置（从0开始），不存在则返回 <code>-1 -1</code>。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数 n 和 q。第二行 n 个整数（升序）。第三行 q 个待查询的整数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>每行两个整数，起始位置和终止位置。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+6 3
+1 2 2 3 3 4
+2 3 5
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 2
+3 4
+-1 -1
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>两次二分：找第一个 ≥ x 的位置（左边界），找最后一个 ≤ x 的位置（右边界）。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100007</span>;
+
+<span class="keyword">int</span> nums[N];
+
+<span class="keyword">int</span> main()
+{
+
+    <span class="comment">// 第一行包含整数n和q，表示数组长度和询问个数。</span>
+    <span class="keyword">int</span> n, q;
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;q);
+    <span class="comment">// 第二行包含n个整数（均在1~10000范围内），表示完整数组。</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)
+        scanf(&quot;%d&quot;, &amp;nums[i]);
+    <span class="comment">// 接下来q行，每行包含一个整数k，表示一个询问元素。</span>
+    <span class="keyword">while</span>(q--){
+      <span class="comment">//读入要查找的数，并且二分查找其范围</span>
+      <span class="keyword">int</span> k; 
+      scanf(&quot;%d&quot;,&amp;k);<span class="comment">// 读入k</span>
+
+      <span class="keyword">int</span> left = <span class="number">0</span>, right = n-<span class="number">1</span>;<span class="comment">//初始化left和right</span>
+      <span class="keyword">while</span> (left &lt; right) <span class="comment">//模板2</span>
+      {
+          <span class="keyword">int</span> mid = left + right&gt;&gt;<span class="number">1</span>;
+          <span class="keyword">if</span> (nums[mid]&gt;=k) right = mid;<span class="comment">//模板1,</span>
+          <span class="keyword">else</span> left = mid +<span class="number">1</span>;
+      }
+      <span class="comment">//left就是左端点值</span>
+      <span class="comment">//判断是否找得到</span>
+      <span class="keyword">if</span> (nums[left]!=k) cout&lt;&lt;&quot;-<span class="number">1</span> -<span class="number">1</span>&quot;&lt;&lt;endl;<span class="comment">//找不到x</span>
+      <span class="keyword">else</span>
+      {
+          cout&lt;&lt;left&lt;&lt;&quot; &quot;;
+          <span class="comment">//继续寻找右边界</span>
+          left=<span class="number">0</span>, right=n-<span class="number">1</span>;<span class="comment">//重新初始化left,riight,进行第二次二分搜索</span>
+          <span class="keyword">while</span> (left &lt; right)
+          {
+              <span class="keyword">int</span> mid = left+right+<span class="number">1</span>&gt;&gt;<span class="number">1</span>;
+              <span class="keyword">if</span> (nums[mid]&lt;=k) left=mid;
+              <span class="keyword">else</span> right = mid -<span class="number">1</span>;              
+          }
+          cout&lt;&lt;left&lt;&lt;endl;
+      }
+    }
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+
+<span class="comment">// int bsearch_1(int left, int right)</span>
+<span class="comment">// {</span>
+<span class="comment">//     while (left &lt; right)</span>
+<span class="comment">//     {</span>
+<span class="comment">//         int mid = left + right &gt;&gt; 1;</span>
+<span class="comment">//         if (check(mid)) right = mid;</span>
+<span class="comment">//         else left = mid + 1;</span>
+<span class="comment">//     }</span>
+<span class="comment">//     return left;</span>
+<span class="comment">// }</span>
+
+<span class="comment">// int bsearch_2(int left, int right)</span>
+<span class="comment">// {</span>
+<span class="comment">//     while (left &lt; right)</span>
+<span class="comment">//     {</span>
+<span class="comment">//         int mid = left + right + 1 &gt;&gt; 1;</span>
+<span class="comment">//         if (check(mid)) left = mid;</span>
+<span class="comment">//         else right = mid - 1;</span>
+<span class="comment">//     }</span>
+<span class="comment">//     return left;</span>
+<span class="comment">// }</span></code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+<span class="keyword">import</span> bisect
+data = sys.stdin.read().split()
+n, q = <span class="keyword">int</span>(data[<span class="number">0</span>]), <span class="keyword">int</span>(data[<span class="number">1</span>])
+a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span class="number">2</span>:<span class="number">2</span>+n]))
+idx = <span class="number">2</span> + n
+out = []
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(q):
+    x = <span class="keyword">int</span>(data[idx]); idx += <span class="number">1</span>
+    l = bisect.bisect_left(a, x)
+    r = bisect.bisect_right(a, x) - <span class="number">1</span>
+    <span class="keyword">if</span> l &lt; n <span class="keyword">and</span> a[l] == x: out.append(f&<span class="comment">#x27;{l} {r}&#x27;)</span>
+    <span class="keyword">else</span>: out.append(&<span class="comment">#x27;-1 -1&#x27;)</span>
+<span class="keyword">print</span>(&<span class="comment">#x27;\n&#x27;.join(out))</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD108">
+        <div class="problem-title">JD108：剑指方根</div>
+        <div class="problem-meta">AcWing 790 | JD108</div>
+
+        <div class="description">
+            <p>赵晴儿在沙盘上写下一个数 n："求它的三次方根。"</p>
+<p>李少白试了几个整数，立方后不是太大就是太小。赵晴儿说："别猜了。三次方根一定在 -10000 到 10000 之间。你取中间值试试——如果中间值的立方比 n 大，说明真正的答案在左半边；比 n 小，就在右半边。范围不断缩小，直到精度足够。"</p>
+<p>"和整数二分一样的思路，"李少白说，"只不过这次找的不是一个确切的位置，而是一个足够精确的浮点数。"</p>
+<p>"对。整数二分停在某个整数上，浮点二分停在精度达标时。"</p>
+<p>给定一个浮点数 n，求它的三次方根。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个浮点数 n（-10000 ≤ n ≤ 10000）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>n 的三次方根，保留6位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+1000.000000
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+10.000000
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>浮点二分：left = -10000, right = 10000，while(right - left > 1e-8)，mid = (left + right) / 2。若 mid³ ≥ n，right = mid；否则 left = mid。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> n;
+    scanf(&quot;%lf&quot;, &amp;n);
+    <span class="keyword">double</span> l = -<span class="number">10000</span>, r = <span class="number">10000</span>;
+    <span class="keyword">while</span> (r - l &gt; 1e-<span class="number">8</span>) {
+        <span class="keyword">double</span> mid = (l + r) / <span class="number">2</span>;
+        <span class="keyword">if</span> (mid * mid * mid &gt;= n) r = mid;
+        <span class="keyword">else</span> l = mid;
+    }
+    printf(&quot;%.<span class="number">6lf</span>\n&quot;, r);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 数的三次方根</span>
+n = <span class="keyword">float</span>(<span class="keyword">input</span>())
+l, r = -<span class="number">10000.0</span>, <span class="number">10000.0</span>
+<span class="keyword">while</span> r - l &gt; 1e-<span class="number">8</span>:
+    mid = (l + r) / <span class="number">2.0</span>
+    <span class="keyword">if</span> mid ** <span class="number">3</span> &gt;= n:
+        r = mid
+    <span class="keyword">else</span>:
+        l = mid
+<span class="keyword">print</span>(f&<span class="comment">#x27;{r:.6f}&#x27;)</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+            <div class="chapter-nav">
+                <a href="chapter08.html">← 第八章 百器图谱</a>
+                <a href="index.html" class="nav-home">返回目录</a>
+                <a href="chapter10.html">第十章 千锤百炼 →</a>
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <p>《剑道试炼》第九章 快剑如风 · <a href="index.html">返回首页</a></p>
+    </footer>
+
+    <button class="scroll-top" aria-label="回到顶部">↑</button>
+    <script src="script.js"></script>
+</body>
+</html>

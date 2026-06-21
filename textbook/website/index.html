@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剑道试炼 — 编程入门教材</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Index-specific styles */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--gap-lg);
+            margin: var(--gap-xl) 0;
+        }
+        .feature-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--gap-lg);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        .feature-icon {
+            font-size: 2.4em;
+            margin-bottom: var(--gap-md);
+            display: block;
+        }
+        .feature-card h3 {
+            color: var(--color-heading);
+            font-size: 1.1em;
+            margin-bottom: var(--gap-sm);
+        }
+        .feature-card p {
+            color: var(--color-text-muted);
+            font-size: 0.9em;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: var(--gap-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: var(--gap-lg);
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: var(--radius-md);
+            font-family: var(--font-sans);
+            font-size: 1em;
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            letter-spacing: 0.05em;
+        }
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            border-bottom: none;
+        }
+        .cta-btn-primary {
+            background: var(--color-heading);
+            color: #fff;
+        }
+        .cta-btn-primary:hover {
+            background: var(--color-link-hover);
+            color: #fff;
+        }
+        .cta-btn-secondary {
+            background: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+        }
+        .cta-btn-secondary:hover {
+            background: var(--color-accent);
+            color: #fff;
+        }
+        .about-section {
+            max-width: 700px;
+            margin: var(--gap-xl) auto;
+            text-align: center;
+        }
+        .about-section p {
+            color: var(--color-text-muted);
+            font-size: 1.05em;
+            line-height: 1.9;
+        }
+        @media (max-width: 640px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <a href="index.html" class="nav-brand">剑道试炼</a>
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link-text">首页</a>
+            <a href="chapter01.html" class="nav-link-text">开始阅读</a>
+            <a href="code.html" class="nav-link-text">代码参考</a>
+            <button class="dark-toggle" aria-label="Toggle dark mode">☾</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>剑 道 试 炼</h1>
+            <div class="subtitle">编程入门教材</div>
+            <p class="description">
+                以武侠世界为背景的编程入门教材。跟随李少白的脚步，从持剑叩门到华山论剑，
+                在剑道修炼中掌握 C++ 与 Python 编程。172 道习题，15 章渐进式课程，
+                让编程学习如习武般充满乐趣。
+            </p>
+            <div class="cta-buttons">
+                <a href="chapter01.html" class="cta-btn cta-btn-primary">开始阅读</a>
+                <a href="code.html" class="cta-btn cta-btn-secondary">代码参考</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">15</span>
+                    <span class="stat-label">章</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">172</span>
+                    <span class="stat-label">题</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">2</span>
+                    <span class="stat-label">语言</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <div class="content-wrapper">
+        <div class="section-header">
+            <h2>教材特色</h2>
+            <p>在武侠故事中学习编程，寓教于乐</p>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <span class="feature-icon">⚔</span>
+                <h3>武侠叙事</h3>
+                <p>每个知识点都融入剑道修炼的故事中，让枯燥的语法变得生动有趣</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">📝</span>
+                <h3>双语代码</h3>
+                <p>每道题同时提供 C++ 和 Python 参考代码，适合不同学习路径</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">📈</span>
+                <h3>渐进难度</h3>
+                <p>从变量输入到动态规划，由浅入深，稳步提升编程能力</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">💡</span>
+                <h3>思路引导</h3>
+                <p>每道题配有解题思路提示，帮助理解算法思维而非死记硬背</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="content-wrapper">
+        <div class="section-header">
+            <h2>章节目录</h2>
+            <p>十五章剑道修炼之路</p>
+        </div>
+
+        <div class="chapter-grid">
+            <a href="chapter01.html" class="chapter-card">
+                <div class="chapter-number">第一章</div>
+                <div class="chapter-title">持剑叩门</div>
+                <div class="chapter-subtitle-text">变量与输入输出</div>
+                <div class="chapter-meta">14 题 · JD001–JD014</div>
+            </a>
+            <a href="chapter02.html" class="chapter-card">
+                <div class="chapter-number">第二章</div>
+                <div class="chapter-title">歧路逢生</div>
+                <div class="chapter-subtitle-text">条件判断与分支</div>
+                <div class="chapter-meta">14 题 · JD015–JD028</div>
+            </a>
+            <a href="chapter03.html" class="chapter-card">
+                <div class="chapter-number">第三章</div>
+                <div class="chapter-title">千回百转</div>
+                <div class="chapter-subtitle-text">for与while</div>
+                <div class="chapter-meta">14 题 · JD029–JD042</div>
+            </a>
+            <a href="chapter04.html" class="chapter-card">
+                <div class="chapter-number">第四章</div>
+                <div class="chapter-title">排兵布阵</div>
+                <div class="chapter-subtitle-text">数组</div>
+                <div class="chapter-meta">12 题 · JD043–JD054</div>
+            </a>
+            <a href="chapter05.html" class="chapter-card">
+                <div class="chapter-number">第五章</div>
+                <div class="chapter-title">十二宫剑阵</div>
+                <div class="chapter-subtitle-text">二维数组</div>
+                <div class="chapter-meta">12 题 · JD055–JD066</div>
+            </a>
+            <a href="chapter06.html" class="chapter-card">
+                <div class="chapter-number">第六章</div>
+                <div class="chapter-title">古卷密文</div>
+                <div class="chapter-subtitle-text">字符串处理</div>
+                <div class="chapter-meta">14 题 · JD067–JD080</div>
+            </a>
+            <a href="chapter07.html" class="chapter-card">
+                <div class="chapter-number">第七章</div>
+                <div class="chapter-title">以招创招</div>
+                <div class="chapter-subtitle-text">函数与递归</div>
+                <div class="chapter-meta">15 题 · JD081–JD095</div>
+            </a>
+            <a href="chapter08.html" class="chapter-card">
+                <div class="chapter-number">第八章</div>
+                <div class="chapter-title">百器图谱</div>
+                <div class="chapter-subtitle-text">容器与内置算法</div>
+                <div class="chapter-meta">7 题 · JD096–JD102</div>
+            </a>
+            <a href="chapter09.html" class="chapter-card">
+                <div class="chapter-number">第九章</div>
+                <div class="chapter-title">快剑如风</div>
+                <div class="chapter-subtitle-text">排序与二分</div>
+                <div class="chapter-meta">6 题 · JD103–JD108</div>
+            </a>
+            <a href="chapter10.html" class="chapter-card">
+                <div class="chapter-number">第十章</div>
+                <div class="chapter-title">千锤百炼</div>
+                <div class="chapter-subtitle-text">高精度与位运算</div>
+                <div class="chapter-meta">8 题 · JD109–JD116</div>
+            </a>
+            <a href="chapter11.html" class="chapter-card">
+                <div class="chapter-number">第十一章</div>
+                <div class="chapter-title">蓄势待发</div>
+                <div class="chapter-subtitle-text">前缀和、差分与双指针</div>
+                <div class="chapter-meta">9 题 · JD121–JD129</div>
+            </a>
+            <a href="chapter12.html" class="chapter-card">
+                <div class="chapter-number">第十二章</div>
+                <div class="chapter-title">利器出鞘</div>
+                <div class="chapter-subtitle-text">进阶数据结构</div>
+                <div class="chapter-meta">11 题 · JD130–JD140</div>
+            </a>
+            <a href="chapter13.html" class="chapter-card">
+                <div class="chapter-number">第十三章</div>
+                <div class="chapter-title">迷雾寻踪</div>
+                <div class="chapter-subtitle-text">搜索与回溯</div>
+                <div class="chapter-meta">6 题 · JD141–JD146</div>
+            </a>
+            <a href="chapter14.html" class="chapter-card">
+                <div class="chapter-number">第十四章</div>
+                <div class="chapter-title">千里奔袭</div>
+                <div class="chapter-subtitle-text">最短路与生成树</div>
+                <div class="chapter-meta">8 题 · JD147–JD154</div>
+            </a>
+            <a href="chapter15.html" class="chapter-card">
+                <div class="chapter-number">第十五章</div>
+                <div class="chapter-title">华山论剑</div>
+                <div class="chapter-subtitle-text">动态规划</div>
+                <div class="chapter-meta">18 题 · JD155–JD172</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="content-wrapper">
+        <div class="about-section">
+            <div class="section-header">
+                <h2>关于教材</h2>
+            </div>
+            <p>
+                《剑道试炼》是一本以武侠世界为背景的编程入门教材。全书共 15 章、172 道习题，
+                涵盖从基础语法到动态规划的核心知识点。每道题都配有武侠故事背景、解题思路、
+                以及 C++ 和 Python 双语参考代码。适合编程零基础的学习者，
+                也适合有一定基础、希望以新视角巩固知识的同学。
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>《剑道试炼》编程入门教材 · 武侠风格编程学习</p>
+    </footer>
+
+    <button class="scroll-top" aria-label="回到顶部">↑</button>
+    <script src="script.js"></script>
+</body>
+</html>

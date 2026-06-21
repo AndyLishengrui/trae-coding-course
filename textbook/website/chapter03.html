@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第三章 千回百转 — 剑道试炼</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="index.html" class="nav-brand">剑道试炼</a>
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link-text">首页</a>
+            <a href="code.html" class="nav-link-text">代码参考</a>
+            <button class="dark-toggle" aria-label="Toggle dark mode">☽</button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="chapter-sidebar">
+            <div class="sidebar-title">章节目录</div>
+            <ul class="chapter-list">
+                <li><a href="chapter01.html">第一章 持剑叩门</a></li>
+                <li><a href="chapter02.html">第二章 歧路逢生</a></li>
+                <li><a href="chapter03.html" class="active">第三章 千回百转</a></li>
+                <li><a href="chapter04.html">第四章 排兵布阵</a></li>
+                <li><a href="chapter05.html">第五章 十二宫剑阵</a></li>
+                <li><a href="chapter06.html">第六章 古卷密文</a></li>
+                <li><a href="chapter07.html">第七章 以招创招</a></li>
+                <li><a href="chapter08.html">第八章 百器图谱</a></li>
+                <li><a href="chapter09.html">第九章 快剑如风</a></li>
+                <li><a href="chapter10.html">第十章 千锤百炼</a></li>
+                <li><a href="chapter11.html">第十一章 蓄势待发</a></li>
+                <li><a href="chapter12.html">第十二章 利器出鞘</a></li>
+                <li><a href="chapter13.html">第十三章 迷雾寻踪</a></li>
+                <li><a href="chapter14.html">第十四章 千里奔袭</a></li>
+                <li><a href="chapter15.html">第十五章 华山论剑</a></li>
+            </ul>
+        </aside>
+
+        <main class="chapter-main">
+            <div class="chapter-header">
+                <h1>第三章 千回百转</h1>
+                <div class="chapter-subtitle">for与while</div>
+            </div>
+
+            <div class="problem" id="JD029">
+        <div class="problem-title">JD029：石砖偶数</div>
+        <div class="problem-meta">AcWing ??? | JD029</div>
+
+        <div class="description">
+            <p>千层塔第一层。墙上刻着一排编号从1到100的石砖。赵晴儿说：「把所有偶数编号的石砖挑出来，每行报一个。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>无输入。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出全部偶数，每个偶数占一行。</p>
+
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>for循环从2开始，步长为2，到100结束。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= <span class="number">100</span>; i += <span class="number">2</span>)
+        cout &lt;&lt; i &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">2</span>, <span class="number">101</span>, <span class="number">2</span>):
+    <span class="keyword">print</span>(i)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD030">
+        <div class="problem-title">JD030：奇数石砖</div>
+        <div class="problem-meta">AcWing ??? | JD030</div>
+
+        <div class="description">
+            <p>千层塔第二层。墙上有一排编号从1到X的石砖。梁嘉峰指着石砖说：「把所有奇数编号的报出来。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个正整数X。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>每行一个奇数，从1到X（含）。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+8
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1
+3
+5
+7
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>for循环从1开始，步长为2，到X结束。如果X是偶数，最后一个奇数是X-1。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> x;
+    cin &gt;&gt; x;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= x; i += <span class="number">2</span>)
+        cout &lt;&lt; i &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">x = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, x + <span class="number">1</span>, <span class="number">2</span>):
+    <span class="keyword">print</span>(i)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD031">
+        <div class="problem-title">JD031：反复之门</div>
+        <div class="problem-meta">AcWing ??? | JD031</div>
+
+        <div class="description">
+            <p>千层塔的某一层有一扇不断重复的门。每次门前出现一个数X：如果X不为0，就从1数到X；如果X为0，修炼结束。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>若干行，每行一个整数X。以0结束。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>对每个非零的X，输出1到X，每行一个数。每组之间空一行。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5
+10
+3
+0
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 2 3 4 5
+1 2 3 4 5 6 7 8 9 10
+1 2 3
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>外层while循环读入X，遇到0停止。内层for循环从1到X输出。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> x;
+    <span class="keyword">while</span> (cin &gt;&gt; x, x) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= x; i++) {
+            <span class="keyword">if</span> (i &gt; <span class="number">1</span>) cout &lt;&lt; &quot; &quot;;
+            cout &lt;&lt; i;
+        }
+        cout &lt;&lt; endl;
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">while</span> <span class="keyword">True</span>:
+    x = <span class="keyword">int</span>(<span class="keyword">input</span>())
+    <span class="keyword">if</span> x == <span class="number">0</span>: <span class="keyword">break</span>
+    <span class="keyword">print</span>(&<span class="comment">#x27; &#x27;.join(str(i) for i in range(1, x + 1)))</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD032">
+        <div class="problem-title">JD032：六奇连珠</div>
+        <div class="problem-meta">AcWing ??? | JD032</div>
+
+        <div class="description">
+            <p>梁嘉峰递给李少白一个数X：「从X之后开始，找出6个连续的奇数，一个一个报给我。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个整数X。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>从X之后开始的6个连续奇数，每行一个。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+8
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+9
+11
+13
+15
+17
+19
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>如果X是奇数，从X+2开始；如果X是偶数，从X+1开始。循环6次，每次加2。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> x;
+    cin &gt;&gt; x;
+    <span class="keyword">if</span> (x % <span class="number">2</span> == <span class="number">0</span>) x++;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++, x += <span class="number">2</span>)
+        cout &lt;&lt; x &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">x = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span>:
+    x += <span class="number">1</span>
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">6</span>):
+    <span class="keyword">print</span>(x)
+    x += <span class="number">2</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD033">
+        <div class="problem-title">JD033：正数清点</div>
+        <div class="problem-meta">AcWing ??? | JD033</div>
+
+        <div class="description">
+            <p>赵晴儿递给李少白6个测量数据，有的是正数有的是负数。她问：「这里面有几个正数？」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>6行，每行一个浮点数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出正数的个数，格式为 <code>X valores positivos</code>。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+7
+-5
+6
+-3.4
+4.6
+12
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+4 positive numbers
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>循环读入6个数，用if判断是否>0，计数器累加。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++) {
+        <span class="keyword">double</span> x; cin &gt;&gt; x;
+        <span class="keyword">if</span> (x &gt; <span class="number">0</span>) cnt++;
+    }
+    cout &lt;&lt; cnt &lt;&lt; &quot; positive numbers&quot; &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+nums = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">float</span>, sys.stdin.read().split()))
+cnt = <span class="keyword">sum</span>(<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> nums <span class="keyword">if</span> x &gt; <span class="number">0</span>)
+<span class="keyword">print</span>(f&quot;{cnt} positive numbers&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD034">
+        <div class="problem-title">JD034：余数寻踪</div>
+        <div class="problem-meta">AcWing ??? | JD034</div>
+
+        <div class="description">
+            <p>梁嘉峰写下了一个数N：「从1到10000，把所有除以N余数为2的数报给我。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个整数N（N>2）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>每行一个数，从1到10000中除以N余2的数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+13
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+2
+15
+28
+41
+54
+...
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>for循环从1到10000，if i%N==2则输出。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n;
+    cin &gt;&gt; n;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10000</span>; i++)
+        <span class="keyword">if</span> (i % n == <span class="number">2</span>) cout &lt;&lt; i &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, <span class="number">10001</span>):
+    <span class="keyword">if</span> i % n == <span class="number">2</span>:
+        <span class="keyword">print</span>(i)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD035">
+        <div class="problem-title">JD035：区间计数</div>
+        <div class="problem-meta">AcWing ??? | JD035</div>
+
+        <div class="description">
+            <p>赵晴儿递给李少白N个测量数据，让他数一数有多少个落在[10,20]区间内，有多少个在区间外。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数N。第二行N个整数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>第一行输出 <code>X in</code>，X为区间内个数。第二行输出 <code>Y out</code>，Y为区间外个数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5
+5 12 18 25 10
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+3 in
+2 out
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>循环读入，判断是否 10≤X≤20，计数器累加。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n, x, in = <span class="number">0</span>, out = <span class="number">0</span>;
+    cin &gt;&gt; n;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+        cin &gt;&gt; x;
+        <span class="keyword">if</span> (x &gt;= <span class="number">10</span> &amp;&amp; x &lt;= <span class="number">20</span>) in++;
+        <span class="keyword">else</span> out++;
+    }
+    cout &lt;&lt; in &lt;&lt; &quot; in&quot; &lt;&lt; endl;
+    cout &lt;&lt; out &lt;&lt; &quot; out&quot; &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+in_cnt = <span class="keyword">sum</span>(<span class="number">1</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n) <span class="keyword">if</span> <span class="number">10</span> &lt;= <span class="keyword">int</span>(<span class="keyword">input</span>()) &lt;= <span class="number">20</span>)
+<span class="keyword">print</span>(f&quot;{in_cnt} <span class="keyword">in</span>&quot;)
+<span class="keyword">print</span>(f&quot;{n - in_cnt} out&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD036">
+        <div class="problem-title">JD036：奇数求和</div>
+        <div class="problem-meta">AcWing ??? | JD036</div>
+
+        <div class="description">
+            <p>梁嘉峰在墙上刻了两个数X和Y，让李少白算出X和Y之间（不含X和Y）所有奇数的和。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，两个整数X和Y（X<Y）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出X和Y之间所有奇数的和。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+6 -5
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+5
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>从X+1到Y-1循环，判断每个数是否为奇数，是则累加。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> x, y, sum = <span class="number">0</span>;
+    cin &gt;&gt; x &gt;&gt; y;
+    <span class="keyword">if</span> (x &gt; y) swap(x, y);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = x + <span class="number">1</span>; i &lt; y; i++)
+        <span class="keyword">if</span> (i % <span class="number">2</span>) sum += i;
+    cout &lt;&lt; sum &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">x, y = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="keyword">if</span> x &gt; y: x, y = y, x
+<span class="keyword">print</span>(<span class="keyword">sum</span>(i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(x + <span class="number">1</span>, y) <span class="keyword">if</span> i % <span class="number">2</span>))</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD037">
+        <div class="problem-title">JD037：数链连珠</div>
+        <div class="problem-meta">AcWing ??? | JD037</div>
+
+        <div class="description">
+            <p>梁嘉峰写下了一个起始整数A，又在第二行写了一串数。第二行里第一个正数就是N。请算出从A开始的N个连续整数的和。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行：整数A。第二行：若干整数，第一个大于0的数才是N。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>从A开始N个连续整数之和。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3
+-5 0 -3 4 -1
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+18
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>A固定，第二行跳过负数和零找N。从A开始循环N次累加。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> a, n, sum = <span class="number">0</span>;
+    cin &gt;&gt; a;
+    <span class="keyword">while</span> (cin &gt;&gt; n, n &lt;= <span class="number">0</span>);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) sum += a++;
+    cout &lt;&lt; sum &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">a = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    <span class="keyword">for</span> n <span class="keyword">in</span> <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()):
+        <span class="keyword">if</span> n &gt; <span class="number">0</span>: <span class="keyword">break</span>
+    <span class="keyword">if</span> n &gt; <span class="number">0</span>: <span class="keyword">break</span>
+<span class="keyword">print</span>(<span class="keyword">sum</span>(a + i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n)))</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD038">
+        <div class="problem-title">JD038：石中之王</div>
+        <div class="problem-meta">AcWing ??? | JD038</div>
+
+        <div class="description">
+            <p>练功场上摆了一排石块，每块上面刻着一个数。赵晴儿让李少白找到最大的数，并说出它是第几块（从1开始计数）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数N，表示石块数量。第二行N个整数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出最大值和它的位置，格式见样例。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5
+3 2 5 1 4
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+5
+3
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>遍历时同时记录最大值和位置。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n, x, mx, pos = <span class="number">1</span>;
+    cin &gt;&gt; n;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) {
+        cin &gt;&gt; x;
+        <span class="keyword">if</span> (i == <span class="number">1</span> || x &gt; mx) { mx = x; pos = i; }
+    }
+    cout &lt;&lt; mx &lt;&lt; endl &lt;&lt; pos &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+data = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, sys.stdin.read().split()))
+n = data[<span class="number">0</span>]
+vals = data[<span class="number">1</span>:n+<span class="number">1</span>]
+mx = <span class="keyword">max</span>(vals)
+pos = vals.index(mx) + <span class="number">1</span>
+<span class="keyword">print</span>(mx)
+<span class="keyword">print</span>(pos)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD039">
+        <div class="problem-title">JD039：约数寻踪</div>
+        <div class="problem-meta">AcWing ??? | JD039</div>
+
+        <div class="description">
+            <p>赵晴儿在沙盘上写下一个数N：「找出它的所有约数，从小到大列出来。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个正整数N。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>每行一个约数，从小到大。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+6
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1
+2
+3
+6
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>从1到N循环，如果N%i==0则i是约数。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n;
+    cin &gt;&gt; n;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        <span class="keyword">if</span> (n % i == <span class="number">0</span>) cout &lt;&lt; i &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+    <span class="keyword">if</span> n % i == <span class="number">0</span>:
+        <span class="keyword">print</span>(i)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD040">
+        <div class="problem-title">JD040：九九归真</div>
+        <div class="problem-meta">AcWing ??? | JD040</div>
+
+        <div class="description">
+            <p>赵晴儿教李少白背乘法口诀。她写下一个数N，让李少白从1乘到10，按格式列出N的乘法表：「i x N = i*N」。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个整数N。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>10行，格式为 <code>i x N = i*N</code>。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+140
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 x 140 = 140
+2 x 140 = 280
+3 x 140 = 420
+4 x 140 = 560
+5 x 140 = 700
+6 x 140 = 840
+7 x 140 = 980
+8 x 140 = 1120
+9 x 140 = 1260
+10 x 140 = 1400
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>for循环从1到10，每次输出i x N = i*N。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n;
+    scanf(&quot;%d&quot;, &amp;n);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++)
+        printf(&quot;%d x %d = %d\n&quot;, i, n, i * n);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+n = <span class="keyword">int</span>(sys.stdin.read().strip())
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, <span class="number">11</span>):
+    <span class="keyword">print</span>(f&quot;{i} x {n} = {i * n}&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD041">
+        <div class="problem-title">JD041：千层阵列</div>
+        <div class="problem-meta">AcWing ??? | JD041</div>
+
+        <div class="description">
+            <p>千层塔的一面墙上刻着N行M列的数字阵列，每行从1开始递增，但每逢第M个位置不写数字，写SWORD。赵晴儿让李少白按这个规律把整个阵列报出来。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，两个整数N和M。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>N行，每行M个值，最后一个用SWORD代替，值之间用空格隔开。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+7 4
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 2 3 SWORD
+5 6 7 SWORD
+9 10 11 SWORD
+13 14 15 SWORD
+17 18 19 SWORD
+21 22 23 SWORD
+25 26 27 SWORD
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>嵌套循环，外层控制行，内层控制列。每行第M个位置输出SWORD。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n, m;
+    cin &gt;&gt; n &gt;&gt; m;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n * m; i++) {
+        <span class="keyword">if</span> (i % m == <span class="number">0</span>) cout &lt;&lt; &quot;SWORD&quot; &lt;&lt; endl;
+        <span class="keyword">else</span> cout &lt;&lt; i &lt;&lt; &quot; &quot;;
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">n, m = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n * m + <span class="number">1</span>):
+    <span class="keyword">if</span> i % m == <span class="number">0</span>:
+        <span class="keyword">print</span>(&quot;SWORD&quot;)
+    <span class="keyword">else</span>:
+        <span class="keyword">print</span>(i, end=&<span class="comment">#x27; &#x27;)</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD042">
+        <div class="problem-title">JD042：兵刃统计</div>
+        <div class="problem-meta">AcWing ??? | JD042</div>
+
+        <div class="description">
+            <p>演武场上，弟子们正在操练。李少白走过一排兵器架，记录了N次观察：每次看到一件兵器，C代表剑，R代表刀，F代表枪。赵晴儿让他统计每种兵器出现了多少把，以及各自的占比。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数N。接下来N行，每行一个整数（数量）和一个字符（C/R/F），分别表示某次看到的兵器数量和类型。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>第一行输出 <code>Total: X weapons</code>（总数量）。接下来三行输出每种兵器的总数：<code>Total swords: X</code>、<code>Total blades: X</code>、<code>Total spears: X</code>。最后三行输出各自占比：<code>Percentage of swords: XX.XX %</code> 等，保留两位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+11
+1 F
+5 C
+4 C
+12 C
+11 F
+15 F
+2 F
+7 C
+1 C
+4 C
+9 F
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+Total: 71 weapons
+Total swords: 33
+Total blades: 0
+Total spears: 38
+Percentage of swords: 46.48 %
+Percentage of blades: 0.00 %
+Percentage of spears: 53.52 %
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>三个计数器分别累加C、R、F的数量。注意每行先读数量再读类型。总数 = 所有数量之和。占比 = 各类数量 / 总数 × 100%，保留两位小数。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n, c = <span class="number">0</span>, r = <span class="number">0</span>, f = <span class="number">0</span>;
+    cin &gt;&gt; n;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+        <span class="keyword">int</span> k; <span class="keyword">char</span> t;
+        cin &gt;&gt; k &gt;&gt; t;
+        <span class="keyword">if</span> (t == &#x27;C&#x27;) c += k;
+        <span class="keyword">else</span> <span class="keyword">if</span> (t == &#x27;R&#x27;) r += k;
+        <span class="keyword">else</span> f += k;
+    }
+    <span class="keyword">int</span> s = c + r + f;
+    printf(&quot;Total: %d weapons\n&quot;, s);
+    printf(&quot;Total swords: %d\n&quot;, c);
+    printf(&quot;Total blades: %d\n&quot;, r);
+    printf(&quot;Total spears: %d\n&quot;, f);
+    printf(&quot;Percentage of swords: %.<span class="number">2lf</span> %%\n&quot;, <span class="number">100.0</span> * c / s);
+    printf(&quot;Percentage of blades: %.<span class="number">2lf</span> %%\n&quot;, <span class="number">100.0</span> * r / s);
+    printf(&quot;Percentage of spears: %.<span class="number">2lf</span> %%\n&quot;, <span class="number">100.0</span> * f / s);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+data = sys.stdin.read().split()
+n = <span class="keyword">int</span>(data[<span class="number">0</span>])
+c = r = f = <span class="number">0</span>
+idx = <span class="number">1</span>
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n):
+    k = <span class="keyword">int</span>(data[idx]); t = data[idx + <span class="number">1</span>]
+    idx += <span class="number">2</span>
+    <span class="keyword">if</span> t == &<span class="comment">#x27;C&#x27;: c += k</span>
+    <span class="keyword">elif</span> t == &<span class="comment">#x27;R&#x27;: r += k</span>
+    <span class="keyword">else</span>: f += k
+s = c + r + f
+<span class="keyword">print</span>(f&quot;Total: {s} weapons&quot;)
+<span class="keyword">print</span>(f&quot;Total swords: {c}&quot;)
+<span class="keyword">print</span>(f&quot;Total blades: {r}&quot;)
+<span class="keyword">print</span>(f&quot;Total spears: {f}&quot;)
+<span class="keyword">print</span>(f&quot;Percentage of swords: {c / s * <span class="number">100</span>:.2f} %&quot;)
+<span class="keyword">print</span>(f&quot;Percentage of blades: {r / s * <span class="number">100</span>:.2f} %&quot;)
+<span class="keyword">print</span>(f&quot;Percentage of spears: {f / s * <span class="number">100</span>:.2f} %&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+            <div class="chapter-nav">
+                <a href="chapter02.html">← 第二章 歧路逢生</a>
+                <a href="index.html" class="nav-home">返回目录</a>
+                <a href="chapter04.html">第四章 排兵布阵 →</a>
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <p>《剑道试炼》第三章 千回百转 · <a href="index.html">返回首页</a></p>
+    </footer>
+
+    <button class="scroll-top" aria-label="回到顶部">↑</button>
+    <script src="script.js"></script>
+</body>
+</html>
