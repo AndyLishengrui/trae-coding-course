@@ -328,7 +328,7 @@ a = []
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>贪心+二分：维护最小末尾数组q[]，二分查找替换。O(nlogn)。</p>
+            <strong>解题思路：</strong><p>动态规划：f[i]表示以a[i]结尾的最长上升子序列长度。枚举j &lt; i且a[j] &lt; a[i]，f[i] = max(f[i], f[j]+1)。O(n²)。</p>
 
         </div>
         <div class="code-section">
