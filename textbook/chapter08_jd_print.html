@@ -863,23 +863,21 @@ Step 6: A 耗尽，把 B 剩余全部接上
             <h4>C++</h4>
             <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 #<span class="keyword">include</span> &lt;vector&gt;
-#<span class="keyword">include</span> &lt;algorithm&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span class="comment">// 合并两条有序链表</span>
-<span class="comment">// 读入两行，每行以-1结尾，输出合并后的有序序列</span>
+<span class="comment">// 合并两条有序链：双指针归并</span>
 <span class="keyword">int</span> main() {
-    vector&lt;<span class="keyword">int</span>&gt; a;
+    vector&lt;<span class="keyword">int</span>&gt; a, b;
     <span class="keyword">int</span> x;
-    <span class="comment">// 读入第一条链表</span>
     <span class="keyword">while</span> (cin &gt;&gt; x && x != -<span class="number">1</span>) a.push_back(x);
-    <span class="comment">// 读入第二条链表</span>
-    <span class="keyword">while</span> (cin &gt;&gt; x && x != -<span class="number">1</span>) a.push_back(x);
-    sort(a.begin(), a.end());
-    <span class="keyword">for</span> (size_t i = <span class="number">0</span>; i &lt; a.size(); i++) {
-        cout &lt;&lt; a[i];
-        <span class="keyword">if</span> (i + <span class="number">1</span> &lt; a.size()) cout &lt;&lt; <span class="string">&quot; &quot;</span>;
+    <span class="keyword">while</span> (cin &gt;&gt; x && x != -<span class="number">1</span>) b.push_back(x);
+    <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;
+    <span class="keyword">while</span> (i &lt; (<span class="keyword">int</span>)a.size() && j &lt; (<span class="keyword">int</span>)b.size()) {
+        <span class="keyword">if</span> (a[i] &lt;= b[j]) cout &lt;&lt; a[i++] &lt;&lt; <span class="string">' '</span>;
+        <span class="keyword">else</span> cout &lt;&lt; b[j++] &lt;&lt; <span class="string">' '</span>;
     }
+    <span class="keyword">while</span> (i &lt; (<span class="keyword">int</span>)a.size()) cout &lt;&lt; a[i++] &lt;&lt; <span class="string">' '</span>;
+    <span class="keyword">while</span> (j &lt; (<span class="keyword">int</span>)b.size()) cout &lt;&lt; b[j++] &lt;&lt; <span class="string">' '</span>;
     cout &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>

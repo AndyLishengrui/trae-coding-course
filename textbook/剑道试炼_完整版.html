@@ -962,9 +962,10 @@ d = math.sqrt(dx**2 + dy**2)  <span class="comment"># 勾股定理</span>
 
         </div>
 
+        <div style="background:#fff3cd;border-left:4px solid #ffc107;padding:8px;margin:10px 0;border-radius:0 4px 4px 0;font-size:0.9em">本题输出 TRIANGULO/CIRCULO/TRAPEZIO/QUADRADO/RETANGULO 为原题葡语格式（三角形/圆形/梯形/正方形/长方形），需原样输出。</div>
         <div class="io-section">
             <h4>输入格式</h4>
-            <p>一行，三个浮点数R、r1、r2。</p>
+            <p>一行，三个浮点数A、B、C。</p>
 
         </div>
 
@@ -1285,7 +1286,7 @@ denoms = [<span class="number">100</span>, <span class="number">50</span>, <span
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>互为倍数输出 <code>Yes</code>，否则输出 <code>No</code>。</p>
+            <p>互为倍数输出 <code>Sao Multiplos</code>，否则输出 <code>Nao sao Multiplos</code>（葡语格式，见上方说明）。</p>
 
         </div>
 
@@ -1635,6 +1636,7 @@ a, b, c = <span class="keyword">map</span>(<span class="keyword">int</span>, <sp
 
         </div>
 
+        <div style="background:#fff3cd;border-left:4px solid #ffc107;padding:8px;margin:10px 0;border-radius:0 4px 4px 0;font-size:0.9em">本题输出 <code>Total: R$</code> 中的 R$ 为原题巴西雷亚尔货币符号，需原样输出。</div>
         <div class="sample">
             <div class="sample-label">输入样例</div>
 3 2
@@ -1819,6 +1821,8 @@ x = <span class="keyword">float</span>(<span class="keyword">input</span>())
             <p>输出 <code>Q1</code>（第一象限）、<code>Q2</code>（第二）、<code>Q3</code>（第三）、<code>Q4</code>（第四）、<code>Eixo X</code>（X轴上）、<code>Eixo Y</code>（Y轴上）或 <code>Origem</code>（原点）。</p>
 
         </div>
+
+        <div style="background:#fff3cd;border-left:4px solid #ffc107;padding:8px;margin:10px 0;border-radius:0 4px 4px 0;font-size:0.9em">本题输出 Eixo X（X轴）、Eixo Y（Y轴）、Origem（原点）为原题葡语格式，需原样输出。</div>
 
         <div class="sample">
             <div class="sample-label">输入样例</div>
@@ -2248,7 +2252,7 @@ x = <span class="keyword">int</span>(<span class="keyword">input</span>())
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>不能构成输出 <code>Not a triangle</code>；能构成则输出三角形类型：<code>Equilateral</code>（等边）、<code>Isosceles</code>（等腰）、<code>Scalene</code>（不等边）、<code>Right</code>（直角）、<code>Acute</code>（锐角）、<code>Obtuse</code>（钝角）。</p>
+            <p>不能构成输出 <code>Not a triangle</code>；能构成则先输出角度类型（<code>Right</code>/<code>Acute</code>/<code>Obtuse</code>），再输出边类型（<code>Equilateral</code>/<code>Isosceles</code>/<code>Scalene</code>），各占一行。</p>
 
         </div>
 
@@ -2345,15 +2349,16 @@ a, b, c = <span class="keyword">sorted</span>(<span class="keyword">map</span>(<
 
         </div>
 
+        <div style="background:#fff3cd;border-left:4px solid #ffc107;padding:8px;margin:10px 0;border-radius:0 4px 4px 0;font-size:0.9em">本题输入输出均为原题葡语格式。输入关键词：vertebrado（脊椎动物）、invertebrado（无脊椎）、ave（鸟类）、mamifero（哺乳类）、reptil（爬行类）、carnivoro（食肉）、herbivoro（食草）、onivoro（杂食）、inseto（昆虫）、hematofago（吸血）。输出动物名：aguia（鹰）、pomba（鸽）、homem（人）、vaca（牛）、pulga（蚤）、lagarta（毛虫）、sanguessuga（水蛭）、minhoca（蚯蚓）。需原样输入输出。</div>
         <div class="io-section">
             <h4>输入格式</h4>
-            <p>三行，每行一个字符串，分别表示三层分类特征。</p>
+            <p>三行，每行一个字符串，分别表示三层分类特征（葡语）。</p>
 
         </div>
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>输出对应的动物名称。</p>
+            <p>输出对应的动物名称（葡语）。</p>
 
         </div>
 
@@ -2804,7 +2809,7 @@ x = <span class="keyword">int</span>(<span class="keyword">input</span>())
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>对每个非零的X，输出1到X，每行一个数。每组之间空一行。</p>
+            <p>对每个非零的X，输出1到X（空格分隔，一行一组）。每组之间空一行。</p>
 
         </div>
 
@@ -3013,7 +3018,7 @@ x = <span class="keyword">int</span>(<span class="keyword">input</span>())
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>输出正数的个数，格式为 <code>X valores positivos</code>。</p>
+            <p>输出正数的个数，格式为 <code>X positive numbers</code>。</p>
 
         </div>
 
@@ -3302,7 +3307,7 @@ in_cnt = <span class="keyword">sum</span>(<span class="number">1</span> <span cl
 
         <div class="io-section">
             <h4>输入格式</h4>
-            <p>一行，两个整数X和Y（X<Y）。</p>
+            <p>一行，两个整数X和Y（不一定有序，代码需自行判断大小）。</p>
 
         </div>
 
@@ -4027,7 +4032,7 @@ s = c + r + f               <span class="comment"># 71</span>
 
         <div class="io-section">
             <h4>输入格式</h4>
-            <p>一行，10个整数，用空格隔开。</p>
+            <p>10个整数（每行一个或空格分隔均可）。</p>
 
         </div>
 
@@ -4743,13 +4748,13 @@ a, b = <span class="number">0</span>, <span class="number">1</span>  <span class
 
         <div class="io-section">
             <h4>输入格式</h4>
-            <p>第一行一个整数T。接下来T行，每行一个整数N。</p>
+            <p>一行一个整数N。</p>
 
         </div>
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>每行输出对应的F(N)。</p>
+            <p>一行，输出前N个斐波那契数（F(0)到F(N-1)），空格分隔。</p>
 
         </div>
 
@@ -5237,8 +5242,8 @@ i=9: j从2开始，j*j≤9
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
-时间复杂度：O(n<sup>2</sup>) — 遍历矩阵元素<br>
-空间复杂度：O(n<sup>2</sup>)
+时间复杂度：O(n√n) — 对每个数试除到√i<br>
+空间复杂度：O(1)
 </div>
         <div class="code-section">
             <details><summary>参考代码</summary>
@@ -5501,13 +5506,14 @@ i=11  .  .  .  .  .  .  ×  ×  ×  ×  ×  ×
 data = sys.stdin.read().split()
 t = data[<span class="number">0</span>]
 s = <span class="number">0.0</span>
+cnt = <span class="number">0</span>
 idx = <span class="number">1</span>
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
     <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
         x = <span class="keyword">float</span>(data[idx]); idx += <span class="number">1</span>
         <span class="comment"># 下方区域：i&gt;j(主对角线下) 且 i+j&gt;11(反对角线下)</span>
-        <span class="keyword">if</span> i &gt; j <span class="keyword">and</span> i + j &gt; <span class="number">11</span>: s += x
-<span class="keyword">print</span>(f<span class="string">&quot;{s:.1f}&quot;</span> <span class="keyword">if</span> t == <span class="string">'S'</span> <span class="keyword">else</span> f<span class="string">&quot;{s/15:.1f}&quot;</span>)</code></pre>
+        <span class="keyword">if</span> i &gt; j <span class="keyword">and</span> i + j &gt; <span class="number">11</span>: s += x; cnt += <span class="number">1</span>
+<span class="keyword">print</span>(f<span class="string">&quot;{s:.1f}&quot;</span> <span class="keyword">if</span> t == <span class="string">'S'</span> <span class="keyword">else</span> f<span class="string">&quot;{s/cnt:.1f}&quot;</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -5708,12 +5714,13 @@ i=11  .  .  .  .  .  .  ×  ×  ×  ×  ×  ×
 data = sys.stdin.read().split()
 t = data[<span class="number">0</span>]
 s = <span class="number">0.0</span>
+cnt = <span class="number">0</span>
 idx = <span class="number">1</span>
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
     <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
         x = <span class="keyword">float</span>(data[idx]); idx += <span class="number">1</span>
-        <span class="keyword">if</span> j &gt; i <span class="keyword">and</span> i + j &gt; <span class="number">11</span>: s += x
-<span class="keyword">print</span>(f<span class="string">&quot;{s:.1f}&quot;</span> <span class="keyword">if</span> t == <span class="string">'S'</span> <span class="keyword">else</span> f<span class="string">&quot;{s/15:.1f}&quot;</span>)</code></pre>
+        <span class="keyword">if</span> j &gt; i <span class="keyword">and</span> i + j &gt; <span class="number">11</span>: s += x; cnt += <span class="number">1</span>
+<span class="keyword">print</span>(f<span class="string">&quot;{s:.1f}&quot;</span> <span class="keyword">if</span> t == <span class="string">'S'</span> <span class="keyword">else</span> f<span class="string">&quot;{s/cnt:.1f}&quot;</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -6770,16 +6777,6 @@ C++优化: 用 b.push_back(c); b.push_back(' '); — O(n)
             <div class="sample-label">输入样例</div>
 hello
 o
-world
-l
-abc
-x
-test
-e
-hello
-a
-h
-e
         </div>
         <div class="sample">
             <div class="sample-label">输出样例</div>
@@ -7273,12 +7270,12 @@ r = []
         <div class="sample">
             <div class="sample-label">输入样例</div>
 first late system see school still great different year Place far take same
-life
-group
+system
+method
         </div>
         <div class="sample">
             <div class="sample-label">输出样例</div>
-first late system see school still great different year Place far take same
+first late method see school still great different year Place far take same
         </div>
 
         <div class="hint">
@@ -7287,19 +7284,20 @@ first late system see school still great different year Place far take same
 <pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
 输入:
   原文: "first late system see school still great different year Place far take same"
-  A: "life"
-  B: "group"
+  A: "system"
+  B: "method"
 
 按空格分割 → ["first","late","system","see","school","still",
               "great","different","year","Place","far","take","same"]
 
 逐个比较：
-  "first" == "life"?  → No  → 保留 "first"
-  "late"  == "life"?  → No  → 保留 "late"
+  "first"  == "system"?  → No  → 保留 "first"
+  "late"   == "system"?  → No  → 保留 "late"
+  "system" == "system"?  → Yes → 替换为 "method"
+  "see"    == "system"?  → No  → 保留 "see"
   ...
-  没有匹配的词 → 原文不变
 
-输出: "first late system see school ..."
+输出: "first late method see school still great different year Place far take same"
 </pre>
 <p><strong>C++ vs Python 单词分割：</strong></p>
 <pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
@@ -7686,6 +7684,7 @@ cnt = Counter(s)
 
         <div class="sample">
             <div class="sample-label">输入样例</div>
+1
 abc
 d
         </div>
@@ -7764,13 +7763,13 @@ b = lines[<span class="number">1</span>] <span class="keyword">if</span> <span c
 
         <div class="io-section">
             <h4>输入格式</h4>
-            <p>一行字符串。</p>
+            <p>多行，每行一个字符串。以单独一行 <code>.</code> 结束。</p>
 
         </div>
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>一行，最大的n。</p>
+            <p>对每个字符串输出一行，表示最大的重复次数n。</p>
 
         </div>
 
@@ -10667,23 +10666,21 @@ Step 6: A 耗尽，把 B 剩余全部接上
             <h4>C++</h4>
             <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
 #<span class="keyword">include</span> &lt;vector&gt;
-#<span class="keyword">include</span> &lt;algorithm&gt;
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
-<span class="comment">// 合并两条有序链表</span>
-<span class="comment">// 读入两行，每行以-1结尾，输出合并后的有序序列</span>
+<span class="comment">// 合并两条有序链：双指针归并</span>
 <span class="keyword">int</span> main() {
-    vector&lt;<span class="keyword">int</span>&gt; a;
+    vector&lt;<span class="keyword">int</span>&gt; a, b;
     <span class="keyword">int</span> x;
-    <span class="comment">// 读入第一条链表</span>
     <span class="keyword">while</span> (cin &gt;&gt; x && x != -<span class="number">1</span>) a.push_back(x);
-    <span class="comment">// 读入第二条链表</span>
-    <span class="keyword">while</span> (cin &gt;&gt; x && x != -<span class="number">1</span>) a.push_back(x);
-    sort(a.begin(), a.end());
-    <span class="keyword">for</span> (size_t i = <span class="number">0</span>; i &lt; a.size(); i++) {
-        cout &lt;&lt; a[i];
-        <span class="keyword">if</span> (i + <span class="number">1</span> &lt; a.size()) cout &lt;&lt; <span class="string">&quot; &quot;</span>;
+    <span class="keyword">while</span> (cin &gt;&gt; x && x != -<span class="number">1</span>) b.push_back(x);
+    <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;
+    <span class="keyword">while</span> (i &lt; (<span class="keyword">int</span>)a.size() && j &lt; (<span class="keyword">int</span>)b.size()) {
+        <span class="keyword">if</span> (a[i] &lt;= b[j]) cout &lt;&lt; a[i++] &lt;&lt; <span class="string">' '</span>;
+        <span class="keyword">else</span> cout &lt;&lt; b[j++] &lt;&lt; <span class="string">' '</span>;
     }
+    <span class="keyword">while</span> (i &lt; (<span class="keyword">int</span>)a.size()) cout &lt;&lt; a[i++] &lt;&lt; <span class="string">' '</span>;
+    <span class="keyword">while</span> (j &lt; (<span class="keyword">int</span>)b.size()) cout &lt;&lt; b[j++] &lt;&lt; <span class="string">' '</span>;
     cout &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -12102,7 +12099,7 @@ n = <span class="keyword">int</span>(data[<span class="number">0</span>])
 out = []
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
     out.append(<span class="keyword">str</span>(bin(<span class="keyword">int</span>(data[i])).count(<span class="string">'1'</span>)))
-sys.stdout.write(<span class="string">' '</span>.join(out) + <span class="string">' '</span>)</code></pre>
+<span class="keyword">print</span>(<span class="string">' '</span>.join(out))</code></pre>
             </details>
         </div>
     </div>

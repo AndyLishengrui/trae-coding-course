@@ -262,16 +262,6 @@ C++优化: 用 b.push_back(c); b.push_back(' '); — O(n)
             <div class="sample-label">输入样例</div>
 hello
 o
-world
-l
-abc
-x
-test
-e
-hello
-a
-h
-e
         </div>
         <div class="sample">
             <div class="sample-label">输出样例</div>
@@ -765,12 +755,12 @@ r = []
         <div class="sample">
             <div class="sample-label">输入样例</div>
 first late system see school still great different year Place far take same
-life
-group
+system
+method
         </div>
         <div class="sample">
             <div class="sample-label">输出样例</div>
-first late system see school still great different year Place far take same
+first late method see school still great different year Place far take same
         </div>
 
         <div class="hint">
@@ -779,19 +769,20 @@ first late system see school still great different year Place far take same
 <pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
 输入:
   原文: "first late system see school still great different year Place far take same"
-  A: "life"
-  B: "group"
+  A: "system"
+  B: "method"
 
 按空格分割 → ["first","late","system","see","school","still",
               "great","different","year","Place","far","take","same"]
 
 逐个比较：
-  "first" == "life"?  → No  → 保留 "first"
-  "late"  == "life"?  → No  → 保留 "late"
+  "first"  == "system"?  → No  → 保留 "first"
+  "late"   == "system"?  → No  → 保留 "late"
+  "system" == "system"?  → Yes → 替换为 "method"
+  "see"    == "system"?  → No  → 保留 "see"
   ...
-  没有匹配的词 → 原文不变
 
-输出: "first late system see school ..."
+输出: "first late method see school still great different year Place far take same"
 </pre>
 <p><strong>C++ vs Python 单词分割：</strong></p>
 <pre style="font-size:0.85em;background:#fff;padding:8px;border-radius:4px">
@@ -1178,6 +1169,7 @@ cnt = Counter(s)
 
         <div class="sample">
             <div class="sample-label">输入样例</div>
+1
 abc
 d
         </div>
@@ -1256,13 +1248,13 @@ b = lines[<span class="number">1</span>] <span class="keyword">if</span> <span c
 
         <div class="io-section">
             <h4>输入格式</h4>
-            <p>一行字符串。</p>
+            <p>多行，每行一个字符串。以单独一行 <code>.</code> 结束。</p>
 
         </div>
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>一行，最大的n。</p>
+            <p>对每个字符串输出一行，表示最大的重复次数n。</p>
 
         </div>
 
