@@ -31,6 +31,9 @@
 <body>
     <h1>第6章 古卷密文</h1>
     <div class="chapter-subtitle">字符串处理</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>古卷展开，密文横陈。赵晴儿说："字符串——字符的序列。古人的智慧，藏在文字之间。"</p><p>本章学习字符串处理——文本数据的查找、替换、分割等操作。剑道传承，始于文字。</p>
+    </div>
 
     <div class="problem" id="JD067">
         <div class="problem-title">JD067：古卷测长</div>
@@ -379,7 +382,7 @@ hello2024world
 
         <div class="sample">
             <div class="sample-label">输入样例</div>
-rock cloth
+Hunter Bear
         </div>
         <div class="sample">
             <div class="sample-label">输出样例</div>
@@ -400,7 +403,7 @@ Player2
   <span class="keyword">char</span> a[<span class="number">20</span>],b[<span class="number">20</span>];
   <span class="keyword">while</span>(scanf(&quot;%s%s&quot;,a,b)==<span class="number">2</span>) {
     <span class="keyword">if</span>(!strcmp(a,b)) printf(&quot;Tie\n&quot;);
-    <span class="keyword">else</span> <span class="keyword">if</span>((!strcmp(a,&quot;rock&quot;)&amp;&amp;!strcmp(b,&quot;scissors&quot;))||(!strcmp(a,&quot;scissors&quot;)&amp;&amp;!strcmp(b,&quot;cloth&quot;))||(!strcmp(a,&quot;cloth&quot;)&amp;&amp;!strcmp(b,&quot;rock&quot;))) printf(&quot;Player1\n&quot;);
+    <span class="keyword">else</span> <span class="keyword">if</span>((!strcmp(a,&quot;Hunter&quot;)&amp;&amp;!strcmp(b,&quot;Gun&quot;))||(!strcmp(a,&quot;Gun&quot;)&amp;&amp;!strcmp(b,&quot;Bear&quot;))||(!strcmp(a,&quot;Bear&quot;)&amp;&amp;!strcmp(b,&quot;Hunter&quot;))) printf(&quot;Player1\n&quot;);
     <span class="keyword">else</span> printf(&quot;Player2\n&quot;);
   }
   <span class="keyword">return</span> <span class="number">0</span>;
@@ -410,7 +413,7 @@ Player2
 data = sys.stdin.read().split()
 p1, p2 = data[<span class="number">0</span>], data[<span class="number">1</span>]
 <span class="keyword">if</span> p1 == p2: <span class="keyword">print</span>(&<span class="comment">#x27;Tie&#x27;)</span>
-<span class="keyword">elif</span> (p1==&<span class="comment">#x27;rock&#x27; and p2==&#x27;scissors&#x27;) or (p1==&#x27;scissors&#x27; and p2==&#x27;cloth&#x27;) or (p1==&#x27;cloth&#x27; and p2==&#x27;rock&#x27;):</span>
+<span class="keyword">elif</span> (p1==&<span class="comment">#x27;Hunter&#x27; and p2==&#x27;Gun&#x27;) or (p1==&#x27;Bear&#x27; and p2==&#x27;Hunter&#x27;) or (p1==&#x27;Gun&#x27; and p2==&#x27;Bear&#x27;):</span>
     <span class="keyword">print</span>(&<span class="comment">#x27;Player1&#x27;)</span>
 <span class="keyword">else</span>:
     <span class="keyword">print</span>(&<span class="comment">#x27;Player2&#x27;)</span></code></pre>
@@ -423,7 +426,7 @@ p1, p2 = data[<span class="number">0</span>], data[<span class="number">1</span>
         <div class="problem-meta">AcWing JD | JD073</div>
 
         <div class="description">
-            <p>古卷需要加密保存。加密规则：每个字母后移一位（z→a，Z→A），其他字符不变。</p>
+            <p>古卷需要加密保存。加密规则：每个字母后移一位（z→a），每个数字后移一位（9→0），其他字符不变。</p>
 
         </div>
 

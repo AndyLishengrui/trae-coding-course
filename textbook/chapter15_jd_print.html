@@ -31,6 +31,9 @@
 <body>
     <h1>第15章 华山论剑</h1>
     <div class="chapter-subtitle">动态规划</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>华山之巅，风雷激荡。四面八方的高手齐聚于此——华山论剑，一决高下。"动态规划——记住过去，优化未来。背包、区间、状态压缩、树形——每一种DP都是一门绝技。"</p><p>本章学习动态规划——算法世界中最精妙的技巧。掌握DP，你将拥有解决任何复杂问题的能力。这一战之后，你便可以出师了。</p>
+    </div>
 
     <div class="problem" id="JD155">
         <div class="problem-title">JD155：一剑一鞘</div>
@@ -270,7 +273,7 @@ f = [<span class="number">0</span>] * (V + <span class="number">1</span>)
 
    <span class="comment">//用dp从底层往上计算每个f[i][j]的值</span>
    <span class="keyword">for</span> (<span class="keyword">int</span> i = n-<span class="number">1</span>; i; i--)
-     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++)
+     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n; j++)
         f[i][j] = max(f[i+<span class="number">1</span>][j]+w[i][j], f[i+<span class="number">1</span>][j+<span class="number">1</span>] + w[i][j]);
 
   cout&lt;&lt;f[<span class="number">1</span>][<span class="number">1</span>]&lt;&lt;endl;
@@ -328,7 +331,7 @@ a = []
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>动态规划：f[i]表示以a[i]结尾的最长上升子序列长度。枚举j &lt; i且a[j] &lt; a[i]，f[i] = max(f[i], f[j]+1)。O(n²)。</p>
+            <strong>解题思路：</strong><p>贪心+二分：维护最小末尾数组q[]，二分查找替换。O(nlogn)。</p>
 
         </div>
         <div class="code-section">

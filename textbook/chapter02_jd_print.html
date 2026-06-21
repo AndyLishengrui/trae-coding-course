@@ -31,6 +31,9 @@
 <body>
     <h1>第2章 歧路逢生</h1>
     <div class="chapter-subtitle">条件判断与分支</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>山道分岔，石碑指路。赵晴儿说："条件判断让程序学会了选择——根据不同的条件，走不同的路。"</p><p>本章学习 if/else 条件判断——让程序根据不同的输入做出不同的反应。这是编程从"计算"走向"决策"的关键一步。</p>
+    </div>
 
     <div class="problem" id="JD015">
         <div class="problem-title">JD015：石碑之谜</div>
@@ -52,15 +55,6 @@
             <h4>输出格式</h4>
             <p>互为倍数输出 <code>Yes</code>，否则输出 <code>No</code>。</p>
 
-        </div>
-
-        <div class="sample">
-            <div class="sample-label">输入样例</div>
-6 24
-        </div>
-        <div class="sample">
-            <div class="sample-label">输出样例</div>
-Yes
         </div>
 
         <div class="hint">
@@ -85,9 +79,9 @@ Yes
             <h4>Python</h4>
             <pre><code class="language-python">a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
 <span class="keyword">if</span> a % b == <span class="number">0</span> <span class="keyword">or</span> b % a == <span class="number">0</span>:
-    <span class="keyword">print</span>(&quot;Yes&quot;)
+    <span class="keyword">print</span>(&quot;Sao Multiplos&quot;)
 <span class="keyword">else</span>:
-    <span class="keyword">print</span>(&quot;No&quot;)</code></pre>
+    <span class="keyword">print</span>(&quot;Nao sao Multiplos&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -172,15 +166,6 @@ Area = 10.0
 
         </div>
 
-        <div class="sample">
-            <div class="sample-label">输入样例</div>
-12 5
-        </div>
-        <div class="sample">
-            <div class="sample-label">输出样例</div>
-17
-        </div>
-
         <div class="hint">
             <strong>解题思路：</strong><p>用条件判断：如果B>A，输出B-A；如果B==A，输出24；否则输出24-A+B。</p>
 
@@ -203,12 +188,10 @@ Area = 10.0
             <h4>Python</h4>
             <pre><code class="language-python">a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
 <span class="keyword">if</span> a &lt; b:
-    res = b - a
-<span class="keyword">elif</span> a == b:
-    res = <span class="number">24</span>
+    horas = b - a
 <span class="keyword">else</span>:
-    res = <span class="number">24</span> - a + b
-<span class="keyword">print</span>(res)</code></pre>
+    horas = <span class="number">24</span> - a + b
+<span class="keyword">print</span>(f&quot;O JOGO DUROU {horas} HORA(S)&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -411,7 +394,7 @@ Interval (75,100]
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>输出 <code>Q1</code>（第一象限）、<code>Q2</code>（第二）、<code>Q3</code>（第三）、<code>Q4</code>（第四）、<code>Eixo X</code>（X轴上）、<code>Eixo Y</code>（Y轴上）或 <code>Origem</code>（原点）。</p>
+            <p>输出 <code>Primeiro</code>（第一象限）、<code>Segundo</code>（第二）、<code>Terceiro</code>（第三）、<code>Quarto</code>（第四）、<code>Eixo X</code>（X轴上）、<code>Eixo Y</code>（Y轴上）或 <code>Origem</code>（原点）。</p>
 
         </div>
 
@@ -534,7 +517,7 @@ d = e - s
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>三行，金额保留两位小数：<code>New salary:</code>（新月钱）、<code>Increase:</code>（涨额）、<code>Percentage:</code>（涨幅百分比，整数带%号）。注：输出格式来自原题（Beecrowd 1048），保持英文标签。</p>
+            <p>三行：新月钱、涨了多少、涨幅百分比（整数带%号），金额保留两位小数。</p>
 
         </div>
 
@@ -627,7 +610,7 @@ Not accepted
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> a, b, c, d;
     cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;
-    <span class="keyword">if</span> (b &gt; a &amp;&amp; d &gt; a &amp;&amp; c + d &gt; a + b &amp;&amp; c &gt; <span class="number">0</span> &amp;&amp; a % <span class="number">2</span> == <span class="number">0</span>)
+    <span class="keyword">if</span> (b &gt; c &amp;&amp; d &gt; a &amp;&amp; c + d &gt; a + b &amp;&amp; c &gt; <span class="number">0</span> &amp;&amp; d &gt; <span class="number">0</span> &amp;&amp; a % <span class="number">2</span> == <span class="number">0</span>)
         cout &lt;&lt; &quot;Accepted&quot; &lt;&lt; endl;
     <span class="keyword">else</span>
         cout &lt;&lt; &quot;Not accepted&quot; &lt;&lt; endl;
@@ -635,7 +618,7 @@ Not accepted
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">a, b, c, d = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-<span class="keyword">if</span> b &gt; a <span class="keyword">and</span> d &gt; a <span class="keyword">and</span> c + d &gt; a + b <span class="keyword">and</span> c &gt; <span class="number">0</span> <span class="keyword">and</span> a % <span class="number">2</span> == <span class="number">0</span>:
+<span class="keyword">if</span> b &gt; c <span class="keyword">and</span> d &gt; a <span class="keyword">and</span> c + d &gt; a + b <span class="keyword">and</span> c &gt; <span class="number">0</span> <span class="keyword">and</span> d &gt; <span class="number">0</span> <span class="keyword">and</span> a % <span class="number">2</span> == <span class="number">0</span>:
     <span class="keyword">print</span>(&quot;Accepted&quot;)
 <span class="keyword">else</span>:
     <span class="keyword">print</span>(&quot;Not accepted&quot;)</code></pre>
@@ -648,8 +631,8 @@ Not accepted
         <div class="problem-meta">AcWing 671 | JD025</div>
 
         <div class="description">
-            <p>宗门各分舵之间用信鸽传信，每个分舵有一个编号（DDD码）。李少白拿到一个编号，需要查出它对应哪个分舵：61=Brasilia，71=Salvador，11=Sao Paulo，21=Rio de Janeiro，31=Belo Horizonte，19=Campinas，其他编号则输出"DDD nao cadastrado"（未登记的DDD码）。</p>
-<p>注：DDD码和城市名来自原题（Beecrowd 1029），DDD是巴西长途区号，"nao cadastrado"是葡萄牙语"未登记"之意。</p>
+            <p>宗门各分舵之间用信鸽传信，每个分舵有一个编号（DDD码）。李少白拿到一个编号，需要查出它对应哪个分舵：61=Brasilia，71=Salvador，11=Sao Paulo，21=Rio de Janeiro，31=Belo Horizonte
+19=Campinas，其他编号则输出"DDD nao cadastrado"。</p>
 
         </div>
 
@@ -754,8 +737,8 @@ Not a triangle
     <span class="keyword">if</span> (a &gt;= b + c) cout &lt;&lt; &quot;Not a triangle&quot; &lt;&lt; endl;
     <span class="keyword">else</span> {
         <span class="keyword">if</span> (a*a == b*b + c*c) cout &lt;&lt; &quot;Right&quot; &lt;&lt; endl;
-        <span class="keyword">else</span> <span class="keyword">if</span> (a*a &gt; b*b + c*c) cout &lt;&lt; &quot;Obtuse&quot; &lt;&lt; endl;
-        <span class="keyword">else</span> cout &lt;&lt; &quot;Acute&quot; &lt;&lt; endl;
+        <span class="keyword">if</span> (a*a &gt; b*b + c*c) cout &lt;&lt; &quot;Obtuse&quot; &lt;&lt; endl;
+        <span class="keyword">if</span> (a*a &lt; b*b + c*c) cout &lt;&lt; &quot;Acute&quot; &lt;&lt; endl;
         <span class="keyword">if</span> (a == b &amp;&amp; b == c) cout &lt;&lt; &quot;Equilateral&quot; &lt;&lt; endl;
         <span class="keyword">else</span> <span class="keyword">if</span> (a == b || a == c || b == c) cout &lt;&lt; &quot;Isosceles&quot; &lt;&lt; endl;
     }
@@ -767,8 +750,8 @@ Not a triangle
     <span class="keyword">print</span>(&quot;Not a triangle&quot;)
 <span class="keyword">else</span>:
     <span class="keyword">if</span> a*a == b*b + c*c: <span class="keyword">print</span>(&quot;Right&quot;)
-    <span class="keyword">elif</span> a*a &gt; b*b + c*c: <span class="keyword">print</span>(&quot;Obtuse&quot;)
-    <span class="keyword">else</span>: <span class="keyword">print</span>(&quot;Acute&quot;)
+    <span class="keyword">if</span> a*a &gt; b*b + c*c: <span class="keyword">print</span>(&quot;Obtuse&quot;)
+    <span class="keyword">if</span> a*a &lt; b*b + c*c: <span class="keyword">print</span>(&quot;Acute&quot;)
     <span class="keyword">if</span> a == b == c: <span class="keyword">print</span>(&quot;Equilateral&quot;)
     <span class="keyword">elif</span> a == b <span class="keyword">or</span> b == c <span class="keyword">or</span> a == c: <span class="keyword">print</span>(&quot;Isosceles&quot;)</code></pre>
             </details>
@@ -781,7 +764,7 @@ Not a triangle
 
         <div class="description">
             <p>迷踪林外遇到一只怪兽。赵晴儿观察了三层特征来判断它的种类：第一层是有脊椎还是无脊椎；第二层是哺乳类、鸟类还是爬行类；第三层是食性（食肉、食草、杂食）。</p>
-<p>根据三层特征，输出对应的动物名称。注：输入输出使用葡萄牙语（来自原题 Beecrowd 1049）。关键词对照：vertebrado=有脊椎, invertebrado=无脊椎, ave=鸟, mamifero=哺乳类, inseto=昆虫, anelideo=环节动物, carnivoro=食肉, onivoro=杂食, herbivoro=食草, hematofago=吸血。输出动物：aguia=鹰, pomba=鸽, homem=人, vaca=牛, pulga=跳蚤, lagarta=毛虫, sanguessuga=水蛭, minhoca=蚯蚓。</p>
+<p>根据三层特征，输出对应的动物名称。</p>
 
         </div>
 
@@ -872,7 +855,7 @@ a, b, c = sys.stdin.read().split()
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>输出 <code>R$ X.XX</code>（R$ 是巴西雷亚尔货币符号）。免税则输出 <code>Isento</code>（葡萄牙语"免税"）。注：输出格式来自原题（Beecrowd 1051），保持原格式。</p>
+            <p>输出 <code>R$ X.XX</code>。免税则输出 <code>Isento</code>。</p>
 
         </div>
 

@@ -31,6 +31,9 @@
 <body>
     <h1>第13章 迷雾寻踪</h1>
     <div class="chapter-subtitle">搜索与回溯</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>迷雾弥漫的林间小径上，赵晴儿指着分叉的路口："DFS 深入探索每一条路，BFS 逐层推进找最短。回溯——选了不行就回头。"</p><p>本章学习搜索和回溯——DFS 和 BFS 是图搜索的基础，回溯是枚举所有可能的利器。</p>
+    </div>
 
     <div class="problem" id="JD141">
         <div class="problem-title">JD141：雾中排阵</div>
@@ -94,7 +97,7 @@
   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) {
     <span class="keyword">if</span> (!used[i]) {
       path[u] = i;      <span class="comment">//记录当前位path[u]的数字为i</span>
-      used[i] = <span class="keyword">true</span>;   <span class="comment">//标记数字i为已经使用过</span>
+      used[i] = <span class="keyword">true</span>;   <span class="comment">//标记数字i为已经使用郭</span>
       dfs(u + <span class="number">1</span>);       <span class="comment">//递归处理下一个位</span>
       used[i] = <span class="keyword">false</span>;  <span class="comment">//恢复现场</span>
     }
@@ -198,7 +201,7 @@ Q...
   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
     <span class="keyword">if</span> (!col[i] &amp;&amp; !dg[i + u] &amp;&amp; !udg[i - u + n]) {
       g[u][i] = &#x27;Q&#x27;;  <span class="comment">//当前位置设置为Q字符</span>
-      col[i] = dg[i + u] = udg[i - u + n] = <span class="keyword">true</span>;  <span class="comment">//标记数字i为已经使用过</span>
+      col[i] = dg[i + u] = udg[i - u + n] = <span class="keyword">true</span>;  <span class="comment">//标记数字i为已经使用郭</span>
       dfs(u + <span class="number">1</span>);                                  <span class="comment">//递归处理下一个位</span>
       g[u][i] = &#x27;.&#x27;;                               <span class="comment">//恢复现场</span>
       col[i] = dg[i + u] = udg[i - u + n] = <span class="keyword">false</span>;  <span class="comment">//恢复现场</span>
@@ -742,6 +745,7 @@ dfs(<span class="number">1</span>, -<span class="number">1</span>)
       }
     }
   }
+  <span class="keyword">return</span> d[n];
 }
 
 <span class="keyword">int</span> main()
@@ -756,9 +760,7 @@ dfs(<span class="number">1</span>, -<span class="number">1</span>)
       add(a,b);
     }
 
-    bfs();
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cout &lt;&lt; d[i] &lt;&lt; &quot; &quot;;
-    cout &lt;&lt; endl;
+    cout&lt;&lt;bfs()&lt;&lt;endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -778,7 +780,7 @@ q = deque([<span class="number">1</span>])
         <span class="keyword">if</span> dist[v] == -<span class="number">1</span>:
             dist[v] = dist[u] + <span class="number">1</span>
             q.append(v)
-<span class="keyword">print</span>(&quot; &quot;.join(<span class="keyword">str</span>(dist[i]) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>)))</code></pre>
+<span class="keyword">print</span>(dist[n])</code></pre>
             </details>
         </div>
     </div>

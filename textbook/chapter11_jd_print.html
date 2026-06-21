@@ -31,6 +31,9 @@
 <body>
     <h1>第11章 蓄势待发</h1>
     <div class="chapter-subtitle">前缀和、差分与双指针</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>蓄势阁中，赵晴儿盘膝而坐："前缀和——记住历史，快速回答。差分——记录变化，高效更新。双指针——两路并进，一击即中。"</p><p>本章学习前缀和、差分和双指针——这些技巧让你用 O(1) 或 O(n) 的时间处理看似需要 O(n²) 的问题。</p>
+    </div>
 
     <div class="problem" id="JD121">
         <div class="problem-title">JD121：蓄势之术</div>
@@ -515,7 +518,7 @@ vector&lt;PII&gt; add, query; <span class="comment">//输入操作的坐标，�
     <span class="keyword">int</span> left = <span class="number">0</span>, right = alls.size() - <span class="number">1</span>; <span class="comment">//vector从0开始计数</span>
     <span class="keyword">while</span> (left &lt; right)
     {
-        <span class="keyword">int</span> mid = (left + right) &gt;&gt; <span class="number">1</span>; <span class="comment">//取中值</span>
+        <span class="keyword">int</span> mid = left + right &gt;&gt; <span class="number">1</span>; <span class="comment">//取中值</span>
         <span class="keyword">if</span> (alls[mid] &gt;= x)
             right = mid;
         <span class="keyword">else</span>

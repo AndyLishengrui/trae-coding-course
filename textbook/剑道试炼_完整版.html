@@ -1,5 +1,8 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>剑道试炼 — 完整版</title><link rel="stylesheet" href="jd_textbook.css"></head><body><div style="text-align:center;padding:40px 0"><h1 style="font-size:2.5em;letter-spacing:0.2em;border:none">剑道试炼</h1><p style="color:#6b5d4d">168道武侠风算法题 · 15章 · C++ + Python</p></div><div style="page-break-before:always;margin-top:40px" id="ch1"><h1>第1章 持剑叩门</h1>
     <div class="chapter-subtitle">变量与输入输出</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>李少白第一次来到剑道宗山门前。梁嘉峰递给他两枚铁令："学会输入输出，才能踏入剑道的第一步。"</p><p>本章将学习变量、数据类型和输入输出——这是所有程序的基础。掌握如何读入数据、计算、输出结果，你就能写出人生中第一个程序了。</p>
+    </div>
 
     <div class="problem" id="JD001">
         <div class="problem-title">JD001：铁令求和</div>
@@ -572,7 +575,7 @@ a, b, c = <span class="keyword">map</span>(<span class="keyword">int</span>, <sp
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>输出两点间的距离，保留4位小数。</p>
+            <p>输出两点间的距离，保留两位小数。</p>
 
         </div>
 
@@ -816,6 +819,9 @@ denoms = [<span class="number">100</span>, <span class="number">50</span>, <span
         </div>
     </div></div><div style="page-break-before:always;margin-top:40px" id="ch2"><h1>第2章 歧路逢生</h1>
     <div class="chapter-subtitle">条件判断与分支</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>山道分岔，石碑指路。赵晴儿说："条件判断让程序学会了选择——根据不同的条件，走不同的路。"</p><p>本章学习 if/else 条件判断——让程序根据不同的输入做出不同的反应。这是编程从"计算"走向"决策"的关键一步。</p>
+    </div>
 
     <div class="problem" id="JD015">
         <div class="problem-title">JD015：石碑之谜</div>
@@ -861,9 +867,9 @@ denoms = [<span class="number">100</span>, <span class="number">50</span>, <span
             <h4>Python</h4>
             <pre><code class="language-python">a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
 <span class="keyword">if</span> a % b == <span class="number">0</span> <span class="keyword">or</span> b % a == <span class="number">0</span>:
-    <span class="keyword">print</span>(&quot;Yes&quot;)
+    <span class="keyword">print</span>(&quot;Sao Multiplos&quot;)
 <span class="keyword">else</span>:
-    <span class="keyword">print</span>(&quot;No&quot;)</code></pre>
+    <span class="keyword">print</span>(&quot;Nao sao Multiplos&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -970,12 +976,10 @@ Area = 10.0
             <h4>Python</h4>
             <pre><code class="language-python">a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
 <span class="keyword">if</span> a &lt; b:
-    res = b - a
-<span class="keyword">elif</span> a == b:
-    res = <span class="number">24</span>
+    horas = b - a
 <span class="keyword">else</span>:
-    res = <span class="number">24</span> - a + b
-<span class="keyword">print</span>(res)</code></pre>
+    horas = <span class="number">24</span> - a + b
+<span class="keyword">print</span>(f&quot;O JOGO DUROU {horas} HORA(S)&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -1178,7 +1182,7 @@ Interval (75,100]
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>输出 <code>Q1</code>（第一象限）、<code>Q2</code>（第二）、<code>Q3</code>（第三）、<code>Q4</code>（第四）、<code>Eixo X</code>（X轴上）、<code>Eixo Y</code>（Y轴上）或 <code>Origem</code>（原点）。</p>
+            <p>输出 <code>Primeiro</code>（第一象限）、<code>Segundo</code>（第二）、<code>Terceiro</code>（第三）、<code>Quarto</code>（第四）、<code>Eixo X</code>（X轴上）、<code>Eixo Y</code>（Y轴上）或 <code>Origem</code>（原点）。</p>
 
         </div>
 
@@ -1301,7 +1305,7 @@ d = e - s
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>三行，金额保留两位小数：<code>New salary:</code>（新月钱）、<code>Increase:</code>（涨额）、<code>Percentage:</code>（涨幅百分比，整数带%号）。注：输出格式来自原题（Beecrowd 1048），保持英文标签。</p>
+            <p>三行：新月钱、涨了多少、涨幅百分比（整数带%号），金额保留两位小数。</p>
 
         </div>
 
@@ -1394,7 +1398,7 @@ Not accepted
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> a, b, c, d;
     cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;
-    <span class="keyword">if</span> (b &gt; a &amp;&amp; d &gt; a &amp;&amp; c + d &gt; a + b &amp;&amp; c &gt; <span class="number">0</span> &amp;&amp; a % <span class="number">2</span> == <span class="number">0</span>)
+    <span class="keyword">if</span> (b &gt; c &amp;&amp; d &gt; a &amp;&amp; c + d &gt; a + b &amp;&amp; c &gt; <span class="number">0</span> &amp;&amp; d &gt; <span class="number">0</span> &amp;&amp; a % <span class="number">2</span> == <span class="number">0</span>)
         cout &lt;&lt; &quot;Accepted&quot; &lt;&lt; endl;
     <span class="keyword">else</span>
         cout &lt;&lt; &quot;Not accepted&quot; &lt;&lt; endl;
@@ -1402,7 +1406,7 @@ Not accepted
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python">a, b, c, d = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
-<span class="keyword">if</span> b &gt; a <span class="keyword">and</span> d &gt; a <span class="keyword">and</span> c + d &gt; a + b <span class="keyword">and</span> c &gt; <span class="number">0</span> <span class="keyword">and</span> a % <span class="number">2</span> == <span class="number">0</span>:
+<span class="keyword">if</span> b &gt; c <span class="keyword">and</span> d &gt; a <span class="keyword">and</span> c + d &gt; a + b <span class="keyword">and</span> c &gt; <span class="number">0</span> <span class="keyword">and</span> d &gt; <span class="number">0</span> <span class="keyword">and</span> a % <span class="number">2</span> == <span class="number">0</span>:
     <span class="keyword">print</span>(&quot;Accepted&quot;)
 <span class="keyword">else</span>:
     <span class="keyword">print</span>(&quot;Not accepted&quot;)</code></pre>
@@ -1415,8 +1419,8 @@ Not accepted
         <div class="problem-meta">AcWing 671 | JD025</div>
 
         <div class="description">
-            <p>宗门各分舵之间用信鸽传信，每个分舵有一个编号（DDD码）。李少白拿到一个编号，需要查出它对应哪个分舵：61=Brasilia，71=Salvador，11=Sao Paulo，21=Rio de Janeiro，31=Belo Horizonte，19=Campinas，其他编号则输出"DDD nao cadastrado"（未登记的DDD码）。</p>
-<p>注：DDD码和城市名来自原题（Beecrowd 1029），DDD是巴西长途区号，"nao cadastrado"是葡萄牙语"未登记"之意。</p>
+            <p>宗门各分舵之间用信鸽传信，每个分舵有一个编号（DDD码）。李少白拿到一个编号，需要查出它对应哪个分舵：61=Brasilia，71=Salvador，11=Sao Paulo，21=Rio de Janeiro，31=Belo Horizonte
+19=Campinas，其他编号则输出"DDD nao cadastrado"。</p>
 
         </div>
 
@@ -1521,8 +1525,8 @@ Not a triangle
     <span class="keyword">if</span> (a &gt;= b + c) cout &lt;&lt; &quot;Not a triangle&quot; &lt;&lt; endl;
     <span class="keyword">else</span> {
         <span class="keyword">if</span> (a*a == b*b + c*c) cout &lt;&lt; &quot;Right&quot; &lt;&lt; endl;
-        <span class="keyword">else</span> <span class="keyword">if</span> (a*a &gt; b*b + c*c) cout &lt;&lt; &quot;Obtuse&quot; &lt;&lt; endl;
-        <span class="keyword">else</span> cout &lt;&lt; &quot;Acute&quot; &lt;&lt; endl;
+        <span class="keyword">if</span> (a*a &gt; b*b + c*c) cout &lt;&lt; &quot;Obtuse&quot; &lt;&lt; endl;
+        <span class="keyword">if</span> (a*a &lt; b*b + c*c) cout &lt;&lt; &quot;Acute&quot; &lt;&lt; endl;
         <span class="keyword">if</span> (a == b &amp;&amp; b == c) cout &lt;&lt; &quot;Equilateral&quot; &lt;&lt; endl;
         <span class="keyword">else</span> <span class="keyword">if</span> (a == b || a == c || b == c) cout &lt;&lt; &quot;Isosceles&quot; &lt;&lt; endl;
     }
@@ -1534,8 +1538,8 @@ Not a triangle
     <span class="keyword">print</span>(&quot;Not a triangle&quot;)
 <span class="keyword">else</span>:
     <span class="keyword">if</span> a*a == b*b + c*c: <span class="keyword">print</span>(&quot;Right&quot;)
-    <span class="keyword">elif</span> a*a &gt; b*b + c*c: <span class="keyword">print</span>(&quot;Obtuse&quot;)
-    <span class="keyword">else</span>: <span class="keyword">print</span>(&quot;Acute&quot;)
+    <span class="keyword">if</span> a*a &gt; b*b + c*c: <span class="keyword">print</span>(&quot;Obtuse&quot;)
+    <span class="keyword">if</span> a*a &lt; b*b + c*c: <span class="keyword">print</span>(&quot;Acute&quot;)
     <span class="keyword">if</span> a == b == c: <span class="keyword">print</span>(&quot;Equilateral&quot;)
     <span class="keyword">elif</span> a == b <span class="keyword">or</span> b == c <span class="keyword">or</span> a == c: <span class="keyword">print</span>(&quot;Isosceles&quot;)</code></pre>
             </details>
@@ -1548,7 +1552,7 @@ Not a triangle
 
         <div class="description">
             <p>迷踪林外遇到一只怪兽。赵晴儿观察了三层特征来判断它的种类：第一层是有脊椎还是无脊椎；第二层是哺乳类、鸟类还是爬行类；第三层是食性（食肉、食草、杂食）。</p>
-<p>根据三层特征，输出对应的动物名称。注：输入输出使用葡萄牙语（来自原题 Beecrowd 1049）。关键词对照：vertebrado=有脊椎, invertebrado=无脊椎, ave=鸟, mamifero=哺乳类, inseto=昆虫, anelideo=环节动物, carnivoro=食肉, onivoro=杂食, herbivoro=食草, hematofago=吸血。输出动物：aguia=鹰, pomba=鸽, homem=人, vaca=牛, pulga=跳蚤, lagarta=毛虫, sanguessuga=水蛭, minhoca=蚯蚓。</p>
+<p>根据三层特征，输出对应的动物名称。</p>
 
         </div>
 
@@ -1639,7 +1643,7 @@ a, b, c = sys.stdin.read().split()
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>输出 <code>R$ X.XX</code>（R$ 是巴西雷亚尔货币符号）。免税则输出 <code>Isento</code>（葡萄牙语"免税"）。注：输出格式来自原题（Beecrowd 1051），保持原格式。</p>
+            <p>输出 <code>R$ X.XX</code>。免税则输出 <code>Isento</code>。</p>
 
         </div>
 
@@ -1694,6 +1698,9 @@ R$ 80.36
         </div>
     </div></div><div style="page-break-before:always;margin-top:40px" id="ch3"><h1>第3章 千回百转</h1>
     <div class="chapter-subtitle">for与while</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>千层塔中，梁嘉峰指着重复的石阶："循环——让代码自动重复执行。掌握它，你就能用一行代码完成一百次操作。"</p><p>本章学习 for 循环和 while 循环——让程序自动重复执行任务。嵌套循环处理更复杂的问题。</p>
+    </div>
 
     <div class="problem" id="JD029">
         <div class="problem-title">JD029：石砖偶数</div>
@@ -2572,6 +2579,9 @@ s = c + r + f
         </div>
     </div></div><div style="page-break-before:always;margin-top:40px" id="ch4"><h1>第4章 排兵布阵</h1>
     <div class="chapter-subtitle">数组</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>赵晴儿在沙盘上排了一列石块："数组——用一个名字管理一整排数据。"</p><p>本章学习数组——存储和管理一组有序数据。遍历、求和、排序，这些操作将伴随你整个编程生涯。</p>
+    </div>
 
     <div class="problem" id="JD043">
         <div class="problem-title">JD043：正剑除邪</div>
@@ -3038,8 +3048,8 @@ arr.reverse()
         </div>
         <div class="sample">
             <div class="sample-label">输出样例</div>
-最小值: -5
-位置: 4
+Menor valor: -5
+Posicao: 4
         </div>
 
         <div class="hint">
@@ -3058,8 +3068,8 @@ arr.reverse()
         cin &gt;&gt; x;
         <span class="keyword">if</span> (i == <span class="number">0</span> || x &lt; mn) { mn = x; pos = i; }
     }
-    cout &lt;&lt; &quot;最小值: &quot; &lt;&lt; mn &lt;&lt; endl;
-    cout &lt;&lt; &quot;位置: &quot; &lt;&lt; pos &lt;&lt; endl;
+    cout &lt;&lt; &quot;Menor valor: &quot; &lt;&lt; mn &lt;&lt; endl;
+    cout &lt;&lt; &quot;Posicao: &quot; &lt;&lt; pos &lt;&lt; endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -3069,8 +3079,8 @@ n = <span class="keyword">int</span>(data[<span class="number">0</span>])
 a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span class="number">1</span>:<span class="number">1</span>+n]))
 mn = <span class="keyword">min</span>(a)
 pos = a.index(mn)
-<span class="keyword">print</span>(f&quot;最小值: {mn}&quot;)
-<span class="keyword">print</span>(f&quot;位置: {pos}&quot;)</code></pre>
+<span class="keyword">print</span>(f&quot;Menor valor: {mn}&quot;)
+<span class="keyword">print</span>(f&quot;Posicao: {pos}&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -3092,7 +3102,7 @@ pos = a.index(mn)
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>输出第N个斐波那契数F(N)（从F(0)=0开始）。</p>
+            <p>输出F(0)到F(N)的所有值，空格隔开。</p>
 
         </div>
 
@@ -3140,19 +3150,19 @@ a, b = <span class="number">0</span>, <span class="number">1</span>
         <div class="problem-meta">AcWing JD | JD049</div>
 
         <div class="description">
-            <p>赵晴儿展开一卷古剑谱，上面记载着斐波那契剑诀：0, 1, 1, 2, 3, 5, 8, 13……「每一式都是前两式的融合。给我前N式。」</p>
+            <p>赵晴儿展开一卷古剑谱，上面记载着斐波那契剑诀：0, 1, 1, 2, 3, 5, 8, 13……「每一式都是前两式的融合。T次问询，每次报出第N式。」</p>
 
         </div>
 
         <div class="io-section">
             <h4>输入格式</h4>
-            <p>一个整数N。</p>
+            <p>第一行一个整数T。接下来T行，每行一个整数N。</p>
 
         </div>
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>一行，输出前N个斐波那契数（从F(0)开始），空格隔开。</p>
+            <p>每行输出对应的F(N)。</p>
 
         </div>
 
@@ -3242,7 +3252,7 @@ a, b = <span class="number">0</span>, <span class="number">1</span>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> m, n;
-    <span class="keyword">while</span> (cin &gt;&gt; m &gt;&gt; n &amp;&amp; m &gt; <span class="number">0</span> &amp;&amp; n &gt; <span class="number">0</span>) {
+    <span class="keyword">while</span> (cin &gt;&gt; m &gt;&gt; n, m &gt; <span class="number">0</span> &amp;&amp; n &gt; <span class="number">0</span>) {
         <span class="keyword">if</span> (m &gt; n) swap(m, n);
         <span class="keyword">int</span> sum = <span class="number">0</span>;
         <span class="keyword">for</span> (<span class="keyword">int</span> i = m; i &lt;= n; i++) {
@@ -3423,7 +3433,7 @@ idx = <span class="number">2</span>
 
         <div class="io-section">
             <h4>输出格式</h4>
-            <p>每行一个完全数（不超过N），从小到大输出。</p>
+            <p>每行一个完全数，格式为 <code>X = f1 + f2 + f3 + fk</code>，所有真因子从小到大用加号连接。</p>
 
         </div>
 
@@ -3535,6 +3545,9 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
         </div>
     </div></div><div style="page-break-before:always;margin-top:40px" id="ch5"><h1>第5章 十二宫剑阵</h1>
     <div class="chapter-subtitle">二维数组</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>十二宫剑阵展开，光幕上浮现一个12×12的方格。"二维数组——矩阵。行与列交织，每个格子都是一个数据点。"</p><p>本章学习二维数组——矩阵的存储、遍历和方向数组。掌握这些，你就能操控任何网格结构。</p>
+    </div>
 
     <div class="problem" id="JD055">
         <div class="problem-title">JD055：上方剑域</div>
@@ -4466,6 +4479,9 @@ d = x = y = <span class="number">0</span>
         </div>
     </div></div><div style="page-break-before:always;margin-top:40px" id="ch6"><h1>第6章 古卷密文</h1>
     <div class="chapter-subtitle">字符串处理</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>古卷展开，密文横陈。赵晴儿说："字符串——字符的序列。古人的智慧，藏在文字之间。"</p><p>本章学习字符串处理——文本数据的查找、替换、分割等操作。剑道传承，始于文字。</p>
+    </div>
 
     <div class="problem" id="JD067">
         <div class="problem-title">JD067：古卷测长</div>
@@ -4814,7 +4830,7 @@ hello2024world
 
         <div class="sample">
             <div class="sample-label">输入样例</div>
-rock cloth
+Hunter Bear
         </div>
         <div class="sample">
             <div class="sample-label">输出样例</div>
@@ -4835,7 +4851,7 @@ Player2
   <span class="keyword">char</span> a[<span class="number">20</span>],b[<span class="number">20</span>];
   <span class="keyword">while</span>(scanf(&quot;%s%s&quot;,a,b)==<span class="number">2</span>) {
     <span class="keyword">if</span>(!strcmp(a,b)) printf(&quot;Tie\n&quot;);
-    <span class="keyword">else</span> <span class="keyword">if</span>((!strcmp(a,&quot;rock&quot;)&amp;&amp;!strcmp(b,&quot;scissors&quot;))||(!strcmp(a,&quot;scissors&quot;)&amp;&amp;!strcmp(b,&quot;cloth&quot;))||(!strcmp(a,&quot;cloth&quot;)&amp;&amp;!strcmp(b,&quot;rock&quot;))) printf(&quot;Player1\n&quot;);
+    <span class="keyword">else</span> <span class="keyword">if</span>((!strcmp(a,&quot;Hunter&quot;)&amp;&amp;!strcmp(b,&quot;Gun&quot;))||(!strcmp(a,&quot;Gun&quot;)&amp;&amp;!strcmp(b,&quot;Bear&quot;))||(!strcmp(a,&quot;Bear&quot;)&amp;&amp;!strcmp(b,&quot;Hunter&quot;))) printf(&quot;Player1\n&quot;);
     <span class="keyword">else</span> printf(&quot;Player2\n&quot;);
   }
   <span class="keyword">return</span> <span class="number">0</span>;
@@ -4845,7 +4861,7 @@ Player2
 data = sys.stdin.read().split()
 p1, p2 = data[<span class="number">0</span>], data[<span class="number">1</span>]
 <span class="keyword">if</span> p1 == p2: <span class="keyword">print</span>(&<span class="comment">#x27;Tie&#x27;)</span>
-<span class="keyword">elif</span> (p1==&<span class="comment">#x27;rock&#x27; and p2==&#x27;scissors&#x27;) or (p1==&#x27;scissors&#x27; and p2==&#x27;cloth&#x27;) or (p1==&#x27;cloth&#x27; and p2==&#x27;rock&#x27;):</span>
+<span class="keyword">elif</span> (p1==&<span class="comment">#x27;Hunter&#x27; and p2==&#x27;Gun&#x27;) or (p1==&#x27;Bear&#x27; and p2==&#x27;Hunter&#x27;) or (p1==&#x27;Gun&#x27; and p2==&#x27;Bear&#x27;):</span>
     <span class="keyword">print</span>(&<span class="comment">#x27;Player1&#x27;)</span>
 <span class="keyword">else</span>:
     <span class="keyword">print</span>(&<span class="comment">#x27;Player2&#x27;)</span></code></pre>
@@ -4858,7 +4874,7 @@ p1, p2 = data[<span class="number">0</span>], data[<span class="number">1</span>
         <div class="problem-meta">AcWing JD | JD073</div>
 
         <div class="description">
-            <p>古卷需要加密保存。加密规则：每个字母后移一位（z→a，Z→A），其他字符不变。</p>
+            <p>古卷需要加密保存。加密规则：每个字母后移一位（z→a），每个数字后移一位（9→0），其他字符不变。</p>
 
         </div>
 
@@ -5466,6 +5482,9 @@ r = s.rfind(s2)
         </div>
     </div></div><div style="page-break-before:always;margin-top:40px" id="ch7"><h1>第7章 以招创招</h1>
     <div class="chapter-subtitle">函数与递归</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>丹房之中，赵晴儿演示炼丹之术："重复的操作，封装成函数。复杂的计算，用递归层层解开。"</p><p>本章学习函数封装和递归——将重复逻辑封装成可复用的函数，用递归解决分治类问题。这是从"写代码"到"设计程序"的飞跃。</p>
+    </div>
 
     <div class="problem" id="JD081">
         <div class="problem-title">JD081：初窥阶乘</div>
@@ -6552,6 +6571,9 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
         </div>
     </div></div><div style="page-break-before:always;margin-top:40px" id="ch8"><h1>第8章 百器图谱</h1>
     <div class="chapter-subtitle">容器与内置算法</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>兵器阁深处，梁嘉峰指着各种容器："栈如叠盘，队如列阵，链如铁环——每种容器都有独特的用途。"</p><p>本章学习 STL 容器——栈、队列、链表等数据结构的实际应用。掌握容器，你的代码将更加优雅高效。</p>
+    </div>
 
     <div class="problem" id="JD096">
         <div class="problem-title">JD096：空格替换</div>
@@ -6866,7 +6888,7 @@ stack2 = []
         <span class="keyword">if</span> stack2:
             <span class="keyword">print</span>(stack2[-<span class="number">1</span>])
     <span class="keyword">elif</span> parts[<span class="number">0</span>] == &<span class="comment">#x27;empty&#x27;:</span>
-        <span class="keyword">print</span>(&<span class="comment">#x27;yes&#x27; if (not stack1 and not stack2) else &#x27;no&#x27;)</span></code></pre>
+        <span class="keyword">print</span>(&<span class="comment">#x27;true&#x27; if (not stack1 and not stack2) else &#x27;false&#x27;)</span></code></pre>
             </details>
         </div>
     </div>
@@ -6931,15 +6953,11 @@ stack2 = []
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
-data = sys.stdin.read().split()
-values = []
-<span class="keyword">for</span> x <span class="keyword">in</span> data:
-    num = <span class="keyword">int</span>(x)
-    <span class="keyword">if</span> num == -<span class="number">1</span>:
-        <span class="keyword">break</span>
-    values.append(num)
+text = sys.stdin.read().strip()
+parts = text.split(&quot;-&gt;&quot;)
+values = [p <span class="keyword">for</span> p <span class="keyword">in</span> parts <span class="keyword">if</span> p != &quot;NULL&quot;]
 values.reverse()
-<span class="keyword">print</span>(&quot; &quot;.join(<span class="keyword">str</span>(v) <span class="keyword">for</span> v <span class="keyword">in</span> values))</code></pre>
+<span class="keyword">print</span>(&quot;-&gt;&quot;.join(values) + &quot;-&gt;NULL&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -7008,18 +7026,9 @@ values.reverse()
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
-data = sys.stdin.read().split()
-idx = <span class="number">0</span>
-a = []
-<span class="keyword">while</span> <span class="keyword">True</span>:
-    num = <span class="keyword">int</span>(data[idx]); idx += <span class="number">1</span>
-    <span class="keyword">if</span> num == -<span class="number">1</span>: <span class="keyword">break</span>
-    a.append(num)
-b = []
-<span class="keyword">while</span> <span class="keyword">True</span>:
-    num = <span class="keyword">int</span>(data[idx]); idx += <span class="number">1</span>
-    <span class="keyword">if</span> num == -<span class="number">1</span>: <span class="keyword">break</span>
-    b.append(num)
+lines = sys.stdin.read().strip().split(&<span class="comment">#x27;\n&#x27;)</span>
+a = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> lines[<span class="number">0</span>].split(&quot;-&gt;&quot;) <span class="keyword">if</span> x != &quot;NULL&quot;]
+b = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> lines[<span class="number">1</span>].split(&quot;-&gt;&quot;) <span class="keyword">if</span> x != &quot;NULL&quot;]
 i = j = <span class="number">0</span>
 res = []
 <span class="keyword">while</span> i &lt; <span class="keyword">len</span>(a) <span class="keyword">and</span> j &lt; <span class="keyword">len</span>(b):
@@ -7031,7 +7040,7 @@ res = []
         j += <span class="number">1</span>
 res.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> a[i:])
 res.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> b[j:])
-<span class="keyword">print</span>(&quot; &quot;.join(res))</code></pre>
+<span class="keyword">print</span>(&quot;-&gt;&quot;.join(res))</code></pre>
             </details>
         </div>
     </div>
@@ -7132,6 +7141,9 @@ data.sort(key=<span class="keyword">lambda</span> t: t[<span class="number">0</s
         </div>
     </div></div><div style="page-break-before:always;margin-top:40px" id="ch9"><h1>第9章 快剑如风</h1>
     <div class="chapter-subtitle">排序与二分</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>试炼场上，梁嘉峰演示一剑分两路之术："排序——让混乱变得有序。二分——在有序中快速定位。"</p><p>本章学习快速排序、归并排序和二分查找——这是算法世界的基石，掌握它们，你将拥有处理海量数据的能力。</p>
+    </div>
 
     <div class="problem" id="JD103">
         <div class="problem-title">JD103：立桩定阵</div>
@@ -7681,7 +7693,7 @@ _, ans = merge_sort_count(arr)
       <span class="keyword">int</span> left = <span class="number">0</span>, right = n-<span class="number">1</span>;<span class="comment">//初始化left和right</span>
       <span class="keyword">while</span> (left &lt; right) <span class="comment">//模板2</span>
       {
-          <span class="keyword">int</span> mid = (left + right) &gt;&gt; <span class="number">1</span>;
+          <span class="keyword">int</span> mid = left + right&gt;&gt;<span class="number">1</span>;
           <span class="keyword">if</span> (nums[mid]&gt;=k) right = mid;<span class="comment">//模板1,</span>
           <span class="keyword">else</span> left = mid +<span class="number">1</span>;
       }
@@ -7695,7 +7707,7 @@ _, ans = merge_sort_count(arr)
           left=<span class="number">0</span>, right=n-<span class="number">1</span>;<span class="comment">//重新初始化left,riight,进行第二次二分搜索</span>
           <span class="keyword">while</span> (left &lt; right)
           {
-              <span class="keyword">int</span> mid = (left + right + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>;
+              <span class="keyword">int</span> mid = left+right+<span class="number">1</span>&gt;&gt;<span class="number">1</span>;
               <span class="keyword">if</span> (nums[mid]&lt;=k) left=mid;
               <span class="keyword">else</span> right = mid -<span class="number">1</span>;              
           }
@@ -7815,6 +7827,9 @@ l, r = -<span class="number">10000.0</span>, <span class="number">10000.0</span>
         </div>
     </div></div><div style="page-break-before:always;margin-top:40px" id="ch10"><h1>第10章 千锤百炼</h1>
     <div class="chapter-subtitle">高精度与位运算</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>精铸阁中，匠人在铁板上刻下巨大的数字。"高精度——用数组模拟大数运算。位运算——在二进制世界中游刃有余。"</p><p>本章学习高精度运算和位运算——当普通数据类型不够用时，这些技巧能让你突破极限。</p>
+    </div>
 
     <div class="problem" id="JD109">
         <div class="problem-title">JD109：铁壁识痕</div>
@@ -8524,6 +8539,9 @@ ans = <span class="number">0</span>
         </div>
     </div></div><div style="page-break-before:always;margin-top:40px" id="ch11"><h1>第11章 蓄势待发</h1>
     <div class="chapter-subtitle">前缀和、差分与双指针</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>蓄势阁中，赵晴儿盘膝而坐："前缀和——记住历史，快速回答。差分——记录变化，高效更新。双指针——两路并进，一击即中。"</p><p>本章学习前缀和、差分和双指针——这些技巧让你用 O(1) 或 O(n) 的时间处理看似需要 O(n²) 的问题。</p>
+    </div>
 
     <div class="problem" id="JD121">
         <div class="problem-title">JD121：蓄势之术</div>
@@ -9008,7 +9026,7 @@ vector&lt;PII&gt; add, query; <span class="comment">//输入操作的坐标，�
     <span class="keyword">int</span> left = <span class="number">0</span>, right = alls.size() - <span class="number">1</span>; <span class="comment">//vector从0开始计数</span>
     <span class="keyword">while</span> (left &lt; right)
     {
-        <span class="keyword">int</span> mid = (left + right) &gt;&gt; <span class="number">1</span>; <span class="comment">//取中值</span>
+        <span class="keyword">int</span> mid = left + right &gt;&gt; <span class="number">1</span>; <span class="comment">//取中值</span>
         <span class="keyword">if</span> (alls[mid] &gt;= x)
             right = mid;
         <span class="keyword">else</span>
@@ -9483,6 +9501,9 @@ ans = <span class="keyword">sum</span>(<span class="keyword">abs</span>(x - mid)
         </div>
     </div></div><div style="page-break-before:always;margin-top:40px" id="ch12"><h1>第12章 利器出鞘</h1>
     <div class="chapter-subtitle">进阶数据结构</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>兵器阁深处，梁嘉峰打开一个布满机关的箱子："单调栈、单调队列、KMP、堆、并查集——每一种都是利器。"</p><p>本章学习进阶数据结构——它们是解决复杂问题的利器，掌握它们，你将能应对更高级的算法挑战。</p>
+    </div>
 
     <div class="problem" id="JD130">
         <div class="problem-title">JD130：铁链串珠</div>
@@ -9692,15 +9713,13 @@ query
         <div class="sample">
             <div class="sample-label">输出样例</div>
 5
-6
-5
 5
 3
 4
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>数组模拟栈：tt指向栈顶。push: st[++tt]=x。pop: 输出栈顶值后tt--。query: st[tt]。</p>
+            <strong>解题思路：</strong><p>数组模拟栈：tt指向栈顶。push: st[++tt]=x。pop: tt--。query: st[tt]。</p>
 
         </div>
         <div class="code-section">
@@ -9728,7 +9747,7 @@ query
       cin &gt;&gt; x;
       stk[++tt] = x;<span class="comment">//压入一个元素</span>
     }
-    <span class="keyword">else</span> <span class="keyword">if</span> (op == &quot;pop&quot;) { cout&lt;&lt;stk[tt]&lt;&lt;endl; tt--; }<span class="comment">//输出栈顶并弹出</span>
+    <span class="keyword">else</span> <span class="keyword">if</span> (op == &quot;pop&quot;) tt --;<span class="comment">//修改栈顶指针即可</span>
     <span class="keyword">else</span> <span class="keyword">if</span> (op == &quot;empty&quot;) cout &lt;&lt; (tt? &quot;NO&quot;:&quot;YES&quot;) &lt;&lt;endl;<span class="comment">//tt&gt;0表示非空</span>
     <span class="keyword">else</span> cout&lt;&lt;stk[tt]&lt;&lt;endl;<span class="comment">//返回栈顶</span>
   }
@@ -9743,7 +9762,7 @@ stk = []
     <span class="keyword">if</span> op == &<span class="comment">#x27;push&#x27;:</span>
         stk.append(<span class="keyword">int</span>(parts[<span class="number">1</span>]))
     <span class="keyword">elif</span> op == &<span class="comment">#x27;pop&#x27;:</span>
-        <span class="keyword">print</span>(stk.pop())
+        stk.pop()
     <span class="keyword">elif</span> op == &<span class="comment">#x27;query&#x27;:</span>
         <span class="keyword">print</span>(stk[-<span class="number">1</span>])
     <span class="keyword">else</span>:
@@ -9828,7 +9847,7 @@ pop
       hh++;
       <span class="keyword">else</span> <span class="keyword">if</span> (op == &quot;empty&quot;) <span class="comment">// (3) “empty” – 判断队列是否为空；</span>
       cout&lt;&lt;(hh&lt;=tt?&quot;NO&quot;:&quot;YES&quot;)&lt;&lt;endl;
-      <span class="keyword">else</span> cout&lt;&lt;q[hh]&lt;&lt;endl;<span class="comment">// (4) “query” – 查询队头元素。</span>
+      <span class="keyword">else</span> cout&lt;&lt;q[tt]&lt;&lt;endl;<span class="comment">// (4) “query” – 查询队头元素。</span>
   }
 
   <span class="keyword">return</span> <span class="number">0</span>;
@@ -10160,6 +10179,20 @@ res = []
     }
     puts(&quot;&quot;);
 
+    <span class="comment">//求滑动窗口内的最大值    </span>
+    initQueue();<span class="comment">//初始化队列,队列存储的是数组下标</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)
+    {
+        <span class="comment">//判断队头是否已经滑出窗口</span>
+        <span class="keyword">if</span> (hh&lt;=tt &amp;&amp; i-k+<span class="number">1</span>&gt; q[hh]) hh++;<span class="comment">//pop front删除队头</span>
+        <span class="comment">//!单调队列，去掉所有降序的队尾点</span>
+        <span class="keyword">while</span> (hh&lt;=tt&amp;&amp; a[q[tt]]&lt;=a[i]) tt--;<span class="comment">//pop back删除队尾</span>
+        q[++tt] =i;<span class="comment">//把当前i值入队列</span>
+        <span class="keyword">if</span> (i&gt;=k-<span class="number">1</span>) <span class="comment">//i在窗口内</span>
+          printf(&quot;%d &quot;,a[q[hh]]);<span class="comment">//队头就是最大值</span>
+    }
+    puts(&quot;&quot;);
+
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
@@ -10174,7 +10207,16 @@ mins = []
     q.append(i)
     <span class="keyword">if</span> q[<span class="number">0</span>] &lt;= i - k: q.popleft()
     <span class="keyword">if</span> i &gt;= k - <span class="number">1</span>: mins.append(<span class="keyword">str</span>(a[q[<span class="number">0</span>]]))
-<span class="keyword">print</span>(&<span class="comment">#x27; &#x27;.join(mins))</span></code></pre>
+q.clear()
+maxs = []
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n):
+    <span class="keyword">while</span> q <span class="keyword">and</span> a[q[-<span class="number">1</span>]] &lt;= a[i]: q.pop()
+    q.append(i)
+    <span class="keyword">if</span> q[<span class="number">0</span>] &lt;= i - k: q.popleft()
+    <span class="keyword">if</span> i &gt;= k - <span class="number">1</span>: maxs.append(<span class="keyword">str</span>(a[q[<span class="number">0</span>]]))
+<span class="comment"># Match C++ printf(&quot;%d &quot;, ...) format with trailing spaces</span>
+sys.stdout.write(&<span class="comment">#x27; &#x27;.join(mins) + &#x27; \n&#x27;)</span>
+sys.stdout.write(&<span class="comment">#x27; &#x27;.join(maxs) + &#x27; \n&#x27;)</span></code></pre>
             </details>
         </div>
     </div>
@@ -10847,6 +10889,9 @@ idx = <span class="number">2</span>
         </div>
     </div></div><div style="page-break-before:always;margin-top:40px" id="ch13"><h1>第13章 迷雾寻踪</h1>
     <div class="chapter-subtitle">搜索与回溯</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>迷雾弥漫的林间小径上，赵晴儿指着分叉的路口："DFS 深入探索每一条路，BFS 逐层推进找最短。回溯——选了不行就回头。"</p><p>本章学习搜索和回溯——DFS 和 BFS 是图搜索的基础，回溯是枚举所有可能的利器。</p>
+    </div>
 
     <div class="problem" id="JD141">
         <div class="problem-title">JD141：雾中排阵</div>
@@ -10910,7 +10955,7 @@ idx = <span class="number">2</span>
   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) {
     <span class="keyword">if</span> (!used[i]) {
       path[u] = i;      <span class="comment">//记录当前位path[u]的数字为i</span>
-      used[i] = <span class="keyword">true</span>;   <span class="comment">//标记数字i为已经使用过</span>
+      used[i] = <span class="keyword">true</span>;   <span class="comment">//标记数字i为已经使用郭</span>
       dfs(u + <span class="number">1</span>);       <span class="comment">//递归处理下一个位</span>
       used[i] = <span class="keyword">false</span>;  <span class="comment">//恢复现场</span>
     }
@@ -11014,7 +11059,7 @@ Q...
   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
     <span class="keyword">if</span> (!col[i] &amp;&amp; !dg[i + u] &amp;&amp; !udg[i - u + n]) {
       g[u][i] = &#x27;Q&#x27;;  <span class="comment">//当前位置设置为Q字符</span>
-      col[i] = dg[i + u] = udg[i - u + n] = <span class="keyword">true</span>;  <span class="comment">//标记数字i为已经使用过</span>
+      col[i] = dg[i + u] = udg[i - u + n] = <span class="keyword">true</span>;  <span class="comment">//标记数字i为已经使用郭</span>
       dfs(u + <span class="number">1</span>);                                  <span class="comment">//递归处理下一个位</span>
       g[u][i] = &#x27;.&#x27;;                               <span class="comment">//恢复现场</span>
       col[i] = dg[i + u] = udg[i - u + n] = <span class="keyword">false</span>;  <span class="comment">//恢复现场</span>
@@ -11558,6 +11603,7 @@ dfs(<span class="number">1</span>, -<span class="number">1</span>)
       }
     }
   }
+  <span class="keyword">return</span> d[n];
 }
 
 <span class="keyword">int</span> main()
@@ -11572,9 +11618,7 @@ dfs(<span class="number">1</span>, -<span class="number">1</span>)
       add(a,b);
     }
 
-    bfs();
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cout &lt;&lt; d[i] &lt;&lt; &quot; &quot;;
-    cout &lt;&lt; endl;
+    cout&lt;&lt;bfs()&lt;&lt;endl;
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -11594,11 +11638,14 @@ q = deque([<span class="number">1</span>])
         <span class="keyword">if</span> dist[v] == -<span class="number">1</span>:
             dist[v] = dist[u] + <span class="number">1</span>
             q.append(v)
-<span class="keyword">print</span>(&quot; &quot;.join(<span class="keyword">str</span>(dist[i]) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>)))</code></pre>
+<span class="keyword">print</span>(dist[n])</code></pre>
             </details>
         </div>
     </div></div><div style="page-break-before:always;margin-top:40px" id="ch14"><h1>第14章 千里奔袭</h1>
     <div class="chapter-subtitle">最短路与生成树</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>城际连横，梁嘉峰展开地图："从一座城到另一座城，最短的路在哪里？Dijkstra、Floyd、Kruskal——每一种算法都是战场上的利器。"</p><p>本章学习最短路和最小生成树——图论的核心算法，掌握它们，你将能解决任何网络优化问题。</p>
+    </div>
 
     <div class="problem" id="JD147">
         <div class="problem-title">JD147：拓扑之序</div>
@@ -11790,7 +11837,7 @@ res = []
 
 <span class="keyword">int</span> n,m;
 
-<span class="keyword">void</span> Dijkstra()
+<span class="keyword">int</span> Dijkstra()
 {
   memset(dist,0x3f, <span class="keyword">sizeof</span> dist);<span class="comment">//初始化距离  0x3f代表无限大</span>
 
@@ -11812,6 +11859,8 @@ res = []
    }
 
 
+   <span class="keyword">if</span> (dist[n] == INF) <span class="keyword">return</span> -<span class="number">1</span>;
+   <span class="keyword">return</span> dist[n];<span class="comment">//返回第n个点的最短距离</span>
 }
 
 <span class="keyword">int</span> main()
@@ -11826,9 +11875,7 @@ res = []
     cin&gt;&gt;x&gt;&gt;y&gt;&gt;z;
     g[x][y] = min( g[x][y],z);<span class="comment">//取重边和自环的最小值，保留一条边</span>
   }
-  Dijkstra();
-  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cout &lt;&lt; (dist[i] == INF ? -<span class="number">1</span> : dist[i]) &lt;&lt; &quot; &quot;;
-  cout &lt;&lt; endl;
+  cout&lt;&lt;Dijkstra()&lt;&lt;endl;
 
   <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -11851,7 +11898,7 @@ st = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
     <span class="keyword">for</span> v <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
         <span class="keyword">if</span> dist[v] &gt; dist[t] + g[t][v]:
             dist[v] = dist[t] + g[t][v]
-<span class="keyword">print</span>(&quot; &quot;.join(<span class="keyword">str</span>(dist[i] <span class="keyword">if</span> dist[i] != 0x3f3f3f3f <span class="keyword">else</span> -<span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>)))</code></pre>
+<span class="keyword">print</span>(dist[n] <span class="keyword">if</span> dist[n] != 0x3f3f3f3f <span class="keyword">else</span> -<span class="number">1</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -11925,7 +11972,7 @@ st = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
 }
 
 <span class="comment">//改进版，使用小根堆</span>
-<span class="keyword">void</span> dijkstra() {
+<span class="keyword">int</span> dijkstra() {
   <span class="comment">//初始化距离矩阵</span>
   memset(dist, 0x3f, <span class="keyword">sizeof</span> dist);
   dist[<span class="number">1</span>] = <span class="number">0</span>;
@@ -11958,6 +12005,10 @@ st = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
       }
     }
   }
+  <span class="comment">//如果第n点距离值没被更新，表明不可达</span>
+  <span class="keyword">if</span> (dist[n] == 0x3f3f3f3f) <span class="keyword">return</span> -<span class="number">1</span>;
+  <span class="comment">//返回点n的距离值</span>
+  <span class="keyword">return</span> dist[n];
 }
 
 <span class="keyword">int</span> main() {
@@ -11972,9 +12023,7 @@ st = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
     add(a, b, c);<span class="comment">//调用add建图</span>
   }
   <span class="comment">//调用改进版的dijkstra()</span>
-  dijkstra();
-  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cout &lt;&lt; (dist[i] == 0x3f3f3f3f ? -<span class="number">1</span> : dist[i]) &lt;&lt; &quot; &quot;;
-  cout &lt;&lt; endl;
+  cout &lt;&lt; dijkstra() &lt;&lt; endl;
 
   <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -12002,7 +12051,7 @@ heap = [(<span class="number">0</span>, <span class="number">1</span>)]
         <span class="keyword">if</span> dist[v] &gt; d + w:
             dist[v] = d + w
             heapq.heappush(heap, (dist[v], v))
-<span class="keyword">print</span>(&quot; &quot;.join(<span class="keyword">str</span>(dist[i] <span class="keyword">if</span> dist[i] != INF <span class="keyword">else</span> -<span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>)))</code></pre>
+<span class="keyword">print</span>(dist[n] <span class="keyword">if</span> dist[n] != INF <span class="keyword">else</span> -<span class="number">1</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -12073,7 +12122,7 @@ heap = [(<span class="number">0</span>, <span class="number">1</span>)]
     e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx ++ ;
 }
 
-<span class="keyword">void</span> spfa()  <span class="comment">// 求1号点到所有点的最短路距离</span>
+<span class="keyword">int</span> spfa()  <span class="comment">// 求1号点到n号点的最短路距离，如果从1号点无法走到n号点则返回-1</span>
 {
     <span class="keyword">int</span> hh = <span class="number">0</span>, tt = <span class="number">0</span>;
     memset(dist, 0x3f, <span class="keyword">sizeof</span> dist);
@@ -12103,6 +12152,8 @@ heap = [(<span class="number">0</span>, <span class="number">1</span>)]
         }
     }
 
+    <span class="keyword">if</span> (dist[n] == 0x3f3f3f3f) <span class="keyword">return</span> -<span class="number">1</span>;
+    <span class="keyword">return</span> dist[n];
 }
 
 <span class="keyword">int</span> main()
@@ -12116,9 +12167,10 @@ heap = [(<span class="number">0</span>, <span class="number">1</span>)]
       add(a, b, c);
     }
 
-    spfa();
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cout &lt;&lt; (dist[i] == 0x3f3f3f3f ? -<span class="number">1</span> : dist[i]) &lt;&lt; &quot; &quot;;
-    cout &lt;&lt; endl;
+    <span class="keyword">int</span> t = spfa();
+
+    <span class="keyword">if</span> (t == -<span class="number">1</span>) puts(&quot;impossible&quot;);
+    <span class="keyword">else</span> printf(&quot;%d\n&quot;,t);
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -12147,7 +12199,7 @@ st[<span class="number">1</span>] = <span class="keyword">True</span>
             dist[v] = dist[u] + w
             <span class="keyword">if</span> <span class="keyword">not</span> st[v]:
                 q.append(v); st[v] = <span class="keyword">True</span>
-<span class="keyword">print</span>(&quot; &quot;.join(<span class="keyword">str</span>(dist[i] <span class="keyword">if</span> dist[i] != INF <span class="keyword">else</span> -<span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>)))</code></pre>
+<span class="keyword">print</span>(dist[n] <span class="keyword">if</span> dist[n] != INF <span class="keyword">else</span> &<span class="comment">#x27;impossible&#x27;)</span></code></pre>
             </details>
         </div>
     </div>
@@ -12670,6 +12722,9 @@ ok = <span class="keyword">True</span>
         </div>
     </div></div><div style="page-break-before:always;margin-top:40px" id="ch15"><h1>第15章 华山论剑</h1>
     <div class="chapter-subtitle">动态规划</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>华山之巅，风雷激荡。四面八方的高手齐聚于此——华山论剑，一决高下。"动态规划——记住过去，优化未来。背包、区间、状态压缩、树形——每一种DP都是一门绝技。"</p><p>本章学习动态规划——算法世界中最精妙的技巧。掌握DP，你将拥有解决任何复杂问题的能力。这一战之后，你便可以出师了。</p>
+    </div>
 
     <div class="problem" id="JD155">
         <div class="problem-title">JD155：一剑一鞘</div>
@@ -12909,7 +12964,7 @@ f = [<span class="number">0</span>] * (V + <span class="number">1</span>)
 
    <span class="comment">//用dp从底层往上计算每个f[i][j]的值</span>
    <span class="keyword">for</span> (<span class="keyword">int</span> i = n-<span class="number">1</span>; i; i--)
-     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++)
+     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n; j++)
         f[i][j] = max(f[i+<span class="number">1</span>][j]+w[i][j], f[i+<span class="number">1</span>][j+<span class="number">1</span>] + w[i][j]);
 
   cout&lt;&lt;f[<span class="number">1</span>][<span class="number">1</span>]&lt;&lt;endl;

@@ -31,6 +31,9 @@
 <body>
     <h1>第8章 百器图谱</h1>
     <div class="chapter-subtitle">容器与内置算法</div>
+    <div class="chapter-intro" style="margin: 1.5em 0; padding: 1em; background: #f8f4e8; border-left: 4px solid #b8860b; border-radius: 0 8px 8px 0;">
+        <p>兵器阁深处，梁嘉峰指着各种容器："栈如叠盘，队如列阵，链如铁环——每种容器都有独特的用途。"</p><p>本章学习 STL 容器——栈、队列、链表等数据结构的实际应用。掌握容器，你的代码将更加优雅高效。</p>
+    </div>
 
     <div class="problem" id="JD096">
         <div class="problem-title">JD096：空格替换</div>
@@ -345,7 +348,7 @@ stack2 = []
         <span class="keyword">if</span> stack2:
             <span class="keyword">print</span>(stack2[-<span class="number">1</span>])
     <span class="keyword">elif</span> parts[<span class="number">0</span>] == &<span class="comment">#x27;empty&#x27;:</span>
-        <span class="keyword">print</span>(&<span class="comment">#x27;yes&#x27; if (not stack1 and not stack2) else &#x27;no&#x27;)</span></code></pre>
+        <span class="keyword">print</span>(&<span class="comment">#x27;true&#x27; if (not stack1 and not stack2) else &#x27;false&#x27;)</span></code></pre>
             </details>
         </div>
     </div>
@@ -410,15 +413,11 @@ stack2 = []
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
-data = sys.stdin.read().split()
-values = []
-<span class="keyword">for</span> x <span class="keyword">in</span> data:
-    num = <span class="keyword">int</span>(x)
-    <span class="keyword">if</span> num == -<span class="number">1</span>:
-        <span class="keyword">break</span>
-    values.append(num)
+text = sys.stdin.read().strip()
+parts = text.split(&quot;-&gt;&quot;)
+values = [p <span class="keyword">for</span> p <span class="keyword">in</span> parts <span class="keyword">if</span> p != &quot;NULL&quot;]
 values.reverse()
-<span class="keyword">print</span>(&quot; &quot;.join(<span class="keyword">str</span>(v) <span class="keyword">for</span> v <span class="keyword">in</span> values))</code></pre>
+<span class="keyword">print</span>(&quot;-&gt;&quot;.join(values) + &quot;-&gt;NULL&quot;)</code></pre>
             </details>
         </div>
     </div>
@@ -487,18 +486,9 @@ values.reverse()
 }</code></pre>
             <h4>Python</h4>
             <pre><code class="language-python"><span class="keyword">import</span> sys
-data = sys.stdin.read().split()
-idx = <span class="number">0</span>
-a = []
-<span class="keyword">while</span> <span class="keyword">True</span>:
-    num = <span class="keyword">int</span>(data[idx]); idx += <span class="number">1</span>
-    <span class="keyword">if</span> num == -<span class="number">1</span>: <span class="keyword">break</span>
-    a.append(num)
-b = []
-<span class="keyword">while</span> <span class="keyword">True</span>:
-    num = <span class="keyword">int</span>(data[idx]); idx += <span class="number">1</span>
-    <span class="keyword">if</span> num == -<span class="number">1</span>: <span class="keyword">break</span>
-    b.append(num)
+lines = sys.stdin.read().strip().split(&<span class="comment">#x27;\n&#x27;)</span>
+a = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> lines[<span class="number">0</span>].split(&quot;-&gt;&quot;) <span class="keyword">if</span> x != &quot;NULL&quot;]
+b = [<span class="keyword">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> lines[<span class="number">1</span>].split(&quot;-&gt;&quot;) <span class="keyword">if</span> x != &quot;NULL&quot;]
 i = j = <span class="number">0</span>
 res = []
 <span class="keyword">while</span> i &lt; <span class="keyword">len</span>(a) <span class="keyword">and</span> j &lt; <span class="keyword">len</span>(b):
@@ -510,7 +500,7 @@ res = []
         j += <span class="number">1</span>
 res.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> a[i:])
 res.extend(<span class="keyword">str</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> b[j:])
-<span class="keyword">print</span>(&quot; &quot;.join(res))</code></pre>
+<span class="keyword">print</span>(&quot;-&gt;&quot;.join(res))</code></pre>
             </details>
         </div>
     </div>
