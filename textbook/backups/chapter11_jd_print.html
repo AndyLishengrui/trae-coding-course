@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>第11章 蓄势待发——前缀和、差分与双指针</title>
+    <style>
+        body { font-family: "Noto Serif SC", "Source Han Serif CN", serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.8; color: #333; }
+        h1 { text-align: center; color: #8B0000; border-bottom: 2px solid #8B0000; padding-bottom: 10px; }
+        h2 { color: #4A0080; margin-top: 2em; }
+        h3 { color: #2E5090; }
+        .chapter-subtitle { text-align: center; color: #666; font-size: 1.1em; margin-bottom: 2em; }
+        .problem { border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin: 20px 0; background: #fafafa; }
+        .problem-title { color: #8B0000; font-size: 1.3em; font-weight: bold; margin-bottom: 10px; }
+        .problem-meta { color: #666; font-size: 0.9em; margin-bottom: 15px; }
+        .description { margin: 15px 0; }
+        .description p { margin: 8px 0; }
+        .io-section { background: #f0f0f0; padding: 12px; border-radius: 4px; margin: 10px 0; }
+        .io-section h4 { margin: 0 0 8px 0; color: #555; font-size: 0.95em; }
+        .sample { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; margin: 10px 0; font-family: "Consolas", "Courier New", monospace; white-space: pre-wrap; }
+        .sample-label { color: #569cd6; font-weight: bold; margin-bottom: 5px; }
+        .hint { background: #fff8e1; border-left: 4px solid #ffc107; padding: 12px; margin: 15px 0; }
+        .code-section { margin: 15px 0; }
+        .code-section summary { cursor: pointer; color: #2E5090; font-weight: bold; }
+        pre { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; overflow-x: auto; font-size: 0.9em; }
+        code { font-family: "Consolas", "Courier New", monospace; }
+        .lang-tabs { display: flex; gap: 10px; margin: 10px 0; }
+        .lang-tab { padding: 5px 15px; cursor: pointer; border: 1px solid #ddd; border-radius: 4px 4px 0 0; }
+        .lang-tab.active { background: #1e1e1e; color: #d4d4d4; border-color: #1e1e1e; }
+    </style>
+</head>
+<body>
+    <h1>第11章 蓄势待发</h1>
+    <div class="chapter-subtitle">前缀和、差分与双指针</div>
+
+    <div class="problem" id="JD121">
+        <div class="problem-title">JD121：蓄势之术</div>
+        <div class="problem-meta">AcWing 795 | JD121</div>
+
+        <div class="description">
+            <p>蓄势阁中，赵晴儿盘膝而坐，面前摆着一排石块，每块上刻着一个数字。</p>
+<p>"如果我问你第3块到第7块的总和，你怎么算？"赵晴儿问。</p>
+<p>李少白："从第3块加到第7块，五次加法。"</p>
+<p>"如果问一千次呢？"赵晴儿摇头，"每次从头算太浪费了。提前算好从第1块到每一块的累积和——第1块到第7块的和减去第1块到第2块的和，就是第3块到第7块的和。一次减法就够了。"</p>
+<p>"这就是前缀和——蓄势于前，取用于后。"</p>
+<p>给定一个长度为 n 的整数序列和 m 个查询，每个查询求 [l, r] 的区间和。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数 n 和 m。第二行 n 个整数。接下来 m 行，每行两个整数 l 和 r（从1开始计数）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>m 行，每行一个整数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5 3
+2 1 3 6 4
+1 3
+2 4
+1 5
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+6
+10
+16
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>前缀和：s[i] = a[1] + a[2] + ... + a[i]。区间和 = s[r] - s[l-1]。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000007</span>;
+<span class="keyword">int</span> n, m;
+
+<span class="keyword">int</span> a[N], s[N];
+
+<span class="keyword">int</span> main()
+{
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        scanf(&quot;%d&quot;, &amp;a[i]);
+    s[<span class="number">0</span>] = <span class="number">0</span>; <span class="comment">//刻意初始化s[0]为0 ，此句可以不写，写也无妨</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        s[i] = s[i - <span class="number">1</span>] + a[i]; <span class="comment">//打表法</span>
+    <span class="comment">//m次询问</span>
+    <span class="keyword">while</span> (m--)
+    {
+        <span class="keyword">int</span> l, r;
+        scanf(&quot;%d%d&quot;, &amp;l, &amp;r);
+        printf(&quot;%d\n&quot;, s[r] - s[l - <span class="number">1</span>]); <span class="comment">//求区间和，直接从s中读取数值</span>
+    }
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 前缀和</span>
+n, m = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
+s = [<span class="number">0</span>] * (n + <span class="number">1</span>)
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+    s[i] = s[i - <span class="number">1</span>] + a[i - <span class="number">1</span>]
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(m):
+    l, r = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+    <span class="keyword">print</span>(s[r] - s[l - <span class="number">1</span>])</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD122">
+        <div class="problem-title">JD122：方阵蓄势</div>
+        <div class="problem-meta">AcWing 796 | JD122</div>
+
+        <div class="description">
+            <p>赵晴儿在沙盘上画了一个 n 行 m 列的数字矩阵。"如果我问你左上角 (x1,y1) 到右下角 (x2,y2) 这个子矩阵里所有数的和，你怎么算？"</p>
+<p>李少白想逐行累加。赵晴儿摇头："太慢了。和一维前缀和一样的思路——提前算好从 (1,1) 到每个位置的累积和。查询时用容斥原理：大矩形减去左边和上边的多余部分，加上左上角多减的部分。"</p>
+<p>"蓄势蓄到二维，一击覆盖任意子矩阵。"</p>
+<p>给定一个 n×m 的整数矩阵和 q 个查询，每个查询求子矩阵的和。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行三个整数 n、m 和 q。接下来 n 行，每行 m 个整数。接下来 q 行，每行四个整数 x1、y1、x2、y2。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>q 行，每行一个整数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3 4 2
+1 3 4 5
+2 6 9 4
+1 4 7 5
+1 1 2 2
+2 1 3 3
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+18
+43
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>二维前缀和：<code>s[i][j]</code> = 左上角到 (i,j) 的累加。子矩阵和 = <code>s[x2][y2] - s[x1-1][y2] - s[x2][y1-1] + s[x1-1][y1-1]</code>。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1007</span>;
+<span class="keyword">int</span> n, m, q;
+<span class="keyword">int</span> a[N][N], s[N][N]; <span class="comment">//子矩阵</span>
+
+<span class="keyword">int</span> main()
+{
+    <span class="comment">//读入矩阵</span>
+    scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;q);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
+            scanf(&quot;%d&quot;, &amp;a[i][j]);
+
+    s[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>; <span class="comment">//刻意初始化s[0]为0 ，此句可以不写，写也无妨</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
+            s[i][j] = s[i - <span class="number">1</span>][j] + s[i][j - <span class="number">1</span>] - s[i - <span class="number">1</span>][j - <span class="number">1</span>] + a[i][j]; <span class="comment">//打表法</span>
+    <span class="comment">//q次询问</span>
+    <span class="keyword">while</span> (q--)
+    {
+        <span class="keyword">int</span> x1, x2, y1, y2;
+        scanf(&quot;%d%d%d%d&quot;, &amp;x1, &amp;y1, &amp;x2, &amp;y2);
+        <span class="comment">//求子矩阵和，直接从s中读取数值</span>
+        printf(&quot;%d\n&quot;, s[x2][y2] - s[x2][y1 - <span class="number">1</span>] - s[x1 - <span class="number">1</span>][y2] + s[x1 - <span class="number">1</span>][y1 - <span class="number">1</span>]); 
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+
+data = sys.stdin.buffer.read().split()
+n, m, q = <span class="keyword">int</span>(data[<span class="number">0</span>]), <span class="keyword">int</span>(data[<span class="number">1</span>]), <span class="keyword">int</span>(data[<span class="number">2</span>])
+idx = <span class="number">3</span>
+
+a = [[<span class="number">0</span>] * (m + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n + <span class="number">1</span>)]
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, m + <span class="number">1</span>):
+        a[i][j] = <span class="keyword">int</span>(data[idx])
+        idx += <span class="number">1</span>
+
+s = [[<span class="number">0</span>] * (m + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n + <span class="number">1</span>)]
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, m + <span class="number">1</span>):
+        s[i][j] = s[i - <span class="number">1</span>][j] + s[i][j - <span class="number">1</span>] - s[i - <span class="number">1</span>][j - <span class="number">1</span>] + a[i][j]
+
+out = []
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(q):
+    x1, y1, x2, y2 = <span class="keyword">int</span>(data[idx]), <span class="keyword">int</span>(data[idx + <span class="number">1</span>]), <span class="keyword">int</span>(data[idx + <span class="number">2</span>]), <span class="keyword">int</span>(data[idx + <span class="number">3</span>])
+    idx += <span class="number">4</span>
+    ans = s[x2][y2] - s[x1 - <span class="number">1</span>][y2] - s[x2][y1 - <span class="number">1</span>] + s[x1 - <span class="number">1</span>][y1 - <span class="number">1</span>]
+    out.append(<span class="keyword">str</span>(ans))
+sys.stdout.write(&<span class="comment">#x27;\n&#x27;.join(out))</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD123">
+        <div class="problem-title">JD123：差分之术</div>
+        <div class="problem-meta">AcWing 797 | JD123</div>
+
+        <div class="description">
+            <p>赵晴儿指着一排石块："我要把第3块到第7块每块都加上5。如果一块块改，太慢了。"</p>
+<p>梁嘉峰说："差分——前缀和的逆运算。你在第3块的位置加5，在第8块的位置减5。最后对整排求一次前缀和，第3到第7块就都加了5，其余不变。"</p>
+<p>"就像往水面扔两块石头，"李少白恍然大悟，"波纹叠加后就是最终结果。"</p>
+<p>给定一个长度为 n 的整数序列和 m 个操作，每个操作将 [l, r] 的每个数加 c。输出所有操作后的序列。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数 n 和 m。第二行 n 个整数。接下来 m 行，每行三个整数 l、r 和 c。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，操作后的序列，空格隔开。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5 3
+1 2 3 4 5
+1 3 2
+2 4 1
+3 5 3
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+3 5 8 8 8
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>差分：b[l] += c, b[r+1] -= c。所有操作完成后，对 b 求前缀和得到最终序列。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000007</span>;
+<span class="keyword">int</span> n, m;
+<span class="keyword">int</span> a[N], b[N];
+
+<span class="comment">//差分的插入公式</span>
+<span class="keyword">void</span> insert(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> c)
+{
+    b[l] += c;
+    b[r + <span class="number">1</span>] -= c;
+}
+
+<span class="keyword">int</span> main()
+{
+    cin &gt;&gt; n &gt;&gt; m;
+    <span class="comment">//读入数组</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        cin &gt;&gt; a[i];
+    <span class="comment">//构造差分数组b</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        insert(i, i, a[i]);
+    <span class="comment">//输出查询结果</span>
+    <span class="keyword">while</span> (m--)
+    {
+        <span class="keyword">int</span> l, r, c;
+        cin &gt;&gt; l &gt;&gt; r &gt;&gt; c;
+        insert(l, r, c);
+    }
+    <span class="comment">//重新复原a数组(前缀和)</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        a[i] = a[i - <span class="number">1</span>] + b[i];
+    <span class="comment">//输出a</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;;
+    cout &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 差分</span>
+n, m = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+a = [<span class="number">0</span>] + <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split()))
+b = [<span class="number">0</span>] * (n + <span class="number">2</span>)
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+    b[i] = a[i] - a[i - <span class="number">1</span>]
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(m):
+    l, r, c = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+    b[l] += c
+    b[r + <span class="number">1</span>] -= c
+res = []
+cur = <span class="number">0</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+    cur += b[i]
+    res.append(<span class="keyword">str</span>(cur))
+<span class="keyword">print</span>(&<span class="comment">#x27; &#x27;.join(res))</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD124">
+        <div class="problem-title">JD124：方阵差分</div>
+        <div class="problem-meta">AcWing 798 | JD124</div>
+
+        <div class="description">
+            <p>赵晴儿在沙盘上画了一个 n 行 m 列的矩阵："我要把左上角 (x1,y1) 到右下角 (x2,y2) 这个子矩阵里每个数都加上 c。"</p>
+<p>梁嘉峰说："和一维差分一样的思路——在差分矩阵的四个角加减，最后对整个矩阵求一次二维前缀和，就还原出最终结果了。"</p>
+<p>"蓄势蓄到二维，差分也能覆盖任意子矩阵。"</p>
+<p>给定一个 n×m 的整数矩阵和 q 个操作，每个操作将子矩阵 (x1,y1)-(x2,y2) 的每个元素加 c。输出所有操作后的矩阵。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行三个整数 n、m 和 q。接下来 n 行，每行 m 个整数。接下来 q 行，每行五个整数 x1、y1、x2、y2 和 c。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>n 行，每行 m 个整数，空格隔开。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3 4 2
+1 2 3 4
+5 6 7 8
+9 10 11 12
+1 1 2 2 1
+2 2 3 3 2
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+2 3 3 4
+6 10 10 8
+9 12 14 12
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>二维差分：在 (x1,y1)+c, (x2+1,y1)-c, (x1,y2+1)-c, (x2+1,y2+1)+c。操作完后求二维前缀和。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1007</span>;
+<span class="keyword">int</span> n, m, q;
+<span class="keyword">int</span> a[N][N], b[N][N]; <span class="comment">//子矩阵</span>
+<span class="comment">//二维差分核心操作</span>
+<span class="keyword">void</span> insert(<span class="keyword">int</span> x1, <span class="keyword">int</span> y1, <span class="keyword">int</span> x2, <span class="keyword">int</span> y2, <span class="keyword">int</span> c)
+{
+    b[x1][y1] += c;
+    b[x1][y2 + <span class="number">1</span>] -= c;
+    b[x2 + <span class="number">1</span>][y1] -= c;
+    b[x2 + <span class="number">1</span>][y2 + <span class="number">1</span>] += c;
+}
+<span class="keyword">int</span> main()
+{
+    <span class="comment">//读入矩阵</span>
+    scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;q);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
+            scanf(&quot;%d&quot;, &amp;a[i][j]);
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
+            insert(i, j, i, j, a[i][j]); <span class="comment">//构造二维差分矩阵</span>
+
+    <span class="comment">//q次询问</span>
+    <span class="keyword">while</span> (q--)
+    {
+        <span class="keyword">int</span> x1, x2, y1, y2, c;
+        scanf(&quot;%d%d%d%d%d&quot;, &amp;x1, &amp;y1, &amp;x2, &amp;y2, &amp;c);
+        <span class="comment">//差分核心操作</span>
+        insert(x1, y1, x2, y2, c);
+    }
+    <span class="comment">//重建a[][],即求二维前缀和</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
+            a[i][j] = a[i - <span class="number">1</span>][j] + a[i][j - <span class="number">1</span>] - a[i - <span class="number">1</span>][j - <span class="number">1</span>] + b[i][j];
+    <span class="comment">//输出a[][]</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+    {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)
+            cout &lt;&lt; a[i][j] &lt;&lt; &quot; &quot;;
+        cout &lt;&lt; endl;
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 差分矩阵</span>
+n, m, q = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+a = [[<span class="number">0</span>] * (m + <span class="number">1</span>)]
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n):
+    a.append([<span class="number">0</span>] + <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())))
+b = [[<span class="number">0</span>] * (m + <span class="number">2</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n + <span class="number">2</span>)]
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, m + <span class="number">1</span>):
+        b[i][j] = a[i][j] - a[i - <span class="number">1</span>][j] - a[i][j - <span class="number">1</span>] + a[i - <span class="number">1</span>][j - <span class="number">1</span>]
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(q):
+    x1, y1, x2, y2, c = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+    b[x1][y1] += c
+    b[x2 + <span class="number">1</span>][y1] -= c
+    b[x1][y2 + <span class="number">1</span>] -= c
+    b[x2 + <span class="number">1</span>][y2 + <span class="number">1</span>] += c
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+    row = []
+    cur = <span class="number">0</span>
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, m + <span class="number">1</span>):
+        b[i][j] += b[i - <span class="number">1</span>][j] + b[i][j - <span class="number">1</span>] - b[i - <span class="number">1</span>][j - <span class="number">1</span>]
+        row.append(<span class="keyword">str</span>(b[i][j]))
+    <span class="keyword">print</span>(&<span class="comment">#x27; &#x27;.join(row))</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD125">
+        <div class="problem-title">JD125：离散聚力</div>
+        <div class="problem-meta">AcWing 802 | JD125</div>
+
+        <div class="description">
+            <p>赵晴儿指着一条无限长的数轴："坐标从负无穷到正无穷，但真正有值的位置只有几个。如果开一个那么大的数组，太浪费了。"</p>
+<p>"所以要把这些稀疏的大坐标映射到连续的小下标上——这就是离散化。"梁嘉峰接话，"映射之后再用前缀和，就能 O(1) 回答区间求和的查询。"</p>
+<p>"先聚力于有用之处，再一击命中。"</p>
+<p>假定有一个无限长的数轴，初始每个坐标上都是0。先进行 n 次操作，每次将位置 x 上的数加 c。然后进行 m 次查询，每次求区间 [l, r] 的和。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数 n 和 m。</p>
+<p>接下来 n 行，每行两个整数 x 和 c。</p>
+<p>接下来 m 行，每行两个整数 l 和 r。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>m 行，每行一个整数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3 3
+1 2
+3 6
+7 5
+1 3
+4 6
+7 8
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+8
+0
+5
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>离散化：排序去重后映射到连续下标。用前缀和回答区间查询。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII; <span class="comment">//自定义类型PII，表示容器类型是&lt;int,int&gt;的pair</span>
+
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">300007</span>; <span class="comment">//需要记录n个坐标值，以及m个区间的坐标，所以是100000*(1+2)</span>
+<span class="keyword">int</span> n, m;
+<span class="keyword">int</span> a[N], s[N];
+
+vector&lt;<span class="keyword">int</span>&gt; alls;       <span class="comment">//存储所有的点坐标，包括询问点坐标</span>
+vector&lt;PII&gt; add, query; <span class="comment">//输入操作的坐标，查询的区间坐标</span>
+<span class="comment">//在alls之中，查找值是x的元素值的下标，并且映射到[1...n]</span>
+<span class="keyword">int</span> find(<span class="keyword">int</span> x)
+{
+    <span class="keyword">int</span> left = <span class="number">0</span>, right = alls.size() - <span class="number">1</span>; <span class="comment">//vector从0开始计数</span>
+    <span class="keyword">while</span> (left &lt; right)
+    {
+        <span class="keyword">int</span> mid = left + right &gt;&gt; <span class="number">1</span>; <span class="comment">//取中值</span>
+        <span class="keyword">if</span> (alls[mid] &gt;= x)
+            right = mid;
+        <span class="keyword">else</span>
+            left = mid + <span class="number">1</span>;
+    }
+    <span class="keyword">return</span> right + <span class="number">1</span>; <span class="comment">//把坐标值映射到1，2，3...而不是从0开始</span>
+}
+
+<span class="comment">//? 使用离散化的方式来预处理输入数据</span>
+<span class="comment">//? 把输入的数字映射成{下标，数字}的pair，然后再用差分的方法计算区间和</span>
+<span class="comment">//? 本题目可以参考797.差分的模板写成</span>
+<span class="keyword">int</span> main()
+{
+    cin &gt;&gt; n &gt;&gt; m;
+    <span class="comment">//!离散化：构造映射表</span>
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)
+    {
+        <span class="comment">//todo 不直接把数存入a[i],乃是存入add容器内</span>
+        <span class="keyword">int</span> x, c;
+        cin &gt;&gt; x &gt;&gt; c;
+        add.push_back({x, c}); <span class="comment">//?将某一位置x上的数加c</span>
+        alls.push_back(x);     <span class="comment">//把x位置加入alls</span>
+    }
+    <span class="comment">// 读入query</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)
+    {
+        <span class="keyword">int</span> l, r; <span class="comment">//区间l和r</span>
+        cin &gt;&gt; l &gt;&gt; r;
+        query.push_back({l, r});
+        alls.push_back(l); <span class="comment">//坐标与alls的下标做映射</span>
+        alls.push_back(r);
+    }
+    <span class="comment">//alls是下标映射表，需要去重</span>
+    <span class="comment">//使用STL算法库的sort和unique</span>
+    sort(alls.begin(), alls.end());
+    <span class="comment">//unique返回不重复区间的下一个元素位置，用erase去掉尾部</span>
+    alls.erase(unique(alls.begin(), alls.end()), alls.end());
+
+    <span class="comment">//针对离散化的数据，计算区间和</span>
+    <span class="keyword">for</span> (<span class="keyword">auto</span> it : add) <span class="comment">//用c++11语法遍历add vector</span>
+    {                   <span class="comment">//初始化a[i],用离散化后的坐标</span>
+        <span class="keyword">int</span> index = find(it.first);
+        a[index] += it.second; <span class="comment">//将index位置上的数加c</span>
+    }
+    <span class="comment">//预处理前缀和</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= alls.size(); i++)
+        s[i] = s[i - <span class="number">1</span>] + a[i];
+    <span class="comment">//处理询问，并且输出</span>
+    <span class="keyword">for</span> (<span class="keyword">auto</span> item : query)
+    {
+        <span class="keyword">int</span> l = find(item.first), r = find(item.second);
+        cout &lt;&lt; s[r] - s[l - <span class="number">1</span>] &lt;&lt; endl; <span class="comment">//前缀和计算公式</span>
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 区间和</span>
+n, m = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+adds = []
+queries = []
+all_x = []
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n):
+    x, c = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+    adds.append((x, c))
+    all_x.append(x)
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(m):
+    l, r = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+    queries.append((l, r))
+    all_x.append(l)
+    all_x.append(r)
+all_x = <span class="keyword">sorted</span>(<span class="keyword">set</span>(all_x))
+idx = {v: i + <span class="number">1</span> <span class="keyword">for</span> i, v <span class="keyword">in</span> <span class="keyword">enumerate</span>(all_x)}
+a = [<span class="number">0</span>] * (<span class="keyword">len</span>(all_x) + <span class="number">1</span>)
+s = [<span class="number">0</span>] * (<span class="keyword">len</span>(all_x) + <span class="number">1</span>)
+<span class="keyword">for</span> x, c <span class="keyword">in</span> adds:
+    a[idx[x]] += c
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, <span class="keyword">len</span>(all_x) + <span class="number">1</span>):
+    s[i] = s[i - <span class="number">1</span>] + a[i]
+<span class="keyword">for</span> l, r <span class="keyword">in</span> queries:
+    <span class="keyword">print</span>(s[idx[r]] - s[idx[l] - <span class="number">1</span>])</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD126">
+        <div class="problem-title">JD126：合围归阵</div>
+        <div class="problem-meta">AcWing 803 | JD126</div>
+
+        <div class="description">
+            <p>梁嘉峰在地上画了一堆区间，有些重叠，有些相邻。"把这些区间合并——有交集的归为一组，最后数一数有几组。"</p>
+<p>赵晴儿蹲下来看了一会儿："先按左端点从小到大排。然后从左往右扫——如果当前区间的左端点在前一个区间内，说明它们重叠，合并；否则新开一组。"</p>
+<p>"合围之势，聚散有序。"</p>
+<p>给定 n 个区间 [lᵢ, rᵢ]，合并所有有交集的区间（端点相交也算），输出合并后的区间个数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数 n（1 ≤ n ≤ 100000）。</p>
+<p>接下来 n 行，每行两个整数 lᵢ 和 rᵢ。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，合并后的区间个数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5
+1 2
+2 4
+5 6
+7 8
+7 10
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+3
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>按左端点排序，遍历合并：当前区间左端点 ≤ 前一个右端点则合并，否则新开。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;vector&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII; <span class="comment">//自定义类型PII，表示容器类型是&lt;int,int&gt;的pair</span>
+
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100007</span>; <span class="comment">//1&lt;=n&lt;=100000</span>
+<span class="keyword">int</span> n;<span class="comment">//n个区间</span>
+
+vector&lt;PII&gt; segments; <span class="comment">//区间坐标</span>
+
+<span class="keyword">void</span> merge(vector&lt;PII&gt; &amp;segs)
+{
+    vector&lt;PII&gt; res;
+    <span class="comment">//pair排序先按左端点，后右端点</span>
+    sort(segs.begin(), segs.end());
+
+    <span class="comment">//数字范围是-10^9&lt;num&lt;10^9,因此负无穷大初始化为-2e9</span>
+    <span class="keyword">int</span> left = -2e9, right = -2e9;<span class="comment">//当前操作的区间[left,right]</span>
+    <span class="keyword">for</span> (<span class="keyword">auto</span> seg : segs)<span class="comment">//遍历segs</span>
+        <span class="keyword">if</span> (right &lt; seg.first)<span class="comment">//区间没有交集，更新当前区间</span>
+        {
+            <span class="comment">//存储合并完毕的区间[left,right]</span>
+            <span class="keyword">if</span> (left != -2e9) res.push_back({left, right});
+            <span class="comment">//更新当前操作区间</span>
+            left = seg.first, right = seg.second;
+        }
+        <span class="keyword">else</span> right = max(right, seg.second);<span class="comment">//更新右端点，扩展区间</span>
+
+    <span class="keyword">if</span> (left != -2e9) res.push_back({left, right});<span class="comment">//把最后一个区间入栈</span>
+
+    segs = res;<span class="comment">//更新segs</span>
+}
+
+<span class="keyword">int</span> main()
+{
+    cin &gt;&gt; n;
+    <span class="comment">// 读入n组区间</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)
+    {
+        <span class="keyword">int</span> l, r; <span class="comment">//区间l和r</span>
+        cin &gt;&gt; l &gt;&gt; r;
+        segments.push_back({l, r});
+    }
+    <span class="comment">//合并区间segment</span>
+    merge(segments);
+    <span class="comment">//输出合并后的区间个数</span>
+    cout&lt;&lt;segments.size()&lt;&lt;endl;<span class="comment">//输出合并后的区间元素个数</span>
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+data = sys.stdin.read().split()
+n = <span class="keyword">int</span>(data[<span class="number">0</span>])
+segs = []
+idx = <span class="number">1</span>
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n):
+    l, r = <span class="keyword">int</span>(data[idx]), <span class="keyword">int</span>(data[idx+<span class="number">1</span>])
+    idx += <span class="number">2</span>
+    segs.append((l, r))
+segs.sort()
+merged = []
+st, ed = segs[<span class="number">0</span>]
+<span class="keyword">for</span> l, r <span class="keyword">in</span> segs[<span class="number">1</span>:]:
+    <span class="keyword">if</span> l &lt;= ed: ed = <span class="keyword">max</span>(ed, r)
+    <span class="keyword">else</span>: merged.append((st, ed)); st, ed = l, r
+merged.append((st, ed))
+<span class="keyword">print</span>(<span class="keyword">len</span>(merged))</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD127">
+        <div class="problem-title">JD127：一箭穿心</div>
+        <div class="problem-meta">AcWing 905 | JD127</div>
+
+        <div class="description">
+            <p>赵晴儿在数轴上标了 N 个区间，每个区间表示一个敌人的巡逻范围。"用最少的暗器，让每个敌人的巡逻范围里至少中一枚。"</p>
+<p>李少白想每个区间放一枚。赵晴儿摇头："贪心——按右端点从小到大排。第一枚暗器射在第一个区间的右端点，这样所有包含这个点的区间都中了。然后跳过这些区间，再射下一批。"</p>
+<p>"选右端点是因为它最'靠左'——能覆盖尽可能多的后续区间。"</p>
+<p>给定 N 个闭区间 [aᵢ, bᵢ]，选择尽量少的点，使得每个区间内至少有一个点。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数 N（1 ≤ N ≤ 100000）。接下来 N 行，每行两个整数 aᵢ 和 bᵢ。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最少需要的点数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3
+1 3
+2 4
+3 5
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>按右端点排序，每次选当前区间的右端点，跳过所有包含该点的区间。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100007</span>;
+
+<span class="keyword">struct</span> Range
+{
+  <span class="keyword">int</span> l , r;
+  <span class="keyword">bool</span> operator&lt; (<span class="keyword">const</span> Range &amp; R) <span class="keyword">const</span>
+  {
+    <span class="keyword">return</span> r &lt; R.r;<span class="comment">//重载比较符，根据r排序</span>
+  }
+} range[N];
+
+<span class="keyword">int</span> main()
+{
+    <span class="keyword">int</span> n;
+    scanf(&quot;%d&quot;, &amp;n);
+    <span class="comment">//读入区间</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;n; i++)
+    {
+      <span class="keyword">int</span> l,r;
+      scanf(&quot;%d%d&quot;, &amp;l, &amp;r);
+      range[i] = {l,r};
+    }
+    <span class="comment">//按照右端点排序</span>
+    sort(range,range+n);
+    <span class="comment">//根据右端点计算覆盖的区间个数</span>
+    <span class="keyword">int</span> res = <span class="number">0</span>, ed = -2e9;<span class="comment">//已统计区间的右端点</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )
+     <span class="keyword">if</span> (range[i].l &gt; ed)
+     {
+       res ++;
+       ed = range[i].r;
+     }
+     printf(&quot;%d\n&quot;, res);
+
+     <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 区间选点</span>
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+segs = []
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n):
+    l, r = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+    segs.append((l, r))
+segs.sort(key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>])
+ans = <span class="number">0</span>
+last = -<span class="number">2</span> * <span class="number">10</span>**<span class="number">9</span>
+<span class="keyword">for</span> l, r <span class="keyword">in</span> segs:
+    <span class="keyword">if</span> l &gt; last:
+        ans += <span class="number">1</span>
+        last = r
+<span class="keyword">print</span>(ans)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD128">
+        <div class="problem-title">JD128：合果成堆</div>
+        <div class="problem-meta">AcWing 148 | JD128</div>
+
+        <div class="description">
+            <p>果园里有 N 堆果子，每堆重量不同。赵晴儿要把它们合并成一堆，每次只能合并两堆，消耗的能量等于两堆重量之和。</p>
+<p>"如果先合并重的，后面每次合并都要带着这堆重的走，代价越来越大。"赵晴儿说，"所以反过来——每次选最轻的两堆合并，这样每一步的代价都最小。"</p>
+<p>李少白想到用小根堆："每次取出堆顶（最轻的两堆），合并后放回去。总代价最小。"</p>
+<p>这就是哈夫曼树的思想。</p>
+<p>有 N 堆果子，每次合并两堆（代价为两堆之和），求合并为一堆的最小总代价。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数 N（1 ≤ N ≤ 10000）。第二行 N 个整数，表示每堆的重量。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最小总代价。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3
+1 2 9
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+15
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>小根堆：每次取最小的两个合并，结果放回堆中。O(nlogn)。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;queue&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">int</span> main()
+{
+    <span class="keyword">int</span> n; cin&gt;&gt;n;
+    <span class="comment">//优先队列，使用greater作比较函数,把默认的大根堆变为小根堆</span>
+    priority_queue&lt;<span class="keyword">int</span>, vector&lt;<span class="keyword">int</span>&gt;,greater&lt;<span class="keyword">int</span>&gt;&gt; heap;
+    <span class="comment">//把读入数据压入堆</span>
+    <span class="keyword">while</span> (n--)
+    {
+        <span class="keyword">int</span> x; cin&gt;&gt;x;
+        heap.push(x);
+    }
+
+    <span class="keyword">int</span> res = <span class="number">0</span>;
+    <span class="keyword">while</span>(heap.size() &gt; <span class="number">1</span>)
+    {
+        <span class="keyword">int</span> x = heap.top(); heap.pop();
+        <span class="keyword">int</span> y = heap.top(); heap.pop();
+        res += x + y;<span class="comment">//累计合并值</span>
+        heap.push(x+y);<span class="comment">//把当前合并的值压入堆</span>
+    }
+
+    cout&lt;&lt;res&lt;&lt;endl;
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys, heapq
+data = sys.stdin.read().split()
+n = <span class="keyword">int</span>(data[<span class="number">0</span>])
+a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span class="number">1</span>:<span class="number">1</span>+n]))
+heapq.heapify(a)
+ans = <span class="number">0</span>
+<span class="keyword">while</span> <span class="keyword">len</span>(a) &gt; <span class="number">1</span>:
+    x = heapq.heappop(a)
+    y = heapq.heappop(a)
+    ans += x + y
+    heapq.heappush(a, x + y)
+<span class="keyword">print</span>(ans)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD129">
+        <div class="problem-title">JD129：中位之选</div>
+        <div class="problem-meta">AcWing 104 | JD129</div>
+
+        <div class="description">
+            <p>数轴上有 N 个商铺，赵晴儿要建一个货仓，让所有商铺到货仓的货物运输距离之和最小。</p>
+<p>"选在哪里？"李少白问。</p>
+<p>"排序后取中位数。"赵晴儿说，"数学可以证明：中位数使绝对偏差之和最小。如果选在中位数左边，右边的商铺距离全部变远；选在中位数右边，左边的商铺距离全部变远。只有中位数是平衡点。"</p>
+<p>给定 N 个点的坐标，求一个位置使所有点到该位置的绝对距离之和最小，输出最小距离之和。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数 N（1 ≤ N ≤ 100000）。第二行 N 个整数，表示各点坐标。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最小距离之和。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5
+1 2 3 4 5
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+6
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>排序后取中位数（下标 n/2），计算所有点到中位数的距离之和。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100007</span>;
+
+<span class="keyword">int</span> n;
+<span class="keyword">int</span> a[N];
+
+<span class="keyword">int</span> main()
+{
+    cin &gt;&gt; n;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++) cin &gt;&gt; a[i];
+    sort(a, a+n);
+    <span class="keyword">int</span> res = <span class="number">0</span>;
+    <span class="comment">//中位数a[n/2],求距离之和的最小值</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ ) res += abs(a[i]- a[n/<span class="number">2</span>]);
+    cout &lt;&lt; res &lt;&lt;endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+data = sys.stdin.read().split()
+n = <span class="keyword">int</span>(data[<span class="number">0</span>])
+a = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">int</span>, data[<span class="number">1</span>:<span class="number">1</span>+n]))
+a.sort()
+mid = a[n // <span class="number">2</span>]
+ans = <span class="keyword">sum</span>(<span class="keyword">abs</span>(x - mid) <span class="keyword">for</span> x <span class="keyword">in</span> a)
+<span class="keyword">print</span>(ans)</code></pre>
+            </details>
+        </div>
+    </div>
+
+</body>
+</html>

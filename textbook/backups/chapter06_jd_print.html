@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>第6章 古卷密文——字符串处理</title>
+    <style>
+        body { font-family: "Noto Serif SC", "Source Han Serif CN", serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.8; color: #333; }
+        h1 { text-align: center; color: #8B0000; border-bottom: 2px solid #8B0000; padding-bottom: 10px; }
+        h2 { color: #4A0080; margin-top: 2em; }
+        h3 { color: #2E5090; }
+        .chapter-subtitle { text-align: center; color: #666; font-size: 1.1em; margin-bottom: 2em; }
+        .problem { border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin: 20px 0; background: #fafafa; }
+        .problem-title { color: #8B0000; font-size: 1.3em; font-weight: bold; margin-bottom: 10px; }
+        .problem-meta { color: #666; font-size: 0.9em; margin-bottom: 15px; }
+        .description { margin: 15px 0; }
+        .description p { margin: 8px 0; }
+        .io-section { background: #f0f0f0; padding: 12px; border-radius: 4px; margin: 10px 0; }
+        .io-section h4 { margin: 0 0 8px 0; color: #555; font-size: 0.95em; }
+        .sample { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; margin: 10px 0; font-family: "Consolas", "Courier New", monospace; white-space: pre-wrap; }
+        .sample-label { color: #569cd6; font-weight: bold; margin-bottom: 5px; }
+        .hint { background: #fff8e1; border-left: 4px solid #ffc107; padding: 12px; margin: 15px 0; }
+        .code-section { margin: 15px 0; }
+        .code-section summary { cursor: pointer; color: #2E5090; font-weight: bold; }
+        pre { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; overflow-x: auto; font-size: 0.9em; }
+        code { font-family: "Consolas", "Courier New", monospace; }
+        .lang-tabs { display: flex; gap: 10px; margin: 10px 0; }
+        .lang-tab { padding: 5px 15px; cursor: pointer; border: 1px solid #ddd; border-radius: 4px 4px 0 0; }
+        .lang-tab.active { background: #1e1e1e; color: #d4d4d4; border-color: #1e1e1e; }
+    </style>
+</head>
+<body>
+    <h1>第6章 古卷密文</h1>
+    <div class="chapter-subtitle">字符串处理</div>
+
+    <div class="problem" id="JD067">
+        <div class="problem-title">JD067：古卷测长</div>
+        <div class="problem-meta">AcWing JD | JD067</div>
+
+        <div class="description">
+            <p>梁嘉峰递给李少白一卷竹简：「上面刻着一行字，告诉我它有多长。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行字符串（长度不超过100），可能包含空格。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出字符串的实际长度。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+Hello World
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+11
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>读入一行字符串（含空格），输出其长度。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+
+<span class="comment">// 古卷测长：输出字符串长度</span>
+<span class="keyword">int</span> main()
+{
+    <span class="keyword">char</span> str[<span class="number">101</span>];
+
+    fgets(str, <span class="number">101</span>, stdin);
+
+    <span class="keyword">int</span> len = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; str[i] &amp;&amp; str[i] != &#x27;\n&#x27;; i ++ ) len ++ ;
+
+    printf(&quot;%d\n&quot;, len);
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">print</span>(<span class="keyword">len</span>(<span class="keyword">input</span>()))</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD068">
+        <div class="problem-title">JD068：密文留白</div>
+        <div class="problem-meta">AcWing JD | JD068</div>
+
+        <div class="description">
+            <p>古卷上的字太密了，赵晴儿让李少白在每个字符后面加一个空格，方便辨认。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行字符串（长度不超过100）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>每个字符后加一个空格输出（最后一个字符后也有空格）。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+abc
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+a b c
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>遍历字符串，每个字符后输出一个空格。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="comment">// 密文留白：每个字符后加空格</span>
+<span class="keyword">int</span> main()
+{
+    <span class="keyword">string</span> a;
+    getline(cin, a);
+
+    <span class="keyword">string</span> b;
+    <span class="keyword">for</span> (<span class="keyword">auto</span> c : a) b = b + c + &#x27; &#x27;;
+
+    b.pop_back();
+
+    cout &lt;&lt; b &lt;&lt; endl;
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">print</span>(&quot; &quot;.join(<span class="keyword">input</span>()))</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD069">
+        <div class="problem-title">JD069：墨迹遮字</div>
+        <div class="problem-meta">AcWing JD | JD069</div>
+
+        <div class="description">
+            <p>古卷上有些字被墨迹遮住了，需要替换成'#'，露出可辨认的文字。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行字符串（长度不超过100，全大写）。第二行一个字符，表示要替换的字符。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>替换后的字符串。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+hello
+o
+world
+l
+abc
+x
+test
+e
+hello
+a
+h
+e
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+hell#
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>遍历字符串，遇到目标字符输出'#'，否则输出原字符。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;iostream&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="comment">// 墨迹遮字：字符串中指定字符替换为#</span>
+<span class="keyword">int</span> main()
+{
+    <span class="keyword">char</span> str[<span class="number">31</span>];
+    scanf(&quot;%s&quot;, str);
+
+    <span class="keyword">char</span> c;
+    scanf(&quot;\n%c&quot;, &amp;c);
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; str[i]; i ++ )
+        <span class="keyword">if</span> (str[i] == c)
+            str[i] = &#x27;#&#x27;;
+
+    puts(str);
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">s = <span class="keyword">input</span>()
+c = <span class="keyword">input</span>()
+<span class="keyword">print</span>(s.replace(c, &quot;<span class="comment">#&quot;))</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD070">
+        <div class="problem-title">JD070：经文重构</div>
+        <div class="problem-meta">AcWing JD | JD070</div>
+
+        <div class="description">
+            <p>赵晴儿递给李少白一段经文a，让他按规则重新构造一段经文b：每个位置b[i]的ASCII值等于a[i]和a[i+1]的ASCII值之和。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行字符串a（长度3~100）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>构造后的字符串b。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+=-9+=.3'<<-!!'+5.</=+/3672?96,7'<%5 //>$#:)6*(6.(;7>*)>35#5.72#/44;/)0#864"!51$1=00*:$&'
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+jfdhkaZcxiNBHR`cjklhZbimiqxobc^caZUO^mbG]c_`R^dVcruhSgqhXXceiURchojXYS[njVCVfUUnm`Zd^JMd
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>遍历a，b[i] = chr(ord(a[i]) + ord(a[i+1]))。最后一个用a[-1]和a[0]。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="comment">// 经文重构：按规则构造新字符串</span>
+<span class="keyword">int</span> main()
+{
+    <span class="keyword">string</span> a, b;
+    getline(cin, a);
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.size(); i ++ ) b += (<span class="keyword">char</span>)(a[i] + a[(i + <span class="number">1</span>) % a.size()]);
+
+    cout &lt;&lt; b &lt;&lt; endl;
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+s = sys.stdin.read().rstrip(&<span class="comment">#x27;\n&#x27;)</span>
+n = <span class="keyword">len</span>(s)
+result = &<span class="comment">#x27;&#x27;.join(chr(ord(s[i]) + ord(s[(i+1) % n])) for i in range(n))</span>
+<span class="keyword">print</span>(result)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD071">
+        <div class="problem-title">JD071：密文数符</div>
+        <div class="problem-meta">AcWing JD | JD071</div>
+
+        <div class="description">
+            <p>赵晴儿递给李少白一行密文，里面混着文字和数字。她说：「数一数有几个数字字符。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行字符（长度不超过100）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出其中数字字符（'0'~'9'）的个数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+hello2024world
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+4
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>遍历字符串，判断每个字符是否在'0'到'9'之间。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+
+<span class="comment">// 密文数符：统计字符串中数字个数</span>
+<span class="keyword">int</span> main()
+{
+    <span class="keyword">char</span> str[<span class="number">101</span>];
+
+    fgets(str, <span class="number">101</span>, stdin);
+
+    <span class="keyword">int</span> cnt = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; str[i]; i ++ )
+        <span class="keyword">if</span> (str[i] &gt;= &#x27;<span class="number">0</span>&#x27; &amp;&amp; str[i] &lt;= &#x27;<span class="number">9</span>&#x27;)
+           cnt ++ ;
+
+    printf(&quot;%d\n&quot;, cnt);
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">s = <span class="keyword">input</span>()
+<span class="keyword">print</span>(<span class="keyword">sum</span>(<span class="number">1</span> <span class="keyword">for</span> c <span class="keyword">in</span> s <span class="keyword">if</span> c.isdigit()))</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD072">
+        <div class="problem-title">JD072：拳掌对决</div>
+        <div class="problem-meta">AcWing JD | JD072</div>
+
+        <div class="description">
+            <p>李少白和师弟在练功间隙玩猜拳：出剪刀、石头或布。给定T组对局，判断每组谁赢。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行整数T。接下来T行，每行两个字符串，表示两人出的拳。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>每行输出结果：Player1赢输出"Player1"，Player2赢输出"Player2"，平局输出"Tei"。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+Hunter Bear
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+Player2
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>判断两者相等→平局；否则检查是否构成"石头>剪刀>布>石头"的环。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+<span class="comment">// 拳掌对决：剪刀石头布胜负判断</span>
+<span class="keyword">int</span> main() {
+  <span class="keyword">char</span> a[<span class="number">20</span>],b[<span class="number">20</span>];
+  <span class="keyword">while</span>(scanf(&quot;%s%s&quot;,a,b)==<span class="number">2</span>) {
+    <span class="keyword">if</span>(!strcmp(a,b)) printf(&quot;Tie\n&quot;);
+    <span class="keyword">else</span> <span class="keyword">if</span>((!strcmp(a,&quot;Hunter&quot;)&amp;&amp;!strcmp(b,&quot;Gun&quot;))||(!strcmp(a,&quot;Gun&quot;)&amp;&amp;!strcmp(b,&quot;Bear&quot;))||(!strcmp(a,&quot;Bear&quot;)&amp;&amp;!strcmp(b,&quot;Hunter&quot;))) printf(&quot;Player1\n&quot;);
+    <span class="keyword">else</span> printf(&quot;Player2\n&quot;);
+  }
+  <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+data = sys.stdin.read().split()
+p1, p2 = data[<span class="number">0</span>], data[<span class="number">1</span>]
+<span class="keyword">if</span> p1 == p2: <span class="keyword">print</span>(&<span class="comment">#x27;Tie&#x27;)</span>
+<span class="keyword">elif</span> (p1==&<span class="comment">#x27;Hunter&#x27; and p2==&#x27;Gun&#x27;) or (p1==&#x27;Bear&#x27; and p2==&#x27;Hunter&#x27;) or (p1==&#x27;Gun&#x27; and p2==&#x27;Bear&#x27;):</span>
+    <span class="keyword">print</span>(&<span class="comment">#x27;Player1&#x27;)</span>
+<span class="keyword">else</span>:
+    <span class="keyword">print</span>(&<span class="comment">#x27;Player2&#x27;)</span></code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD073">
+        <div class="problem-title">JD073：经文加密</div>
+        <div class="problem-meta">AcWing JD | JD073</div>
+
+        <div class="description">
+            <p>古卷需要加密保存。加密规则：每个字母后移一位（z→a），每个数字后移一位（9→0），其他字符不变。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行字符串（长度不超过100）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>加密后的字符串。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+Hello, World!
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+Ifmmp, Xpsme!
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>遍历字符串，对字母、数字分别做+1循环偏移，其他字符原样输出。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">int</span> main(){
+
+    <span class="keyword">string</span> s;
+    getline(cin,s);<span class="comment">//读入一行</span>
+
+    <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;c:s)<span class="comment">//使用auto注意&amp;c直接引用字符串直接修改</span>
+      <span class="keyword">if</span> (c&gt;=&#x27;a&#x27; &amp;&amp; c&lt;=&#x27;z&#x27;) 
+          c = &#x27;a&#x27;+ (c-&#x27;a&#x27;+<span class="number">1</span>) % <span class="number">26</span>;<span class="comment">//取模运算</span>
+         <span class="keyword">else</span> <span class="keyword">if</span> (c&gt;=&#x27;A&#x27; &amp;&amp; c&lt;=&#x27;Z&#x27;) 
+          c = &#x27;A&#x27; + (c-&#x27;A&#x27;+<span class="number">1</span>) % <span class="number">26</span>;
+
+    cout&lt;&lt;s&lt;&lt;endl;<span class="comment">//输出结果</span>
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">r = []
+<span class="keyword">for</span> c <span class="keyword">in</span> <span class="keyword">input</span>():
+    <span class="keyword">if</span> &quot;a&quot; &lt;= c &lt;= &quot;z&quot;:
+        r.append(chr((ord(c) - <span class="number">97</span> + <span class="number">1</span>) % <span class="number">26</span> + <span class="number">97</span>))
+    <span class="keyword">elif</span> &quot;A&quot; &lt;= c &lt;= &quot;Z&quot;:
+        r.append(chr((ord(c) - <span class="number">65</span> + <span class="number">1</span>) % <span class="number">26</span> + <span class="number">65</span>))
+    <span class="keyword">else</span>:
+        r.append(c)
+<span class="keyword">print</span>(&quot;&quot;.join(r))</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD074">
+        <div class="problem-title">JD074：古卷替换</div>
+        <div class="problem-meta">AcWing JD | JD074</div>
+
+        <div class="description">
+            <p>古卷上的某个词需要全部替换成另一个词。赵晴儿让李少白逐词核对。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>三行：第一行原文字符串，第二行要替换的词A，第三行替换成的词B。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>替换后的字符串。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+first late system see school still great different year Place far take same
+life
+group
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+first late system see school still great different year Place far take same
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>字符串替换函数，或按空格分割单词逐个比较替换。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;sstream&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="comment">// 古卷替换：字符串中单词替换</span>
+<span class="keyword">int</span> main()
+{
+    <span class="keyword">string</span> s, a, b;
+
+    getline(cin, s);
+    cin &gt;&gt; a &gt;&gt; b;
+
+    stringstream ssin(s);
+    <span class="keyword">string</span> str;
+    <span class="keyword">while</span> (ssin &gt;&gt; str)
+        <span class="keyword">if</span> (str == a) cout &lt;&lt; b &lt;&lt; &#x27; &#x27;;
+        <span class="keyword">else</span> cout &lt;&lt; str &lt;&lt; &#x27; &#x27;;
+
+    <span class="keyword">return</span> <span class="number">0</span>;    
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+lines = sys.stdin.read().splitlines()
+s = lines[<span class="number">0</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) &gt; <span class="number">0</span> <span class="keyword">else</span> &<span class="comment">#x27;&#x27;</span>
+a = lines[<span class="number">1</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) &gt; <span class="number">1</span> <span class="keyword">else</span> &<span class="comment">#x27;&#x27;</span>
+b = lines[<span class="number">2</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) &gt; <span class="number">2</span> <span class="keyword">else</span> &<span class="comment">#x27;&#x27;</span>
+words = s.split()
+result = &<span class="comment">#x27; &#x27;.join(b if w == a else w for w in words)</span>
+<span class="keyword">print</span>(result)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD075">
+        <div class="problem-title">JD075：寻最长词</div>
+        <div class="problem-meta">AcWing JD | JD075</div>
+
+        <div class="description">
+            <p>赵晴儿指着古卷上的一句话：「找出最长的那个词。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，以'.'结尾的英文句子（长度不超过500）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>最长的单词。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+I am a student of Peking University.
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+University
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>按空格分割单词（去掉末尾的'.'），遍历比较长度。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="comment">// 寻最长词：找出最长的单词</span>
+<span class="keyword">int</span> main()
+{
+    <span class="keyword">string</span> res, str;
+
+    <span class="keyword">while</span> (cin &gt;&gt; str)
+    {
+      <span class="keyword">if</span> (str.back() == &#x27;.&#x27;) str.pop_back();
+      <span class="keyword">if</span> (str.size() &gt; res.size()) res = str;
+    }
+
+    cout &lt;&lt; res &lt;&lt; endl;
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">words=<span class="keyword">input</span>().split()
+<span class="keyword">print</span>(<span class="keyword">max</span>(words,key=<span class="keyword">len</span>))</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD076">
+        <div class="problem-title">JD076：古卷插字</div>
+        <div class="problem-meta">AcWing JD | JD076</div>
+
+        <div class="description">
+            <p>梁嘉峰递给李少白两段古卷残篇，要把后一段插到前一段ASCII码最大的字符后面。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>若干行，每行两个字符串str和substr，用空格隔开。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>每行输出插入后的字符串。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+hello
+X
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+helloX
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>找到str中ASCII值最大的字符的位置，把substr插在它后面。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main()
+{
+    <span class="keyword">string</span> a,b;
+    <span class="keyword">while</span>(cin&gt;&gt;a&gt;&gt;b){
+
+        <span class="keyword">int</span> p=<span class="number">0</span>;
+        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a.size();i++)
+            <span class="keyword">if</span> (a[i]&gt;a[p]) p=i;<span class="comment">//找到最大的位置</span>
+
+        cout&lt;&lt;a.substr(<span class="number">0</span>,p+<span class="number">1</span>)+b+a.substr(p+<span class="number">1</span>)&lt;&lt;endl;
+
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+data = sys.stdin.read().split()
+<span class="keyword">if</span> <span class="keyword">len</span>(data) &gt;= <span class="number">2</span>:
+    a = data[<span class="number">0</span>]
+    b = data[<span class="number">1</span>]
+    p = <span class="number">0</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="keyword">len</span>(a)):
+        <span class="keyword">if</span> a[i] &gt; a[p]:
+            p = i
+    <span class="keyword">print</span>(a[:p+<span class="number">1</span>] + b + a[p+<span class="number">1</span>:])</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD077">
+        <div class="problem-title">JD077：独字寻踪</div>
+        <div class="problem-meta">AcWing JD | JD077</div>
+
+        <div class="description">
+            <p>古卷上有些字重复出现，有些只出现一次。赵晴儿让李少白找到第一个只出现一次的字符。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行只包含小写字母的字符串。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>第一个只出现一次的字符，或"no"。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+abaccdeff
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+b
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>先统计每个字符出现次数，再从头遍历找第一个次数为1的。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">int</span> cnt[<span class="number">26</span>];
+<span class="keyword">char</span> str[<span class="number">100010</span>];
+
+<span class="comment">// 独字寻踪：找第一个不重复字符</span>
+<span class="keyword">int</span> main()
+{
+    cin &gt;&gt; str;
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; str[i]; i ++ ) cnt[str[i] - &#x27;a&#x27;] ++ ;
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; str[i]; i ++ )
+        <span class="keyword">if</span> (cnt[str[i] - &#x27;a&#x27;] == <span class="number">1</span>)
+        {
+          cout &lt;&lt; str[i] &lt;&lt; endl;
+          <span class="keyword">return</span> <span class="number">0</span>;
+        }
+
+        puts(&quot;no&quot;);
+
+    <span class="keyword">return</span> <span class="number">0</span>;    
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">s = <span class="keyword">input</span>()
+<span class="keyword">from</span> collections <span class="keyword">import</span> Counter
+cnt = Counter(s)
+<span class="keyword">for</span> c <span class="keyword">in</span> s:
+    <span class="keyword">if</span> cnt[c] == <span class="number">1</span>:
+        <span class="keyword">print</span>(c)
+        <span class="keyword">break</span>
+<span class="keyword">else</span>:
+    <span class="keyword">print</span>(&quot;no&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD078">
+        <div class="problem-title">JD078：两卷对校</div>
+        <div class="problem-meta">AcWing JD | JD078</div>
+
+        <div class="description">
+            <p>赵晴儿拿着两卷古卷：「看看第二段经文是不是第一段中的一部分——如果是，就算对上了。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数k（忽略，用于兼容）。第二行字符串a。第三行字符串b（子串）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>b是a的子串输出"yes"，否则输出"no"。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+abc
+d
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+no
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>遍历a的每个位置，用strncmp比较是否与b匹配。匹配则输出yes。strncmp(a+i, b, len(b))==0表示b是a的子串。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+<span class="comment">// 两卷对校：判断b是否为a的子串</span>
+<span class="keyword">int</span> main() {
+  <span class="keyword">double</span> k;
+  <span class="keyword">char</span> a[<span class="number">110</span>],b[<span class="number">110</span>];
+  scanf(&quot;%lf%s%s&quot;,&amp;k,a,b);
+  <span class="keyword">int</span> match=<span class="number">0</span>;
+  <span class="keyword">int</span> la=strlen(a),lb=strlen(b);
+  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i+lb&lt;=la;i++) {
+    <span class="keyword">if</span>(!strncmp(a+i,b,lb)) {match=<span class="number">1</span>;<span class="keyword">break</span>;}
+  }
+  printf(match?&quot;yes\n&quot;:&quot;no\n&quot;);
+  <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+lines = sys.stdin.read().splitlines()
+a = lines[<span class="number">0</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) &gt; <span class="number">0</span> <span class="keyword">else</span> &<span class="comment">#x27;&#x27;</span>
+b = lines[<span class="number">1</span>] <span class="keyword">if</span> <span class="keyword">len</span>(lines) &gt; <span class="number">1</span> <span class="keyword">else</span> &<span class="comment">#x27;&#x27;</span>
+<span class="keyword">print</span>(&quot;yes&quot; <span class="keyword">if</span> b <span class="keyword">in</span> a <span class="keyword">else</span> &quot;no&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD079">
+        <div class="problem-title">JD079：经文周期</div>
+        <div class="problem-meta">AcWing JD | JD079</div>
+
+        <div class="description">
+            <p>赵晴儿指着一篇重复的经文：「这段文字是某个子串重复几次写成的？找出最小的重复次数。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行字符串。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最大的n。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+abcd
+aaaa
+ababab
+.
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1
+4
+3
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>枚举周期p（p是len的因子），检查s[0:p]重复len/p次是否等于原串。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="comment">// 经文周期：找字符串最小重复周期</span>
+<span class="keyword">int</span> main()
+{
+    <span class="keyword">string</span> str;
+
+    <span class="keyword">while</span> (cin &gt;&gt; str, str != &quot;.&quot;)
+    {
+      <span class="keyword">int</span> len = str.size();
+
+      <span class="keyword">for</span> (<span class="keyword">int</span> n = len; n; n -- )
+          <span class="keyword">if</span> (len % n == <span class="number">0</span>)
+          {
+            <span class="keyword">int</span> m = len / n;
+            <span class="keyword">string</span> s = str.substr(<span class="number">0</span>, m);
+            <span class="keyword">string</span> r;
+            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ ) r += s;
+
+            <span class="keyword">if</span> (r == str)
+            {
+              cout &lt;&lt; n &lt;&lt; endl;
+              <span class="keyword">break</span>;
+            }
+          }
+    }
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 字符串乘方</span>
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    s = <span class="keyword">input</span>().strip()
+    <span class="keyword">if</span> s == &<span class="comment">#x27;.&#x27;:</span>
+        <span class="keyword">break</span>
+    n = <span class="keyword">len</span>(s)
+    ne = [<span class="number">0</span>] * n
+    j = <span class="number">0</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n):
+        <span class="keyword">while</span> j &gt; <span class="number">0</span> <span class="keyword">and</span> s[i] != s[j]:
+            j = ne[j - <span class="number">1</span>]
+        <span class="keyword">if</span> s[i] == s[j]:
+            j += <span class="number">1</span>
+        ne[i] = j
+    length = n - ne[n - <span class="number">1</span>]
+    <span class="keyword">if</span> n % length == <span class="number">0</span>:
+        <span class="keyword">print</span>(n // length)
+    <span class="keyword">else</span>:
+        <span class="keyword">print</span>(<span class="number">1</span>)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD080">
+        <div class="problem-title">JD080：密文跨距</div>
+        <div class="problem-meta">AcWing JD | JD080</div>
+
+        <div class="description">
+            <p>梁嘉峰递给李少白一长段密文和两个短码S1、S2：「S1在左，S2在右，不交叉。最大间距是多少？」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，三个字符串用逗号隔开：S,S1,S2。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>最大跨距。不满足条件输出-1。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+abcd123dABdefghjsdef76ki,ab,ef
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+16
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>从左往右找S1最后出现的位置end1，从右往左找S2最后出现的位置start2。如果end1<start2，跨距=start2-end1-len(S1)。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="comment">// 密文跨距：两子串最大间距</span>
+<span class="keyword">int</span> main()
+{
+    <span class="keyword">string</span> s, s1, s2;
+
+    <span class="keyword">char</span> c;
+    <span class="keyword">while</span> (cin &gt;&gt; c, c != &#x27;,&#x27;) s += c;
+    <span class="keyword">while</span> (cin &gt;&gt; c, c != &#x27;,&#x27;) s1 += c;
+    <span class="keyword">while</span> (cin &gt;&gt; c) s2 += c;
+
+    <span class="keyword">if</span> (s.size() &lt; s1.size() || s.size() &lt; s2.size()) puts(&quot;-<span class="number">1</span>&quot;);
+    <span class="keyword">else</span>
+    {
+      <span class="keyword">int</span> l = <span class="number">0</span>; 
+      <span class="keyword">while</span> (l + s1.size() &lt;= s.size())
+      {
+        <span class="keyword">int</span> k = <span class="number">0</span>;
+        <span class="keyword">while</span> (k &lt; s1.size())
+        {
+          <span class="keyword">if</span> (s[l + k] != s1[k]) <span class="keyword">break</span>;
+          k ++ ;
+        }
+        <span class="keyword">if</span> (k == s1.size()) <span class="keyword">break</span>;
+        l ++ ;
+      }
+
+      <span class="keyword">int</span> r = s.size() - s2.size();
+      <span class="keyword">while</span> (r &gt;= <span class="number">0</span>)
+      {
+        <span class="keyword">int</span> k = <span class="number">0</span>;
+        <span class="keyword">while</span> (k &lt; s2.size())
+        {
+          <span class="keyword">if</span> (s[r + k] != s2[k]) <span class="keyword">break</span>;
+          k ++ ;
+        }
+        <span class="keyword">if</span> (k == s2.size()) <span class="keyword">break</span>;
+        r -- ;
+      }
+
+      l += s1.size() - <span class="number">1</span>;
+
+      <span class="keyword">if</span> (l &gt;= r) puts(&quot;-<span class="number">1</span>&quot;);
+      <span class="keyword">else</span> printf(&quot;%d\n&quot;, r - l - <span class="number">1</span>);
+    }
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 字符串最大跨距</span>
+s, s1, s2 = <span class="keyword">input</span>().split(&<span class="comment">#x27;,&#x27;)</span>
+n = <span class="keyword">len</span>(s)
+l = s.find(s1)
+r = s.rfind(s2)
+<span class="keyword">if</span> l == -<span class="number">1</span> <span class="keyword">or</span> r == -<span class="number">1</span> <span class="keyword">or</span> l + <span class="keyword">len</span>(s1) &gt; r:
+    <span class="keyword">print</span>(-<span class="number">1</span>)
+<span class="keyword">else</span>:
+    <span class="keyword">print</span>(r - l - <span class="keyword">len</span>(s1))</code></pre>
+            </details>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>第2章 歧路逢生——条件判断与分支</title>
+    <style>
+        body { font-family: "Noto Serif SC", "Source Han Serif CN", serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.8; color: #333; }
+        h1 { text-align: center; color: #8B0000; border-bottom: 2px solid #8B0000; padding-bottom: 10px; }
+        h2 { color: #4A0080; margin-top: 2em; }
+        h3 { color: #2E5090; }
+        .chapter-subtitle { text-align: center; color: #666; font-size: 1.1em; margin-bottom: 2em; }
+        .problem { border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin: 20px 0; background: #fafafa; }
+        .problem-title { color: #8B0000; font-size: 1.3em; font-weight: bold; margin-bottom: 10px; }
+        .problem-meta { color: #666; font-size: 0.9em; margin-bottom: 15px; }
+        .description { margin: 15px 0; }
+        .description p { margin: 8px 0; }
+        .io-section { background: #f0f0f0; padding: 12px; border-radius: 4px; margin: 10px 0; }
+        .io-section h4 { margin: 0 0 8px 0; color: #555; font-size: 0.95em; }
+        .sample { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; margin: 10px 0; font-family: "Consolas", "Courier New", monospace; white-space: pre-wrap; }
+        .sample-label { color: #569cd6; font-weight: bold; margin-bottom: 5px; }
+        .hint { background: #fff8e1; border-left: 4px solid #ffc107; padding: 12px; margin: 15px 0; }
+        .code-section { margin: 15px 0; }
+        .code-section summary { cursor: pointer; color: #2E5090; font-weight: bold; }
+        pre { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; overflow-x: auto; font-size: 0.9em; }
+        code { font-family: "Consolas", "Courier New", monospace; }
+        .lang-tabs { display: flex; gap: 10px; margin: 10px 0; }
+        .lang-tab { padding: 5px 15px; cursor: pointer; border: 1px solid #ddd; border-radius: 4px 4px 0 0; }
+        .lang-tab.active { background: #1e1e1e; color: #d4d4d4; border-color: #1e1e1e; }
+    </style>
+</head>
+<body>
+    <h1>第2章 歧路逢生</h1>
+    <div class="chapter-subtitle">条件判断与分支</div>
+
+    <div class="problem" id="JD015">
+        <div class="problem-title">JD015：石碑之谜</div>
+        <div class="problem-meta">AcWing 665 | JD015</div>
+
+        <div class="description">
+            <p>山门前有两条路，路边各立一块石碑。赵晴儿指着石碑上的两个数说：「如果其中一个数能被另一个整除，这两块碑就是一对——走左边这条路。否则走右边。」</p>
+<p>给定两个整数A和B，判断它们是否互为倍数关系（即A能被B整除，或B能被A整除）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，两个整数A和B。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>互为倍数输出 <code>Yes</code>，否则输出 <code>No</code>。</p>
+
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>判断 A%B==0 或 B%A==0，只要有一个成立就是倍数关系，输出Yes；否则输出No。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+    <span class="comment">// 判断是否互为倍数</span>
+    <span class="keyword">if</span> (a % b == <span class="number">0</span> || b % a == <span class="number">0</span>)
+        cout &lt;&lt; &quot;Yes&quot; &lt;&lt; endl;
+    <span class="keyword">else</span>
+        cout &lt;&lt; &quot;No&quot; &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="keyword">if</span> a % b == <span class="number">0</span> <span class="keyword">or</span> b % a == <span class="number">0</span>:
+    <span class="keyword">print</span>(&quot;Sao Multiplos&quot;)
+<span class="keyword">else</span>:
+    <span class="keyword">print</span>(&quot;Nao sao Multiplos&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD016">
+        <div class="problem-title">JD016：三根木棍</div>
+        <div class="problem-meta">AcWing 664 | JD016</div>
+
+        <div class="description">
+            <p>赵晴儿从柴堆里抽出三根木棍，量了量长度，让李少白判断它们能不能拼成一个三角形。如果能，算出周长；如果不能，算出以A、B为上下底、C为高的梯形面积，公式为 (A+B)×C÷2。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，三个浮点数A、B、C。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>能拼成三角形输出 <code>Perimeter = X.X</code>（周长），拼不成输出 <code>Area = X.X</code>（梯形面积）。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+6.0 4.0 2.0
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+Area = 10.0
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>三角形成立条件：任意两边之和大于第三边。成立时周长=A+B+C；不成立时梯形面积=(A+B)*C/2。保留1位小数。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> a, b, c;
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+    <span class="keyword">if</span> (a + b &gt; c &amp;&amp; a + c &gt; b &amp;&amp; b + c &gt; a)
+        printf(&quot;Perimeter = %.<span class="number">1lf</span>\n&quot;, a + b + c);
+    <span class="keyword">else</span>
+        printf(&quot;Area = %.<span class="number">1lf</span>\n&quot;, (a + b) * c / <span class="number">2</span>);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">a, b, c = <span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split())
+<span class="keyword">if</span> a + b &gt; c <span class="keyword">and</span> a + c &gt; b <span class="keyword">and</span> b + c &gt; a:
+    <span class="keyword">print</span>(f&quot;Perimeter = {a + b + c:.1f}&quot;)
+<span class="keyword">else</span>:
+    <span class="keyword">print</span>(f&quot;Area = {(a + b) * c / <span class="number">2</span>:.1f}&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD017">
+        <div class="problem-title">JD017：比武时辰</div>
+        <div class="problem-meta">AcWing 667 | JD017</div>
+
+        <div class="description">
+            <p>李少白和师弟在练武场比武。他们从A时开始，到B时结束（只看整点，不看分钟）。如果B>A，比武持续了B-A小时；如果B≤A，说明比武过了零点，持续了24-A+B小时；如果A=B，说明刚好持续了一整天（24小时）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，两个整数A和B（0≤A,B≤23）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出一个整数，表示比武持续的小时数。</p>
+
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>用条件判断：如果B>A，输出B-A；如果B==A，输出24；否则输出24-A+B。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> a, b;
+    scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+    <span class="comment">// 计算比武持续小时数</span>
+    <span class="keyword">int</span> res;
+    <span class="keyword">if</span> (a &lt; b) res = b - a;
+    <span class="keyword">else</span> <span class="keyword">if</span> (a == b) res = <span class="number">24</span>;
+    <span class="keyword">else</span> res = <span class="number">24</span> - a + b;
+    printf(&quot;%d\n&quot;, res);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="keyword">if</span> a &lt; b:
+    horas = b - a
+<span class="keyword">else</span>:
+    horas = <span class="number">24</span> - a + b
+<span class="keyword">print</span>(f&quot;O JOGO DUROU {horas} HORA(S)&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD018">
+        <div class="problem-title">JD018：三石排序</div>
+        <div class="problem-meta">AcWing 663 | JD018</div>
+
+        <div class="description">
+            <p>梁嘉峰在地上放了三块石头，上面各刻着一个数。他说：「从小到大排好，报给我。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，三个整数，用空格隔开。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>三个数从小到大输出，空格隔开。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+7 21 -14
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+-14 7 21
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>用条件判断两两比较确定顺序，或存入数组排序。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> a, b, c;
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+    <span class="keyword">if</span> (a &gt; b) swap(a, b);
+    <span class="keyword">if</span> (a &gt; c) swap(a, c);
+    <span class="keyword">if</span> (b &gt; c) swap(b, c);
+    cout &lt;&lt; a &lt;&lt; &quot; &quot; &lt;&lt; b &lt;&lt; &quot; &quot; &lt;&lt; c &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">a, b, c = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="keyword">if</span> a &gt; b: a, b = b, a
+<span class="keyword">if</span> a &gt; c: a, c = c, a
+<span class="keyword">if</span> b &gt; c: b, c = c, b
+<span class="keyword">print</span>(a, b, c)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD019">
+        <div class="problem-title">JD019：杂货铺</div>
+        <div class="problem-meta">AcWing 660 | JD019</div>
+
+        <div class="description">
+            <p>山脚杂货铺有5种干粮，编号1到5，单价分别是4.00、4.50、5.00、2.00、1.50文。赵晴儿报了干粮编号和要买的数量，掌柜让她自己算总价。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，两个整数：干粮编号X和数量Y。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出 <code>Total: R$ </code> 后跟总价，保留两位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3 2
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+Total: R$ 10.00
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>用数组或条件判断存储5种单价，查表后乘以数量。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> x, y;
+    scanf(&quot;%d%d&quot;, &amp;x, &amp;y);
+    <span class="keyword">double</span> p;
+    <span class="keyword">if</span> (x == <span class="number">1</span>) p = <span class="number">4.0</span>;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">2</span>) p = <span class="number">4.5</span>;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">3</span>) p = <span class="number">5.0</span>;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">4</span>) p = <span class="number">2.0</span>;
+    <span class="keyword">else</span> p = <span class="number">1.5</span>;
+    printf(&quot;Total: R$ %.<span class="number">2lf</span>\n&quot;, p * y);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">prices = {<span class="number">1</span>: <span class="number">4.0</span>, <span class="number">2</span>: <span class="number">4.5</span>, <span class="number">3</span>: <span class="number">5.0</span>, <span class="number">4</span>: <span class="number">2.0</span>, <span class="number">5</span>: <span class="number">1.5</span>}
+x, y = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="keyword">print</span>(f&quot;Total: R$ {prices[x] * y:.2f}&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD020">
+        <div class="problem-title">JD020：内力分级</div>
+        <div class="problem-meta">AcWing 659 | JD020</div>
+
+        <div class="description">
+            <p>宗门把弟子的内力值分成四个等级：[0,25]是入门，(25,50]是初级，(50,75]是中级，(75,100]是高级。超出100则不在评级范围内。李少白测出一名弟子的内力值，需要判断他属于哪个等级。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个浮点数，表示内力值。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出对应区间的名称，或 <code>Out of interval</code>（超出范围）。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+95.29
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+Interval (75,100]
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>用 if-elif-else 逐一判断落在哪个区间。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> x;
+    cin &gt;&gt; x;
+    <span class="keyword">if</span> (x &gt;= <span class="number">0</span> &amp;&amp; x &lt;= <span class="number">25</span>) cout &lt;&lt; &quot;Interval [<span class="number">0</span>,<span class="number">25</span>]&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; <span class="number">25</span> &amp;&amp; x &lt;= <span class="number">50</span>) cout &lt;&lt; &quot;Interval (<span class="number">25</span>,<span class="number">50</span>]&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; <span class="number">50</span> &amp;&amp; x &lt;= <span class="number">75</span>) cout &lt;&lt; &quot;Interval (<span class="number">50</span>,<span class="number">75</span>]&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; <span class="number">75</span> &amp;&amp; x &lt;= <span class="number">100</span>) cout &lt;&lt; &quot;Interval (<span class="number">75</span>,<span class="number">100</span>]&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> cout &lt;&lt; &quot;Out of interval&quot; &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">x = <span class="keyword">float</span>(<span class="keyword">input</span>())
+<span class="keyword">if</span> <span class="number">0</span> &lt;= x &lt;= <span class="number">25</span>:
+    <span class="keyword">print</span>(&quot;Interval [<span class="number">0</span>,<span class="number">25</span>]&quot;)
+<span class="keyword">elif</span> <span class="number">25</span> &lt; x &lt;= <span class="number">50</span>:
+    <span class="keyword">print</span>(&quot;Interval (<span class="number">25</span>,<span class="number">50</span>]&quot;)
+<span class="keyword">elif</span> <span class="number">50</span> &lt; x &lt;= <span class="number">75</span>:
+    <span class="keyword">print</span>(&quot;Interval (<span class="number">50</span>,<span class="number">75</span>]&quot;)
+<span class="keyword">elif</span> <span class="number">75</span> &lt; x &lt;= <span class="number">100</span>:
+    <span class="keyword">print</span>(&quot;Interval (<span class="number">75</span>,<span class="number">100</span>]&quot;)
+<span class="keyword">else</span>:
+    <span class="keyword">print</span>(&quot;Out of interval&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD021">
+        <div class="problem-title">JD021：沙盘点位</div>
+        <div class="problem-meta">AcWing 662 | JD021</div>
+
+        <div class="description">
+            <p>赵晴儿在沙盘上标了一个点P(x, y)，让李少白判断它落在第几象限，还是在坐标轴上，还是在原点。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，两个浮点数x和y。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出 <code>Primeiro</code>（第一象限）、<code>Segundo</code>（第二）、<code>Terceiro</code>（第三）、<code>Quarto</code>（第四）、<code>Eixo X</code>（X轴上）、<code>Eixo Y</code>（Y轴上）或 <code>Origem</code>（原点）。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+4.5 -2.2
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+Q4
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>先判断是否在原点或坐标轴上（x==0 或 y==0），再判断象限。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> x, y;
+    cin &gt;&gt; x &gt;&gt; y;
+    <span class="keyword">if</span> (x &gt; <span class="number">0</span> &amp;&amp; y &gt; <span class="number">0</span>) cout &lt;&lt; &quot;Q1&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x &lt; <span class="number">0</span> &amp;&amp; y &gt; <span class="number">0</span>) cout &lt;&lt; &quot;Q2&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x &lt; <span class="number">0</span> &amp;&amp; y &lt; <span class="number">0</span>) cout &lt;&lt; &quot;Q3&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; <span class="number">0</span> &amp;&amp; y &lt; <span class="number">0</span>) cout &lt;&lt; &quot;Q4&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">0</span> &amp;&amp; y == <span class="number">0</span>) cout &lt;&lt; &quot;Origem&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">0</span>) cout &lt;&lt; &quot;Eixo Y&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> cout &lt;&lt; &quot;Eixo X&quot; &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">x, y = <span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split())
+<span class="keyword">if</span> x &gt; <span class="number">0</span> <span class="keyword">and</span> y &gt; <span class="number">0</span>: <span class="keyword">print</span>(&quot;Q1&quot;)
+<span class="keyword">elif</span> x &lt; <span class="number">0</span> <span class="keyword">and</span> y &gt; <span class="number">0</span>: <span class="keyword">print</span>(&quot;Q2&quot;)
+<span class="keyword">elif</span> x &lt; <span class="number">0</span> <span class="keyword">and</span> y &lt; <span class="number">0</span>: <span class="keyword">print</span>(&quot;Q3&quot;)
+<span class="keyword">elif</span> x &gt; <span class="number">0</span> <span class="keyword">and</span> y &lt; <span class="number">0</span>: <span class="keyword">print</span>(&quot;Q4&quot;)
+<span class="keyword">elif</span> x == <span class="number">0</span> <span class="keyword">and</span> y == <span class="number">0</span>: <span class="keyword">print</span>(&quot;Origem&quot;)
+<span class="keyword">elif</span> x == <span class="number">0</span>: <span class="keyword">print</span>(&quot;Eixo Y&quot;)
+<span class="keyword">else</span>: <span class="keyword">print</span>(&quot;Eixo X&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD022">
+        <div class="problem-title">JD022：跨夜比武</div>
+        <div class="problem-meta">AcWing 668 | JD022</div>
+
+        <div class="description">
+            <p>李少白和师弟比武，开始时间是A时B分，结束时间是C时D分。比武可能跨了零点。请算出比武持续了多久。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，四个整数A、B、C、D，分别表示开始的时、分和结束的时、分。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出比武持续时间，格式为 <code>H:M</code>。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+8 56 7 37
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+22:41
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>全部转为分钟做差。如果结果≤0，加上24×60。然后转回时:分格式。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> a, b, c, d;
+    scanf(&quot;%d%d%d%d&quot;, &amp;a, &amp;b, &amp;c, &amp;d);
+    <span class="keyword">int</span> start = a * <span class="number">60</span> + b, end = c * <span class="number">60</span> + d;
+    <span class="keyword">if</span> (end &lt;= start) end += <span class="number">24</span> * <span class="number">60</span>;
+    <span class="keyword">int</span> diff = end - start;
+    printf(&quot;%d:%d\n&quot;, diff / <span class="number">60</span>, diff % <span class="number">60</span>);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">a, b, c, d = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+s = a * <span class="number">60</span> + b
+e = c * <span class="number">60</span> + d
+<span class="keyword">if</span> e &lt;= s: e += <span class="number">24</span> * <span class="number">60</span>
+d = e - s
+<span class="keyword">print</span>(f&quot;{d // <span class="number">60</span>}:{d % <span class="number">60</span>}&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD023">
+        <div class="problem-title">JD023：账房调薪</div>
+        <div class="problem-meta">AcWing 669 | JD023</div>
+
+        <div class="description">
+            <p>宗门账房年底调薪，按原月钱所在区间确定涨幅：0~400涨15%，400.01~800涨12%，800.01~1200涨10%，1200.01~2000涨7%，2000以上涨4%。涨幅是按整个工资乘以对应百分比，不是分段累进。</p>
+<p>李少白拿到一名弟子的原月钱，请算出新月钱、涨了多少和涨幅百分比。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个浮点数，表示原月钱。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>三行：新月钱、涨了多少、涨幅百分比（整数带%号），金额保留两位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+400.00
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+New salary: 460.00
+Increase: 60.00
+Percentage: 15 %
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>用 if-elif 判断原月钱落在哪个区间，确定涨幅百分比p。涨额 = 原月钱 × p/100，新月钱 = 原月钱 + 涨额。注意400属于0~400区间（涨15%），400.01才属于400~800区间。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> s;
+    scanf(&quot;%lf&quot;, &amp;s);
+    <span class="keyword">int</span> p;
+    <span class="keyword">if</span> (s &lt;= <span class="number">400</span>) p = <span class="number">15</span>;
+    <span class="keyword">else</span> <span class="keyword">if</span> (s &lt;= <span class="number">800</span>) p = <span class="number">12</span>;
+    <span class="keyword">else</span> <span class="keyword">if</span> (s &lt;= <span class="number">1200</span>) p = <span class="number">10</span>;
+    <span class="keyword">else</span> <span class="keyword">if</span> (s &lt;= <span class="number">2000</span>) p = <span class="number">7</span>;
+    <span class="keyword">else</span> p = <span class="number">4</span>;
+    <span class="keyword">double</span> r = s * p / <span class="number">100</span>;
+    printf(&quot;New salary: %.<span class="number">2lf</span>\nIncrease: %.<span class="number">2lf</span>\nPercentage: %d %%\n&quot;, s + r, r, p);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">s = <span class="keyword">float</span>(<span class="keyword">input</span>())
+<span class="keyword">if</span> s &lt;= <span class="number">400</span>: p = <span class="number">15</span>
+<span class="keyword">elif</span> s &lt;= <span class="number">800</span>: p = <span class="number">12</span>
+<span class="keyword">elif</span> s &lt;= <span class="number">1200</span>: p = <span class="number">10</span>
+<span class="keyword">elif</span> s &lt;= <span class="number">2000</span>: p = <span class="number">7</span>
+<span class="keyword">else</span>: p = <span class="number">4</span>
+r = s * p / <span class="number">100</span>
+<span class="keyword">print</span>(f&quot;New salary: {s + r:.2f}&quot;)
+<span class="keyword">print</span>(f&quot;Increase: {r:.2f}&quot;)
+<span class="keyword">print</span>(f&quot;Percentage: {p} %&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD024">
+        <div class="problem-title">JD024：五关考验</div>
+        <div class="problem-meta">AcWing 657 | JD024</div>
+
+        <div class="description">
+            <p>梁嘉峰考李少白：「给你四个数A、B、C、D，同时满足以下五个条件才算过关：B大于A，D大于A，C与D之和大于A与B之和，C是正数，A是偶数。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，四个整数A、B、C、D。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>满足所有条件输出 <code>Accepted</code>，否则输出 <code>Not accepted</code>。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+-87 14 68 33
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+Not accepted
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>用逻辑与（&&/and）连接五个条件，全部为真才通过。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> a, b, c, d;
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;
+    <span class="keyword">if</span> (b &gt; c &amp;&amp; d &gt; a &amp;&amp; c + d &gt; a + b &amp;&amp; c &gt; <span class="number">0</span> &amp;&amp; d &gt; <span class="number">0</span> &amp;&amp; a % <span class="number">2</span> == <span class="number">0</span>)
+        cout &lt;&lt; &quot;Accepted&quot; &lt;&lt; endl;
+    <span class="keyword">else</span>
+        cout &lt;&lt; &quot;Not accepted&quot; &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">a, b, c, d = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="keyword">if</span> b &gt; c <span class="keyword">and</span> d &gt; a <span class="keyword">and</span> c + d &gt; a + b <span class="keyword">and</span> c &gt; <span class="number">0</span> <span class="keyword">and</span> d &gt; <span class="number">0</span> <span class="keyword">and</span> a % <span class="number">2</span> == <span class="number">0</span>:
+    <span class="keyword">print</span>(&quot;Accepted&quot;)
+<span class="keyword">else</span>:
+    <span class="keyword">print</span>(&quot;Not accepted&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD025">
+        <div class="problem-title">JD025：信鸽传信</div>
+        <div class="problem-meta">AcWing 671 | JD025</div>
+
+        <div class="description">
+            <p>宗门各分舵之间用信鸽传信，每个分舵有一个编号（DDD码）。李少白拿到一个编号，需要查出它对应哪个分舵：61=Brasilia，71=Salvador，11=Sao Paulo，21=Rio de Janeiro，31=Belo Horizonte
+19=Campinas，其他编号则输出"DDD nao cadastrado"。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个整数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出对应分舵名称，或 <code>DDD nao cadastrado</code>。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+11
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+Sao Paulo
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>用 if-elif 链逐一比对，或用字典/映射表查找。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> x;
+    cin &gt;&gt; x;
+    <span class="keyword">if</span> (x == <span class="number">61</span>) cout &lt;&lt; &quot;Brasilia&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">71</span>) cout &lt;&lt; &quot;Salvador&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">11</span>) cout &lt;&lt; &quot;Sao Paulo&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">21</span>) cout &lt;&lt; &quot;Rio de Janeiro&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">32</span>) cout &lt;&lt; &quot;Juiz de Fora&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">19</span>) cout &lt;&lt; &quot;Campinas&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">27</span>) cout &lt;&lt; &quot;Vitoria&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> <span class="keyword">if</span> (x == <span class="number">31</span>) cout &lt;&lt; &quot;Belo Horizonte&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> cout &lt;&lt; &quot;DDD nao cadastrado&quot; &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">ddd = {<span class="number">61</span>:&quot;Brasilia&quot;,<span class="number">71</span>:&quot;Salvador&quot;,<span class="number">11</span>:&quot;Sao Paulo&quot;,<span class="number">21</span>:&quot;Rio de Janeiro&quot;,<span class="number">32</span>:&quot;Juiz de Fora&quot;,<span class="number">19</span>:&quot;Campinas&quot;,<span class="number">27</span>:&quot;Vitoria&quot;,<span class="number">31</span>:&quot;Belo Horizonte&quot;}
+x = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(ddd.get(x, &quot;DDD nao cadastrado&quot;))</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD026">
+        <div class="problem-title">JD026：木棍辨形</div>
+        <div class="problem-meta">AcWing 666 | JD026</div>
+
+        <div class="description">
+            <p>梁嘉峰递来三根木棍：「先判断能不能拼成三角形。能的话，再判断是直角、锐角还是钝角三角形。」判断依据：最长边的平方与另外两边平方和的关系。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，三个浮点数，表示三边长度（已从小到大排列）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>不能构成输出 <code>Not a triangle</code>；能构成则输出三角形类型：<code>Equilateral</code>（等边）、<code>Isosceles</code>（等腰）、<code>Scalene</code>（不等边）、<code>Right</code>（直角）、<code>Acute</code>（锐角）、<code>Obtuse</code>（钝角）。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+6.0 4.0 2.0
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+Not a triangle
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>先验证两边之和大于第三边。再判断等边/等腰/不等边，然后比较最长边平方判断直角/锐角/钝角。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> a, b, c;
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+    <span class="keyword">if</span> (b &gt; a) swap(a, b);
+    <span class="keyword">if</span> (c &gt; a) swap(a, c);
+    <span class="keyword">if</span> (c &gt; b) swap(b, c);
+    <span class="keyword">if</span> (a &gt;= b + c) cout &lt;&lt; &quot;Not a triangle&quot; &lt;&lt; endl;
+    <span class="keyword">else</span> {
+        <span class="keyword">if</span> (a*a == b*b + c*c) cout &lt;&lt; &quot;Right&quot; &lt;&lt; endl;
+        <span class="keyword">if</span> (a*a &gt; b*b + c*c) cout &lt;&lt; &quot;Obtuse&quot; &lt;&lt; endl;
+        <span class="keyword">if</span> (a*a &lt; b*b + c*c) cout &lt;&lt; &quot;Acute&quot; &lt;&lt; endl;
+        <span class="keyword">if</span> (a == b &amp;&amp; b == c) cout &lt;&lt; &quot;Equilateral&quot; &lt;&lt; endl;
+        <span class="keyword">else</span> <span class="keyword">if</span> (a == b || a == c || b == c) cout &lt;&lt; &quot;Isosceles&quot; &lt;&lt; endl;
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">a, b, c = <span class="keyword">sorted</span>(<span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split()), reverse=<span class="keyword">True</span>)
+<span class="keyword">if</span> a &gt;= b + c:
+    <span class="keyword">print</span>(&quot;Not a triangle&quot;)
+<span class="keyword">else</span>:
+    <span class="keyword">if</span> a*a == b*b + c*c: <span class="keyword">print</span>(&quot;Right&quot;)
+    <span class="keyword">if</span> a*a &gt; b*b + c*c: <span class="keyword">print</span>(&quot;Obtuse&quot;)
+    <span class="keyword">if</span> a*a &lt; b*b + c*c: <span class="keyword">print</span>(&quot;Acute&quot;)
+    <span class="keyword">if</span> a == b == c: <span class="keyword">print</span>(&quot;Equilateral&quot;)
+    <span class="keyword">elif</span> a == b <span class="keyword">or</span> b == c <span class="keyword">or</span> a == c: <span class="keyword">print</span>(&quot;Isosceles&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD027">
+        <div class="problem-title">JD027：怪兽辨识</div>
+        <div class="problem-meta">AcWing 670 | JD027</div>
+
+        <div class="description">
+            <p>迷踪林外遇到一只怪兽。赵晴儿观察了三层特征来判断它的种类：第一层是有脊椎还是无脊椎；第二层是哺乳类、鸟类还是爬行类；第三层是食性（食肉、食草、杂食）。</p>
+<p>根据三层特征，输出对应的动物名称。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>三行，每行一个字符串，分别表示三层分类特征。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出对应的动物名称。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+vertebrado
+mamifero onivoro
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+homem
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>三层嵌套 if-else：先判断第一层，再判断第二层，最后判断第三层。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+<span class="keyword">int</span> main() {
+    <span class="keyword">string</span> a, b, c;
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+    <span class="keyword">if</span> (a == &quot;vertebrado&quot;) {
+        <span class="keyword">if</span> (b == &quot;ave&quot;) {
+            <span class="keyword">if</span> (c == &quot;carnivoro&quot;) cout &lt;&lt; &quot;aguia&quot; &lt;&lt; endl;
+            <span class="keyword">else</span> cout &lt;&lt; &quot;pomba&quot; &lt;&lt; endl;
+        } <span class="keyword">else</span> {
+            <span class="keyword">if</span> (c == &quot;onivoro&quot;) cout &lt;&lt; &quot;homem&quot; &lt;&lt; endl;
+            <span class="keyword">else</span> cout &lt;&lt; &quot;vaca&quot; &lt;&lt; endl;
+        }
+    } <span class="keyword">else</span> {
+        <span class="keyword">if</span> (b == &quot;inseto&quot;) {
+            <span class="keyword">if</span> (c == &quot;hematofago&quot;) cout &lt;&lt; &quot;pulga&quot; &lt;&lt; endl;
+            <span class="keyword">else</span> cout &lt;&lt; &quot;lagarta&quot; &lt;&lt; endl;
+        } <span class="keyword">else</span> {
+            <span class="keyword">if</span> (c == &quot;hematofago&quot;) cout &lt;&lt; &quot;sanguessuga&quot; &lt;&lt; endl;
+            <span class="keyword">else</span> cout &lt;&lt; &quot;minhoca&quot; &lt;&lt; endl;
+        }
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+a, b, c = sys.stdin.read().split()
+<span class="keyword">if</span> a == &quot;vertebrado&quot;:
+    <span class="keyword">if</span> b == &quot;ave&quot;:
+        <span class="keyword">print</span>(&quot;aguia&quot; <span class="keyword">if</span> c == &quot;carnivoro&quot; <span class="keyword">else</span> &quot;pomba&quot;)
+    <span class="keyword">else</span>:
+        <span class="keyword">print</span>(&quot;homem&quot; <span class="keyword">if</span> c == &quot;onivoro&quot; <span class="keyword">else</span> &quot;vaca&quot;)
+<span class="keyword">else</span>:
+    <span class="keyword">if</span> b == &quot;inseto&quot;:
+        <span class="keyword">print</span>(&quot;pulga&quot; <span class="keyword">if</span> c == &quot;hematofago&quot; <span class="keyword">else</span> &quot;lagarta&quot;)
+    <span class="keyword">else</span>:
+        <span class="keyword">print</span>(&quot;sanguessuga&quot; <span class="keyword">if</span> c == &quot;hematofago&quot; <span class="keyword">else</span> &quot;minhoca&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD028">
+        <div class="problem-title">JD028：田赋计算</div>
+        <div class="problem-meta">AcWing 672 | JD028</div>
+
+        <div class="description">
+            <p>李少白入了宗门，开始交田赋。税率分档：2000以下免税，2000.01~3000部分征8%，3000.01~4500部分征18%，4500以上部分征28%。注意是分段计税——只有超出部分按对应税率算。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个浮点数，表示月收入。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出 <code>R$ X.XX</code>。免税则输出 <code>Isento</code>。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3002.00
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+R$ 80.36
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>分段计算：1000×8% + 2×18% = 80.36。每段只对超出部分征税。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> x;
+    scanf(&quot;%lf&quot;, &amp;x);
+    <span class="keyword">if</span> (x &lt;= <span class="number">2000</span>) { printf(&quot;Isento\n&quot;); <span class="keyword">return</span> <span class="number">0</span>; }
+    x -= <span class="number">2000</span>;
+    <span class="keyword">double</span> t = <span class="number">0</span>;
+    <span class="keyword">if</span> (x &gt; <span class="number">0</span>) { <span class="keyword">double</span> v = x &lt; <span class="number">1000</span> ? x : <span class="number">1000</span>; t += v * <span class="number">0.08</span>; x -= v; }
+    <span class="keyword">if</span> (x &gt; <span class="number">0</span>) { <span class="keyword">double</span> v = x &lt; <span class="number">1500</span> ? x : <span class="number">1500</span>; t += v * <span class="number">0.18</span>; x -= v; }
+    <span class="keyword">if</span> (x &gt; <span class="number">0</span>) t += x * <span class="number">0.28</span>;
+    printf(&quot;R$ %.<span class="number">2lf</span>\n&quot;, t);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python">x = <span class="keyword">float</span>(<span class="keyword">input</span>())
+<span class="keyword">if</span> x &lt;= <span class="number">2000</span>:
+    <span class="keyword">print</span>(&quot;Isento&quot;)
+<span class="keyword">else</span>:
+    x -= <span class="number">2000</span>
+    t = <span class="number">0</span>
+    <span class="keyword">if</span> x &gt; <span class="number">0</span>:
+        v = <span class="keyword">min</span>(x, <span class="number">1000</span>)
+        t += v * <span class="number">0.08</span>
+        x -= v
+    <span class="keyword">if</span> x &gt; <span class="number">0</span>:
+        v = <span class="keyword">min</span>(x, <span class="number">1500</span>)
+        t += v * <span class="number">0.18</span>
+        x -= v
+    <span class="keyword">if</span> x &gt; <span class="number">0</span>:
+        t += x * <span class="number">0.28</span>
+    <span class="keyword">print</span>(f&quot;R$ {t:.2f}&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+</body>
+</html>

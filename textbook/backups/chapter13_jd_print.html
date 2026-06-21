@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>第13章 迷雾寻踪——搜索与回溯</title>
+    <style>
+        body { font-family: "Noto Serif SC", "Source Han Serif CN", serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.8; color: #333; }
+        h1 { text-align: center; color: #8B0000; border-bottom: 2px solid #8B0000; padding-bottom: 10px; }
+        h2 { color: #4A0080; margin-top: 2em; }
+        h3 { color: #2E5090; }
+        .chapter-subtitle { text-align: center; color: #666; font-size: 1.1em; margin-bottom: 2em; }
+        .problem { border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin: 20px 0; background: #fafafa; }
+        .problem-title { color: #8B0000; font-size: 1.3em; font-weight: bold; margin-bottom: 10px; }
+        .problem-meta { color: #666; font-size: 0.9em; margin-bottom: 15px; }
+        .description { margin: 15px 0; }
+        .description p { margin: 8px 0; }
+        .io-section { background: #f0f0f0; padding: 12px; border-radius: 4px; margin: 10px 0; }
+        .io-section h4 { margin: 0 0 8px 0; color: #555; font-size: 0.95em; }
+        .sample { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; margin: 10px 0; font-family: "Consolas", "Courier New", monospace; white-space: pre-wrap; }
+        .sample-label { color: #569cd6; font-weight: bold; margin-bottom: 5px; }
+        .hint { background: #fff8e1; border-left: 4px solid #ffc107; padding: 12px; margin: 15px 0; }
+        .code-section { margin: 15px 0; }
+        .code-section summary { cursor: pointer; color: #2E5090; font-weight: bold; }
+        pre { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; overflow-x: auto; font-size: 0.9em; }
+        code { font-family: "Consolas", "Courier New", monospace; }
+        .lang-tabs { display: flex; gap: 10px; margin: 10px 0; }
+        .lang-tab { padding: 5px 15px; cursor: pointer; border: 1px solid #ddd; border-radius: 4px 4px 0 0; }
+        .lang-tab.active { background: #1e1e1e; color: #d4d4d4; border-color: #1e1e1e; }
+    </style>
+</head>
+<body>
+    <h1>第13章 迷雾寻踪</h1>
+    <div class="chapter-subtitle">搜索与回溯</div>
+
+    <div class="problem" id="JD141">
+        <div class="problem-title">JD141：雾中排阵</div>
+        <div class="problem-meta">AcWing 842 | JD141</div>
+
+        <div class="description">
+            <p>迷雾弥漫的林间小径上，梁嘉峰递给李少白n枚令牌："按字典序列出1到n的所有排列。每步选一个没用过的令牌，选完所有就回头换一个——这就是DFS回溯。"</p>
+<p>给定整数n，按字典序输出1到n的所有全排列。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个整数n（1≤n≤9）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>每行一个排列，数字之间空格隔开，按字典序输出。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+1 2 3
+1 3 2
+2 1 3
+2 3 1
+3 1 2
+3 2 1
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>DFS+回溯：选→递归→撤销。用used[]标记。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">10</span>;  <span class="comment">//最大值</span>
+<span class="keyword">int</span> n;             <span class="comment">//读入的n</span>
+<span class="keyword">int</span> path[N];       <span class="comment">//记录路径每个位的值</span>
+<span class="keyword">bool</span> used[N];      <span class="comment">//记录第i个数是否被用过</span>
+
+<span class="keyword">void</span> dfs(<span class="keyword">int</span> u) {
+  <span class="keyword">if</span> (u == n) {
+    <span class="comment">//输出排列</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) cout &lt;&lt; path[i] &lt;&lt; &quot; &quot;;
+    cout &lt;&lt; endl;
+    <span class="keyword">return</span>;
+  }
+  <span class="comment">//枚举数字1--n</span>
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) {
+    <span class="keyword">if</span> (!used[i]) {
+      path[u] = i;      <span class="comment">//记录当前位path[u]的数字为i</span>
+      used[i] = <span class="keyword">true</span>;   <span class="comment">//标记数字i为已经使用郭</span>
+      dfs(u + <span class="number">1</span>);       <span class="comment">//递归处理下一个位</span>
+      used[i] = <span class="keyword">false</span>;  <span class="comment">//恢复现场</span>
+    }
+  }
+}
+
+<span class="keyword">int</span> main() {
+  cin &gt;&gt; n;
+  dfs(<span class="number">0</span>);
+  <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+sys.setrecursionlimit(<span class="number">200000</span>)
+<span class="comment"># 排列数字</span>
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+path = []
+used = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
+
+<span class="keyword">def</span> dfs():
+    <span class="keyword">if</span> <span class="keyword">len</span>(path) == n:
+        <span class="keyword">print</span>(&<span class="comment">#x27; &#x27;.join(map(str, path)) + &#x27; &#x27;)</span>
+        <span class="keyword">return</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+        <span class="keyword">if</span> <span class="keyword">not</span> used[i]:
+            used[i] = <span class="keyword">True</span>
+            path.append(i)
+            dfs()
+            path.pop()
+            used[i] = <span class="keyword">False</span>
+
+dfs()</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD142">
+        <div class="problem-title">JD142：棋盘布后</div>
+        <div class="problem-meta">AcWing 843 | JD142</div>
+
+        <div class="description">
+            <p>赵晴儿指着一个n×n的棋盘："放n个皇后，不能同行、同列、同对角线。有多少种放法？"</p>
+<p>李少白逐行放置，用三个布尔数组标记列和对角线。"每行选一个安全的位置放皇后，递归下一行。冲突就回退。"</p>
+<p>给定n，求n皇后的所有解。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个整数n。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>所有解，每个解n行（Q表示皇后，.表示空），解之间空行。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+4
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+.Q..
+...Q
+Q...
+..Q.
+
+..Q.
+Q...
+...Q
+.Q..
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>DFS+回溯：逐行放置，标记列和两条对角线。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">20</span>;  <span class="comment">//最大值</span>
+<span class="keyword">int</span> n;             <span class="comment">//输入的n</span>
+<span class="keyword">char</span> g[N][N];      <span class="comment">//棋盘</span>
+<span class="comment">//三个指示器列、对角线、反对角线,对角线以截距为编号</span>
+<span class="keyword">bool</span> col[N], dg[N], udg[N];
+
+<span class="keyword">void</span> dfs(<span class="keyword">int</span> u) {
+  <span class="keyword">if</span> (u == n) {
+    <span class="comment">//输出排列</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) puts(g[i]);
+    puts(&quot;&quot;);
+    <span class="keyword">return</span>;
+  }
+  <span class="comment">//枚举列0--n</span>
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+    <span class="keyword">if</span> (!col[i] &amp;&amp; !dg[i + u] &amp;&amp; !udg[i - u + n]) {
+      g[u][i] = &#x27;Q&#x27;;  <span class="comment">//当前位置设置为Q字符</span>
+      col[i] = dg[i + u] = udg[i - u + n] = <span class="keyword">true</span>;  <span class="comment">//标记数字i为已经使用郭</span>
+      dfs(u + <span class="number">1</span>);                                  <span class="comment">//递归处理下一个位</span>
+      g[u][i] = &#x27;.&#x27;;                               <span class="comment">//恢复现场</span>
+      col[i] = dg[i + u] = udg[i - u + n] = <span class="keyword">false</span>;  <span class="comment">//恢复现场</span>
+    }
+  }
+}
+
+<span class="keyword">int</span> main() {
+  cin &gt;&gt; n;
+  <span class="comment">//初始化图</span>
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) g[i][j] = &#x27;.&#x27;;
+  dfs(<span class="number">0</span>);
+  <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+sys.setrecursionlimit(<span class="number">200000</span>)
+<span class="comment"># n-皇后问题</span>
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+g = [[&<span class="comment">#x27;.&#x27;] * n for _ in range(n)]</span>
+col = [<span class="keyword">False</span>] * n
+dg = [<span class="keyword">False</span>] * (<span class="number">2</span> * n)
+udg = [<span class="keyword">False</span>] * (<span class="number">2</span> * n)
+
+<span class="keyword">def</span> dfs(r):
+    <span class="keyword">if</span> r == n:
+        <span class="keyword">for</span> row <span class="keyword">in</span> g:
+            <span class="keyword">print</span>(&<span class="comment">#x27;&#x27;.join(row))</span>
+        <span class="keyword">print</span>()
+        <span class="keyword">return</span>
+    <span class="keyword">for</span> c <span class="keyword">in</span> <span class="keyword">range</span>(n):
+        <span class="keyword">if</span> <span class="keyword">not</span> col[c] <span class="keyword">and</span> <span class="keyword">not</span> dg[r + c] <span class="keyword">and</span> <span class="keyword">not</span> udg[r - c + n]:
+            col[c] = dg[r + c] = udg[r - c + n] = <span class="keyword">True</span>
+            g[r][c] = &<span class="comment">#x27;Q&#x27;</span>
+            dfs(r + <span class="number">1</span>)
+            g[r][c] = &<span class="comment">#x27;.&#x27;</span>
+            col[c] = dg[r + c] = udg[r - c + n] = <span class="keyword">False</span>
+
+dfs(<span class="number">0</span>)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD143">
+        <div class="problem-title">JD143：迷宫寻路</div>
+        <div class="problem-meta">AcWing 844 | JD143</div>
+
+        <div class="description">
+            <p>石墙围成的迷宫，入口在左上角，出口在右下角。赵晴儿问："最短路径有多长？"</p>
+<p>梁嘉峰说："BFS——从入口开始，一层一层向外扩展。第一次到达出口时，层数就是最短路径。"</p>
+<p>给定一个n×m的迷宫（0可走，1是墙），求最短路径长度。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数n和m。接下来n行每行m个整数（0可走，1是墙）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最短路径长度。不可达输出-1。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5 5
+0 1 0 0 0
+0 1 0 1 0
+0 0 0 0 0
+0 1 1 1 0
+0 0 0 1 0
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+8
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>BFS层序遍历，第一次到达终点就是最短路径。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;algorithm&gt;
+#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;queue&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII;  <span class="comment">// Y总风格pair&lt;int,int&gt;声明</span>
+
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">107</span>;
+
+<span class="keyword">int</span> n, m;
+<span class="keyword">int</span> g[N][N],d[N][N];  
+
+<span class="comment">//广搜</span>
+<span class="keyword">int</span> bfs() {
+
+  queue&lt;PII&gt; q;      <span class="comment">//队列</span>
+
+  memset(d,-<span class="number">1</span>,<span class="keyword">sizeof</span> d);
+  d[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>;
+  q.push({<span class="number">0</span>,<span class="number">0</span>});
+
+  <span class="comment">// 四个方向向量</span>
+  <span class="keyword">int</span> dx[] = {-<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>}, dy[] = {<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>};
+
+  <span class="keyword">while</span> (q.size()) 
+  { <span class="comment">//队列为空的时候退出广搜</span>
+    <span class="keyword">auto</span> t = q.front();  <span class="comment">//取队头</span>
+    q.pop();             <span class="comment">//弹出队头</span>
+
+    <span class="comment">//搜索四个方向</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)
+    {
+      <span class="keyword">int</span> x = t.first + dx[i], y = t.second + dy[i];  <span class="comment">//待搜索的新坐标点</span>
+
+      <span class="keyword">if</span> (x &lt; <span class="number">0</span> || x &gt;= n || y &lt; <span class="number">0</span> || y &gt;= m || g[x][y] != <span class="number">0</span> || d[x][y]!=-<span class="number">1</span>) <span class="keyword">continue</span>;
+
+      d[x][y] = d[t.first][t.second]+<span class="number">1</span>;
+
+      q.push({x, y});<span class="comment">//入队</span>
+
+
+    }
+  }
+
+  <span class="keyword">return</span> d[n-<span class="number">1</span>][m-<span class="number">1</span>];
+}
+
+<span class="keyword">int</span> main() {
+
+    cin &gt;&gt; n &gt;&gt; m;
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) 
+      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;m; j++)
+        cin &gt;&gt; g[i][j];
+
+    cout &lt;&lt; bfs() &lt;&lt; endl;
+
+  <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+<span class="keyword">from</span> collections <span class="keyword">import</span> deque
+data = sys.stdin.read().split()
+n, m = <span class="keyword">int</span>(data[<span class="number">0</span>]), <span class="keyword">int</span>(data[<span class="number">1</span>])
+g = []
+idx = <span class="number">2</span>
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n):
+    g.append([<span class="keyword">int</span>(data[idx+j]) <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(m)])
+    idx += m
+dist = [[-<span class="number">1</span>] * m <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n)]
+dx = [-<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>]
+dy = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>]
+q = deque()
+q.append((<span class="number">0</span>, <span class="number">0</span>))
+dist[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>
+<span class="keyword">while</span> q:
+    x, y = q.popleft()
+    <span class="keyword">for</span> d <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">4</span>):
+        nx, ny = x + dx[d], y + dy[d]
+        <span class="keyword">if</span> <span class="number">0</span> &lt;= nx &lt; n <span class="keyword">and</span> <span class="number">0</span> &lt;= ny &lt; m <span class="keyword">and</span> g[nx][ny] == <span class="number">0</span> <span class="keyword">and</span> dist[nx][ny] == -<span class="number">1</span>:
+            dist[nx][ny] = dist[x][y] + <span class="number">1</span>
+            q.append((nx, ny))
+<span class="keyword">print</span>(dist[n - <span class="number">1</span>][m - <span class="number">1</span>])</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD144">
+        <div class="problem-title">JD144：八码迷局</div>
+        <div class="problem-meta">AcWing 845 | JD144</div>
+
+        <div class="description">
+            <p>迷雾中出现一个3×3数字拼盘，有一个空格。赵晴儿说："从初始状态移到目标状态，最少几步？每次只能把空格和相邻数字交换。"</p>
+<p>梁嘉峰说："BFS+状态压缩——把整个拼盘编码成一个字符串，每次移动生成新状态，用哈希表判重。"</p>
+<p>给定初始状态和目标状态，求最少移动步数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>两行，每行9个字符（3×3拼盘，x表示空格）。第一行初始状态，第二行目标状态。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最少移动步数。无解输出-1。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+1 2 3
+x 4 6
+7 5 8
+
+1 2 3
+4 5 6
+7 8 x
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+2
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>BFS+状态编码为字符串，哈希表判重。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+#<span class="keyword">include</span> &lt;unordered_map&gt;
+#<span class="keyword">include</span> &lt;queue&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+/**
+ * NQ13-<span class="number">04</span>: BFS试炼之八数码
+ * 搜索与回溯 | AcWing <span class="number">845</span>
+ * 时间: O(n!) | 空间: O(n)
+ */
+
+<span class="keyword">int</span> bfs(<span class="keyword">string</span> start)
+{
+  <span class="keyword">string</span> end = &quot;12345678x&quot;;
+
+  queue&lt;<span class="keyword">string</span>&gt; q;
+  unordered_map&lt;<span class="keyword">string</span>,<span class="keyword">int</span>&gt; d;<span class="comment">//字符串映射到整数</span>
+
+  q.push(start);
+  d[start] = <span class="number">0</span>;<span class="comment">//map的用法</span>
+
+  <span class="comment">//方向向量</span>
+  <span class="keyword">int</span> dx[<span class="number">4</span>] = {<span class="number">1</span>,-<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>},dy[<span class="number">4</span>]={<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,-<span class="number">1</span>};
+
+  <span class="comment">//广搜</span>
+  <span class="keyword">while</span>(q.size())
+  {
+    <span class="keyword">auto</span> t = q.front();
+    q.pop();
+
+    <span class="keyword">int</span> distance = d[t];
+    <span class="keyword">if</span> (t==end) <span class="keyword">return</span> distance;<span class="comment">//找到目标</span>
+
+    <span class="comment">//查询x在字符串中的下标</span>
+    <span class="keyword">int</span> k = t.find(&#x27;x&#x27;);
+    <span class="keyword">int</span> x = k / <span class="number">3</span>, y = k % <span class="number">3</span>;<span class="comment">//转换为宫格坐标</span>
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i ++ )
+    {
+      <span class="keyword">int</span> a = x + dx[i], b = y + dy[i];
+
+      <span class="keyword">if</span> (a &gt;= <span class="number">0</span> &amp;&amp; a &lt; <span class="number">3</span> &amp;&amp; b &gt;= <span class="number">0</span> &amp;&amp; b &lt; <span class="number">3</span>)
+      {
+        swap(t[k], t[a*<span class="number">3</span>+b]);<span class="comment">//移动x的位置</span>
+        <span class="keyword">if</span> (!d.count(t))
+        {
+          d[t] = distance + <span class="number">1</span>;
+          q.push(t);<span class="comment">//压入队列</span>
+        }
+        swap(t[k],t[a*<span class="number">3</span>+b]);<span class="comment">//还原现场</span>
+      }
+    }
+  }
+  <span class="keyword">return</span> -<span class="number">1</span>;
+
+}
+
+<span class="keyword">int</span> main()
+{
+    <span class="keyword">string</span> c, start;
+    <span class="comment">//去掉空格</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i ++ )
+    {
+      cin&gt;&gt;c;
+      start += c;
+    }
+
+    cout&lt;&lt;bfs(start)&lt;&lt;endl;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+<span class="keyword">from</span> collections <span class="keyword">import</span> deque
+start = &<span class="comment">#x27;&#x27;.join(sys.stdin.read().split())</span>
+target = &<span class="comment">#x27;12345678x&#x27;</span>
+<span class="keyword">if</span> start == target: <span class="keyword">print</span>(<span class="number">0</span>); sys.exit(<span class="number">0</span>)
+dx, dy = [-<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>], [<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,-<span class="number">1</span>]
+q = deque([start])
+dist = {start: <span class="number">0</span>}
+<span class="keyword">while</span> q:
+    s = q.popleft()
+    k = s.index(&<span class="comment">#x27;x&#x27;)</span>
+    x, y = k//<span class="number">3</span>, k%<span class="number">3</span>
+    <span class="keyword">for</span> d <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">4</span>):
+        nx, ny = x+dx[d], y+dy[d]
+        <span class="keyword">if</span> <span class="number">0</span>&lt;=nx&lt;<span class="number">3</span> <span class="keyword">and</span> <span class="number">0</span>&lt;=ny&lt;<span class="number">3</span>:
+            nk = nx*<span class="number">3</span> + ny
+            lst = <span class="keyword">list</span>(s)
+            lst[k], lst[nk] = lst[nk], lst[k]
+            ns = &<span class="comment">#x27;&#x27;.join(lst)</span>
+            <span class="keyword">if</span> ns <span class="keyword">not</span> <span class="keyword">in</span> dist:
+                dist[ns] = dist[s] + <span class="number">1</span>
+                <span class="keyword">if</span> ns == target: <span class="keyword">print</span>(dist[ns]); sys.exit(<span class="number">0</span>)
+                q.append(ns)
+<span class="keyword">print</span>(-<span class="number">1</span>)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD145">
+        <div class="problem-title">JD145：古树重心</div>
+        <div class="problem-meta">AcWing 846 | JD145</div>
+
+        <div class="description">
+            <p>迷踪林深处有一棵大树。梁嘉峰说："找到它的重心——删除后最大子树最小的那个节点。"</p>
+<p>赵晴儿说："DFS遍历树，对每个节点计算：删掉它后，最大子树有多少个节点。取最小的那个。"</p>
+<p>给定一棵树，求其重心和最大子树的最小大小。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数n。接下来n-1行每行两个整数表示一条边。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，最大子树的最小大小。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+9
+1 2
+1 7
+1 4
+2 8
+2 5
+4 3
+4 6
+6 9
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+4
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>DFS遍历树，计算每个节点的最大子树大小。重心=max(n-subSize, 各子树size)最小的节点。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100007</span>, M= N*<span class="number">2</span>;<span class="comment">//无向图</span>
+
+<span class="keyword">int</span> n;
+<span class="keyword">int</span> h[N], e[M], ne[M], idx;
+<span class="keyword">int</span> ans = N;
+<span class="keyword">bool</span> st[N];<span class="comment">//顶点n是否访问</span>
+
+<span class="keyword">void</span> add(<span class="keyword">int</span> a, <span class="keyword">int</span> b)  <span class="comment">// 添加一条边a-&gt;b</span>
+{
+    e[idx] = b, ne[idx] = h[a], h[a] = idx ++ ;
+}
+
+<span class="keyword">int</span> dfs(<span class="keyword">int</span> u)
+{
+  st[u] = <span class="keyword">true</span>;
+
+  <span class="keyword">int</span> size = <span class="number">0</span>;<span class="comment">//去掉i节点后，i子树的最大子树节点数</span>
+  <span class="keyword">int</span> sum = <span class="number">0</span>;<span class="comment">//i子树的节点总数</span>
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = h[u]; i!=-<span class="number">1</span>; i=ne[i])
+  {
+    <span class="keyword">int</span> j = e[i];
+    <span class="keyword">if</span> (st[j]) <span class="keyword">continue</span>;
+
+    <span class="keyword">int</span> s = dfs(j);<span class="comment">//返回j子树的大小</span>
+    size = max(size,s);
+    sum += s;<span class="comment">//计算所有子树和</span>
+  }
+
+  size = max(size, n - sum - <span class="number">1</span>);<span class="comment">//i子树和与 非i子树部分的和，取最大值</span>
+  ans = min(ans,size);
+
+  <span class="keyword">return</span> sum+<span class="number">1</span>;<span class="comment">//加上i节点本身</span>
+}
+
+<span class="keyword">int</span> main()
+{
+    cin&gt;&gt;n;
+    memset(h, -<span class="number">1</span>, <span class="keyword">sizeof</span> h);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n-<span class="number">1</span>; i ++ )
+    {
+      <span class="keyword">int</span> a,b;
+      cin&gt;&gt;a&gt;&gt;b;
+      add(a, b),add(b,a);<span class="comment">//无向边</span>
+    }
+    dfs(<span class="number">1</span>);
+    cout&lt;&lt;ans&lt;&lt;endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 树的重心</span>
+<span class="keyword">import</span> sys
+sys.setrecursionlimit(<span class="number">200000</span>)
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+adj = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n + <span class="number">1</span>)]
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n - <span class="number">1</span>):
+    a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+    adj[a].append(b)
+    adj[b].append(a)
+
+ans = n
+<span class="keyword">def</span> dfs(u, fa):
+    global ans
+    sz = <span class="number">1</span>
+    max_part = <span class="number">0</span>
+    <span class="keyword">for</span> v <span class="keyword">in</span> adj[u]:
+        <span class="keyword">if</span> v != fa:
+            sv = dfs(v, u)
+            sz += sv
+            max_part = <span class="keyword">max</span>(max_part, sv)
+    max_part = <span class="keyword">max</span>(max_part, n - sz)
+    ans = <span class="keyword">min</span>(ans, max_part)
+    <span class="keyword">return</span> sz
+
+dfs(<span class="number">1</span>, -<span class="number">1</span>)
+<span class="keyword">print</span>(ans)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD146">
+        <div class="problem-title">JD146：城池层递</div>
+        <div class="problem-meta">AcWing 847 | JD146</div>
+
+        <div class="description">
+            <p>城际连横。赵晴儿铺开城池图："城池之间有道路相连。从城1出发，到每个城池的最短距离是多少？"</p>
+<p>梁嘉峰说："BFS——从城1开始，每层扩展一步。第一次到达的城池，层数就是最短距离。"</p>
+<p>给定一个有向图和起点1，求每个点到起点的最短距离。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行两个整数n和m。接下来m行每行两个整数a b表示一条有向边。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一行，n个整数表示每个点到点1的最短距离，不可达输出-1。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+4 4
+1 2
+2 3
+1 3
+3 4
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+0 1 1 2
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>BFS层序遍历，每层距离+1。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+#<span class="keyword">include</span> &lt;cstring&gt;
+#<span class="keyword">include</span> &lt;algorithm&gt;
+#<span class="keyword">include</span> &lt;queue&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+/**
+ * NQ13-<span class="number">06</span>: 图中点的层次
+ * 搜索与回溯 | AcWing <span class="number">847</span>
+ * 时间: O(n) | 空间: O(n)
+ */
+
+<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100007</span>;<span class="comment">//有向图</span>
+
+<span class="keyword">int</span> n,m;
+<span class="keyword">int</span> h[N], e[N], ne[N], idx;
+<span class="keyword">int</span> d[N];
+
+<span class="keyword">void</span> add(<span class="keyword">int</span> a, <span class="keyword">int</span> b)  <span class="comment">// 添加一条边a-&gt;b</span>
+{
+    e[idx] = b, ne[idx] = h[a], h[a] = idx ++ ;
+}
+
+<span class="keyword">int</span> bfs()
+{
+  memset(d,-<span class="number">1</span>,<span class="keyword">sizeof</span> d);
+  queue&lt;<span class="keyword">int</span>&gt; q;
+  d[<span class="number">1</span>] = <span class="number">0</span>;<span class="comment">//起始点</span>
+  q.push(<span class="number">1</span>);
+
+  <span class="keyword">while</span> (q.size())
+  {
+    <span class="keyword">auto</span> t = q.front();
+    q.pop();
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i!=-<span class="number">1</span>; i = ne[i])
+    {
+      <span class="keyword">int</span> j = e[i];
+      <span class="keyword">if</span> (d[j]==-<span class="number">1</span>)
+      {
+        d[j] = d[t]+<span class="number">1</span>; <span class="comment">//层次加1</span>
+        q.push(j);
+      }
+    }
+  }
+  <span class="keyword">return</span> d[n];
+}
+
+<span class="keyword">int</span> main()
+{
+    cin&gt;&gt;n&gt;&gt;m;
+    memset(h, -<span class="number">1</span>, <span class="keyword">sizeof</span> h);
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)
+    {
+      <span class="keyword">int</span> a, b;
+      cin&gt;&gt;a&gt;&gt;b;
+      add(a,b);
+    }
+
+    cout&lt;&lt;bfs()&lt;&lt;endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 图中点的层次</span>
+<span class="keyword">from</span> collections <span class="keyword">import</span> deque
+n, m = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+adj = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n + <span class="number">1</span>)]
+<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(m):
+    a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+    adj[a].append(b)
+dist = [-<span class="number">1</span>] * (n + <span class="number">1</span>)
+dist[<span class="number">1</span>] = <span class="number">0</span>
+q = deque([<span class="number">1</span>])
+<span class="keyword">while</span> q:
+    u = q.popleft()
+    <span class="keyword">for</span> v <span class="keyword">in</span> adj[u]:
+        <span class="keyword">if</span> dist[v] == -<span class="number">1</span>:
+            dist[v] = dist[u] + <span class="number">1</span>
+            q.append(v)
+<span class="keyword">print</span>(dist[n])</code></pre>
+            </details>
+        </div>
+    </div>
+
+</body>
+</html>

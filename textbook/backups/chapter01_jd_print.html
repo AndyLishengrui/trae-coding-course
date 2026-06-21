@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>第1章 持剑叩门——变量与输入输出</title>
+    <style>
+        body { font-family: "Noto Serif SC", "Source Han Serif CN", serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.8; color: #333; }
+        h1 { text-align: center; color: #8B0000; border-bottom: 2px solid #8B0000; padding-bottom: 10px; }
+        h2 { color: #4A0080; margin-top: 2em; }
+        h3 { color: #2E5090; }
+        .chapter-subtitle { text-align: center; color: #666; font-size: 1.1em; margin-bottom: 2em; }
+        .problem { border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin: 20px 0; background: #fafafa; }
+        .problem-title { color: #8B0000; font-size: 1.3em; font-weight: bold; margin-bottom: 10px; }
+        .problem-meta { color: #666; font-size: 0.9em; margin-bottom: 15px; }
+        .description { margin: 15px 0; }
+        .description p { margin: 8px 0; }
+        .io-section { background: #f0f0f0; padding: 12px; border-radius: 4px; margin: 10px 0; }
+        .io-section h4 { margin: 0 0 8px 0; color: #555; font-size: 0.95em; }
+        .sample { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; margin: 10px 0; font-family: "Consolas", "Courier New", monospace; white-space: pre-wrap; }
+        .sample-label { color: #569cd6; font-weight: bold; margin-bottom: 5px; }
+        .hint { background: #fff8e1; border-left: 4px solid #ffc107; padding: 12px; margin: 15px 0; }
+        .code-section { margin: 15px 0; }
+        .code-section summary { cursor: pointer; color: #2E5090; font-weight: bold; }
+        pre { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; overflow-x: auto; font-size: 0.9em; }
+        code { font-family: "Consolas", "Courier New", monospace; }
+        .lang-tabs { display: flex; gap: 10px; margin: 10px 0; }
+        .lang-tab { padding: 5px 15px; cursor: pointer; border: 1px solid #ddd; border-radius: 4px 4px 0 0; }
+        .lang-tab.active { background: #1e1e1e; color: #d4d4d4; border-color: #1e1e1e; }
+    </style>
+</head>
+<body>
+    <h1>第1章 持剑叩门</h1>
+    <div class="chapter-subtitle">变量与输入输出</div>
+
+    <div class="problem" id="JD001">
+        <div class="problem-title">JD001：铁令求和</div>
+        <div class="problem-meta">AcWing 1 | JD001</div>
+
+        <div class="description">
+            <p>李少白第一次来到剑道宗山门前。梁嘉峰递给他两枚铁令，上面各刻着一个数。「加起来，报给我。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，两个整数A和B，用空格隔开。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>一个整数，即A+B的结果。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3 4
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+7
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>读入两个整数，输出它们的和。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> a, b;
+    cin &gt;&gt; a &gt;&gt; b;        <span class="comment">// 读入两个整数</span>
+    cout &lt;&lt; a + b &lt;&lt; endl; <span class="comment">// 输出它们的和</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 铁令求和：读入两个整数，输出它们的和</span>
+a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="keyword">print</span>(a + b)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD002">
+        <div class="problem-title">JD002：铁令相乘</div>
+        <div class="problem-meta">AcWing 605 | JD002</div>
+
+        <div class="description">
+            <p>梁嘉峰又递来两枚铁令。这一次他竖起两根手指——乘起来。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，两个整数A和B，用空格隔开。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出 <code>PROD = </code> 后跟A×B的结果。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3 9
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+PROD = 27
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>读入两个整数，输出它们的乘积。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+    cout &lt;&lt; &quot;PROD = &quot; &lt;&lt; a * b &lt;&lt; endl;  <span class="comment">// 输出乘积</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 铁令相乘：读入两个整数，输出乘积</span>
+a, b = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="keyword">print</span>(f&quot;PROD = {a * b}&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD003">
+        <div class="problem-title">JD003：四令求差</div>
+        <div class="problem-meta">AcWing 608 | JD003</div>
+
+        <div class="description">
+            <p>练功房桌上摆着四枚铁令。梁嘉峰说：「A和B相乘，C和D相乘，把两个积的差报给我。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，四个整数A、B、C、D，用空格隔开。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出 <code>DIFFERENCE = </code> 后跟A×B − C×D的结果。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+5 6 7 8
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+DIFFERENCE = -26
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>先乘后减：A×B - C×D。注意运算顺序和输出格式。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> a, b, c, d;
+    scanf(&quot;%d%d%d%d&quot;, &amp;a, &amp;b, &amp;c, &amp;d);
+    <span class="comment">// 先各自相乘，再求差</span>
+    printf(&quot;DIFFERENCE = %d\n&quot;, a * b - c * d);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 四令求差：A*B - C*D</span>
+a, b, c, d = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="keyword">print</span>(f&quot;DIFFERENCE = {a * b - c * d}&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD004">
+        <div class="problem-title">JD004：集市算账</div>
+        <div class="problem-meta">AcWing 611 | JD004</div>
+
+        <div class="description">
+            <p>宗门集市上，赵晴儿帮账房算一笔账。已知商品编号、购买数量和单价，算出总价。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，三个数：商品编号（整数）、购买数量（整数）、单价（浮点数）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出 <code>TOTAL = </code> 后跟总价（数量×单价），保留两位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+12 1 5.30
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+TOTAL = 5.30
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>总价 = 数量 × 单价。注意输入是一行三个数，商品编号只用于读入不需要参与计算。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> id, qty;
+    <span class="keyword">double</span> price;
+    scanf(&quot;%d%d&quot;, &amp;id, &amp;qty);     <span class="comment">// 第一行：编号和数量</span>
+    scanf(&quot;%lf&quot;, &amp;price);          <span class="comment">// 第二行：单价</span>
+    <span class="comment">// 总价 = 数量 × 单价</span>
+    printf(&quot;TOTAL = %.<span class="number">2f</span>\n&quot;, qty * price);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 集市算账：编号×数量，第二行单价</span>
+id_num, qty = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+price = <span class="keyword">float</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(f&quot;TOTAL = {qty * price:.2f}&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD005">
+        <div class="problem-title">JD005：比武台</div>
+        <div class="problem-meta">AcWing 604 | JD005</div>
+
+        <div class="description">
+            <p>山门内是一片圆形的比武台。赵晴儿指着地面：「半径是r，算算它的面积。」π取3.14159。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个浮点数r，表示半径。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出 <code>A=</code> 后跟面积，保留4位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+2.00
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+A=12.5664
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>面积 = π × r²，保留4位小数。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> r;
+    scanf(&quot;%lf&quot;, &amp;r);
+    <span class="comment">// 圆的面积 = π * r²</span>
+    printf(&quot;A=%.<span class="number">4f</span>\n&quot;, <span class="number">3.14159</span> * r * r);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 比武台：圆的面积 = π * r²</span>
+r = <span class="keyword">float</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(f&quot;A={<span class="number">3.14159</span> * r * r:.4f}&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD006">
+        <div class="problem-title">JD006：剑术考核</div>
+        <div class="problem-meta">AcWing 606 | JD006</div>
+
+        <div class="description">
+            <p>入门考核有两项：剑术和心法。剑术权重3.5，心法权重7.5。赵晴儿拿到成绩后要算加权平均分。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>两行，每行一个浮点数，分别表示剑术成绩A和心法成绩B。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出 <code>Average = </code> 后跟加权平均分，保留5位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+9.7
+5.3
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+Average = 6.70000
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>加权平均 = (A×3.5 + B×7.5) / 11。保留5位小数。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> a, b;
+    scanf(&quot;%lf%lf&quot;, &amp;a, &amp;b);
+    <span class="comment">// 加权平均 = (剑术*3.5 + 心法*7.5) / 11</span>
+    printf(&quot;Average = %.<span class="number">5f</span>\n&quot;, (a * <span class="number">3.5</span> + b * <span class="number">7.5</span>) / <span class="number">11</span>);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 剑术考核：加权平均分</span>
+a, b = <span class="keyword">float</span>(<span class="keyword">input</span>()), <span class="keyword">float</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(f&quot;Average = {(a * <span class="number">3.5</span> + b * <span class="number">7.5</span>) / <span class="number">11</span>:.5f}&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD007">
+        <div class="problem-title">JD007：月底发饷</div>
+        <div class="problem-meta">AcWing 609 | JD007</div>
+
+        <div class="description">
+            <p>月底发饷，李少白帮账房核算一名弟子的工钱。已知工号、出工天数和每日工钱。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>第一行一个整数，表示工号。第二行两个数：出工天数（整数）和每日工钱（浮点数）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>第一行输出工号。第二行输出 <code>SALARY = U$ </code> 后跟实发金额，保留两位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+25
+100 5.50
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+NUMBER = 25
+SALARY = U$ 550.00
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>实发金额 = 出工天数 × 每日工钱，保留两位小数。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> id, days;
+    <span class="keyword">double</span> rate;
+    scanf(&quot;%d&quot;, &amp;id);       <span class="comment">// 第一行：工号</span>
+    scanf(&quot;%d%lf&quot;, &amp;days, &amp;rate);  <span class="comment">// 第二行：出工天数和每日工钱</span>
+    <span class="comment">// 输出工号和实发金额</span>
+    printf(&quot;NUMBER = %d\n&quot;, id);
+    printf(&quot;SALARY = U$ %.<span class="number">2f</span>\n&quot;, days * rate);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 月底发饷：工号(第一行)，天数和工钱(第二行)</span>
+id_num = <span class="keyword">int</span>(<span class="keyword">input</span>())
+days, rate = <span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split())
+<span class="keyword">print</span>(f&quot;NUMBER = {id_num}&quot;)
+<span class="keyword">print</span>(f&quot;SALARY = U$ {days * rate:.2f}&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD008">
+        <div class="problem-title">JD008：马匹脚力</div>
+        <div class="problem-meta">AcWing 615 | JD008</div>
+
+        <div class="description">
+            <p>李少白骑马送信，跑了S公里，马匹消耗了L升草料汁。他想知道每升草料汁能支撑跑多少公里。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，两个浮点数，分别表示路程（km）和草料消耗（L）。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出每升草料汁能跑的公里数，保留3位小数，后跟 <code>km/l</code>。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+500 35.0
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+14.286 km/l
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>每升里程 = S / L，保留3位小数，后跟" km/l"。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> s, l;
+    scanf(&quot;%lf%lf&quot;, &amp;s, &amp;l);
+    <span class="comment">// 每升草料汁能跑的里数 = 总路程 / 消耗量</span>
+    printf(&quot;%.<span class="number">3f</span> km/l\n&quot;, s / l);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 马匹脚力：每升草料汁能跑多少里</span>
+s, l = <span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split())
+<span class="keyword">print</span>(f&quot;{s / l:.3f} km/l&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD009">
+        <div class="problem-title">JD009：铁球体积</div>
+        <div class="problem-meta">AcWing 612 | JD009</div>
+
+        <div class="description">
+            <p>兵器库里有一颗实心铁球。李少白量出半径r，想算出它的体积。V = (4/3)πr³，π取3.14159。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个浮点数r，表示铁球的半径。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出 <code>VOLUME = </code> 后跟体积，保留3位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+VOLUME = 113.097
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>体积 = 4.0/3.0 × 3.14159 × r³，保留3位小数。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> r;
+    scanf(&quot;%lf&quot;, &amp;r);
+    <span class="comment">// 球的体积 = (4/3) * π * r³</span>
+    printf(&quot;VOLUME = %.<span class="number">3f</span>\n&quot;, <span class="number">4.0</span> / <span class="number">3.0</span> * <span class="number">3.14159</span> * r * r * r);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 铁球体积：V = (4/3) * π * r³</span>
+r = <span class="keyword">float</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(f&quot;VOLUME = {<span class="number">4.0</span> / <span class="number">3.0</span> * <span class="number">3.14159</span> * r ** <span class="number">3</span>:.3f}&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD010">
+        <div class="problem-title">JD010：三令比大</div>
+        <div class="problem-meta">AcWing 614 | JD010</div>
+
+        <div class="description">
+            <p>梁嘉峰在墙上刻了三个数，转头说：「最大的那个，报给我。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，三个整数A、B、C，用空格隔开。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出 <code>Max = </code> 后跟三个数中的最大值。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+7 14 106
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+Max = 106
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>用条件判断或max函数找最大值。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> a, b, c;
+    scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c);
+    <span class="comment">// 找三个数中的最大值</span>
+    <span class="keyword">int</span> max_val = a;
+    <span class="keyword">if</span> (b &gt; max_val) max_val = b;
+    <span class="keyword">if</span> (c &gt; max_val) max_val = c;
+    printf(&quot;Max = %d\n&quot;, max_val);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 三令比大：找三个数中的最大值</span>
+a, b, c = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+<span class="keyword">print</span>(f&quot;Max = {<span class="keyword">max</span>(a, b, c)}&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD011">
+        <div class="problem-title">JD011：哨塔测距</div>
+        <div class="problem-meta">AcWing 616 | JD011</div>
+
+        <div class="description">
+            <p>赵晴儿在沙盘上标了两个哨塔的坐标(x1,y1)和(x2,y2)。她说：「算算它们之间的直线距离。」</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，四个浮点数x1, y1, x2, y2，用空格隔开。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出两点间的距离，保留两位小数。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+1.0 7.0 5.0 9.0
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+4.4721
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>距离公式 d = √((x₂-x₁)² + (y₂-y₁)²)，保留4位小数。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#<span class="keyword">include</span> &lt;cmath&gt;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> x1, y1, x2, y2;
+    scanf(&quot;%lf%lf%lf%lf&quot;, &amp;x1, &amp;y1, &amp;x2, &amp;y2);
+    <span class="comment">// 两点间距离公式</span>
+    <span class="keyword">double</span> d = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+    printf(&quot;%.<span class="number">4f</span>\n&quot;, d);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 哨塔测距：两点间距离公式</span>
+<span class="keyword">import</span> math
+x1, y1, x2, y2 = <span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split())
+<span class="keyword">print</span>(f&quot;{math.sqrt((x2-x1)**<span class="number">2</span> + (y2-y1)**<span class="number">2</span>):.4f}&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD012">
+        <div class="problem-title">JD012：圆盘开孔</div>
+        <div class="problem-meta">AcWing 613 | JD012</div>
+
+        <div class="description">
+            <p>赵晴儿在沙盘上画了五个图形，每个图形都用A、B、C三个数来定义。她让李少白算出每个图形的面积：
+- 三角形：底A高C，面积 = A×C÷2
+- 圆形：半径C，面积 = π×C²
+- 梯形：上底A下底B高C，面积 = (A+B)×C÷2
+- 正方形：边长B，面积 = B²
+- 长方形：长A宽B，面积 = A×B</p>
+<p>π取3.14159。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一行，三个浮点数R、r1、r2。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>五行，分别输出 TRIANGULO（三角形）、CIRCULO（圆形）、TRAPEZIO（梯形）、QUADRADO（正方形）、RETANGULO（长方形）的面积，各保留3位小数。格式为 <code>名称: 面积</code>。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+3.0 4.0 5.2
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+TRIANGULO: 7.800
+CIRCULO: 84.949
+TRAPEZIO: 18.200
+QUADRADO: 16.000
+RETANGULO: 12.000
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>三角形=A×C/2，圆形=π×C²，梯形=(A+B)×C/2，各保留3位小数。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+#define PI <span class="number">3.14159</span>
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">double</span> a, b, c;
+    scanf(&quot;%lf%lf%lf&quot;, &amp;a, &amp;b, &amp;c);
+    <span class="comment">// 五个图形的面积</span>
+    printf(&quot;TRIANGULO: %.<span class="number">3f</span>\n&quot;, a * c / <span class="number">2</span>);       <span class="comment">// 三角形</span>
+    printf(&quot;CIRCULO: %.<span class="number">3f</span>\n&quot;, PI * c * c);         <span class="comment">// 圆形</span>
+    printf(&quot;TRAPEZIO: %.<span class="number">3f</span>\n&quot;, (a + b) * c / <span class="number">2</span>);  <span class="comment">// 梯形</span>
+    printf(&quot;QUADRADO: %.<span class="number">3f</span>\n&quot;, b * b);             <span class="comment">// 正方形</span>
+    printf(&quot;RETANGULO: %.<span class="number">3f</span>\n&quot;, a * b);            <span class="comment">// 长方形</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 圆盘开孔：五个图形的面积</span>
+a, b, c = <span class="keyword">map</span>(<span class="keyword">float</span>, <span class="keyword">input</span>().split())
+pi = <span class="number">3.14159</span>
+<span class="keyword">print</span>(f&quot;TRIANGULO: {a * c / <span class="number">2</span>:.3f}&quot;)
+<span class="keyword">print</span>(f&quot;CIRCULO: {pi * c * c:.3f}&quot;)
+<span class="keyword">print</span>(f&quot;TRAPEZIO: {(a + b) * c / <span class="number">2</span>:.3f}&quot;)
+<span class="keyword">print</span>(f&quot;QUADRADO: {b * b:.3f}&quot;)
+<span class="keyword">print</span>(f&quot;RETANGULO: {a * b:.3f}&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD013">
+        <div class="problem-title">JD013：水钟报时</div>
+        <div class="problem-meta">AcWing 654 | JD013</div>
+
+        <div class="description">
+            <p>宗门的水钟记录的是总秒数，但掌门要求用「时:分:秒」的格式汇报。赵晴儿让李少白帮忙转换。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个整数N，表示总秒数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>输出 <code>H:M:S</code> 格式的时间。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+556
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+0:9:16
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>时=秒÷3600，分=余数÷60，秒=最终余数。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n;
+    scanf(&quot;%d&quot;, &amp;n);
+    <span class="comment">// 总秒数转换为 时:分:秒</span>
+    <span class="keyword">int</span> h = n / <span class="number">3600</span>;
+    <span class="keyword">int</span> m = (n % <span class="number">3600</span>) / <span class="number">60</span>;
+    <span class="keyword">int</span> s = n % <span class="number">60</span>;
+    printf(&quot;%d:%d:%d\n&quot;, h, m, s);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 水钟报时：总秒数转 时:分:秒</span>
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+h = n // <span class="number">3600</span>
+m = (n % <span class="number">3600</span>) // <span class="number">60</span>
+s = n % <span class="number">60</span>
+<span class="keyword">print</span>(f&quot;{h}:{m}:{s}&quot;)</code></pre>
+            </details>
+        </div>
+    </div>
+
+    <div class="problem" id="JD014">
+        <div class="problem-title">JD014：钱庄换银</div>
+        <div class="problem-meta">AcWing 653 | JD014</div>
+
+        <div class="description">
+            <p>李少白去镇上钱庄换碎银。掌柜说：「你要换多少文？我用100、50、20、10、5、2、1面额的铜钱给你。」需要知道每种面额各要几枚。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输入格式</h4>
+            <p>一个整数N，表示要换的文数。</p>
+
+        </div>
+
+        <div class="io-section">
+            <h4>输出格式</h4>
+            <p>第一行输出总金额N。接下来7行，按面额从大到小，每行输出 <code>X nota(s) de R$ Y,00</code>，其中X是张数，Y是面额。</p>
+
+        </div>
+
+        <div class="sample">
+            <div class="sample-label">输入样例</div>
+576
+        </div>
+        <div class="sample">
+            <div class="sample-label">输出样例</div>
+576
+5 nota(s) de R$ 100,00
+1 nota(s) de R$ 50,00
+1 nota(s) de R$ 20,00
+0 nota(s) de R$ 10,00
+1 nota(s) de R$ 5,00
+0 nota(s) de R$ 2,00
+1 nota(s) de R$ 1,00
+        </div>
+
+        <div class="hint">
+            <strong>解题思路：</strong><p>贪心：从大到小依次整除。先输出总金额N，再输出每种面额的张数。</p>
+
+        </div>
+        <div class="code-section">
+            <details><summary>参考代码</summary>
+            <h4>C++</h4>
+            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> n;
+    scanf(&quot;%d&quot;, &amp;n);
+    printf(&quot;%d\n&quot;, n);
+    <span class="comment">// 面额：100, 50, 20, 10, 5, 2, 1</span>
+    <span class="keyword">int</span> denoms[] = {<span class="number">100</span>, <span class="number">50</span>, <span class="number">20</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">1</span>};
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">7</span>; i++) {
+        printf(&quot;%d nota(s) de R$ %d,<span class="number">00</span>\n&quot;, n / denoms[i], denoms[i]);
+        n %= denoms[i];  <span class="comment">// 剩余金额</span>
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</code></pre>
+            <h4>Python</h4>
+            <pre><code class="language-python"><span class="comment"># 钱庄换银：贪心换零钱</span>
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(n)
+denoms = [<span class="number">100</span>, <span class="number">50</span>, <span class="number">20</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">1</span>]
+<span class="keyword">for</span> d <span class="keyword">in</span> denoms:
+    <span class="keyword">print</span>(f&quot;{n // d} nota(s) de R$ {d},<span class="number">00</span>&quot;)
+    n %= d</code></pre>
+            </details>
+        </div>
+    </div>
+
+</body>
+</html>
