@@ -73,6 +73,11 @@
             <strong>解题思路：</strong><p>选基准元素，双指针分区：左边 ≤ 基准，右边 > 基准。递归处理左右两半。平均 O(nlogn)。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n log n) — 快速排序，平均每次分治O(n)，递归深度O(log n)<br>
+空间复杂度：O(log n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -190,6 +195,11 @@ quicksort(arr, <span class="number">0</span>, n - <span class="number">1</span>)
             <strong>解题思路：</strong><p>partition 后判断 k 在左半还是右半，只递归一半。平均 O(n)。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 快速选择，平均每次只递归一半<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -313,6 +323,11 @@ arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span c
             <strong>解题思路：</strong><p>递归拆分 → 合并两个有序数组。需要额外空间 O(n)。稳定排序。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n log n) — 归并排序，分治递归深度O(log n)，每层合并O(n)<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -426,6 +441,11 @@ merge_sort(arr, <span class="number">0</span>, n - <span class="number">1</span>
             <strong>解题思路：</strong><p>归并排序过程中，当右边元素先被选中时，左边剩余元素个数就是新增的逆序对数。用 <code>long long</code> 存结果。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n log n) — 归并排序<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -555,6 +575,11 @@ _, ans = merge_sort_count(arr)
             <strong>解题思路：</strong><p>两次二分：找第一个 ≥ x 的位置（左边界），找最后一个 ≤ x 的位置（右边界）。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(log n) — 二分查找<br>
+空间复杂度：O(1)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -686,6 +711,11 @@ out = []
             <strong>解题思路：</strong><p>浮点二分：left = -10000, right = 10000，while(right - left > 1e-8)，mid = (left + right) / 2。若 mid³ ≥ n，right = mid；否则 left = mid。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(log n) — 二分查找<br>
+空间复杂度：O(1)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>

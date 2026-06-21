@@ -973,10 +973,15 @@ sys.setrecursionlimit(<span class="number">200000</span>)
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">from</span> functools <span class="keyword">import</span> lru_cache
-@lru_cache(<span class="keyword">None</span>)
-<span class="keyword">def</span> f(n):<span class="keyword">return</span> n <span class="keyword">if</span> n&lt;=<span class="number">2</span> <span class="keyword">else</span> f(n-<span class="number">1</span>)+f(n-<span class="number">2</span>)
-n=<span class="keyword">int</span>(<span class="keyword">input</span>());<span class="keyword">print</span>(f(n))</code></pre>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+sys.setrecursionlimit(<span class="number">200000</span>)
+<span class="comment"># 递归计数：从位置k出发，走到位置n有多少种走法</span>
+<span class="keyword">def</span> f(k):
+    <span class="keyword">if</span> k == n: <span class="keyword">return</span> <span class="number">1</span>          <span class="comment"># 到达终点，计数+1</span>
+    <span class="keyword">if</span> k > n: <span class="keyword">return</span> <span class="number">0</span>           <span class="comment"># 超过终点，无效路径</span>
+    <span class="keyword">return</span> f(k + <span class="number">1</span>) + f(k + <span class="number">2</span>)  <span class="comment"># 跨1级 + 跨2级</span>
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(f(<span class="number">0</span>))</code></pre>
             </details>
         </div>
     </div>
@@ -1047,7 +1052,20 @@ n=<span class="keyword">int</span>(<span class="keyword">input</span>());<span c
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">import</span> math;n,m=<span class="keyword">map</span>(<span class="keyword">int</span>,<span class="keyword">input</span>().split());<span class="keyword">print</span>(math.comb(n+m,n))</code></pre>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+sys.setrecursionlimit(<span class="number">200000</span>)
+<span class="comment"># DFS搜索：从(x,y)走到(n,m)有多少种路径</span>
+ans = <span class="number">0</span>
+<span class="keyword">def</span> dfs(x, y):
+    <span class="keyword">global</span> ans
+    <span class="keyword">if</span> x == n <span class="keyword">and</span> y == m:   <span class="comment"># 到达终点</span>
+        ans += <span class="number">1</span>
+        <span class="keyword">return</span>
+    <span class="keyword">if</span> y < m: dfs(x, y + <span class="number">1</span>)   <span class="comment"># 向右走</span>
+    <span class="keyword">if</span> x < n: dfs(x + <span class="number">1</span>, y)   <span class="comment"># 向下走</span>
+n, m = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+dfs(<span class="number">0</span>, <span class="number">0</span>)
+<span class="keyword">print</span>(ans)</code></pre>
             </details>
         </div>
     </div>
@@ -1122,10 +1140,21 @@ n=<span class="keyword">int</span>(<span class="keyword">input</span>());<span c
   <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">from</span> itertools <span class="keyword">import</span> permutations
+            <pre><code class="language-python"><span class="comment"># DFS+回溯：枚举1~n的全排列</span>
+<span class="keyword">def</span> dfs(u):
+    <span class="keyword">if</span> u == n:                     <span class="comment"># 已选满n个数，输出排列</span>
+        <span class="keyword">print</span>(<span class="string">&#x27; &#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, path)))
+        <span class="keyword">return</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):     <span class="comment"># 按字典序从1到n尝试</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> used[i]:            <span class="comment"># 如果数字i还没用过</span>
+            path[u] = i              <span class="comment"># 放到当前位置</span>
+            used[i] = <span class="keyword">True</span>           <span class="comment"># 标记为已使用</span>
+            dfs(u + <span class="number">1</span>)              <span class="comment"># 递归处理下一个位置</span>
+            used[i] = <span class="keyword">False</span>          <span class="comment"># 回溯：撤销选择</span>
 n = <span class="keyword">int</span>(<span class="keyword">input</span>())
-<span class="keyword">for</span> p <span class="keyword">in</span> permutations(<span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>)):
-    <span class="keyword">print</span>(&<span class="comment">#x27; &#x27;.join(map(str, p)))</span></code></pre>
+path = [<span class="number">0</span>] * n
+used = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
+dfs(<span class="number">0</span>)</code></pre>
             </details>
         </div>
     </div>

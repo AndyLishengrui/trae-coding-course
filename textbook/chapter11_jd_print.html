@@ -80,6 +80,11 @@
             <strong>解题思路：</strong><p>前缀和：s[i] = a[1] + a[2] + ... + a[i]。区间和 = s[r] - s[l-1]。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 前缀和预处理，O(1)查询<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -166,6 +171,11 @@ s = [<span class="number">0</span>] * (n + <span class="number">1</span>)
             <strong>解题思路：</strong><p>二维前缀和：<code>s[i][j]</code> = 左上角到 (i,j) 的累加。子矩阵和 = <code>s[x2][y2] - s[x1-1][y2] - s[x2][y1-1] + s[x1-1][y1-1]</code>。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n<sup>2</sup>) — 二维前缀和<br>
+空间复杂度：O(n<sup>2</sup>)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -267,6 +277,11 @@ sys.stdout.write(<span class="string">&#x27;\n&#x27;</span>.join(out))</code></p
             <strong>解题思路：</strong><p>差分：b[l] += c, b[r+1] -= c。所有操作完成后，对 b 求前缀和得到最终序列。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 前缀和预处理，O(1)查询<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -373,6 +388,11 @@ cur = <span class="number">0</span>
             <strong>解题思路：</strong><p>二维差分：在 (x1,y1)+c, (x2+1,y1)-c, (x1,y2+1)-c, (x2+1,y2+1)+c。操作完后求二维前缀和。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n<sup>2</sup>) — 二维前缀和<br>
+空间复杂度：O(n<sup>2</sup>)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -496,6 +516,11 @@ b = [[<span class="number">0</span>] * (m + <span class="number">2</span>) <span
             <strong>解题思路：</strong><p>离散化：排序去重后映射到连续下标。用前缀和回答区间查询。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n log n) — 排序算法<br>
+空间复杂度：O(1)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -647,6 +672,11 @@ s = [<span class="number">0</span>] * (<span class="keyword">len</span>(all_x) +
             <strong>解题思路：</strong><p>按左端点排序，遍历合并：当前区间左端点 ≤ 前一个右端点则合并，否则新开。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n log n) — 排序算法<br>
+空间复杂度：O(1)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -764,6 +794,11 @@ merged.append((st, ed))
             <strong>解题思路：</strong><p>按右端点排序，每次选当前区间的右端点，跳过所有包含该点的区间。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n log n) — 排序算法<br>
+空间复杂度：O(1)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -867,6 +902,11 @@ last = -<span class="number">2</span> * <span class="number">10</span>**<span cl
             <strong>解题思路：</strong><p>小根堆：每次取最小的两个合并，结果放回堆中。O(nlogn)。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n log n) — 堆操作，每次插入/删除O(log n)<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -955,6 +995,11 @@ ans = <span class="number">0</span>
             <strong>解题思路：</strong><p>排序后取中位数（下标 n/2），计算所有点到中位数的距离之和。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n log n) — 排序算法<br>
+空间复杂度：O(1)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>

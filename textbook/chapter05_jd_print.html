@@ -74,6 +74,11 @@ S
             <strong>解题思路：</strong><p>先读操作类型（S求和/M求平均），再判断行号。上方区域即i<j的元素。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n<sup>2</sup>) — 遍历矩阵元素<br>
+空间复杂度：O(n<sup>2</sup>)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -151,6 +156,11 @@ S
             <strong>解题思路：</strong><p>下方区域即i>j的元素。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n<sup>2</sup>) — 遍历矩阵元素<br>
+空间复杂度：O(n<sup>2</sup>)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -232,6 +242,11 @@ S
             <strong>解题思路：</strong><p>左方区域即满足j < i && i + j < 11的元素（主对角线下且反对角线上）。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n<sup>2</sup>) — 遍历矩阵元素<br>
+空间复杂度：O(n<sup>2</sup>)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -309,6 +324,11 @@ S
             <strong>解题思路：</strong><p>右方区域即满足j > i && i + j > 11的元素（主对角线上且反对角线下）。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n<sup>2</sup>) — 遍历矩阵元素<br>
+空间复杂度：O(n<sup>2</sup>)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -390,6 +410,11 @@ S
             <strong>解题思路：</strong><p>右上部分即j>i的元素。S求和，M求平均。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n<sup>2</sup>) — 遍历矩阵元素<br>
+空间复杂度：O(n<sup>2</sup>)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -471,6 +496,11 @@ S
             <strong>解题思路：</strong><p>左上部分即i+j<11的元素。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n<sup>2</sup>) — 遍历矩阵元素<br>
+空间复杂度：O(n<sup>2</sup>)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -546,6 +576,11 @@ S
             <strong>解题思路：</strong><p>右下部分即满足i + j > 11的元素（反对角线以下）。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n<sup>2</sup>) — 遍历矩阵元素<br>
+空间复杂度：O(n<sup>2</sup>)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -625,6 +660,11 @@ S
             <strong>解题思路：</strong><p>左下部分即满足j < i的元素（主对角线以下）。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n<sup>2</sup>) — 遍历矩阵元素<br>
+空间复杂度：O(n<sup>2</sup>)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -699,6 +739,11 @@ S
             <strong>解题思路：</strong><p>每个位置的值 = min(i+1, j+1, N-i, N-j)，即到四条边的最小距离。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n²) — 遍历n×n矩阵，O(1)填充每个位置<br>
+空间复杂度：O(n²)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -774,6 +819,11 @@ data = sys.stdin.read().split()
             <strong>解题思路：</strong><p>M[i][j] = |i-j|+1。对角线为1，离对角线越远数越大。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n<sup>2</sup>) — 遍历矩阵元素<br>
+空间复杂度：O(n<sup>2</sup>)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -841,6 +891,11 @@ data = sys.stdin.read().split()
             <strong>解题思路：</strong><p>M[i][j] = 2^(i+j)。用位运算 1<<(i+j) 或 pow函数。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n<sup>2</sup>) — 遍历n×n矩阵，位运算计算幂次O(1)<br>
+空间复杂度：O(n<sup>2</sup>)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -915,6 +970,11 @@ data = sys.stdin.read().split()
             <strong>解题思路：</strong><p>模拟蛇形遍历：右→下→左→上循环。维护四个边界。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n<sup>2</sup>) — 蛇形遍历矩阵，每个元素访问一次<br>
+空间复杂度：O(n<sup>2</sup>)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>

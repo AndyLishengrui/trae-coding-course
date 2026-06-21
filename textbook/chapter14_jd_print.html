@@ -74,6 +74,11 @@
             <strong>解题思路：</strong><p>BFS+入度维护。有环则无解。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(V + E) — BFS遍历，每个节点和边访问一次<br>
+空间复杂度：O(V)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -207,6 +212,11 @@ res = []
             <strong>解题思路：</strong><p>Dijkstra：O(n²)。每次选最近未访问点，更新邻居。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O((V + E) log V) — Dijkstra最短路，优先队列优化<br>
+空间复杂度：O(V + E)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -329,6 +339,11 @@ st = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
             <strong>解题思路：</strong><p>堆优化Dijkstra：O(mlogn)。用小根堆取最近点。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O((V + E) log V) — Dijkstra最短路，优先队列优化<br>
+空间复杂度：O(V + E)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -482,6 +497,11 @@ heap = [(<span class="number">0</span>, <span class="number">1</span>)]
             <strong>解题思路：</strong><p>SPFA：队列优化Bellman-Ford。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(k × E) — SPFA最短路，k为平均入队次数<br>
+空间复杂度：O(V + E)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -633,6 +653,11 @@ st[<span class="number">1</span>] = <span class="keyword">True</span>
             <strong>解题思路：</strong><p>Floyd：O(n³)。三重循环枚举中间点。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(V<sup>3</sup>) — Floyd全源最短路，三重循环<br>
+空间复杂度：O(V<sup>2</sup>)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -760,6 +785,11 @@ sys.stdout.write(<span class="string">&#x27;\n&#x27;</span>.join(out) + <span cl
             <strong>解题思路：</strong><p>Prim：O(n²)。每次选最近未加入点。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(E log E) — 最小生成树，排序边后并查集<br>
+空间复杂度：O(V + E)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -886,6 +916,11 @@ ans = <span class="number">0</span>
             <strong>解题思路：</strong><p>Kruskal：O(mlogm)。按边权排序，并查集判环。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(E log E) — 最小生成树，排序边后并查集<br>
+空间复杂度：O(V + E)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -1023,6 +1058,11 @@ Yes
             <strong>解题思路：</strong><p>BFS/DFS染色，冲突则不是二分图。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(V + E) — BFS遍历，每个节点和边访问一次<br>
+空间复杂度：O(V)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>

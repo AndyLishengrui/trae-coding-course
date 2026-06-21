@@ -72,6 +72,11 @@
             <strong>解题思路：</strong><p>函数内用循环累乘，或递归实现。注意0! = 1。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 单层循环遍历<br>
+空间复杂度：O(1)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -138,6 +143,11 @@
             <strong>解题思路：</strong><p>函数内用 if 比较或三元表达式。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 线性遍历处理<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -205,6 +215,11 @@
             <strong>解题思路：</strong><p>if x < 0: return -x, else: return x。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 线性遍历处理<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -269,6 +284,11 @@
             <strong>解题思路：</strong><p>C++用引用参数 <code>void swap(int &x, int &y)</code>。Python中 a, b = b, a。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 线性遍历处理<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -338,6 +358,11 @@
             <strong>解题思路：</strong><p>辗转相除法：gcd(a,b) = gcd(b, a%b)，当b==0时返回a。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(log(min(a,b))) — 辗转相除法求GCD<br>
+空间复杂度：O(1)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -414,6 +439,11 @@
             <strong>解题思路：</strong><p>函数内循环，b[i] = a[i]，复制前size个元素。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 单层循环遍历<br>
+空间复杂度：O(1)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -492,6 +522,11 @@ b[:size] = a[:size]
             <strong>解题思路：</strong><p>双指针从两端向中间交换，只交换前size个。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n + m) — 双指针遍历<br>
+空间复杂度：O(1)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -567,6 +602,11 @@ a[:size] = <span class="keyword">reversed</span>(a[:size])
             <strong>解题思路：</strong><p>函数内遍历数组前size个元素，空格隔开输出。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 遍历数组<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -648,6 +688,11 @@ arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span c
             <strong>解题思路：</strong><p>嵌套循环遍历行列，注意行末空格处理。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n<sup>2</sup>) — 嵌套循环<br>
+空间复杂度：O(1)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -724,6 +769,11 @@ arr = <span class="keyword">list</span>(<span class="keyword">map</span>(<span c
             <strong>解题思路：</strong><p>对a[l]到a[r]排序，其余元素不变。可用冒泡、选择或库函数。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n log n) — 排序算法<br>
+空间复杂度：O(1)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -799,6 +849,11 @@ a[l:r+<span class="number">1</span>] = <span class="keyword">sorted</span>(a[l:r
             <strong>解题思路：</strong><p>递归三要素：终止条件(n==1返回1)、递推关系(n*fact(n-1))、缩小规模。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 递归n次，每次O(1)<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -867,6 +922,11 @@ sys.setrecursionlimit(<span class="number">200000</span>)
             <strong>解题思路：</strong><p>递归：f(1)=1, f(2)=1, f(n)=f(n-1)+f(n-2)。注意效率问题。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(2<sup>n</sup>) — 递归，指数级时间复杂度<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -934,6 +994,11 @@ sys.setrecursionlimit(<span class="number">200000</span>)
             <strong>解题思路：</strong><p>f(n) = f(n-1) + f(n-2)。最后一步跳1级或2级，两种情况之和。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 线性遍历处理<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -963,10 +1028,15 @@ sys.setrecursionlimit(<span class="number">200000</span>)
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">from</span> functools <span class="keyword">import</span> lru_cache
-@lru_cache(<span class="keyword">None</span>)
-<span class="keyword">def</span> f(n):<span class="keyword">return</span> n <span class="keyword">if</span> n<=<span class="number">2</span> <span class="keyword">else</span> f(n-<span class="number">1</span>)+f(n-<span class="number">2</span>)
-n=<span class="keyword">int</span>(<span class="keyword">input</span>());<span class="keyword">print</span>(f(n))</code></pre>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+sys.setrecursionlimit(<span class="number">200000</span>)
+<span class="comment"># 递归计数：从位置k出发，走到位置n有多少种走法</span>
+<span class="keyword">def</span> f(k):
+    <span class="keyword">if</span> k == n: <span class="keyword">return</span> <span class="number">1</span>          <span class="comment"># 到达终点，计数+1</span>
+    <span class="keyword">if</span> k > n: <span class="keyword">return</span> <span class="number">0</span>           <span class="comment"># 超过终点，无效路径</span>
+    <span class="keyword">return</span> f(k + <span class="number">1</span>) + f(k + <span class="number">2</span>)  <span class="comment"># 跨1级 + 跨2级</span>
+n = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="keyword">print</span>(f(<span class="number">0</span>))</code></pre>
             </details>
         </div>
     </div>
@@ -1008,6 +1078,11 @@ n=<span class="keyword">int</span>(<span class="keyword">input</span>());<span c
             <strong>解题思路：</strong><p>从(0,0)到(n,m)的网格路径数。f(n,m) = f(n-1,m) + f(n,m-1)。边界：f(0,m)=1, f(n,0)=1。等价于组合数C(n+m, n)。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n × m) — DP计算网格路径，二维状态<br>
+空间复杂度：O(n × m)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -1037,7 +1112,20 @@ n=<span class="keyword">int</span>(<span class="keyword">input</span>());<span c
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">import</span> math;n,m=<span class="keyword">map</span>(<span class="keyword">int</span>,<span class="keyword">input</span>().split());<span class="keyword">print</span>(math.comb(n+m,n))</code></pre>
+            <pre><code class="language-python"><span class="keyword">import</span> sys
+sys.setrecursionlimit(<span class="number">200000</span>)
+<span class="comment"># DFS搜索：从(x,y)走到(n,m)有多少种路径</span>
+ans = <span class="number">0</span>
+<span class="keyword">def</span> dfs(x, y):
+    <span class="keyword">global</span> ans
+    <span class="keyword">if</span> x == n <span class="keyword">and</span> y == m:   <span class="comment"># 到达终点</span>
+        ans += <span class="number">1</span>
+        <span class="keyword">return</span>
+    <span class="keyword">if</span> y < m: dfs(x, y + <span class="number">1</span>)   <span class="comment"># 向右走</span>
+    <span class="keyword">if</span> x < n: dfs(x + <span class="number">1</span>, y)   <span class="comment"># 向下走</span>
+n, m = <span class="keyword">map</span>(<span class="keyword">int</span>, <span class="keyword">input</span>().split())
+dfs(<span class="number">0</span>, <span class="number">0</span>)
+<span class="keyword">print</span>(ans)</code></pre>
             </details>
         </div>
     </div>
@@ -1083,6 +1171,11 @@ n=<span class="keyword">int</span>(<span class="keyword">input</span>());<span c
             <strong>解题思路：</strong><p>DFS+回溯：用used[]标记已用数字，path[]记录当前排列。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n!) — 回溯生成全排列，共n!种<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -1112,10 +1205,21 @@ n=<span class="keyword">int</span>(<span class="keyword">input</span>());<span c
   <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">from</span> itertools <span class="keyword">import</span> permutations
+            <pre><code class="language-python"><span class="comment"># DFS+回溯：枚举1~n的全排列</span>
+<span class="keyword">def</span> dfs(u):
+    <span class="keyword">if</span> u == n:                     <span class="comment"># 已选满n个数，输出排列</span>
+        <span class="keyword">print</span>(<span class="string">&#x27; &#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, path)))
+        <span class="keyword">return</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):     <span class="comment"># 按字典序从1到n尝试</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> used[i]:            <span class="comment"># 如果数字i还没用过</span>
+            path[u] = i              <span class="comment"># 放到当前位置</span>
+            used[i] = <span class="keyword">True</span>           <span class="comment"># 标记为已使用</span>
+            dfs(u + <span class="number">1</span>)              <span class="comment"># 递归处理下一个位置</span>
+            used[i] = <span class="keyword">False</span>          <span class="comment"># 回溯：撤销选择</span>
 n = <span class="keyword">int</span>(<span class="keyword">input</span>())
-<span class="keyword">for</span> p <span class="keyword">in</span> permutations(<span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>)):
-    <span class="keyword">print</span>(<span class="string">&#x27; &#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, p)))</code></pre>
+path = [<span class="number">0</span>] * n
+used = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
+dfs(<span class="number">0</span>)</code></pre>
             </details>
         </div>
     </div>

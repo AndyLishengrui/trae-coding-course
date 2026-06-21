@@ -75,6 +75,11 @@
             <strong>解题思路：</strong><p>01背包：dp[j] = max(dp[j], dp[j-v[i]]+w[i])，逆序遍历j。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n × v) — 01背包DP，逆序遍历容量<br>
+空间复杂度：O(v)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -158,6 +163,11 @@ f = [<span class="number">0</span>] * (V + <span class="number">1</span>)
             <strong>解题思路：</strong><p>完全背包：内层正序遍历。每种物品可选无限次。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n × v) — 完全背包DP，正序遍历容量<br>
+空间复杂度：O(v)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -246,6 +256,11 @@ f = [<span class="number">0</span>] * (V + <span class="number">1</span>)
             <strong>解题思路：</strong><p>从底向上DP。dp[i][j] = max(dp[i+1][j], dp[i+1][j+1]) + a[i][j]。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n × m) — 二维DP状态转移<br>
+空间复杂度：O(n × m)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -334,6 +349,11 @@ a = []
             <strong>解题思路：</strong><p>贪心+二分：维护最小末尾数组q[]，二分查找替换。O(nlogn)。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n log n) — 贪心+二分维护最小末尾数组<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -431,6 +451,11 @@ acebd
             <strong>解题思路：</strong><p>LCS：二维DP。相等时dp[i][j]=dp[i-1][j-1]+1，否则取max(dp[i-1][j], dp[i][j-1])。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n × m) — 二维DP求最长公共子序列<br>
+空间复杂度：O(n × m)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -511,6 +536,11 @@ dp = [[<span class="number">0</span>]*(m+<span class="number">1</span>) <span cl
             <strong>解题思路：</strong><p>区间DP：枚举分割点。dp[i][j] = min(dp[i][k] + dp[k+1][j]) + sum(i..j)。O(n³)。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n<sup>3</sup>) — 区间DP，三重循环枚举区间和分割点<br>
+空间复杂度：O(n<sup>2</sup>)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -603,6 +633,11 @@ adc
             <strong>解题思路：</strong><p>编辑距离：dp[i][j] = min(dp[i-1][j]+1, dp[i][j-1]+1, dp[i-1][j-1]+cost)。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n × m) — 编辑距离DP，二维状态转移<br>
+空间复杂度：O(n × m)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -705,6 +740,11 @@ f = [[<span class="number">0</span>] * (m + <span class="number">1</span>) <span
             <strong>解题思路：</strong><p>记忆化搜索：DFS+缓存。每个格子只算一次，取四个方向中最长路径+1。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n × m) — 记忆化搜索，每个状态只计算一次<br>
+空间复杂度：O(n × m)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -828,6 +868,11 @@ ans = <span class="number">0</span>
             <strong>解题思路：</strong><p>多重背包二进制优化：拆分s为2的幂次，转化为01背包。O(N*V*logS)。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n × v) — 01背包DP，逆序遍历容量<br>
+空间复杂度：O(v)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -870,7 +915,25 @@ ans = <span class="number">0</span>
     printf(<span class="string">&quot;%d\n&quot;</span>, dp[V]);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
-            </details>
+            <h4>Python</h4><pre><code class="language-python"># 多重背包 - 二进制优化
+import sys
+input = sys.stdin.readline
+n, V = map(int, input().split())
+items = []
+for _ in range(n):
+    v, w, s = map(int, input().split())
+    k = 1
+    while k <= s:
+        items.append((v*k, w*k))
+        s -= k; k *= 2
+    if s > 0: items.append((v*s, w*s))
+dp = [0] * (V + 1)
+for vi, wi in items:
+    for j in range(V, vi-1, -1):
+        dp[j] = max(dp[j], dp[j-vi]+wi)
+print(dp[V])
+</code></pre>
+</details>
         </div>
     </div>
 
@@ -912,6 +975,11 @@ ans = <span class="number">0</span>
             <strong>解题思路：</strong><p>多重背包二进制优化。与JD163相同思路，数据范围更大。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n × v × log s) — 多重背包二进制优化，物品拆分后做01背包<br>
+空间复杂度：O(n × v)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -953,7 +1021,25 @@ ans = <span class="number">0</span>
     printf(<span class="string">&quot;%d\n&quot;</span>, dp[V]);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
-            </details>
+            <h4>Python</h4><pre><code class="language-python"># 多重背包 II - 二进制优化
+import sys
+input = sys.stdin.readline
+n, V = map(int, input().split())
+items = []
+for _ in range(n):
+    v, w, s = map(int, input().split())
+    k = 1
+    while k <= s:
+        items.append((v*k, w*k))
+        s -= k; k *= 2
+    if s > 0: items.append((v*s, w*s))
+dp = [0] * (V + 1)
+for vi, wi in items:
+    for j in range(V, vi-1, -1):
+        dp[j] = max(dp[j], dp[j-vi]+wi)
+print(dp[V])
+</code></pre>
+</details>
         </div>
     </div>
 
@@ -995,6 +1081,11 @@ ans = <span class="number">0</span>
             <strong>解题思路：</strong><p>分组背包：外层遍历组，内层逆序容量，最内层遍历组内物品。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n × v) — 分组背包DP，每组选一个物品<br>
+空间复杂度：O(v)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -1027,7 +1118,23 @@ ans = <span class="number">0</span>
     printf(<span class="string">&quot;%d\n&quot;</span>, dp[V]);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
-            </details>
+            <h4>Python</h4><pre><code class="language-python"># 分组背包 - 每组选一个
+import sys
+input = sys.stdin.readline
+N, V = map(int, input().split())
+groups = []
+for _ in range(N):
+    S = int(input())
+    items = [tuple(map(int, input().split())) for _ in range(S)]
+    groups.append(items)
+dp = [0] * (V + 1)
+for group in groups:
+    for j in range(V, -1, -1):
+        for v, w in group:
+            if j >= v: dp[j] = max(dp[j], dp[j-v]+w)
+print(dp[V])
+</code></pre>
+</details>
         </div>
     </div>
 
@@ -1068,6 +1175,11 @@ ans = <span class="number">0</span>
             <strong>解题思路：</strong><p>贪心+二分：维护最小末尾数组q[]，二分查找替换。O(nlogn)。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n log n) — 贪心+二分维护最小末尾数组<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -1098,7 +1210,18 @@ ans = <span class="number">0</span>
     printf(<span class="string">&quot;%d\n&quot;</span>, len);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
-            </details>
+            <h4>Python</h4><pre><code class="language-python"># 最长上升子序列 O(nlogn)
+import bisect
+n = int(input())
+a = list(map(int, input().split()))
+q = []
+for x in a:
+    pos = bisect.bisect_left(q, x)
+    if pos == len(q): q.append(x)
+    else: q[pos] = x
+print(len(q))
+</code></pre>
+</details>
         </div>
     </div>
 
@@ -1138,6 +1261,11 @@ ans = <span class="number">0</span>
             <strong>解题思路：</strong><p>完全背包DP：dp[j] += dp[j-i]，i从1到n。模1e9+7。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n × v) — 完全背包DP，正序遍历容量<br>
+空间复杂度：O(v)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -1161,7 +1289,17 @@ ans = <span class="number">0</span>
     printf(<span class="string">&quot;%d\n&quot;</span>, dp[n]);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
-            </details>
+            <h4>Python</h4><pre><code class="language-python"># 整数划分 - 完全背包DP
+MOD = 10**9 + 7
+n = int(input())
+dp = [0] * (n + 1)
+dp[0] = 1
+for i in range(1, n + 1):
+    for j in range(i, n + 1):
+        dp[j] = (dp[j] + dp[j-i]) % MOD
+print(dp[n])
+</code></pre>
+</details>
         </div>
     </div>
 
@@ -1201,6 +1339,11 @@ ans = <span class="number">0</span>
             <strong>解题思路：</strong><p>数位统计：对每个数字和位置用数学公式计算出现次数。f(b)-f(a-1)。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(log n) — 数位统计，按位分析贡献<br>
+空间复杂度：O(log n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -1249,7 +1392,28 @@ ans = <span class="number">0</span>
     }
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
-            </details>
+            <h4>Python</h4><pre><code class="language-python"># 数位统计
+def count_digit(n, d):
+    if n &lt; 0: return 0
+    count = 0; pow10 = 1
+    while pow10 &lt;= n:
+        high = n // (pow10 * 10)
+        cur = (n // pow10) % 10
+        low = n % pow10
+        if cur &gt; d: count += (high + 1) * pow10
+        elif cur == d: count += high * pow10 + low + 1
+        else: count += high * pow10
+        if d == 0: count -= pow10
+        pow10 *= 10
+    return count
+
+a, b = map(int, input().split())
+if a &gt; b: a, b = b, a
+for d in range(10):
+    print(count_digit(b, d) - count_digit(a-1, d), end=" ")
+print()
+</code></pre>
+</details>
         </div>
     </div>
 
@@ -1290,6 +1454,11 @@ ans = <span class="number">0</span>
             <strong>解题思路：</strong><p>状压DP：逐列处理，状态掩码表示被前一列横骨牌占的格子。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(2<sup>n</sup> × n) — 状压DP，状态压缩枚举子集<br>
+空间复杂度：O(2<sup>n</sup>)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -1349,7 +1518,31 @@ vector<<span class="keyword">int</span>> valid[<span class="number">1</span> << 
     }
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
-            </details>
+            <h4>Python</h4><pre><code class="language-python"># 蒙德里安的梦想 - 状压DP
+while True:
+    n, m = map(int, input().split())
+    if n == 0 and m == 0: break
+    dp = [0] * (1 &lt;&lt; n)
+    dp[0] = 1
+    for _ in range(m):
+        ndp = [0] * (1 &lt;&lt; n)
+        for state in range(1 &lt;&lt; n):
+            if dp[state] == 0: continue
+            def dfs(row, cur, nxt):
+                if row == n:
+                    ndp[nxt] += dp[state]
+                    return
+                if cur &amp; (1 &lt;&lt; row):
+                    dfs(row+1, cur, nxt)
+                else:
+                    dfs(row+1, cur, nxt)
+                    if row+1 &lt; n and not (cur &amp; (1 &lt;&lt; (row+1))):
+                        dfs(row+2, cur, nxt | (1 &lt;&lt; (row+1)))
+            dfs(0, state, 0)
+        dp = ndp
+    print(dp[0])
+</code></pre>
+</details>
         </div>
     </div>
 
@@ -1394,6 +1587,11 @@ vector<<span class="keyword">int</span>> valid[<span class="number">1</span> << 
             <strong>解题思路：</strong><p>状压DP：dp[mask][i]表示访问集合mask、当前在城i的最小代价。O(2^n * n²)。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(2<sup>n</sup> × n<sup>2</sup>) — 状压DP，状态数2<sup>n</sup>，每个状态转移O(n)<br>
+空间复杂度：O(2<sup>n</sup> × n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -1430,7 +1628,22 @@ vector<<span class="keyword">int</span>> valid[<span class="number">1</span> << 
     printf(<span class="string">&quot;%lld\n&quot;</span>, dp[full][n - <span class="number">1</span>]);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
-            </details>
+            <h4>Python</h4><pre><code class="language-python"># 最短Hamilton路径 - 状压DP
+n = int(input())
+g = [list(map(int, input().split())) for _ in range(n)]
+INF = float("inf")
+dp = [[INF]*n for _ in range(1&lt;&lt;n)]
+dp[1][0] = 0
+for mask in range(1&lt;&lt;n):
+    for i in range(n):
+        if dp[mask][i] == INF or not (mask &amp; (1&lt;&lt;i)): continue
+        for j in range(n):
+            if mask &amp; (1&lt;&lt;j): continue
+            nm = mask | (1&lt;&lt;j)
+            dp[nm][j] = min(dp[nm][j], dp[mask][i] + g[i][j])
+print(dp[(1&lt;&lt;n)-1][n-1])
+</code></pre>
+</details>
         </div>
     </div>
 
@@ -1473,6 +1686,11 @@ def
             <strong>解题思路：</strong><p>编辑距离DP：dp[i][j] = min(dp[i-1][j]+1, dp[i][j-1]+1, dp[i-1][j-1]+cost)。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n × m) — 编辑距离DP，二维状态转移<br>
+空间复杂度：O(n × m)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -1520,7 +1738,26 @@ def
     }
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
-            </details>
+            <h4>Python</h4><pre><code class="language-python"># 编辑距离 - 字典查询
+def edit_dist(s1, s2):
+    n, m = len(s1), len(s2)
+    dp = [[0]*(m+1) for _ in range(n+1)]
+    for i in range(n+1): dp[i][0] = i
+    for j in range(m+1): dp[0][j] = j
+    for i in range(1, n+1):
+        for j in range(1, m+1):
+            if s1[i-1] == s2[j-1]: dp[i][j] = dp[i-1][j-1]
+            else: dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1
+    return dp[n][m]
+
+n, m = map(int, input().split())
+dict_words = [input().strip() for _ in range(n)]
+for _ in range(m):
+    parts = input().split()
+    target, k = parts[0], int(parts[1])
+    print(sum(1 for w in dict_words if edit_dist(w, target) &lt;= k))
+</code></pre>
+</details>
         </div>
     </div>
 
@@ -1570,6 +1807,11 @@ def
             <strong>解题思路：</strong><p>树形DP：dp[u][0/1]表示u不出征/出征时的最大值。DFS从根遍历。dp[u][1] = h[u] + Σdp[v][0]，dp[u][0] = Σmax(dp[v][0], dp[v][1])。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 树形DP，DFS遍历每个节点一次<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -1617,7 +1859,29 @@ vector<<span class="keyword">int</span>> children[MAXN];
     printf(<span class="string">&quot;%lld\n&quot;</span>, max(dp[root][<span class="number">0</span>], dp[root][<span class="number">1</span>]));
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
-            </details>
+            <h4>Python</h4><pre><code class="language-python"># 没有上司的舞会 - 树形DP
+import sys
+sys.setrecursionlimit(20000)
+n = int(input())
+h = [0] + list(map(int, input().split()))
+children = [[] for _ in range(n+1)]
+has_parent = [False] * (n+1)
+for _ in range(n-1):
+    l, k = map(int, input().split())
+    children[k].append(l)
+    has_parent[l] = True
+root = next(i for i in range(1, n+1) if not has_parent[i])
+dp = [[0, 0] for _ in range(n+1)]
+def dfs(u):
+    dp[u][1] = h[u]
+    for v in children[u]:
+        dfs(v)
+        dp[u][0] += max(dp[v][0], dp[v][1])
+        dp[u][1] += dp[v][0]
+dfs(root)
+print(max(dp[root][0], dp[root][1]))
+</code></pre>
+</details>
         </div>
     </div>
 

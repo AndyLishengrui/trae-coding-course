@@ -73,6 +73,11 @@
             <strong>解题思路：</strong><p>位运算：while(n > 0) { count += n & 1; n >>= 1; }。或用 n & (n-1) 消去最低位的1，计数更快。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(log n) — 位运算，逐位处理<br>
+空间复杂度：O(1)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -148,6 +153,11 @@ sys.stdout.write(<span class="string">&#x27; &#x27;</span>.join(out) + <span cla
             <strong>解题思路：</strong><p>用数组存每一位（倒序），从低位到高位逐位相加，处理进位。最后倒序输出。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 高精度加法，逐位处理进位<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -188,11 +198,21 @@ vector<<span class="keyword">int</span>> add(vector<<span class="keyword">int</s
 
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">import</span> sys
-data = sys.stdin.read().split()
-a = <span class="keyword">int</span>(data[<span class="number">0</span>])
-b = <span class="keyword">int</span>(data[<span class="number">1</span>])
-<span class="keyword">print</span>(a + b)</code></pre>
+            <pre><code class="language-python"><span class="comment"># 高精度加法：用数组模拟竖式，从低位到高位逐位相加</span>
+a = <span class="keyword">input</span>().strip()
+b = <span class="keyword">input</span>().strip()
+<span class="comment"># 倒序存储，A[0]为最低位</span>
+A = [<span class="keyword">int</span>(ch) <span class="keyword">for</span> ch <span class="keyword">in</span> <span class="keyword">reversed</span>(a)]
+B = [<span class="keyword">int</span>(ch) <span class="keyword">for</span> ch <span class="keyword">in</span> <span class="keyword">reversed</span>(b)]
+C = []
+t = <span class="number">0</span>  <span class="comment"># 进位</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="keyword">max</span>(<span class="keyword">len</span>(A), <span class="keyword">len</span>(B))):
+    <span class="keyword">if</span> i < <span class="keyword">len</span>(A): t += A[i]
+    <span class="keyword">if</span> i < <span class="keyword">len</span>(B): t += B[i]
+    C.append(t % <span class="number">10</span>)   <span class="comment"># 当前位</span>
+    t //= <span class="number">10</span>            <span class="comment"># 更新进位</span>
+<span class="keyword">if</span> t: C.append(<span class="number">1</span>)      <span class="comment"># 最高位进位</span>
+<span class="keyword">print</span>(<span class="string">&#x27;&#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, <span class="keyword">reversed</span>(C))))</code></pre>
             </details>
         </div>
     </div>
@@ -235,6 +255,11 @@ b = <span class="keyword">int</span>(data[<span class="number">1</span>])
             <strong>解题思路：</strong><p>先判断大小，大减小，从低位逐位减，处理借位。如果被减数小则结果加负号。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 高精度减法，逐位处理借位<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -305,12 +330,38 @@ vector<<span class="keyword">int</span>> sub(vector<<span class="keyword">int</s
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="comment"># 高精度减法</span>
-<span class="keyword">import</span> sys
-sys.set_int_max_str_digits(<span class="number">1000000</span>)
-a = <span class="keyword">int</span>(<span class="keyword">input</span>())
-b = <span class="keyword">int</span>(<span class="keyword">input</span>())
-<span class="keyword">print</span>(a - b)</code></pre>
+            <pre><code class="language-python"><span class="comment"># 高精度减法：用数组模拟竖式，从低位到高位逐位相减</span>
+a = <span class="keyword">input</span>().strip()
+b = <span class="keyword">input</span>().strip()
+<span class="comment"># 倒序存储，A[0]为最低位</span>
+A = [<span class="keyword">int</span>(ch) <span class="keyword">for</span> ch <span class="keyword">in</span> <span class="keyword">reversed</span>(a)]
+B = [<span class="keyword">int</span>(ch) <span class="keyword">for</span> ch <span class="keyword">in</span> <span class="keyword">reversed</span>(b)]
+
+<span class="comment"># 判断A是否大于等于B（先比长度，再从高位逐位比）</span>
+<span class="keyword">def</span> ge(A, B):
+    <span class="keyword">if</span> <span class="keyword">len</span>(A) != <span class="keyword">len</span>(B): <span class="keyword">return</span> <span class="keyword">len</span>(A) > <span class="keyword">len</span>(B)
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="keyword">len</span>(A) - <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):
+        <span class="keyword">if</span> A[i] != B[i]: <span class="keyword">return</span> A[i] > B[i]
+    <span class="keyword">return</span> <span class="keyword">True</span>  <span class="comment"># 两数相等</span>
+
+<span class="comment"># C = A - B（保证A >= B）</span>
+<span class="keyword">def</span> sub(A, B):
+    C = []
+    t = <span class="number">0</span>  <span class="comment"># 借位</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="keyword">len</span>(A)):
+        t = A[i] - t
+        <span class="keyword">if</span> i < <span class="keyword">len</span>(B): t -= B[i]
+        C.append((t + <span class="number">10</span>) % <span class="number">10</span>)  <span class="comment"># 当前位</span>
+        t = <span class="number">1</span> <span class="keyword">if</span> t < <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span>     <span class="comment"># 是否借位</span>
+    <span class="keyword">while</span> <span class="keyword">len</span>(C) > <span class="number">1</span> <span class="keyword">and</span> C[-<span class="number">1</span>] == <span class="number">0</span>: C.pop()  <span class="comment"># 去前导零</span>
+    <span class="keyword">return</span> C
+
+<span class="keyword">if</span> ge(A, B):
+    C = sub(A, B)
+    <span class="keyword">print</span>(<span class="string">&#x27;&#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, <span class="keyword">reversed</span>(C))))
+<span class="keyword">else</span>:
+    C = sub(B, A)
+    <span class="keyword">print</span>(<span class="string">&#x27;-&#x27;</span> + <span class="string">&#x27;&#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, <span class="keyword">reversed</span>(C))))</code></pre>
             </details>
         </div>
     </div>
@@ -352,6 +403,11 @@ b = <span class="keyword">int</span>(<span class="keyword">input</span>())
             <strong>解题思路：</strong><p>高精度×低精度：大数每一位乘以小数，处理进位。注意结果可能有前导零需要去掉。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 高精度乘低精度，逐位处理<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -392,12 +448,22 @@ vector<<span class="keyword">int</span>> mul(vector<<span class="keyword">int</s
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="comment"># 高精度乘法</span>
-<span class="keyword">import</span> sys
-sys.set_int_max_str_digits(<span class="number">1000000</span>)
-a = <span class="keyword">int</span>(<span class="keyword">input</span>())
+            <pre><code class="language-python"><span class="comment"># 高精度×低精度：大数每一位乘以小数，处理进位</span>
+a = <span class="keyword">input</span>().strip()
 b = <span class="keyword">int</span>(<span class="keyword">input</span>())
-<span class="keyword">print</span>(a * b)</code></pre>
+<span class="comment"># 倒序存储，A[0]为最低位</span>
+A = [<span class="keyword">int</span>(ch) <span class="keyword">for</span> ch <span class="keyword">in</span> <span class="keyword">reversed</span>(a)]
+C = []
+t = <span class="number">0</span>  <span class="comment"># 进位</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="keyword">len</span>(A)):
+    t += A[i] * b       <span class="comment"># 当前位乘以b，加上进位</span>
+    C.append(t % <span class="number">10</span>)    <span class="comment"># 存储当前位</span>
+    t //= <span class="number">10</span>             <span class="comment"># 更新进位</span>
+<span class="keyword">while</span> t:                 <span class="comment"># 处理剩余进位</span>
+    C.append(t % <span class="number">10</span>)
+    t //= <span class="number">10</span>
+<span class="keyword">while</span> <span class="keyword">len</span>(C) > <span class="number">1</span> <span class="keyword">and</span> C[-<span class="number">1</span>] == <span class="number">0</span>: C.pop()  <span class="comment"># 去前导零</span>
+<span class="keyword">print</span>(<span class="string">&#x27;&#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, <span class="keyword">reversed</span>(C))))</code></pre>
             </details>
         </div>
     </div>
@@ -440,6 +506,11 @@ b = <span class="keyword">int</span>(<span class="keyword">input</span>())
             <strong>解题思路：</strong><p>高精度÷低精度：从高位到低位，当前余数×10+当前位，除以B得商的一位，更新余数。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 高精度除低精度，逐位处理<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -486,12 +557,21 @@ vector<<span class="keyword">int</span>> div(vector<<span class="keyword">int</s
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
-            <pre><code class="language-python"><span class="keyword">import</span> sys
-data = sys.stdin.read().split()
-a = <span class="keyword">int</span>(data[<span class="number">0</span>])
-b = <span class="keyword">int</span>(data[<span class="number">1</span>])
-<span class="keyword">print</span>(a // b)
-<span class="keyword">print</span>(a % b)</code></pre>
+            <pre><code class="language-python"><span class="comment"># 高精度÷低精度：从高位到低位，逐位做除法</span>
+a = <span class="keyword">input</span>().strip()
+b = <span class="keyword">int</span>(<span class="keyword">input</span>())
+<span class="comment"># 倒序存储，A[0]为最低位（方便从高位开始处理）</span>
+A = [<span class="keyword">int</span>(ch) <span class="keyword">for</span> ch <span class="keyword">in</span> <span class="keyword">reversed</span>(a)]
+C = []
+r = <span class="number">0</span>  <span class="comment"># 余数</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="keyword">len</span>(A) - <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):  <span class="comment"># 从最高位到最低位</span>
+    r = r * <span class="number">10</span> + A[i]          <span class="comment"># 当前余数乘10加上当前位</span>
+    C.append(r // b)            <span class="comment"># 商的一位</span>
+    r %= b                      <span class="comment"># 更新余数</span>
+<span class="comment"># C[0]是商的最高位，需要去掉前导零</span>
+<span class="keyword">while</span> <span class="keyword">len</span>(C) > <span class="number">1</span> <span class="keyword">and</span> C[<span class="number">0</span>] == <span class="number">0</span>: C.pop(<span class="number">0</span>)
+<span class="keyword">print</span>(<span class="string">&#x27;&#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, C)))
+<span class="keyword">print</span>(r)</code></pre>
             </details>
         </div>
     </div>
@@ -534,6 +614,11 @@ b = <span class="keyword">int</span>(data[<span class="number">1</span>])
             <strong>解题思路：</strong><p>双指针：i 从 A 的头，j 从 B 的尾。A[i]+B[j] < x 则 i++，> x 则 j--。O(n+m)。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n + m) — 双指针遍历<br>
+空间复杂度：O(1)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -620,6 +705,11 @@ Yes
             <strong>解题思路：</strong><p>双指针：i 遍历 a，j 遍历 b。a[i] == b[j] 时 i++。i 到头说明是子序列。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n + m) — 双指针遍历<br>
+空间复杂度：O(1)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -700,6 +790,11 @@ i = <span class="number">0</span>
             <strong>解题思路：</strong><p>滑动窗口：右指针扩展，用哈希表判断是否重复，重复则左指针收缩。O(n)。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 哈希表查找，平均O(1)<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>

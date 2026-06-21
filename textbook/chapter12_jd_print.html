@@ -83,6 +83,11 @@ D 2
             <strong>解题思路：</strong><p>数组模拟链表：head, val[], ne[]。插入：新节点的ne指向原next，前驱的ne指向新节点。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 线性遍历处理<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -252,6 +257,11 @@ query
             <strong>解题思路：</strong><p>数组模拟栈：tt指向栈顶。push: st[++tt]=x。pop: tt--。query: st[tt]。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 栈操作，每个元素最多入栈出栈各一次<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -351,6 +361,11 @@ pop
             <strong>解题思路：</strong><p>数组模拟队列：hh队头，tt队尾。push: q[++tt]=x。pop: hh++。query: q[hh]。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 队列操作<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -439,6 +454,11 @@ q = deque()
             <strong>解题思路：</strong><p>双栈法：数字栈+运算符栈。比较优先级决定是否先算栈顶。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 栈操作，每个元素最多入栈出栈各一次<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -598,6 +618,11 @@ i = <span class="number">0</span>
             <strong>解题思路：</strong><p>单调栈：遍历时弹出比当前小的元素，栈顶就是答案。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 单调栈，每个元素最多入栈出栈各一次<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -674,6 +699,11 @@ res = []
             <strong>解题思路：</strong><p>单调队列：维护递增队列。窗口滑动时弹出过期元素和比新元素大的元素。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 单调队列，每个元素最多入队出队各一次<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -790,6 +820,11 @@ ababa
             <strong>解题思路：</strong><p>KMP：预处理next数组（最长相等前后缀），匹配时利用next跳转。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n + m) — KMP字符串匹配<br>
+空间复杂度：O(m)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -905,6 +940,11 @@ D 1
             <strong>解题思路：</strong><p>数组模拟堆：上浮和下沉操作。父节点i的子节点是2i和2i+1。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n log n) — 堆操作，每次插入/删除O(log n)<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -1100,6 +1140,11 @@ No
             <strong>解题思路：</strong><p>并查集：find时路径压缩，union时合并两棵树。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(α(n)) — 并查集操作，近似常数时间<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -1197,6 +1242,11 @@ C 4
             <strong>解题思路：</strong><p>维护size[]数组，合并时更新size。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(n) — 线性遍历处理<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
@@ -1316,6 +1366,11 @@ out = []
             <strong>解题思路：</strong><p>扩展并查集：每个点拆成3个，模3判断关系。</p>
 
         </div>
+<div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
+<strong>复杂度分析：</strong><br>
+时间复杂度：O(α(n)) — 并查集操作，近似常数时间<br>
+空间复杂度：O(n)
+</div>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
