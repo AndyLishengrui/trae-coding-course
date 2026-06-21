@@ -77,13 +77,13 @@
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
-#<span class="keyword">include</span> &lt;algorithm&gt;
-#<span class="keyword">include</span> &lt;queue&gt;
-#<span class="keyword">include</span> &lt;cstring&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+#<span class="keyword">include</span> <algorithm>
+#<span class="keyword">include</span> <queue>
+#<span class="keyword">include</span> <cstring>
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
-#define For(a, begin, end) <span class="keyword">for</span> (<span class="keyword">int</span> a = (begin); a &lt; (end); a++)
+#define For(a, begin, end) <span class="keyword">for</span> (<span class="keyword">int</span> a = (begin); a < (end); a++)
 <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000007</span>;
 
 <span class="keyword">int</span> n, m;
@@ -101,10 +101,10 @@
 {
     <span class="keyword">int</span> qHeadIdx = <span class="number">0</span>, qTailIdx = -<span class="number">1</span>; <span class="comment">//队头，队尾</span>
     <span class="comment">//从前往后遍历入度为0的点，插入队列</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i++)
         <span class="keyword">if</span> (!d[i])
             q[++qTailIdx] = i; <span class="comment">//数组模拟队列，入队是尾指针+1</span>
-    <span class="keyword">while</span> (qHeadIdx &lt;= qTailIdx) <span class="comment">//如果头指针小于尾指针</span>
+    <span class="keyword">while</span> (qHeadIdx <= qTailIdx) <span class="comment">//如果头指针小于尾指针</span>
     {
         <span class="keyword">int</span> t = q[qHeadIdx++]; <span class="comment">//取队列头元素，，出队只是把头指针往后移动一位</span>
         <span class="comment">//遍历t的临边，空指针初始化为-1</span>
@@ -123,24 +123,24 @@
 <span class="keyword">int</span> main()
 {
 
-    cin &gt;&gt; n &gt;&gt; m;            <span class="comment">//读入n,m</span>
+    cin >> n >> m;            <span class="comment">//读入n,m</span>
     memset(head, -<span class="number">1</span>, <span class="keyword">sizeof</span>(head)); <span class="comment">//初始化Head数组指向-1顶点</span>
 
     For(i, <span class="number">0</span>, m)
     {
         <span class="keyword">int</span> a, b;
-        cin &gt;&gt; a &gt;&gt; b;
+        cin >> a >> b;
         add(a, b); <span class="comment">//插入边</span>
         d[b]++;    <span class="comment">//更新入度</span>
     }
 
     <span class="keyword">if</span> (topsort())
     {<span class="comment">//数组队列里面的元素就是拓扑序</span>
-      <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>; i&lt;n; i++) { <span class="keyword">if</span>(i) printf(&quot; &quot;); printf(&quot;%d&quot;,q[i]); }
-      printf(&quot;\n&quot;);
+      <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>; i<n; i++) { <span class="keyword">if</span>(i) printf(<span class="string">&quot; &quot;</span>); printf(<span class="string">&quot;%d&quot;</span>,q[i]); }
+      printf(<span class="string">&quot;\n&quot;</span>);
     }
     <span class="keyword">else</span>
-        puts(&quot;-<span class="number">1</span>&quot;);
+        puts(<span class="string">&quot;-1&quot;</span>);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -163,7 +163,7 @@ res = []
     <span class="keyword">for</span> v <span class="keyword">in</span> adj[u]:
         indeg[v] -= <span class="number">1</span>
         <span class="keyword">if</span> indeg[v] == <span class="number">0</span>: q.append(v)
-<span class="keyword">print</span>(&<span class="comment">#x27; &#x27;.join(res) if len(res)==n else -1)</span></code></pre>
+<span class="keyword">print</span>(<span class="string">&#x27; &#x27;</span>.join(res) <span class="keyword">if</span> <span class="keyword">len</span>(res)==n <span class="keyword">else</span> -<span class="number">1</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -210,9 +210,9 @@ res = []
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
-#<span class="keyword">include</span> &lt;cstring&gt;
-#<span class="keyword">include</span> &lt;algorithm&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+#<span class="keyword">include</span> <cstring>
+#<span class="keyword">include</span> <algorithm>
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
@@ -232,17 +232,17 @@ res = []
   dist[<span class="number">1</span>] = <span class="number">0</span>; <span class="comment">//第一个点到自身的距离为0</span>
 
   <span class="comment">//有n个点，迭代n次</span>
-  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;n; i++)
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i<n; i++)
   {
     <span class="keyword">int</span> t = -<span class="number">1</span>;<span class="comment">//当前访问点的编号初始为-1</span>
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) <span class="comment">//从点1到点n开始计算dist</span>
-      <span class="keyword">if</span> (!st[j] &amp;&amp; (t == -<span class="number">1</span> || dist[t] &gt; dist[j]))
+    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= n; j++) <span class="comment">//从点1到点n开始计算dist</span>
+      <span class="keyword">if</span> (!st[j] && (t == -<span class="number">1</span> || dist[t] > dist[j]))
         t = j;<span class="comment">// 更新点t，直到找到dist最小的点</span>
 
     st[t]= <span class="keyword">true</span>;<span class="comment">//标记此点确定</span>
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;=n; j++)<span class="comment">//每个点都要遍历所有点一遍</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <=n; j++)<span class="comment">//每个点都要遍历所有点一遍</span>
        dist[j] = min( dist[j], dist[t]+ g[t][j]);<span class="comment">//遍历所有的点，求从点t到点j的最小值</span>
    }
 
@@ -253,17 +253,17 @@ res = []
 
 <span class="keyword">int</span> main()
 {
-  cin&gt;&gt;n&gt;&gt;m;
+  cin>>n>>m;
 
   memset(g, 0x3f, <span class="keyword">sizeof</span> g);
 
   <span class="keyword">while</span> (m--)
   {
     <span class="keyword">int</span> x,y,z;
-    cin&gt;&gt;x&gt;&gt;y&gt;&gt;z;
+    cin>>x>>y>>z;
     g[x][y] = min( g[x][y],z);<span class="comment">//取重边和自环的最小值，保留一条边</span>
   }
-  cout&lt;&lt;Dijkstra()&lt;&lt;endl;
+  cout<<Dijkstra()<<endl;
 
   <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -280,11 +280,11 @@ st = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n):
     t = -<span class="number">1</span>
     <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
-        <span class="keyword">if</span> <span class="keyword">not</span> st[i] <span class="keyword">and</span> (t == -<span class="number">1</span> <span class="keyword">or</span> dist[i] &lt; dist[t]):
+        <span class="keyword">if</span> <span class="keyword">not</span> st[i] <span class="keyword">and</span> (t == -<span class="number">1</span> <span class="keyword">or</span> dist[i] < dist[t]):
             t = i
     st[t] = <span class="keyword">True</span>
     <span class="keyword">for</span> v <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
-        <span class="keyword">if</span> dist[v] &gt; dist[t] + g[t][v]:
+        <span class="keyword">if</span> dist[v] > dist[t] + g[t][v]:
             dist[v] = dist[t] + g[t][v]
 <span class="keyword">print</span>(dist[n] <span class="keyword">if</span> dist[n] != 0x3f3f3f3f <span class="keyword">else</span> -<span class="number">1</span>)</code></pre>
             </details>
@@ -332,10 +332,10 @@ st = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;algorithm&gt;
-#<span class="keyword">include</span> &lt;cstring&gt;
-#<span class="keyword">include</span> &lt;iostream&gt;
-#<span class="keyword">include</span> &lt;queue&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <algorithm>
+#<span class="keyword">include</span> <cstring>
+#<span class="keyword">include</span> <iostream>
+#<span class="keyword">include</span> <queue>
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
@@ -345,7 +345,7 @@ st = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
  * 时间: O((V+E)logV) | 空间: O(V)
  */
 
-<span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII;
+<span class="keyword">typedef</span> pair<<span class="keyword">int</span>, <span class="keyword">int</span>> PII;
 
 <span class="keyword">const</span> <span class="keyword">int</span> N = 1e6 + <span class="number">10</span>;
 
@@ -365,7 +365,7 @@ st = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
   memset(dist, 0x3f, <span class="keyword">sizeof</span> dist);
   dist[<span class="number">1</span>] = <span class="number">0</span>;
   <span class="comment">//调用优先队列，以及greater算子，创建小根堆</span>
-  priority_queue&lt;PII, vector&lt;PII&gt;, greater&lt;PII&gt;&gt; heap;
+  priority_queue<PII, vector<PII>, greater<PII>> heap;
 
   <span class="comment">//按照距离排序，因此第一个元素是距离，第二个元素是顶点编号</span>
   heap.push({<span class="number">0</span>, <span class="number">1</span>});
@@ -387,7 +387,7 @@ st = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
     <span class="keyword">for</span> (<span class="keyword">int</span> i = h[ver]; i != -<span class="number">1</span>; i = ne[i]) {
       <span class="keyword">int</span> j = e[i];
       <span class="comment">//判断dist[ver]+w[i]是否比原来顶点j的距离大</span>
-      <span class="keyword">if</span> (dist[j] &gt; dist[ver] + w[i]) {
+      <span class="keyword">if</span> (dist[j] > dist[ver] + w[i]) {
         dist[j] = dist[ver] + w[i];  <span class="comment">//更新顶点j的距离值</span>
         heap.push({dist[j], j});     <span class="comment">//把更小的距离值入堆</span>
       }
@@ -401,17 +401,17 @@ st = [<span class="keyword">False</span>] * (n + <span class="number">1</span>)
 
 <span class="keyword">int</span> main() {
   <span class="comment">//读入行n，列m</span>
-  scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+  scanf(<span class="string">&quot;%d%d&quot;</span>, &n, &m);
   <span class="comment">//把邻接链表的头指针化为-1，表明当前为空，不指向任何链表</span>
   memset(h, -<span class="number">1</span>, <span class="keyword">sizeof</span> h);
   <span class="comment">//处理m条边</span>
   <span class="keyword">while</span> (m--) {
     <span class="keyword">int</span> a, b, c;
-    scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c);
+    scanf(<span class="string">&quot;%d%d%d&quot;</span>, &a, &b, &c);
     add(a, b, c);<span class="comment">//调用add建图</span>
   }
   <span class="comment">//调用改进版的dijkstra()</span>
-  cout &lt;&lt; dijkstra() &lt;&lt; endl;
+  cout << dijkstra() << endl;
 
   <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -436,7 +436,7 @@ heap = [(<span class="number">0</span>, <span class="number">1</span>)]
     <span class="keyword">if</span> st[u]: <span class="keyword">continue</span>
     st[u] = <span class="keyword">True</span>
     <span class="keyword">for</span> v, w <span class="keyword">in</span> adj[u]:
-        <span class="keyword">if</span> dist[v] &gt; d + w:
+        <span class="keyword">if</span> dist[v] > d + w:
             dist[v] = d + w
             heapq.heappush(heap, (dist[v], v))
 <span class="keyword">print</span>(dist[n] <span class="keyword">if</span> dist[n] != INF <span class="keyword">else</span> -<span class="number">1</span>)</code></pre>
@@ -485,10 +485,10 @@ heap = [(<span class="number">0</span>, <span class="number">1</span>)]
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;queue&gt;
-#<span class="keyword">include</span> &lt;iostream&gt;
-#<span class="keyword">include</span> &lt;cstring&gt;
-#<span class="keyword">include</span> &lt;algorithm&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <queue>
+#<span class="keyword">include</span> <iostream>
+#<span class="keyword">include</span> <cstring>
+#<span class="keyword">include</span> <algorithm>
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
@@ -527,7 +527,7 @@ heap = [(<span class="number">0</span>, <span class="number">1</span>)]
         <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i != -<span class="number">1</span>; i = ne[i])
         {
             <span class="keyword">int</span> j = e[i];
-            <span class="keyword">if</span> (dist[j] &gt; dist[t] + w[i])
+            <span class="keyword">if</span> (dist[j] > dist[t] + w[i])
             {
                 dist[j] = dist[t] + w[i];
                 <span class="keyword">if</span> (!st[j])     <span class="comment">// 如果队列中已存在j，则不需要将j重复插入</span>
@@ -546,19 +546,19 @@ heap = [(<span class="number">0</span>, <span class="number">1</span>)]
 
 <span class="keyword">int</span> main()
 {
-    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+    scanf(<span class="string">&quot;%d%d&quot;</span>, &n, &m);
     memset(h, -<span class="number">1</span>, <span class="keyword">sizeof</span> h);
     <span class="keyword">while</span> (m -- )
     {
       <span class="keyword">int</span> a, b, c;
-      scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c);
+      scanf(<span class="string">&quot;%d%d%d&quot;</span>, &a, &b, &c);
       add(a, b, c);
     }
 
     <span class="keyword">int</span> t = spfa();
 
-    <span class="keyword">if</span> (t == -<span class="number">1</span>) puts(&quot;impossible&quot;);
-    <span class="keyword">else</span> printf(&quot;%d\n&quot;,t);
+    <span class="keyword">if</span> (t == -<span class="number">1</span>) puts(<span class="string">&quot;impossible&quot;</span>);
+    <span class="keyword">else</span> printf(<span class="string">&quot;%d\n&quot;</span>,t);
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -583,11 +583,11 @@ st[<span class="number">1</span>] = <span class="keyword">True</span>
     u = q.popleft()
     st[u] = <span class="keyword">False</span>
     <span class="keyword">for</span> v, w <span class="keyword">in</span> adj[u]:
-        <span class="keyword">if</span> dist[v] &gt; dist[u] + w:
+        <span class="keyword">if</span> dist[v] > dist[u] + w:
             dist[v] = dist[u] + w
             <span class="keyword">if</span> <span class="keyword">not</span> st[v]:
                 q.append(v); st[v] = <span class="keyword">True</span>
-<span class="keyword">print</span>(dist[n] <span class="keyword">if</span> dist[n] != INF <span class="keyword">else</span> &<span class="comment">#x27;impossible&#x27;)</span></code></pre>
+<span class="keyword">print</span>(dist[n] <span class="keyword">if</span> dist[n] != INF <span class="keyword">else</span> <span class="string">&#x27;impossible&#x27;</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -636,9 +636,9 @@ st[<span class="number">1</span>] = <span class="keyword">True</span>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
-#<span class="keyword">include</span> &lt;cstring&gt;
-#<span class="keyword">include</span> &lt;algorithm&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+#<span class="keyword">include</span> <cstring>
+#<span class="keyword">include</span> <algorithm>
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
@@ -650,18 +650,18 @@ st[<span class="number">1</span>] = <span class="keyword">True</span>
 <span class="keyword">void</span> floyd()
 {
   <span class="comment">//用动态规划分析得出这个递推公式，使用三重循环</span>
-  <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;=n; k++)
-   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;=n; i++)
-    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j ++ )
+  <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k <=n; k++)
+   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <=n; i++)
+    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= n; j ++ )
       d[i][j] = min(d[i][j], d[i][k]+d[k][j]);
 }
 
 <span class="keyword">int</span> main()
 {
-    scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;k);
+    scanf(<span class="string">&quot;%d%d%d&quot;</span>, &n, &m, &k);
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )
-     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j ++ )
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i <= n; i ++ )
+     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= n; j ++ )
        <span class="keyword">if</span> (i==j) d[i][j] = <span class="number">0</span>;
        <span class="keyword">else</span> d[i][j] = INF;
 
@@ -669,7 +669,7 @@ st[<span class="number">1</span>] = <span class="keyword">True</span>
     <span class="keyword">while</span> (m -- )
     {
       <span class="keyword">int</span> a,b,c;
-      scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c);
+      scanf(<span class="string">&quot;%d%d%d&quot;</span>, &a, &b, &c);
       d[a][b] = min(d[a][b],c);
     }
 
@@ -679,10 +679,10 @@ st[<span class="number">1</span>] = <span class="keyword">True</span>
     <span class="keyword">while</span>(k--)
     {
       <span class="keyword">int</span> a,b;
-      scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+      scanf(<span class="string">&quot;%d%d&quot;</span>, &a, &b);
       <span class="keyword">int</span> t = d[a][b];
-      <span class="keyword">if</span> (t &gt; INF /<span class="number">2</span>) puts(&quot;impossible&quot;);
-      <span class="keyword">else</span> printf(&quot;%d\n&quot;,t);
+      <span class="keyword">if</span> (t > INF /<span class="number">2</span>) puts(<span class="string">&quot;impossible&quot;</span>);
+      <span class="keyword">else</span> printf(<span class="string">&quot;%d\n&quot;</span>,t);
     }
 
     <span class="keyword">return</span> <span class="number">0</span>;
@@ -700,21 +700,21 @@ d = [[INF] * (n + <span class="number">1</span>) <span class="keyword">for</span
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(m):
     x, y, z = <span class="keyword">int</span>(data[idx]), <span class="keyword">int</span>(data[idx+<span class="number">1</span>]), <span class="keyword">int</span>(data[idx+<span class="number">2</span>])
     idx += <span class="number">3</span>
-    <span class="keyword">if</span> z &lt; d[x][y]:
+    <span class="keyword">if</span> z < d[x][y]:
         d[x][y] = z
 <span class="keyword">for</span> k <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
     <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
         <span class="keyword">if</span> d[i][k] == INF:
             <span class="keyword">continue</span>
         <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
-            <span class="keyword">if</span> d[k][j] != INF <span class="keyword">and</span> d[i][j] &gt; d[i][k] + d[k][j]:
+            <span class="keyword">if</span> d[k][j] != INF <span class="keyword">and</span> d[i][j] > d[i][k] + d[k][j]:
                 d[i][j] = d[i][k] + d[k][j]
 out = []
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(q):
     a, b = <span class="keyword">int</span>(data[idx]), <span class="keyword">int</span>(data[idx+<span class="number">1</span>])
     idx += <span class="number">2</span>
-    out.append(<span class="keyword">str</span>(d[a][b]) <span class="keyword">if</span> d[a][b] &lt; INF // <span class="number">2</span> <span class="keyword">else</span> &<span class="comment">#x27;impossible&#x27;)</span>
-sys.stdout.write(&<span class="comment">#x27;\n&#x27;.join(out) + &#x27;\n&#x27;)</span></code></pre>
+    out.append(<span class="keyword">str</span>(d[a][b]) <span class="keyword">if</span> d[a][b] < INF // <span class="number">2</span> <span class="keyword">else</span> <span class="string">&#x27;impossible&#x27;</span>)
+sys.stdout.write(<span class="string">&#x27;\n&#x27;</span>.join(out) + <span class="string">&#x27;\n&#x27;</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -763,9 +763,9 @@ sys.stdout.write(&<span class="comment">#x27;\n&#x27;.join(out) + &#x27;\n&#x27;
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
-#<span class="keyword">include</span> &lt;cstring&gt;
-#<span class="keyword">include</span> &lt;algorithm&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+#<span class="keyword">include</span> <cstring>
+#<span class="keyword">include</span> <algorithm>
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
@@ -781,40 +781,40 @@ sys.stdout.write(&<span class="comment">#x27;\n&#x27;.join(out) + &#x27;\n&#x27;
   memset(dist,0x3f,<span class="keyword">sizeof</span> dist);
 
   <span class="keyword">int</span> res = <span class="number">0</span>;
-  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++)
   {
     <span class="comment">//第一个点</span>
    <span class="keyword">int</span> t = -<span class="number">1</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j ++ )
-        <span class="keyword">if</span>(!st[j] &amp;&amp; (t == -<span class="number">1</span> || dist[t] &gt; dist[j]))
+    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= n; j ++ )
+        <span class="keyword">if</span>(!st[j] && (t == -<span class="number">1</span> || dist[t] > dist[j]))
         t = j;
 
-    <span class="keyword">if</span> (i &amp;&amp; dist[t] == INF) <span class="keyword">return</span> INF;<span class="comment">//没有最小生成树，不连通</span>
+    <span class="keyword">if</span> (i && dist[t] == INF) <span class="keyword">return</span> INF;<span class="comment">//没有最小生成树，不连通</span>
 
     <span class="keyword">if</span> (i) res += dist[t];
     st[t] = <span class="keyword">true</span>;
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j ++ ) dist[j] = min(dist[j], g[t][j]);
+    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j <= n; j ++ ) dist[j] = min(dist[j], g[t][j]);
   }
    <span class="keyword">return</span> res;
 
 }
 <span class="keyword">int</span> main()
 {
-    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+    scanf(<span class="string">&quot;%d%d&quot;</span>, &n, &m);
 
     memset(g, 0x3f, <span class="keyword">sizeof</span> g);
 
     <span class="keyword">while</span> (m -- )
     {
       <span class="keyword">int</span> a,b,c;
-      scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c);
+      scanf(<span class="string">&quot;%d%d%d&quot;</span>, &a, &b, &c);
       g[a][b] = g[b][a] = min(g[a][b],c);<span class="comment">//无向图，去重</span>
     }
 
     <span class="keyword">int</span> t = prim();
-    <span class="keyword">if</span> (t== INF) puts(&quot;impossible&quot;);
-    <span class="keyword">else</span> printf(&quot;%d\n&quot;,t);
+    <span class="keyword">if</span> (t== INF) puts(<span class="string">&quot;impossible&quot;</span>);
+    <span class="keyword">else</span> printf(<span class="string">&quot;%d\n&quot;</span>,t);
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -835,12 +835,12 @@ ans = <span class="number">0</span>
 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(n):
     t = -<span class="number">1</span>
     <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):
-        <span class="keyword">if</span> <span class="keyword">not</span> st[i] <span class="keyword">and</span> (t == -<span class="number">1</span> <span class="keyword">or</span> dist[i] &lt; dist[t]): t = i
-    <span class="keyword">if</span> _ &gt; <span class="number">0</span> <span class="keyword">and</span> dist[t] == INF: <span class="keyword">print</span>(&<span class="comment">#x27;impossible&#x27;); sys.exit(0)</span>
-    <span class="keyword">if</span> _ &gt; <span class="number">0</span>: ans += dist[t]
+        <span class="keyword">if</span> <span class="keyword">not</span> st[i] <span class="keyword">and</span> (t == -<span class="number">1</span> <span class="keyword">or</span> dist[i] < dist[t]): t = i
+    <span class="keyword">if</span> _ > <span class="number">0</span> <span class="keyword">and</span> dist[t] == INF: <span class="keyword">print</span>(<span class="string">&#x27;impossible&#x27;</span>); sys.exit(<span class="number">0</span>)
+    <span class="keyword">if</span> _ > <span class="number">0</span>: ans += dist[t]
     st[t] = <span class="keyword">True</span>
     <span class="keyword">for</span> v <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):
-        <span class="keyword">if</span> dist[v] &gt; g[t][v]: dist[v] = g[t][v]
+        <span class="keyword">if</span> dist[v] > g[t][v]: dist[v] = g[t][v]
 <span class="keyword">print</span>(ans)</code></pre>
             </details>
         </div>
@@ -889,9 +889,9 @@ ans = <span class="number">0</span>
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
-#<span class="keyword">include</span> &lt;cstring&gt;
-#<span class="keyword">include</span> &lt;algorithm&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+#<span class="keyword">include</span> <cstring>
+#<span class="keyword">include</span> <algorithm>
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
@@ -903,9 +903,9 @@ ans = <span class="number">0</span>
 <span class="keyword">struct</span> Edge
 {
   <span class="keyword">int</span> a, b, w;
-  <span class="keyword">bool</span> operator&lt; (<span class="keyword">const</span> Edge &amp;a) <span class="keyword">const</span>
+  <span class="keyword">bool</span> operator< (<span class="keyword">const</span> Edge &a) <span class="keyword">const</span>
   {
-    <span class="keyword">return</span> w &lt; a.w;
+    <span class="keyword">return</span> w < a.w;
   }
 } edges[M];<span class="comment">//重载&lt;,安装权重w比大小</span>
 
@@ -920,10 +920,10 @@ ans = <span class="number">0</span>
   <span class="comment">//1.排序</span>
   sort(edges, edges+m);
   <span class="comment">//并查集初始化</span>
-  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++) p[i] = i;
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i<=n; i++) p[i] = i;
 
   <span class="keyword">int</span> res = <span class="number">0</span>, cnt = <span class="number">0</span>;
-  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;m; i++)
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i<m; i++)
   {
     <span class="keyword">int</span> a = edges[i].a, b = edges[i].b, w=edges[i].w;
     a = find(a), b = find(b);
@@ -934,24 +934,24 @@ ans = <span class="number">0</span>
       cnt ++;
     }
   }
-  <span class="keyword">if</span> (cnt &lt; n-<span class="number">1</span>) <span class="keyword">return</span> INF;
+  <span class="keyword">if</span> (cnt < n-<span class="number">1</span>) <span class="keyword">return</span> INF;
   <span class="keyword">return</span> res;
 }
 <span class="keyword">int</span> main()
 {
-     scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+     scanf(<span class="string">&quot;%d%d&quot;</span>, &n, &m);
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i ++ )
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < m; i ++ )
     {
         <span class="keyword">int</span> a, b, w;
-        scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;w);
+        scanf(<span class="string">&quot;%d%d%d&quot;</span>, &a, &b, &w);
         edges[i] = {a, b, w};
     }
 
     <span class="keyword">int</span> t = kruskal();
 
-    <span class="keyword">if</span> (t == INF) puts(&quot;impossible&quot;);
-    <span class="keyword">else</span> printf(&quot;%d\n&quot;, t);
+    <span class="keyword">if</span> (t == INF) puts(<span class="string">&quot;impossible&quot;</span>);
+    <span class="keyword">else</span> printf(<span class="string">&quot;%d\n&quot;</span>, t);
 
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -978,7 +978,7 @@ cnt = <span class="number">0</span>
         p[ru] = rv
         ans += w
         cnt += <span class="number">1</span>
-<span class="keyword">print</span>(ans <span class="keyword">if</span> cnt == n - <span class="number">1</span> <span class="keyword">else</span> &<span class="comment">#x27;impossible&#x27;)</span></code></pre>
+<span class="keyword">print</span>(ans <span class="keyword">if</span> cnt == n - <span class="number">1</span> <span class="keyword">else</span> <span class="string">&#x27;impossible&#x27;</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -1026,9 +1026,9 @@ Yes
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
-#<span class="keyword">include</span> &lt;algorithm&gt;
-#<span class="keyword">include</span> &lt;cstring&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+#<span class="keyword">include</span> <algorithm>
+#<span class="keyword">include</span> <cstring>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 <span class="comment">//无向图</span>
 <span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100007</span>,M=<span class="number">200007</span>;<span class="comment">//两倍的边</span>
@@ -1055,17 +1055,17 @@ Yes
 }
 <span class="keyword">int</span> main(){
 
-  scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+  scanf(<span class="string">&quot;%d%d&quot;</span>,&n,&m);
   memset(h,-<span class="number">1</span>,<span class="keyword">sizeof</span> h);<span class="comment">//初始化头结点</span>
   <span class="comment">//建图</span>
   <span class="keyword">while</span> (m--)
   {
      <span class="keyword">int</span> a,b;
-     scanf(&quot;%d%d&quot;,&amp;a,&amp;b);
+     scanf(<span class="string">&quot;%d%d&quot;</span>,&a,&b);
      add(a,b); add(b,a);
   }
   <span class="keyword">bool</span> flag = <span class="keyword">true</span>;<span class="comment">//表示染色有矛盾</span>
-  <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)
+  <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i<=n; i++)
     <span class="keyword">if</span> (!color[i]) {
       <span class="keyword">if</span> (!dfs(i,<span class="number">1</span>))
       {
@@ -1073,7 +1073,7 @@ Yes
         <span class="keyword">break</span>;
       }
     } 
-  <span class="keyword">if</span> (flag) puts(&quot;Yes&quot;); <span class="keyword">else</span> puts (&quot;No&quot;);
+  <span class="keyword">if</span> (flag) puts(<span class="string">&quot;Yes&quot;</span>); <span class="keyword">else</span> puts (<span class="string">&quot;No&quot;</span>);
 
   <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -1105,7 +1105,7 @@ ok = <span class="keyword">True</span>
         <span class="keyword">if</span> <span class="keyword">not</span> dfs(i, <span class="number">1</span>):
             ok = <span class="keyword">False</span>
             <span class="keyword">break</span>
-<span class="keyword">print</span>(&<span class="comment">#x27;Yes&#x27; if ok else &#x27;No&#x27;)</span></code></pre>
+<span class="keyword">print</span>(<span class="string">&#x27;Yes&#x27;</span> <span class="keyword">if</span> ok <span class="keyword">else</span> <span class="string">&#x27;No&#x27;</span>)</code></pre>
             </details>
         </div>
     </div>

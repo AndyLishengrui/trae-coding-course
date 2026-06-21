@@ -117,49 +117,36 @@ def md_to_html(text):
 
 
 def syntax_highlight(code, lang='cpp'):
-    """Token-based syntax highlighting — no nested span corruption."""
-    code = html_mod.escape(code)
+    """Token-based syntax highlighting — HTML-escape AFTER wrapping spans."""
     placeholders = []
 
-    def placeholder(html_span):
-        """Replace a span with a numbered placeholder to prevent re-matching."""
+    def ph(html_span):
         idx = len(placeholders)
-        token = f'\x00PH{idx}\x00'
         placeholders.append(html_span)
-        return token
+        return '\x00PH%d\x00' % idx
 
     def restore(text):
         for i, html in enumerate(placeholders):
-            text = text.replace(f'\x00PH{i}\x00', html)
+            text = text.replace('\x00PH%d\x00' % i, html)
         return text
 
     if lang in ('cpp', 'c'):
-        # Order matters: comments first, strings, numbers, keywords
-        # 1. Comments (// to end of line)
-        code = re.sub(r'(//[^\n]*)', lambda m: placeholder(f'<span class="comment">{m.group(1)}</span>'), code)
-        # 2. Strings
-        code = re.sub(r'("(?:[^"\\]|\\.)*")', lambda m: placeholder(f'<span class="string">{m.group(1)}</span>'), code)
-        # 3. Numbers
-        code = re.sub(r'\b(\d+\.?\d*[fFlLuU]*)\b', lambda m: placeholder(f'<span class="number">{m.group(1)}</span>'), code)
-        # 4. Keywords
+        code = re.sub(r'(//[^\n]*)', lambda m: ph('<span class="comment">%s</span>' % html_mod.escape(m.group(1))), code)
+        code = re.sub(r'("(?:[^"\\]|\\.)*")', lambda m: ph('<span class="string">%s</span>' % html_mod.escape(m.group(1))), code)
+        code = re.sub(r'\b(\d+\.?\d*[fFlLuU]*)\b', lambda m: ph('<span class="number">%s</span>' % m.group(1)), code)
         kw = r'\b(int|long|float|double|char|void|bool|string|auto|const|static|return|if|else|for|while|do|switch|case|break|continue|default|class|struct|public|private|protected|virtual|new|delete|this|true|false|nullptr|include|using|namespace|std|template|typename|sizeof|typedef|enum|union|extern|register|volatile|inline|constexpr|NULL)\b'
-        code = re.sub(kw, lambda m: placeholder(f'<span class="keyword">{m.group(1)}</span>'), code)
-
+        code = re.sub(kw, lambda m: ph('<span class="keyword">%s</span>' % m.group(1)), code)
     elif lang == 'python':
-        # 1. Comments
-        code = re.sub(r'(#[^\n]*)', lambda m: placeholder(f'<span class="comment">{m.group(1)}</span>'), code)
-        # 2. Triple-quoted strings
-        code = re.sub(r'(""".*?"""|\'\'\'.*?\'\'\')', lambda m: placeholder(f'<span class="string">{m.group(1)}</span>'), code, flags=re.DOTALL)
-        # 3. Single/double quoted strings
-        code = re.sub(r'("(?:[^"\\]|\\.)*"|\'(?:[^\'\\]|\\.)*\')', lambda m: placeholder(f'<span class="string">{m.group(1)}</span>'), code)
-        # 4. Numbers
-        code = re.sub(r'\b(\d+\.?\d*)\b', lambda m: placeholder(f'<span class="number">{m.group(1)}</span>'), code)
-        # 5. Keywords
+        code = re.sub(r'(#[^\n]*)', lambda m: ph('<span class="comment">%s</span>' % html_mod.escape(m.group(1))), code)
+        code = re.sub(r'(""".*?"""|\'\'\'.*?\'\'\')', lambda m: ph('<span class="string">%s</span>' % html_mod.escape(m.group(1))), code, flags=re.DOTALL)
+        code = re.sub(r'("(?:[^"\\]|\\.)*"|\'(?:[^\'\\]|\\.)*\')', lambda m: ph('<span class="string">%s</span>' % html_mod.escape(m.group(1))), code)
+        code = re.sub(r'\b(\d+\.?\d*)\b', lambda m: ph('<span class="number">%s</span>' % m.group(1)), code)
         kw = r'\b(def|class|return|if|elif|else|for|while|break|continue|pass|import|from|as|try|except|finally|raise|with|yield|lambda|and|or|not|in|is|True|False|None|print|range|len|int|float|str|list|dict|set|tuple|input|map|sorted|enumerate|zip|reversed|sum|min|max|abs|all|any|open|super|self)\b'
-        code = re.sub(kw, lambda m: placeholder(f'<span class="keyword">{m.group(1)}</span>'), code)
+        code = re.sub(kw, lambda m: ph('<span class="keyword">%s</span>' % m.group(1)), code)
 
+    # HTML-escape everything that's NOT a placeholder
     code = restore(code)
-    return f'<pre><code class="language-{lang}">{code}</code></pre>'
+    return '<pre><code class="language-%s">%s</code></pre>' % (lang, code)
 
 
 # Chapter introductions - wuxia scene-setting

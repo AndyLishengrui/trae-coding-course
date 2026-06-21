@@ -77,27 +77,27 @@ S
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
-#<span class="keyword">include</span> &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+#<span class="keyword">include</span> <cstdio>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">char</span> op;
-    cin &gt;&gt; op;
+    cin >> op;
     <span class="keyword">double</span> sum = <span class="number">0</span>;
     <span class="keyword">int</span> cnt = <span class="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
-            cin &gt;&gt; x;
-            <span class="keyword">if</span> (i&lt;j&amp;&amp;i+j&lt;<span class="number">11</span>) {
+            cin >> x;
+            <span class="keyword">if</span> (i<j&&i+j<<span class="number">11</span>) {
                 sum += x;
                 cnt++;
             }
         }
     }
-    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
-    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">if</span> (op == 'S') printf(<span class="string">&quot;%.1f\n&quot;</span>, sum);
+    <span class="keyword">else</span> printf(<span class="string">&quot;%.1f\n&quot;</span>, sum / cnt);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -105,8 +105,8 @@ S
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
  <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
   x=<span class="keyword">float</span>(<span class="keyword">input</span>())
-  <span class="keyword">if</span> i&lt;j <span class="keyword">and</span> i+j&lt;<span class="number">11</span>:s+=x;c+=<span class="number">1</span>
-<span class="keyword">print</span>(f&<span class="comment">#x27;{s if t==&quot;S&quot; else s/c:.1f}&#x27;)</span></code></pre>
+  <span class="keyword">if</span> i<j <span class="keyword">and</span> i+j<<span class="number">11</span>:s+=x;c+=<span class="number">1</span>
+<span class="keyword">print</span>(f<span class="string">&#x27;{s if t==&quot;S&quot; else s/c:.1f}&#x27;</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -154,27 +154,27 @@ S
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
-#<span class="keyword">include</span> &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+#<span class="keyword">include</span> <cstdio>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">char</span> op;
-    cin &gt;&gt; op;
+    cin >> op;
     <span class="keyword">double</span> sum = <span class="number">0</span>;
     <span class="keyword">int</span> cnt = <span class="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
-            cin &gt;&gt; x;
-            <span class="keyword">if</span> (i&gt;j&amp;&amp;i+j&gt;<span class="number">11</span>) {
+            cin >> x;
+            <span class="keyword">if</span> (i>j&&i+j><span class="number">11</span>) {
                 sum += x;
                 cnt++;
             }
         }
     }
-    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
-    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">if</span> (op == 'S') printf(<span class="string">&quot;%.1f\n&quot;</span>, sum);
+    <span class="keyword">else</span> printf(<span class="string">&quot;%.1f\n&quot;</span>, sum / cnt);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -186,8 +186,8 @@ idx = <span class="number">1</span>
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
     <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
         x = <span class="keyword">float</span>(data[idx]); idx += <span class="number">1</span>
-        <span class="keyword">if</span> i &gt; j <span class="keyword">and</span> i + j &gt; <span class="number">11</span>: s += x
-<span class="keyword">print</span>(f&quot;{s:.1f}&quot; <span class="keyword">if</span> t == &<span class="comment">#x27;S&#x27; else f&quot;{s/30:.1f}&quot;)</span></code></pre>
+        <span class="keyword">if</span> i > j <span class="keyword">and</span> i + j > <span class="number">11</span>: s += x
+<span class="keyword">print</span>(f<span class="string">&quot;{s:.1f}&quot;</span> <span class="keyword">if</span> t == <span class="string">&#x27;S&#x27;</span> <span class="keyword">else</span> f<span class="string">&quot;{s/30:.1f}&quot;</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -235,27 +235,27 @@ S
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
-#<span class="keyword">include</span> &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+#<span class="keyword">include</span> <cstdio>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">char</span> op;
-    cin &gt;&gt; op;
+    cin >> op;
     <span class="keyword">double</span> sum = <span class="number">0</span>;
     <span class="keyword">int</span> cnt = <span class="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
-            cin &gt;&gt; x;
-            <span class="keyword">if</span> (j&lt;i&amp;&amp;i+j&lt;<span class="number">11</span>) {
+            cin >> x;
+            <span class="keyword">if</span> (j<i&&i+j<<span class="number">11</span>) {
                 sum += x;
                 cnt++;
             }
         }
     }
-    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
-    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">if</span> (op == 'S') printf(<span class="string">&quot;%.1f\n&quot;</span>, sum);
+    <span class="keyword">else</span> printf(<span class="string">&quot;%.1f\n&quot;</span>, sum / cnt);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -263,8 +263,8 @@ S
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
  <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
   x=<span class="keyword">float</span>(<span class="keyword">input</span>())
-  <span class="keyword">if</span> j&lt;i <span class="keyword">and</span> i+j&lt;<span class="number">11</span>:s+=x;c+=<span class="number">1</span>
-<span class="keyword">print</span>(f&<span class="comment">#x27;{s if t==&quot;S&quot; else s/c:.1f}&#x27;)</span></code></pre>
+  <span class="keyword">if</span> j<i <span class="keyword">and</span> i+j<<span class="number">11</span>:s+=x;c+=<span class="number">1</span>
+<span class="keyword">print</span>(f<span class="string">&#x27;{s if t==&quot;S&quot; else s/c:.1f}&#x27;</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -312,27 +312,27 @@ S
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
-#<span class="keyword">include</span> &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+#<span class="keyword">include</span> <cstdio>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">char</span> op;
-    cin &gt;&gt; op;
+    cin >> op;
     <span class="keyword">double</span> sum = <span class="number">0</span>;
     <span class="keyword">int</span> cnt = <span class="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
-            cin &gt;&gt; x;
-            <span class="keyword">if</span> (j&gt;i&amp;&amp;i+j&gt;<span class="number">11</span>) {
+            cin >> x;
+            <span class="keyword">if</span> (j>i&&i+j><span class="number">11</span>) {
                 sum += x;
                 cnt++;
             }
         }
     }
-    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
-    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">if</span> (op == 'S') printf(<span class="string">&quot;%.1f\n&quot;</span>, sum);
+    <span class="keyword">else</span> printf(<span class="string">&quot;%.1f\n&quot;</span>, sum / cnt);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -344,8 +344,8 @@ idx = <span class="number">1</span>
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
     <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
         x = <span class="keyword">float</span>(data[idx]); idx += <span class="number">1</span>
-        <span class="keyword">if</span> j &gt; i <span class="keyword">and</span> i + j &gt; <span class="number">11</span>: s += x
-<span class="keyword">print</span>(f&quot;{s:.1f}&quot; <span class="keyword">if</span> t == &<span class="comment">#x27;S&#x27; else f&quot;{s/30:.1f}&quot;)</span></code></pre>
+        <span class="keyword">if</span> j > i <span class="keyword">and</span> i + j > <span class="number">11</span>: s += x
+<span class="keyword">print</span>(f<span class="string">&quot;{s:.1f}&quot;</span> <span class="keyword">if</span> t == <span class="string">&#x27;S&#x27;</span> <span class="keyword">else</span> f<span class="string">&quot;{s/30:.1f}&quot;</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -393,27 +393,27 @@ S
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
-#<span class="keyword">include</span> &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+#<span class="keyword">include</span> <cstdio>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">char</span> op;
-    cin &gt;&gt; op;
+    cin >> op;
     <span class="keyword">double</span> sum = <span class="number">0</span>;
     <span class="keyword">int</span> cnt = <span class="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
-            cin &gt;&gt; x;
-            <span class="keyword">if</span> (j&gt;i) {
+            cin >> x;
+            <span class="keyword">if</span> (j>i) {
                 sum += x;
                 cnt++;
             }
         }
     }
-    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
-    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">if</span> (op == 'S') printf(<span class="string">&quot;%.1f\n&quot;</span>, sum);
+    <span class="keyword">else</span> printf(<span class="string">&quot;%.1f\n&quot;</span>, sum / cnt);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -426,9 +426,9 @@ idx = <span class="number">1</span>
     <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
         x = <span class="keyword">float</span>(data[idx])
         idx += <span class="number">1</span>
-        <span class="keyword">if</span> j &gt; i:
+        <span class="keyword">if</span> j > i:
             s += x
-<span class="keyword">print</span>(f&quot;{s <span class="keyword">if</span> t == &<span class="comment">#x27;S&#x27; else s / 66:.1f}&quot;)</span></code></pre>
+<span class="keyword">print</span>(f<span class="string">&quot;{s if t == &#x27;S&#x27; else s / 66:.1f}&quot;</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -474,27 +474,27 @@ S
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
-#<span class="keyword">include</span> &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+#<span class="keyword">include</span> <cstdio>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">char</span> op;
-    cin &gt;&gt; op;
+    cin >> op;
     <span class="keyword">double</span> sum = <span class="number">0</span>;
     <span class="keyword">int</span> cnt = <span class="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
-            cin &gt;&gt; x;
-            <span class="keyword">if</span> (i+j&lt;<span class="number">11</span>) {
+            cin >> x;
+            <span class="keyword">if</span> (i+j<<span class="number">11</span>) {
                 sum += x;
                 cnt++;
             }
         }
     }
-    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
-    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">if</span> (op == 'S') printf(<span class="string">&quot;%.1f\n&quot;</span>, sum);
+    <span class="keyword">else</span> printf(<span class="string">&quot;%.1f\n&quot;</span>, sum / cnt);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -502,8 +502,8 @@ S
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
  <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
   x=<span class="keyword">float</span>(<span class="keyword">input</span>())
-  <span class="keyword">if</span> j&lt;<span class="number">11</span>-i:s+=x
-<span class="keyword">print</span>(f&<span class="comment">#x27;{s if t==&quot;S&quot; else s/66:.1f}&#x27;)</span></code></pre>
+  <span class="keyword">if</span> j<<span class="number">11</span>-i:s+=x
+<span class="keyword">print</span>(f<span class="string">&#x27;{s if t==&quot;S&quot; else s/66:.1f}&#x27;</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -549,27 +549,27 @@ S
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
-#<span class="keyword">include</span> &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+#<span class="keyword">include</span> <cstdio>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">char</span> op;
-    cin &gt;&gt; op;
+    cin >> op;
     <span class="keyword">double</span> sum = <span class="number">0</span>;
     <span class="keyword">int</span> cnt = <span class="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
-            cin &gt;&gt; x;
-            <span class="keyword">if</span> (i+j&gt;<span class="number">11</span>) {
+            cin >> x;
+            <span class="keyword">if</span> (i+j><span class="number">11</span>) {
                 sum += x;
                 cnt++;
             }
         }
     }
-    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
-    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">if</span> (op == 'S') printf(<span class="string">&quot;%.1f\n&quot;</span>, sum);
+    <span class="keyword">else</span> printf(<span class="string">&quot;%.1f\n&quot;</span>, sum / cnt);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -581,8 +581,8 @@ idx = <span class="number">1</span>
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
     <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
         x = <span class="keyword">float</span>(data[idx]); idx += <span class="number">1</span>
-        <span class="keyword">if</span> i + j &gt; <span class="number">11</span>: s += x
-<span class="keyword">print</span>(f&quot;{s:.1f}&quot; <span class="keyword">if</span> t == &<span class="comment">#x27;S&#x27; else f&quot;{s/66:.1f}&quot;)</span></code></pre>
+        <span class="keyword">if</span> i + j > <span class="number">11</span>: s += x
+<span class="keyword">print</span>(f<span class="string">&quot;{s:.1f}&quot;</span> <span class="keyword">if</span> t == <span class="string">&#x27;S&#x27;</span> <span class="keyword">else</span> f<span class="string">&quot;{s/66:.1f}&quot;</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -628,27 +628,27 @@ S
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;iostream&gt;
-#<span class="keyword">include</span> &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <iostream>
+#<span class="keyword">include</span> <cstdio>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="keyword">std</span>;
 
 <span class="keyword">int</span> main() {
     <span class="keyword">char</span> op;
-    cin &gt;&gt; op;
+    cin >> op;
     <span class="keyword">double</span> sum = <span class="number">0</span>;
     <span class="keyword">int</span> cnt = <span class="number">0</span>;
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">12</span>; j++) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">12</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < <span class="number">12</span>; j++) {
             <span class="keyword">double</span> x;
-            cin &gt;&gt; x;
-            <span class="keyword">if</span> (j&lt;i) {
+            cin >> x;
+            <span class="keyword">if</span> (j<i) {
                 sum += x;
                 cnt++;
             }
         }
     }
-    <span class="keyword">if</span> (op == &#x27;S&#x27;) printf(&quot;%.<span class="number">1f</span>\n&quot;, sum);
-    <span class="keyword">else</span> printf(&quot;%.<span class="number">1f</span>\n&quot;, sum / cnt);
+    <span class="keyword">if</span> (op == 'S') printf(<span class="string">&quot;%.1f\n&quot;</span>, sum);
+    <span class="keyword">else</span> printf(<span class="string">&quot;%.1f\n&quot;</span>, sum / cnt);
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
             <h4>Python</h4>
@@ -656,8 +656,8 @@ S
 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
  <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">12</span>):
   x=<span class="keyword">float</span>(<span class="keyword">input</span>())
-  <span class="keyword">if</span> j&lt;i:s+=x
-<span class="keyword">print</span>(f&<span class="comment">#x27;{s if t==&quot;S&quot; else s/66:.1f}&#x27;)</span></code></pre>
+  <span class="keyword">if</span> j<i:s+=x
+<span class="keyword">print</span>(f<span class="string">&#x27;{s if t==&quot;S&quot; else s/66:.1f}&#x27;</span>)</code></pre>
             </details>
         </div>
     </div>
@@ -702,21 +702,21 @@ S
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
 
-<span class="keyword">int</span> min(<span class="keyword">int</span> a, <span class="keyword">int</span> b) { <span class="keyword">return</span> a &lt; b ? a : b; }
+<span class="keyword">int</span> min(<span class="keyword">int</span> a, <span class="keyword">int</span> b) { <span class="keyword">return</span> a < b ? a : b; }
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n;
-    <span class="keyword">while</span> (scanf(&quot;%d&quot;, &amp;n) == <span class="number">1</span> &amp;&amp; n) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
-            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) {
+    <span class="keyword">while</span> (scanf(<span class="string">&quot;%d&quot;</span>, &n) == <span class="number">1</span> && n) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++) {
+            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < n; j++) {
                 <span class="keyword">int</span> v = min(min(i, j), min(n - <span class="number">1</span> - i, n - <span class="number">1</span> - j));
-                printf(&quot;%3d&quot;, v + <span class="number">1</span>);
+                printf(<span class="string">&quot;%3d&quot;</span>, v + <span class="number">1</span>);
             }
-            printf(&quot;\n&quot;);
+            printf(<span class="string">&quot;\n&quot;</span>);
         }
-        printf(&quot;\n&quot;);
+        printf(<span class="string">&quot;\n&quot;</span>);
     }
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -730,8 +730,8 @@ data = sys.stdin.read().split()
         row = []
         <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(n):
             v = <span class="keyword">min</span>(i, j, n-<span class="number">1</span>-i, n-<span class="number">1</span>-j) + <span class="number">1</span>
-            row.append(f&<span class="comment">#x27;{v:3d}&#x27;)</span>
-        <span class="keyword">print</span>(&<span class="comment">#x27;&#x27;.join(row))</span>
+            row.append(f<span class="string">&#x27;{v:3d}&#x27;</span>)
+        <span class="keyword">print</span>(<span class="string">&#x27;&#x27;</span>.join(row))
     <span class="keyword">print</span>()</code></pre>
             </details>
         </div>
@@ -777,18 +777,18 @@ data = sys.stdin.read().split()
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
-#<span class="keyword">include</span> &lt;cstdlib&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
+#<span class="keyword">include</span> <cstdlib>
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n;
-    <span class="keyword">while</span> (scanf(&quot;%d&quot;, &amp;n) == <span class="number">1</span> &amp;&amp; n) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
-            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)
-                printf(&quot;%3d&quot;, abs(i - j) + <span class="number">1</span>);
-            printf(&quot;\n&quot;);
+    <span class="keyword">while</span> (scanf(<span class="string">&quot;%d&quot;</span>, &n) == <span class="number">1</span> && n) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++) {
+            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < n; j++)
+                printf(<span class="string">&quot;%3d&quot;</span>, abs(i - j) + <span class="number">1</span>);
+            printf(<span class="string">&quot;\n&quot;</span>);
         }
-        printf(&quot;\n&quot;);
+        printf(<span class="string">&quot;\n&quot;</span>);
     }
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -797,7 +797,7 @@ data = sys.stdin.read().split()
  n=<span class="keyword">int</span>(<span class="keyword">input</span>())
  <span class="keyword">if</span> n==<span class="number">0</span>:<span class="keyword">break</span>
  <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n):
-  <span class="keyword">print</span>(&<span class="comment">#x27;&#x27;.join(f&#x27;{abs(i-j)+1:3d}&#x27;for j in range(n)))</span>
+  <span class="keyword">print</span>(<span class="string">&#x27;&#x27;</span>.join(f<span class="string">&#x27;{abs(i-j)+1:3d}&#x27;</span><span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(n)))
  <span class="keyword">print</span>()</code></pre>
             </details>
         </div>
@@ -844,17 +844,17 @@ data = sys.stdin.read().split()
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n;
-    <span class="keyword">while</span> (scanf(&quot;%d&quot;, &amp;n) == <span class="number">1</span> &amp;&amp; n) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
-            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)
-                printf(&quot;%lld &quot;, <span class="number">1LL</span> &lt;&lt; (i + j));
-            printf(&quot;\n&quot;);
+    <span class="keyword">while</span> (scanf(<span class="string">&quot;%d&quot;</span>, &n) == <span class="number">1</span> && n) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++) {
+            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < n; j++)
+                printf(<span class="string">&quot;%lld &quot;</span>, <span class="number">1LL</span> << (i + j));
+            printf(<span class="string">&quot;\n&quot;</span>);
         }
-        printf(&quot;\n&quot;);
+        printf(<span class="string">&quot;\n&quot;</span>);
     }
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -871,7 +871,7 @@ data = sys.stdin.read().split()
             <span class="keyword">for</span> k <span class="keyword">in</span> <span class="keyword">range</span>(i + j):
                 v *= <span class="number">2</span>
             row.append(<span class="keyword">str</span>(v))
-        <span class="keyword">print</span>(&<span class="comment">#x27; &#x27;.join(row) + &#x27; &#x27;)</span>
+        <span class="keyword">print</span>(<span class="string">&#x27; &#x27;</span>.join(row) + <span class="string">&#x27; &#x27;</span>)
     <span class="keyword">print</span>()</code></pre>
             </details>
         </div>
@@ -918,29 +918,29 @@ data = sys.stdin.read().split()
         <div class="code-section">
             <details><summary>参考代码</summary>
             <h4>C++</h4>
-            <pre><code class="language-cpp">#<span class="keyword">include</span> &lt;cstdio&gt;
+            <pre><code class="language-cpp">#<span class="keyword">include</span> <cstdio>
 
 <span class="keyword">int</span> res[<span class="number">110</span>][<span class="number">110</span>];
 
 <span class="keyword">int</span> main() {
     <span class="keyword">int</span> n, m;
-    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+    scanf(<span class="string">&quot;%d%d&quot;</span>, &n, &m);
 
     <span class="keyword">int</span> dx[] = {<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>}, dy[] = {<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>};
-    <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>, y = <span class="number">0</span>, d = <span class="number">0</span>, k = <span class="number">1</span>; k &lt;= n * m; k++) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>, y = <span class="number">0</span>, d = <span class="number">0</span>, k = <span class="number">1</span>; k <= n * m; k++) {
         res[x][y] = k;
         <span class="keyword">int</span> a = x + dx[d], b = y + dy[d];
-        <span class="keyword">if</span> (a &lt; <span class="number">0</span> || a &gt;= n || b &lt; <span class="number">0</span> || b &gt;= m || res[a][b]) {
+        <span class="keyword">if</span> (a < <span class="number">0</span> || a >= n || b < <span class="number">0</span> || b >= m || res[a][b]) {
             d = (d + <span class="number">1</span>) % <span class="number">4</span>;
             a = x + dx[d], b = y + dy[d];
         }
         x = a, y = b;
     }
 
-    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
-        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++)
-            printf(&quot;%d &quot;, res[i][j]);
-        printf(&quot;\n&quot;);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < n; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j < m; j++)
+            printf(<span class="string">&quot;%d &quot;</span>, res[i][j]);
+        printf(<span class="string">&quot;\n&quot;</span>);
     }
     <span class="keyword">return</span> <span class="number">0</span>;
 }</code></pre>
@@ -955,12 +955,12 @@ d = x = y = <span class="number">0</span>
 <span class="keyword">for</span> v <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, n * m + <span class="number">1</span>):
     a[x][y] = v
     nx, ny = x + dx[d], y + dy[d]
-    <span class="keyword">if</span> nx &lt; <span class="number">0</span> <span class="keyword">or</span> nx &gt;= n <span class="keyword">or</span> ny &lt; <span class="number">0</span> <span class="keyword">or</span> ny &gt;= m <span class="keyword">or</span> a[nx][ny]:
+    <span class="keyword">if</span> nx < <span class="number">0</span> <span class="keyword">or</span> nx >= n <span class="keyword">or</span> ny < <span class="number">0</span> <span class="keyword">or</span> ny >= m <span class="keyword">or</span> a[nx][ny]:
         d = (d + <span class="number">1</span>) % <span class="number">4</span>
         nx, ny = x + dx[d], y + dy[d]
     x, y = nx, ny
 <span class="keyword">for</span> r <span class="keyword">in</span> a:
-    <span class="keyword">print</span>(&<span class="comment">#x27; &#x27;.join(map(str, r)) + &#x27; &#x27;)</span></code></pre>
+    <span class="keyword">print</span>(<span class="string">&#x27; &#x27;</span>.join(<span class="keyword">map</span>(<span class="keyword">str</span>, r)) + <span class="string">&#x27; &#x27;</span>)</code></pre>
             </details>
         </div>
     </div>
