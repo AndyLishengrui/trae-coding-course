@@ -7447,6 +7447,35 @@ r = s.rfind(s2)
             <strong>解题思路：</strong><p>函数内用循环累乘，或递归实现。注意0! = 1。</p>
 
         </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>函数调用追踪（输入 n=3）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+Step 1: main() 执行，读入 n = 3
+        ┌──────────────────────────────────┐
+        │  main() 栈帧                     │
+        │  n = 3                           │
+        │  待执行: cout << fact(3)          │
+        └──────────────────────────────────┘
+
+Step 2: 调用 fact(3)，参数 n=3 传递给函数
+        ┌──────────────────────────────────┐
+        │  fact() 栈帧                     │
+        │  n = 3      ← 参数传入           │
+        │  res = 1    ← 初始化             │
+        └──────────────────────────────────┘
+
+Step 3: 函数内循环执行过程
+        res = 1
+        i=1: res = res × 1 = 1 × 1 = 1
+        i=2: res = res × 2 = 1 × 2 = 2
+        i=3: res = res × 3 = 2 × 3 = 6
+        循环结束，return 6
+
+Step 4: 返回值 6 传回 main()
+        main() 收到 fact(3) 的返回值 6
+        输出: 6</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>函数调用时，实参 n=3 被<strong>复制</strong>到形参 n 中。函数内部的计算不影响 main() 中的变量。返回值通过 return 语句传回调用者。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(n) — 单层循环遍历<br>
@@ -7526,10 +7555,37 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
             <strong>解题思路：</strong><p>函数内用 if 比较或三元表达式。</p>
 
         </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>函数调用追踪（输入 x=3, y=5）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+Step 1: main() 读入 x=3, y=5
+        ┌──────────────────────────────────┐
+        │  main() 栈帧                     │
+        │  x = 3,  y = 5                   │
+        └──────────────────────────────────┘
+
+Step 2: 调用 max(3, 5)，参数传递
+        实参 x=3 → 形参 x=3（复制）
+        实参 y=5 → 形参 y=5（复制）
+        ┌──────────────────────────────────┐
+        │  max() 栈帧                      │
+        │  x = 3  ← 从 main 复制而来       │
+        │  y = 5  ← 从 main 复制而来       │
+        └──────────────────────────────────┘
+
+Step 3: 函数内执行 if 判断
+        x > y  →  3 > 5  →  false
+        不执行 return x，继续到 return y
+        return 5  ← 返回较大的那个
+
+Step 4: 返回值 5 传回 main()
+        cout << max(3, 5)  →  输出: 5</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>函数参数是<strong>值传递</strong>——实参的值被复制到形参中。函数内部比较的是形参 x 和 y，不影响 main() 中的原始变量。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
-时间复杂度：O(n) — 线性遍历处理<br>
-空间复杂度：O(n)
+时间复杂度：O(1) — 一次比较<br>
+空间复杂度：O(1)
 </div>
         <div class="code-section">
             <details><summary>参考代码</summary>
@@ -7598,10 +7654,33 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
             <strong>解题思路：</strong><p>if x < 0: return -x, else: return x。</p>
 
         </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>函数调用追踪（输入 x=-5）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+Step 1: main() 读入 x = -5
+        调用 abs(-5)，参数传递：形参 x = -5
+
+Step 2: 函数内执行 if 判断
+        x > 0  →  -5 > 0  →  false
+        不走 return x 分支
+
+Step 3: 执行 return -x
+        -x = -(-5) = 5
+        return 5
+
+Step 4: main() 输出 5
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+对比：如果输入 x=7 呢？
+        x > 0  →  7 > 0  →  true
+        直接 return x = 7
+        输出: 7</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>函数内部通过 if-else 实现<strong>分支逻辑</strong>。同一个函数，传入不同参数，走不同的执行路径，返回不同的结果。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
-时间复杂度：O(n) — 线性遍历处理<br>
-空间复杂度：O(n)
+时间复杂度：O(1) — 一次判断<br>
+空间复杂度：O(1)
 </div>
         <div class="code-section">
             <details><summary>参考代码</summary>
@@ -7667,10 +7746,45 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
             <strong>解题思路：</strong><p>C++用引用参数 <code>void swap(int &x, int &y)</code>。Python中 a, b = b, a。</p>
 
         </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>引用传递 vs 值传递追踪（输入 x=6, y=26）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+❌ 错误写法：值传递
+─────────────────────────────────
+void swap(int x, int y) {   // 值传递：x, y 是副本
+    int t = x;   // t = 6
+    x = y;       // x = 26（只改了副本）
+    y = t;       // y = 6（只改了副本）
+}                // 函数结束，副本销毁，main 中 x=6, y=26 不变！
+
+✅ 正确写法：引用传递
+─────────────────────────────────
+void swap(int &x, int &y) {  // 引用：x, y 就是原始变量的别名
+    int t = x;   // t = 6
+    x = y;       // x = 26（直接改原始变量）
+    y = t;       // y = 6（直接改原始变量）
+}
+
+Step 1: main() 读入 x=6, y=26
+        main 内存:  x=6, y=26
+
+Step 2: 调用 swap(x, y)，引用传递
+        &x 就是 main 中 x 的别名（同一块内存）
+        &y 就是 main 中 y 的别名（同一块内存）
+
+Step 3: 函数内三步交换
+        t = x  →  t = 6
+        x = y  →  x = 26  （main 中 x 也变成 26）
+        y = t  →  y = 6   （main 中 y 也变成 6）
+
+Step 4: 函数返回，main 中变量已被修改
+        输出: 26 6</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>C++中 <code>&</code> 表示引用——形参是实参的<strong>别名</strong>，指向同一块内存。函数内修改形参，实参也会改变。Python 的赋值本质上就是引用操作，<code>a, b = b, a</code> 直接交换了两个变量的绑定。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
-时间复杂度：O(n) — 线性遍历处理<br>
-空间复杂度：O(n)
+时间复杂度：O(1) — 三次赋值<br>
+空间复杂度：O(1)
 </div>
         <div class="code-section">
             <details><summary>参考代码</summary>
@@ -7743,6 +7857,37 @@ first, second = second, first  <span class="comment"># 交换</span>
         <div class="hint">
             <strong>解题思路：</strong><p>辗转相除法：gcd(a,b) = gcd(b, a%b)，当b==0时返回a。</p>
 
+        </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>辗转相除法追踪（输入 a=963, b=787）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+核心公式：gcd(a, b) = gcd(b, a % b)，当 b==0 时返回 a
+
+迭代过程：
+┌──────┬───────┬────────────────┬──────────────────┐
+│ 轮次 │  a    │  b             │  a % b           │
+├──────┼───────┼────────────────┼──────────────────┤
+│  1   │  963  │  787           │  963 % 787 = 176 │
+│  2   │  787  │  176           │  787 % 176 = 83  │
+│  3   │  176  │  83            │  176 % 83 = 10   │
+│  4   │  83   │  10            │  83 % 10 = 3     │
+│  5   │  10   │  3             │  10 % 3 = 1      │
+│  6   │  3    │  1             │  3 % 1 = 0       │
+│  7   │  1    │  0 ← 结束！    │                  │
+└──────┴───────┴────────────────┴──────────────────┘
+结果：gcd(963, 787) = 1
+
+再看一个例子：gcd(48, 18)
+┌──────┬──────┬──────┬──────────┐
+│ 轮次 │  a   │  b   │  a % b   │
+├──────┼──────┼──────┼──────────┤
+│  1   │  48  │  18  │  48%18=12│
+│  2   │  18  │  12  │  18%12=6 │
+│  3   │  12  │  6   │  12%6=0  │
+│  4   │  6   │  0   │  结束！  │
+└──────┴──────┴──────┴──────────┘
+结果：gcd(48, 18) = 6</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>辗转相除法（欧几里得算法）的数学原理：两个数的最大公约数等于"较大数除以较小数的余数"与"较小数"的最大公约数。每一步 b 都在变小，最终 b=0 时 a 就是答案。时间复杂度 O(log(min(a,b)))，非常高效。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -8241,6 +8386,55 @@ a[l:r+<span class="number">1</span>] = <span class="keyword">sorted</span>(a[l:r
             <strong>解题思路：</strong><p>递归三要素：终止条件(n==1返回1)、递推关系(n*fact(n-1))、缩小规模。</p>
 
         </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>递归调用追踪（输入 n=5）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+递归展开过程（先深入，再返回）：
+═══════════════════════════════════════
+
+调用方向 ↓（深入）          返回方向 ↑（回溯）
+─────────────────          ─────────────────
+fact(5)                     → 5 × 24 = 120
+  └── fact(4)               → 4 × 6 = 24
+        └── fact(3)         → 3 × 2 = 6
+              └── fact(2)   → 2 × 1 = 2
+                    └── fact(1) → 1（终止条件！）
+
+递归树可视化：
+                    fact(5)
+                   /        \
+             5 ×            fact(4)
+                           /        \
+                     4 ×            fact(3)
+                                   /        \
+                             3 ×            fact(2)
+                                           /        \
+                                     2 ×            fact(1)
+                                                   = 1（终止）
+
+栈帧变化（后进先出）：
+┌─────────────┐
+│  fact(1)=1  │  ← 最先进入，最先返回（n==1 直接返回 1）
+├─────────────┤
+│  fact(2)    │  ← 等待 fact(1) 的结果
+├─────────────┤
+│  fact(3)    │  ← 等待 fact(2) 的结果
+├─────────────┤
+│  fact(4)    │  ← 等待 fact(3) 的结果
+├─────────────┤
+│  fact(5)    │  ← 最后进入，最后返回
+└─────────────┘
+     调用栈（向下增长）
+
+返回过程：
+fact(1) 返回 1
+fact(2) = 2 × 1 = 2，返回 2
+fact(3) = 3 × 2 = 6，返回 6
+fact(4) = 4 × 6 = 24，返回 24
+fact(5) = 5 × 24 = 120，返回 120
+输出: 120</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>递归本质是<strong>函数调用自己</strong>。每次调用都会在调用栈上压入一个新的栈帧。递归必须有<strong>终止条件</strong>（base case），否则会无限递归导致栈溢出。阶乘递归共调用 5 次，占用 5 层栈空间。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(n) — 递归n次，每次O(1)<br>
@@ -8317,6 +8511,46 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
         <div class="hint">
             <strong>解题思路：</strong><p>递归：f(1)=1, f(2)=1, f(n)=f(n-1)+f(n-2)。注意效率问题。</p>
 
+        </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>递归树追踪（输入 n=5）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+f(5) 的递归展开树：
+═══════════════════════════════════════
+
+                        f(5)
+                       /    \
+                    f(4)     f(3)          ← 第1层
+                   /    \    /   \
+                f(3)   f(2) f(2) f(1)     ← 第2层
+               /   \
+            f(2)   f(1)                   ← 第3层
+
+统计每个值被计算的次数：
+┌────────┬──────────────┬───────────────┐
+│  函数  │  被调用次数  │  说明          │
+├────────┼──────────────┼───────────────┤
+│  f(1)  │  3 次        │  终止条件      │
+│  f(2)  │  3 次        │  终止条件      │
+│  f(3)  │  2 次        │  重复计算！    │
+│  f(4)  │  1 次        │               │
+│  f(5)  │  1 次        │  入口          │
+└────────┴──────────────┴───────────────┘
+总调用次数：10 次（很多是重复的！）
+
+为什么效率低？
+─────────────────────────────
+f(3) 被计算了 2 次，f(2) 被计算了 3 次。
+当 n 很大时，重复计算量呈指数增长。
+
+n=5  → 调用 10 次
+n=10 → 调用 177 次
+n=20 → 调用 21891 次
+n=30 → 调用 2692537 次  ← 超过200万次！
+
+时间复杂度：O(2^n) — 指数级！
+这就是为什么后面要学<strong>记忆化搜索</strong>（用缓存存储已计算的结果，避免重复计算）。</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>朴素递归斐波那契的递归树是<strong>指数级</strong>的，因为同一个子问题被反复计算。f(3) 被算了 2 次，f(2) 被算了 3 次。这就是"重叠子问题"——动态规划的核心动机。后续课程会教你如何用记忆化或迭代优化。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -8395,9 +8629,83 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
             <strong>解题思路：</strong><p>f(n) = f(n-1) + f(n-2)。最后一步跳1级或2级，两种情况之和。</p>
 
         </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>递归追踪与记忆化优化（输入 n=5）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+问题分析：从第 0 级走到第 n 级，每次跨 1 或 2 级
+═══════════════════════════════════════
+
+递推关系：f(k) = f(k+1) + f(k+2)
+  - 从 k 出发，跨 1 级到 k+1，剩余 f(k+1) 种
+  - 从 k 出发，跨 2 级到 k+2，剩余 f(k+2) 种
+
+手动枚举 n=5 的所有路径（从 0 到 5）：
+  路径1: 0→1→2→3→4→5（11111）
+  路径2: 0→1→2→3→5    （1112）
+  路径3: 0→1→2→4→5    （1121）
+  路径4: 0→1→3→4→5    （1211）
+  路径5: 0→1→3→5      （122）
+  路径6: 0→2→3→4→5    （2111）
+  路径7: 0→2→3→5      （212）
+  路径8: 0→2→4→5      （221）
+  共 8 种 ✓
+
+❌ 朴素递归（无记忆化）的重复计算：
+──────────────────────────────
+                        f(0)
+                       /    \
+                    f(1)     f(2)
+                   /    \    /   \
+                f(2)   f(3) f(3) f(4)     ← f(2)和f(3)重复！
+               /   \   / \
+            f(3)  f(4)...                ← 继续重复
+  每个值被反复计算，总调用次数指数增长
+
+✅ 记忆化搜索（用数组缓存已计算结果）：
+──────────────────────────────
+  cache = {-1: 未计算}
+
+  f(5) → 调用 f(6), f(7) → 都返回 1（终止）
+         cache[5] = 2     ← 存入缓存
+
+  f(4) → 调用 f(5), f(6)
+         f(5): cache 命中！直接返回 2（无需递归）✓
+         f(6): 返回 1
+         cache[4] = 3     ← 存入缓存
+
+  f(3) → 调用 f(4), f(5)
+         f(4): cache 命中！直接返回 3 ✓
+         f(5): cache 命中！直接返回 2 ✓
+         cache[3] = 5
+
+  f(2) → f(3): cache 命中！返回 5 ✓
+         f(4): cache 命中！返回 3 ✓
+         cache[2] = 8
+
+  ...每个值只计算一次！
+
+记忆化搜索代码（Python）：
+  cache = {}
+  def f(k):
+      if k == n: return 1
+      if k > n:  return 0
+      if k in cache: return cache[k]   # 命中缓存
+      cache[k] = f(k+1) + f(k+2)      # 计算并存入缓存
+      return cache[k]
+
+对比：
+┌─────────────────┬──────────┬───────────┐
+│      方法       │ 时间复杂度│ 调用次数  │
+├─────────────────┼──────────┼───────────┤
+│  朴素递归       │  O(2^n)  │  指数增长  │
+│  记忆化搜索     │  O(n)    │  每值1次   │
+│  迭代（循环）   │  O(n)    │  循环n次   │
+└─────────────────┴──────────┴───────────┘</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>记忆化搜索 = 递归 + 缓存。用一个数组或哈希表存储已计算的结果，下次遇到相同参数时直接查表返回，避免重复计算。这是<strong>动态规划</strong>思想的雏形——将指数级优化为线性级。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
-时间复杂度：O(n) — 线性遍历处理<br>
+时间复杂度：O(n) — 朴素递归为 O(2^n)，记忆化优化后为 O(n)<br>
 空间复杂度：O(n)
 </div>
         <div class="code-section">
@@ -8572,6 +8880,69 @@ dfs(<span class="number">0</span>, <span class="number">0</span>)
             <strong>解题思路：</strong><p>DFS+回溯：用used[]标记已用数字，path[]记录当前排列。</p>
 
         </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>回溯树追踪（输入 n=3）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+数据结构：path[3] 记录当前排列，used[4] 标记已用数字
+═══════════════════════════════════════
+
+回溯搜索树（n=3 时，共 3! = 6 个叶子）：
+
+                    dfs(0)                        ← 填第0位
+                 /     |     \
+             选1      选2      选3
+            /         |         \
+         dfs(1)     dfs(1)     dfs(1)             ← 填第1位
+         /   \      /   \      /   \
+       选2   选3  选1   选3  选1   选2
+       /       \  /       \  /       \
+     dfs(2)  dfs(2) dfs(2) dfs(2) dfs(2) dfs(2)  ← 填第2位
+       |       |      |      |      |      |
+     选3     选2    选3    选1    选2    选1
+       ↓       ↓      ↓      ↓      ↓      ↓
+    [1,2,3] [1,3,2] [2,1,3] [2,3,1] [3,1,2] [3,2,1]
+
+详细执行过程（追踪 path 和 used 的变化）：
+──────────────────────────────────────────────
+
+dfs(0): 位置0，尝试 i=1
+  path=[1,_,_]  used=[_,T,F,F]
+  → dfs(1): 位置1，尝试 i=2
+      path=[1,2,_]  used=[_,T,T,F]
+      → dfs(2): 位置2，尝试 i=3
+          path=[1,2,3]  used=[_,T,T,T]
+          u==n，输出 "1 2 3" ✓
+          return
+      回溯：used[2]=False, path=[1,_,_]
+      → 尝试 i=3
+      path=[1,3,_]  used=[_,T,F,T]
+      → dfs(2): 位置2，尝试 i=2
+          path=[1,3,2]  used=[_,T,T,T]
+          u==n，输出 "1 3 2" ✓
+          return
+      回溯：used[3]=False
+  回溯：used[1]=False
+
+dfs(0): 位置0，尝试 i=2
+  path=[2,_,_]  used=[_,F,T,F]
+  → dfs(1): 位置1，尝试 i=1
+      path=[2,1,_]  → dfs(2): 选3
+          输出 "2 1 3" ✓
+      → 尝试 i=3
+      path=[2,3,_]  → dfs(2): 选1
+          输出 "2 3 1" ✓
+
+dfs(0): 位置0，尝试 i=3
+  path=[3,_,_]  used=[_,F,F,T]
+  → 输出 "3 1 2" ✓ 和 "3 2 1" ✓
+
+"回溯"的含义：
+──────────────────────
+选了一个数字 → 递归 → 递归返回后 → 撤销选择（used[i]=False）
+这样才能尝试下一个数字。就像走迷宫：走一条路走到头，
+发现不通就退回来，换一条路继续走。</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>回溯 = 递归 + 撤销。在搜索树的每一层，我们尝试所有可能的选择，每个选择做两件事：(1) 做出选择（标记 used），递归下一层；(2) 递归返回后撤销选择（取消标记），这样才能尝试其他选项。n 个数字的全排列共 n! 个结果。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(n!) — 回溯生成全排列，共n!种<br>
@@ -8665,6 +9036,36 @@ Hello%20World
             <strong>解题思路：</strong><p>遍历字符串，遇到空格输出 <code>%20</code>，否则输出原字符。可用 <code>string</code> 的 <code>getline</code> 读入含空格的整行。</p>
 
         </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>字符串遍历追踪（输入 "Hello World"）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+字符串 s = "Hello World"，共 11 个字符
+═══════════════════════════════════════
+
+索引:   0   1   2   3   4   5   6   7   8   9   10
+字符:   H   e   l   l   o       W   o   r   l   d
+                               ↑
+                             空格
+
+逐字符遍历过程：
+┌───────┬────────┬──────────────────────────────┐
+│ 索引  │  字符  │  输出                        │
+├───────┼────────┼──────────────────────────────┤
+│   0   │  'H'   │  H                           │
+│   1   │  'e'   │  He                          │
+│   2   │  'l'   │  Hel                         │
+│   3   │  'l'   │  Hell                        │
+│   4   │  'o'   │  Hello                       │
+│   5   │  ' '   │  Hello%20    ← 空格→%20     │
+│   6   │  'W'   │  Hello%20W                   │
+│   7   │  'o'   │  Hello%20Wo                  │
+│   8   │  'r'   │  Hello%20Wor                 │
+│   9   │  'l'   │  Hello%20Worl                │
+│  10   │  'd'   │  Hello%20World               │
+└───────┴────────┴──────────────────────────────┘
+最终输出: Hello%20World</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>字符串本质是字符数组，可以用下标逐个访问。遍历时逐字符判断：普通字符直接输出，空格输出 <code>%20</code>。C++ 中 <code>getline(cin, s)</code> 可以读入含空格的整行输入。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(n) — 单层循环遍历<br>
@@ -8729,6 +9130,59 @@ Hello%20World
         <div class="hint">
             <strong>解题思路：</strong><p>迭代法：用两个变量 <code>a</code> 和 <code>b</code> 滚动，每次 <code>c = a + b</code>，然后 <code>a = b, b = c</code>。循环 n 次。也可以用 <code>vector</code> 存储每一项。</p>
 
+        </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>容器操作追踪（输入 n=10）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+方法一：vector 容器（C++）逐步构建
+═══════════════════════════════════════
+
+vector&lt;long long&gt; fib;
+操作                    │  fib 容器状态
+────────────────────────┼──────────────────────
+fib.push_back(0)        │  [0]
+fib.push_back(1)        │  [0, 1]
+i=2: push_back(0+1=1)   │  [0, 1, 1]
+i=3: push_back(1+1=2)   │  [0, 1, 1, 2]
+i=4: push_back(1+2=3)   │  [0, 1, 1, 2, 3]
+i=5: push_back(2+3=5)   │  [0, 1, 1, 2, 3, 5]
+i=6: push_back(3+5=8)   │  [0, 1, 1, 2, 3, 5, 8]
+i=7: push_back(5+8=13)  │  [0, 1, 1, 2, 3, 5, 8, 13]
+i=8: push_back(8+13=21) │  [0, 1, 1, 2, 3, 5, 8, 13, 21]
+i=9: push_back(13+21=34)│  [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+i=10: push_back(21+34=55)│ [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+
+fib[10] = 55 ✓
+
+方法二：两个变量滚动（Python）节省空间
+═══════════════════════════════════════
+
+a=0, b=1（只保留最近两项）
+┌─────┬───────┬───────┬──────────────┐
+│ 轮次 │  a    │  b    │  操作         │
+├─────┼───────┼───────┼──────────────┤
+│ 初始 │  0    │  1    │              │
+│  1  │  1    │  1    │ a,b = b,a+b  │
+│  2  │  1    │  2    │ a,b = b,a+b  │
+│  3  │  2    │  3    │ a,b = b,a+b  │
+│  4  │  3    │  5    │ a,b = b,a+b  │
+│  5  │  5    │  8    │ a,b = b,a+b  │
+│  6  │  8    │  13   │ a,b = b,a+b  │
+│  7  │  13   │  21   │ a,b = b,a+b  │
+│  8  │  21   │  34   │ a,b = b,a+b  │
+│  9  │  34   │  55   │ a,b = b,a+b  │
+└─────┴───────┴───────┴──────────────┘
+输出 b=55 ✓
+
+与递归对比：
+┌─────────────┬──────────┬───────────┐
+│    方法     │ 时间复杂度│ 空间复杂度│
+├─────────────┼──────────┼───────────┤
+│ 朴素递归    │  O(2^n)  │  O(n)     │
+│ vector迭代  │  O(n)    │  O(n)     │ ← 存了所有项
+│ 两变量滚动  │  O(n)    │  O(1)     │ ← 只用两个变量 ✓
+└─────────────┴──────────┴───────────┘</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>迭代法用循环代替递归，避免了栈溢出和指数级重复计算。<code>vector</code> 的 <code>push_back()</code> 操作将元素追加到容器末尾，可以用下标访问。两变量滚动法是空间最优解——只需 O(1) 空间。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -8805,6 +9259,52 @@ Hello%20World
         <div class="hint">
             <strong>解题思路：</strong><p>用 <code>vector</code> 依次存入所有数字，然后从后往前遍历输出。也可以用 <code>stack</code>：读入时压栈，读完后依次弹出。</p>
 
+        </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>容器操作追踪（输入 1 2 3 -1）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+方法一：vector 读入 + 逆序遍历
+═══════════════════════════════════════
+
+读入阶段（push_back 逐个追加）：
+┌──────────┬────────────────┬──────────────────┐
+│  读入值  │  操作          │  vector 状态     │
+├──────────┼────────────────┼──────────────────┤
+│    1     │  push_back(1)  │  [1]             │
+│    2     │  push_back(2)  │  [1, 2]          │
+│    3     │  push_back(3)  │  [1, 2, 3]       │
+│   -1     │  结束读入      │  [1, 2, 3]       │
+└──────────┴────────────────┴──────────────────┘
+
+逆序遍历输出：
+  i=2: nums[2]=3  → 输出 3
+  i=1: nums[1]=2  → 输出 2
+  i=0: nums[0]=1  → 输出 1
+
+方法二：stack 压栈 + 弹栈（后进先出 = 自动反转）
+═══════════════════════════════════════
+
+压栈阶段（push 逐个压入）：
+┌──────────┬────────────┬──────────────────┐
+│  读入值  │  操作      │  栈状态（顶→底） │
+├──────────┼────────────┼──────────────────┤
+│    1     │  push(1)   │  [1]             │
+│    2     │  push(2)   │  [2, 1]          │
+│    3     │  push(3)   │  [3, 2, 1]       │
+└──────────┴────────────┴──────────────────┘
+
+弹栈阶段（top + pop 逐个弹出）：
+┌──────────┬─────────────────┬──────────────────┐
+│  操作    │  top() 返回值   │  栈状态          │
+├──────────┼─────────────────┼──────────────────┤
+│  弹出    │  3              │  [2, 1]          │
+│  弹出    │  2              │  [1]             │
+│  弹出    │  1              │  []              │
+└──────────┴─────────────────┴──────────────────┘
+输出: 3, 2, 1 ✓
+
+栈的后进先出（LIFO）特性天然实现了反转！</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong><code>vector</code> 的 <code>push_back()</code> 在末尾追加元素，<code>size()</code> 返回元素个数。<code>stack</code> 的 <code>push()</code> 压栈，<code>top()</code> 查看栈顶，<code>pop()</code> 弹出栈顶。栈的 LIFO 特性使其天然适合反转操作。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -8894,6 +9394,68 @@ yes
         <div class="hint">
             <strong>解题思路：</strong><p>用两个 <code>stack<int></code>：栈1负责入队，栈2负责出队。出队时若栈2为空，把栈1全部倒入栈2（<code>push</code> 栈1的 <code>top</code> 到栈2，再 <code>pop</code> 栈1）。这样栈2的顶部就是最早入队的元素。</p>
 
+        </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>双栈模拟队列操作追踪（完整样例）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+两个栈：s1（入队口）、s2（出队口）
+═══════════════════════════════════════
+
+操作1: push 1
+─────────────────────────
+  s1.push(1)
+  s1: [1]    s2: []
+
+操作2: push 2
+─────────────────────────
+  s1.push(2)
+  s1: [2,1]  s2: []        ← 1先入，2后入
+
+操作3: pop（出队）
+─────────────────────────
+  s2 为空 → 需要转移！
+  transfer(): 把 s1 全部倒入 s2
+    s1.top()=2 → s2.push(2), s1.pop()  →  s1:[1]  s2:[2]
+    s1.top()=1 → s2.push(1), s1.pop()  →  s1:[]   s2:[1,2]
+                                                    ↑ 栈顶
+  s2.top() = 1 → 输出 1 ✓（先进先出！1先入队，1先出队）
+  s2.pop()
+  s1: []    s2: [2]
+
+操作4: push 3
+─────────────────────────
+  s1.push(3)
+  s1: [3]    s2: [2]
+
+操作5: pop（出队）
+─────────────────────────
+  s2 不为空，直接取 s2.top()
+  s2.top() = 2 → 输出 2 ✓
+  s2.pop()
+  s1: [3]    s2: []
+
+操作6: pop（出队）
+─────────────────────────
+  s2 为空 → 需要转移！
+  transfer(): s1 → s2
+    s1.top()=3 → s2.push(3)  →  s1:[]  s2:[3]
+  s2.top() = 3 → 输出 3 ✓
+  s2.pop()
+  s1: []    s2: []
+
+操作7: empty
+─────────────────────────
+  s1.empty() && s2.empty() → true
+  输出: yes
+
+为什么能模拟队列？
+─────────────────────────────
+栈1: [2,1]  倒入栈2后变成  栈2: [1,2]
+                            ↑ 栈顶是1（最早入队的）
+后进先出 × 两次 = 先进先出！
+第一次后进先出：倒入 s2 时顺序反转
+第二次后进先出：s2 弹出时又反转 → 恢复原始顺序</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>栈的 LIFO 特性，经过两次反转后变成了 FIFO（先进先出）。入队时全部放入 s1，出队时如果 s2 为空就把 s1 全部倒入 s2——这次"倒"的过程就是一次反转。每个元素最多被转移一次，所以均摊时间复杂度为 O(1)。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -8997,6 +9559,53 @@ stack2 = []
             <strong>解题思路：</strong><p>用 <code>vector</code> 读入所有数字，然后从后往前输出。或者用 <code>stack</code>：读入时压栈，读完后依次弹出。栈的后进先出特性天然实现了反转。</p>
 
         </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>栈反转追踪（输入 1 2 3 4 5 -1）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+铁链原始顺序：1 → 2 → 3 → 4 → 5
+目标顺序：    5 → 4 → 3 → 2 → 1
+═══════════════════════════════════════
+
+Phase 1: 压栈（逐个读入，压入栈中）
+────────────────────────────────────
+  读入 1: stk.push(1)  →  栈: [1]          （1沉到底部）
+  读入 2: stk.push(2)  →  栈: [2, 1]
+  读入 3: stk.push(3)  →  栈: [3, 2, 1]
+  读入 4: stk.push(4)  →  栈: [4, 3, 2, 1]
+  读入 5: stk.push(5)  →  栈: [5, 4, 3, 2, 1]  （5在栈顶）
+  读入 -1: 结束读入
+
+  栈的状态（从顶到底）：
+  ┌───┐
+  │ 5 │ ← 栈顶（最后入栈，最先弹出）
+  ├───┤
+  │ 4 │
+  ├───┤
+  │ 3 │
+  ├───┤
+  │ 2 │
+  ├───┤
+  │ 1 │ ← 栈底（最先入栈，最后弹出）
+  └───┘
+
+Phase 2: 弹栈（逐个弹出，输出结果）
+────────────────────────────────────
+  stk.top()=5, stk.pop()  →  输出: 5
+  stk.top()=4, stk.pop()  →  输出: 4
+  stk.top()=3, stk.pop()  →  输出: 3
+  stk.top()=2, stk.pop()  →  输出: 2
+  stk.top()=1, stk.pop()  →  输出: 1
+  stk.empty() → true，结束
+
+最终输出: 5 4 3 2 1 ✓
+
+为什么栈能实现反转？
+─────────────────────────────
+入栈顺序: 1, 2, 3, 4, 5（从底到顶）
+出栈顺序: 5, 4, 3, 2, 1（从顶到底）
+后进先出 = 自动反转！</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>栈的 LIFO（后进先出）特性使其天然适合反转操作。先入栈的元素沉到底部，后入栈的元素在顶部——弹出时顺序恰好反过来。这是一种非常常用的技巧。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(n) — 栈操作，每个元素最多入栈出栈各一次<br>
@@ -9075,10 +9684,54 @@ numbers.reverse()       <span class="comment"># 反转序列</span>
             <strong>解题思路：</strong><p>用 <code>vector</code> 分别读入两条链，然后双指针合并：比较两个 <code>vector</code> 当前元素，取较小的放入结果 <code>vector</code>。一个遍历完后，把另一个的剩余部分直接追加。最后用 <code>sort</code> 也可，但双指针更高效。</p>
 
         </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>双指针归并追踪（输入 a=[1,3,5], b=[2,4,6]）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+两条有序链：a = [1, 3, 5]  和  b = [2, 4, 6]
+目标：合并成一条有序链 [1, 2, 3, 4, 5, 6]
+═══════════════════════════════════════
+
+双指针：i 指向 a 的当前元素，j 指向 b 的当前元素
+
+┌──────┬─────┬─────┬──────────────┬───────────────┬──────────────────┐
+│ 步骤 │  i  │  j  │  a[i] vs b[j]│  取谁？       │  result 容器     │
+├──────┼─────┼─────┼──────────────┼───────────────┼──────────────────┤
+│  1   │  0  │  0  │  1 vs 2      │  取 a[0]=1    │  [1]             │
+│  2   │  1  │  0  │  3 vs 2      │  取 b[0]=2    │  [1, 2]          │
+│  3   │  1  │  1  │  3 vs 4      │  取 a[1]=3    │  [1, 2, 3]       │
+│  4   │  2  │  1  │  5 vs 4      │  取 b[1]=4    │  [1, 2, 3, 4]    │
+│  5   │  2  │  2  │  5 vs 6      │  取 a[2]=5    │  [1, 2, 3, 4, 5] │
+│  6   │  3  │  2  │  i到末尾     │  剩余b追加    │  [1,2,3,4,5,6]   │
+└──────┴─────┴─────┴──────────────┴───────────────┴──────────────────┘
+
+追加剩余：b[2]=6 → result = [1, 2, 3, 4, 5, 6]
+
+可视化过程：
+  a: [1, 3, 5]      b: [2, 4, 6]
+       ↑ i                ↑ j
+       1 < 2 → 取 1
+
+  a: [1, 3, 5]      b: [2, 4, 6]
+          ↑ i             ↑ j
+          3 > 2 → 取 2
+
+  a: [1, 3, 5]      b: [2, 4, 6]
+          ↑ i                ↑ j
+          3 < 4 → 取 3
+
+  ...依此类推
+
+为什么双指针高效？
+─────────────────────────────
+两条链都是有序的，每次只需比较两个头部元素。
+总共比较次数 = len(a) + len(b) = O(n+m)。
+如果用 sort 合并，复杂度是 O((n+m)log(n+m))，更慢。</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>归并操作是<strong>双指针</strong>的经典应用。两个指针分别指向两个有序序列的头部，每次取较小的元素追加到结果中。当一个序列耗尽后，直接追加另一个的剩余部分。这是<strong>归并排序</strong>的核心子操作。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(n + m) — 双指针遍历<br>
-空间复杂度：O(1)
+空间复杂度：O(n + m) — 结果容器
 </div>
         <div class="code-section">
             <details><summary>参考代码</summary>
@@ -9177,6 +9830,59 @@ result.extend(<span class="keyword">str</span>(x) <span class="keyword">for</spa
         <div class="hint">
             <strong>解题思路：</strong><p>用 <code>struct</code> 定义三元组（编号、重量、名称），存入 <code>vector</code>。自定义比较函数：先比编号，编号相同再比重量。用 <code>sort(a.begin(), a.end(), cmp)</code> 排序。</p>
 
+        </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>自定义排序追踪（输入样例）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+输入数据（3条记录）：
+═══════════════════════════════════════
+
+原始顺序：
+┌─────┬────────┬────────┐
+│ 编号x │ 重量y  │ 名称z  │
+├─────┼────────┼────────┤
+│  1  │  2.00  │  abc   │
+│  3  │  4.00  │  def   │
+│  2  │  1.00  │  ghi   │
+└─────┴────────┴────────┘
+
+排序规则（自定义比较函数 cmp）：
+  先比编号 x：x 小的排前面
+  编号相同再比重量 y：y 小的排前面
+
+排序过程（sort 使用的比较逻辑）：
+──────────────────────────────────
+比较 (1,2,"abc") vs (3,4,"def"):
+  x: 1 < 3 → 第1条排前面 ✓
+
+比较 (1,2,"abc") vs (2,1,"ghi"):
+  x: 1 < 2 → 第1条排前面 ✓
+
+比较 (3,4,"def") vs (2,1,"ghi"):
+  x: 3 > 2 → 第3条排后面
+
+最终排序结果：
+┌─────┬────────┬────────┐
+│ 编号x │ 重量y  │ 名称z  │
+├─────┼────────┼────────┤
+│  1  │  2.00  │  abc   │  ← 编号最小
+│  2  │  1.00  │  ghi   │  ← 编号次小
+│  3  │  4.00  │  def   │  ← 编号最大
+└─────┴────────┴────────┘
+
+如果编号相同呢？例如：
+  (2, 3.50, "abc")
+  (2, 1.00, "def")
+  cmp 比较：x 相同(2==2) → 比 y → 1.00 < 3.50
+  结果：(2, 1.00, "def") 排在前面
+
+输出格式（printf 格式化）：
+  "%d %.2lf %s\n"
+  编号整数 + 重量保留两位小数 + 名称字符串
+  1 2.00 abc
+  2 1.00 ghi
+  3 4.00 def</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>C++ 的 <code>sort</code> 函数支持自定义比较器（cmp 函数或 lambda）。比较器接收两个元素，返回 <code>true</code> 表示第一个应该排在前面。<code>struct</code> 可以将多个相关数据打包成一个整体，配合 <code>vector</code> 和自定义排序非常灵活。Python 中用 <code>sort(key=lambda t: (t[0], t[1]))</code> 实现多关键字排序。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -10169,6 +10875,51 @@ l, r = -<span class="number">10000.0</span>, <span class="number">10000.0</span>
         <div class="hint">
             <strong>解题思路：</strong><p>位运算：while(n > 0) { count += n & 1; n >>= 1; }。或用 n & (n-1) 消去最低位的1，计数更快。</p>
 
+            <h4>二进制表示与位计数示例</h4>
+            <p>以数字 5 为例，逐步展示二进制表示和计数过程：</p>
+            <pre>
+十进制 → 二进制对照：
+  1 = 0001  →  1个1
+  2 = 0010  →  1个1
+  3 = 0011  →  2个1
+  4 = 0100  →  1个1
+  5 = 0101  →  2个1
+            </pre>
+
+            <h4>方法一：逐位检查法（n & 1）</h4>
+            <p>以 x = 5（二进制 0101）为例，追踪 while 循环：</p>
+            <pre>
+初始: x = 5 (0101), count = 0
+
+第1轮: x & 1 = 0101 & 0001 = 1  → count = 1
+       x >>= 1  → x = 2 (0010)
+
+第2轮: x & 1 = 0010 & 0001 = 0  → count = 1
+       x >>= 1  → x = 1 (0001)
+
+第3轮: x & 1 = 0001 & 0001 = 1  → count = 2
+       x >>= 1  → x = 0 (0000)
+
+x = 0, 循环结束。结果: 5 的二进制有 2 个 1。
+            </pre>
+
+            <h4>方法二：lowbit 消去法（更高效）</h4>
+            <p>lowbit(x) = x & (-x)，得到最低位的 1。以 x = 5（0101）为例：</p>
+            <pre>
+初始: x = 5 (0101), count = 0
+
+第1轮: lowbit(5) = 0101 & 1011 = 0001 = 1
+       x = 5 - 1 = 4 (0100), count = 1
+
+第2轮: lowbit(4) = 0100 & 1100 = 0100 = 4
+       x = 4 - 4 = 0 (0000), count = 2
+
+x = 0, 循环结束。结果: 2 个 1。
+（方法二只需 2 轮，方法一需要 3 轮——1的个数就是轮数）
+            </pre>
+
+            <h4>为什么 lowbit 有效？</h4>
+            <p>x & (-x) 在补码表示下，-x = ~x + 1。x 和 -x 做 AND，恰好保留最低位的 1，其余全变 0。每次减去 lowbit，就消掉一个 1，所以循环次数 = 1 的个数。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -10249,6 +11000,45 @@ sys.stdout.write(<span class="string">' '</span>.join(out) + <span class="string
         <div class="hint">
             <strong>解题思路：</strong><p>用数组存每一位（倒序），从低位到高位逐位相加，处理进位。最后倒序输出。</p>
 
+            <h4>竖式加法模拟——以 987 + 456 为例</h4>
+            <p><strong>第一步：倒序存储</strong>（低位在前，方便进位）</p>
+            <pre>
+输入: a = "987", b = "456"
+倒序存储:
+  A = [7, 8, 9]   （A[0]=7 是个位）
+  B = [6, 5, 4]   （B[0]=6 是个位）
+            </pre>
+
+            <p><strong>第二步：逐位相加</strong></p>
+            <pre>
+进位 t = 0
+
+i=0: t = A[0] + B[0] + t = 7 + 6 + 0 = 13
+     C.push_back(13 % 10 = 3)   → C = [3]
+     t = 13 / 10 = 1             （进位1）
+
+i=1: t = A[1] + B[1] + t = 8 + 5 + 1 = 14
+     C.push_back(14 % 10 = 4)   → C = [3, 4]
+     t = 14 / 10 = 1             （进位1）
+
+i=2: t = A[2] + B[2] + t = 9 + 4 + 1 = 14
+     C.push_back(14 % 10 = 4)   → C = [3, 4, 4]
+     t = 14 / 10 = 1             （进位1）
+
+循环结束，t = 1 ≠ 0 → C.push_back(1) → C = [3, 4, 4, 1]
+            </pre>
+
+            <p><strong>第三步：倒序输出</strong></p>
+            <pre>
+C = [3, 4, 4, 1]，倒序输出 → 1443
+
+验证: 987 + 456 = 1443  ✓
+            </pre>
+
+            <h4>核心要点</h4>
+            <p>1. <strong>倒序存储</strong>：让 A[0] 对应个位，进位自然向右（高下标）传播。</p>
+            <p>2. <strong>进位变量 t</strong>：每一步 t = 当前位之和，C[i] = t%10（留余），t = t/10（进位）。</p>
+            <p>3. <strong>最后检查 t</strong>：如果最高位还有进位，别忘了多加一位。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -10351,6 +11141,55 @@ t = <span class="number">0</span>  <span class="comment"># 进位</span>
         <div class="hint">
             <strong>解题思路：</strong><p>先判断大小，大减小，从低位逐位减，处理借位。如果被减数小则结果加负号。</p>
 
+            <h4>竖式减法模拟——以 9876 - 4589 为例</h4>
+            <p><strong>第一步：比较大小</strong>（位数相同时从高位逐位比）</p>
+            <pre>
+A = 9876, B = 4589
+位数相同(4位)，从高位比: 9 > 4 → A > B，正常计算 A - B
+            </pre>
+
+            <p><strong>第二步：倒序存储</strong></p>
+            <pre>
+A = [6, 7, 8, 9]   （A[0]=6 是个位）
+B = [9, 8, 5, 4]   （B[0]=9 是个位）
+            </pre>
+
+            <p><strong>第三步：逐位相减（处理借位）</strong></p>
+            <pre>
+借位 t = 0
+
+i=0: t = A[0] - t = 6 - 0 = 6
+     t = t - B[0] = 6 - 9 = -3   （不够减！）
+     C.push_back((-3 + 10) % 10 = 7)  → C = [7]
+     t = 1  （借位1）
+
+i=1: t = A[1] - t = 7 - 1 = 6
+     t = t - B[1] = 6 - 8 = -2   （不够减！）
+     C.push_back((-2 + 10) % 10 = 8)  → C = [7, 8]
+     t = 1  （借位1）
+
+i=2: t = A[2] - t = 8 - 1 = 7
+     t = t - B[2] = 7 - 5 = 2    （够减）
+     C.push_back((2 + 10) % 10 = 2)   → C = [7, 8, 2]
+     t = 0  （不借位）
+
+i=3: t = A[3] - t = 9 - 0 = 9
+     t = t - B[3] = 9 - 4 = 5    （够减）
+     C.push_back((5 + 10) % 10 = 5)   → C = [7, 8, 2, 5]
+     t = 0  （不借位）
+            </pre>
+
+            <p><strong>第四步：去前导零 + 倒序输出</strong></p>
+            <pre>
+C = [7, 8, 2, 5]，倒序输出 → 5287
+
+验证: 9876 - 4589 = 5287  ✓
+            </pre>
+
+            <h4>核心要点</h4>
+            <p>1. <strong>借位技巧</strong>：用 <code>(t + 10) % 10</code> 统一处理正负——t>=0 时结果就是 t，t<0 时自动加 10。</p>
+            <p>2. <strong>去前导零</strong>：减法结果可能有前导零（如 1000-999=0001），用 while 循环去掉。</p>
+            <p>3. <strong>负数处理</strong>：如果 A < B，先算 B - A，再在前面加负号。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -10499,6 +11338,39 @@ B = [<span class="keyword">int</span>(ch) <span class="keyword">for</span> ch <s
         <div class="hint">
             <strong>解题思路：</strong><p>高精度×低精度：大数每一位乘以小数，处理进位。注意结果可能有前导零需要去掉。</p>
 
+            <h4>高精度乘法模拟——以 9876 × 9 为例</h4>
+            <p>核心思想：把大数的每一位乘以小数，加上前一位的进位，本位留余，进位带到下一位。</p>
+
+            <p><strong>倒序存储</strong>：A = [6, 7, 8, 9]，b = 9</p>
+            <pre>
+进位 t = 0
+
+i=0: t = A[0]*b + t = 6*9 + 0 = 54
+     C.push_back(54 % 10 = 4)   → C = [4]
+     t = 54 / 10 = 5
+
+i=1: t = A[1]*b + t = 7*9 + 5 = 68
+     C.push_back(68 % 10 = 8)   → C = [4, 8]
+     t = 68 / 10 = 6
+
+i=2: t = A[2]*b + t = 8*9 + 6 = 78
+     C.push_back(78 % 10 = 8)   → C = [4, 8, 8]
+     t = 78 / 10 = 7
+
+i=3: t = A[3]*b + t = 9*9 + 7 = 88
+     C.push_back(88 % 10 = 8)   → C = [4, 8, 8, 8]
+     t = 88 / 10 = 8
+
+循环结束，t = 8 > 0 → C.push_back(8) → C = [4, 8, 8, 8, 8]
+            </pre>
+
+            <p><strong>倒序输出</strong>：C = [4, 8, 8, 8, 8] → 88884</p>
+            <pre>
+验证: 9876 × 9 = 88884  ✓
+            </pre>
+
+            <h4>与加法的区别</h4>
+            <p>乘法中 t = A[i]*b + t，一个位乘以小数可能产生很大的进位（最大 9*9999+...），所以循环条件用 <code>i < A.size() || t</code>——当 A 遍历完但 t 还有剩余时，继续处理进位。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -10602,6 +11474,48 @@ t = <span class="number">0</span>  <span class="comment"># 进位</span>
         <div class="hint">
             <strong>解题思路：</strong><p>高精度÷低精度：从高位到低位，当前余数×10+当前位，除以B得商的一位，更新余数。</p>
 
+            <h4>高精度除法模拟——以 9876 ÷ 23 为例</h4>
+            <p>与加减乘不同，除法<strong>从高位到低位</strong>处理（和手算竖式除法一样）。</p>
+
+            <p><strong>倒序存储</strong>（注意：遍历时从 A.size()-1 到 0，即从最高位开始）：</p>
+            <pre>
+a = "9876" → A = [6, 7, 8, 9]  （A[3]=9 是最高位）
+b = 23
+            </pre>
+
+            <p><strong>逐位处理</strong>：</p>
+            <pre>
+余数 r = 0
+
+i=3 (最高位9): r = 0*10 + 9 = 9
+     9 ÷ 23 = 0 余 9
+     C.push_back(0)  → C = [0], r = 9
+
+i=2 (次高位8): r = 9*10 + 8 = 98
+     98 ÷ 23 = 4 余 6
+     C.push_back(4)  → C = [0, 4], r = 6
+
+i=1 (次低位7): r = 6*10 + 7 = 67
+     67 ÷ 23 = 2 余 21
+     C.push_back(2)  → C = [0, 4, 2], r = 21
+
+i=0 (最低位6): r = 21*10 + 6 = 216
+     216 ÷ 23 = 9 余 9
+     C.push_back(9)  → C = [0, 4, 2, 9], r = 9
+            </pre>
+
+            <p><strong>去前导零 + 输出</strong>：</p>
+            <pre>
+C = [0, 4, 2, 9]，去掉高位的 0 → C = [4, 2, 9]
+倒序输出 → 429（商），余数 r = 9
+
+验证: 23 × 429 + 9 = 9867 + 9 = 9876  ✓
+            </pre>
+
+            <h4>核心要点</h4>
+            <p>1. <strong>从高位开始</strong>：和竖式除法方向一致，r = r*10 + A[i] 模拟"把下一位拉下来"。</p>
+            <p>2. <strong>商的存储顺序</strong>：因为从高位往低位走，C[0] 是商的最高位，最后不需要反转（但代码中为了统一存储风格做了 reverse）。</p>
+            <p>3. <strong>去前导零</strong>：商的高位可能是 0（当被除数高位 < 除数时）。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -10710,6 +11624,19 @@ r = <span class="number">0</span>  <span class="comment"># 余数</span>
         <div class="hint">
             <strong>解题思路：</strong><p>双指针：i 从 A 的头，j 从 B 的尾。A[i]+B[j] < x 则 i++，> x 则 j--。O(n+m)。</p>
 
+            <h4>双指针移动追踪——以样例为例</h4>
+            <p>目标：在 A = [1, 2, 4, 7] 和 B = [3, 4, 6, 8, 9] 中找 A[i]+B[j]=6 的数对。</p>
+            <p><strong>关键观察</strong>：A 升序，B 升序。i 从左走（变大），j 从右走（变小），和单调变化：</p>
+            <pre>
+i=0, j=4: A[0]+B[4] = 1+9 = 10 > 6  → 和太大，j--
+i=0, j=3: A[0]+B[3] = 1+8 = 9  > 6  → 和太大，j--
+i=0, j=2: A[0]+B[2] = 1+6 = 7  > 6  → 和太大，j--
+i=0, j=1: A[0]+B[1] = 1+4 = 5  < 6  → 和太小，i++
+i=1, j=1: A[1]+B[1] = 2+4 = 6  = 6  → 找到！输出 (1, 1)
+            </pre>
+
+            <h4>为什么不会漏解？</h4>
+            <p>当 A[i]+B[j] > x 时，因为 A 是升序的，A[i+1]+B[j] 只会更大，所以 j 必须减小才有机会等于 x。同理，和太小时 i 必须增大。每一步要么 i++ 要么 j--，两个指针各走一遍就结束，总复杂度 O(n+m)。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -10801,6 +11728,25 @@ Yes
         <div class="hint">
             <strong>解题思路：</strong><p>双指针：i 遍历 a，j 遍历 b。a[i] == b[j] 时 i++。i 到头说明是子序列。</p>
 
+            <h4>双指针判断子序列——以样例为例</h4>
+            <p>a = [1, 3, 5]（要找的子序列），b = [1, 2, 3, 4, 5]（主序列）</p>
+            <p><strong>策略</strong>：指针 p 指向 a，指针 i 遍历 b。当 a[p] == b[i] 时，p 前进（说明 a 的当前位已匹配）。</p>
+            <pre>
+p = 0（指向 a[0]=1）
+
+i=0: b[0]=1, a[p]=1 → 匹配！p = 1
+i=1: b[1]=2, a[p]=3 → 不匹配，跳过
+i=2: b[2]=3, a[p]=3 → 匹配！p = 2
+i=3: b[3]=4, a[p]=5 → 不匹配，跳过
+i=4: b[4]=5, a[p]=5 → 匹配！p = 3
+
+p = 3 = len(a) → a 的所有元素都匹配了 → 输出 "Yes"
+            </pre>
+
+            <h4>为什么这是正确的？</h4>
+            <p>1. p 只会前进不会后退，所以匹配到的 a 的元素在 b 中保持原有次序。</p>
+            <p>2. i 只遍历 b 一遍，时间复杂度 O(m)。</p>
+            <p>3. 如果 p 最终等于 a 的长度，说明 a 的每个元素都在 b 中找到了匹配位置。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -10886,6 +11832,26 @@ i = <span class="number">0</span>
         <div class="hint">
             <strong>解题思路：</strong><p>滑动窗口：右指针扩展，用哈希表判断是否重复，重复则左指针收缩。O(n)。</p>
 
+            <h4>滑动窗口追踪——以 [1, 2, 2, 3, 5] 为例</h4>
+            <p>找最长的不含重复数字的连续子序列。用哈希表 cnt 记录窗口内每个数出现的次数。</p>
+            <pre>
+l = 0（左指针），res = 0
+
+i=0, a[0]=1: cnt{1:1}，无重复，窗口 [0,0]，res = max(0,1) = 1
+i=1, a[1]=2: cnt{1:1,2:1}，无重复，窗口 [0,1]，res = max(1,2) = 2
+i=2, a[2]=2: cnt{1:1,2:2}，2重复了！收缩左指针：
+     cnt[a[0]]=cnt[1]--, l=1 → cnt{1:0,2:2}，2还重复！
+     cnt[a[1]]=cnt[2]--, l=2 → cnt{1:0,2:1}，不重复了
+     窗口 [2,2]，res = max(2,1) = 2
+i=3, a[3]=3: cnt{2:1,3:1}，无重复，窗口 [2,3]，res = max(2,2) = 2
+i=4, a[4]=5: cnt{2:1,3:1,5:1}，无重复，窗口 [2,4]，res = max(2,3) = 3
+
+最终结果: 3（对应子序列 [2, 3, 5]）
+            </pre>
+
+            <h4>为什么是 O(n)？</h4>
+            <p>右指针 i 从 0 走到 n-1，左指针 l 只会前进不会后退。每个元素最多被加入窗口一次、移出窗口一次，所以总共 O(n)。</p>
+            <p><strong>滑动窗口口诀</strong>：右指针扩展，左指针收缩——像一扇窗户在数组上滑动，永远维护窗口内的"合法性"（无重复）。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -10983,6 +11949,32 @@ ans = <span class="number">0</span>
         <div class="hint">
             <strong>解题思路：</strong><p>前缀和：s[i] = a[1] + a[2] + ... + a[i]。区间和 = s[r] - s[l-1]。</p>
 
+            <h4>前缀和构建过程——以样例为例</h4>
+            <p><strong>输入</strong>：a = [2, 1, 3, 6, 4]（从1开始编号）</p>
+            <p><strong>构建前缀和数组 s[]</strong>：s[0]=0，s[i] = s[i-1] + a[i]</p>
+            <pre>
+i=1: s[1] = s[0] + a[1] = 0 + 2 = 2
+i=2: s[2] = s[1] + a[2] = 2 + 1 = 3
+i=3: s[3] = s[2] + a[3] = 3 + 3 = 6
+i=4: s[4] = s[3] + a[4] = 6 + 6 = 12
+i=5: s[5] = s[4] + a[5] = 12 + 4 = 16
+
+s = [0, 2, 3, 6, 12, 16]
+            </pre>
+
+            <h4>查询过程</h4>
+            <p><strong>公式</strong>：sum[l..r] = s[r] - s[l-1]</p>
+            <pre>
+查询 [1, 3]: s[3] - s[0] = 6 - 0 = 6    → a[1]+a[2]+a[3] = 2+1+3 = 6  ✓
+查询 [2, 4]: s[4] - s[1] = 12 - 2 = 10   → a[2]+a[3]+a[4] = 1+3+6 = 10  ✓
+查询 [1, 5]: s[5] - s[0] = 16 - 0 = 16   → 2+1+3+6+4 = 16  ✓
+            </pre>
+
+            <h4>为什么 s[0]=0？</h4>
+            <p>当 l=1 时，sum[1..r] = s[r] - s[0] = s[r] - 0 = s[r]，刚好是前 r 个数的和。s[0] 作为"哨兵"，统一了所有查询的公式。</p>
+
+            <h4>时间复杂度</h4>
+            <p>预处理 O(n) 构建 s[]，每次查询 O(1)。总复杂度 O(n + m)，远优于暴力的 O(n*m)。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -11074,6 +12066,64 @@ s = [<span class="number">0</span>] * (n + <span class="number">1</span>)
         <div class="hint">
             <strong>解题思路：</strong><p>二维前缀和：<code>s[i][j]</code> = 左上角到 (i,j) 的累加。子矩阵和 = <code>s[x2][y2] - s[x1-1][y2] - s[x2][y1-1] + s[x1-1][y1-1]</code>。</p>
 
+            <h4>二维前缀和构建与查询——以样例为例</h4>
+            <p><strong>矩阵 a</strong>（3行4列）：</p>
+            <pre>
+    1  3  4  5
+    2  6  9  4
+    1  4  7  5
+            </pre>
+
+            <p><strong>构建 s[i][j]</strong>（s[i][j] = 左上角到(i,j)的累加和）：</p>
+            <pre>
+公式: s[i][j] = s[i-1][j] + s[i][j-1] - s[i-1][j-1] + a[i][j]
+
+s[1][1] = 0 + 0 - 0 + 1 = 1
+s[1][2] = 0 + 1 - 0 + 3 = 4
+s[1][3] = 0 + 4 - 0 + 4 = 8
+s[1][4] = 0 + 8 - 0 + 5 = 13
+s[2][1] = 1 + 0 - 0 + 2 = 3
+s[2][2] = 4 + 3 - 1 + 6 = 12
+s[2][3] = 8 + 12 - 4 + 9 = 25
+s[2][4] = 13 + 25 - 8 + 4 = 34
+s[3][1] = 3 + 0 - 0 + 1 = 4
+s[3][2] = 12 + 4 - 3 + 4 = 17
+s[3][3] = 25 + 17 - 12 + 7 = 37
+s[3][4] = 34 + 37 - 13 + 5 = 63
+
+s 矩阵:
+    1   4   8  13
+    3  12  25  34
+    4  17  37  63
+            </pre>
+
+            <h4>查询：容斥原理</h4>
+            <pre>
+子矩阵 (x1,y1)-(x2,y2) 的和 =
+  s[x2][y2] - s[x1-1][y2] - s[x2][y1-1] + s[x1-1][y1-1]
+
+查询 (1,1)-(2,2): s[2][2] - s[0][2] - s[2][0] + s[0][0]
+                 = 12 - 0 - 0 + 0 = 12
+验证: 1+3+2+6 = 12  ✓
+
+查询 (2,1)-(3,3): s[3][3] - s[1][3] - s[3][0] + s[1][0]
+                 = 37 - 8 - 0 + 0 = 29
+验证: (2+6+9) + (1+4+7) = 17+12 = 29  ✓
+            </pre>
+
+            <h4>容斥原理图解</h4>
+            <pre>
++--------+------+
+|  多减   | 要的  |
+| (x1-1)  |      |
++--------+------+
+|  多减   | 要的  |
+|        |(x2,y2)|
++--------+------+
+
+要的部分 = 全部 - 上面多减 - 左边多减 + 左上多减的
+         = s[x2][y2] - s[x1-1][y2] - s[x2][y1-1] + s[x1-1][y1-1]
+            </pre>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -11180,6 +12230,47 @@ sys.stdout.write(<span class="string">'\n'</span>.join(out))</code></pre>
         <div class="hint">
             <strong>解题思路：</strong><p>差分：b[l] += c, b[r+1] -= c。所有操作完成后，对 b 求前缀和得到最终序列。</p>
 
+            <h4>差分操作追踪——以样例为例</h4>
+            <p><strong>输入</strong>：a = [1, 2, 3, 4, 5]，3个操作</p>
+
+            <p><strong>第一步：构造差分数组</strong></p>
+            <p>差分 b[i] = a[i] - a[i-1]，即相邻元素的差：</p>
+            <pre>
+b[1] = a[1] - a[0] = 1 - 0 = 1
+b[2] = a[2] - a[1] = 2 - 1 = 1
+b[3] = a[3] - a[2] = 3 - 2 = 1
+b[4] = a[4] - a[3] = 4 - 3 = 1
+b[5] = a[5] - a[4] = 5 - 4 = 1
+b = [_, 1, 1, 1, 1, 1]   （下标从1开始）
+            </pre>
+
+            <p><strong>第二步：执行3个操作</strong>（每个操作只改两个位置）</p>
+            <pre>
+操作1: [1, 3] + 2  →  b[1] += 2, b[4] -= 2
+       b = [_, 3, 1, 1, -1, 1]
+
+操作2: [2, 4] + 1  →  b[2] += 1, b[5] -= 1
+       b = [_, 3, 2, 1, -1, 0]
+
+操作3: [3, 5] + 3  →  b[3] += 3, b[6] -= 3  （b[6]超出范围，忽略）
+       b = [_, 3, 2, 4, -1, 0]
+            </pre>
+
+            <p><strong>第三步：对 b 求前缀和，还原最终数组</strong></p>
+            <pre>
+a[1] = 3, a[2] = 3+2 = 5, a[3] = 5+4 = 9...
+
+验证:
+  原始: [1, 2, 3, 4, 5]
+  操作1: +2 on [1,3] → [3, 4, 5, 4, 5]
+  操作2: +1 on [2,4] → [3, 5, 6, 5, 5]
+  操作3: +3 on [3,5] → [3, 5, 8, 8, 8]  ✓
+            </pre>
+
+            <h4>差分的核心思想</h4>
+            <p>1. <strong>区间修改 = 两点操作</strong>：把 [l,r]+c 变成 b[l]+=c, b[r+1]-=c，只需 O(1)。</p>
+            <p>2. <strong>前缀和是逆运算</strong>：差分的前缀和就是原数组。先做所有修改，最后一次前缀和还原。</p>
+            <p>3. <strong>类比</strong>：想象在 b[l] 处"注入"c 的水量，在 b[r+1] 处"抽取"c 的水量。前缀和就像水流累积——l 到 r 之间水位上升了 c，其余不变。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -11291,6 +12382,53 @@ cur = <span class="number">0</span>
         <div class="hint">
             <strong>解题思路：</strong><p>二维差分：在 (x1,y1)+c, (x2+1,y1)-c, (x1,y2+1)-c, (x2+1,y2+1)+c。操作完后求二维前缀和。</p>
 
+            <h4>二维差分四角操作——以样例为例</h4>
+            <p>对子矩阵 (x1,y1)-(x2,y2) 整体加 c，只需在差分矩阵 b 的四个角操作：</p>
+            <pre>
+b[x1][y1]     += c    ← 效果从这里开始
+b[x2+1][y1]   -= c    ← 到这里结束（行方向）
+b[x1][y2+1]   -= c    ← 到这里结束（列方向）
+b[x2+1][y2+1] += c    ← 修补多减的部分
+            </pre>
+
+            <p><strong>容斥原理图解</strong>：</p>
+            <pre>
++------+------+
+| +c   | -c   |
+| (x1,y1)    |
++------+------+
+| -c   | +c   |
+|      |(x2+1,|
+|      | y2+1)|
++------+------+
+
+对整个矩阵做二维前缀和后，
+只有 [x1..x2][y1..y2] 范围内每个位置都累积了 +c。
+            </pre>
+
+            <p><strong>样例追踪</strong>：原始矩阵 3x4，两个操作后还原</p>
+            <pre>
+原始矩阵:
+  1  2  3  4
+  5  6  7  8
+  9 10 11 12
+
+操作1: (1,1)-(2,2) + 1
+  b[1][1]+=1, b[3][1]-=1, b[1][3]-=1, b[3][3]+=1
+
+操作2: (2,2)-(3,3) + 2
+  b[2][2]+=2, b[4][2]-=2, b[2][4]-=2, b[4][4]+=2
+
+对 b 做二维前缀和后叠加到原矩阵，最终:
+  2  3  3  4
+  6 10 10  8
+  9 12 14 12  ✓
+            </pre>
+
+            <h4>与一维差分的类比</h4>
+            <p>一维差分：区间 [l,r] 加 c → b[l]+=c, b[r+1]-= c（<strong>2个点</strong>）</p>
+            <p>二维差分：子矩阵加 c → 4个角加减（<strong>4个点</strong>）</p>
+            <p>维度越高，"角"越多，但核心思想不变：用端点的增减控制范围。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -11417,13 +12555,56 @@ b = [[<span class="number">0</span>] * (m + <span class="number">2</span>) <span
         </div>
 
         <div class="hint">
-            <strong>解题思路：</strong><p>离散化的核心步骤：</p>
-<p><strong>1. 收集坐标：</strong>把所有用到的坐标（加法操作的位置x、查询区间的端点l和r）全部收集到一个数组 alls 中。</p>
-<p><strong>2. 排序去重：</strong>对 alls 排序并去重，得到一个从小到大排列的"映射表"。例如 alls = [1, 3, 7]。</p>
-<p><strong>3. 建立映射：</strong>用二分查找（或哈希表）将原始坐标映射到连续下标：1→1, 3→2, 7→3。这样原来稀疏的坐标就被"压缩"到了紧凑的数组下标上。</p>
-<p><strong>4. 前缀和：</strong>在映射后的数组上做前缀和，就能 O(1) 回答区间查询。</p>
-<p>离散化的本质：坐标值可能很大（如10^9），但实际用到的坐标只有少数几个。把这些稀疏坐标映射到连续小下标，既节省空间，又能用前缀和等技巧高效处理。</p>
+            <strong>解题思路：</strong><p>离散化：排序去重后映射到连续下标。用前缀和回答区间查询。</p>
 
+            <h4>离散化过程追踪——以样例为例</h4>
+            <p><strong>输入</strong>：3个加法操作 + 3个查询</p>
+            <pre>
+加法: (1,+2), (3,+6), (7,+5)
+查询: [1,3], [4,6], [7,8]
+            </pre>
+
+            <p><strong>第一步：收集所有涉及的坐标</strong></p>
+            <pre>
+加法涉及: 1, 3, 7
+查询涉及: 1, 3, 4, 6, 7, 8
+全部坐标: [1, 3, 7, 1, 3, 4, 6, 7, 8]
+            </pre>
+
+            <p><strong>第二步：排序去重</strong></p>
+            <pre>
+排序: [1, 1, 3, 3, 4, 6, 7, 7, 8]
+去重: [1, 3, 4, 6, 7, 8]
+
+映射表:
+  1 → 下标1    3 → 下标2    4 → 下标3
+  6 → 下标4    7 → 下标5    8 → 下标6
+            </pre>
+
+            <p><strong>第三步：在映射后的小数组上操作</strong></p>
+            <pre>
+原数组大小: 无限大（无法开数组）
+映射后大小: 6（可以开数组！）
+
+加法操作:
+  (1,+2) → a[1] += 2
+  (3,+6) → a[2] += 6
+  (7,+5) → a[5] += 5
+
+a = [_, 2, 6, 0, 0, 5, 0]
+            </pre>
+
+            <p><strong>第四步：前缀和 + 查询</strong></p>
+            <pre>
+s = [_, 2, 8, 8, 8, 13, 13]
+
+查询 [1,3]: s[2] - s[0] = 8 - 0 = 8   ✓
+查询 [4,6]: s[4] - s[2] = 8 - 8 = 0   ✓
+查询 [7,8]: s[6] - s[4] = 13 - 8 = 5  ✓
+            </pre>
+
+            <h4>离散化的本质</h4>
+            <p>坐标范围可能到 10^9，但实际涉及的坐标只有 O(n+m) 个。离散化把"稀疏的大坐标"压缩成"连续的小下标"，从无法开数组变成轻松开数组，同时保持相对顺序不变。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -11998,6 +13179,46 @@ D 2
         <div class="hint">
             <strong>解题思路：</strong><p>数组模拟链表：head, val[], ne[]。插入：新节点的ne指向原next，前驱的ne指向新节点。</p>
 
+            <h4>链表操作追踪——以样例为例</h4>
+            <p>用数组模拟链表：<code>e[i]</code> 存值，<code>ne[i]</code> 存下一个节点的下标，<code>head</code> 指向链表头部。</p>
+
+            <p><strong>逐步执行样例中的操作</strong>：</p>
+            <pre>
+初始: head = -1（空链表）, idx = 0
+
+操作1: H 9 → 头部插入 9
+  e[0]=9, ne[0]=head=-1, head=0, idx=1
+  链表: head→[9]→∅
+
+操作2: I 1 1 → 在第1个插入的元素(下标0)后面插入 1
+  e[1]=1, ne[1]=ne[0]=-1, ne[0]=1, idx=2
+  链表: head→[9]→[1]→∅
+
+操作3: D 1 → 删除第1个插入的元素(下标0)前面的元素
+  k=1, 实际操作: remove(k-1=0) → ne[0]=ne[ne[0]]=ne[1]=-1
+  实际上是删除下标0后面的元素(下标1)
+  链表: head→[9]→∅
+
+操作4: H 6 → 头部插入 6
+  e[2]=6, ne[2]=head=0, head=2, idx=3
+  链表: head→[6]→[9]→∅
+            </pre>
+
+            <h4>数组模拟链表的三大操作</h4>
+            <pre>
+头插 (add_to_head):
+  e[idx]=x, ne[idx]=head, head=idx, idx++
+  → 新节点指向原头部，头部更新为新节点
+
+中间插入 (add(k,x)):
+  e[idx]=x, ne[idx]=ne[k], ne[k]=idx, idx++
+  → 新节点指向 k 的后继，k 指向新节点
+  → 顺序很重要！必须先设置 ne[idx]，再设置 ne[k]
+
+删除 (remove(k)):
+  ne[k] = ne[ne[k]]
+  → k 跳过它的后继，直接指向后继的后继
+            </pre>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -12172,6 +13393,32 @@ query
         <div class="hint">
             <strong>解题思路：</strong><p>数组模拟栈：tt指向栈顶。push: st[++tt]=x。pop: tt--。query: st[tt]。</p>
 
+            <h4>栈操作追踪——以样例为例</h4>
+            <p>栈的口诀：<strong>后进先出</strong>（LIFO）。只能从顶部操作。</p>
+            <pre>
+tt = -1（栈顶指针，-1表示空栈）
+
+操作1: push 5  → tt=0, st[0]=5         栈: [5]↑tt
+操作2: query   → 输出 st[tt]=st[0]=5    输出: 5
+操作3: push 6  → tt=1, st[1]=6         栈: [5,6]↑tt
+操作4: pop     → tt=0                  栈: [5]↑tt
+操作5: query   → 输出 st[0]=5          输出: 5
+操作6: pop     → tt=-1                 栈: 空
+操作7: push 3  → tt=0, st[0]=3         栈: [3]↑tt
+操作8: query   → 输出 st[0]=3          输出: 3
+操作9: push 4  → tt=1, st[1]=4         栈: [3,4]↑tt
+操作10: query  → 输出 st[1]=4          输出: 4
+
+最终输出: 5 5 3 4
+            </pre>
+
+            <h4>数组模拟栈的三个核心操作</h4>
+            <pre>
+push x:  stk[++tt] = x;   // 先移动指针，再赋值
+pop:     tt--;             // 移动指针即可，不需要清零
+query:   stk[tt]           // 读栈顶
+empty:   tt > 0 ? 非空 : 空
+            </pre>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -12276,6 +13523,40 @@ pop
         <div class="hint">
             <strong>解题思路：</strong><p>数组模拟队列：hh队头，tt队尾。push: q[++tt]=x。pop: hh++。query: q[hh]。</p>
 
+            <h4>队列操作追踪——以样例为例</h4>
+            <p>队列的口诀：<strong>先进先出</strong>（FIFO）。从队尾进，从队头出。</p>
+            <pre>
+hh = 0, tt = -1（hh=队头, tt=队尾, hh>tt 为空）
+
+操作1: push 5  → tt=0, q[0]=5          队列: [5] hh→,tt→
+操作2: query   → 输出 q[hh]=q[0]=5     输出: 5
+操作3: push 3  → tt=1, q[1]=3          队列: [5,3] hh→, →tt
+操作4: pop     → hh=1                  队列: [3] hh=tt→
+操作5: query   → 输出 q[hh]=q[1]=3     输出: 3
+操作6: push 7  → tt=2, q[2]=7          队列: [3,7] hh→, →tt
+操作7: push 8  → tt=3, q[3]=8          队列: [3,7,8] hh→, ...→tt
+操作8: pop     → hh=2                  队列: [7,8] hh→, →tt
+操作9: query   → 输出 q[hh]=q[2]=7     输出: 7
+操作10: pop    → hh=3                  队列: [8] hh=tt→
+
+最终输出: 5 3 7 7
+            </pre>
+
+            <h4>队列 vs 栈的对比</h4>
+            <pre>
+        push 5, push 3, pop, query
+
+栈(LIFO): pop取3，query输出3  → 最后进的先出
+队列(FIFO): pop取5，query输出3  → 最先进的先出
+            </pre>
+
+            <h4>数组模拟队列的三个核心操作</h4>
+            <pre>
+push x:  q[++tt] = x;    // 队尾加入
+pop:     hh++;           // 队头移出
+query:   q[hh]           // 读队头
+empty:   hh <= tt ? 非空 : 空
+            </pre>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>

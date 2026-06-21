@@ -72,6 +72,51 @@
         <div class="hint">
             <strong>解题思路：</strong><p>位运算：while(n > 0) { count += n & 1; n >>= 1; }。或用 n & (n-1) 消去最低位的1，计数更快。</p>
 
+            <h4>二进制表示与位计数示例</h4>
+            <p>以数字 5 为例，逐步展示二进制表示和计数过程：</p>
+            <pre>
+十进制 → 二进制对照：
+  1 = 0001  →  1个1
+  2 = 0010  →  1个1
+  3 = 0011  →  2个1
+  4 = 0100  →  1个1
+  5 = 0101  →  2个1
+            </pre>
+
+            <h4>方法一：逐位检查法（n & 1）</h4>
+            <p>以 x = 5（二进制 0101）为例，追踪 while 循环：</p>
+            <pre>
+初始: x = 5 (0101), count = 0
+
+第1轮: x & 1 = 0101 & 0001 = 1  → count = 1
+       x >>= 1  → x = 2 (0010)
+
+第2轮: x & 1 = 0010 & 0001 = 0  → count = 1
+       x >>= 1  → x = 1 (0001)
+
+第3轮: x & 1 = 0001 & 0001 = 1  → count = 2
+       x >>= 1  → x = 0 (0000)
+
+x = 0, 循环结束。结果: 5 的二进制有 2 个 1。
+            </pre>
+
+            <h4>方法二：lowbit 消去法（更高效）</h4>
+            <p>lowbit(x) = x & (-x)，得到最低位的 1。以 x = 5（0101）为例：</p>
+            <pre>
+初始: x = 5 (0101), count = 0
+
+第1轮: lowbit(5) = 0101 & 1011 = 0001 = 1
+       x = 5 - 1 = 4 (0100), count = 1
+
+第2轮: lowbit(4) = 0100 & 1100 = 0100 = 4
+       x = 4 - 4 = 0 (0000), count = 2
+
+x = 0, 循环结束。结果: 2 个 1。
+（方法二只需 2 轮，方法一需要 3 轮——1的个数就是轮数）
+            </pre>
+
+            <h4>为什么 lowbit 有效？</h4>
+            <p>x & (-x) 在补码表示下，-x = ~x + 1。x 和 -x 做 AND，恰好保留最低位的 1，其余全变 0。每次减去 lowbit，就消掉一个 1，所以循环次数 = 1 的个数。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -152,6 +197,45 @@ sys.stdout.write(<span class="string">' '</span>.join(out) + <span class="string
         <div class="hint">
             <strong>解题思路：</strong><p>用数组存每一位（倒序），从低位到高位逐位相加，处理进位。最后倒序输出。</p>
 
+            <h4>竖式加法模拟——以 987 + 456 为例</h4>
+            <p><strong>第一步：倒序存储</strong>（低位在前，方便进位）</p>
+            <pre>
+输入: a = "987", b = "456"
+倒序存储:
+  A = [7, 8, 9]   （A[0]=7 是个位）
+  B = [6, 5, 4]   （B[0]=6 是个位）
+            </pre>
+
+            <p><strong>第二步：逐位相加</strong></p>
+            <pre>
+进位 t = 0
+
+i=0: t = A[0] + B[0] + t = 7 + 6 + 0 = 13
+     C.push_back(13 % 10 = 3)   → C = [3]
+     t = 13 / 10 = 1             （进位1）
+
+i=1: t = A[1] + B[1] + t = 8 + 5 + 1 = 14
+     C.push_back(14 % 10 = 4)   → C = [3, 4]
+     t = 14 / 10 = 1             （进位1）
+
+i=2: t = A[2] + B[2] + t = 9 + 4 + 1 = 14
+     C.push_back(14 % 10 = 4)   → C = [3, 4, 4]
+     t = 14 / 10 = 1             （进位1）
+
+循环结束，t = 1 ≠ 0 → C.push_back(1) → C = [3, 4, 4, 1]
+            </pre>
+
+            <p><strong>第三步：倒序输出</strong></p>
+            <pre>
+C = [3, 4, 4, 1]，倒序输出 → 1443
+
+验证: 987 + 456 = 1443  ✓
+            </pre>
+
+            <h4>核心要点</h4>
+            <p>1. <strong>倒序存储</strong>：让 A[0] 对应个位，进位自然向右（高下标）传播。</p>
+            <p>2. <strong>进位变量 t</strong>：每一步 t = 当前位之和，C[i] = t%10（留余），t = t/10（进位）。</p>
+            <p>3. <strong>最后检查 t</strong>：如果最高位还有进位，别忘了多加一位。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -254,6 +338,55 @@ t = <span class="number">0</span>  <span class="comment"># 进位</span>
         <div class="hint">
             <strong>解题思路：</strong><p>先判断大小，大减小，从低位逐位减，处理借位。如果被减数小则结果加负号。</p>
 
+            <h4>竖式减法模拟——以 9876 - 4589 为例</h4>
+            <p><strong>第一步：比较大小</strong>（位数相同时从高位逐位比）</p>
+            <pre>
+A = 9876, B = 4589
+位数相同(4位)，从高位比: 9 > 4 → A > B，正常计算 A - B
+            </pre>
+
+            <p><strong>第二步：倒序存储</strong></p>
+            <pre>
+A = [6, 7, 8, 9]   （A[0]=6 是个位）
+B = [9, 8, 5, 4]   （B[0]=9 是个位）
+            </pre>
+
+            <p><strong>第三步：逐位相减（处理借位）</strong></p>
+            <pre>
+借位 t = 0
+
+i=0: t = A[0] - t = 6 - 0 = 6
+     t = t - B[0] = 6 - 9 = -3   （不够减！）
+     C.push_back((-3 + 10) % 10 = 7)  → C = [7]
+     t = 1  （借位1）
+
+i=1: t = A[1] - t = 7 - 1 = 6
+     t = t - B[1] = 6 - 8 = -2   （不够减！）
+     C.push_back((-2 + 10) % 10 = 8)  → C = [7, 8]
+     t = 1  （借位1）
+
+i=2: t = A[2] - t = 8 - 1 = 7
+     t = t - B[2] = 7 - 5 = 2    （够减）
+     C.push_back((2 + 10) % 10 = 2)   → C = [7, 8, 2]
+     t = 0  （不借位）
+
+i=3: t = A[3] - t = 9 - 0 = 9
+     t = t - B[3] = 9 - 4 = 5    （够减）
+     C.push_back((5 + 10) % 10 = 5)   → C = [7, 8, 2, 5]
+     t = 0  （不借位）
+            </pre>
+
+            <p><strong>第四步：去前导零 + 倒序输出</strong></p>
+            <pre>
+C = [7, 8, 2, 5]，倒序输出 → 5287
+
+验证: 9876 - 4589 = 5287  ✓
+            </pre>
+
+            <h4>核心要点</h4>
+            <p>1. <strong>借位技巧</strong>：用 <code>(t + 10) % 10</code> 统一处理正负——t>=0 时结果就是 t，t<0 时自动加 10。</p>
+            <p>2. <strong>去前导零</strong>：减法结果可能有前导零（如 1000-999=0001），用 while 循环去掉。</p>
+            <p>3. <strong>负数处理</strong>：如果 A < B，先算 B - A，再在前面加负号。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -402,6 +535,39 @@ B = [<span class="keyword">int</span>(ch) <span class="keyword">for</span> ch <s
         <div class="hint">
             <strong>解题思路：</strong><p>高精度×低精度：大数每一位乘以小数，处理进位。注意结果可能有前导零需要去掉。</p>
 
+            <h4>高精度乘法模拟——以 9876 × 9 为例</h4>
+            <p>核心思想：把大数的每一位乘以小数，加上前一位的进位，本位留余，进位带到下一位。</p>
+
+            <p><strong>倒序存储</strong>：A = [6, 7, 8, 9]，b = 9</p>
+            <pre>
+进位 t = 0
+
+i=0: t = A[0]*b + t = 6*9 + 0 = 54
+     C.push_back(54 % 10 = 4)   → C = [4]
+     t = 54 / 10 = 5
+
+i=1: t = A[1]*b + t = 7*9 + 5 = 68
+     C.push_back(68 % 10 = 8)   → C = [4, 8]
+     t = 68 / 10 = 6
+
+i=2: t = A[2]*b + t = 8*9 + 6 = 78
+     C.push_back(78 % 10 = 8)   → C = [4, 8, 8]
+     t = 78 / 10 = 7
+
+i=3: t = A[3]*b + t = 9*9 + 7 = 88
+     C.push_back(88 % 10 = 8)   → C = [4, 8, 8, 8]
+     t = 88 / 10 = 8
+
+循环结束，t = 8 > 0 → C.push_back(8) → C = [4, 8, 8, 8, 8]
+            </pre>
+
+            <p><strong>倒序输出</strong>：C = [4, 8, 8, 8, 8] → 88884</p>
+            <pre>
+验证: 9876 × 9 = 88884  ✓
+            </pre>
+
+            <h4>与加法的区别</h4>
+            <p>乘法中 t = A[i]*b + t，一个位乘以小数可能产生很大的进位（最大 9*9999+...），所以循环条件用 <code>i < A.size() || t</code>——当 A 遍历完但 t 还有剩余时，继续处理进位。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -505,6 +671,48 @@ t = <span class="number">0</span>  <span class="comment"># 进位</span>
         <div class="hint">
             <strong>解题思路：</strong><p>高精度÷低精度：从高位到低位，当前余数×10+当前位，除以B得商的一位，更新余数。</p>
 
+            <h4>高精度除法模拟——以 9876 ÷ 23 为例</h4>
+            <p>与加减乘不同，除法<strong>从高位到低位</strong>处理（和手算竖式除法一样）。</p>
+
+            <p><strong>倒序存储</strong>（注意：遍历时从 A.size()-1 到 0，即从最高位开始）：</p>
+            <pre>
+a = "9876" → A = [6, 7, 8, 9]  （A[3]=9 是最高位）
+b = 23
+            </pre>
+
+            <p><strong>逐位处理</strong>：</p>
+            <pre>
+余数 r = 0
+
+i=3 (最高位9): r = 0*10 + 9 = 9
+     9 ÷ 23 = 0 余 9
+     C.push_back(0)  → C = [0], r = 9
+
+i=2 (次高位8): r = 9*10 + 8 = 98
+     98 ÷ 23 = 4 余 6
+     C.push_back(4)  → C = [0, 4], r = 6
+
+i=1 (次低位7): r = 6*10 + 7 = 67
+     67 ÷ 23 = 2 余 21
+     C.push_back(2)  → C = [0, 4, 2], r = 21
+
+i=0 (最低位6): r = 21*10 + 6 = 216
+     216 ÷ 23 = 9 余 9
+     C.push_back(9)  → C = [0, 4, 2, 9], r = 9
+            </pre>
+
+            <p><strong>去前导零 + 输出</strong>：</p>
+            <pre>
+C = [0, 4, 2, 9]，去掉高位的 0 → C = [4, 2, 9]
+倒序输出 → 429（商），余数 r = 9
+
+验证: 23 × 429 + 9 = 9867 + 9 = 9876  ✓
+            </pre>
+
+            <h4>核心要点</h4>
+            <p>1. <strong>从高位开始</strong>：和竖式除法方向一致，r = r*10 + A[i] 模拟"把下一位拉下来"。</p>
+            <p>2. <strong>商的存储顺序</strong>：因为从高位往低位走，C[0] 是商的最高位，最后不需要反转（但代码中为了统一存储风格做了 reverse）。</p>
+            <p>3. <strong>去前导零</strong>：商的高位可能是 0（当被除数高位 < 除数时）。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -613,6 +821,19 @@ r = <span class="number">0</span>  <span class="comment"># 余数</span>
         <div class="hint">
             <strong>解题思路：</strong><p>双指针：i 从 A 的头，j 从 B 的尾。A[i]+B[j] < x 则 i++，> x 则 j--。O(n+m)。</p>
 
+            <h4>双指针移动追踪——以样例为例</h4>
+            <p>目标：在 A = [1, 2, 4, 7] 和 B = [3, 4, 6, 8, 9] 中找 A[i]+B[j]=6 的数对。</p>
+            <p><strong>关键观察</strong>：A 升序，B 升序。i 从左走（变大），j 从右走（变小），和单调变化：</p>
+            <pre>
+i=0, j=4: A[0]+B[4] = 1+9 = 10 > 6  → 和太大，j--
+i=0, j=3: A[0]+B[3] = 1+8 = 9  > 6  → 和太大，j--
+i=0, j=2: A[0]+B[2] = 1+6 = 7  > 6  → 和太大，j--
+i=0, j=1: A[0]+B[1] = 1+4 = 5  < 6  → 和太小，i++
+i=1, j=1: A[1]+B[1] = 2+4 = 6  = 6  → 找到！输出 (1, 1)
+            </pre>
+
+            <h4>为什么不会漏解？</h4>
+            <p>当 A[i]+B[j] > x 时，因为 A 是升序的，A[i+1]+B[j] 只会更大，所以 j 必须减小才有机会等于 x。同理，和太小时 i 必须增大。每一步要么 i++ 要么 j--，两个指针各走一遍就结束，总复杂度 O(n+m)。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -704,6 +925,25 @@ Yes
         <div class="hint">
             <strong>解题思路：</strong><p>双指针：i 遍历 a，j 遍历 b。a[i] == b[j] 时 i++。i 到头说明是子序列。</p>
 
+            <h4>双指针判断子序列——以样例为例</h4>
+            <p>a = [1, 3, 5]（要找的子序列），b = [1, 2, 3, 4, 5]（主序列）</p>
+            <p><strong>策略</strong>：指针 p 指向 a，指针 i 遍历 b。当 a[p] == b[i] 时，p 前进（说明 a 的当前位已匹配）。</p>
+            <pre>
+p = 0（指向 a[0]=1）
+
+i=0: b[0]=1, a[p]=1 → 匹配！p = 1
+i=1: b[1]=2, a[p]=3 → 不匹配，跳过
+i=2: b[2]=3, a[p]=3 → 匹配！p = 2
+i=3: b[3]=4, a[p]=5 → 不匹配，跳过
+i=4: b[4]=5, a[p]=5 → 匹配！p = 3
+
+p = 3 = len(a) → a 的所有元素都匹配了 → 输出 "Yes"
+            </pre>
+
+            <h4>为什么这是正确的？</h4>
+            <p>1. p 只会前进不会后退，所以匹配到的 a 的元素在 b 中保持原有次序。</p>
+            <p>2. i 只遍历 b 一遍，时间复杂度 O(m)。</p>
+            <p>3. 如果 p 最终等于 a 的长度，说明 a 的每个元素都在 b 中找到了匹配位置。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -789,6 +1029,26 @@ i = <span class="number">0</span>
         <div class="hint">
             <strong>解题思路：</strong><p>滑动窗口：右指针扩展，用哈希表判断是否重复，重复则左指针收缩。O(n)。</p>
 
+            <h4>滑动窗口追踪——以 [1, 2, 2, 3, 5] 为例</h4>
+            <p>找最长的不含重复数字的连续子序列。用哈希表 cnt 记录窗口内每个数出现的次数。</p>
+            <pre>
+l = 0（左指针），res = 0
+
+i=0, a[0]=1: cnt{1:1}，无重复，窗口 [0,0]，res = max(0,1) = 1
+i=1, a[1]=2: cnt{1:1,2:1}，无重复，窗口 [0,1]，res = max(1,2) = 2
+i=2, a[2]=2: cnt{1:1,2:2}，2重复了！收缩左指针：
+     cnt[a[0]]=cnt[1]--, l=1 → cnt{1:0,2:2}，2还重复！
+     cnt[a[1]]=cnt[2]--, l=2 → cnt{1:0,2:1}，不重复了
+     窗口 [2,2]，res = max(2,1) = 2
+i=3, a[3]=3: cnt{2:1,3:1}，无重复，窗口 [2,3]，res = max(2,2) = 2
+i=4, a[4]=5: cnt{2:1,3:1,5:1}，无重复，窗口 [2,4]，res = max(2,3) = 3
+
+最终结果: 3（对应子序列 [2, 3, 5]）
+            </pre>
+
+            <h4>为什么是 O(n)？</h4>
+            <p>右指针 i 从 0 走到 n-1，左指针 l 只会前进不会后退。每个元素最多被加入窗口一次、移出窗口一次，所以总共 O(n)。</p>
+            <p><strong>滑动窗口口诀</strong>：右指针扩展，左指针收缩——像一扇窗户在数组上滑动，永远维护窗口内的"合法性"（无重复）。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>

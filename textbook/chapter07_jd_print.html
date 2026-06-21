@@ -72,6 +72,35 @@
             <strong>解题思路：</strong><p>函数内用循环累乘，或递归实现。注意0! = 1。</p>
 
         </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>函数调用追踪（输入 n=3）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+Step 1: main() 执行，读入 n = 3
+        ┌──────────────────────────────────┐
+        │  main() 栈帧                     │
+        │  n = 3                           │
+        │  待执行: cout << fact(3)          │
+        └──────────────────────────────────┘
+
+Step 2: 调用 fact(3)，参数 n=3 传递给函数
+        ┌──────────────────────────────────┐
+        │  fact() 栈帧                     │
+        │  n = 3      ← 参数传入           │
+        │  res = 1    ← 初始化             │
+        └──────────────────────────────────┘
+
+Step 3: 函数内循环执行过程
+        res = 1
+        i=1: res = res × 1 = 1 × 1 = 1
+        i=2: res = res × 2 = 1 × 2 = 2
+        i=3: res = res × 3 = 2 × 3 = 6
+        循环结束，return 6
+
+Step 4: 返回值 6 传回 main()
+        main() 收到 fact(3) 的返回值 6
+        输出: 6</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>函数调用时，实参 n=3 被<strong>复制</strong>到形参 n 中。函数内部的计算不影响 main() 中的变量。返回值通过 return 语句传回调用者。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(n) — 单层循环遍历<br>
@@ -151,10 +180,37 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
             <strong>解题思路：</strong><p>函数内用 if 比较或三元表达式。</p>
 
         </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>函数调用追踪（输入 x=3, y=5）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+Step 1: main() 读入 x=3, y=5
+        ┌──────────────────────────────────┐
+        │  main() 栈帧                     │
+        │  x = 3,  y = 5                   │
+        └──────────────────────────────────┘
+
+Step 2: 调用 max(3, 5)，参数传递
+        实参 x=3 → 形参 x=3（复制）
+        实参 y=5 → 形参 y=5（复制）
+        ┌──────────────────────────────────┐
+        │  max() 栈帧                      │
+        │  x = 3  ← 从 main 复制而来       │
+        │  y = 5  ← 从 main 复制而来       │
+        └──────────────────────────────────┘
+
+Step 3: 函数内执行 if 判断
+        x > y  →  3 > 5  →  false
+        不执行 return x，继续到 return y
+        return 5  ← 返回较大的那个
+
+Step 4: 返回值 5 传回 main()
+        cout << max(3, 5)  →  输出: 5</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>函数参数是<strong>值传递</strong>——实参的值被复制到形参中。函数内部比较的是形参 x 和 y，不影响 main() 中的原始变量。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
-时间复杂度：O(n) — 线性遍历处理<br>
-空间复杂度：O(n)
+时间复杂度：O(1) — 一次比较<br>
+空间复杂度：O(1)
 </div>
         <div class="code-section">
             <details><summary>参考代码</summary>
@@ -223,10 +279,33 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
             <strong>解题思路：</strong><p>if x < 0: return -x, else: return x。</p>
 
         </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>函数调用追踪（输入 x=-5）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+Step 1: main() 读入 x = -5
+        调用 abs(-5)，参数传递：形参 x = -5
+
+Step 2: 函数内执行 if 判断
+        x > 0  →  -5 > 0  →  false
+        不走 return x 分支
+
+Step 3: 执行 return -x
+        -x = -(-5) = 5
+        return 5
+
+Step 4: main() 输出 5
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+对比：如果输入 x=7 呢？
+        x > 0  →  7 > 0  →  true
+        直接 return x = 7
+        输出: 7</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>函数内部通过 if-else 实现<strong>分支逻辑</strong>。同一个函数，传入不同参数，走不同的执行路径，返回不同的结果。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
-时间复杂度：O(n) — 线性遍历处理<br>
-空间复杂度：O(n)
+时间复杂度：O(1) — 一次判断<br>
+空间复杂度：O(1)
 </div>
         <div class="code-section">
             <details><summary>参考代码</summary>
@@ -292,10 +371,45 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
             <strong>解题思路：</strong><p>C++用引用参数 <code>void swap(int &x, int &y)</code>。Python中 a, b = b, a。</p>
 
         </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>引用传递 vs 值传递追踪（输入 x=6, y=26）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+❌ 错误写法：值传递
+─────────────────────────────────
+void swap(int x, int y) {   // 值传递：x, y 是副本
+    int t = x;   // t = 6
+    x = y;       // x = 26（只改了副本）
+    y = t;       // y = 6（只改了副本）
+}                // 函数结束，副本销毁，main 中 x=6, y=26 不变！
+
+✅ 正确写法：引用传递
+─────────────────────────────────
+void swap(int &x, int &y) {  // 引用：x, y 就是原始变量的别名
+    int t = x;   // t = 6
+    x = y;       // x = 26（直接改原始变量）
+    y = t;       // y = 6（直接改原始变量）
+}
+
+Step 1: main() 读入 x=6, y=26
+        main 内存:  x=6, y=26
+
+Step 2: 调用 swap(x, y)，引用传递
+        &x 就是 main 中 x 的别名（同一块内存）
+        &y 就是 main 中 y 的别名（同一块内存）
+
+Step 3: 函数内三步交换
+        t = x  →  t = 6
+        x = y  →  x = 26  （main 中 x 也变成 26）
+        y = t  →  y = 6   （main 中 y 也变成 6）
+
+Step 4: 函数返回，main 中变量已被修改
+        输出: 26 6</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>C++中 <code>&</code> 表示引用——形参是实参的<strong>别名</strong>，指向同一块内存。函数内修改形参，实参也会改变。Python 的赋值本质上就是引用操作，<code>a, b = b, a</code> 直接交换了两个变量的绑定。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
-时间复杂度：O(n) — 线性遍历处理<br>
-空间复杂度：O(n)
+时间复杂度：O(1) — 三次赋值<br>
+空间复杂度：O(1)
 </div>
         <div class="code-section">
             <details><summary>参考代码</summary>
@@ -368,6 +482,37 @@ first, second = second, first  <span class="comment"># 交换</span>
         <div class="hint">
             <strong>解题思路：</strong><p>辗转相除法：gcd(a,b) = gcd(b, a%b)，当b==0时返回a。</p>
 
+        </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>辗转相除法追踪（输入 a=963, b=787）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+核心公式：gcd(a, b) = gcd(b, a % b)，当 b==0 时返回 a
+
+迭代过程：
+┌──────┬───────┬────────────────┬──────────────────┐
+│ 轮次 │  a    │  b             │  a % b           │
+├──────┼───────┼────────────────┼──────────────────┤
+│  1   │  963  │  787           │  963 % 787 = 176 │
+│  2   │  787  │  176           │  787 % 176 = 83  │
+│  3   │  176  │  83            │  176 % 83 = 10   │
+│  4   │  83   │  10            │  83 % 10 = 3     │
+│  5   │  10   │  3             │  10 % 3 = 1      │
+│  6   │  3    │  1             │  3 % 1 = 0       │
+│  7   │  1    │  0 ← 结束！    │                  │
+└──────┴───────┴────────────────┴──────────────────┘
+结果：gcd(963, 787) = 1
+
+再看一个例子：gcd(48, 18)
+┌──────┬──────┬──────┬──────────┐
+│ 轮次 │  a   │  b   │  a % b   │
+├──────┼──────┼──────┼──────────┤
+│  1   │  48  │  18  │  48%18=12│
+│  2   │  18  │  12  │  18%12=6 │
+│  3   │  12  │  6   │  12%6=0  │
+│  4   │  6   │  0   │  结束！  │
+└──────┴──────┴──────┴──────────┘
+结果：gcd(48, 18) = 6</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>辗转相除法（欧几里得算法）的数学原理：两个数的最大公约数等于"较大数除以较小数的余数"与"较小数"的最大公约数。每一步 b 都在变小，最终 b=0 时 a 就是答案。时间复杂度 O(log(min(a,b)))，非常高效。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -866,6 +1011,55 @@ a[l:r+<span class="number">1</span>] = <span class="keyword">sorted</span>(a[l:r
             <strong>解题思路：</strong><p>递归三要素：终止条件(n==1返回1)、递推关系(n*fact(n-1))、缩小规模。</p>
 
         </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>递归调用追踪（输入 n=5）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+递归展开过程（先深入，再返回）：
+═══════════════════════════════════════
+
+调用方向 ↓（深入）          返回方向 ↑（回溯）
+─────────────────          ─────────────────
+fact(5)                     → 5 × 24 = 120
+  └── fact(4)               → 4 × 6 = 24
+        └── fact(3)         → 3 × 2 = 6
+              └── fact(2)   → 2 × 1 = 2
+                    └── fact(1) → 1（终止条件！）
+
+递归树可视化：
+                    fact(5)
+                   /        \
+             5 ×            fact(4)
+                           /        \
+                     4 ×            fact(3)
+                                   /        \
+                             3 ×            fact(2)
+                                           /        \
+                                     2 ×            fact(1)
+                                                   = 1（终止）
+
+栈帧变化（后进先出）：
+┌─────────────┐
+│  fact(1)=1  │  ← 最先进入，最先返回（n==1 直接返回 1）
+├─────────────┤
+│  fact(2)    │  ← 等待 fact(1) 的结果
+├─────────────┤
+│  fact(3)    │  ← 等待 fact(2) 的结果
+├─────────────┤
+│  fact(4)    │  ← 等待 fact(3) 的结果
+├─────────────┤
+│  fact(5)    │  ← 最后进入，最后返回
+└─────────────┘
+     调用栈（向下增长）
+
+返回过程：
+fact(1) 返回 1
+fact(2) = 2 × 1 = 2，返回 2
+fact(3) = 3 × 2 = 6，返回 6
+fact(4) = 4 × 6 = 24，返回 24
+fact(5) = 5 × 24 = 120，返回 120
+输出: 120</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>递归本质是<strong>函数调用自己</strong>。每次调用都会在调用栈上压入一个新的栈帧。递归必须有<strong>终止条件</strong>（base case），否则会无限递归导致栈溢出。阶乘递归共调用 5 次，占用 5 层栈空间。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
 时间复杂度：O(n) — 递归n次，每次O(1)<br>
@@ -942,6 +1136,46 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
         <div class="hint">
             <strong>解题思路：</strong><p>递归：f(1)=1, f(2)=1, f(n)=f(n-1)+f(n-2)。注意效率问题。</p>
 
+        </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>递归树追踪（输入 n=5）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+f(5) 的递归展开树：
+═══════════════════════════════════════
+
+                        f(5)
+                       /    \
+                    f(4)     f(3)          ← 第1层
+                   /    \    /   \
+                f(3)   f(2) f(2) f(1)     ← 第2层
+               /   \
+            f(2)   f(1)                   ← 第3层
+
+统计每个值被计算的次数：
+┌────────┬──────────────┬───────────────┐
+│  函数  │  被调用次数  │  说明          │
+├────────┼──────────────┼───────────────┤
+│  f(1)  │  3 次        │  终止条件      │
+│  f(2)  │  3 次        │  终止条件      │
+│  f(3)  │  2 次        │  重复计算！    │
+│  f(4)  │  1 次        │               │
+│  f(5)  │  1 次        │  入口          │
+└────────┴──────────────┴───────────────┘
+总调用次数：10 次（很多是重复的！）
+
+为什么效率低？
+─────────────────────────────
+f(3) 被计算了 2 次，f(2) 被计算了 3 次。
+当 n 很大时，重复计算量呈指数增长。
+
+n=5  → 调用 10 次
+n=10 → 调用 177 次
+n=20 → 调用 21891 次
+n=30 → 调用 2692537 次  ← 超过200万次！
+
+时间复杂度：O(2^n) — 指数级！
+这就是为什么后面要学<strong>记忆化搜索</strong>（用缓存存储已计算的结果，避免重复计算）。</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>朴素递归斐波那契的递归树是<strong>指数级</strong>的，因为同一个子问题被反复计算。f(3) 被算了 2 次，f(2) 被算了 3 次。这就是"重叠子问题"——动态规划的核心动机。后续课程会教你如何用记忆化或迭代优化。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -1020,9 +1254,83 @@ n = <span class="keyword">int</span>(<span class="keyword">input</span>())
             <strong>解题思路：</strong><p>f(n) = f(n-1) + f(n-2)。最后一步跳1级或2级，两种情况之和。</p>
 
         </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>递归追踪与记忆化优化（输入 n=5）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+问题分析：从第 0 级走到第 n 级，每次跨 1 或 2 级
+═══════════════════════════════════════
+
+递推关系：f(k) = f(k+1) + f(k+2)
+  - 从 k 出发，跨 1 级到 k+1，剩余 f(k+1) 种
+  - 从 k 出发，跨 2 级到 k+2，剩余 f(k+2) 种
+
+手动枚举 n=5 的所有路径（从 0 到 5）：
+  路径1: 0→1→2→3→4→5（11111）
+  路径2: 0→1→2→3→5    （1112）
+  路径3: 0→1→2→4→5    （1121）
+  路径4: 0→1→3→4→5    （1211）
+  路径5: 0→1→3→5      （122）
+  路径6: 0→2→3→4→5    （2111）
+  路径7: 0→2→3→5      （212）
+  路径8: 0→2→4→5      （221）
+  共 8 种 ✓
+
+❌ 朴素递归（无记忆化）的重复计算：
+──────────────────────────────
+                        f(0)
+                       /    \
+                    f(1)     f(2)
+                   /    \    /   \
+                f(2)   f(3) f(3) f(4)     ← f(2)和f(3)重复！
+               /   \   / \
+            f(3)  f(4)...                ← 继续重复
+  每个值被反复计算，总调用次数指数增长
+
+✅ 记忆化搜索（用数组缓存已计算结果）：
+──────────────────────────────
+  cache = {-1: 未计算}
+
+  f(5) → 调用 f(6), f(7) → 都返回 1（终止）
+         cache[5] = 2     ← 存入缓存
+
+  f(4) → 调用 f(5), f(6)
+         f(5): cache 命中！直接返回 2（无需递归）✓
+         f(6): 返回 1
+         cache[4] = 3     ← 存入缓存
+
+  f(3) → 调用 f(4), f(5)
+         f(4): cache 命中！直接返回 3 ✓
+         f(5): cache 命中！直接返回 2 ✓
+         cache[3] = 5
+
+  f(2) → f(3): cache 命中！返回 5 ✓
+         f(4): cache 命中！返回 3 ✓
+         cache[2] = 8
+
+  ...每个值只计算一次！
+
+记忆化搜索代码（Python）：
+  cache = {}
+  def f(k):
+      if k == n: return 1
+      if k > n:  return 0
+      if k in cache: return cache[k]   # 命中缓存
+      cache[k] = f(k+1) + f(k+2)      # 计算并存入缓存
+      return cache[k]
+
+对比：
+┌─────────────────┬──────────┬───────────┐
+│      方法       │ 时间复杂度│ 调用次数  │
+├─────────────────┼──────────┼───────────┤
+│  朴素递归       │  O(2^n)  │  指数增长  │
+│  记忆化搜索     │  O(n)    │  每值1次   │
+│  迭代（循环）   │  O(n)    │  循环n次   │
+└─────────────────┴──────────┴───────────┘</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>记忆化搜索 = 递归 + 缓存。用一个数组或哈希表存储已计算的结果，下次遇到相同参数时直接查表返回，避免重复计算。这是<strong>动态规划</strong>思想的雏形——将指数级优化为线性级。</p>
+        </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
-时间复杂度：O(n) — 线性遍历处理<br>
+时间复杂度：O(n) — 朴素递归为 O(2^n)，记忆化优化后为 O(n)<br>
 空间复杂度：O(n)
 </div>
         <div class="code-section">
@@ -1196,6 +1504,69 @@ dfs(<span class="number">0</span>, <span class="number">0</span>)
         <div class="hint">
             <strong>解题思路：</strong><p>DFS+回溯：用used[]标记已用数字，path[]记录当前排列。</p>
 
+        </div>
+        <div style="background:#f0f4ff;border-left:4px solid #3f51b5;padding:16px;margin:15px 0;border-radius:0 4px 4px 0">
+        <strong>回溯树追踪（输入 n=3）：</strong>
+        <pre style="background:#263238;color:#aed581;padding:12px;border-radius:4px;font-size:0.88em;line-height:1.7;overflow-x:auto;white-space:pre">
+数据结构：path[3] 记录当前排列，used[4] 标记已用数字
+═══════════════════════════════════════
+
+回溯搜索树（n=3 时，共 3! = 6 个叶子）：
+
+                    dfs(0)                        ← 填第0位
+                 /     |     \
+             选1      选2      选3
+            /         |         \
+         dfs(1)     dfs(1)     dfs(1)             ← 填第1位
+         /   \      /   \      /   \
+       选2   选3  选1   选3  选1   选2
+       /       \  /       \  /       \
+     dfs(2)  dfs(2) dfs(2) dfs(2) dfs(2) dfs(2)  ← 填第2位
+       |       |      |      |      |      |
+     选3     选2    选3    选1    选2    选1
+       ↓       ↓      ↓      ↓      ↓      ↓
+    [1,2,3] [1,3,2] [2,1,3] [2,3,1] [3,1,2] [3,2,1]
+
+详细执行过程（追踪 path 和 used 的变化）：
+──────────────────────────────────────────────
+
+dfs(0): 位置0，尝试 i=1
+  path=[1,_,_]  used=[_,T,F,F]
+  → dfs(1): 位置1，尝试 i=2
+      path=[1,2,_]  used=[_,T,T,F]
+      → dfs(2): 位置2，尝试 i=3
+          path=[1,2,3]  used=[_,T,T,T]
+          u==n，输出 "1 2 3" ✓
+          return
+      回溯：used[2]=False, path=[1,_,_]
+      → 尝试 i=3
+      path=[1,3,_]  used=[_,T,F,T]
+      → dfs(2): 位置2，尝试 i=2
+          path=[1,3,2]  used=[_,T,T,T]
+          u==n，输出 "1 3 2" ✓
+          return
+      回溯：used[3]=False
+  回溯：used[1]=False
+
+dfs(0): 位置0，尝试 i=2
+  path=[2,_,_]  used=[_,F,T,F]
+  → dfs(1): 位置1，尝试 i=1
+      path=[2,1,_]  → dfs(2): 选3
+          输出 "2 1 3" ✓
+      → 尝试 i=3
+      path=[2,3,_]  → dfs(2): 选1
+          输出 "2 3 1" ✓
+
+dfs(0): 位置0，尝试 i=3
+  path=[3,_,_]  used=[_,F,F,T]
+  → 输出 "3 1 2" ✓ 和 "3 2 1" ✓
+
+"回溯"的含义：
+──────────────────────
+选了一个数字 → 递归 → 递归返回后 → 撤销选择（used[i]=False）
+这样才能尝试下一个数字。就像走迷宫：走一条路走到头，
+发现不通就退回来，换一条路继续走。</pre>
+        <p style="margin:8px 0;color:#555"><strong>关键概念：</strong>回溯 = 递归 + 撤销。在搜索树的每一层，我们尝试所有可能的选择，每个选择做两件事：(1) 做出选择（标记 used），递归下一层；(2) 递归返回后撤销选择（取消标记），这样才能尝试其他选项。n 个数字的全排列共 n! 个结果。</p>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>

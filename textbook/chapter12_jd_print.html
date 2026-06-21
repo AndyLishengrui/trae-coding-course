@@ -82,6 +82,46 @@ D 2
         <div class="hint">
             <strong>解题思路：</strong><p>数组模拟链表：head, val[], ne[]。插入：新节点的ne指向原next，前驱的ne指向新节点。</p>
 
+            <h4>链表操作追踪——以样例为例</h4>
+            <p>用数组模拟链表：<code>e[i]</code> 存值，<code>ne[i]</code> 存下一个节点的下标，<code>head</code> 指向链表头部。</p>
+
+            <p><strong>逐步执行样例中的操作</strong>：</p>
+            <pre>
+初始: head = -1（空链表）, idx = 0
+
+操作1: H 9 → 头部插入 9
+  e[0]=9, ne[0]=head=-1, head=0, idx=1
+  链表: head→[9]→∅
+
+操作2: I 1 1 → 在第1个插入的元素(下标0)后面插入 1
+  e[1]=1, ne[1]=ne[0]=-1, ne[0]=1, idx=2
+  链表: head→[9]→[1]→∅
+
+操作3: D 1 → 删除第1个插入的元素(下标0)前面的元素
+  k=1, 实际操作: remove(k-1=0) → ne[0]=ne[ne[0]]=ne[1]=-1
+  实际上是删除下标0后面的元素(下标1)
+  链表: head→[9]→∅
+
+操作4: H 6 → 头部插入 6
+  e[2]=6, ne[2]=head=0, head=2, idx=3
+  链表: head→[6]→[9]→∅
+            </pre>
+
+            <h4>数组模拟链表的三大操作</h4>
+            <pre>
+头插 (add_to_head):
+  e[idx]=x, ne[idx]=head, head=idx, idx++
+  → 新节点指向原头部，头部更新为新节点
+
+中间插入 (add(k,x)):
+  e[idx]=x, ne[idx]=ne[k], ne[k]=idx, idx++
+  → 新节点指向 k 的后继，k 指向新节点
+  → 顺序很重要！必须先设置 ne[idx]，再设置 ne[k]
+
+删除 (remove(k)):
+  ne[k] = ne[ne[k]]
+  → k 跳过它的后继，直接指向后继的后继
+            </pre>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -256,6 +296,32 @@ query
         <div class="hint">
             <strong>解题思路：</strong><p>数组模拟栈：tt指向栈顶。push: st[++tt]=x。pop: tt--。query: st[tt]。</p>
 
+            <h4>栈操作追踪——以样例为例</h4>
+            <p>栈的口诀：<strong>后进先出</strong>（LIFO）。只能从顶部操作。</p>
+            <pre>
+tt = -1（栈顶指针，-1表示空栈）
+
+操作1: push 5  → tt=0, st[0]=5         栈: [5]↑tt
+操作2: query   → 输出 st[tt]=st[0]=5    输出: 5
+操作3: push 6  → tt=1, st[1]=6         栈: [5,6]↑tt
+操作4: pop     → tt=0                  栈: [5]↑tt
+操作5: query   → 输出 st[0]=5          输出: 5
+操作6: pop     → tt=-1                 栈: 空
+操作7: push 3  → tt=0, st[0]=3         栈: [3]↑tt
+操作8: query   → 输出 st[0]=3          输出: 3
+操作9: push 4  → tt=1, st[1]=4         栈: [3,4]↑tt
+操作10: query  → 输出 st[1]=4          输出: 4
+
+最终输出: 5 5 3 4
+            </pre>
+
+            <h4>数组模拟栈的三个核心操作</h4>
+            <pre>
+push x:  stk[++tt] = x;   // 先移动指针，再赋值
+pop:     tt--;             // 移动指针即可，不需要清零
+query:   stk[tt]           // 读栈顶
+empty:   tt > 0 ? 非空 : 空
+            </pre>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
@@ -360,6 +426,40 @@ pop
         <div class="hint">
             <strong>解题思路：</strong><p>数组模拟队列：hh队头，tt队尾。push: q[++tt]=x。pop: hh++。query: q[hh]。</p>
 
+            <h4>队列操作追踪——以样例为例</h4>
+            <p>队列的口诀：<strong>先进先出</strong>（FIFO）。从队尾进，从队头出。</p>
+            <pre>
+hh = 0, tt = -1（hh=队头, tt=队尾, hh>tt 为空）
+
+操作1: push 5  → tt=0, q[0]=5          队列: [5] hh→,tt→
+操作2: query   → 输出 q[hh]=q[0]=5     输出: 5
+操作3: push 3  → tt=1, q[1]=3          队列: [5,3] hh→, →tt
+操作4: pop     → hh=1                  队列: [3] hh=tt→
+操作5: query   → 输出 q[hh]=q[1]=3     输出: 3
+操作6: push 7  → tt=2, q[2]=7          队列: [3,7] hh→, →tt
+操作7: push 8  → tt=3, q[3]=8          队列: [3,7,8] hh→, ...→tt
+操作8: pop     → hh=2                  队列: [7,8] hh→, →tt
+操作9: query   → 输出 q[hh]=q[2]=7     输出: 7
+操作10: pop    → hh=3                  队列: [8] hh=tt→
+
+最终输出: 5 3 7 7
+            </pre>
+
+            <h4>队列 vs 栈的对比</h4>
+            <pre>
+        push 5, push 3, pop, query
+
+栈(LIFO): pop取3，query输出3  → 最后进的先出
+队列(FIFO): pop取5，query输出3  → 最先进的先出
+            </pre>
+
+            <h4>数组模拟队列的三个核心操作</h4>
+            <pre>
+push x:  q[++tt] = x;    // 队尾加入
+pop:     hh++;           // 队头移出
+query:   q[hh]           // 读队头
+empty:   hh <= tt ? 非空 : 空
+            </pre>
         </div>
 <div style="background:#f0f8f0;border-left:4px solid #4caf50;padding:12px;margin:10px 0;border-radius:0 4px 4px 0">
 <strong>复杂度分析：</strong><br>
