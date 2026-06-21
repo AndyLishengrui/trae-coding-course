@@ -392,7 +392,7 @@ pop
       hh++;
       <span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="string">&quot;empty&quot;</span>) <span class="comment">// (3) “empty” – 判断队列是否为空；</span>
       cout<<(hh<=tt?<span class="string">&quot;NO&quot;</span>:<span class="string">&quot;YES&quot;</span>)<<endl;
-      <span class="keyword">else</span> cout<<q[tt]<<endl;<span class="comment">// (4) “query” – 查询队头元素。</span>
+      <span class="keyword">else</span> cout<<q[hh]<<endl;<span class="comment">// (4) “query” – 查询队头元素。</span>
   }
 
   <span class="keyword">return</span> <span class="number">0</span>;
@@ -732,7 +732,7 @@ res = []
         <span class="comment">//判断队头是否已经滑出窗口</span>
         <span class="keyword">if</span> (hh<=tt && i-k+<span class="number">1</span>> q[hh]) hh++;<span class="comment">//pop front删除队头</span>
         <span class="comment">//!单调队列，去掉所有降序的队尾点</span>
-        <span class="keyword">while</span> (hh<=tt&& a[q[tt]]>= a[i]) tt--;<span class="comment">//pop back删除队尾</span>
+        <span class="keyword">while</span> (hh<=tt&& a[q[hh]]>= a[i]) tt--;<span class="comment">//pop back删除队尾</span>
         q[++tt] =i;<span class="comment">//把当前i值入队列</span>
         <span class="keyword">if</span> (i>=k-<span class="number">1</span>) <span class="comment">//i在窗口内</span>
           printf(<span class="string">&quot;%d &quot;</span>,a[q[hh]]);<span class="comment">//队头就是最小值</span>
@@ -746,7 +746,7 @@ res = []
         <span class="comment">//判断队头是否已经滑出窗口</span>
         <span class="keyword">if</span> (hh<=tt && i-k+<span class="number">1</span>> q[hh]) hh++;<span class="comment">//pop front删除队头</span>
         <span class="comment">//!单调队列，去掉所有降序的队尾点</span>
-        <span class="keyword">while</span> (hh<=tt&& a[q[tt]]<=a[i]) tt--;<span class="comment">//pop back删除队尾</span>
+        <span class="keyword">while</span> (hh<=tt&& a[q[hh]]<=a[i]) tt--;<span class="comment">//pop back删除队尾</span>
         q[++tt] =i;<span class="comment">//把当前i值入队列</span>
         <span class="keyword">if</span> (i>=k-<span class="number">1</span>) <span class="comment">//i在窗口内</span>
           printf(<span class="string">&quot;%d &quot;</span>,a[q[hh]]);<span class="comment">//队头就是最大值</span>
